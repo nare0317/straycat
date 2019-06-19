@@ -7,3 +7,4 @@ build/classes/util/CatDTO.class
 .settings/.jsdtscope
 .settings/org.eclipse.wst.common.project.facet.core.xml
 WebContent/META-INF/MANIFEST.MF
+*.
