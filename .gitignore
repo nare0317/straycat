@@ -8,3 +8,14 @@ WebContent/META-INF/MANIFEST.MF
 .settings/.jsdtscope
 .project
 .classpath
+/.metadata/
+straycat/.settings/.jsdtscope
+Servers/Tomcat v8.5 Server at localhost-config/context.xml
+straycat/.settings/org.eclipse.wst.common.component
+straycat/.settings/org.eclipse.wst.common.project.facet.core.xml
+straycat/.settings/org.eclipse.wst.jsdt.ui.superType.container
+straycat/.settings/org.eclipse.wst.jsdt.ui.superType.name
+Servers/Tomcat v8.5 Server at localhost-config/server.xml
+Servers/Tomcat v8.5 Server at localhost-config/tomcat-users.xml
+Servers/Tomcat v8.5 Server at localhost-config/web.xml
+straycat/WebContent/WEB-INF/web.xml
