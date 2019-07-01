@@ -90,24 +90,24 @@
    
       <div>
          <dl class="list-head list-group list-group-horizontal">
-            <dt class="list-group-item  list-group-item-secondary" Style="width: 8%;" >No</dt>
-            <dt class="list-group-item  list-group-item-secondary " Style="width: 36%;">제목</dt>
-            <dt class="list-group-item  list-group-item-secondary " Style="width: 12%;">작성자</dt>
-            <dt class="list-group-item  list-group-item-secondary " Style="width: 20%;">작성일</dt>
-            <dt class="list-group-item  list-group-item-secondary " Style="width: 12%;">조회수</dt>
-            <dt class="list-group-item  list-group-item-secondary "Style="width: 12%;" >추천수</dt>
+            <dt class="list-group-item  list-group-item-secondary No" Style="width: 8%;" >No</dt>
+            <dt class="list-group-item  list-group-item-secondary Subject" Style="width: 36%;">제목</dt>
+            <dt class="list-group-item  list-group-item-secondary Writer" Style="width: 12%;">작성자</dt>
+            <dt class="list-group-item  list-group-item-secondary Date" Style="width: 20%;">작성일</dt>
+            <dt class="list-group-item  list-group-item-secondary Viewed" Style="width: 12%;">조회수</dt>
+            <dt class="list-group-item  list-group-item-secondary " Style="width: 12%;" >추천수</dt>
 
          </dl>
       </div><!-- close title -->
       
       <div>
          <dl class="list-group list-group-horizontal">
-            <dd class="list-group-item col-sm-1 col-md-1 col-lg-1">1</dd>
-            <dd class="list-group-item col-sm-4 col-md-4 col-lg-4 title"><a href="#" class="text-dark">안녕하세요~~ </a><i class='far fa-comment'>3</i></dd>
-            <dd class="list-group-item col-sm-2 col-md-2 col-lg-2" >유진석</dd>
-            <dd class="list-group-item col-sm-3 col-md-3 col-lg-3">2019-05-21</dd>
-            <dd class="list-group-item col-sm-1 col-md-1 col-lg-1" >3</dd>
-            <dd class="list-group-item col-sm-1 col-md-1 col-lg-1" >0</dd>
+            <dd class="list-group-item" Style="width: 8%;">1</dd>
+            <dd class="list-group-item title" Style="width: 36%;"><a href="#" class="text-dark">안녕하세요~~ </a><i class='far fa-comment'>3</i></dd>
+            <dd class="list-group-item" Style="width: 12%;">유진석</dd>
+            <dd class="list-group-item" Style="width: 20%;">2019-05-21</dd>
+            <dd class="list-group-item" Style="width: 12%;" >3</dd>
+            <dd class="list-group-item" Style="width: 12%;" >0</dd>
          </dl>
       </div>
       
