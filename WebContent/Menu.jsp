@@ -31,7 +31,7 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-md-0">
-        <button type="button" class="btn btn-primary" onclick="#'">등록</button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-primary" onclick="location.href='StrayCatRegistration.jsp'">등록</button>&nbsp;&nbsp;
         <!-- if 로그인 X -->
         <button type="button" class="btn btn-outline-primary" onclick="location.href='Login.jsp'">로그인</button>&nbsp;&nbsp;
         <button type="button" class="btn btn-outline-primary" onclick="location.href='Join.jsp'">회원가입</button>
