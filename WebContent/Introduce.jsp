@@ -21,14 +21,6 @@
 		font-family: 'Nanum Gothic Coding', monospace;
 		font-family: 'Quicksand', sans-serif;
 	}
-	#footer {
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		width: 100%;
-		padding: 15px 0;
-		text-align: center;
-	}
 </style>
 </head>
 <body>

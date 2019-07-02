@@ -17,7 +17,7 @@
           <a class="nav-link" href="Introduce.jsp">소개<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">길냥이관리<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="StrayCatManage.jsp">길냥이관리<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">입양&실종</a>

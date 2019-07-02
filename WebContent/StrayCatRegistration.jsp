@@ -67,8 +67,10 @@
 <div>
 	<c:import url="Menu.jsp"></c:import>
 
-	<div class="container" style="margin-top: 60px;">
+	<div class="container" style="margin-top: 30px;">
 		<h1>등록<span>길냥이 등록 신청</span></h1>
+		<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam dolor reiciendis aliquid rem atque accusamus ab voluptate quam aspernatur magnam maxime nisi voluptas unde nesciunt dicta aliquam quas quasi quaerat!
+		</span>
 		<hr><br><br>
 		
 		
@@ -88,14 +90,34 @@
 			  </div><br>
 			 <div class="form-group row">
 			    <label for="colFormLabel" class="col-sm-2 col-form-label">지역</label>
-			    <div class="col-sm-10">
-			      <input type="email" class="form-control" id="colFormLabel" placeholder="냥아취">
+			    <div class="col-sm-2">
+			      서울시
+			    </div>
+			    <div class="col-sm-3">
+			      <select class="custom-select" style="width:100px;">
+					  <option selected>구 선택</option>
+					  <option value="1">마포구</option>
+					  <option value="2">영등포구</option>
+					  <option value="3">서대문구</option>
+					</select>
+			    </div>
+			    <div class="col-sm-5">
+			       <select class="custom-select" style="width:100px;">
+					  <option selected>동 선택</option>
+					  <option value="1">연희동</option>
+					  <option value="2">연남동</option>
+					  <option value="3">서교동</option>
+					</select>
 			    </div>
 			  </div><br>
 			 <div class="form-group row">
 			    <label for="colFormLabel" class="col-sm-2 col-form-label">종류</label>
 			    <div class="col-sm-10">
-			      <input type="email" class="form-control" id="colFormLabel" placeholder="냥아취">
+			      <select class="custom-select" style="width:200px;">
+					  <option selected>종 선택</option>
+					  <option value="1">코리안숏헤어</option>
+					  <option value="2">품종</option>
+					</select>
 			    </div>
 			  </div><br>
 			 <div class="form-group row">
