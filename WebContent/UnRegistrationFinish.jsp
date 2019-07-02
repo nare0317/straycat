@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JoinFinish.jsp</title>
+<title>UnRegistrationFinish.jsp</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
@@ -38,15 +38,17 @@
 
 	<div class="container" style="margin-top: 60px;">
 		<div class="card text-center">
-			<div class="card-header"><h1><span style="color: #007BFF">회원가입</span>을 축하드립니다.</h1></div>
+			<div class="card-header"><h1><span style="color: #007BFF">회원탈퇴</span>가 완료되었습니다.</h1></div>
 			<div class="card-body">
-				<h5 class="card-title">홍길동님 반갑습니다.</h5>
-				<p class="card-text">로그인을 하셔서 길고양이를 등록해보세요~</p>
-				<button type="button" class="btn btn-primary">로그인</button>
+				<h5 class="card-title">그동안 우리동네고양이를 이용해 주셔서 감사합니다.
+보다 나은 우리동네고양이로 다시 만나뵐 수 있기를 바랍니다.</h5>
+				<button type="button" class="btn btn-primary" onclick="location.href='Join.jsp'">신규 회원가입</button>
+				<button type="button" class="btn btn-light" onclick="location.href='Main.jsp'">첫화면 가기</button>
 			</div>
 		</div>
 	</div>
 </div>
+
 
 
 <br />
