@@ -80,7 +80,7 @@
 					<div class="col-8">
 						<input type="text" class="form-control">
 					</div>
-					<div>
+					<div class="col-2">
 						<button type="button" class="btn btn-primary">첨부하기</button>
 					</div>
 				</div>

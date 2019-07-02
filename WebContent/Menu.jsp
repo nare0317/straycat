@@ -17,7 +17,7 @@
           <a class="nav-link" href="Introduce.jsp">소개<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">길냥이관리<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="StrayCatManage.jsp">길냥이관리<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">입양&실종</a>
@@ -31,7 +31,7 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-md-0">
-        <button type="button" class="btn btn-primary" onclick="#'">등록</button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-primary" onclick="location.href='StrayCatRegistration.jsp'">등록</button>&nbsp;&nbsp;
         <!-- if 로그인 X -->
         <button type="button" class="btn btn-outline-primary" onclick="location.href='Login.jsp'">로그인</button>&nbsp;&nbsp;
         <button type="button" class="btn btn-outline-primary" onclick="location.href='Join.jsp'">회원가입</button>
