@@ -67,7 +67,7 @@
 <div>
 	<c:import url="Menu.jsp"></c:import>
 
-	<div class="container" style="margin-top: 60px;">
+	<div class="container header" style="margin-top: 60px;">
 		<h1>등록<span>길냥이 등록 신청</span></h1>
 		<hr>
 	</div>

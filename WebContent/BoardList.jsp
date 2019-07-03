@@ -37,15 +37,38 @@
 
 <style type="text/css">
 
-*{
-	font-family: 맑은 고딕;
+div
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.container
+{
+	width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.header-title
+{
+	padding-top: 1rem;
+	border-color: #ddd;
+	border-bottom: solid 1px #000000e0;
+}
+
+.breadcrumbs
+{
+	padding-top: 10px;
+	padding-left: 0px;
 }
 
 h2 {
 	font-weight: bold;
 	letter-spacing: 5px;
 	margin-top:40px;
-	
 }
 
 dt {
@@ -99,31 +122,34 @@ dd {
 
 </head>
 <body>
-
+	
+	<!-- nav-bar 메뉴  -->
 	<c:import url="Menu.jsp"></c:import>
 	
+	<!-- 헤더 + breadcrumbs -->
 	<div class="container">
-		<section class="container">
-			<div id="breadcrumb" class="">
+		<section class="container header">
+			<div class="header-title">
 				<h2 class="h2">자유게시판</h2>
-				<ul class="u-list-inline pull-right">
-					<li id="breadcrumb-home" class="list-inline-item">
+			</div>
+			<div class="breadscrumbs pull-left">
+				<ul class="breadcrumbs">
+					<li class="list-inline-item">
 						<a class="text-dark" href="<%=cp%>/Main.jsp"><i class="fas fa-home"></i></a>
-						<i class="">></i>
+						<span> > </span>
 					</li>
-					<%-- 
-					<li id="breadcrumb-category" class="list-inline-item">
-						<a class="text-dark" href="#!"></a>
-						<i class="">/</i>
-					</li>
-					--%>
-					<li id="breadcrumb-subcategory" class="list-inline-item">
+					<li class="list-inline-item">
 						<span>자유게시판</span>
 					</li>
 				</ul>
 			</div>
 		</section>
-		
+	</div>
+
+	<!-- 내용 -->
+	<div class="container">
+	
+		<!-- 검색 부분  -->
 		<div
 			class="input-group mb-3 d-flex justify-content-end row align-items-start">
 			<div class="input-group-prepend">
@@ -140,10 +166,8 @@ dd {
 				<button class="btn btn-secondary" type="button" id="button-addon2">검색</button>
 			</div>
 		</div>
-
-	</div>
-
-	<div class="container">
+		
+		<!-- 게시판 부분 -->
 		<div id="bbsList_list" class="">
 			<div>
 				<dl class="list-head list-group list-group-horizontal">
@@ -172,7 +196,6 @@ dd {
 					<dd class="list-group-item Like">0</dd>
 				</dl>
 			</div>
-
 
 			<div>
 				<dl class="list-group list-group-horizontal">
@@ -264,7 +287,8 @@ dd {
 			</div>
 
 			<br> <br>
-
+			
+			<!-- 페이지부분 -->
 			<ul class="pagination pagination-sm justify-content-center">
 				<li class="page-item disabled"><a class="page-link text-dark"
 					href="#">Previous</a></li>
@@ -274,18 +298,16 @@ dd {
 				<li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
 				<li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
 			</ul>
-
+			
+			<!-- 글쓰기 버튼 -->
 			<div id="rightHeader" class="row align-items-end justify-content-end">
 				<button class="btn btn-primary pull-right"
 					onclick="javascript:location.href='<%=cp%>/Created.jsp'">
 					<i class="fa fa-pencil-square-o"></i>글쓰기
 				</button>
 			</div>
-
-		</div>
 	</div>
-
-	</div>
+</div>
 
 </body>
 </html>
