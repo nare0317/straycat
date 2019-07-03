@@ -1,58 +1,94 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
+   request.setCharacterEncoding("UTF-8");
+   String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Posting.jsp</title>
-<link rel="stylesheet" href="css/bootstrap.css">
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script   src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script   src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+   div
+   {
+      font-family: 'Nanum Gothic Coding', monospace;
+      font-family: 'Quicksand', sans-serif;
+   }
+</style>
 </head>
 <body>
-<form action="List.jsp">
-<div class="container form-group">
 
-	<div>
-		<h1>새 게시물 작성</h1>
-	</div>
-	
-	<div> 
-		<h3>작성자 아이디</h3>
-	</div>
+   <div>
+      <c:import url="Menu.jsp"></c:import>
+      <form action="">
 
-	<div class="form-group col-sm-10">
-			<label class="col-sm-2 control-label ">제목</label>
-			<div class="col-sm-10">
-			<input type="text" name="subject" class="form-control col-sm-2 active" placeholder="제목을 입력해 주세요." required="required">
-			</div>
-			<label class="col-sm-2 control-label">태그</label>
-			<div class="col-sm-10">
-			<input type="text" name="tag" class="form-control col-sm-2 active" placeholder="태그를 입력해주세요." required="required">
-			</div>
-			<!-- <label class="btn btn-default btn-file"> 업로드 <input type="file" style="display: none;"></label> -->
-			<label class="col-sm-3 control-label">파일 업로드</label>
-			<div class="col-sm-9">
-			<input type="file" class="form-control">
-			</div>
-			<label class="control-label col-sm-2">내용</label>
-			<div class="col-sm-10">
-			<textarea rows="20px;" cols="50px;" class="form-control"></textarea>
-			</div>
-			<label class="btn btn-default btn-file"> 업로드 <input type="file" style="display: none;"></label>
-			
-	</div>
-		
-	<div class="form-group col-sm-10">
-		<button class="btn btn-default" type="submit">작성 완료</button>
-		<button class="btn btn-default">작성 취소</button>
-	</div>
-</div>
-</form>
+         <div class="container" style="margin-top: 60px;">
+         <div><h1>새 게시물 작성</h1></div><br>
+            <div class="row">
+               <div class="col-2">제목</div>
+               <div class="col-3">
+                  <input type="text" class="form-control">
+               </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+               <div class="col-2">구분</div>
+               <div class="col-3">
+                  <select class="custom-select">
+                    <option selected>잡담</option>
+                    <option value="1">일기</option>
+                    <option value="2">질문</option>
+                  </select>
+               </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+               <div class="col-2">첨부파일</div>
+               <div class="col-8">
+                  <input type="text" class="form-control">
+               </div>
+               <div>
+                  <button type="button" class="btn btn-primary">첨부하기</button>
+               </div>
+            </div>
+            <br><br>
+            <div class="row">
+               <div class="col-2">내용</div>
+               <div class="col-10">
+                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+               </div>
+            </div><br>
+            <div class="row">
+               <div class="col-2"></div>
+               <div class="col-10">
+                     <button type="submit" class="btn btn-primary">작성 완료</button>
+                     <button type="button" class='btn btn-secondary'>작성 취소</button>
+               </div>
+            </div>
+         </div>
+
+
+
+      </form>
+   </div>
+
+
+
+
+
+   <div>
+      <c:import url="Footer.jsp"></c:import>
+   </div>
+
+
 </body>
 </html>
