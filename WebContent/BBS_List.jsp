@@ -121,7 +121,7 @@
 					<dd class="list-group-item No">2</dd>
 					<dd class="list-group-item Category">일상</dd>
 					<dd class="list-group-item Subject">
-						<a href="#" class="text-dark">안녕하세요,진석이에요. </a><i
+						<a href="#" class="text-dark">안녕하세요,진석이에요.안녕하세요,진석이에요.안녕하세요,진석이에요.안녕하세요,진석이에요.안녕하세요,진석이에요.안녕하세요,진석이에요.안녕하세요,진석이에요.안녕하세요,진석이에요.안녕하세요,진석이에요.안녕하세요,진석이에요.안녕하세요,진석이에요.안녕하세요,진석이에요. </a><i
 							class='far fa-comment'>0</i>
 					</dd>
 					<dd class="list-group-item Writer">무진석</dd>

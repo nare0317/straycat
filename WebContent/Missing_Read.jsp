@@ -122,10 +122,7 @@
 					<tr>
 						<th class="align-top">실종경위</th>
 						<td class="align-top">
-							<p>잠깐 한눈 판 사이에 집에서 나가버렸어요 ㅠㅠ 
-							혹시 목격하셨거나 임시 보호중 이시라면 꼭! 연락 주세요 ㅠㅠ
-							잠깐 한눈 판 사이에 집에서 나가버렸어요 ㅠㅠ 
-							혹시 목격하셨거나 임시 보호중 이시라면 꼭! 연락 주세요 ㅠㅠ</p>
+							<p>잠깐 한눈 판 사이에 집에서 나가버렸어요 ㅠㅠ</p>
 						</td>
 					</tr>
 				</table>
@@ -139,7 +136,7 @@
 					</tr>
 					<tr>
 						<th>이름 : </th>
-						<td>임나래<span></span></td>
+						<td>임나래<button><i class="fas fa-envelope"></i></button></td>
 					</tr>
 					<tr>
 						<th>연락처 : </th>
