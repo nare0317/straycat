@@ -66,11 +66,6 @@ span {
 	margin-top: 60px;
 }
 </style>
-
-<!-- 파비콘 -->
-<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
-<link rel="icon" href="<%=cp %>/favicon.ico">
-
 </head>
 <body>
 
@@ -108,7 +103,7 @@ span {
 				<c:forEach var="i" begin="0" end="7">
 					<div>
 						<div class="card-deck">
-							<c:forEach var="j" begin="0" end="2">
+							<c:forEach var="j" begin="0" end="1">
 								<div class="card mb-3"
 									style="margin: 30px; padding: 10px; height: 260px;">
 									<div class="row no-gutters">
