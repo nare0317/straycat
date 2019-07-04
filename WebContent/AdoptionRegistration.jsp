@@ -329,7 +329,7 @@ span {
 			<hr>
 			<div class="row">
 				<div class="col-2 text-right row">
-					<h1 data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"> 
+					<h1> 
 						서술형 질문
 					</h1>
 				<div class="row">
