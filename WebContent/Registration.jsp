@@ -22,12 +22,17 @@
 		font-family: 'Quicksand', sans-serif;
 	}
 </style>
+
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
+<link rel="icon" href="<%=cp %>/favicon.ico">
+
 </head>
 <body>
 	<div>
 		<c:import url="Menu.jsp"></c:import>
 		<div class="container">
-
+			<br>
 			<h1>
 				등록 <span style="font-size: small;">길냥이 등록 신청</span>
 			</h1>

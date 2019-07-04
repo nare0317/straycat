@@ -30,6 +30,11 @@
 	text-align: center;
 }
 </style>
+
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
+<link rel="icon" href="<%=cp %>/favicon.ico">
+
 </head>
 <body>
 
@@ -80,7 +85,7 @@
 					<div class="col-8">
 						<input type="text" class="form-control">
 					</div>
-					<div>
+					<div class="col-2">
 						<button type="button" class="btn btn-primary">첨부하기</button>
 					</div>
 				</div>

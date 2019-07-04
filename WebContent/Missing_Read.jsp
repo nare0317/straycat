@@ -24,214 +24,9 @@
 <!-- Font Awesome 5 -->
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style type="text/css">
 
-	div
-	{
-		font-family: 'Nanum Gothic Coding', monospace;
-		font-family: 'Quicksand', sans-serif;
-	}
-	
-	.header
-	{
-		margin-bottom: 40px;
-	}
-	
-	.container
-	{
-		width: 100%;
-	    padding-right: 15px;
-	    padding-left: 15px;
-	    margin-right: auto;
-	    margin-left: auto;
-	}
-	
-	.header-title
-	{
-		padding-top: 1rem;
-		border-color: #ddd;
-		border-bottom: solid 1px #000000e0;
-	}
-	
-	span.sub-title
-	{
-		font-size: medium;
-		letter-spacing: 0px;
-	}
-	
-	.breadcrumbs ul
-	{
-		padding-top: 10px;
-		padding-left: 0px;
-	}
-	
-	
-	h2 {
-		font-weight: bold;
-		letter-spacing: 5px;
-		margin-top:40px;
-	}
-	
-	.post-head
-	{
-		padding-bottom: 10px;
-	}
-	.post-title
-	{
-		padding-bottom: 10px;
-	}
-	
-	.iconic-photo
-	{
-		overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 300px;
-        height: 300px;
-	}
-	
-	table
-	{
-		border-style: none;
-	}
-	
-	th
-	{
-		width: 19%;	
-		font-size: 18px;
-		font-weight: bold;
-	}
-	
-	th, td
-	{
-		height: 50px;
-	}
-	
-	.writer-info
-	{
-		margin-top: 40px;
-		background-color: lightgray;
-		padding-left: 10px; 
-		width: 400px;
-	}
-	
-	.writer-info th
-	{
-		width: 20%;
-		font-size: 18px;
-		font-weight: bold;
-		padding-left: 13px;
-	}
-	
-	#comment-form
-	{
-		margin-top: 70px;
-	}
-	
-	#comment-form textarea
-	{
-		resize: none;
-		border-color: #eee !important;
-		background-color: #fff !important;
-		padding-left: 1.07143rem !important;
-    	padding-right: 1.07143rem !important;
-    	overflow: auto;
-	}
-	
-	.form-control
-	{
-	    
-	    display: block;
-	    width: 100%;
-	    padding: .375rem .75rem;
-	    font-size: 1rem;
-	    line-height: 1.5;
-	    color: #495057;
-	    background-color: #fff;
-	    background-clip: padding-box;
-	    border: 1px solid #a9a9a9;
-	    border-radius: .25rem;
-	    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-	}
-	
-	.form-control:focus 
-	{
-  	   color: #555;
-	}
-	
-	span.login-needed
-	{
-		display: inline;
-		font-size: medium;
-		 
-	}
-	
-	.comment-list-area
-	{
-		padding-top: 2.14286rem !important;
-    	padding-bottom: 2.14286rem !important;
-    	margin-bottom: 0.71429rem !important;
-	}
-	
-	.letter-number-notice
-	{
-		color: #999;
-		font-size: 0.85714rem;
-		font-weight: 500;
-	}
-	.comment-head
-	{
-		margin-bottom: 3rem!important;
-	}
-	
-	.comment
-	{
-		margin-bottom: 2.14286rem ;
-		display: -webkit-box;
-	    display: -ms-flexbox;
-	    display: flex;
-	    -webkit-box-align: start;
-	    -ms-flex-align: start;
-	    align-items: flex-start;
-	}
-	
-	.comment-date
-	{
-		margin-left: 0.71429rem;
-		color: #999;
-		font-size: 0.85714rem;
-		font-weight: 500;
-	}
-	
-	.comment-content
-	{
-		flex:1;
-	}
-	
-	.comment-writer
-	{
-		font-weight: 600 !important;
-		display: block;
-	}
-	
-	.comment-writer-date
-	{
-		display: flex;
-		align-items: flex-start;
-	}
-	
-	hr
-	{
-		margin-top: 2rem;
-		margin-bottom: 2rem;
-		border-top: 1px solid rgba(0,0,0,.2);
-		box-sizing: content-box;
-		height: 0;
-		overflow: visible;
-	}
-	
-</style>
+<!-- CSS 파일 추가 -->
+<link rel="stylesheet" href="<%=cp %>/css/Missing_Read.css">
 
 </head>
 <body>
@@ -274,7 +69,7 @@
 				<ul class="list-inline">
 					<li class="list-inline-item g-mx-4">nare0317
 					<li class="list-inline-item g-mx-4">|</li>
-					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item g-mx-4">2019-03-06 16:26</li>			
+					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item">2019-03-06 16:26</li>			
 					<li class="list-inline-item g-mx-4">|</li>
 					<li class="list-inline-item g-mx-4"><span class="icon-mouse" style="font-size: 11px;"></span> 1020</li>
 				</ul>
@@ -286,7 +81,9 @@
 			
 			<!-- 고양이 대표사진 -->
 			<div class="iconic-photo col-xs-9 col-sm-9 col-md-5 col-lg-4">
-				<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail">
+				<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-th
+				
+				umbnail">
 			</div>
 			
 			<!-- 글 내용 -->
@@ -342,7 +139,7 @@
 					</tr>
 					<tr>
 						<th>이름 : </th>
-						<td>임나래</td>
+						<td>임나래<span></span></td>
 					</tr>
 					<tr>
 						<th>연락처 : </th>
@@ -368,13 +165,13 @@
 				<input id="boardId" name="boardId" value="11663" type="hidden"
 					value="11663" />
 
-				<h5>댓글 남기기 <span class="login-needed">- 로그인 필요</span></h5>
+				<h5>댓글 남기기 <span class="login-notice">- 로그인 필요</span></h5>
 
 				<div class="form-group">
-					<textarea id="text" name="text" type="text" class="form-control" rows="2"></textarea>
+					<textarea id="text" name="text" type="text" rows="2"></textarea>
 					<small class="letter-number-notice">1000자 이내로 입력해 주세요</small>
 				</div>
-
+ 
 				<div class="text-right">
 					<button type="submit" class="btn btn-primary">댓글등록</button>
 				</div>
@@ -392,7 +189,7 @@
 				<!-- 댓글 1 -->
 				<div id="comment-wrapper">
 
-					<div id="comment" data-id="16312" data-login="false" class="media g-mb-30">
+					<div class="comment" data-id="16312" data-login="false">
 						<div class="comment-content">
 							<div class="comment-writer-date">
 								<!-- <div class="d-block"> -->
@@ -413,7 +210,7 @@
 				<!-- 댓글 2 -->
 				<div id="comment-wrapper">
 
-					<div id="comment" data-id="16312" data-login="false" class="media g-mb-30">
+					<div class="comment" data-id="16312" data-login="false">
 						<div class="comment-content">
 							<div class="comment-writer-date">
 								<!-- <div class="d-block"> -->

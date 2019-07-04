@@ -7,7 +7,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light rounded site-header sticky-top py-1">
     <a class="navbar-brand" href="Main.jsp"><img src="<%=cp%>/img/cat_main.jpg" style="width: 60px; margin-left: 30px;"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -17,12 +17,12 @@
           <a class="nav-link" href="Introduce.jsp">소개<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">길냥이관리<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="StrayCatManage.jsp">길냥이관리<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">입양&실종</a>
+          <a class="nav-link dropdown-toggle" href="StrayCatAdoptList.jsp" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">입양&실종</a>
           <div class="dropdown-menu" aria-labelledby="dropdown09">
-            <a class="dropdown-item" href="#">입양</a>
+            <a class="dropdown-item" href="StrayCatAdoptList.jsp">입양</a>
             <a class="dropdown-item" href="#">실종</a>
           </div>
         </li>
@@ -31,7 +31,7 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-md-0">
-        <button type="button" class="btn btn-primary" onclick="#'">등록</button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-primary" onclick="location.href='StrayCatRegistration.jsp'">등록</button>&nbsp;&nbsp;
         <!-- if 로그인 X -->
         <button type="button" class="btn btn-outline-primary" onclick="location.href='Login.jsp'">로그인</button>&nbsp;&nbsp;
         <button type="button" class="btn btn-outline-primary" onclick="location.href='Join.jsp'">회원가입</button>
