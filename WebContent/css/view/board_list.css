@@ -84,3 +84,24 @@
 {
 	margin: 25px;
 }
+
+/*=================================================================================*/
+
+h2 {
+	font-weight: bold;
+	letter-spacing: 5px;
+	margin-top:40px;
+}
+
+.header-title
+{
+	padding-top: 1rem;
+	border-color: #ddd;
+	border-bottom: solid 1px #000000e0;
+}
+
+.breadcrumbs
+{
+	padding-top: 10px;
+	padding-left: 0px;
+}

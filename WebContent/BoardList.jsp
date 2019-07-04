@@ -19,6 +19,9 @@
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+<!-- Popper JS -->
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
 <!-- 로그인 페이지 자바스크립트, CSS -->
 <script src="<%=cp%>/js/view/board_list.js"></script>
 <link rel="stylesheet" href="<%=cp%>/css/view/board_list.css">
@@ -36,9 +39,25 @@
 <c:import url="Menu.jsp"></c:import>
 <form>
 <div class="container">
-	<div id="title">
-		<h1>자 유 게 시 판 </h1> 
+	<div class="container">
+		<section class="container header">
+			<div class="header-title">
+				<h2 class="h2">자유게시판</h2>
+			</div>
+			<div class="breadscrumbs pull-left">
+				<ul class="breadcrumbs">
+					<li class="list-inline-item">
+						<a class="text-dark" href="<%=cp%>/Main.jsp"><i class="fas fa-home"></i></a>
+						<span> > </span>
+					</li>
+					<li class="list-inline-item">
+						<span>자유게시판</span>
+					</li>
+				</ul>
+			</div>
+		</section>
 	</div>
+	
 	<div class="form-group">
 		<div class="input-group mb-3 d-flex justify-content-end row align-items-start">
 			<div class="input-group-prepend">   
@@ -68,7 +87,7 @@
 	</div>
 	<div class="bbsContents">
 		<div class="content no">2</div>
-		<div class="content title contentTitle"><a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a></div>
+		<div class="content title contentTitle"><a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a><i class='far fa-comment'>0</i></div>
 		<div class="content writer">아웃사이더</div>
 		<div class="content date">2019-07-04</div>
 		<div class="content viewCount">10</div>
@@ -76,7 +95,11 @@
 	</div>
 	<div class="bbsContents">
 		<div class="content no">1</div>
-		<div class="content title contentTitle"><a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a></div>
+		<div class="content title contentTitle"><a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게</a>
+			<div class="comments">
+				<i class='far fa-comment'>0</i>
+			</div>
+		</div>
 		<div class="content writer">아웃사이더</div>
 		<div class="content date">2019-07-04</div>
 		<div class="content viewCount">10</div>
