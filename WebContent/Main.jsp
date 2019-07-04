@@ -72,6 +72,7 @@
 		    <div class="col-sm-6">
 		    	<div class="container">
 		    		<div class="card">
+		    			
 		    			입양
 		    		</div>
 		    	</div>
