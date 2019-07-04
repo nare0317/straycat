@@ -32,9 +32,9 @@
 
 <div>
 	<c:import url="Menu.jsp"></c:import>
-	<div class="container" style="margin-top: 60px;">
+	<div class="container">
 		<div class="card">
-			<div style="margin: 25px;">
+			<div id="title">
 				<h1>약관동의</h1>
 			</div>
 			<div class="card-body">

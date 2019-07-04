@@ -21,3 +21,13 @@ div
 {
 	color: red !important;
 }
+
+#title
+{
+	margin: 25px;
+}
+
+.container
+{
+	margin-top: 60px;
+}
