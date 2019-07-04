@@ -132,9 +132,23 @@
 							</div>
 						</div>
 					</div>
+<<<<<<< HEAD
+					<div class="col-4">
+						<h3>야옹이 발자취</h3>
+						<div class="map_wrap">
+							<div id="map"
+								style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+							<div class="hAddr">
+								<span class="title">지도중심기준 행정동 주소정보</span> <span id="centerAddr"></span>
+							</div>
+						</div>
+
+
+=======
 					<div class="col-4 cat_foot">
 						<h3>야옹이 발자취</h3>
 						<div id="map0" class="map0"></div>
+>>>>>>> 661181ef6c8fe4d15434635b61529e7706793fce
 					</div>
 				</div>
 			</div>
@@ -174,6 +188,43 @@
 					</div>
 				</nav>
 				<div class="tab-content" id="nav-tabContent">
+<<<<<<< HEAD
+					<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+						<h4 style="margin: 20px;">활동작성</h4>
+						<div class="jumbotron">
+						<div class="row">
+							<div class="custom-control custom-checkbox my-1 mr-sm-2">
+							  <input type="checkbox" class="custom-control-input" id="customCheck1">
+							  <label class="custom-control-label" for="customCheck1">먹이</label>
+							</div>
+							<div class="custom-control custom-checkbox my-1 mr-sm-2">
+							  <input type="checkbox" class="custom-control-input" id="customCheck2">
+							  <label class="custom-control-label" for="customCheck2">물</label>
+							</div>
+							<div class="custom-control custom-checkbox my-1 mr-sm-2">
+							  <input type="checkbox" class="custom-control-input" id="customCheck3">
+							  <label class="custom-control-label" for="customCheck3">간식</label>
+							</div>
+							<div class="custom-control custom-checkbox my-1 mr-sm-2">
+							  <input type="checkbox" class="custom-control-input" id="customCheck4">
+							  <label class="custom-control-label" for="customCheck4">약</label>
+							</div>
+							<div class="custom-control custom-checkbox my-1 mr-sm-2">
+							  <input type="checkbox" class="custom-control-input" id="customCheck5">
+							  <label class="custom-control-label" for="customCheck5">만남</label>
+							</div>
+							</div>
+							<div class="row">
+								<div class="col-8">
+									<div class="form-group">
+								    	<textarea class="form-control" id="exampleFormControlTextarea1" style="width: 100% height: 500px;"></textarea>
+								  	</div>
+								</div>
+								<div class="col-4">
+									<div class="map_wrap">
+										<div id="map"
+											style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+=======
 					<!-----------------------------------------------------  활동 탭  ----------------------------------------------------------->
 					<div class="tab-pane fade show active" id="nav-home">
 						<h4 class="write">활동작성</h4>
@@ -211,6 +262,7 @@
 								<div class="col-4 cat_foot">
 									<div class="map_wrap">
 										<div id="map" class="map"></div>
+>>>>>>> 661181ef6c8fe4d15434635b61529e7706793fce
 										<div class="hAddr">
 											<span class="title">지도중심기준 행정동 주소정보</span> 
 												<span id="centerAddr"></span>
@@ -345,9 +397,11 @@
 	</div>
 
 
-
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script>
 <script>
+<<<<<<< HEAD
+=======
 	/* 첫번째 지도 (마커 출력용 지도) */
 	var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div 
 	mapOption0 =
@@ -372,6 +426,7 @@
 	marker0.setMap(map0);
 
 	/* 두 번째 지도 (마커 생성용 지도) */
+>>>>>>> 661181ef6c8fe4d15434635b61529e7706793fce
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption =
 	{

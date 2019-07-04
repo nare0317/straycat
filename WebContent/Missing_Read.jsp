@@ -136,7 +136,7 @@
 					</tr>
 					<tr>
 						<th>이름 : </th>
-						<td>임나래<button><i class="fas fa-envelope"></i></button></td>
+						<td>임나래<button class="btn btn_link"><i class="fas fa-envelope">쪽지보내기</i></button></td>
 					</tr>
 					<tr>
 						<th>연락처 : </th>
