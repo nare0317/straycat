@@ -22,6 +22,10 @@
 <script src="<%=cp%>/js/view/accept_terms.js"></script>
 <link rel="stylesheet" href="<%=cp%>/css/view/accept_terms.css">
 
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
+<link rel="icon" href="<%=cp %>/favicon.ico">
+
 </head>
 <body>
 

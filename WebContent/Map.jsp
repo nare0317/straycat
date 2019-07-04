@@ -16,6 +16,11 @@
 #centerAddr {display:block;margin-top:2px;font-weight: normal;}
 .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 </style>
+
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
+<link rel="icon" href="<%=cp %>/favicon.ico">
+
 </head>
 <body>
 <div class="map_wrap">
