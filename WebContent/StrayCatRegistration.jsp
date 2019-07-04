@@ -72,7 +72,11 @@
 <div>
 	<c:import url="Menu.jsp"></c:import>
 
+<<<<<<< HEAD
+	<div class="container header" style="margin-top: 60px;">
+=======
 	<div class="container" style="margin-top: 30px;">
+>>>>>>> 150a40b9d9e1ed546b1925df68c0382446ad720f
 		<h1>등록<span>길냥이 등록 신청</span></h1>
 		<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam dolor reiciendis aliquid rem atque accusamus ab voluptate quam aspernatur magnam maxime nisi voluptas unde nesciunt dicta aliquam quas quasi quaerat!
 		</span>
