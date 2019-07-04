@@ -34,6 +34,11 @@
 	}
 	
 </style>
+
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
+<link rel="icon" href="<%=cp %>/favicon.ico">
+
 </head>
 <body>
 <div>
@@ -67,6 +72,7 @@
 		    <div class="col-sm-6">
 		    	<div class="container">
 		    		<div class="card">
+		    			
 		    			입양
 		    		</div>
 		    	</div>

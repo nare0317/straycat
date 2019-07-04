@@ -23,7 +23,7 @@
           <a class="nav-link dropdown-toggle" href="StrayCatAdoptList.jsp" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">입양&실종</a>
           <div class="dropdown-menu" aria-labelledby="dropdown09">
             <a class="dropdown-item" href="StrayCatAdoptList.jsp">입양</a>
-            <a class="dropdown-item" href="#">실종</a>
+            <a class="dropdown-item" href="MissingCatList.jsp">실종</a>
           </div>
         </li>
         <li class="nav-item">

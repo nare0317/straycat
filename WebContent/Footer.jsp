@@ -1,9 +1,3 @@
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-
   <div id="footer">
 	<hr>
 	<p class="float-right">

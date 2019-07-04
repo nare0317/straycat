@@ -70,7 +70,7 @@
 							</div>
 							<br>
 							<!-- 이메일 계정 오류 경고 -->
-							<span class="err"><ion-icon name="alert" size="medium"></ion-icon>등록되지 않은 이메일입니다.</span>
+							<span class="err"><span>*</span>등록되지 않은 이메일입니다.</span>
 							<br> <br> <br>
 							<button type="submit" class="btn btn-primary btn-md">아이디 찾기</button>
 							<button type="submit" class="btn btn-secondary btn-md">비밀번호 찾기</button>

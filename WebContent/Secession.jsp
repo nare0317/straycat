@@ -36,6 +36,10 @@
 	});
 </script>
 
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
+<link rel="icon" href="<%=cp %>/favicon.ico">
+
 </head>
 <body>
 

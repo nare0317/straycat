@@ -115,7 +115,7 @@
 					    <tr>
 					    <th>첨부파일</th>
 					    <td colspan="2"><input type="text" class="form-control mx-sm-3" style="width: 400px;">
-					    <span>※ png. jpg. bmp. 확장자에 한해 업로드 가능합니다.</sapn><span style="margin-left: 13%">0KB / 5MB</span></td>
+					    <span>※ png. jpg. bmp. 확장자에 한해 업로드 가능합니다.</span><span style="margin-left: 13%">0KB / 5MB</span></td>
 					    <td><button type="button" class="btn btn-outline-secondary btn-sm">첨부하기</button></td>
 					    </tr>
 					</table><br><br>
