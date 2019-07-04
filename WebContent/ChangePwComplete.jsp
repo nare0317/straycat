@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ChangePwComplete.jsp</title>
+<title>비밀번호 변경 완료</title>
 
 <!-- 부트스트랩, 제이쿼리 CDN -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

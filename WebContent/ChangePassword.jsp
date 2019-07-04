@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ChangePassword.jsp</title>
+<title>비밀번호 변경</title>
 
 <!-- 부트스트랩, 제이쿼리 CDN -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
