@@ -42,11 +42,6 @@ div
 	text-align: center;
 }
 </style>
-
-<!-- 파비콘 -->
-<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
-<link rel="icon" href="<%=cp %>/favicon.ico">
-
 </head>
 <body>
 
@@ -66,7 +61,7 @@ div
 					<div class="row" style="margin-top: 60px; width: 100%;">
 						<div class="col-md-6 offset-md-3">
 							
-							<h4>아이디<span class="userId" name="userId" href="#" style="padding: 50px;">nare0317</span></h4>
+							<h4>아이디<span class="userId" style="padding: 50px;">nare0317</span></h4>
 							<br>
 							<br><br>
 							<button type="submit" class="btn btn-primary btn-md">로그인 하기</button>
