@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+div
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.bolck {
+	width: 100px;
+	text-align: center;
+}
+
+.bolck2 {
+	width: 150px;
+	text-align: center;
+}
+
+#footer {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		padding: 15px 0;
+		text-align: center;
+}
+
+#loginError, #inputError
+{
+	display: none;
+	color: red !important;
+	text-align: center;
+}
