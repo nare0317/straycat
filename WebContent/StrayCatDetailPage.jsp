@@ -126,15 +126,9 @@ div {
 							<div><img src="img/notification.png" style="width:30px;">신고하기</div>														
 						</div>
 					</div>
-					<div class="col-4">
+					<div class="col-4" style="padding-left: 90px;">
 						<h3>야옹이 발자취</h3>
-						<div class="map_wrap">
-							<div id="map"
-								style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
-							<div class="hAddr">
-								<span class="title">지도중심기준 행정동 주소정보</span> <span id="centerAddr"></span>
-							</div>
-						</div>
+						<div id="map0" style="width:350px;height:350px;"></div>
 
 
 					</div>
@@ -157,8 +151,8 @@ div {
 				<div class="tab-content" id="nav-tabContent">
 					<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 						<h4 style="margin: 20px;">활동작성</h4>
-						<div class="jumbotron">
-						<div class="row">
+						<div class="jumbotron" style="padding: 30px 30px;">
+						<div class="row" style="padding-left: 20px;">
 							<div class="custom-control custom-checkbox my-1 mr-sm-2">
 							  <input type="checkbox" class="custom-control-input" id="customCheck1">
 							  <label class="custom-control-label" for="customCheck1">먹이</label>
@@ -179,17 +173,16 @@ div {
 							  <input type="checkbox" class="custom-control-input" id="customCheck5">
 							  <label class="custom-control-label" for="customCheck5">만남</label>
 							</div>
-							</div>
+							</div><br>
 							<div class="row">
 								<div class="col-8">
 									<div class="form-group">
-								    	<textarea class="form-control" id="exampleFormControlTextarea1" style="width: 100% height: 500px;"></textarea>
+								    	<textarea class="form-control" id="exampleFormControlTextarea1" style="width: 100%" rows="3"></textarea>
 								  	</div>
 								</div>
-								<div class="col-4">
+								<div class="col-4" style="padding-left: 90px;">
 									<div class="map_wrap">
-										<div id="map"
-											style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+										<div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 										<div class="hAddr">
 											<span class="title">지도중심기준 행정동 주소정보</span> <span id="centerAddr"></span>
 										</div>
@@ -224,9 +217,32 @@ div {
 	</div>
 
 
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script>
 <script>
+
+	/* 첫번째 지도 (마커 출력용 지도) */
+	var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div 
+	mapOption0 = { 
+	    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	    level: 3 // 지도의 확대 레벨
+	};
+	
+	var map0 = new kakao.maps.Map(mapContainer0, mapOption0); // 지도를 생성합니다
+	
+	//마커가 표시될 위치입니다 
+	var markerPosition0  = new kakao.maps.LatLng(33.450701, 126.570667); 
+	
+	//마커를 생성합니다
+	var marker0 = new kakao.maps.Marker({
+	position: markerPosition0
+	});
+	
+	//마커가 지도 위에 표시되도록 설정합니다
+	marker0.setMap(map0);
+	
+
+	/* 두 번째 지도 (마커 생성용 지도) */
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption =
 	{
