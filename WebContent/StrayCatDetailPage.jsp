@@ -112,6 +112,11 @@ div {
 	background-color: #F8F9FA;
 }
 </style>
+
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
+<link rel="icon" href="<%=cp %>/favicon.ico">
+
 <script type="text/javascript">
 	//$();
 	$(function()
@@ -127,6 +132,7 @@ div {
 		});
 	});
 </script>
+
 </head>
 <body>
 

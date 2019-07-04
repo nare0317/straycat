@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+div
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.mButton 
+{
+	position:relative; 
+	text-align:center; 
+}
+
+#errorDiv
+{
+	display: none;
+}
+
+#errorMsg
+{
+	color: red !important;
+}

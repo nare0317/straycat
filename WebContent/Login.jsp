@@ -21,6 +21,11 @@
 <!-- 로그인 페이지 자바스크립트, CSS -->
 <script src="<%=cp%>/js/view/login.js"></script>
 <link rel="stylesheet" href="<%=cp%>/css/view/login.css">
+<link rel="stylesheet" href="<%=cp%>/css/view/footer.css">
+
+<!-- 파비콘 -->
+<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
+<link rel="icon" href="<%=cp %>/favicon.ico">
 
 </head>
 <body>
@@ -69,10 +74,7 @@
 	<br />
 	<br />
 	<br />
-	<br />
-	<br />
 	<div>
-		<hr>
 		<c:import url="Footer.jsp"></c:import>
 	</div>
 
