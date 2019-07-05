@@ -12,6 +12,9 @@
 <!-- Popper JS -->
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
+<!-- ionicons JS -->
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
 <!-- Font Awesome 5 -->
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
