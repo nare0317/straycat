@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.breadcrumbs
+{
+	padding-top: 10px;
+	padding-left: 0px;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+
+ul
+{
+	padding-inline-start: 0px !important;
+}
+
+div
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.bolck {
+	width: 100px;
+	text-align: center;
+}
+
+.err, .err2
+{
+	color: red;
+	display: none;
+	font-weight: bold;
+}
