@@ -5,32 +5,6 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
-	Calendar cal = Calendar.getInstance();
-	int nowYear = cal.get(Calendar.YEAR);
-	int nowMonth = cal.get(Calendar.MONTH);
-	int nowDay = cal.get(Calendar.DAY_OF_MONTH);
-	int[] lastDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-	if (nowYear % 4 == 0 && nowYear % 100 != 0 || nowYear % 400 == 0)
-		lastDays[1] = 29;
-	String sbYear = "";
-	String sbMonth = "";
-	String sbDay = "";
-	String YearMonDay = "";
-	for (int i = nowYear - 10; i < nowYear + 11; i++) {
-		if (i == nowYear)
-			YearMonDay += i + ".";
-		sbYear += i;
-	}
-	for (int i = 1; i <= 12; i++) {
-		if (i == nowMonth + 1)
-			YearMonDay += i + ".";
-		sbMonth += i;
-	}
-	for (int i = 1; i <= lastDays[nowMonth]; i++) {
-		if (i == nowDay)
-			YearMonDay += i + ".";
-		sbDay += i;
-	}
 %>
 <!DOCTYPE html>
 <html>
@@ -235,25 +209,25 @@
 						<!----------------------------------------------------- 로그인 O ----------------------------------------------------->
 						<div class="jumbotron select">
 							<div class="row row2">
-								<div class="custom-control custom-checkbox my-1 mr-sm-2">
-									<input type="checkbox" class="custom-control-input" id="customCheck1"> 
-										<label class="custom-control-label"	for="customCheck1">먹이</label>
+								<div class="custom-control custom-radio custom-control-inline">
+								  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+								  <label class="custom-control-label" for="customRadioInline1">먹이</label>
 								</div>
-								<div class="custom-control custom-checkbox my-1 mr-sm-2">
-									<input type="checkbox" class="custom-control-input"	id="customCheck2"> 
-										<label class="custom-control-label"	for="customCheck2">물</label>
+								<div class="custom-control custom-radio custom-control-inline">
+								  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+								  <label class="custom-control-label" for="customRadioInline2">물</label>
 								</div>
-								<div class="custom-control custom-checkbox my-1 mr-sm-2">
-									<input type="checkbox" class="custom-control-input"	id="customCheck3"> 
-										<label class="custom-control-label"	for="customCheck3">간식</label>
+								<div class="custom-control custom-radio custom-control-inline">
+								  <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
+								  <label class="custom-control-label" for="customRadioInline3">간식</label>
 								</div>
-								<div class="custom-control custom-checkbox my-1 mr-sm-2">
-									<input type="checkbox" class="custom-control-input"	id="customCheck4"> 
-										<label class="custom-control-label"	for="customCheck4">약</label>
+								<div class="custom-control custom-radio custom-control-inline">
+								  <input type="radio" id="customRadioInline4" name="customRadioInline1" class="custom-control-input">
+								  <label class="custom-control-label" for="customRadioInline4">약</label>
 								</div>
-								<div class="custom-control custom-checkbox my-1 mr-sm-2">
-									<input type="checkbox" class="custom-control-input" id="customCheck5"> 
-										<label class="custom-control-label" for="customCheck5">만남</label>
+								<div class="custom-control custom-radio custom-control-inline">
+								  <input type="radio" id="customRadioInline5" name="customRadioInline1" class="custom-control-input">
+								  <label class="custom-control-label" for="customRadioInline5">만남</label>
 								</div>
 							</div>
 							<br>
@@ -273,6 +247,11 @@
 									</div>
 								</div>
 							</div>
+							<div class="row row2">
+								<div id="col form-control text-center">
+									<input type="text" id="firstDatepicker" class="form-control3" name="firstDatepicker" readonly="readonly">
+								</div>
+							</div>
 							<div class="text-center">
 								<button type="button" class="btn btn-primary">글쓰기</button>
 								<button type="button" class="btn btn-primary">취소</button>
@@ -290,10 +269,8 @@
 						<!----------------------------------------------------- 로그인 X ----------------------------------------------------->
 
 						<h4 class="write">활동피드</h4>
-						<div class="row">
-							<div id="col form-control text-center">
-								<input type="text" id="newDatepicker" name="newDatepicker" value="<%=YearMonDay%>" class="" readonly="readonly">
-							</div>
+						<div class="form-group">
+								<input type="text" id="secondDatepicker" name="secondDatepicker" class="form-control2 text-center" readonly="readonly">
 						</div><br>
 
 						<div class="scroll">
