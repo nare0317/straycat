@@ -249,7 +249,7 @@
 							</div>
 							<div class="row row2">
 								<div id="col form-control text-center">
-									<input type="text" id="firstDatepicker" class="form-control3" name="firstDatepicker" readonly="readonly">
+									<input type="text" id="firstDatepicker" class="" name="firstDatepicker" readonly="readonly">
 								</div>
 							</div>
 							<div class="text-center">
