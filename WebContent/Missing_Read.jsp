@@ -33,11 +33,12 @@
 
 <div>
 
+	<!-- ★★★★★메뉴바★★★★★ -->
 	<c:import url="Menu.jsp"></c:import>
 		
-	<!-- 헤더 + breadcrumbs -->
+	<!-- ★★★★★헤더 + breadcrumbs★★★★★ -->
 
-	<section class="container header">
+	<section class="header container ">
 		<div class="header-title">
 			<h2 class="h2">실종<span class="sub-title">실종글</span></h2>
 		</div>
@@ -58,11 +59,11 @@
 		</div>
 	</section>
 		
-	<!-- 내용 -->
-	<section class="container">
+	<!-- ★★★★★내용★★★★★ -->
+	<section class="post-view container">
 	
 		<!-- 제목/작성자/작성일시/조회수 -->
-		<div class="row post-head">
+		<div class="post-head row">
 			<div class="col-lg-9">
 				<h3 class="post-title">우리 냥이 좀 찾아주세요 ㅠㅠㅠㅠ</h3>
 				
@@ -76,19 +77,17 @@
 			</div>
 		</div>
 		
-		<!-- 글내용 -->	
+		<!-- ★★★★★글내용★★★★★ -->	
 		<div class="row post-content">
 			
 			<!-- 고양이 대표사진 -->
 			<div class="iconic-photo col-xs-9 col-sm-9 col-md-5 col-lg-4">
-				<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-th
-				
-				umbnail">
+				<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail">
 			</div>
 			
 			<!-- 글 내용 -->
-			<div class="basic-info col-xs-9 col-sm-9 col-md-7 col-lg-8">
-				<table class="missing-info">
+			<div class="content col-xs-9 col-sm-9 col-md-7 col-lg-8">
+				<table class="missing-info table table-light">
 					<tr>
 						<th class="align-top th-sm th-lg">이름</th>
 						<td class="align-top">냥아취</td>
@@ -122,39 +121,64 @@
 					<tr>
 						<th class="align-top">실종경위</th>
 						<td class="align-top">
-							<p>잠깐 한눈 판 사이에 집에서 나가버렸어요 ㅠㅠ</p>
+							<p>잠깐 한눈 판 사이에 집에서 나가버렸어요 ㅠㅠ 혹시 찾으시면 아래 정보로 연락 좀 부탁드려요. 사례금은 넉넉하게 드리겠습니다 ㅜㅜ </p>
 						</td>
 					</tr>
 				</table>
 				
-				<!-- 게시글 작성자 정보 -->
-				<table class="writer-info">
-					<tr>
-						<th colspan="2">
-						게시글 작성자 정보
-						</th>
-					</tr>
-					<tr>
-						<th>이름 : </th>
-						<td>임나래<button class="btn btn_link"><i class="fas fa-envelope">쪽지보내기</i></button></td>
-					</tr>
-					<tr>
-						<th>연락처 : </th>
-						<td>010-2493-4848</td>
-					</tr>
-					<tr>
-						<th>이메일 : </th>
-						<td>nare0317@gmail.com</td>
-					</tr>
-				</table>
 				
+				
+				<!-- 게시글 작성자 정보 -->
+				<div class="writer-info col-lg-8 col-offset-lg-4">
+					<div class="row writer-info-title">게시글 작성자 정보</div>
+					<div class="row writer-name"><label>이름 : </label>임나래
+						<a href="" onclick=""  class="send-message">
+							<i class="fas fa-envelope"> 쪽지보내기 </i>
+						</a>
+					</div>
+					<div class="row writer-tel"><label>연락처 : </label>010-2493-4848</div>
+					<div class="row writer-email"><label>이메일 :</label>nare0317@gmail.com</div>
+				</div>
 			</div>
 			
 		</div>
 		
-		<hr id="stickyblock-end"/>
+		
+		
+		<!-- ★★★★★ 신고/공유/추천 버튼 ★★★★★★ -->
+		<div class="post-footer row justify-content-center">
+			<button class="btn_report" onclick=""><span class="fa fa-ban"></span> 신고</button>
+			
+			<div class="post_share">
+					<button class="btn_share" data-toggle="dropdown"><span class="fa fa-share-square-o"></span> 공유</button>
+					<ul class="dropdown-menu share">
+						<li><a href="javascript:;" onclick="prompt('주소를 복사하세요.', ''"><span class="fa fa-link"></span>주소복사</a></li>
+						<li><a href="" class="facebook" target="_blank"><span class="fa fa-facebook"></span>Facebook</a></li>
+						<li><a href="" class="twitter" target="_blank"><span class="fa fa-twitter"></span>Twitter</a></li>
+					</ul>
+			</div>
+			<button class="btn_like">
+				<span class="fas fa-thumbs-up"></span><span class="text"> 추천<strong>5</strong></span>
+			</button>
+		</div>
 
-		<!-- ★★★★★댓글★★★★★★ -->
+		
+		<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
+		<div class="beforeafter list-group">
+			<a href="" onclick="" class=" prev list-group-item list-group-item-action"> 
+				<i class="fas fa-chevron-up"> 이전 글 </i><span>이전 글이 없습니다.</span>
+			</a>
+			<a href="" onclick=""  class="next list-group-item list-group-item-action">
+				<i class="fas fa-chevron-down"> 다음 글 </i><span>저희 냥이 좀 찾아주세요ㅠㅠ</span>
+			</a>
+		</div>
+		
+		<!-- 목록으로 돌아가기 버튼 -->
+		<button type="button" class="btn btn-dark pull-right">목록으로</button>
+
+
+
+		<!-- ★★★★★ 댓글 ★★★★★★ -->
 		<div class="comment-area">
 
 			<!-- 댓글 입력  -->
@@ -170,7 +194,7 @@
 				</div>
  
 				<div class="text-right">
-					<button type="submit" class="btn btn-primary">댓글등록</button>
+					<button type="submit" class="btn btn-outline-primary">댓글등록</button>
 				</div>
 			</form>
 
@@ -228,6 +252,9 @@
 		</div><!-- end comment-area -->
 
 	</section>
+	
+	<!-- ★★★★★ 푸터 ★★★★★ -->
+	<c:import url="Footer.jsp"></c:import>
 </div>
 </body>
 </html>
