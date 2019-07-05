@@ -121,7 +121,45 @@
 						<br>
 						<div class="row">
 							<div>
-								<img src="img/notification.png" class="img2">신고하기
+								<button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter"><img src="img/notification.png" class="img2"></button>신고하기
+								<!-- Modal -->
+									<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+									  <div class="modal-dialog modal-dialog-centered" role="document">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <h5 class="modal-title" id="exampleModalCenterTitle">길냥이관리 게시판</h5>
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									          <span aria-hidden="true">&times;</span>
+									        </button>
+									      </div>
+									      <div class="modal-body">
+									        <div class="container">
+									      	  <p>Post Number</p>
+									        	<input type="text" value="#19283" class="form-control" readonly="readonly"> 
+									        </div>
+									        <br>
+									        <div class="container">
+									        	<p>Description</p>
+										        <select class="form-control">
+												  <option selected="selected">신고분류 선택</option>
+											      <option>부적절한 정보(욕설, 협박 등)</option>
+											      <option>고양이 사망</option>
+											      <option>잘못된 정보가 통합됨</option>
+												</select>
+									        </div>
+									        <br>
+									        <div class="container">
+									        	<p>Input</p>
+										       	 	<input type="text" class="form-control" placeholder="신고 내용을 작성하세요."> 
+									        </div>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									        <button type="button" class="btn btn-primary">Save changes</button>
+									      </div>
+									    </div>
+									  </div>
+									</div>
 							</div>
 						</div>
 					</div>
@@ -152,7 +190,31 @@
 					</div>
 				</div>
 				<div class="col-5">
-					<button type="button" class="btn btn-primary integratioApplication">통합신청</button>
+					<button type="button" class="btn btn-primary integratioApplication" data-toggle="modal" data-target="#integrationApplication">통합신청</button>
+					
+					<!-- Modal -->
+						<div class="modal fade" id="integrationApplication" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="exampleModalLongTitle">통합 신청</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+						        <a href="#">#28374 냐옹이</a> 와 통합 신청이 들어왔습니다.<br> 
+								냐옹이의 정보를 확인 후, 2019년 7월 19일까지 통합 신청에 응답해주세요.<br> 
+								- 같은 고양이라고 판단되어 신청을 수락하신 경우, 전체 집사를 대상으로 통합 투표가 2주간 진행  됩니다.<br>
+								- 같은 고양이가 아니라고 판단될 시에는, 즉시 거절 응답을 보내시면 됩니다.<br>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal">거절</button>
+						        <button type="button" class="btn btn-primary">수락</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
 				</div>
 			</div>
 			
