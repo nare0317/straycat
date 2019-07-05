@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
+<link href="<%=cp%>/css/view/main.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -64,23 +65,76 @@
 				</div><br>
 			</div>
 		</div>
-		<br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		
 		<div class="container-fluid">
 		 <!-- Control the column width, and how they should appear on different devices -->
 		<div class="row">
 		    <div class="col-sm-6">
 		    	<div class="container">
-		    		<div class="card">
-		    			
-		    			입양
+		    		<div class="card text-center" style="width: 800px; height: 400px;">
+		    			<div class="container text-center" id="team">
+							<h2>입양</h2>
+							<p>서울시 서대문구 연희동</p>
+							
+							<div class="row"><br>
+							
+							<div class="w3-quarter">
+							  <img src="img/straycat.jpg" alt="Boss" style="width:80%" class="w3-circle w3-hover-opacity">
+							  <h5>Johnny Walker</h5>
+							</div>
+							
+							<div class="w3-quarter">
+							  <img src="img/straycat.jpg" alt="Boss" style="width:80%" class="w3-circle w3-hover-opacity">
+							  <h5>Rebecca Flex</h5>
+							</div>
+							
+							<div class="w3-quarter">
+							  <img src="img/straycat.jpg" alt="Boss" style="width:80%" class="w3-circle w3-hover-opacity">
+							  <h5>Jan Ringo</h5>
+							</div>
+							
+							<div class="w3-quarter">
+							  <img src="img/straycat.jpg" alt="Boss" style="width:80%" class="w3-circle w3-hover-opacity">
+							  <h5>Kai Ringo</h5>
+							</div>
+							
+							</div>
+							</div>
 		    		</div>
 		    	</div>
 		    </div>
 			<div class="col-sm-6">
-				<div class="container">
-		    		<div class="card">
-		    			실종
+				<div class="container text-center">
+		    		<div class="card" style="width: 800px; height: 400px;">
+		    			<div class="container text-center" id="team">
+							<h2>실종</h2>
+							<p>서울시 서대문구 연희동</p>
+							
+							<div class="row"><br>
+							
+							<div class="w3-quarter">
+							  <img src="img/straycat.jpg" alt="Boss" style="width:80%" class="w3-circle w3-hover-opacity">
+							  <h5>Johnny Walker</h5>
+							</div>
+							
+							<div class="w3-quarter">
+							  <img src="img/straycat.jpg" alt="Boss" style="width:80%" class="w3-circle w3-hover-opacity">
+							  <h5>Rebecca Flex</h5>
+							</div>
+							
+							<div class="w3-quarter">
+							  <img src="img/straycat.jpg" alt="Boss" style="width:80%" class="w3-circle w3-hover-opacity">
+							  <h5>Jan Ringo</h5>
+							</div>
+							
+							<div class="w3-quarter">
+							  <img src="img/straycat.jpg" alt="Boss" style="width:80%" class="w3-circle w3-hover-opacity">
+							  <h5>Kai Ringo</h5>
+							</div>
+							
+							</div>
+							</div>
 		    		</div>
 		    	</div>
 			</div>
