@@ -6,12 +6,14 @@
 		font-family: 'Quicksand', sans-serif;
 	}
 	
+/************** (헤더+브레드크럼 영역) **************/
+	
 	.header
 	{
 		margin-bottom: 40px;
 	}
 	
-	.container
+	.post-view
 	{
 		width: 100%;
 	    padding-right: 15px;
@@ -45,6 +47,8 @@
 		letter-spacing: 5px;
 		margin-top:40px;
 	}
+
+/************** (본문 영역) **************/
 	
 	.post-head
 	{
@@ -55,6 +59,7 @@
 		padding-bottom: 10px;
 	}
 	
+	/* 고양이 대표사진 */
 	.iconic-photo
 	{
 		overflow: hidden;
@@ -65,40 +70,222 @@
         height: 300px;
 	}
 	
-	table
+	/* 게시글 정보 */
+	.missing-info
 	{
 		border-style: none;
 	}
 	
-	th
+	.missing-info th
 	{
 		width: 19%;	
 		font-size: 18px;
 		font-weight: bold;
 	}
 	
-	th, td
+	.missing-info th, td
 	{
 		height: 50px;
 	}
 	
+	/* 게시글 작성자 정보 */
 	.writer-info
 	{
 		margin-top: 40px;
-		background-color: lightgray;
-		padding-left: 10px; 
-		width: 400px;
+		background-color: #dae4ed;
+		padding-left: 20px; 
+		width: 80%;
+		padding-bottom: 20px;
 	}
 	
-	.writer-info th
+	.writer-info .row
 	{
-		width: 20%;
-		font-size: 18px;
+		margin-left: 0px;
+	}
+	.writer-info-title
+	{
 		font-weight: bold;
-		padding-left: 13px;
+		font-size: 18px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		
+	}
+	.send-message > i
+	{
+		font-size: 13px;
+		color: black;
+		margin-left: 6px;
+		
+	}
+	
+/************* (글아래 신고/공유/추천 버튼) **********/
+	.post-footer
+	{
+		margin-top: 50px;
+		margin-bottom: 50px;
+	}
+	
+	.post-footer .post-share
+	{
+		position: relative;	
+		display: flex;
+	    justify-content: center;
+	    padding: 15px 0;
+	    width: 100%;
+	    
+	}
+	
+	.post-footer .btn_report
+	{
+		border: 1px solid #D7625E;
+  		background-color: #D7625E;
+  		color: #fff;
+   	 	padding: 9px 10px;
+    	margin: 0 1px;
+    	border-radius: 2px;
+    	outline: none;
+    	overflow: visible;
+    	display: inline-block;
+	}
+	
+	.post-footer .btn_share
+	{
+		border: 1px solid #516B82;
+  		background-color: #516B82;
+  		color: #fff;
+   	 	padding: 9px 10px;
+    	margin: 0 1px;
+    	border-radius: 2px;
+    	outline: none;
+    	overflow: visible;
+    	display: inline-block;
 	}
 	
 	
+	.dropdown-menu 
+	{
+	    display: none;
+	    position: absolute;
+	    top: 100%;
+	    left: 0;
+	    z-index: 9;
+	    float: left;
+	    min-width: 85px;
+	    padding: 0;
+	    text-align: left;
+	    border-radius: 2px;
+	    background-color: #fff;
+	    background-clip: padding-box;
+	    border: 1px solid #999;
+	    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+	}
+	
+	.post-footer .post_share .share 
+	{
+	    width: 90px;
+	    left: 1px;
+	    margin: 1px 0 0 0;
+	}
+	
+	.open .dropdown-menu 
+	{
+   		display: block;
+	}
+	
+	.dropdown-menu li 
+	{
+    	border-bottom: 1px dotted #ccc;
+	}
+	.dropdown-menu li a 
+	{
+	    display: block;
+	    padding: 4px 10px;
+	    clear: both;
+	    font-weight: normal;
+	    color: #666;
+	    white-space: nowrap;
+	    line-height: 20px;
+	    overflow: hidden;
+	}
+	
+	.share a 
+	{
+	    color: #232F3E;
+	    text-decoration: none;
+	    cursor: pointer;
+	    font-size: 13px;
+	}
+	
+	.post_footer .post_share .share span 
+	{
+	    display: initial;
+	    width: 15px;
+	    margin: 0 5px 0 0;
+	}
+	
+	.open .dropdown-menu span 
+	{
+	    white-space: nowrap;
+	    overflow: hidden;
+	    display: block;
+	    text-overflow: ellipsis;
+	}
+	}
+	.fa 
+	{
+    	position: relative;
+	}
+
+	.post-footer .post_share .share .twitter 
+	{
+    	color: #4CA0EB;
+	}
+	.post-footer .post_share .share .facebook 
+	{
+    	color: #0754A1;
+	}
+	.post-footer .btn_like
+	{
+		border: 1px solid #78AEBD;
+  		background-color: #78AEBD;
+  		color: #fff;
+   	 	padding: 9px 10px;
+    	margin: 0 1px;
+    	border-radius: 2px;
+    	outline: none;
+    	overflow: visible;
+    	display: inline-block;
+	}
+	
+	.open .dropdown-menu span 
+	{
+	    white-space: nowrap;
+	    overflow: hidden;
+	    display: block;
+	    text-overflow: ellipsis;
+	}
+
+	.post_footer .btn_like .text 
+	{
+    	margin: 0 0 0 5px;
+	}
+
+/************** (이전글/다음글 영역) *************/
+	.beforeafter 
+	{
+	    overflow: hidden;
+	    clear: both;
+	    width: 100%;
+	    padding-bottom: 20px;
+	    padding-top: 20px;
+	}
+	
+	.beforeafter span
+	{
+		padding-left: 50px;
+	}
+/******************* (댓글 영역) *****************/
+		
 	#comment-form
 	{
 		margin-top: 70px;
