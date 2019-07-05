@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>StrayCat</display-name>
   
-	<context-param>
+<!-- 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/application-config.xml</param-value>
 	</context-param>
@@ -24,7 +24,7 @@
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
   
 	<!-- ○ 한글 인코딩 처리를 위한 필터 클래스 등록 -->
 	<!--    → CharacterEncodingFilter 클래스 등록 -->
