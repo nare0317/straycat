@@ -128,8 +128,11 @@
 								<button type="button" class="btn btn-outline-primary btn-sm">검색</button>
 							</td>
 						</tr>
-					</table><br><br>
-					<span class="err"></span>
+					</table><br>
+					<div class="errDiv">
+						<span class="err"></span>
+					</div>
+					<br>
 					<div class="mButton gCenter">
 						<button id="joinBtn" type="button" class="btn btn-primary">회원가입</button>
 						<button id="cancelBtn" type="button" class="btn btn-secondary">취소</button>

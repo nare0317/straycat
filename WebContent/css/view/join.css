@@ -85,3 +85,10 @@ div.breadcrumbs > ul
 {
 	width: 500px !important;
 }
+
+.errDiv
+{
+	color: red;
+	text-align: center;
+	font-weight: bold;
+}
