@@ -20,7 +20,7 @@
 <!-- 로그인 페이지 자바스크립트, CSS -->
 <script src="<%=cp%>/js/view/board_list.js"></script>
 <link rel="stylesheet" href="<%=cp%>/css/view/board_list.css">
-
+  
 </head>
 <body>
 <c:import url="Menu.jsp"></c:import>

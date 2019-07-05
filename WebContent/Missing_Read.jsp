@@ -22,7 +22,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <!-- Font Awesome 5 -->
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- CSS 파일 추가 -->
@@ -189,7 +189,7 @@
 				<h5>댓글 남기기 <span class="login-notice">- 로그인 필요</span></h5>
 
 				<div class="form-group">
-					<textarea id="text" name="text" type="text" rows="2"></textarea>
+					<textarea id="text" name="text" rows="2"></textarea>
 					<small class="letter-number-notice">1000자 이내로 입력해 주세요</small>
 				</div>
  

@@ -55,7 +55,7 @@
 		<c:import url="Menu.jsp"></c:import>
 		<br> <br> <br> <br>
 		<div class="text-center container">
-		<form action="Main.jsp" id="formCheck">
+		<form action="MemberConfirmationGetOut.jsp" id="formCheck">
 				<div class="card">
 					<div class="card-header">
 						<h1>회원탈퇴</h1>
