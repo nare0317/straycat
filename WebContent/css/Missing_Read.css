@@ -11,7 +11,7 @@
 		margin-bottom: 40px;
 	}
 	
-	.container
+	.post-view
 	{
 		width: 100%;
 	    padding-right: 15px;
@@ -65,19 +65,19 @@
         height: 300px;
 	}
 	
-	table
+	.missing-info
 	{
 		border-style: none;
 	}
 	
-	th
+	.missing-info th
 	{
 		width: 19%;	
 		font-size: 18px;
 		font-weight: bold;
 	}
 	
-	th, td
+	.missing-info th, td
 	{
 		height: 50px;
 	}
@@ -98,6 +98,132 @@
 		padding-left: 13px;
 	}
 	
+	
+	.post-footer
+	{
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	
+	.post-footer .post-share
+	{
+		position: relative;	
+		display: flex;
+	    justify-content: center;
+	    padding: 15px 0;
+	    width: 100%;
+	    
+	}
+	
+	.post-footer .btn_report
+	{
+		border: 1px solid #D7625E;
+  		background-color: #D7625E;
+  		color: #fff;
+   	 	padding: 9px 10px;
+    	margin: 0 1px;
+    	border-radius: 2px;
+    	outline: none;
+    	overflow: visible;
+    	display: inline-block;
+	}
+	
+	.post-footer .btn_share
+	{
+		border: 1px solid #516B82;
+  		background-color: #516B82;
+  		color: #fff;
+   	 	padding: 9px 10px;
+    	margin: 0 1px;
+    	border-radius: 2px;
+    	outline: none;
+    	overflow: visible;
+    	display: inline-block;
+	}
+	
+	
+	.dropdown-menu 
+	{
+	    display: none;
+	    position: absolute;
+	    top: 100%;
+	    left: 0;
+	    z-index: 9;
+	    float: left;
+	    min-width: 85px;
+	    padding: 0;
+	    text-align: left;
+	    border-radius: 2px;
+	    background-color: #fff;
+	    background-clip: padding-box;
+	    border: 1px solid #999;
+	    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+	}
+	
+	.post-footer .post_share .share 
+	{
+	    width: 90px;
+	    left: 1px;
+	    margin: 1px 0 0 0;
+	}
+	
+	.dropdown-menu li a 
+	{
+	    display: block;
+	    padding: 4px 10px;
+	    clear: both;
+	    font-weight: normal;
+	    color: #666;
+	    white-space: nowrap;
+	    line-height: 20px;
+	    overflow: hidden;
+	}
+	
+	a 
+	{
+	    color: #232F3E;
+	    text-decoration: none;
+	    cursor: pointer;
+	}
+
+	.dropdown-menu li 
+	{
+    	border-bottom: 1px dotted #ccc;
+	}
+	.post-footer .post_share .share .twitter 
+	{
+    	color: #4CA0EB;
+	}
+	.post-footer .post_share .share .facebook 
+	{
+    	color: #0754A1;
+	}
+	.post-footer .btn_like
+	{
+		border: 1px solid #78AEBD;
+  		background-color: #78AEBD;
+  		color: #fff;
+   	 	padding: 9px 10px;
+    	margin: 0 1px;
+    	border-radius: 2px;
+    	outline: none;
+    	overflow: visible;
+    	display: inline-block;
+	}
+	
+	.open .dropdown-menu span 
+	{
+	    white-space: nowrap;
+	    overflow: hidden;
+	    display: block;
+	    text-overflow: ellipsis;
+	}
+
+	.post_footer .btn_like .text 
+	{
+    	margin: 0 0 0 5px;
+	}
+	s
 	
 	#comment-form
 	{

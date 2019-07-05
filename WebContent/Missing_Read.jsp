@@ -33,11 +33,12 @@
 
 <div>
 
+	<!-- ★★★★★메뉴바★★★★★ -->
 	<c:import url="Menu.jsp"></c:import>
 		
-	<!-- 헤더 + breadcrumbs -->
+	<!-- ★★★★★헤더 + breadcrumbs★★★★★ -->
 
-	<section class="container header">
+	<section class="header container ">
 		<div class="header-title">
 			<h2 class="h2">실종<span class="sub-title">실종글</span></h2>
 		</div>
@@ -58,11 +59,11 @@
 		</div>
 	</section>
 		
-	<!-- 내용 -->
-	<section class="container">
+	<!-- ★★★★★내용★★★★★ -->
+	<section class="post-view container">
 	
 		<!-- 제목/작성자/작성일시/조회수 -->
-		<div class="row post-head">
+		<div class="post-head row">
 			<div class="col-lg-9">
 				<h3 class="post-title">우리 냥이 좀 찾아주세요 ㅠㅠㅠㅠ</h3>
 				
@@ -76,18 +77,16 @@
 			</div>
 		</div>
 		
-		<!-- 글내용 -->	
+		<!-- ★★★★★글내용★★★★★ -->	
 		<div class="row post-content">
 			
 			<!-- 고양이 대표사진 -->
 			<div class="iconic-photo col-xs-9 col-sm-9 col-md-5 col-lg-4">
-				<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-th
-				
-				umbnail">
+				<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail">
 			</div>
 			
 			<!-- 글 내용 -->
-			<div class="basic-info col-xs-9 col-sm-9 col-md-7 col-lg-8">
+			<div class="content col-xs-9 col-sm-9 col-md-7 col-lg-8">
 				<table class="missing-info">
 					<tr>
 						<th class="align-top th-sm th-lg">이름</th>
@@ -127,6 +126,8 @@
 					</tr>
 				</table>
 				
+				
+				
 				<!-- 게시글 작성자 정보 -->
 				<table class="writer-info">
 					<tr>
@@ -151,6 +152,26 @@
 			</div>
 			
 		</div>
+		
+		
+		<div class="post-footer row justify-content-center">
+			<button class="btn_report" onclick=""><span class="fa fa-ban"></span> 신고</button>
+			
+			<div class="post_share">
+					<button class="btn_share" data-toggle="dropdown"><span class="fa fa-share-square-o"></span> 공유</button>
+					<ul class="dropdown-menu share">
+						<li><a href="javascript:;" onclick="prompt('주소를 복사하세요.', ''"><span class="fa fa-link"></span>주소복사</a></li>
+						<li><a href="" class="facebook" target="_blank"><span class="fa fa-facebook"></span>Facebook</a></li>
+						<li><a href="" class="twitter" target="_blank"><span class="fa fa-twitter"></span>Twitter</a></li>
+					</ul>
+			</div>
+			<button class="btn_like">
+				<span class="fas fa-thumbs-up"></span><span class="text"> 추천<strong>5</strong></span>
+			</button>
+		</div>
+		
+
+		
 		
 		<hr id="stickyblock-end"/>
 
