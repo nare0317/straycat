@@ -21,7 +21,7 @@
 		font-family: 'Nanum Gothic Coding', monospace;
 		font-family: 'Quicksand', sans-serif;
 	}
-	.row
+	#row
 	{
 		overflow-y:scroll;
 		overflow-x:hidden;
@@ -129,15 +129,15 @@
 <div>
 	<c:import url="Menu.jsp"></c:import>
 
-	<div class="container">
-		<h1>입양 <span>입양신청</span></h1>
+	<div class="container" id="container">
+		<h1>입양<span>&nbsp;입양신청</span></h1>
 		<hr>
 		<h2>입양신청서</h2>
 		<br>
 		<div class="container2" id="container2">
 		<h4>선택형 질문</h4>
 		<hr>		
-		<div class="row">
+		<div class="row" id="row">
 		    <div class="col-7">
 			 <div class="form-group row">
 			    <label for="colFormLabel" class="col-sm-2 col-form-label">이름</label>
