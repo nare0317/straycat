@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Member_Confirmation.jsp</title>
+<title>MemberConfirmation.jsp</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
@@ -25,6 +25,14 @@
 	width: 100px;
 	text-align: center;
 }
+	#footer {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		padding: 15px 0;
+		text-align: center;
+	}
 </style>
 
 <!-- 파비콘 -->
@@ -45,7 +53,7 @@
 				<div class="card-header">
 					<h1>회원정보확인</h1>
 				</div>
-				<form action="" onSubmit="return check()">
+				<form action="UnRegistrationFinish.jsp" onSubmit="return check()">
 					<br>
 					<h4>000님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인합니다.</h4>
 					<div class="row" style="margin-top: 60px; width: 100%;">

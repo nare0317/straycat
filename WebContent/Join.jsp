@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Import"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -7,153 +8,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>MemberUpdate.jsp</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style type="text/css">
-	div
-	{
-		font-family: 'Nanum Gothic Coding', monospace;
-		font-family: 'Quicksand', sans-serif;
-	}
-	.card
-	{
-		margin-top: 30px;
-		padding: 30px;
-	}
-	.dt1
-	{
-		width: 50%;
-		display: inline;
-	}
-	.dt2
-	{
-		width: 50%;
-		display: inline;
-	}
-	th
-	{
-		background-color: #F6F6F6;
-		width: 30%;
-	}
-	.mButton.gCenter 
-	{ 
-		position:relative; text-align:center; 
-	}
-	.alignRight
-	{
-		margin: 10px 0;
-    	padding: 0 4px 0 0;
-    	text-align: right;
-	}
-	.card
-	{
-		margin-top: 100px;
-	}
-	span
-	{
-		font-size: small;
-	}
-</style>
-
-<!-- 파비콘 -->
-<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
-<link rel="icon" href="<%=cp %>/favicon.ico">
-
+	<title>회원가입</title>
+	<c:import url="Head.jsp"></c:import>
+	
+	<!-- 페이지 CSS, 자바스크립트 -->
+	<link rel="stylesheet" href="<%=cp %>/css/view/join.css">
+	<script type="text/javascript" src="<%=cp %>/js/view/join.js"></script>
 </head>
 <body>
 
+<c:import url="Menu.jsp"></c:import>
 
-<div>
-	<c:import url="Menu.jsp"></c:import>
+<div class="container">
+	<div class="breadcrumbs">
+		<ul>
+			<li class="list-inline-item"><a class="text-dark" href="<%=cp%>/Main.jsp"><i class="fas fa-home"></i></a></li>
+			<li class="list-inline-item">></li>
+			<li class="list-inline-item">회원가입</li>
+		</ul>
+	</div>
 
-	<div class="container">
-		<div class="card">
-		  <div class="card-body">
-		    <div class="text-center">
-				<h1>Join</h1>
-				<span><span style="color: red;">*</span> 표시는 필수 입력 항목입니다. 반드시 입력해 주세요.</span>
+	<div class="card">
+		<div class="card-body">
+			<div class="text-center">
+				<h1>회원가입</h1>
+				<span class="caution"><span class="required">*</span> 표시는 필수 입력 항목입니다. 반드시 입력해 주세요.</span>
 			</div><br>
-		    <div>
-		    	<form action="">
-			    	<table class="table">
-					    <tr>
-					      <th>아이디(이메일)<span style="color: red;">*</span></th>
-					      <td colspan="2"><input type="text" class="form-control mx-sm-3" style="width: 300px;"></td>
-					      <td><button type="button" class="btn btn-outline-primary btn-sm">중복확인</button></td>
-					    </tr>
-					     <tr>
-					      <th>비밀번호<span style="color: red;">*</span></th>
-					      <td colspan="3"><input type="text" class="form-control mx-sm-3" style="width: 300px;"><span>- 영문대문자, 영문소문자, 숫자, 특수기호 중 3가지를 포함한 8자리 이상의 암호나<br>
-2가지를 포함한 10자리 이상의 암호를 사용할 수 있습니다.</span></td>
-					    </tr>
-					     <tr>
-					      <th>비밀번호 확인<span style="color: red;">*</span></th>
-					      <td colspan="3"><input type="text" class="form-control mx-sm-3" style="width: 300px;"><span>(확인을 위해 한 번 더 입력하세요.)</span></td>
-					    </tr>
-					     <tr>
-					      <th>닉네임<span style="color: red;">*</span></th>
-					      <td colspan="2"><input type="text" class="form-control mx-sm-3" style="width: 300px;"></td>
-					      <td><button type="button" class="btn btn-outline-primary btn-sm">중복확인</button></td>
-					    </tr>
-					     <tr>
-					      <th>실명확인<span style="color: red;">*</span></th>
-					      <td colspan="3"><button type="button" class="btn btn-outline-primary btn-sm">실명확인</button></td>
-					    </tr>
-					     <tr>
-					      <th>성명<span style="color: red;">*</span></th>
-					      <td><input type="text" class="form-control" style="width: 200px;"></td>
-					      <th style="width: 100px;">전화번호<span style="color: red;">*</span></th>
-					      <td>
-					      <div class="form-row">
-						    <div class="col">
-						      <input type="text" class="form-control" placeholder="010">
-						    </div> - 
-						    <div class="col">
-						      <input type="text" class="form-control" placeholder="0000">
-						    </div> - 
-						    <div class="col">
-						      <input type="text" class="form-control" placeholder="0000">
-						    </div>
-						  </div></td>
-					    <tr>
-					      <th>주소<span style="color: red;">*</span></th>
-					      <td colspan="2"><input type="text" class="form-control mx-sm-3" style="width: 400px;"></td>
-					      <td><button type="button" class="btn btn-outline-primary btn-sm">검색</button></td>
-					    </tr>
-					    <tr>
-					      <th>관심지역1<span style="color: red;">*</span></th>
-					      <td colspan="2"><input type="text" class="form-control mx-sm-3" style="width: 400px;"></td>
-					      <td><button type="button" class="btn btn-outline-primary btn-sm">검색</button></td>
-					    </tr>
-					    <tr>
-					      <th>관심지역2<span style="color: red;">*</span></th>
-					      <td colspan="2"><input type="text" class="form-control mx-sm-3" style="width: 400px;"></td>
-					      <td><button type="button" class="btn btn-outline-primary btn-sm">검색</button></td>
-					    </tr>
-					    <tr>
-					      <th>관심지역3<span style="color: red;">*</span></th>
-					      <td colspan="2"><input type="text" class="form-control mx-sm-3" style="width: 400px;"></td>
-					      <td><button type="button" class="btn btn-outline-primary btn-sm">검색</button></td>
-					    </tr>
+			<div>
+				<form id="joinForm" action="" method="post">
+					<table class="table">
+						<tr>
+							<th>아이디<span class="required">*</span></th>
+							<td colspan="2">
+								<input id="idInput" type="text" class="form-control inputbox">
+								<button type="button" class="btn btn-outline-primary btn-sm">중복확인</button>
+							</td>
+						</tr>
+						<tr>
+							<th>비밀번호<span class="required">*</span></th>
+							<td class="inputbox" colspan="2">
+								<input type="password" id="pwd" class="form-control" style="width: 300px;"><br>
+								<span class="caution">영문대문자, 영문소문자, 숫자, 특수기호 중 3가지를 포함한 8자리 이상의 암호나</span><br>
+								<span class="caution">2가지를 포함한 10자리 이상의 암호를 사용할 수 있습니다.</span>
+							</td>
+						</tr>
+						<tr>
+							<th>비밀번호 확인<span class="required">*</span></th>
+							<td class="inputbox" colspan="2">
+								<input type="password" id="pwdConfirm" class="form-control" style="width: 300px;"><br>
+								<span class="caution">확인을 위해 한 번 더 입력하세요.</span>
+							</td>
+						</tr>
+						<tr>
+							<th>닉네임<span class="required">*</span></th>
+							<td colspan="2">
+								<input id="nickname" type="text" class="form-control inputbox">
+								<button type="button" class="btn btn-outline-primary btn-sm">중복확인</button>
+							</td>
+						</tr>
+						<tr>
+							<th>이메일<span class="required">*</span></th>
+							<td colspan="2">
+								<input id="email" type="text" class="form-control inputbox">
+								<button type="button" class="btn btn-outline-primary btn-sm">중복확인</button>
+							</td>
+						</tr>
+						<tr>
+							<th rowspan="4">실명확인<span class="required">*</span></th>
+						</tr>
+						<tr>
+							<td colspan="4"><button type="button" class="btn btn-outline-primary btn-sm">실명확인</button></td>
+						</tr>
+						<tr>
+							<th>성명<span class="required">*</span></th>
+							<td colspan="2">
+								<input type="text" id="name" class="form-control" readonly="readonly">
+							</td>
+						</tr>
+						<tr>
+							<th>전화번호<span class="required">*</span></th>
+							<td colspan="2">
+								<div class="form-row">
+									<div class="col">
+										<input id="tel1" type="text" class="form-control" readonly="readonly">
+									</div> - 
+									<div class="col">
+										<input id="tel2" type="text" class="form-control" readonly="readonly">
+									</div> - 
+									<div class="col">
+										<input id="tel3" type="text" class="form-control" readonly="readonly">
+									</div>
+								</div>
+							</td>
+						<tr>
+							<th>주소<span class="required">*</span></th>
+							<td colspan="3">
+								<input id="address" type="text" class="form-control inputbox local">
+								<button type="button" class="btn btn-outline-primary btn-sm">검색</button>
+							</td>
+						</tr>
+						<tr>
+							<th>관심지역1<span class="required">*</span></th>
+							<td colspan="3">
+								<input id="favorite1" type="text" class="form-control inputbox local">
+								<button type="button" class="btn btn-outline-primary btn-sm">검색</button>
+							</td>
+						</tr>
+						<tr>
+							<th>관심지역2</th>
+							<td colspan="3">
+								<input id="favorite2" type="text" class="form-control inputbox local">
+								<button type="button" class="btn btn-outline-primary btn-sm">검색</button>
+							</td>
+						</tr>
+						<tr>
+							<th>관심지역3</th>
+							<td colspan="3">
+								<input id="favorite3" type="text" class="form-control inputbox local">
+								<button type="button" class="btn btn-outline-primary btn-sm">검색</button>
+							</td>
+						</tr>
 					</table><br><br>
+					<span class="err"></span>
 					<div class="mButton gCenter">
-						<button type="submit" class="btn btn-primary">회원가입</button>
-						<button type="submit" class="btn btn-secondary">취소</button>
+						<button id="joinBtn" type="button" class="btn btn-primary">회원가입</button>
+						<button id="cancelBtn" type="button" class="btn btn-secondary">취소</button>
 					</div>
 				</form>
-		    </div>
-		  </div>
+	    	</div>
 		</div>
 	</div>
 </div>
-
-
 
 <br />
 <br />

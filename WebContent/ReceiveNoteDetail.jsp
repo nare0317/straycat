@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Find.jsp</title>
+<title>NoteWrite.jsp</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
@@ -21,15 +21,6 @@
 		font-family: 'Nanum Gothic Coding', monospace;
 		font-family: 'Quicksand', sans-serif;
 	}
-.bolck {
-	width: 100px;
-	text-align: center;
-}
-.err
-{
-	color: red;
-	font-size: small;
-}
 #footer {
 	position: absolute;
 	left: 0;
@@ -49,39 +40,49 @@
 
 	<div>
 		<c:import url="Menu.jsp"></c:import>
-		<br>
-		<br>
-		<br>
-		<br>
-		<div class="text-center container">
-			<div class="card">
-				<div class="card-header">
-					<h1>이메일/비밀번호 찾기</h1>
-				</div>
-				<form action="" onSubmit="return check()">
-					<br>
-					<h4>회원가입시 등록한 이메일을 입력하세요.</h4>
-					<div class="row" style="margin-top: 60px; width: 100%;">
-						<div class="col-md-6 offset-md-3">
-							<!-- 아이디 입력 폼 -->
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text bolck">이메일</span>
-								</div>
-								<input type="text" id="userId" name="userId" class="form-control">
-							</div>
-							<br>
-							<span class="err">올바른 이메일 계정이 아닙니다.</span>
-							<br> <br> <br>
-							<button type="submit" class="btn btn-primary btn-lg">비밀번호 찾기</button>
-							<br>
-							<br>
-						</div>
+		<form action="">
+
+			<div class="container" style="margin-top: 60px;">
+			<div><h1>받은쪽지함</h1></div><br>
+				<div class="row">
+					<div class="col-2">보낸사람</div>
+					<div class="col-10">
+						<input type="text" class="form-control" value="nare0317">
 					</div>
-				</form>
+				</div>
+				<br>
+				<br>
+				<div class="row">
+					<div class="col-2">제목</div>
+					<div class="col-10">
+						<input type="text" class="form-control" value="어쩌구">
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="row">
+					<div class="col-2">쪽지내용</div>
+					<div class="col-10">
+							<textarea class="form-control" id="exampleFormControlTextarea1" rows="10" >어쩌구</textarea>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="row">
+					<div class="col-2"></div>
+					<div class="col-10">
+							<button type="button" class='btn btn-secondary'>목록으로</button>
+					</div>
+				</div>
 			</div>
-		</div>
+
+
+
+		</form>
 	</div>
+
+
+
 
 	<br />
 	<br />
@@ -91,6 +92,7 @@
 	<div>
 		<c:import url="Footer.jsp"></c:import>
 	</div>
+
 
 </body>
 </html>
