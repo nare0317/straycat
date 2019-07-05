@@ -6,6 +6,8 @@
 		font-family: 'Quicksand', sans-serif;
 	}
 	
+/************** (헤더+브레드크럼 영역) **************/
+	
 	.header
 	{
 		margin-bottom: 40px;
@@ -45,6 +47,8 @@
 		letter-spacing: 5px;
 		margin-top:40px;
 	}
+
+/************** (본문 영역) **************/
 	
 	.post-head
 	{
@@ -55,6 +59,7 @@
 		padding-bottom: 10px;
 	}
 	
+	/* 고양이 대표사진 */
 	.iconic-photo
 	{
 		overflow: hidden;
@@ -65,6 +70,7 @@
         height: 300px;
 	}
 	
+	/* 게시글 정보 */
 	.missing-info
 	{
 		border-style: none;
@@ -82,27 +88,41 @@
 		height: 50px;
 	}
 	
+	/* 게시글 작성자 정보 */
 	.writer-info
 	{
 		margin-top: 40px;
-		background-color: lightgray;
-		padding-left: 10px; 
-		width: 400px;
+		background-color: #dae4ed;
+		padding-left: 20px; 
+		width: 80%;
+		padding-bottom: 20px;
 	}
 	
-	.writer-info th
+	.writer-info .row
 	{
-		width: 20%;
-		font-size: 18px;
+		margin-left: 0px;
+	}
+	.writer-info-title
+	{
 		font-weight: bold;
-		padding-left: 13px;
+		font-size: 18px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		
+	}
+	.send-message > i
+	{
+		font-size: 13px;
+		color: black;
+		margin-left: 6px;
+		
 	}
 	
-	
+/************* (글아래 신고/공유/추천 버튼) **********/
 	.post-footer
 	{
-		margin-top: 30px;
-		margin-bottom: 30px;
+		margin-top: 50px;
+		margin-bottom: 50px;
 	}
 	
 	.post-footer .post-share
@@ -167,6 +187,15 @@
 	    margin: 1px 0 0 0;
 	}
 	
+	.open .dropdown-menu 
+	{
+   		display: block;
+	}
+	
+	.dropdown-menu li 
+	{
+    	border-bottom: 1px dotted #ccc;
+	}
 	.dropdown-menu li a 
 	{
 	    display: block;
@@ -179,17 +208,34 @@
 	    overflow: hidden;
 	}
 	
-	a 
+	.share a 
 	{
 	    color: #232F3E;
 	    text-decoration: none;
 	    cursor: pointer;
+	    font-size: 13px;
+	}
+	
+	.post_footer .post_share .share span 
+	{
+	    display: initial;
+	    width: 15px;
+	    margin: 0 5px 0 0;
+	}
+	
+	.open .dropdown-menu span 
+	{
+	    white-space: nowrap;
+	    overflow: hidden;
+	    display: block;
+	    text-overflow: ellipsis;
+	}
+	}
+	.fa 
+	{
+    	position: relative;
 	}
 
-	.dropdown-menu li 
-	{
-    	border-bottom: 1px dotted #ccc;
-	}
 	.post-footer .post_share .share .twitter 
 	{
     	color: #4CA0EB;
@@ -223,8 +269,23 @@
 	{
     	margin: 0 0 0 5px;
 	}
-	s
+
+/************** (이전글/다음글 영역) *************/
+	.beforeafter 
+	{
+	    overflow: hidden;
+	    clear: both;
+	    width: 100%;
+	    padding-bottom: 20px;
+	    padding-top: 20px;
+	}
 	
+	.beforeafter span
+	{
+		padding-left: 50px;
+	}
+/******************* (댓글 영역) *****************/
+		
 	#comment-form
 	{
 		margin-top: 70px;
