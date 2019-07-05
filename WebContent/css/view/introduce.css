@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+div
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+
+ul
+{
+	padding: 0px !important;
+	
+}
+
+.container
+{
+	margin-top: 20px;
+}
+
+#mainImage
+{
+	width: 100%; 
+	margin-top: 40px;
+}
+
+#subTitle
+{
+	font-size: small;
+}

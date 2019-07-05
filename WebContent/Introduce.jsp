@@ -8,20 +8,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Introduce.jsp</title>
+<title>소개</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style type="text/css">
-	div
-	{
-		font-family: 'Nanum Gothic Coding', monospace;
-		font-family: 'Quicksand', sans-serif;
-	}
-</style>
+
+<!-- Font Awesome 5 -->
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- CSS -->
+<link rel="stylesheet" href="<%=cp %>/css/view/introduce.css">
 
 <!-- 파비콘 -->
 <link rel="shortcut icon" href="<%=cp %>/favicon.ico">
@@ -30,17 +30,22 @@
 </head>
 <body>
 
-	<div>
 		<c:import url="Menu.jsp"></c:import>
 
 		<div class="container">
+			<div class="breadcrumbs">
+				<ul>
+					<li class="list-inline-item"><a class="text-dark" href="<%=cp%>/Main.jsp"><i class="fas fa-home"></i></a></li>
+					<li class="list-inline-item">></li>
+					<li class="list-inline-item">소개</li>
+				</ul>
+			</div>
 			<div>
-				<img src="img/Introduce_cat.jpg"
-					style="width: 100%; margin-top: 40px;">
+				<img id="mainImage" src="img/Introduce_cat.jpg">
 			</div>
 			<br>
 			<h1>
-				소개 <span style="font-size: small;">서비스 소개</span>
+				소개 <span id="subTitle">서비스 소개</span>
 			</h1>
 			<hr>
 			<div>
@@ -66,14 +71,7 @@
 				
 				가까운 지역의 캣맘, 캣대디들과 함께하세요!
 			</div>
-			
-			
-			
- 
 		</div>
-
-
-	</div>
 
 	<br />
 	<br />
