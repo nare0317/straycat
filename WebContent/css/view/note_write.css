@@ -31,3 +31,8 @@ div
 	display: none;
 	font-weight: bold;
 }
+
+.resize
+{
+	resize: none;
+}

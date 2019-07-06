@@ -40,7 +40,7 @@
 		<div class="row">
 			<div class="col-2">쪽지내용<span class="required">*</span></div>
 			<div class="col-10">
-					<textarea class="form-control" id="noteContent" rows="10"></textarea>
+					<textarea class="form-control resize" id="noteContent" rows="10"></textarea>
 			</div>
 		</div>
 		<div class="row text-right">
