@@ -101,24 +101,11 @@ $(document).ready(function()
 	$("#activityBtn").click(function()
 	{
 		$(".err1").css("display", "none");
-		if(($("#activityContent").val() == "" || $("#activityContent").val()==null) && ($(':radio[name="activityRadio"]:checked').val() == null))
+		if($("#activityContent").val() == "" || $("#activityContent").val()==null || $(':radio[name="activityRadio"]:checked').val() == null)
 		{
 			$(".err1").css("display", "block");
 			return;
 		}
-		else if($("#activityContent").val()=="" || $("#activityContent").val()==null)
-		{
-			$(".err1").css("display", "block");
-			return;
-		}
-		else if($(':radio[name="activityRadio"]:checked').val() == null)
-		{
-			$(".err1").css("display", "block");
-			return;
-		}
-		else
-		{
 			$("#activityForm").submit();
-		}
 	});
 });

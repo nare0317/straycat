@@ -27,7 +27,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">자유게시판<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="BoardList1.jsp">자유게시판<span class="sr-only">(current)</span></a>
         </li>
       </ul>
       <form class="form-inline my-2 my-md-0">
