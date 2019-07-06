@@ -12,8 +12,12 @@
 <title>List.jsp</title>
 
 <c:import url="Head.jsp"></c:import>
+	
+	<!-- 페이지 CSS, 자바스크립트 -->
+	<link rel="stylesheet" href="<%=cp %>/css/view/accept_terms.css">
+	<script type="text/javascript" src="<%=cp %>/js/view/accept_terms.js"></script>
 
-<!-- 페이지 자바스크립트, CSS -->
+<!-- 로그인 페이지 자바스크립트, CSS -->
 <script src="<%=cp%>/js/view/board_list.js"></script>
 <link rel="stylesheet" href="<%=cp%>/css/view/board_list.css">
   
