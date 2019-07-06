@@ -42,6 +42,25 @@ $(document).ready(function()
 		}
 	});
 	
+	// 활동 내용을 최대 9000 자까지 입력할 수 있도록 제한하는 function
+	// 9000 자를 초과 입력하면 9000 번째 글자까지 입력됨
+	$("#activityContent").keyup(function()
+	{
+		if($("#activityContent").val().length >= 9000)
+		{
+			$("#activityCounter").css("color", "red");
+			var str = $("#activityContent").val();
+			str = str.substring(0, 9000);
+			$("#activityContent").val(str);
+		}
+		else
+		{
+			$("#activityCounter").css("color", "black");
+			var textCnt = $("#activityContent").val().length;
+			$("#Acounter").text(textCnt);
+		}
+	});
+	
 	// 필수 입력 사항 확인
 	$("#sendBtn").click(function()
 	{
@@ -74,6 +93,32 @@ $(document).ready(function()
 		else
 		{
 			$("#modalForm").submit();
+		}
+	});
+	
+	
+	// 활동 필수 입력 사항 확인
+	$("#activityBtn").click(function()
+	{
+		$(".err1").css("display", "none");
+		if(($("#activityContent").val() == "" || $("#activityContent").val()==null) && ($(':radio[name="activityRadio"]:checked').val() == null))
+		{
+			$(".err1").css("display", "block");
+			return;
+		}
+		else if($("#activityContent").val()=="" || $("#activityContent").val()==null)
+		{
+			$(".err1").css("display", "block");
+			return;
+		}
+		else if($(':radio[name="activityRadio"]:checked').val() == null)
+		{
+			$(".err1").css("display", "block");
+			return;
+		}
+		else
+		{
+			$("#activityForm").submit();
 		}
 	});
 });

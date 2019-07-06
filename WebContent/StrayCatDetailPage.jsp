@@ -1,4 +1,3 @@
-    
 <%@page import="java.util.Calendar"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -216,33 +215,35 @@
 				<h4 class="write">활동작성</h4>
 				<!----------------------------------------------------- 로그인 O ----------------------------------------------------->
 				<div class="jumbotron select">
+					<form action="" method="post" id="activityForm">
 					<div class="row row2">
 						<div class="custom-control custom-radio custom-control-inline">
-						  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-						  <label class="custom-control-label" for="customRadioInline1">먹이</label>
+						  <input type="radio" id="activity1" name="activityRadio" class="custom-control-input">
+						  <label class="custom-control-label" for="activity1">먹이</label>
 						</div>
 						<div class="custom-control custom-radio custom-control-inline">
-						  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-						  <label class="custom-control-label" for="customRadioInline2">물</label>
+						  <input type="radio" id="activity2" name="activityRadio" class="custom-control-input">
+						  <label class="custom-control-label" for="activity2">물</label>
 						</div>
 						<div class="custom-control custom-radio custom-control-inline">
-						  <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
-						  <label class="custom-control-label" for="customRadioInline3">간식</label>
+						  <input type="radio" id="activity3" name="activityRadio" class="custom-control-input">
+						  <label class="custom-control-label" for="activity3">간식</label>
 						</div>
 						<div class="custom-control custom-radio custom-control-inline">
-						  <input type="radio" id="customRadioInline4" name="customRadioInline1" class="custom-control-input">
-						  <label class="custom-control-label" for="customRadioInline4">약</label>
+						  <input type="radio" id="activity4" name="activityRadio" class="custom-control-input">
+						  <label class="custom-control-label" for="activity4">약</label>
 						</div>
 						<div class="custom-control custom-radio custom-control-inline">
-						  <input type="radio" id="customRadioInline5" name="customRadioInline1" class="custom-control-input">
-						  <label class="custom-control-label" for="customRadioInline5">만남</label>
+						  <input type="radio" id="activity5" name="activityRadio" class="custom-control-input">
+						  <label class="custom-control-label" for="activity5">만남</label>
 						</div>
 					</div>
 					<br>
 					<div class="row">
-						<div class="col-8">
+						<div class="col-8 text-right">
 							<div class="form-group">
-								<textarea class="form-control resize" id="exampleFormControlTextarea1" rows="14"></textarea>
+								<textarea class="form-control resize" id="activityContent" rows="14"></textarea>
+								<div id="activityCounter"><span id="Acounter">0</span> / 9000</div>
 							</div>
 						</div>
 						<div class="col-4 cat_foot">
@@ -256,14 +257,18 @@
 						</div>
 					</div>
 					<div class="row row2">
-						<div id="col form-control text-center">
-							<input type="text" id="firstDatepicker" class="" name="firstDatepicker" readonly="readonly">
+						<div id="col text-center">
+							<input type="text" id="firstDatepicker" class="form-control3" name="firstDatepicker" readonly="readonly">
 						</div>
 					</div>
+					<div class="row">
+			       	 	<span class="err1">필수 항목이 입력되지 않았습니다.</span>
+			       	</div>
 					<div class="text-center">
-						<button type="button" class="btn btn-primary">글쓰기</button>
+						<button type="button" class="btn btn-primary" id="activityBtn">글쓰기</button>
 						<button type="button" class="btn btn-primary">취소</button>
 					</div>
+				</form>
 				</div>
 				<!----------------------------------------------------- 로그인 O ----------------------------------------------------->
 				
