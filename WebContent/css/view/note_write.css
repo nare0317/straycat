@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+div
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+#footer 
+{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 15px 0;
+	text-align: center;
+}
+.marTop
+{
+	margin-top: 60px;	
+}
+.required
+{
+	color: red;
+	vertical-align: super;
+	font-size: 18px;
+}
+
+#err
+{
+	color: red;
+	display: none;
+	font-weight: bold;
+}

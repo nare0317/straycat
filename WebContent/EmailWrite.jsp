@@ -69,7 +69,7 @@
 	<div class="row">
 		<div class="col-2 inputHeader">문의내용<span class="required">*</span></div>
 		<div class="col-10">
-				<textarea id="content" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+				<textarea id="content" class="form-control" rows="10"></textarea>
 		</div>
 		<div id="textCounter"><span id="counter">0</span> / 20,000</div>
 	</div>
