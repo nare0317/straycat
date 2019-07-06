@@ -7,28 +7,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>쪽지쓰기</title>
+	<title>자유게시판 게시글 작성페이지</title>
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link href="<%=cp %>/css/view/note_write.css" rel="stylesheet">
-	<script type="text/javascript" src="<%=cp%>/js/view/note_write.js"></script>
+	<link href="<%=cp %>/css/view/created.css" rel="stylesheet">
+	<script type="text/javascript" src="<%=cp%>/js/view/created.js"></script>
 </head>
 <body>
 
 <c:import url="Menu.jsp"></c:import>
 
 	<div class="container marTop">
-	<div><h1>쪽지쓰기</h1></div><br>
-	<form action="MypageMain.jsp" id="emailForm" method="post">
-		<div class="row">
-			<div class="col-2">받는사람<span class="required">*</span></div>
-			<div class="col-10">
-				<input type="text" class="form-control" id="receive">
-			</div>
-		</div>
-		<br>
-		<br>
+	<div><h1>새 게시물 작성</h1></div><br>
+	<form action="BoardList1.jsp" id="boardForm" method="post">
 		<div class="row">
 			<div class="col-2">제목<span class="required">*</span></div>
 			<div class="col-10">
@@ -38,9 +30,22 @@
 		<br>
 		<br>
 		<div class="row">
-			<div class="col-2">쪽지내용<span class="required">*</span></div>
+			<div class="col-2">구분<span class="required">*</span></div>
 			<div class="col-10">
-					<textarea class="form-control resize" id="noteContent" rows="10"></textarea>
+				<select class="form-control category" id="categorySelect">
+			      <option selected="selected">구분 선택</option>
+			      <option>잡담</option>
+			      <option>질문</option>
+			      <option>일기</option>
+				</select>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-2">내용<span class="required">*</span></div>
+			<div class="col-10">
+					<textarea class="form-control resize" id="boardContent" rows="10"></textarea>
 			</div>
 		</div>
 		<div class="row text-right">
@@ -53,15 +58,15 @@
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-10">
-				<span id="err" >필수 항목이 입력되지 않았습니다.</span>
+				<span id="err">필수 항목이 입력되지 않았습니다.</span>
 			</div>
 		</div>
 		<br>
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-10">
-					<button type="button" class="btn btn-primary" id="sendBtn">보내기</button>
-					<button type="button" class='btn btn-secondary'>취소</button>
+					<button type="button" class="btn btn-primary" id="sendBtn">작성완료</button>
+					<button type="button" class='btn btn-secondary'>작성취소</button>
 			</div>
 		</div>
 	</form>
