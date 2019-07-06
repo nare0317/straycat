@@ -13,15 +13,6 @@
 		margin-bottom: 40px;
 	}
 	
-	.post-view
-	{
-		width: 100%;
-	    padding-right: 15px;
-	    padding-left: 15px;
-	    margin-right: auto;
-	    margin-left: auto;
-	}
-	
 	.header-title
 	{
 		padding-top: 1rem;
@@ -49,6 +40,15 @@
 	}
 
 /************** (본문 영역) **************/
+	
+	.post-view
+	{
+		width: 100%;
+	    padding-right: 15px;
+	    padding-left: 15px;
+	    margin-right: auto;
+	    margin-left: auto;
+	}
 	
 	.post-head
 	{
@@ -321,6 +321,20 @@
 		display: inline;
 		font-size: medium;
 	}
+
+	
+	#comment-form .word-num
+	{
+		color: #989898;
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 20px;
+	}
+	
+	#comment-form .word-num #current-word
+	{
+		color: red;
+	}
 	
 	.comment-list-area
 	{
@@ -329,12 +343,7 @@
     	margin-bottom: 0.5rem !important;
 	}
 	
-	.letter-number-notice
-	{
-		color: #999;
-		font-size: 0.85714rem;
-		font-weight: 500;
-	}
+	
 	
 	.comment-head
 	{
