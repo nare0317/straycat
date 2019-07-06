@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+html
+{
+	height: 100%;
+	
+}
+
+.container
+{
+	min-width: 1100px;
+	text-align: center;
+}
+
+.img
+{
+	margin-top: 100px;
+}
+
+.errorMsg
+{
+	margin-top: 50px;
+}
