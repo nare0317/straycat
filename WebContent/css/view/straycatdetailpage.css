@@ -167,3 +167,26 @@ div {
   border-radius: .25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+.declaration
+{
+	font-size: small;
+}
+
+.err1
+{
+	color: red;
+	display: none;
+	font-weight: bold;
+}
+
+.err2
+{
+	color: red;
+	display: none;
+	font-weight: bold;
+}
+
+.resize
+{
+	resize: none;
+}
