@@ -7,92 +7,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>NoteWrite.jsp</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style type="text/css">
-	div
-	{
-		font-family: 'Nanum Gothic Coding', monospace;
-		font-family: 'Quicksand', sans-serif;
-	}
-#footer {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	padding: 15px 0;
-	text-align: center;
-}
-</style>
-
-<!-- 파비콘 -->
-<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
-<link rel="icon" href="<%=cp %>/favicon.ico">
-
+	<title>쪽지쓰기</title>
+	<c:import url="Head.jsp"></c:import>
+	
+	<!-- 페이지 CSS, 자바스크립트 -->
+	<link href="<%=cp %>/css/view/note_write.css" rel="stylesheet">
+	<script type="text/javascript" src="<%=cp%>/js/view/note_write.js"></script>
 </head>
 <body>
 
-	<div>
-		<c:import url="Menu.jsp"></c:import>
-		<form action="">
+<c:import url="Menu.jsp"></c:import>
 
-			<div class="container" style="margin-top: 60px;">
-			<div><h1>쪽지쓰기</h1></div><br>
-				<div class="row">
-					<div class="col-2">받는사람</div>
-					<div class="col-10">
-						<input type="text" class="form-control">
-					</div>
-				</div>
-				<br>
-				<br>
-				<div class="row">
-					<div class="col-2">제목</div>
-					<div class="col-10">
-						<input type="text" class="form-control">
-					</div>
-				</div>
-				<br>
-				<br>
-				<div class="row">
-					<div class="col-2">쪽지내용</div>
-					<div class="col-10">
-							<textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
-					</div>
-				</div>
-				<br>
-				<br>
-				<div class="row">
-					<div class="col-2"></div>
-					<div class="col-10">
-							<button type="submit" class="btn btn-primary">보내기</button>
-							<button type="button" class='btn btn-secondary'>취소</button>
-					</div>
-				</div>
+	<div class="container marTop">
+	<div><h1>쪽지쓰기</h1></div><br>
+	<form action="MypageMain.jsp" id="emailForm" method="post">
+		<div class="row">
+			<div class="col-2">받는사람<span class="required">*</span></div>
+			<div class="col-10">
+				<input type="text" class="form-control" id="receive">
 			</div>
-
-
-
-		</form>
+		</div>
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-2">제목<span class="required">*</span></div>
+			<div class="col-10">
+				<input type="text" class="form-control" id="tile">
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-2">쪽지내용<span class="required">*</span></div>
+			<div class="col-10">
+					<textarea class="form-control resize" id="noteContent" rows="10"></textarea>
+			</div>
+		</div>
+		<div class="row text-right">
+			<div class="col-10"></div>
+			<div class="col-2">
+				<div id="textCounter"><span id="counter">0</span> / 9000</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="col-10">
+				<span id="err" >필수 항목이 입력되지 않았습니다.</span>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="col-10">
+					<button type="button" class="btn btn-primary" id="sendBtn">보내기</button>
+					<button type="button" class='btn btn-secondary'>취소</button>
+			</div>
+		</div>
+	</form>
 	</div>
 
 
 
 
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<div>
-		<c:import url="Footer.jsp"></c:import>
-	</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<div>
+	<c:import url="Footer.jsp"></c:import>
+</div>
 
 
 </body>
