@@ -56,7 +56,7 @@
 				 	주변에 어떤 고양이가 있는지 확인하세요!
 				</div><br>
 				<div>
-					<h4><span id="loc"></span>에 사는 고양이</h4>
+					<h4><span id="loc">"서울시 성동구 성수동"</span>에 사는 고양이</h4>
 					<h4><a href="#">10마리</a></h4>
 				</div><br>
 				<div class="input-group mb-3">
