@@ -50,7 +50,7 @@
 
 
 
-/************** (본문 영역) **************/
+/********* (본문 영역 .post-view) **************/
 	
 	.post-head
 	{
@@ -67,7 +67,14 @@
 		font-family: 맑은고딕;
 	}
 	
-	/* 고양이 대표사진 */
+	/* 글 상태 변경 .post-status */
+	.post-status
+	{
+		margin-bottom: 20px;
+		margin-left: 5px;
+	}
+	
+	/* 고양이 대표사진 .iconic-photo */
 	.iconic-photo
 	{
 		overflow: hidden;
@@ -132,7 +139,6 @@
 	{
 		padding: 0px;
 		position:absolute;
-		top:400px;
 		right:5%;
 		width:200px;
 		
