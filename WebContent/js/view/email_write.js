@@ -17,7 +17,7 @@ $(document).ready(function() {
 		else
 		{
 			$("#mailHost").prop("readonly", true);
-		};
+		}
 		$("#mailHost").val($("#mailHostSelector option:checked").text());
 	});
 	
@@ -28,7 +28,7 @@ $(document).ready(function() {
 		{
 			$("#textCounter").css("color", "red");
 			var str = $("#content").val();
-			str = str.substring(0, 10);
+			str = str.substring(0, 20000);
 			$("#content").val(str);
 		}
 		else
@@ -36,7 +36,7 @@ $(document).ready(function() {
 			$("#textCounter").css("color", "black");
 			var textCnt = $("#content").val().length;
 			$("#counter").text(textCnt);
-		};
+		}
 	});
 
 	// 필수 입력 사항 확인
@@ -46,7 +46,7 @@ $(document).ready(function() {
 		{
 			$("#err").css("display", "block");
 			return;
-		};
+		}
 		
 		$("#emailForm").submit();
 	});
