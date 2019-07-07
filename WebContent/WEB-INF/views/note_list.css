@@ -31,7 +31,7 @@
 
 .title
 {
-	width: 45%;
+	width: 60%;
 }
 
 .writer
@@ -125,4 +125,56 @@ h2 {
 ul
 {
 	padding-inline-start: 0px;
+}
+div 
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.left 
+{
+	margin-left: 10px;
+}
+
+.tab 
+{
+	width: 50%; 
+	font-size: 20pt;
+}
+.tab2 
+{
+	width: 33%;
+	font-size: 20pt;
+}
+
+.container2 
+{
+	margin-left: 70px;
+	margin-right: 100px;
+	margin-top: 60px;
+}
+.delBtn
+{
+	margin: 40px;
+}
+.gil
+{
+	 padding: 20px;
+}
+.catCard
+{
+	margin-right: 30px; 
+	padding: 10px; 
+	height: 260px;
+}
+.card-img
+{
+	width: 240px;
+}
+.update
+{
+	margin-left: 200px; 
+	margin-right: 200px; 
+	margin-top: 100px;
 }

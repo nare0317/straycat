@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+.inputbox
+{
+	width: 200px !important;
+}
+
+div
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+
+input
+{
+	display: inline-block !important;
+}
+
+.form-control .btn
+{
+	display: inline-block !important;
+}
+
+.card
+{
+	margin-top: 30px;
+	padding: 30px;
+}
+
+th
+{
+	background-color: #F6F6F6;
+	width: 200px;;
+	vertical-align: middle !important;
+}
+.mButton.gCenter 
+{ 
+	position:relative; text-align:center; 
+}
+.alignRight
+{
+	margin: 10px 0;
+   	padding: 0 4px 0 0;
+   	text-align: right;
+}
+.card
+{
+	margin-top: 100px;
+}
+.caution
+{
+	font-size: small;
+}
+
+.required
+{
+	color: red;
+	text-decoration: super;
+}
+
+.breadcrumbs
+{
+	padding-top: 10px;
+	padding-left: 0px;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+
+div.breadcrumbs > ul
+{
+	padding: 0px !important;
+}
+
+#name
+{
+	width: 100%;
+}
+
+#pwd, #pwdConfirm
+{
+	width: 276px !important;
+}
+
+.local
+{
+	width: 500px !important;
+}
+
+.errDiv
+{
+	color: red;
+	text-align: center;
+	font-weight: bold;
+}
