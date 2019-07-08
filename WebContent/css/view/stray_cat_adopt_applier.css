@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+div
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+th
+{
+	padding: 0 4px 0 0;
+	background-color: #F6F6F6;
+	width: 10ppx;
+}
+td
+{
+	position: relative;
+	text-align: left;
+}
+span
+{
+	margin-left: 10px;
+	font-size: large;
+}
+p
+{
+	text-align: justify;
+	margin-left: 1%;
+}	
+.jumbotron.jumbotron-fluid
+{ 
+	padding: 10px 0px 0 10px;
+	margin-bottom: 0;
+	margin-left: 10px;
+	margin-right:0;
+   	width: 380px;
+   	height:100px;
+}
+.table td
+{
+	margin-left: -2%;
+	vertical-align: middle; 
+}
+.container
+{
+	margin-top: 5%;
+}
+.lead
+{
+	padding: 0px 4px 0 0;
+	font-size: large;
+}
+.lead>span
+{
+	margin-left: 1%;
+}
+.custom-control.custom-radio.custom-control-inline
+{
+   	margin-bottom: 50%;
+   	margin-left: 30px;
+   }
+   .custom-control.custom-button
+   {
+   	padding: 10px 4px 0 0;
+   }
+   .matching
+{ 
+	position:relative;
+	text-align: right; 
+}
+.modal-header
+{
+	text-align: center;
+}
+.modal-title
+{
+	text-align: center;
+	margin-left: 10%;
+}
+.modal-body
+{
+	width: 500px;
+	height: 500px
+} 
+#td1
+{
+	position:relative;
+	text-align: middle;
+}
+#alert
+{
+	padding: 4px 0 0 0;
+	font-size: 13pt;
+	color: blue;
+}
+#myBtn
+{
+	height: 40px;
+	position: relative;
+	float: right;
+	margin-left: 1%;
+} 
+#btn
+{
+	height: 35px;
+	margin-left: 3%;
+}
+#checkmark1
+{
+	margin-left: 7%;
+}
+#checkmark2
+{	
+	margin-left: 10%;
+}
+#infoBtn
+{
+	height: 40px;
+	margint-left: 5%
+}
+#matchingBtn
+{
+	text-align: center;
+}
+
+#yesno
+{
+	margin-top: 20px;
+}
+#yesno1
+{
+	margin-top: 30px;
+}
+#yesno2
+{
+	margin-top: 7px;
+}
+#questionbtn
+{
+	margin-top: -10px;
+	float: right;
+}
+#container
+{
+	margin-top: 5%;
+}
+#container2
+{
+	margin-left: 5%;
+}
+.m20
+{
+	margin-top: 20px;
+}
+.m7
+{
+	margin-top: 7px;
+}
+.blue
+{
+	color: blue;
+}
+
+.err
+{
+	color: red;
+}
