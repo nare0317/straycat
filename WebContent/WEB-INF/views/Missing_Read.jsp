@@ -9,24 +9,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Missing_Read.jsp(실종게시글열람)</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!-- Head.jsp  -->
+<c:import url="Head.jsp"></c:import>
 
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- CSS 파일 -->
+<link rel="stylesheet" href="<%=cp %>/css/view/missing_read.css">
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-<!-- Font Awesome 5 -->
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- CSS 파일 추가 -->
-<link rel="stylesheet" href="<%=cp %>/css/Missing_Read.css">
+<!-- JS 파일 -->
+<script src="<%=cp %>/js/view/missing_read.js"></script>
 
 </head>
 <body>
@@ -64,9 +55,17 @@
 	
 		<!-- 제목/작성자/작성일시/조회수 -->
 		<div class="post-head row">
-			<div class="col-lg-9">
+			<div class="col-lg-12">
+				<!-- 글 제목 -->
 				<h3 class="post-title">우리 냥이 좀 찾아주세요 ㅠㅠㅠㅠ</h3>
-				
+				<!-- 제목 밑에 줄 -->
+				<hr class="post-title-hr">
+			</div>
+		</div>
+		
+		<div class="post-head row">
+			<div class="col-lg-6">
+				<!-- 작성자아이디, 작성일시, 조회수 -->
 				<ul class="list-inline">
 					<li class="list-inline-item g-mx-4">nare0317
 					<li class="list-inline-item g-mx-4">|</li>
@@ -75,7 +74,15 @@
 					<li class="list-inline-item g-mx-4"><span class="icon-mouse" style="font-size: 11px;"></span> 1020</li>
 				</ul>
 			</div>
-		</div>
+			
+			<!-- 수정/삭제 버튼 -->
+			<div class="col-md-2 offset-md-4" align="right">
+				<button class="btn btn-secondary btn-sm" id="modify-btn">수정</button>
+				<button class="btn btn-secondary btn-sm" id="delete-btn">삭제</button>
+			</div>
+		</div>		
+		
+		
 		
 		<!-- ★★★★★글내용★★★★★ -->	
 		<div class="row post-content">
@@ -224,7 +231,7 @@
 						</div>
 					</div><!-- end comment -->
 
-					<hr>
+					<hr class="comment-hr">
 
 				</div><!-- end comment-wrapper -->
 				
@@ -244,7 +251,7 @@
 						</div>
 					</div><!-- end comment -->
 
-					<hr>
+					<hr class="comment-hr">
 
 				</div><!-- end comment-wrapper -->
 				

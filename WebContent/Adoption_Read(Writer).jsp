@@ -53,10 +53,18 @@
 	<section class="post-view container">
 	
 		<!-- 제목/작성자/작성일시/조회수 -->
+		<div class="post-title row">
+			<div class="col-lg-12">
+				<!-- 글 제목 -->
+				<h3 class="title"><span class="adt_status">[신규등록]</span>귀여운 치즈태비 입양하실분~!!</h3>
+				<!-- 제목 밑에 줄 -->
+				<hr class="post-title-hr">
+			</div>
+		</div>
+		
 		<div class="post-head row">
-			<div class="col-lg-9">
-				<h3 class="post-title"><span class="adt_status">[입양진행중]</span>귀여운 치즈태비 입양하실분~!!</h3>
-				
+			<div class="col-lg-6">
+				<!-- 작성자아이디, 작성일시, 조회수 -->
 				<ul class="list-inline">
 					<li class="list-inline-item g-mx-4">nare0317
 					<li class="list-inline-item g-mx-4">|</li>
@@ -65,8 +73,15 @@
 					<li class="list-inline-item g-mx-4"><span class="icon-mouse" style="font-size: 11px;"></span> 1020</li>
 				</ul>
 			</div>
+			
+			<!-- 수정/삭제 버튼 -->
+			<div class="col-md-2 offset-md-4" align="right">
+				<button class="btn btn-secondary btn-sm" id="modify-btn">수정</button>
+				<button class="btn btn-secondary btn-sm" id="delete-btn">삭제</button>
+			</div>
 		</div>
-
+		
+		
 		<!-- ★★★★★글내용★★★★★ -->	
 		<div class="post-content row">
 			
@@ -88,7 +103,7 @@
 					        <option value="6">입양완료</option>
 					    </select>
 					    
-			      		<button type="submit" class="btn btn-primary">변경</button>
+			      		<button type="submit" class="btn btn-dark">변경</button>
 			      </div>
 				</form>
 			</div>
