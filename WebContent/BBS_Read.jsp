@@ -8,28 +8,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Adoption_Read.jsp(입양글 열람 페이지 -일반 사용자)</title>
+<title>BBS_Read.jsp(자유게시판 글열람 페이지)</title>
 
 <!-- Head.jsp  -->
 <c:import url="Head.jsp"></c:import>
 
 <!-- CSS 파일 -->
-<link rel="stylesheet" href="<%=cp %>/css/view/adoption_read.css">
+<link rel="stylesheet" href="<%=cp %>/css/view/bbs_read.css">
 
 <!-- JS 파일 -->
-<script src="<%=cp %>/js/view/adoption_read.js"></script>
+<script src="<%=cp %>/js/view/bbs_read.js"></script>
+
 </head>
 <body>
 
-<div id="content">
+<div>
 
+	<!-- ★★★★★메뉴바★★★★★ -->
 	<c:import url="Menu.jsp"></c:import>
 		
 	<!-- ★★★★★헤더 + breadcrumbs★★★★★ -->
 
 	<section class="header container ">
 		<div class="header-title">
-			<h2 class="h2">입양<span class="sub-title">입양모집글</span></h2>
+			<h2 class="h2">자유게시판<span class="sub-title"></span></h2>
 		</div>
 		<div class="breadcrumbs">
 			<ul>
@@ -38,16 +40,15 @@
 					<span class="breadcrumb-divider">></span>
 				</li>
 				<li class="list-inline-item">
-					<a class="text-dark" href="#">입양&실종</a>
-					<span class="breadcrumb-divider">></span>
+					<span class="breadcrumb-divider">자유게시판</span>
 				</li>
-				<li class="list-inline-item">
-					<span class="breadcrumb-divider">입양</span>
-				</li>
+				<!-- <li class="list-inline-item">
+					<span class="breadcrumb-divider">실종</span>
+				</li> -->
 			</ul>
 		</div>
 	</section>
-	
+		
 	<!-- ★★★★★내용★★★★★ -->
 	<section class="post-view container">
 	
@@ -55,12 +56,12 @@
 		<div class="post-head row">
 			<div class="col-lg-12">
 				<!-- 글 제목 -->
-				<h3 class="post-title"><span class="adt_status">[신규등록]</span>귀여운 치즈태비 입양하실분~!!</h3>
+				<h3 class="post-title">홍대쪽 이쁜 길냥이 발견~!!</h3>
 				<!-- 제목 밑에 줄 -->
 				<hr class="post-title-hr">
 			</div>
 		</div>
-		
+			
 		<div class="post-head row">
 			<div class="col-lg-6">
 				<!-- 작성자아이디, 작성일시, 조회수 -->
@@ -72,93 +73,39 @@
 					<li class="list-inline-item g-mx-4"><span class="icon-mouse" style="font-size: 11px;"></span> 1020</li>
 				</ul>
 			</div>
-		</div>		
+			
+			<!-- 수정/삭제 버튼 -->
+			<div class="col-md-2 offset-md-4">
+				<button class="btn btn-secondary btn-sm pull-right" id="modify-btn">수정</button>
+				<button class="btn btn-secondary btn-sm pull-right" id="delete-btn">삭제</button>
+			</div>
+		</div>
 		
 		<!-- ★★★★★글내용★★★★★ -->	
-		<div class="post-content row">
-			
-			<!-- 고양이 대표사진 -->
-			<div class="iconic-photo col-lg-3">
-				<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail">
-			</div>
+		<div class="row post-content">
 			
 			<!-- 글 내용 -->
-			<div class="content col-lg-7">
-				<table class="missing-info table table-light">
-					<tr>
-						<th class="align-top th-sm th-lg">이름</th>
-						<td class="align-top">냥아취</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">종류</th>
-						<td class="align-top">고등어태비</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">구조지역</th>
-						<td class="align-top">서울시 마포구 서교동 풍성빌딩 주차장 앞</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">구조일</th>
-						<td class="align-top">2019-06-10</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">나이</th>
-						<td class="align-top">아기묘(4개월)</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">성별</th>
-						<td class="align-top">암컷</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">고양이<br>특이사항</th>
-						<td class="align-top">
-							<p>하얀색 수염이 길고 풍성해요~~얼굴이 통통해서 아주 귀엽게 생겼구요.. 발바닥은 검은젤리에요 ㅜㅜ</p>
-						</td>
-					</tr>
-					<tr>
-						<th class="align-top">건강상태</th>
-						<td class="align-top">
-							<p>매우 건강. 기생충 없음. 접종 미완료(아직 어려서 몇 주 후 접종이 가능하다고 합니다.)</p>
-						</td>
-					</tr>
-				</table>
-				
-				
-				<!-- 게시글 작성자 정보 -->
-				<div class="writer-info">
-					<div class="row writer-info-title">게시글 작성자 정보</div>
-					<div class="row writer-name"><label>이름 : </label>임나래
-						<a href="" onclick=""  class="send-message">
-							<i class="fas fa-envelope"> 쪽지보내기 </i>
-						</a>
-					</div>
-					<div class="row writer-tel"><label>연락처 : </label>010-2493-4848</div>
-					<div class="row writer-email"><label>이메일 :</label>nare0317@gmail.com</div>
-				</div>
+			<div class="content col-lg-12">
+				<p class="text-justify">모든 기술은 저한테 맡겨주세요.관현악이며 미묘한 교향악이다 뼈 끝에 스며들어 가는 열락의 소리다. 이것은 피어나기 전인 유소년에게서 구하지 못할 바이며 시들어 가는 노년에게서 구하지 못할 바이며 오직 우리 청춘에서만 구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는</p>
+				<p class="text-justify">모든 기술은 저한테 맡겨주세요.관현악이며 미묘한 교향악이다 뼈 끝에 스며들어 가는 열락의 소리다. 이것은 피어나기 전인 유소년에게서 구하지 못할 바이며 시들어 가는 노년에게서 구하지 못할 바이며 오직 우리 청춘에서만 구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는</p>
+				<br>
+				<br>
+				<p class="text-justify">모든 기술은 저한테 맡겨주세요.관현악이며 미묘한 교향악이다 뼈 끝에 스며들어 가는 열락의 소리다. 이것은 피어나기 전인 유소년에게서 구하지 못할 바이며 시들어 가는 노년에게서 구하지 못할 바이며 오직 우리 청춘에서만 구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는</p>
+				<p class="text-justify">모든 기술은 저한테 맡겨주세요.관현악이며 미묘한 교향악이다 뼈 끝에 스며들어 가는 열락의 소리다. 이것은 피어나기 전인 유소년에게서 구하지 못할 바이며 시들어 가는 노년에게서 구하지 못할 바이며 오직 우리 청춘에서만 구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는</p>
 			</div>
 			
-			
-			<!-- 우측 사이드바 (입양신청)-->
-			<div class="slidemenu col-lg-2 text-center">
-				<div class="apply">
-					<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
-					<p>남은시간 : <span>13일 00:57:30</span></p>
-					<button class="btn btn-primary">입양 신청</button>
-				</div>
-			</div>
-						
 		</div>
 		
 		
 		
 		<!-- ★★★★★ 신고/공유/추천 버튼 ★★★★★★ -->
-		<div class="post-footer row justify-content-center" id="post_footer">
+		<div class="post-footer row justify-content-center">
 			<button class="btn_report" onclick=""><span class="fa fa-ban"></span> 신고</button>
 			
 			<div class="post_share">
 					<button class="btn_share" data-toggle="dropdown"><span class="fa fa-share-square-o"></span> 공유</button>
 					<ul class="dropdown-menu share">
-						<li><a href="javascript:;" onclick=""><span class="fa fa-link"></span>주소복사</a></li>
+						<li><a href="javascript:;" onclick="prompt('주소를 복사하세요.', ''"><span class="fa fa-link"></span>주소복사</a></li>
 						<li><a href="" class="facebook" target="_blank"><span class="fa fa-facebook"></span>Facebook</a></li>
 						<li><a href="" class="twitter" target="_blank"><span class="fa fa-twitter"></span>Twitter</a></li>
 					</ul>
@@ -167,20 +114,15 @@
 				<span class="fas fa-thumbs-up"></span><span class="text"> 추천<strong>5</strong></span>
 			</button>
 		</div>
-	</section>
-</div> <!-- end #content  -->
-		
-		
-		
-	<section class="post-view-bottom container">	
 
+		
 		<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
 		<div class="beforeafter list-group">
 			<a href="" onclick="" class=" prev list-group-item list-group-item-action"> 
 				<i class="fas fa-chevron-up"> 이전 글 </i><span>이전 글이 없습니다.</span>
 			</a>
 			<a href="" onclick=""  class="next list-group-item list-group-item-action">
-				<i class="fas fa-chevron-down"> 다음 글 </i><span>깜찍한 아기냥이 입양하세요~!!!</span>
+				<i class="fas fa-chevron-down"> 다음 글 </i><span>저희 냥이 좀 찾아주세요ㅠㅠ</span>
 			</a>
 		</div>
 		
@@ -193,19 +135,21 @@
 		<div class="comment-area">
 
 			<!-- 댓글 입력  -->
-			<form id="comment-form" action="/comment/json" method="post">
-				<input id="boardId" name="boardId" value="11663" type="hidden"
-					value="11663" />
+			<form id="comment-form" action="" method="post">
+				<!-- <input id="boardId" name="boardId" value="11663" type="hidden"
+					value="11663" /> -->
 
 				<h5>댓글 남기기 <span class="login-notice">- 로그인 필요</span></h5>
+ 				
+ 				<!-- 댓글입력 창 -->
+		        <textarea id="comment_input" class="form-control" name="comment" rows="2"
+		         placeholder="댓글을 입력해주세요." maxlength="300" required></textarea>
+				<p class="word-num text-right">(<span id="current-word">6</span>/300)</p>
 
-				<div class="form-group">
-					<textarea id="text" name="text" type="text" rows="2"></textarea>
-					<small class="letter-number-notice">1000자 이내로 입력해 주세요</small>
-				</div>
  
+ 				<!-- 댓글입력 버튼 -->
 				<div class="text-right">
-					<button type="submit" class="btn btn-outline-primary">댓글등록</button>
+					<button type="submit" id="comment_submit" class="btn btn-outline-primary">댓글등록</button>
 				</div>
 			</form>
 
@@ -263,10 +207,10 @@
 		</div><!-- end comment-area -->
 
 	</section>
-
+	
 	<!-- ★★★★★ 푸터 ★★★★★ -->
 	<c:import url="Footer.jsp"></c:import>
-	
+</div>
 </body>
 </html>
 
