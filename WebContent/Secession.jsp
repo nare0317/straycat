@@ -7,39 +7,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>SecessionFinish.jsp</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style type="text/css">
-	div
-	{
-		font-family: 'Nanum Gothic Coding', monospace;
-		font-family: 'Quicksand', sans-serif;
-	}
-</style>
-<script type="text/javascript">
-	$(document).ready(function()
-	{
-		$("#clickBtn").click(function(){
-			if($("#defaultCheck1").is(":checked") == false)
-			{
-				alert("동의버튼을 눌러주세요");
-				return;
-			}
-			$("#formCheck").submit();			
-		});
-	});
-</script>
-
-<!-- 파비콘 -->
-<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
-<link rel="icon" href="<%=cp %>/favicon.ico">
-
+<title>탈퇴 페이지</title>
+	<c:import url="Head.jsp"></c:import>
+	
+	<!-- 페이지 CSS, 자바스크립트 -->
+	<link rel="stylehseet" href="<%=cp%>/css/view/session.css">
+	<script type="text/javascript" src="<%=cp%>/js/view/session.js"></script>
 </head>
 <body>
 
@@ -53,13 +26,12 @@
 						<h1>회원탈퇴</h1>
 					</div>
 						<br>
-						<div style="text-align: left; margin-left: 30px;">
+						<div class="header">
 							<h5>집사님, 우리동네길냥이를 이용하시는데 불편함이 있으셨나요?</h5>
 							<h5>- 이용 불편 및 각종 문의 사항은 이메일로 문의주시면 성심 성의껏 답변드리겠습니다.</h5>
 							<h5>- 이메일문의 : straycat@cat.com</h5>
 						</div>
-						<div class="card"
-							style="text-align: left; margin: 30px; padding: 20px;">
+						<div class="card" style="text-align: left; margin: 30px; padding: 20px;">
 							** 회원탈퇴 전 유의사항을 확인해 주세요!!<br> - 회원탈퇴 시 회원전용 웹 서비스 이용이 불가합니다.<br>
 							- 보유하셨던 '집사활동점수'는 탈퇴와 함께 삭제되며 재적립되지 않습니다.<br> - 회원탈퇴 후
 							우리동네고양이 서비스 활동내역(게시글 및 댓글)은 삭제되지 않으며, <br> 회원정보 삭제로 인해 작성자
@@ -88,7 +60,6 @@
 	<br />
 	<br />
 	<div>
-		<hr>
 		<c:import url="Footer.jsp"></c:import>
 	</div>
 

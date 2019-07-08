@@ -20,7 +20,7 @@
 
 	<div class="container marTop">
 	<div><h1>새 게시물 작성</h1></div><br>
-	<form action="BoardList1.jsp" id="boardForm" method="post">
+	<form action="BoardList.jsp" id="boardForm" method="post">
 		<div class="row">
 			<div class="col-2">제목<span class="required">*</span></div>
 			<div class="col-10">
