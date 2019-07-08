@@ -23,5 +23,9 @@ $(document).ready(function()
 			$("#errorDiv").css("display", "inline");
 			$("#errorMsg").css("display", "inline");
 		}
+		else
+		{
+			window.location.href='join';
+		}
 	});
 });
