@@ -5,65 +5,120 @@ div {
 	font-family: 'Quicksand', sans-serif;
 }
 
-.card {
-	margin-top: 30px;
-	padding: 30px;
-}
+/************** (헤더+브레드크럼 영역) **************/
+	
+	.header
+	{
+		margin-bottom: 40px;
+	}
+	
+	.section-1
+	{
+		width: 100%;
+	    padding-right: 15px;
+	    padding-left: 15px;
+	    margin-right: auto;
+	    margin-left: auto;
+	}
+	
+	.header-title
+	{
+		padding-top: 1rem;
+		border-color: #ddd;
+		border-bottom: solid 1px #000000e0;
+	}
+	
+	.header-title span
+	{
+		font-size: medium;
+		letter-spacing: 0px;
+	}
+	
+	.breadcrumbs ul
+	{
+		padding-top: 10px;
+		padding-left: 0px;
+	}
+	
+	
+	h2 {
+		font-weight: bold;
+		letter-spacing: 5px;
+		margin-top:40px;
+	}
 
-.dt1 {
-	width: 50%;
-	display: inline;
-}
 
-.dt2 {
-	width: 50%;
-	display: inline;
-}
-
-th {
-	background-color: #F6F6F6;
-	width: 30%;
-}
-
-.mButton.gCenter {
-	position: relative;
-	text-align: center;
-}
-
-.alignRight {
-	margin: 10px 0;
-	padding: 0 4px 0 0;
-	text-align: right;
-}
-
-.card {
-	margin-top: 100px;
-}
-
-span {
-	font-size: small;
-}
-
-.container2 {
-	margin-left: 100px;
-	margin-right: 100px;
-	margin-top: 60px;
-}
-
-.header
-{
-	margin-top: 60px;
-}
-.scroll
-{
-	overflow-y: scroll; 
-	overflow-x: hidden; 
-	overflow-y: auto; 
-	height: 2000px;
-}
-.content
-{
-	margin: 30px; 
-	padding: 10px; 
-	height: 260px;
-}
+	h5
+	{
+		padding-left: 15px;
+		padding-bottom: 10px;
+	}
+	
+	
+	.card {
+		margin-top: 10px;
+		padding: 10px;
+	}
+	
+	.card-title
+	{
+		padding-left: 0px;
+	}
+	
+	.cat-info-list
+	{
+	    
+	}
+	.dt1 {
+		width: 50%;
+		display: inline;
+	}
+	
+	.dt2 {
+		width: 50%;
+		display: inline;
+	}
+	
+	th {
+		background-color: #F6F6F6;
+		width: 30%;
+	}
+	
+	.mButton.gCenter {
+		position: relative;
+		text-align: center;
+	}
+	
+	.alignRight {
+		margin: 10px 0;
+		padding: 0 4px 0 0;
+		text-align: right;
+	}
+	
+	span {
+		font-size: small;
+	}
+	
+	.container2 {
+		margin-left: 100px;
+		margin-right: 100px;
+		margin-top: 60px;
+	}
+	
+	.header
+	{
+		margin-top: 60px;
+	}
+	.scroll
+	{
+		overflow-y: scroll; 
+		overflow-x: hidden; 
+		overflow-y: auto; 
+		height: 2000px;
+	}
+	.content
+	{
+		margin: 30px; 
+		padding: 10px; 
+		height: 260px;
+	}
