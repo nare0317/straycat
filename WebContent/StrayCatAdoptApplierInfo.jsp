@@ -96,13 +96,14 @@
 		<div class="container">
 		<h1>입양 <span>매칭프로세스(후보자 검증) | 후보자 상세 페이지 </span></h1>
 		<hr>
-		<tr>
-		<div id="profile">
+		
+		<div class="form">
+		<div>
 			<h5>ID : nare0317 <br>이름 : 임나래 <br></h5>
 		     <a href="#"><ion-icon name="send" size="small"></ion-icon></a><span> 쪽지 보내기</span><br>
 		     <a href="#"><ion-icon name="pin" size="small"></ion-icon></a><span> 서울시 마포구 서교동</span>
 		</div>
-		</tr>
+		</div>
 		<hr>
 		<div class="container">
 		  <div class="row">
@@ -168,7 +169,7 @@
 	</div>
 			
 			
-			<div #id="row class="row right">
+			<div id="row" class="row right">
 			<div class="col-6">
 				<div class="tab-content" id="v-pills-tabContent">
 					iv class="container2" id="container2">

@@ -128,7 +128,9 @@
 <body>
 <div>
 	<c:import url="Menu.jsp"></c:import>
+</div>	
 
+<div>
 	<div class="container" id="container">
 		<h1>입양<span>&nbsp;입양신청</span></h1>
 		<hr>
