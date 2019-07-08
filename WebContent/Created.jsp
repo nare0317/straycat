@@ -11,7 +11,7 @@
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link href="<%=cp %>/css/view/created.css" rel="stylesheet">
+	<link rel="stylesheet" href="<%=cp %>/css/view/created.css">
 	<script type="text/javascript" src="<%=cp%>/js/view/created.js"></script>
 </head>
 <body>
@@ -58,7 +58,8 @@
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-10">
-				<span id="err">필수 항목이 입력되지 않았습니다.</span>
+				<span class="err1">필수 항목이 입력되지 않았습니다.</span>
+				<span class="err2">구분을 선택해 주세요.</span>
 			</div>
 		</div>
 		<br>
@@ -66,7 +67,7 @@
 			<div class="col-2"></div>
 			<div class="col-10">
 					<button type="button" class="btn btn-primary" id="sendBtn">작성완료</button>
-					<button type="button" class='btn btn-secondary'>작성취소</button>
+					<button type="button" class="btn btn-secondary">작성취소</button>
 			</div>
 		</div>
 	</form>
@@ -75,6 +76,14 @@
 
 
 
+<br>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 <br />
 <br />
 <br />

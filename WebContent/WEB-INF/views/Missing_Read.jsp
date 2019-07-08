@@ -9,24 +9,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Missing_Read.jsp(실종게시글열람)</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!-- Head.jsp  -->
+<c:import url="Head.jsp"></c:import>
 
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- CSS 파일 -->
+<link rel="stylesheet" href="<%=cp %>/css/view/missing_read.css">
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-<!-- Font Awesome 5 -->
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- CSS 파일 추가 -->
-<link rel="stylesheet" href="<%=cp %>/css/Missing_Read.css">
+<!-- JS 파일 -->
+<script src="<%=cp %>/js/view/missing_read.js"></script>
 
 </head>
 <body>
@@ -182,19 +173,21 @@
 		<div class="comment-area">
 
 			<!-- 댓글 입력  -->
-			<form id="comment-form" action="/comment/json" method="post">
-				<input id="boardId" name="boardId" value="11663" type="hidden"
-					value="11663" />
+			<form id="comment-form" action="" method="post">
+				<!-- <input id="boardId" name="boardId" value="11663" type="hidden"
+					value="11663" /> -->
 
 				<h5>댓글 남기기 <span class="login-notice">- 로그인 필요</span></h5>
+ 				
+ 				<!-- 댓글입력 창 -->
+		        <textarea id="comment_input" class="form-control" name="comment" rows="2"
+		         placeholder="댓글을 입력해주세요." maxlength="300" required></textarea>
+				<p class="word-num text-right">(<span id="current-word">6</span>/300)</p>
 
-				<div class="form-group">
-					<textarea id="text" name="text" rows="2"></textarea>
-					<small class="letter-number-notice">1000자 이내로 입력해 주세요</small>
-				</div>
  
+ 				<!-- 댓글입력 버튼 -->
 				<div class="text-right">
-					<button type="submit" class="btn btn-outline-primary">댓글등록</button>
+					<button type="submit" id="comment_submit" class="btn btn-outline-primary">댓글등록</button>
 				</div>
 			</form>
 
