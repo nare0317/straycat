@@ -1,414 +1,418 @@
 @charset "UTF-8";
 
-	*
-	{
-		font-family: 'Nanum Gothic Coding', monospace;
-		font-family: 'Quicksand', sans-serif;
-	}
-	
+*
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+
 /************** (헤더+브레드크럼 영역) **************/
-	
-	.header
-	{
-		margin-bottom: 40px;
-	}
-	
-	.header-title
-	{
-		padding-top: 1rem;
-		border-color: #ddd;
-		border-bottom: solid 1px #000000e0;
-	}
-	
-	span.sub-title
-	{
-		font-size: medium;
-		letter-spacing: 0px;
-	}
-	
-	.breadcrumbs ul
-	{
-		padding-top: 10px;
-		padding-left: 0px;
-	}
-	
-	
-	h2 {
-		font-weight: bold;
-		letter-spacing: 5px;
-		margin-top:40px;
-	}
+
+.header
+{
+	margin-bottom: 40px;
+}
+
+.header-title
+{
+	padding-top: 1rem;
+	border-color: #ddd;
+	border-bottom: solid 1px #000000e0;
+}
+
+span.sub-title
+{
+	font-size: medium;
+	letter-spacing: 0px;
+}
+
+.breadcrumbs ul
+{
+	padding-top: 10px;
+	padding-left: 0px;
+}
+
+
+h2 {
+	font-weight: bold;
+	letter-spacing: 5px;
+	margin-top:40px;
+}
 
 /************** (본문 영역) **************/
+
+/* 제목 부분 */
+.post-view
+{
+	width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.post-head
+{
+	padding-bottom: 10px;
+}
+.post-title
+{
+	padding-bottom: 10px;
+}
+
+.post-title-hr
+{
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	border-top: 1px solid rgba(0,0,0,.2);
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+}
+
+#delete-btn
+{
+	margin-left: 6px;
+}
+
+
+/* 고양이 대표사진 */
+.iconic-photo
+{
+	overflow: hidden;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       width: 300px;
+       height: 300px;
+}
+
+/* 게시글 정보 */
+.missing-info
+{
+	border-style: none;
+}
+
+.missing-info th
+{
+	width: 19%;	
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.missing-info th, td
+{
+	height: 50px;
+}
+
+/* 게시글 작성자 정보 */
+.writer-info
+{
+	margin-top: 40px;
+	background-color: #dae4ed;
+	padding-left: 20px; 
+	width: 100%;
+	padding-bottom: 20px;
+}
+
+.writer-info .row
+{
+	margin-left: 0px;
+}
+.writer-info-title
+{
+	font-weight: bold;
+	font-size: 18px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 	
-	/* 제목 부분 */
-	.post-view
-	{
-		width: 100%;
-	    padding-right: 15px;
-	    padding-left: 15px;
-	    margin-right: auto;
-	    margin-left: auto;
-	}
+}
+.send-message > i
+{
+	font-size: 13px;
+	color: black;
+	margin-left: 6px;
 	
-	.post-head
-	{
-		padding-bottom: 10px;
-	}
-	.post-title
-	{
-		padding-bottom: 10px;
-	}
-	
-	.post-title-hr
-	{
-		margin-top: 0.5rem;
-		margin-bottom: 0.5rem;
-		border-top: 1px solid rgba(0,0,0,.2);
-		box-sizing: content-box;
-		height: 0;
-		overflow: visible;
-	}
-	
-	#delete-btn
-	{
-		margin-left: 6px;
-	}
-	
-	
-	/* 고양이 대표사진 */
-	.iconic-photo
-	{
-		overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 300px;
-        height: 300px;
-	}
-	
-	/* 게시글 정보 */
-	.missing-info
-	{
-		border-style: none;
-	}
-	
-	.missing-info th
-	{
-		width: 19%;	
-		font-size: 18px;
-		font-weight: bold;
-	}
-	
-	.missing-info th, td
-	{
-		height: 50px;
-	}
-	
-	/* 게시글 작성자 정보 */
-	.writer-info
-	{
-		margin-top: 40px;
-		background-color: #dae4ed;
-		padding-left: 20px; 
-		width: 100%;
-		padding-bottom: 20px;
-	}
-	
-	.writer-info .row
-	{
-		margin-left: 0px;
-	}
-	.writer-info-title
-	{
-		font-weight: bold;
-		font-size: 18px;
-		padding-top: 15px;
-		padding-bottom: 15px;
-		
-	}
-	.send-message > i
-	{
-		font-size: 13px;
-		color: black;
-		margin-left: 6px;
-		
-	}
-	
+}
+
 /************* (글아래 신고/공유/추천 버튼) **********/
-	.post-footer
-	{
-		margin-top: 50px;
-		margin-bottom: 50px;
-	}
-	
-	.post-footer .post-share
-	{
-		position: relative;	
-		display: flex;
-	    justify-content: center;
-	    padding: 15px 0;
-	    width: 100%;
-	    
-	}
-	
-	.post-footer .btn_report
-	{
-		border: 1px solid #D7625E;
-  		background-color: #D7625E;
-  		color: #fff;
-   	 	padding: 9px 10px;
-    	margin: 0 1px;
-    	border-radius: 2px;
-    	outline: none;
-    	overflow: visible;
-    	display: inline-block;
-	}
-	
-	.post-footer .btn_share
-	{
-		border: 1px solid #516B82;
-  		background-color: #516B82;
-  		color: #fff;
-   	 	padding: 9px 10px;
-    	margin: 0 1px;
-    	border-radius: 2px;
-    	outline: none;
-    	overflow: visible;
-    	display: inline-block;
-	}
-	
-	
-	.dropdown-menu 
-	{
-	    display: none;
-	    position: absolute;
-	    top: 100%;
-	    left: 0;
-	    z-index: 9;
-	    float: left;
-	    min-width: 85px;
-	    padding: 0;
-	    text-align: left;
-	    border-radius: 2px;
-	    background-color: #fff;
-	    background-clip: padding-box;
-	    border: 1px solid #999;
-	    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-	}
-	
-	.post-footer .post_share .share 
-	{
-	    width: 90px;
-	    left: 1px;
-	    margin: 1px 0 0 0;
-	}
-	
-	.open .dropdown-menu 
-	{
-   		display: block;
-	}
-	
-	.dropdown-menu li 
-	{
-    	border-bottom: 1px dotted #ccc;
-	}
-	.dropdown-menu li a 
-	{
-	    display: block;
-	    padding: 4px 10px;
-	    clear: both;
-	    font-weight: normal;
-	    color: #666;
-	    white-space: nowrap;
-	    line-height: 20px;
-	    overflow: hidden;
-	}
-	
-	.share a 
-	{
-	    color: #232F3E;
-	    text-decoration: none;
-	    cursor: pointer;
-	    font-size: 13px;
-	}
-	
-	.post_footer .post_share .share span 
-	{
-	    display: initial;
-	    width: 15px;
-	    margin: 0 5px 0 0;
-	}
-	
-	.open .dropdown-menu span 
-	{
-	    white-space: nowrap;
-	    overflow: hidden;
-	    display: block;
-	    text-overflow: ellipsis;
-	}
-	}
-	.fa 
-	{
-    	position: relative;
-	}
+.post-footer
+{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
 
-	.post-footer .post_share .share .twitter 
-	{
-    	color: #4CA0EB;
-	}
-	.post-footer .post_share .share .facebook 
-	{
-    	color: #0754A1;
-	}
-	.post-footer .btn_like
-	{
-		border: 1px solid #78AEBD;
-  		background-color: #78AEBD;
-  		color: #fff;
-   	 	padding: 9px 10px;
-    	margin: 0 1px;
-    	border-radius: 2px;
-    	outline: none;
-    	overflow: visible;
-    	display: inline-block;
-	}
-	
-	.open .dropdown-menu span 
-	{
-	    white-space: nowrap;
-	    overflow: hidden;
-	    display: block;
-	    text-overflow: ellipsis;
-	}
+.post-footer .post-share
+{
+	position: relative;	
+	display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    width: 100%;
+    
+}
 
-	.post_footer .btn_like .text 
-	{
-    	margin: 0 0 0 5px;
-	}
+.post-footer .btn_report
+{
+	border: 1px solid #D7625E;
+ 		background-color: #D7625E;
+ 		color: #fff;
+  	 	padding: 9px 10px;
+   	margin: 0 1px;
+   	border-radius: 2px;
+   	outline: none;
+   	overflow: visible;
+   	display: inline-block;
+}
+
+.post-footer .btn_share
+{
+	border: 1px solid #516B82;
+ 		background-color: #516B82;
+ 		color: #fff;
+  	 	padding: 9px 10px;
+   	margin: 0 1px;
+   	border-radius: 2px;
+   	outline: none;
+   	overflow: visible;
+   	display: inline-block;
+}
+
+
+.dropdown-menu 
+{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 9;
+    float: left;
+    min-width: 85px;
+    padding: 0;
+    text-align: left;
+    border-radius: 2px;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #999;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+}
+
+.post-footer .post_share .share 
+{
+    width: 90px;
+    left: 1px;
+    margin: 1px 0 0 0;
+}
+
+.open .dropdown-menu 
+{
+  		display: block;
+}
+
+.dropdown-menu li 
+{
+   	border-bottom: 1px dotted #ccc;
+}
+.dropdown-menu li a 
+{
+    display: block;
+    padding: 4px 10px;
+    clear: both;
+    font-weight: normal;
+    color: #666;
+    white-space: nowrap;
+    line-height: 20px;
+    overflow: hidden;
+}
+
+.share a 
+{
+    color: #232F3E;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.post_footer .post_share .share span 
+{
+    display: initial;
+    width: 15px;
+    margin: 0 5px 0 0;
+}
+
+.open .dropdown-menu span 
+{
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+}
+}
+.fa 
+{
+   	position: relative;
+}
+
+.post-footer .post_share .share .twitter 
+{
+   	color: #4CA0EB;
+}
+.post-footer .post_share .share .facebook 
+{
+   	color: #0754A1;
+}
+.post-footer .btn_like
+{
+	border: 1px solid #78AEBD;
+ 		background-color: #78AEBD;
+ 		color: #fff;
+  	 	padding: 9px 10px;
+   	margin: 0 1px;
+   	border-radius: 2px;
+   	outline: none;
+   	overflow: visible;
+   	display: inline-block;
+}
+
+.open .dropdown-menu span 
+{
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+}
+
+.post_footer .btn_like .text 
+{
+   	margin: 0 0 0 5px;
+}
 
 /************** (이전글/다음글 영역) *************/
-	.beforeafter 
-	{
-	    overflow: hidden;
-	    clear: both;
-	    width: 100%;
-	    padding-bottom: 20px;
-	    padding-top: 20px;
-	}
-	
-	.beforeafter span
-	{
-		padding-left: 50px;
-	}
+.beforeafter 
+{
+    overflow: hidden;
+    clear: both;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.beforeafter span
+{
+	padding-left: 50px;
+}
 /******************* (댓글 영역) *****************/
-		
-	#comment-form
-	{
-		margin-top: 70px;
-	}
 	
-	#comment-form textarea
-	{
-		resize: none;
-		border-color: #adb5bd !important;
-		background-color: #fff !important;
-		padding-left: 1.07143rem !important;
-    	padding-right: 1.07143rem !important;
-    	overflow: auto;
-    	display: block;
-	    width: 100%;
-	    padding: .375rem .75rem;
-	    font-size: 1rem;
-	    line-height: 1.5;
-	    color: #495057;
-	    background-color: #adb5bd;
-	    background-clip: padding-box;
-	    border: 1px solid ;
-	    border-radius: .25rem;
-	    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-	}
-	#comment-form textarea:focus 
-	{
-  	   color: #555;
-	}
+#comment-form
+{
+	margin-top: 70px;
+}
 
-	.login-notice 
-	{
-		display: inline;
-		font-size: medium;
-	}
+#comment-form textarea
+{
+	resize: none;
+	border-color: #adb5bd !important;
+	background-color: #fff !important;
+	padding-left: 1.07143rem !important;
+   	padding-right: 1.07143rem !important;
+   	overflow: auto;
+   	display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #adb5bd;
+    background-clip: padding-box;
+    border: 1px solid ;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+#comment-form textarea:focus 
+{
+ 	   color: #555;
+}
 
-	
-	#comment-form .word-num
-	{
-		color: #989898;
-		font-size: 14px;
-		font-weight: 500;
-		line-height: 20px;
-	}
-	
-	#comment-form .word-num #current-word
-	{
-		color: red;
-	}
-	
-	.comment-list-area
-	{
-		padding-top: 1rem !important;
-    	padding-bottom: 1rem !important;
-    	margin-bottom: 0.5rem !important;
-	}
-	
-	
-	
-	.comment-head
-	{
-		margin-bottom: 3rem!important;
-	}
-	
-	.comment
-	{
-		margin-bottom: 2.14286rem ;
-		display: -webkit-box;
-	    display: -ms-flexbox;
-	    display: flex;
-	    -webkit-box-align: start;
-	    -ms-flex-align: start;
-	    align-items: flex-start;
-	}
-	
-	.comment-date
-	{
-		margin-left: 0.71429rem;
-		color: #999;
-		font-size: 0.85714rem;
-		font-weight: 500;
-	}
-	
-	.comment-content
-	{
-		flex:1;
-	}
-	
-	.comment-writer
-	{
-		font-weight: 600 !important;
-		display: block;
-	}
-	
-	.comment-writer-date
-	{
-		display: flex;
-		align-items: flex-start;
-	}
-	
-	.comment-hr
-	{
-		margin-top: 1rem;
-		margin-bottom: 1rem;
-		border-top: 1px solid rgba(0,0,0,.2);
-		box-sizing: content-box;
-		height: 0;
-		overflow: visible;
-	}
+.login-notice 
+{
+	display: inline;
+	font-size: medium;
+}
+
+
+#comment-form .word-num
+{
+	color: #989898;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+}
+
+#comment-form .word-num #current-word
+{
+	color: red;
+}
+
+.comment-list-area
+{
+	padding-top: 1rem !important;
+   	padding-bottom: 1rem !important;
+   	margin-bottom: 0.5rem !important;
+}
+
+
+
+.comment-head
+{
+	margin-bottom: 3rem!important;
+}
+
+.comment
+{
+	margin-bottom: 2.14286rem ;
+	display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+.comment-date
+{
+	margin-left: 0.71429rem;
+	color: #999;
+	font-size: 0.85714rem;
+	font-weight: 500;
+}
+
+.comment-content
+{
+	flex:1;
+}
+
+.comment-writer
+{
+	font-weight: 600 !important;
+	display: block;
+}
+
+.comment-writer-date
+{
+	display: flex;
+	align-items: flex-start;
+}
+
+.comment-hr
+{
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border-top: 1px solid rgba(0,0,0,.2);
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+}
+.font11
+{
+	font-size: 11px;
+}

@@ -1,10 +1,11 @@
 @charset "UTF-8";
 
-div
+div 
 {
 	font-family: 'Nanum Gothic Coding', monospace;
 	font-family: 'Quicksand', sans-serif;
 }
+
 .bolck {
 	width: 100px;
 	text-align: center;
@@ -14,14 +15,4 @@ div
 {
 	margin-top: 60px; 
 	width: 100%;
-}
-
-.userId
-{
-	padding: 50px;
-}
-
-.left
-{
-	margin-left: 5px;
 }

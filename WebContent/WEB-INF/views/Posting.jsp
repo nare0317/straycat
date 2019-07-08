@@ -67,18 +67,15 @@
          </div>
       </div>
    </div>
-
-
-
 </form>
 
 
 
 
 
-   <div>
-      <c:import url="Footer.jsp"></c:import>
-   </div>
+<div>
+   <c:import url="Footer.jsp"></c:import>
+</div>
 
 
 </body>
