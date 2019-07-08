@@ -9,3 +9,19 @@ div
 	width: 100px;
 	text-align: center;
 }
+
+.mw
+{
+	margin-top: 60px; 
+	width: 100%;
+}
+
+.userId
+{
+	padding: 50px;
+}
+
+.left
+{
+	margin-left: 5px;
+}
