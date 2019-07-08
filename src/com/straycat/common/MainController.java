@@ -70,6 +70,13 @@ public class MainController
 		return "Login";
 	}
 	
+	// 로그인 페이지로 이동
+	@RequestMapping("/join")
+	public String join()
+	{
+		return "Join";
+	}
+	
 	// 약관동의 페이지로 이동
 	@RequestMapping("/acceptterms")
 	public String acceptTerm()
