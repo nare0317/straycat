@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+div 
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.color
+{
+	color: #007BFF;
+}
+
+.m60
+{
+	margin-top: 60px;
+}
