@@ -3,6 +3,7 @@
 
 <mapper namespace="board">
 
+<!-- 자유게시판 목록 쿼리문 -->
 <select id="listBoard" resultType="map">
 	SELECT 
 	      BR.BBS_CODE  AS CODE

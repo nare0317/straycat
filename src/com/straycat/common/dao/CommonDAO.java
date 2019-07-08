@@ -6,4 +6,5 @@ import java.util.Map;
 public interface CommonDAO 
 {
 	public List<Map<String, Object>> selectList();
+	
 }
