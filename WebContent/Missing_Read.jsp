@@ -71,7 +71,7 @@
 					<li class="list-inline-item g-mx-4">|</li>
 					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item">2019-03-06 16:26</li>			
 					<li class="list-inline-item g-mx-4">|</li>
-					<li class="list-inline-item g-mx-4"><span class="icon-mouse" style="font-size: 11px;"></span> 1020</li>
+					<li class="list-inline-item g-mx-4"><span class="icon-mouse font11"></span> 1020</li>
 				</ul>
 			</div>
 			
@@ -262,6 +262,7 @@
 	
 	<!-- ★★★★★ 푸터 ★★★★★ -->
 	<c:import url="Footer.jsp"></c:import>
+	
 </div>
 </body>
 </html>

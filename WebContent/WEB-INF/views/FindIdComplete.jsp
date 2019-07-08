@@ -7,24 +7,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>아이디 찾기 결과</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- Ionicons 4.5 외부 글리피콘 -->
-<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-
-<!-- 아이디 찾기 완료 페이지 CSS -->
-<link rel="stylesheet" href="<%=cp %>/css/view/find_id_complete.css">
-
-<!-- 파비콘 -->
-<link rel="shortcut icon" href="<%=cp %>/favicon.ico">
-<link rel="icon" href="<%=cp %>/favicon.ico">
-
+	<title>아이디 찾기 결과</title>
+	<c:import url="Head.jsp"></c:import>
+	
+	<!-- 페이지 CSS, 자바스크립트 -->
+	<link rel="stylesheet" href="<%=cp %>/css/view/find_id_complete.css">
 </head>
 <body>
 
@@ -40,14 +27,14 @@
 		</div>
 		<form action="" onSubmit="return check()">
 			<br>
-			<div class="row" style="margin-top: 60px; width: 100%;">
+			<div class="row mw">
 				<div class="col-md-6 offset-md-3">
 					
-					<h4>아이디<span class="userId" style="padding: 50px;">nare0317</span></h4>
+					<h4>아이디<span class="userId">nare0317</span></h4>
 					<br>
 					<br><br>
 					<button type="submit" class="btn btn-primary btn-md">로그인 하기</button>
-					<button type="submit" class="btn btn-secondary btn-md" style="margin-left: 5px;">비밀번호 찾기</button>
+					<button type="submit" class="btn btn-secondary btn-md left">비밀번호 찾기</button>
 					<br><br><br>
 				</div>
 			</div>
