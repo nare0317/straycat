@@ -55,9 +55,17 @@
 	
 		<!-- 제목/작성자/작성일시/조회수 -->
 		<div class="post-head row">
-			<div class="col-lg-9">
+			<div class="col-lg-12">
+				<!-- 글 제목 -->
 				<h3 class="post-title">우리 냥이 좀 찾아주세요 ㅠㅠㅠㅠ</h3>
-				
+				<!-- 제목 밑에 줄 -->
+				<hr class="post-title-hr">
+			</div>
+		</div>
+		
+		<div class="post-head row">
+			<div class="col-lg-6">
+				<!-- 작성자아이디, 작성일시, 조회수 -->
 				<ul class="list-inline">
 					<li class="list-inline-item g-mx-4">nare0317
 					<li class="list-inline-item g-mx-4">|</li>
@@ -66,7 +74,15 @@
 					<li class="list-inline-item g-mx-4"><span class="icon-mouse" style="font-size: 11px;"></span> 1020</li>
 				</ul>
 			</div>
-		</div>
+			
+			<!-- 수정/삭제 버튼 -->
+			<div class="col-md-2 offset-md-4" align="right">
+				<button class="btn btn-secondary btn-sm" id="modify-btn">수정</button>
+				<button class="btn btn-secondary btn-sm" id="delete-btn">삭제</button>
+			</div>
+		</div>		
+		
+		
 		
 		<!-- ★★★★★글내용★★★★★ -->	
 		<div class="row post-content">
@@ -173,21 +189,19 @@
 		<div class="comment-area">
 
 			<!-- 댓글 입력  -->
-			<form id="comment-form" action="" method="post">
-				<!-- <input id="boardId" name="boardId" value="11663" type="hidden"
-					value="11663" /> -->
+			<form id="comment-form" action="/comment/json" method="post">
+				<input id="boardId" name="boardId" value="11663" type="hidden"
+					value="11663" />
 
 				<h5>댓글 남기기 <span class="login-notice">- 로그인 필요</span></h5>
- 				
- 				<!-- 댓글입력 창 -->
-		        <textarea id="comment_input" class="form-control" name="comment" rows="2"
-		         placeholder="댓글을 입력해주세요." maxlength="300" required></textarea>
-				<p class="word-num text-right">(<span id="current-word">6</span>/300)</p>
 
+				<div class="form-group">
+					<textarea id="text" name="text" rows="2"></textarea>
+					<small class="letter-number-notice">1000자 이내로 입력해 주세요</small>
+				</div>
  
- 				<!-- 댓글입력 버튼 -->
 				<div class="text-right">
-					<button type="submit" id="comment_submit" class="btn btn-outline-primary">댓글등록</button>
+					<button type="submit" class="btn btn-outline-primary">댓글등록</button>
 				</div>
 			</form>
 
@@ -217,7 +231,7 @@
 						</div>
 					</div><!-- end comment -->
 
-					<hr>
+					<hr class="comment-hr">
 
 				</div><!-- end comment-wrapper -->
 				
@@ -237,7 +251,7 @@
 						</div>
 					</div><!-- end comment -->
 
-					<hr>
+					<hr class="comment-hr">
 
 				</div><!-- end comment-wrapper -->
 				
