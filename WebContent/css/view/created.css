@@ -24,14 +24,6 @@ div
 	vertical-align: super;
 	font-size: 18px;
 }
-
-#err
-{
-	color: red;
-	display: none;
-	font-weight: bold;
-}
-
 .resize
 {
 	resize: none;
@@ -40,4 +32,12 @@ div
 .category
 {
 	width: 120px;
+}
+
+
+.err1, .err2
+{
+	color: red;
+	display: none;
+	font-weight: bold;
 }

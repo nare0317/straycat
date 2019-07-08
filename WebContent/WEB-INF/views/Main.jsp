@@ -16,6 +16,8 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script>
+<script type="text/javascript" src="<%=cp %>/js/view/main.js"></script>
 <style type="text/css">
 	div
 	{
@@ -54,7 +56,7 @@
 				 	주변에 어떤 고양이가 있는지 확인하세요!
 				</div><br>
 				<div>
-					<h4>서울시 성동구 성수동에 사는 고양이</h4>
+					<h4><span id="loc">"서울시 성동구 성수동"</span>에 사는 고양이</h4>
 					<h4><a href="#">10마리</a></h4>
 				</div><br>
 				<div class="input-group mb-3">
