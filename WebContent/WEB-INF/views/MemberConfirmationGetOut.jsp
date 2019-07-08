@@ -93,7 +93,6 @@
 	<br />
 	<br />
 	<div>
-		<hr>
 		<c:import url="Footer.jsp"></c:import>
 	</div>
 

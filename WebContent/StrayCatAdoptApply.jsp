@@ -8,126 +8,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>StrayCatAdoptApply.jsp</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style type="text/css">
-	div
-	{
-		font-family: 'Nanum Gothic Coding', monospace;
-		font-family: 'Quicksand', sans-serif;
-	}
-	#row
-	{
-		overflow-y:scroll;
-		overflow-x:hidden;
-		overflow-y:auto;
-		height: 350px;
-	}
-	.card
-	{
-		margin-top: 30px;
-		padding: 30px;
-	}
-	.dt1
-	{
-		width: 50%;
-		display: inline;
-	}
-	.dt2
-	{
-		width: 50%;
-		display: inline;
-	}
-	th
-	{
-		background-color: #F6F6F6;
-		width: 30%;
-	}
-	.mButton.gCenter 
-	{ 
-		position:relative; text-align:center; 
-	}
-	.alignRight
-	{
-		margin: 10px 0;
-    	padding: 0 4px 0 0;
-    	text-align: right;
-	}
-	.card
-	{
-		margin-top: 100px;
-	}
-	span
-	{
-		font-size: small;
-	}
+	<title>입양신청 페이지</title>
+	<c:import url="Head.jsp"></c:import>
 	
-	#completebtn
-	{
-		margin-left: 2%;
-	}
-	.custom-select
-	{
-		width:100px;
-	}
-	#custom-select1
-	{
-		width:200px;
-	}
-	#select0
-	{
-		margin-top: 7px;
-	}
-	#select1
-	{
-		margin-left: -14%;
-	}
-	
-	#select2
-	{
-		margin-left: -7%;
-	}
-	
-	#textarea
-	{
-		height: 100px;
-	}
-	
-	#yesno
-	{
-		margin-top: 20px;
-	}
-	#yesno1
-	{
-		margin-top: 30px;
-	}
-	#yesno2
-	{
-		margin-top: 7px;
-	}
-	#questionbtn
-	{
-		margin-top: -10px;
-		float: right;
-	}
-	#container
-	{
-		margin-top: 5%;
-	}
-	#container2
-	{
-		margin-left: 5%;
-	}
-</style>
+	<!-- 페이지 CSS, 자바스크립트 -->
+	<link href="<%=cp%>/css/view/stray_cat_adopt_apply.css" rel="stylesheet">
 </head>
 <body>
-<div>
-	<c:import url="Menu.jsp"></c:import>
+
+<c:import url="Menu.jsp"></c:import>
 
 	<div class="container" id="container">
 		<h1>입양<span>&nbsp;입양신청</span></h1>
@@ -210,7 +99,7 @@
 			  
 			<div class="form-group row">
 			    <label for="colFormLabel" class="col-sm-2 col-form-label">고양이<br>양육경험</label>
-			    <div class="col-sm-10" style="margin-top: 20px;">
+			    <div class="col-sm-10 m20">
 			     <div class="custom-control custom-radio custom-control-inline">
 				  <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
 				  <label class="custom-control-label" for="customRadioInline3">있음</label>
@@ -223,7 +112,7 @@
 			 </div>					 	
 			 <div class="form-group row">
 			    <label for="colFormLabel" class="col-sm-2 col-form-label">직업구분</label>
-			    <div class="col-sm-10" style="margin-top: 7px;">
+			    <div class="col-sm-10 m7">
 			     <div class="custom-control custom-radio custom-control-inline">
 				  <input type="radio" id="customRadioInline5" name="customRadioInline1" class="custom-control-input">
 				  <label class="custom-control-label" for="customRadioInline5">학생</label>
@@ -322,7 +211,7 @@
 				  <label class="custom-control-label" for="customRadioInline22">3마리 이상</label>
 				</div>
 			    </div>
-			    <label for="colFormLabel" class="col-sm-10 col-form-label" style="color: blue;">* 키우는 반려동물 종류/나이/성별/중성화여부</label>
+			    <label for="colFormLabel" class="col-sm-10 col-form-label blue">* 키우는 반려동물 종류/나이/성별/중성화여부</label>
 			    <br>
 			    <div class="col-sm-7">
 			      <input type="text" class="form-control" id="colFormLabel" placeholder="ex)강아지/2살/수컷/중성화했어요">
@@ -431,7 +320,6 @@
 
    </div>
    	
-</div>
 
 	
 

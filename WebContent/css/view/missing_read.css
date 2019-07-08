@@ -41,6 +41,7 @@
 
 /************** (본문 영역) **************/
 	
+	/* 제목 부분 */
 	.post-view
 	{
 		width: 100%;
@@ -58,6 +59,22 @@
 	{
 		padding-bottom: 10px;
 	}
+	
+	.post-title-hr
+	{
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+		border-top: 1px solid rgba(0,0,0,.2);
+		box-sizing: content-box;
+		height: 0;
+		overflow: visible;
+	}
+	
+	#delete-btn
+	{
+		margin-left: 6px;
+	}
+	
 	
 	/* 고양이 대표사진 */
 	.iconic-photo
@@ -386,7 +403,7 @@
 		align-items: flex-start;
 	}
 	
-	hr
+	.comment-hr
 	{
 		margin-top: 1rem;
 		margin-bottom: 1rem;
