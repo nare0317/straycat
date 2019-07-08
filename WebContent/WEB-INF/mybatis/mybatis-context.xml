@@ -1,22 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
-						http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
+	
+	<!-- ■■■ Step ① ■■■ -->
+	<!-- ○ JDBC 드라이버 설정을 위한 객체 등록 -->
+	<!--    → PropertyPlaceholderConfigurer -->
+	<!--    → locations 속성 설정 → JDBC 설정파일 위치 등록 -->	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>/WEB-INF/mybatis/jdbc.properties</value>
+		</property>
+	</bean>
+
+
+	<!-- ■■■ Step ② ■■■ -->
+	<!-- ○ DBCP를 위한 DataSource 객체 등록 -->
+	<!--    → ①의 JDBC 드라이버 설정 파일의 항목을 읽어들여 속성을 설정 -->
+	<!--    → 추가 설정 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@localhost:8080:1521:XE" />
-		<property name="username" value="scott" />
-		<property name="password" value="java006$" />
+		<property name="driverClassName" value="${jdbc.driverClass}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxActive" value="10" />
+		<property name="maxIdle" value="3" />
+		<property name="maxWait" value="10000" />
+		<property name="defaultAutoCommit" value="true" />   <!-- 기본:true -->
 	</bean>
-	
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+
+
+	<!-- ■■■ Step ③ ■■■ -->
+	<!-- ○ SqlSessionFactoryBean 객체 등록 -->
+	<!--    → 이후 이를 활용하여 SqlSessionTemplate 객체를 얻는다. -->
+	<!--    → ②의 dataSource 를 참조하여 속성을 설정 -->
+	<!--    → 추가 설정 -->
+	<!--       ·configLocation (→ 단일파일)-->
+	<!--       ·mapperLocations (→ 복수파일)-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" lazy-init="true">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="/WEB-INF/application-config.xml"/>
+		<property name="configLocation" value="/WEB-INF/mybatis/mybatis-config.xml" />
+		<property name="mapperLocations" value="/WEB-INF/mybatis/mapper/*.xml" />
+		<!-- 
+		<property name="mapperLocations" value="classpath:com/think/mapper/**/*.xml"/> 
+		-->
+		<!--
+		<property name="transactionFactory">
+			<bean class="org.apache.ibatis.transaction.managed.ManagedTransactionFactory"/>
+		</property>
+		-->
 	</bean>
-	
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactory"/>
+
+
+	<!-- ■■■ Step ④ ■■■ -->
+	<!-- ○ SqlSessionTemplate 객체 등록 -->
+	<!--    → MyBatis SQL method 호출 및 관리, 예외처리 담당 -->
+	<!--    → ③의 sqlSessionFactory 를 참조하여 속성을 설정 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
+
+
+	<!-- ■■■ Step ⑤ ■■■ -->
+	<!-- ○ 트랜잭션 관리자 등록 -->
+	<!--    → DataSourceTransactionManager -->
+	<!--    → ②의 dataSource 를 참조하여 속성을 설정 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+	<!-- ■■■ Step ⑥ ■■■ -->
+	<!-- ○ 트랜잭션과 관련된 작업 -->
+	<!--    → 트랜잭션 시작, 커밋, 롤백 등 -->
+	<!--    → ⑤의 transactionManager 를 참조하여 속성을 설정 -->
+	<bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+
+
+	<!-- ■■■ Step ⑦ ■■■ -->
+	<!-- ○ 트랜잭션 어드바이스(tx:advice)를 통한 선언적 방식 트랜잭션 처리 -->
+	<!--    → ⑤의 transactionManager 를 활용하여 객체 구성 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insert*" rollback-for="Exception" />
+			<tx:method name="update*" rollback-for="Exception" />
+			<tx:method name="delete*" rollback-for="Exception" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- ■■■ Step ⑧ ■■■ -->
+	<!-- ○ AOP 설정 -->
+	<!--    → ⑦의 txAdvice 를 참조하여 속성을 설정 -->
+	<aop:config proxy-target-class="true">
+		<!-- com.straycat 및 하위 패키지의 Service로 끝나는 클래스의 모든 메소드 -->
+		<aop:pointcut id="serviceOperation" expression="execution(public * com..*Service.*(..))" />
+		<aop:advisor id="transactionAdvisor" pointcut-ref="serviceOperation" advice-ref="txAdvice" />
+	</aop:config>
 </beans>

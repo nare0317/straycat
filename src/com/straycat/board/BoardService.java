@@ -1,10 +1,10 @@
 package com.straycat.board;
 
 import java.util.List;
+import java.util.Map;
 
-import org.springframework.ui.Model;
 
 public interface BoardService 
 {
-	/* public List<BoardDTO> listBoard(Map<String, Object> map); */
+	public List<Map<String, Object>> listBoard();
 }
