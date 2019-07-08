@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+div 
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.m60
+{
+	margin-top: 60px;
+}
+
+.m25
+{
+	margin: 25px;
+}
+
+.m40
+{
+	margin: 40px;
+}
