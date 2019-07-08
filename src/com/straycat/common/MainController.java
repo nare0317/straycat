@@ -64,8 +64,18 @@ public class MainController
 	}
 	
 	// 로그인 페이지로 이동
+	@RequestMapping("/login")
+	public String login()
+	{
+		return "Login";
+	}
 	
 	// 약관동의 페이지로 이동
+	@RequestMapping("/acceptterms")
+	public String acceptTerm()
+	{
+		return "AcceptTerms";
+	}
 	
 	//
 }
