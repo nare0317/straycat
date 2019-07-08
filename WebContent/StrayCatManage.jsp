@@ -8,81 +8,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>StrayCatRegistration.jsp</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean"	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese"	rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style type="text/css">
-div {
-	font-family: 'Nanum Gothic Coding', monospace;
-	font-family: 'Quicksand', sans-serif;
-}
-
-.card {
-	margin-top: 30px;
-	padding: 30px;
-}
-
-.dt1 {
-	width: 50%;
-	display: inline;
-}
-
-.dt2 {
-	width: 50%;
-	display: inline;
-}
-
-th {
-	background-color: #F6F6F6;
-	width: 30%;
-}
-
-.mButton.gCenter {
-	position: relative;
-	text-align: center;
-}
-
-.alignRight {
-	margin: 10px 0;
-	padding: 0 4px 0 0;
-	text-align: right;
-}
-
-.card {
-	margin-top: 100px;
-}
-
-span {
-	font-size: small;
-}
-
-.container2 {
-	margin-left: 100px;
-	margin-right: 100px;
-	margin-top: 60px;
-}
-</style>
+	<title>길고양이 관리</title>
+	<c:import url="Head.jsp"></c:import>
+	
+	<!-- 페이지 CSS, 자바스크립트 -->
+	<link rel="stylesheet" href="<%=cp%>/css/view/straycatmanage.css">
 </head>
 <body>
 
 
-	<div>
-		<c:import url="Menu.jsp"></c:import>
+<c:import url="Menu.jsp"></c:import>
 
-		<div class="container2" style="margin-top: 60px;">
-		<div class="row">
-			<div class="col-9">
+<div class="container2 header">
+	<div class="row">
+		<div class="col-9">
 			<h1>우리동네 길냥이</h1>
 			<hr>
 			<h6>동네에 어떤 길고양이들이 있는지 확인하세요!</h6>
 			<div class="row">
 				<div class="col-11">
 					<div class="form-group">
-						<select class="form-control" id="exampleFormControlSelect1">
+						<select class="form-control" id="addressSelect">
 							<option>서울시 마포구 서교동</option>
 							<option>2</option>
 							<option>3</option>
@@ -98,14 +44,13 @@ span {
 			<div>
 				<h5>검색된 고양이 20 마리</h5>
 			</div>
-			<div style="overflow-y: scroll; overflow-x: hidden; overflow-y: auto; height: 2000px;">
-
+			<div class="scroll">
+		
 				<c:forEach var="i" begin="0" end="7">
 					<div>
 						<div class="card-deck">
 							<c:forEach var="j" begin="0" end="1">
-								<div class="card mb-3"
-									style="margin: 30px; padding: 10px; height: 260px;">
+								<div class="card mb-3" class="content">
 									<div class="row no-gutters">
 										<div class="col-md-4">
 											<img src="img/straycat.jpg" class="card-img" alt="...">
@@ -129,66 +74,65 @@ span {
 					<br>
 				</c:forEach>
 			</div>
-			</div>
-			
-			<div class="col-3">
-				<div class="card">
-					<div class="card-header">
-						내가 관리하는 고양이
-					</div>
-					<!-------------------------------------------------- 로그인 O ---------------------------------------------------->
-				<div class="card-body">
-					<div class="container">
-						<div class="row">
-						<div class="col">
-						<img src="img/straycat.jpg" class="card-img" alt="...">
-						</div>
-						<div class="col">
-						<img src="img/straycat.jpg" class="card-img" alt="...">
-						</div>
-						<div class="col">
-						<img src="img/straycat.jpg" class="card-img" alt="...">
-						</div>
-						<div class="col">
-						<img src="img/straycat.jpg" class="card-img" alt="...">
-						</div>
-						</div>
-					</div>
-					</div>
+		</div>
+		
+		<div class="col-3">
+			<div class="card">
+				<div class="card-header">
+					내가 관리하는 고양이
 				</div>
 				<!-------------------------------------------------- 로그인 O ---------------------------------------------------->
-				<!-------------------------------------------------- 로그인 X ---------------------------------------------------->
-				<!-- 
-				<div class="card">
-					<div class="card-header">
-						내가 올린 입양글
+			<div class="card-body">
+				<div class="container">
+					<div class="row">
+					<div class="col">
+					<img src="img/straycat.jpg" class="card-img" alt="...">
 					</div>
-					<div class="card-body">
-					<div class="container">
-						<div class="jumbotron text-center">
-							<h4>로그인을 하세요</h4>
-							<br>
-							<a class="btn btn-primary" href="#" role="button">로그인</a>
-						</div>
+					<div class="col">
+					<img src="img/straycat.jpg" class="card-img" alt="...">
+					</div>
+					<div class="col">
+					<img src="img/straycat.jpg" class="card-img" alt="...">
+					</div>
+					<div class="col">
+					<img src="img/straycat.jpg" class="card-img" alt="...">
 					</div>
 					</div>
 				</div>
-				 -->
-				<!-------------------------------------------------- 로그인 X ---------------------------------------------------->
 				</div>
 			</div>
+			<!-------------------------------------------------- 로그인 O ---------------------------------------------------->
+			<!-------------------------------------------------- 로그인 X ---------------------------------------------------->
+			<!-- 
+			<div class="card">
+				<div class="card-header">
+					내가 올린 입양글
+				</div>
+				<div class="card-body">
+				<div class="container">
+					<div class="jumbotron text-center">
+						<h4>로그인을 하세요</h4>
+						<br>
+						<a class="btn btn-primary" href="#" role="button">로그인</a>
+					</div>
+				</div>
+				</div>
 			</div>
+			 -->
+			<!-------------------------------------------------- 로그인 X ---------------------------------------------------->
 		</div>
-
-
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<div>
-		<c:import url="Footer.jsp"></c:import>
 	</div>
+</div>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<div>
+	<c:import url="Footer.jsp"></c:import>
+</div>
 
 
 </body>

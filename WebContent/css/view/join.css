@@ -76,6 +76,11 @@ div.breadcrumbs > ul
 	width: 100%;
 }
 
+.w300
+{
+	width: 300px;
+}
+
 #pwd, #pwdConfirm
 {
 	width: 276px !important;

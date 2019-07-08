@@ -30,3 +30,9 @@ div
 	display: none;
 	font-weight: bold;
 }
+
+.mw
+{
+	margin-top: 60px; 
+	width: 100%;
+}
