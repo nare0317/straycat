@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MissingRegisration.jsp(실종글 등록 페이지)</title>
+<title>입양게시글작성</title>
 
 <!-- Head.jsp  -->
 <c:import url="Head.jsp"></c:import>
