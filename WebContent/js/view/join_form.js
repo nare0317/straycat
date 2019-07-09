@@ -89,18 +89,7 @@ $(document).ready(function()
 			$("#pwdConfirm").val("");
 			return;
 		}
-		
-		// 관심지역을 어느 하나라도 입력하지 않았을 때
-		if (($("#favorite1").val()=="" || $("#favorite1").val()==null) && ($("#favorite2").val()=="" || $("#favorite2").val()==null) && ($("#favorite3").val()=="" || $("#favorite3").val()==null))
-		{
-			$(".err").text("관심지역을 적어도 하나 입력해주세요.");
-			
-			// 가입 에러가 나면 비밀번호를 초기화 함
-			$("#pwd").val("");
-			$("#pwdConfirm").val("");
-			return;
-		}
-		
+
 		// 아이디가 15자를 초과했을 때
 		if ($("#idInput").val().length > 15)
 		{
@@ -124,9 +113,9 @@ $(document).ready(function()
 		}
 		
 		// 닉네임이 20자 초과했을 때
-		if ($("#nickname").val().length > 20)
+		if ($("#nickname").val().length > 10)
 		{
-			$(".err").text("닉네임은 최대 20자까지 입력할 수 있습니다.");
+			$(".err").text("닉네임은 최대 10자까지 입력할 수 있습니다.");
 			
 			// 가입 에러가 나면 비밀번호를 초기화 함
 			$("#pwd").val("");
@@ -168,4 +157,24 @@ $(document).ready(function()
 		
 		$("#joinForm").submit();
 	});
+	
+	$("#idCheck").click(function()
+	{
+		
+		
+	});
+	
 });
+
+
+
+
+
+
+
+
+
+
+
+
+

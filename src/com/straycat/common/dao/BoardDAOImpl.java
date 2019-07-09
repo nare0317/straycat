@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository("BoardDAO")
 public class BoardDAOImpl implements CommonDAO
 {
 	@Autowired
@@ -35,4 +35,12 @@ public class BoardDAOImpl implements CommonDAO
 		
 		return list;
 	}
+
+	@Override
+	public Map<String, Object> selectOne()
+	{
+		return null;
+	}
+	
+	
 }

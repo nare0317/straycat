@@ -70,24 +70,30 @@ public class MainController
 		return "Login";
 	}
 	
+	/*
 	// 회원가입 페이지로 이동
 	@RequestMapping("/join")
 	public String join()
 	{
-		return "Join";
+		return "Join_Form";
 	}
+	*/
 	
+	/*
 	// 약관동의 페이지로 이동
 	@RequestMapping("/acceptterms")
 	public String acceptTerm()
 	{
-		return "AcceptTerms";
+		return "Join_AcceptTerms";
 	}
+	*/
 	
+	/*
 	// 회원가입 페이지로 이동
 	@RequestMapping("/signup")
 	public String signUp()
 	{
-		return "Join";
+		return "Join_Form";
 	}
+	*/
 }
