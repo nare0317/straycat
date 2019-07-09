@@ -35,24 +35,27 @@
 			<li class="list-inline-item">자유게시판</li>
 		</ul>
 	</div>
-
+<form id="searchForm" action="board" method="get">
 	<div class="form-group">
 		<div class="input-group mb-3 d-flex justify-content-end row align-items-start">
-			<div class="input-group-prepend">   
-				<select name="searchKey" class="selectFiled custom-select">
-					<option selected>선택</option>
+		
+			<div class="input-group-prepend">
+				<select id="searchKey" name="searchKey" class="selectFiled custom-select">
+					<option value="" selected>선택</option>
 					<option value="subject">제목</option>
 					<option value="name">작성자</option>
 					<option value="content">내용</option>
 				</select>
-				<input type="text" name="searchValue" class="textFiled" class="form-control">
+				<input id="searchValue" type="text" name="searchValue" class="textFiled" class="form-control">
 			</div>
          
 			<div class="input-group-append">
-				<button class="btn btn-secondary" type="button" id="button-addon2">검색</button>
+				<button id="searchBtn" class="btn btn-secondary" type="button" id="button-addon2">검색</button>
 			</div>
+		
 		</div>
 	</div>
+	</form>
 
 	<!-- 게시판 헤더 시작 -->
 	<div class="bbsHeader">

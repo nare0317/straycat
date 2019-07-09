@@ -15,4 +15,21 @@ $(document).ready(function()
 		$(this).css("color", "black");
 		$(this).css("text-decoration","");
 	});
+	
+	$("#searchBtn").click(function()
+	{
+		if ($("#searchValue").val()=="" || $("#searchValue").val()==null)
+		{
+			alert("검색어를 입력해주세요.");
+			return;
+		}
+		
+		if (!($("#searchKey").val()!="subject" || $("#searchKey").val()!="name" || $("#searchKey").val()!="content"))
+		{
+			alert("검색기준을 선택해주세요.");
+			alert($("#searchKey").val());
+			return;
+		}
+		$("#searchForm").submit();
+	})
 });

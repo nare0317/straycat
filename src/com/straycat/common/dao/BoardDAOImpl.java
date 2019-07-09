@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BoardDAOImpl implements CommonDAO
+public class BoardDAOImpl implements BoardDAO
 {
 	@Autowired
 	private SqlSession sqlSession;
@@ -50,6 +50,22 @@ public class BoardDAOImpl implements CommonDAO
 		}
 		
 		return count;
+	}
+
+	@Override
+	public List<Map<String, Object>> searchList()
+	{
+		List<Map<String, Object>> list = null;
+		
+		try
+		{
+			list = sqlSession.selectList("board.searchList");
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return list;
 	}
 	
 	
