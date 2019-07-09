@@ -21,6 +21,7 @@
 	
 <c:import url="Menu.jsp"></c:import>
 
+<br><br><br>
 <div>
 	<div class="container">
 		<h1>입양 <span>입양신청서 작성</span></h1>
