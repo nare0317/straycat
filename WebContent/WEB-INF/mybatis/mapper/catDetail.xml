@@ -3,7 +3,7 @@
 
 <mapper namespace="catDetail">
 
-<!-- 자유게시판 목록 쿼리문 -->
+<!-- 등록 고양이 정보를 가져오는 쿼리문 -->
 <select id="catInfo" resultType="map">
 SELECT CAT_CODE, CAT_NAME, CAT_SPECIES, CAT_SEX, CAT_STATUS, CAT_DATE, CAT_IMG, FOLLOW, ETC, HEALTH
 FROM CAT_INFO
