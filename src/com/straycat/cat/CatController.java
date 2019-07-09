@@ -1,5 +1,6 @@
 package com.straycat.cat;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,10 @@ public class CatController
 	 public String selectList(Model model)
 	 {
 		Map<String, Object> catInfo = service.catInfo();
+		List<String> catLocation = service.catLocation();
 		
 		model.addAttribute("catInfo",catInfo);
+		model.addAttribute("catLocation",catLocation);
 		
 		return "Cat_Detail";
 	 }
