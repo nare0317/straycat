@@ -28,7 +28,7 @@
 		
 	<!-- ★★★★★헤더 + breadcrumbs★★★★★ -->
 
-	<section class="header container ">
+	<section class="header container-fluid ">
 		<div class="header-title">
 			<h2 class="h2">길냥이관리</h2>
 		</div>
@@ -46,10 +46,10 @@
 	</section>
 	
 	<!-- ★★★★ 지역 검색 ★★★★★ -->
-	<section class="section-1 container">
+	<section class="section-1 continer-fluid">
 		
 		<!-------------------   10  ------------------------->
-		<div class="form-group col-lg-10">
+		<div class="form-group col-lg-10 search">
 			
 			<!-- row1 -->
 			<div class="row">
@@ -76,29 +76,54 @@
 						<option value="3">서교동</option>
 					</select>
 				</div>
-				
 				<!-- 조회버튼 -->
 				<div class="col-lg-2">
 					<button type="button" class="btn btn-primary">조회</button>
 				</div>
 			</div>
 			
+			<hr>
+			
 			<!-- row3 -->
 			<div class="row">
 				<h5>검색된 고양이<span> 5 </span>마리</h5>
 			</div>
 			
-		<!-------------------   2  ------------------------->
-		<!-- 우측 사이드바 (입양신청)-->
-		<div class="slidemenu col-lg-2 text-center">
-			<div class="apply">
-				<h5 class="">내가 관리하는 길냥이</h5>
-				<div class="col">
-					<img src="img/straycat.jpg" class="card-img" alt="" style="width: 80px; height: 80px;">
+			<!-------------------   2  ------------------------->
+			<!-- 우측 사이드바 (입양신청)-->
+			<div class="slidemenu col-lg-2 text-center">
+				<div class="mycat">
+					<div class="" align="left">
+						<p>내가 관리하는 길냥이</p>
+					</div>
+					<div class="" align="right">
+						<a href="#" class="mycat-prev"><i class="fas fa-chevron-left"></i></a>
+						<a href="#" class="mycat-next"><i class="fas fa-chevron-right"></i></a>
+					</div>
+					
+					<div class="col">
+						<figure class="figure">
+							<img src="img/straycat.jpg" class="mycat-img rounded" alt="" style="width: 80px; height: 80px;">
+	 						<figcaption class="figure-caption text-center">야옹이</figcaption>						
+	 					</figure>
+	 					<figure class="figure">
+							<img src="img/straycat.jpg" class="mycat-img rounded" alt="" style="width: 80px; height: 80px;">
+	 						<figcaption class="figure-caption text-center">나비</figcaption>						
+	 					</figure>
+ 					</div>
+ 					<div class="col">
+	 					<figure class="figure">
+							<img src="img/straycat.jpg" class="mycat-img rounded" alt="" style="width: 80px; height: 80px;">
+	 						<figcaption class="figure-caption text-center">개냥이</figcaption>						
+	 					</figure>	
+	 					<figure class="figure">
+							<img src="img/straycat.jpg" class="mycat-img rounded" alt="" style="width: 80px; height: 80px;">
+	 						<figcaption class="figure-caption text-center">호랭이</figcaption>						
+	 					</figure>		
+					</div>
 				</div>
 			</div>
 		</div>
-			
 	</section>
 	
 	<section class="section-2 container">
@@ -161,7 +186,6 @@
 								</div>
 							</div>
 						</div>
-						
 					</div>
 				</div>
 				
