@@ -14,7 +14,7 @@
 <c:import url="Head.jsp"></c:import>
 
 <!-- CSS 파일 -->
-<link rel="stylesheet" href="<%=cp %>/css/view/adoption_read.css">
+<link rel="stylesheet" href="<%=cp %>/css/view/adopt_read.css">
 
 <!-- JS 파일 -->
 <script src="<%=cp %>/js/view/adoption_read.js"></script>

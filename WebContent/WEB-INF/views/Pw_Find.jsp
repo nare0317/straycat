@@ -11,8 +11,8 @@
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link rel="stylesheet" href="<%=cp %>/css/view/find_password.css">
-	<script type="text/javascript" src="<%=cp %>/js/view/find_password.js"></script>
+	<link rel="stylesheet" href="<%=cp %>/css/view/pw_find.css">
+	<script type="text/javascript" src="<%=cp %>/js/view/pw_find.js"></script>
 </head>
 <body>
 

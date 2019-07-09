@@ -14,10 +14,10 @@
 <c:import url="Head.jsp"></c:import>
 
 <!-- CSS 파일 -->
-<link rel="stylesheet" href="<%=cp %>/css/view/bbs_read.css">
+<link rel="stylesheet" href="<%=cp %>/css/view/board_read.css">
 
 <!-- JS 파일 -->
-<script src="<%=cp %>/js/view/bbs_read.js"></script>
+<script src="<%=cp %>/js/view/board_read.js"></script>
 
 </head>
 <body>

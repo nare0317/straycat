@@ -11,8 +11,8 @@
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link rel="stylesheet" href="<%=cp %>/css/view/accept_terms.css">
-	<script type="text/javascript" src="<%=cp %>/js/view/accept_terms.js"></script>
+	<link rel="stylesheet" href="<%=cp %>/css/view/join_acceptterms.css">
+	<script type="text/javascript" src="<%=cp %>/js/view/join_acceptterms.js"></script>
 </head>
 <body>
 

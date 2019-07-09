@@ -14,10 +14,10 @@
 <c:import url="Head.jsp"></c:import>
 
 <!-- CSS 파일 -->
-<link rel="stylesheet" href="<%=cp%>/css/view/missing_registration.css">
+<link rel="stylesheet" href="<%=cp%>/css/view/miss_write.css">
 
 <!-- JS 파일 -->
-<script src="<%=cp%>/js/view/missing_registration.js"></script>
+<script src="<%=cp%>/js/view/miss_write.js"></script>
 
 
 <link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
