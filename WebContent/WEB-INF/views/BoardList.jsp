@@ -67,13 +67,13 @@
 	<!-- 게시판 게시물 리스트 시작 -->
 	<c:forEach var="list" items="${list }">
 	<div class="bbsContents">
-		<div class="content no">1</div>
+		<div class="content no">${list.NUM }</div>
 		<div class="content title titleLeft">
 			<div class="contentTitle">
 				<a class="contentLink" href="#">${list.TITLE }</a>
 			</div>
 			<div class="commentCount">
-					<i class='far fa-comment'>0</i>
+					<i class='far fa-comment'><span id="cmtCount">${list.CMT_COUNT }</span></i>
 			</div>
 		</div>
 		<div class="content writer">${list.NAME }</div>
