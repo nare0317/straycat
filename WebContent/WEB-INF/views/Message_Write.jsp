@@ -12,7 +12,7 @@
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
 	<link href="<%=cp %>/css/view/note_write.css" rel="stylesheet">
-	<script type="text/javascript" src="<%=cp%>/js/view/note_write.js"></script>
+	<script type="text/javascript" src="<%=cp%>/js/view/message_write.js"></script>
 </head>
 <body>
 

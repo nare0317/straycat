@@ -11,7 +11,7 @@
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link rel="stylesheet" href="<%=cp %>/css/view/find_id_complete.css">
+	<link rel="stylesheet" href="<%=cp %>/css/view/id_find_complete.css">
 </head>
 <body>
 

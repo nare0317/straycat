@@ -11,7 +11,7 @@
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link rel="stylesheet" href="<%=cp %>/css/view/receive_note_detail.css">
+	<link rel="stylesheet" href="<%=cp %>/css/view/message_read(received).css">
 </head>
 <body>
 

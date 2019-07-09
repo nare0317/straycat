@@ -8,17 +8,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>StrayCatManage.jsp (길고양이 관리)</title>
+<title>길냥이관리(리스트)</title>
 <c:import url="Head.jsp"></c:import>
 
 <!-- Head.jsp  -->
 <c:import url="Head.jsp"></c:import>
 
 <!-- CSS 파일 -->
-<link rel="stylesheet" href="<%=cp%>/css/view/straycatmanage.css">
+<link rel="stylesheet" href="<%=cp%>/css/view/cat_list.css">
 
 <!-- JS 파일  -->
-<script src="<%=cp %>/js/view/straycatmanage.js"></script>
+<script src="<%=cp %>/js/view/cat_list.js"></script>
 
 </head>
 <body>

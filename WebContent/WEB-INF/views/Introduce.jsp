@@ -11,7 +11,7 @@
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link rel="stylesheet" href="<%=cp %>/css/view/introduce.css">
+	<link rel="stylesheet" href="<%=cp %>/css/view/intro.css">
 </head>
 <body>
 

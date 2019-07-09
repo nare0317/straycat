@@ -14,7 +14,7 @@
 <c:import url="Head.jsp"></c:import>
 
 <!-- CSS 파일 -->
-<link rel="stylesheet" href="<%=cp %>/css/view/missing_read.css">
+<link rel="stylesheet" href="<%=cp %>/css/view/miss_read.css">
 
 <!-- JS 파일 -->
 <script src="<%=cp %>/js/view/missing_read.js"></script>

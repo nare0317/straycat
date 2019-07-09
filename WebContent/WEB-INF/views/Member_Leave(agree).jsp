@@ -12,8 +12,8 @@
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link rel="stylesheet" href="<%=cp %>/css/view/un_registration.css">
-	<script type="text/javascript" src="<%=cp%>/js/view/un_registration.js"></script>
+	<link rel="stylesheet" href="<%=cp %>/css/view/member_leave.css">
+	<script type="text/javascript" src="<%=cp%>/js/view/member_leave.js"></script>
 </head>
 <body>
 
