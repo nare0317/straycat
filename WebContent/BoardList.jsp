@@ -9,11 +9,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>List.jsp</title>
+<title>자유게시판</title>
 
 <c:import url="Head.jsp"></c:import>
+	
+	<!-- 페이지 CSS, 자바스크립트 -->
+	<link rel="stylesheet" href="<%=cp %>/css/view/accept_terms.css">
+	<script type="text/javascript" src="<%=cp %>/js/view/accept_terms.js"></script>
 
-<!-- 페이지 자바스크립트, CSS -->
+<!-- 로그인 페이지 자바스크립트, CSS -->
 <script src="<%=cp%>/js/view/board_list.js"></script>
 <link rel="stylesheet" href="<%=cp%>/css/view/board_list.css">
   
@@ -59,24 +63,26 @@
 		<div class="header viewCount">조회수</div>
 		<div class="header recomm">추천수</div>
 	</div>
-	
+
 	<!-- 게시판 게시물 리스트 시작 -->
+	<c:forEach var="list" items="${list }">
 	<div class="bbsContents">
-		<div class="content no">10</div>
+		<div class="content no">${list.NUM }</div>
 		<div class="content title titleLeft">
 			<div class="contentTitle">
-				<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 </a>
+				<a class="contentLink" href="#">${list.TITLE }</a>
 			</div>
 			<div class="commentCount">
-					<i class='far fa-comment'>0</i>
+					<i class='far fa-comment'><span id="cmtCount">${list.CMT_COUNT }</span></i>
 			</div>
 		</div>
-		<div class="content writer">아웃사이더</div>
-		<div class="content date">2019-07-04</div>
-		<div class="content viewCount">10</div>
-		<div class="content recomm">5</div>
+		<div class="content writer">${list.NAME }</div>
+		<div class="content date">${list.POST_DATE }</div>
+		<div class="content viewCount">${list.HITCOUNT }</div>
+		<div class="content recomm">${list.LIKE_COUNT }</div>
 	</div>
-	<div class="bbsContents">
+	</c:forEach>
+	<!-- <div class="bbsContents">
 		<div class="content no">9</div>
 		<div class="content title titleLeft">
 			<div class="contentTitle">
@@ -210,7 +216,7 @@
 		<div class="content date">2019-07-04</div>
 		<div class="content viewCount">10</div>
 		<div class="content recomm">5</div>
-	</div>
+	</div> -->
 	<br><br>
 	
 	<!-- 페이지네이션 시작 -->
