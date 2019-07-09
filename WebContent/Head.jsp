@@ -25,6 +25,15 @@
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese" rel="stylesheet">
 
+<!-- jquery ui css -->
+<link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
+<link rel="stylesheet" href="<%=cp%>/css/jquery-ui.theme.css">
+<link rel="stylesheet" href="<%=cp%>/css/jquery-ui.structure.css">
+
+<!-- jquery ui js -->
+<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
+<script type="text/javascript" src="<%=cp%>/js/jquery-ui.min.js"></script>
+
 <!-- 파비콘 -->
 <link rel="shortcut icon" href="<%=cp %>/favicon.ico">
 <link rel="icon" href="<%=cp %>/favicon.ico">
