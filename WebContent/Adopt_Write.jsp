@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MissingRegisration.jsp(실종글 등록 페이지)</title>
+<title>입양게시글작성</title>
 
 <!-- Head.jsp  -->
 <c:import url="Head.jsp"></c:import>
@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="<%=cp%>/css/view/miss_write.css">
 
 <!-- JS 파일 -->
-<script src="<%=cp%>/js/view/missing_registration.js"></script>
+<script src="<%=cp%>/js/view/miss_write.js"></script>
 
 
 <link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
@@ -34,7 +34,7 @@
    <section id="header" class="container ">
    
       <div id="header-title">
-         <h2 id="title">실종<span id="sub-title">게시글작성</span></h2>
+         <h2 id="title">입양<span id="sub-title">게시글작성</span></h2>
       </div>
       
       <div id="breadcrumbs">
@@ -44,7 +44,7 @@
                <span class="breadcrumb-divider">></span>
             </li>
             <li class="list-inline-item">
-               <a class="text-dark" href="#">실종</a>
+               <a class="text-dark" href="#">입양</a>
                <span class="breadcrumb-divider">></span>
             </li>
             <li class="list-inline-item">
@@ -195,6 +195,36 @@
                   
                </div>
                
+               <!-- 고양이 분류 -->
+               <div class="form-group row">
+                  <label for="colFormLabel" class="col-sm-2 col-form-label">분류</label>
+                  
+                  <div class="col-sm-10">
+                  
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="category1" name="category" class="custom-control-input" required>
+                        <label class="custom-control-label" for="category1">긴급입양</label>
+                     </div>
+                     
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="category2" name="category" class="custom-control-input" required>
+                        <label class="custom-control-label" for="category2">분실의심</label>
+                     </div>
+                     
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="category3" name="category" class="custom-control-input" required>
+                        <label class="custom-control-label" for="category3">치료필요</label>
+                     </div>
+                     
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="category4" name="category" class="custom-control-input" required>
+                        <label class="custom-control-label" for="category4">장애있음</label>
+                     </div>
+                     
+                  </div>
+                  
+               </div>
+               
                <!-- 특이사항 -->   
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">고양이<br>
@@ -230,7 +260,7 @@
             <!------------------ 왼쪽 등록 폼 이름 ----------------->
             <div class="col-md-2 text-right">
                <h1>
-                  작성자<br>정보
+                  입양<br>보내는 분<br>정보
                </h1>
             </div>
             
@@ -258,6 +288,186 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">이메일</label>
                   <div class="col-sm-6">
                      <input type="email" class="form-control" id="email" placeholder="test123@naver.com">
+                  </div>
+               </div>
+               
+               <!-- 입양보내는 이유 -->   
+               <div class="form-group row">
+                  <label for="colFormLabel" class="col-sm-2 col-form-label">입양보내는 이유</label>
+                  <div class="col-sm-10">
+                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" maxlength="1000" required></textarea>
+                  </div>
+               </div>
+               <br>
+               
+            </div>
+         </div><!-- 작성자 정보입력 끝 -->
+         
+          <hr>
+         
+         <!-- ★★★★ 서술형 질문 ★★★★  -->
+         <div class="row">
+         
+            <!------------------ 왼쪽 등록 폼 이름 ----------------->
+            <div class="col-md-2 text-right">
+               <h1>
+                  서술형<br>질문
+               </h1>
+            </div>
+            
+            <!------------------ 작성자정보 등록 폼 ----------------->
+            <div class="col-md-7 offset-md-3">
+            
+				<!-- 입양보내는 이유 -->   
+               <div class="form-group row">
+                  <label for="colFormLabel" class="col-sm-2 col-form-label">질문 1.</label>
+                  <div class="col-sm-10">
+                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" maxlength="1000" required placeholder="입양을 원하시는 가장 큰 이유는 무엇인가요?"></textarea>
+                  </div>
+               </div>
+               <br>
+               
+               <!-- 입양보내는 이유 -->   
+               <div class="form-group row">
+                  <label for="colFormLabel" class="col-sm-2 col-form-label">질문 2.</label>
+                  <div class="col-sm-10">
+                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" maxlength="1000" required placeholder="입양을 결정하기 까지 얼마나 오랜 시간을 고민하셨나요?"></textarea>
+                  </div>
+               </div>
+               <br>
+               
+               <!-- 입양보내는 이유 -->   
+               <div class="form-group row">
+                  <label for="colFormLabel" class="col-sm-2 col-form-label">입양보내는 이유</label>
+                  <div class="col-sm-10">
+                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="1000" required placeholder="현재 다른 반려동물이 있을 경우 합사는 적어도 2주 정도 시간을 갖고 천천히 진행해야 합니다. 합사가 필요한 경우 간단한 합사 계획에 대해서 알려주세요. (e.g, 2주 동안은 안방에서 격리 후 천천히 대면 예정)"></textarea>
+                  </div>
+               </div>
+               <br>
+               
+            </div>
+         </div><!-- 작성자 정보입력 끝 -->
+         
+          <hr>
+         
+         <!-- ★★★★ 설문 질문 ★★★★  -->
+         <div class="row">
+         
+            <!------------------ 왼쪽 등록 폼 이름 ----------------->
+            <div class="col-md-2 text-right">
+               <h1>
+                  입양매칭을<br>위한 설문
+               </h1>
+            </div>
+            
+            <!------------------ 작성자정보 등록 폼 ----------------->
+            <div class="col-md-7 offset-md-3">
+            
+				<!-- 고양이 길러본 경험 -->
+               <div class="form-group row">
+                  <label for="colFormLabel" class="col-sm-4 col-form-label">고양이 길러본 경험</label>
+                  
+                  <div class="col-sm-8">
+                  
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="experience1" name="experience" class="custom-control-input" required>
+                        <label class="custom-control-label" for="experience1">상관없음</label>
+                     </div>
+                     
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="experience2" name="experience" class="custom-control-input" required>
+                        <label class="custom-control-label" for="experience2">있음</label>
+                     </div>
+                     
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="experience3" name="experience" class="custom-control-input" required>
+                        <label class="custom-control-label" for="experience3">없음</label>
+                     </div>
+                     
+                  </div>
+               </div>
+               
+               <!-- 직업 구분 -->
+               <div class="form-group row">
+                  <label for="colFormLabel" class="col-sm-4 col-form-label">직업구분</label>
+                  
+                  <div class="col-sm-8">
+                  
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="job1" name="job" class="custom-control-input" required>
+                        <label class="custom-control-label" for="job1">상관없음</label>
+                     </div>
+                     
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="job2" name="job" class="custom-control-input" required>
+                        <label class="custom-control-label" for="job2">학생</label>
+                     </div>
+                     
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="job3" name="job" class="custom-control-input" required>
+                        <label class="custom-control-label" for="job3">직장인</label>
+                     </div>
+                     
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="job4" name="job" class="custom-control-input" required>
+                        <label class="custom-control-label" for="job4">없음</label>
+                     </div>
+                     
+                  </div>
+               </div>
+               
+               
+               <!-- 결혼여부 -->
+               <div class="form-group row">
+                  <label for="colFormLabel" class="col-sm-4 col-form-label">결혼여부</label>
+                  
+                  <div class="col-sm-8">
+                  
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="marry1" name="marry" class="custom-control-input" required>
+                        <label class="custom-control-label" for="marry1">상관없음</label>
+                     </div>
+                     
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="marry2" name="marry" class="custom-control-input" required>
+                        <label class="custom-control-label" for="marry2">미혼</label>
+                     </div>
+                     
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="marry3" name="marry" class="custom-control-input" required>
+                        <label class="custom-control-label" for="marry3">기혼</label>
+                     </div>
+                     
+                  </div>
+               </div>
+               
+               
+               <!-- 가족 구성원 수(본인포함) -->
+               <div class="form-group row">
+                  <label for="colFormLabel" class="col-sm-4 col-form-label">가족 구성원 수(본인포함)</label>
+                  
+                  <div class="col-sm-8">
+                  
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="member1" name="member" class="custom-control-input" required>
+                        <label class="custom-control-label" for="member1">상관없음</label>
+                     </div>
+                     
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="member2" name="member" class="custom-control-input" required>
+                        <label class="custom-control-label" for="member2">1명</label>
+                     </div>
+                     
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="member3" name="member" class="custom-control-input" required>
+                        <label class="custom-control-label" for="member3">2명</label>
+                     </div>
+                     
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="member4" name="member" class="custom-control-input" required>
+                        <label class="custom-control-label" for="member4">3명</label>
+                     </div>
+                     
                   </div>
                </div>
                

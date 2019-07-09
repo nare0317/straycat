@@ -7,19 +7,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>회원탈퇴 완료</title>
+	<title>탈퇴 완료페이지</title>
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link rel="stylesheet" href="<%=cp %>/css/view/member_leave(complete).css">
+	<link rel="stylesheet" href="<%=cp %>/css/view/session_finish.css">
 </head>
 <body>
+
 
 <c:import url="Menu.jsp"></c:import>
 
 <div class="container m60">
 	<div class="card text-center">
-		<div class="card-header"><h1><span class="color">회원탈퇴</span>가 완료되었습니다.</h1></div>
+		<div class="card-header"><h1>회원탈퇴가 완료되었습니다.</h1></div>
 			<div class="card-body">
 				<h5 class="card-title">그동안 우리동네고양이를 이용해 주셔서 감사합니다.
 보다 나은 우리동네고양이로 다시 만나뵐 수 있기를 바랍니다.</h5>
@@ -37,8 +38,8 @@
 <br />
 <br />
 <div>
+<hr>
 	<c:import url="Footer.jsp"></c:import>
 </div>
 
-</body>
 </html>

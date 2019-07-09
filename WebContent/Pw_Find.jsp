@@ -16,7 +16,10 @@
 </head>
 <body>
 
-<c:import url="Menu.jsp"></c:import>
+<div>
+	<c:import url="Menu.jsp"></c:import>
+</div>	
+
 <br>
 <br>
 <br>

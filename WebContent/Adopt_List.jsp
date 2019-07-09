@@ -7,12 +7,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-	<title>실종 고양이 리스트 </title>
+	<title>입양 리스트</title>
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link rel="stylesheet" href="<%=cp %>/css/view/miss_list.css">
+	<link rel="stylesheet" href="<%=cp%>/css/view/adopt_list.css">
 </head>
 <body>
 
@@ -20,13 +19,20 @@
 	<div>
 		<c:import url="Menu.jsp"></c:import>
 
-		<div class="container2 m60">
+		<div class="container2 header">
 		<div class="row">
 			<div class="col-9">
-			<h1>실종냥이찾기</h1>
+			<h1>입양집사찾기</h1>
 			<hr>
 			<div class="row">
-				<div class="col-8"></div>
+				<div class="col-8">
+					<h5>
+						<a href="#" class="red">긴급입양</a>
+						<a href="#" class="purple">분실의심</a>
+						<a href="#" >수컷</a><a href="#">암컷</a>
+						<a href="#">아기묘</a><a href="#">성묘</a>
+					</h5>
+				</div>
 				<div class="col-1">
 					  <div class="form-group">
 					    <select class="form-control" id="exampleFormControlSelect1">
@@ -59,7 +65,7 @@
 					<div>
 						<div class="card-deck">
 							<c:forEach var="j" begin="0" end="1">
-								<div class="card mb-3 mph">
+								<div class="card mb-3" class="mph">
 									<div class="row no-gutters">
 										<div class="col-md-4">
 											<img src="img/straycat.jpg" class="card-img" alt="...">
@@ -94,11 +100,11 @@
 			
 			<div class="col-3">
 			 <div class="text-right">
-			 	<button type="button" class="btn btn-primary">실종등록</button>
+			 	<button type="button" class="btn btn-primary">입양등록</button>
 			 </div>
 				<div class="card">
 					<div class="card-header">
-						내가 올린 실종글
+						내가 올린 입양글
 					</div>
 				<!-------------------------------------------------- 로그인 O ---------------------------------------------------->
 				<div class="card-body">
