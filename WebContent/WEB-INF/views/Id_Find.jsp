@@ -12,7 +12,7 @@
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
 	<script src="<%=cp%>/js/view/find_id.js"></script>
-	<link rel="stylesheet" href="<%=cp%>/css/view/find_id.css">
+	<link rel="stylesheet" href="<%=cp%>/css/view/id_find.css">
 </head>
 <body>
 

@@ -11,8 +11,8 @@
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link rel="stylesheet" href="<%=cp %>/css/view/email_write.css">
-	<script type="text/javascript" src="<%=cp %>/js/view/email_write.js"></script>
+	<link rel="stylesheet" href="<%=cp %>/css/view/email_inquiry.css">
+	<script type="text/javascript" src="<%=cp %>/js/view/email_inquiry.js"></script>
 
 </head>
 <body>

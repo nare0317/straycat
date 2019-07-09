@@ -12,7 +12,7 @@
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link href="<%=cp%>/css/view/stray_cat_adopt_apply.css" rel="stylesheet">
+	<link href="<%=cp%>/css/view/adopt_apply.css" rel="stylesheet">
 </head>
 <body>
 

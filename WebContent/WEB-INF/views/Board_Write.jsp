@@ -11,8 +11,8 @@
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link rel="stylesheet" href="<%=cp %>/css/view/created.css">
-	<script type="text/javascript" src="<%=cp%>/js/view/created.js"></script>
+	<link rel="stylesheet" href="<%=cp %>/css/view/board_write.css">
+	<script type="text/javascript" src="<%=cp%>/js/view/board_write.js"></script>
 </head>
 <body>
 

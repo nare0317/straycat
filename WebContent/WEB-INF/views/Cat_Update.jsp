@@ -11,8 +11,8 @@
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<script type="text/javascript" src="<%=cp %>/js/view/straycatupdate.js"></script>
-	<link rel="stylesheet" href="<%=cp %>/css/view/strayupdate.css">
+	<script type="text/javascript" src="<%=cp %>/js/view/cat_update.js"></script>
+	<link rel="stylesheet" href="<%=cp %>/css/view/cat_update.css">
 </head>
 <body>
 

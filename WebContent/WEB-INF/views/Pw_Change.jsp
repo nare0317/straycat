@@ -11,8 +11,8 @@
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 로그인 페이지 자바스크립트, CSS -->
-	<script src="<%=cp%>/js/view/change_password.js"></script>
-	<link rel="stylesheet" href="<%=cp%>/css/view/change_password.css">
+	<script src="<%=cp%>/js/view/pw_change.js"></script>
+	<link rel="stylesheet" href="<%=cp%>/css/view/pw_change.css">
 </head>
 <body>
 

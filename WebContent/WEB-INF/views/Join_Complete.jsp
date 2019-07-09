@@ -12,8 +12,8 @@
 <c:import url="Head.jsp"></c:import>
 
 <!-- 페이지 CSS, 자바스크립트 -->
-<link rel="stylesheet" href="<%=cp %>/css/view/join_finish.css">
-<script type="text/javascript" src="<%=cp %>/js/view/join_finish.js"></script>
+<link rel="stylesheet" href="<%=cp %>/css/view/join_complete.css">
+<script type="text/javascript" src="<%=cp %>/js/view/join_complete.js"></script>
 
 </head>
 <body>
