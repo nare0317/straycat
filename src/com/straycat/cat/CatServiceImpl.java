@@ -9,12 +9,15 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.straycat.common.dao.CatDAO;
+import com.straycat.service.CatService;
+
 
 @Service("catDetail")
 public class CatServiceImpl implements CatService
 {
 	@Resource(name="CatDAO")
-	private CatCommonDAO dao;
+	private CatDAO dao;
 
 	@Override
 	public Map<String, Object> catInfo()

@@ -7,13 +7,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.straycat.common.dao.CommonDAO;
+import com.straycat.common.dao.AdoptDAO;
+import com.straycat.service.AdoptService;
 
 @Service("adopt")
 public class AdoptServiceImpl implements AdoptService
 {
 	@Autowired
-	private CommonDAO dao;
+	private AdoptDAO dao;
 	
 	@Override
 	public List<Map<String, Object>> listAdopt()
