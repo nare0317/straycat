@@ -1,9 +1,9 @@
-package com.straycat.cat;
+package com.straycat.common.dao;
 
 import java.util.List;
 import java.util.Map;
 
-public interface CatCommonDAO
+public interface CatDAO
 {
 	public Map<String, Object> selectOne();
 	public List<String> selectList();

@@ -1,4 +1,4 @@
-package com.straycat.cat;
+package com.straycat.service;
 
 import java.util.List;
 import java.util.Map;

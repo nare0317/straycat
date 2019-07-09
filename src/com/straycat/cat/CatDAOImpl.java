@@ -1,4 +1,4 @@
-package com.straycat.common.dao;
+package com.straycat.cat;
 
 import java.util.List;
 import java.util.Map;
@@ -9,10 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.straycat.cat.CatCommonDAO;
+import com.straycat.common.dao.CatDAO;
 
 @Repository("CatDAO")
-public class CatDAOImpl implements CatCommonDAO
+public class CatDAOImpl implements CatDAO
 {
 	@Autowired
 	private SqlSession sqlSession;

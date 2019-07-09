@@ -6,6 +6,6 @@ import java.util.Map;
 public interface BoardDAO
 {
 	public List<Map<String, Object>> selectList();
+	public List<Map<String, Object>> selectList(String searchKey, String searchValue);
 	public int countList();
-	public List<Map<String, Object>> searchList();
 }

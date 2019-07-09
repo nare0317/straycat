@@ -9,13 +9,14 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.straycat.common.dao.CommonDAO;
+import com.straycat.common.dao.BoardDAO;
+import com.straycat.service.BoardService;
 
 @Service("board")
 public class BoardServiceImpl implements BoardService 
 {
-	@Resource(name="BoardDAO")
-	private CommonDAO dao;
+	@Autowired
+	private BoardDAO dao;
 	
 	// DB를 조회하여 모든 게시물 리스트를 불러오는 메소드
 	@Override

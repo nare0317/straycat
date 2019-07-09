@@ -1,4 +1,4 @@
-package com.straycat.email;
+package com.straycat.service;
 
 public interface EmailService
 {
