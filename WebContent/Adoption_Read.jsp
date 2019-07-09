@@ -18,6 +18,7 @@
 
 <!-- JS 파일 -->
 <script src="<%=cp %>/js/view/adoption_read.js"></script>
+
 </head>
 <body>
 
@@ -27,11 +28,12 @@
 		
 	<!-- ★★★★★헤더 + breadcrumbs★★★★★ -->
 
-	<section class="header container ">
+	<section class="header container-fluid ">
 		<div class="header-title">
 			<h2 class="h2">입양<span class="sub-title">입양모집글</span></h2>
 		</div>
 		<div class="breadcrumbs">
+		
 			<ul>
 				<li class="list-inline-item">
 					<a class="text-dark" href="<%=cp%>/Main.jsp"><i class="fas fa-home"></i></a>

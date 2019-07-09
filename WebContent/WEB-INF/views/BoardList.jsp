@@ -63,24 +63,26 @@
 		<div class="header viewCount">조회수</div>
 		<div class="header recomm">추천수</div>
 	</div>
-	
+
 	<!-- 게시판 게시물 리스트 시작 -->
+	<c:forEach var="list" items="${list }">
 	<div class="bbsContents">
-		<div class="content no">10</div>
+		<div class="content no">1</div>
 		<div class="content title titleLeft">
 			<div class="contentTitle">
-				<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 </a>
+				<a class="contentLink" href="#">${list.TITLE }</a>
 			</div>
 			<div class="commentCount">
 					<i class='far fa-comment'>0</i>
 			</div>
 		</div>
-		<div class="content writer">아웃사이더</div>
-		<div class="content date">2019-07-04</div>
-		<div class="content viewCount">10</div>
-		<div class="content recomm">5</div>
+		<div class="content writer">${list.NAME }</div>
+		<div class="content date">${list.POST_DATE }</div>
+		<div class="content viewCount">${list.HITCOUNT }</div>
+		<div class="content recomm">${list.LIKE_COUNT }</div>
 	</div>
-	<div class="bbsContents">
+	</c:forEach>
+	<!-- <div class="bbsContents">
 		<div class="content no">9</div>
 		<div class="content title titleLeft">
 			<div class="contentTitle">
@@ -214,7 +216,7 @@
 		<div class="content date">2019-07-04</div>
 		<div class="content viewCount">10</div>
 		<div class="content recomm">5</div>
-	</div>
+	</div> -->
 	<br><br>
 	
 	<!-- 페이지네이션 시작 -->

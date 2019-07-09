@@ -9,6 +9,6 @@
 						http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- ○ 마이바티스 리소스 구성 내용 포함 -->
-	<!-- <import resource="mybatis/mybatis-context.xml" /> -->
+	<import resource="/mybatis/mybatis-context.xml" />
 
 </beans>
