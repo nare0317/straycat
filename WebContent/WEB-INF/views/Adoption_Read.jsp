@@ -9,55 +9,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Adoption_Read.jsp(입양글 열람 페이지 -일반 사용자)</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!-- Head.jsp  -->
+<c:import url="Head.jsp"></c:import>
 
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- CSS 파일 -->
+<link rel="stylesheet" href="<%=cp %>/css/view/adoption_read.css">
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-<!-- Font Awesome 5 -->
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- CSS 파일 추가 -->
-<link rel="stylesheet" href="<%=cp %>/css/view/Adoption_Read.css">
-
-
-<script type="text/javascript">
-
- 	$(document).ready(function() {
-
-		// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
-		var floatPosition = parseInt($(".slidemenu").css('top'));
-		// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
-		
-		
-		$(window).scroll(function() {
-			// 현재 스크롤 위치를 가져온다.
-			var scrollTop = $(window).scrollTop();
-			var newPosition = scrollTop + floatPosition + "px";
-			 
-			$(".slidemenu").stop().animate({
-				"top" : newPosition
-			}, 1000);
-
-		}).scroll();
-		
-	});
-
-	
-</script>
-
+<!-- JS 파일 -->
+<script src="<%=cp %>/js/view/adoption_read.js"></script>
 </head>
 <body>
 
-<div>
+<div id="content">
 
 	<c:import url="Menu.jsp"></c:import>
 		
@@ -89,18 +53,26 @@
 	
 		<!-- 제목/작성자/작성일시/조회수 -->
 		<div class="post-head row">
-			<div class="col-lg-9">
+			<div class="col-lg-12">
+				<!-- 글 제목 -->
 				<h3 class="post-title"><span class="adt_status">[신규등록]</span>귀여운 치즈태비 입양하실분~!!</h3>
-				
+				<!-- 제목 밑에 줄 -->
+				<hr class="post-title-hr">
+			</div>
+		</div>
+		
+		<div class="post-head row">
+			<div class="col-lg-6">
+				<!-- 작성자아이디, 작성일시, 조회수 -->
 				<ul class="list-inline">
 					<li class="list-inline-item g-mx-4">nare0317
 					<li class="list-inline-item g-mx-4">|</li>
 					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item">2019-03-06 16:26</li>			
 					<li class="list-inline-item g-mx-4">|</li>
-					<li class="list-inline-item g-mx-4"><span class="icon-mouse" style="font-size: 11px;"></span> 1020</li>
+					<li class="list-inline-item g-mx-4"><span class="icon-mouse font11"></span> 1020</li>
 				</ul>
 			</div>
-		</div>
+		</div>		
 		
 		<!-- ★★★★★글내용★★★★★ -->	
 		<div class="post-content row">
@@ -165,6 +137,7 @@
 				</div>
 			</div>
 			
+			
 			<!-- 우측 사이드바 (입양신청)-->
 			<div class="slidemenu col-lg-2 text-center">
 				<div class="apply">
@@ -194,8 +167,13 @@
 				<span class="fas fa-thumbs-up"></span><span class="text"> 추천<strong>5</strong></span>
 			</button>
 		</div>
-
+	</section>
+</div> <!-- end #content  -->
 		
+		
+		
+	<section class="post-view-bottom container">	
+
 		<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
 		<div class="beforeafter list-group">
 			<a href="" onclick="" class=" prev list-group-item list-group-item-action"> 
@@ -257,7 +235,7 @@
 						</div>
 					</div><!-- end comment -->
 
-					<hr>
+					<hr class="comment-hr">
 
 				</div><!-- end comment-wrapper -->
 				
@@ -277,7 +255,7 @@
 						</div>
 					</div><!-- end comment -->
 
-					<hr>
+					<hr class="comment-hr">
 
 				</div><!-- end comment-wrapper -->
 				
@@ -289,7 +267,6 @@
 	<!-- ★★★★★ 푸터 ★★★★★ -->
 	<c:import url="Footer.jsp"></c:import>
 	
-</div>
 </body>
 </html>
 

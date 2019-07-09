@@ -8,188 +8,216 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>StrayCatRegistration.jsp</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean"	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese"	rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style type="text/css">
-div {
-	font-family: 'Nanum Gothic Coding', monospace;
-	font-family: 'Quicksand', sans-serif;
-}
+<title>StrayCatManage.jsp (길고양이 관리)</title>
+<c:import url="Head.jsp"></c:import>
 
-.card {
-	margin-top: 30px;
-	padding: 30px;
-}
+<!-- Head.jsp  -->
+<c:import url="Head.jsp"></c:import>
 
-.dt1 {
-	width: 50%;
-	display: inline;
-}
+<!-- CSS 파일 -->
+<link rel="stylesheet" href="<%=cp%>/css/view/straycatmanage.css">
 
-.dt2 {
-	width: 50%;
-	display: inline;
-}
+<!-- JS 파일  -->
+<script src="<%=cp %>/js/view/straycatmanage.js"></script>
 
-th {
-	background-color: #F6F6F6;
-	width: 30%;
-}
-
-.mButton.gCenter {
-	position: relative;
-	text-align: center;
-}
-
-.alignRight {
-	margin: 10px 0;
-	padding: 0 4px 0 0;
-	text-align: right;
-}
-
-.card {
-	margin-top: 100px;
-}
-
-span {
-	font-size: small;
-}
-
-.container2 {
-	margin-left: 100px;
-	margin-right: 100px;
-	margin-top: 60px;
-}
-</style>
 </head>
 <body>
+<div id="content">
 
+	<c:import url="Menu.jsp"></c:import>
+		
+	<!-- ★★★★★헤더 + breadcrumbs★★★★★ -->
 
-	<div>
-		<c:import url="Menu.jsp"></c:import>
-
-		<div class="container2" style="margin-top: 60px;">
-		<div class="row">
-			<div class="col-9">
-			<h1>우리동네 길냥이</h1>
-			<hr>
-			<h6>동네에 어떤 길고양이들이 있는지 확인하세요!</h6>
+	<section class="header container ">
+		<div class="header-title">
+			<h2 class="h2">길냥이관리</h2>
+		</div>
+		<div class="breadcrumbs">
+			<ul>
+				<li class="list-inline-item">
+					<a class="text-dark" href="<%=cp%>/Main.jsp"><i class="fas fa-home"></i></a>
+					<span class="breadcrumb-divider">></span>
+				</li>
+				<li class="list-inline-item">
+					<span class="breadcrumb-divider">길냥이관리</span>
+				</li>
+			</ul>
+		</div>
+	</section>
+	
+	<!-- ★★★★ 지역 검색 ★★★★★ -->
+	<section class="section-1 container">
+		
+		<!-------------------   10  ------------------------->
+		<div class="form-group col-lg-10">
+			
+			<!-- row1 -->
 			<div class="row">
-				<div class="col-11">
-					<div class="form-group">
-						<select class="form-control" id="exampleFormControlSelect1">
-							<option>서울시 마포구 서교동</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-						</select>
-					</div>
+				<h5>동네에 어떤 길고양이들이 있는지 확인하세요!</h5>
+			</div>
+			
+			<!-- row2 -->
+			<div class="row">
+				<!-- 구 선택 -->
+				<div class="col-lg-4">
+					<select class="custom-select">
+						<option selected>구 선택</option>
+						<option value="1">마포구</option>
+						<option value="2">영등포구</option>
+						<option value="3">서대문구</option>
+					</select>
 				</div>
-				<div class="col-1">
+				<!-- 동 선택 -->
+				<div class="col-lg-4">
+					<select class="custom-select">
+						<option selected>동 선택</option>
+						<option value="1">연희동</option>
+						<option value="2">연남동</option>
+						<option value="3">서교동</option>
+					</select>
+				</div>
+				
+				<!-- 조회버튼 -->
+				<div class="col-lg-2">
 					<button type="button" class="btn btn-primary">조회</button>
 				</div>
 			</div>
-			<div>
-				<h5>검색된 고양이 20 마리</h5>
-			</div>
-			<div style="overflow-y: scroll; overflow-x: hidden; overflow-y: auto; height: 2000px;">
-
-				<c:forEach var="i" begin="0" end="7">
-					<div>
-						<div class="card-deck">
-							<c:forEach var="j" begin="0" end="1">
-								<div class="card mb-3"
-									style="margin: 30px; padding: 10px; height: 260px;">
-									<div class="row no-gutters">
-										<div class="col-md-4">
-											<img src="img/straycat.jpg" class="card-img" alt="...">
-										</div>
-										<div class="col-md-8">
-											<div class="card-body">
-												<h5 class="card-title">Card title</h5>
-												<p class="card-text">This is a wider card with
-													supporting text below as a natural lead-in to additional
-													content. This content is a little bit longer.</p>
-												<p class="card-text">
-													<small class="text-muted">Last updated 3 mins ago</small>
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</c:forEach>
-						</div>
-					</div>
-					<br>
-				</c:forEach>
-			</div>
+			
+			<!-- row3 -->
+			<div class="row">
+				<h5>검색된 고양이<span> 5 </span>마리</h5>
 			</div>
 			
-			<div class="col-3">
-				<div class="card">
-					<div class="card-header">
-						내가 관리하는 고양이
-					</div>
-					<!-------------------------------------------------- 로그인 O ---------------------------------------------------->
-				<div class="card-body">
-					<div class="container">
-						<div class="row">
-						<div class="col">
-						<img src="img/straycat.jpg" class="card-img" alt="...">
+		<!-------------------   2  ------------------------->
+		<!-- 우측 사이드바 (입양신청)-->
+		<div class="slidemenu col-lg-2 text-center">
+			<div class="apply">
+				<h5 class="">내가 관리하는 길냥이</h5>
+				<div class="col">
+					<img src="img/straycat.jpg" class="card-img" alt="" style="width: 80px; height: 80px;">
+				</div>
+			</div>
+		</div>
+			
+	</section>
+	
+	<section class="section-2 container">
+		<c:forEach var="i" begin="0" end="7">
+			<div class="card-deck">
+			
+				<!-- 1마리 -->
+				<div class="card mb-2" style="max-width: 540px;">
+					<div class="row no-gutters">
+					
+						<!-- 길냥이 대표이미지 -->
+						<div class="col-md-5 cat-photo">
+							<img src="img/straycat.jpg" class="card-img" alt="">
 						</div>
-						<div class="col">
-						<img src="img/straycat.jpg" class="card-img" alt="...">
+						
+						<!-- 길냥이 정보 -->
+						<div class="col-md-7 cat-info">
+							<div class="card-body">
+								<!-- 고양이 코드 -->
+								<small class="text-muted">#45827</small>
+								<!-- 고양이 이름 -->
+								<h5 class="card-title">야옹이</h5>
+								<!-- 고양이 정보 -->
+								<div class="card-text">
+									<ul class="cat-info-list">
+										<li>코리안숏헤어(女)</li>
+										<li>서울시 성동구 성수동</li>
+										<li>2019-06-08</li>
+									</ul>	
+								</div>
+							</div>
 						</div>
-						<div class="col">
-						<img src="img/straycat.jpg" class="card-img" alt="...">
-						</div>
-						<div class="col">
-						<img src="img/straycat.jpg" class="card-img" alt="...">
-						</div>
-						</div>
-					</div>
+						
 					</div>
 				</div>
-				<!-------------------------------------------------- 로그인 O ---------------------------------------------------->
-				<!-------------------------------------------------- 로그인 X ---------------------------------------------------->
-				<!-- 
-				<div class="card">
-					<div class="card-header">
-						내가 올린 입양글
-					</div>
-					<div class="card-body">
-					<div class="container">
-						<div class="jumbotron text-center">
-							<h4>로그인을 하세요</h4>
-							<br>
-							<a class="btn btn-primary" href="#" role="button">로그인</a>
+				
+				<!-- 1마리 -->
+				<div class="card mb-2" style="max-width: 540px;">
+					<div class="row no-gutters">
+					
+						<!-- 길냥이 대표이미지 -->
+						<div class="col-md-5 cat-photo">
+							<img src="img/straycat.jpg" class="card-img" alt="">
 						</div>
-					</div>
+						
+						<!-- 길냥이 정보 -->
+						<div class="col-md-7 cat-info">
+							<div class="card-body">
+								<!-- 고양이 코드 -->
+								<small class="text-muted">#45827</small>
+								<!-- 고양이 이름 -->
+								<h5 class="card-title">야옹이</h5>
+								<!-- 고양이 정보 -->
+								<div class="card-text">
+									<ul class="cat-info-list">
+										<li>코리안숏헤어(女)</li>
+										<li>서울시 성동구 성수동</li>
+										<li>2019-06-08</li>
+									</ul>	
+								</div>
+							</div>
+						</div>
+						
 					</div>
 				</div>
-				 -->
-				<!-------------------------------------------------- 로그인 X ---------------------------------------------------->
+				
+			</div>
+		</c:forEach>
+	</section>
+	
+<!-- 	<section class="section-3">
+		
+		<div class="card-header">
+			내가 관리하는 고양이
+		</div>
+			------------------------------------------------ 로그인 O --------------------------------------------------
+		<div class="card-body">
+			<div class="container">
+				<div class="row">
+				<div class="col">
+				<img src="img/straycat.jpg" class="card-img" alt="...">
+				</div>
+				<div class="col">
+				<img src="img/straycat.jpg" class="card-img" alt="...">
+				</div>
+				<div class="col">
+				<img src="img/straycat.jpg" class="card-img" alt="...">
+				</div>
+				<div class="col">
+				<img src="img/straycat.jpg" class="card-img" alt="...">
+				</div>
+				</div>
+			</div>
+		</div>
+		------------------------------------------------ 로그인 O --------------------------------------------------
+		------------------------------------------------ 로그인 X --------------------------------------------------
+		
+		<div class="card">
+			<div class="card-header">
+				내가 올린 입양글
+			</div>
+			<div class="card-body">
+			<div class="container">
+				<div class="jumbotron text-center">
+					<h4>로그인을 하세요</h4>
+					<br>
+					<a class="btn btn-primary" href="#" role="button">로그인</a>
 				</div>
 			</div>
 			</div>
 		</div>
-
-
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<div>
-		<c:import url="Footer.jsp"></c:import>
-	</div>
-
+		
+		------------------------------------------------ 로그인 X --------------------------------------------------
+	</section> -->
+	
+	<!-- ★★★★★ 푸터 ★★★★★ -->
+	<c:import url="Footer.jsp"></c:import>
+	
+</div> <!-- end #content  -->
 
 </body>
 </html>

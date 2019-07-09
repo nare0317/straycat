@@ -3,7 +3,6 @@ package com.straycat.common;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.support.StandardServletEnvironment;
 
 @Controller
 public class MainController
@@ -69,6 +68,13 @@ public class MainController
 	public String login()
 	{
 		return "Login";
+	}
+	
+	// 회원가입 페이지로 이동
+	@RequestMapping("/join")
+	public String join()
+	{
+		return "Join";
 	}
 	
 	// 약관동의 페이지로 이동

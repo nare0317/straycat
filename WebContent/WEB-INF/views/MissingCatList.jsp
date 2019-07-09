@@ -8,64 +8,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MissingCatList.jsp</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700&display=swap&subset=korean"	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700&display=swap&subset=latin-ext,vietnamese"	rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style type="text/css">
-div {
-	font-family: 'Nanum Gothic Coding', monospace;
-	font-family: 'Quicksand', sans-serif;
-}
-
-.card {
-	margin-top: 30px;
-	padding: 30px;
-}
-
-.dt1 {
-	width: 50%;
-	display: inline;
-}
-
-.dt2 {
-	width: 50%;
-	display: inline;
-}
-
-th {
-	background-color: #F6F6F6;
-	width: 30%;
-}
-
-.mButton.gCenter {
-	position: relative;
-	text-align: center;
-}
-
-.alignRight {
-	margin: 10px 0;
-	padding: 0 4px 0 0;
-	text-align: right;
-}
-
-.card {
-	margin-top: 100px;
-}
-
-span {
-	font-size: small;
-}
-
-.container2 {
-	margin-left: 100px;
-	margin-right: 100px;
-	margin-top: 60px;
-}
-</style>
+	<title>실종 고양이 리스트 </title>
+	<c:import url="Head.jsp"></c:import>
+	
+	<!-- 페이지 CSS, 자바스크립트 -->
+	<link rel="stylesheet" href="<%=cp %>/css/view/missing_cat_list.css">
 </head>
 <body>
 
@@ -73,7 +20,7 @@ span {
 	<div>
 		<c:import url="Menu.jsp"></c:import>
 
-		<div class="container2" style="margin-top: 60px;">
+		<div class="container2 m60">
 		<div class="row">
 			<div class="col-9">
 			<h1>실종냥이찾기</h1>
@@ -106,13 +53,13 @@ span {
 					<button type="button" class="btn btn-primary">지역검색</button>
 				</div>
 			</div>
-			<div style="overflow-y: scroll; overflow-x: hidden; overflow-y: auto; height: 2000px;">
+			<div class="scroll">
 
 				<c:forEach var="i" begin="0" end="7">
 					<div>
 						<div class="card-deck">
 							<c:forEach var="j" begin="0" end="1">
-								<div class="card mb-3" style="margin: 30px; padding: 10px; height: 260px;">
+								<div class="card mb-3 mph">
 									<div class="row no-gutters">
 										<div class="col-md-4">
 											<img src="img/straycat.jpg" class="card-img" alt="...">

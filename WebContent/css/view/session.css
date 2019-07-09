@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+div 
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.header
+{
+	text-align: left; 
+	margin-left: 30px;
+}

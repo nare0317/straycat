@@ -53,9 +53,17 @@
 	
 		<!-- 제목/작성자/작성일시/조회수 -->
 		<div class="post-head row">
-			<div class="col-lg-9">
+			<div class="col-lg-12">
+				<!-- 글 제목 -->
 				<h3 class="post-title"><span class="adt_status">[신규등록]</span>귀여운 치즈태비 입양하실분~!!</h3>
-				
+				<!-- 제목 밑에 줄 -->
+				<hr class="post-title-hr">
+			</div>
+		</div>
+		
+		<div class="post-head row">
+			<div class="col-lg-6">
+				<!-- 작성자아이디, 작성일시, 조회수 -->
 				<ul class="list-inline">
 					<li class="list-inline-item g-mx-4">nare0317
 					<li class="list-inline-item g-mx-4">|</li>
@@ -64,7 +72,7 @@
 					<li class="list-inline-item g-mx-4"><span class="icon-mouse" style="font-size: 11px;"></span> 1020</li>
 				</ul>
 			</div>
-		</div>
+		</div>		
 		
 		<!-- ★★★★★글내용★★★★★ -->	
 		<div class="post-content row">
@@ -128,6 +136,7 @@
 					<div class="row writer-email"><label>이메일 :</label>nare0317@gmail.com</div>
 				</div>
 			</div>
+			
 			
 			<!-- 우측 사이드바 (입양신청)-->
 			<div class="slidemenu col-lg-2 text-center">
@@ -226,7 +235,7 @@
 						</div>
 					</div><!-- end comment -->
 
-					<hr>
+					<hr class="comment-hr">
 
 				</div><!-- end comment-wrapper -->
 				
@@ -246,7 +255,7 @@
 						</div>
 					</div><!-- end comment -->
 
-					<hr>
+					<hr class="comment-hr">
 
 				</div><!-- end comment-wrapper -->
 				

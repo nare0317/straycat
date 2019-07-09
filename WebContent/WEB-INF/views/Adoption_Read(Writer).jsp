@@ -9,59 +9,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Adoption_Read(Writer).jsp(입양글 열람 페이지 - 게시물 작성자)</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!-- Head.jsp  -->
+<c:import url="Head.jsp"></c:import>
 
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- CSS 파일 -->
+<link rel="stylesheet" href="<%=cp %>/css/view/adoption_read.css">
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-<!-- Font Awesome 5 -->
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- CSS 파일 추가 -->
-<link rel="stylesheet" href="<%=cp %>/css/view/Adoption_Read.css">
-
-
-<script type="text/javascript">
-
- 	$(document).ready(function() {
-
-		// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
-		var floatPosition = parseInt($(".slidemenu").css('top'));
-		// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
-		
-		var bottomPosition = parseInt($("#content").css('height'));
-		
-		$(window).scroll(function() {
-			// 현재 스크롤 위치를 가져온다.
-			var scrollTop = $(window).scrollTop();
-			var newPosition = scrollTop + floatPosition;
-			
-			if (newPosition > bottomPosition)
-			{
-				newPosition = bottomPosition - 100;
-			};
-			
-			var newPosition = newPosition + "px";
-			
-			$(".slidemenu").stop().animate({
-				"top" : newPosition
-			}, 1000);
-			
-			
-		}).scroll();
-		
-	});
-
-	
-</script>
+<!-- JS 파일 -->
+<script src="<%=cp %>/js/view/adoption_read.js"></script>
 
 </head>
 <body>
@@ -97,28 +53,47 @@
 	<section class="post-view container">
 	
 		<!-- 제목/작성자/작성일시/조회수 -->
+		<div class="post-title row">
+			<div class="col-lg-12">
+				<!-- 글 제목 -->
+				<h3 class="title"><span class="adt_status">[신규등록]</span>귀여운 치즈태비 입양하실분~!!</h3>
+				<!-- 제목 밑에 줄 -->
+				<hr class="post-title-hr">
+			</div>
+		</div>
+		
 		<div class="post-head row">
-			<div class="col-lg-9">
-				<h3 class="post-title"><span class="adt_status">[입양진행중]</span>귀여운 치즈태비 입양하실분~!!</h3>
-				
+			<div class="col-lg-6">
+				<!-- 작성자아이디, 작성일시, 조회수 -->
 				<ul class="list-inline">
 					<li class="list-inline-item g-mx-4">nare0317
 					<li class="list-inline-item g-mx-4">|</li>
 					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item">2019-03-06 16:26</li>			
 					<li class="list-inline-item g-mx-4">|</li>
-					<li class="list-inline-item g-mx-4"><span class="icon-mouse" style="font-size: 11px;"></span> 1020</li>
+					<li class="list-inline-item g-mx-4"><span class="icon-mouse font11"></span> 1020</li>
 				</ul>
 			</div>
+			
+			<!-- 수정/삭제 버튼 -->
+			<div class="col-md-2 offset-md-4" align="right">
+				<button class="btn btn-secondary btn-sm" id="modify-btn">수정</button>
+				<button class="btn btn-secondary btn-sm" id="delete-btn">삭제</button>
+			</div>
 		</div>
-
-		<!--★★★★★ 게시글 상태 변경 ★★★★★ -->
-		<div class="post_status row">
-			<div class="col-lg-5">
+		
+		
+		<!-- ★★★★★글내용★★★★★ -->	
+		<div class="post-content row">
+			
+			<!--★★★★★ 게시글 상태 변경 ★★★★★ -->
+			<div class="post-status row">
 				<form action="" method="get">
 					<div class="input-group">
+					
 				    	<div class="input-group-prepend">
 			        	  <div class="input-group-text">게시글 상태</div>
 			       	 	</div>
+			       	 	
 			        	<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
 					        <option value="1">신규등록</option>
 					        <option selected value="2">입양진행중</option>
@@ -127,87 +102,82 @@
 					        <option value="5">입양확정</option>
 					        <option value="6">입양완료</option>
 					    </select>
-			      		<button type="submit" class="btn btn-primary">변경</button>
+					    
+			      		<button type="submit" class="btn btn-dark">변경</button>
 			      </div>
 				</form>
 			</div>
 			
-		</div>
-		
-		<br>
-		
-		<!-- ★★★★★글내용★★★★★ -->	
-		<div class="post-content row">
-			
-			<!-- 고양이 대표사진 -->
-			<div class="iconic-photo col-lg-3">
-				<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail">
-			</div>
-			
-			<!-- 글 내용 -->
-			<div class="content col-lg-7">
-				<table class="missing-info table table-light">
-					<tr>
-						<th class="align-top th-sm th-lg">이름</th>
-						<td class="align-top">냥아취</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">종류</th>
-						<td class="align-top">고등어태비</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">구조지역</th>
-						<td class="align-top">서울시 마포구 서교동 풍성빌딩 주차장 앞</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">구조일</th>
-						<td class="align-top">2019-06-10</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">나이</th>
-						<td class="align-top">아기묘(4개월)</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">성별</th>
-						<td class="align-top">암컷</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">고양이<br>특이사항</th>
-						<td class="align-top">
-							<p>하얀색 수염이 길고 풍성해요~~얼굴이 통통해서 아주 귀엽게 생겼구요.. 발바닥은 검은젤리에요 ㅜㅜ</p>
-						</td>
-					</tr>
-					<tr>
-						<th class="align-top">건강상태</th>
-						<td class="align-top">
-							<p>매우 건강. 기생충 없음. 접종 미완료(아직 어려서 몇 주 후 접종이 가능하다고 합니다.)</p>
-						</td>
-					</tr>
-				</table>
+			<div class="row">
+				<!-- 고양이 대표사진 -->
+				<div class="iconic-photo col-lg-3">
+					<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail">
+				</div>
 				
-				
-				<!-- 게시글 작성자 정보 -->
-				<div class="writer-info">
-					<div class="row writer-info-title">게시글 작성자 정보</div>
-					<div class="row writer-name"><label>이름 : </label>임나래
-						<a href="" onclick=""  class="send-message">
-							<i class="fas fa-envelope"> 쪽지보내기 </i>
-						</a>
+				<!-- 글 내용 -->
+				<div class="content col-lg-7">
+					<table class="missing-info table table-light">
+						<tr>
+							<th class="align-top th-sm th-lg">이름</th>
+							<td class="align-top">냥아취</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">종류</th>
+							<td class="align-top">고등어태비</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">구조지역</th>
+							<td class="align-top">서울시 마포구 서교동 풍성빌딩 주차장 앞</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">구조일</th>
+							<td class="align-top">2019-06-10</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">나이</th>
+							<td class="align-top">아기묘(4개월)</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">성별</th>
+							<td class="align-top">암컷</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">고양이<br>특이사항</th>
+							<td class="align-top">
+								<p>하얀색 수염이 길고 풍성해요~~얼굴이 통통해서 아주 귀엽게 생겼구요.. 발바닥은 검은젤리에요 ㅜㅜ</p>
+							</td>
+						</tr>
+						<tr>
+							<th class="align-top">건강상태</th>
+							<td class="align-top">
+								<p>매우 건강. 기생충 없음. 접종 미완료(아직 어려서 몇 주 후 접종이 가능하다고 합니다.)</p>
+							</td>
+						</tr>
+					</table>
+					
+					
+					<!-- 게시글 작성자 정보 -->
+					<div class="writer-info">
+						<div class="row writer-info-title">게시글 작성자 정보</div>
+						<div class="row writer-name"><label>이름 : </label>임나래
+							<a href="" onclick=""  class="send-message">
+								<i class="fas fa-envelope"> 쪽지보내기 </i>
+							</a>
+						</div>
+						<div class="row writer-tel"><label>연락처 : </label>010-2493-4848</div>
+						<div class="row writer-email"><label>이메일 :</label>nare0317@gmail.com</div>
 					</div>
-					<div class="row writer-tel"><label>연락처 : </label>010-2493-4848</div>
-					<div class="row writer-email"><label>이메일 :</label>nare0317@gmail.com</div>
 				</div>
-			</div>
-			
-			<!-- 우측 사이드바 (입양신청)-->
-			<div class="slidemenu col-lg-2 text-center">
-				<div class="apply">
-					<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
-					<p>남은시간 : <span>13일 00:57:30</span></p>
-					<button class="btn btn-success">입양 신청자 확인</button>
+				
+				<!-- 우측 사이드바 (입양신청)-->
+				<div class="slidemenu col-lg-2 text-center">
+					<div class="apply">
+						<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
+						<p>남은시간 : <span>13일 00:57:30</span></p>
+						<button class="btn btn-success">입양 신청자 확인</button>
+					</div>
 				</div>
-			</div>
-						
+			</div>			
 		</div>
 		
 		
@@ -230,10 +200,13 @@
 		</div>
 
 	</section>
-	</div>
+</div> <!-- end #content  -->
+
+
+
 	
 	<section class="post-view-bottom container">
-			<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
+		<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
 		<div class="beforeafter list-group">
 			<a href="" onclick="" class=" prev list-group-item list-group-item-action"> 
 				<i class="fas fa-chevron-up"> 이전 글 </i><span>이전 글이 없습니다.</span>
