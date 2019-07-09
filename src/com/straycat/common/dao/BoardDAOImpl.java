@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class BoardDAOImpl implements BoardDAO
+@Repository("BoardDAO")
+public class BoardDAOImpl implements CommonDAO
 {
 	@Autowired
 	private SqlSession sqlSession;
@@ -37,35 +37,9 @@ public class BoardDAOImpl implements BoardDAO
 	}
 
 	@Override
-	public int countList()
+	public Map<String, Object> selectOne()
 	{
-		int count = 0;
-		
-		try
-		{
-			count = sqlSession.selectOne("board.countList");
-		} catch (Exception e)
-		{
-			System.out.println(e.toString());
-		}
-		
-		return count;
-	}
-
-	@Override
-	public List<Map<String, Object>> searchList()
-	{
-		List<Map<String, Object>> list = null;
-		
-		try
-		{
-			list = sqlSession.selectList("board.searchList");
-		} catch (Exception e)
-		{
-			System.out.println(e.toString());
-		}
-		
-		return list;
+		return null;
 	}
 	
 	

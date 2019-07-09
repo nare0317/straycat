@@ -30,7 +30,7 @@
 				<br>
 				<div class="row">
 					<div class="col-6 text-right">
-						<img src="img/plus-button.png" class="img2"> 999
+						<img src="img/plus-button.png" class="img2">${catInfo.FOLLOW }
 					</div>
 					<div class="col-6 text-left">
 						<img src="img/user.png" class="img2"> 집사
@@ -40,7 +40,7 @@
 			<div class="col-4 text-left">
 				<div class="row">
 					<div class="col-4">
-						<h2>야옹이</h2>
+						<h2>${catInfo.CAT_NAME }</h2>
 					</div>
 					<!------------------------  대표집자 3명에게 보여지는 수정 버튼  -------------------------->
 					<!-- 
@@ -51,7 +51,7 @@
 					<!------------------------  대표집자 3명에게 보여지는 수정 버튼  -------------------------->
 				</div>
 				<div>
-					<h5>서울시 마포구 서교동</h5>
+					<h5>${catInfo.CAT_STATUS }</h5>
 				</div>
 				<div>
 					<h4>야옹이</h4>
