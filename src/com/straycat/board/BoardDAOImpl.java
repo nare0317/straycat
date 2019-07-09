@@ -20,13 +20,13 @@ public class BoardDAOImpl implements BoardDAO
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Override
-	public List<Map<String, Object>> selectList()
+	public List<Map<String, Object>> selectList(String id, Object value)
 	{
 		List<Map<String, Object>> list = null; 
 		
 		try 
 		{
-			list = sqlSession.selectList("board.listBoard");
+			list = sqlSession.selectList(id, value);
 		}
 		catch (Exception e) 
 		{
@@ -39,15 +39,32 @@ public class BoardDAOImpl implements BoardDAO
 	}
 
 	@Override
-	public List<Map<String, Object>> selectList(String searchKey, String searchValue) {
-		// TODO Auto-generated method stub
-		return null;
+	public <T> T selectOne(String id)
+	{
+		try 
+		{
+			return sqlSession.selectOne(id);
+		} catch (Exception e) 
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
 	}
 
 	@Override
-	public int countList() {
-		// TODO Auto-generated method stub
-		return 0;
+	public <T> T selectOne(String id, Object value) 
+	{
+		try
+		{
+			return sqlSession.selectOne(id, value);
+		}
+		catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}		
 	}
 
 	

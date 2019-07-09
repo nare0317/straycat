@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
    request.setCharacterEncoding("UTF-8");
    String cp = request.getContextPath();
@@ -30,7 +31,7 @@
 	</div>
 	<div class="breadcrumbs">
 		<ul>
-			<li class="list-inline-item"><a class="text-dark" href="<%=cp%>/Main.jsp"><i class="fas fa-home"></i></a></li>
+			<li class="list-inline-item"><a class="text-dark" href="main"><i class="fas fa-home"></i></a></li>
 			<li class="list-inline-item">></li>
 			<li class="list-inline-item">자유게시판</li>
 		</ul>
@@ -73,7 +74,7 @@
 		<div class="content no">${list.NUM }</div>
 		<div class="content title titleLeft">
 			<div class="contentTitle">
-				<a class="contentLink" href="#">${list.TITLE }</a>
+				<a class="contentLink" href="${articleUrl }&num=${list.NUM}">${list.TITLE }</a>
 			</div>
 			<div class="commentCount">
 					<i class='far fa-comment'><span id="cmtCount">${list.CMT_COUNT }</span></i>
@@ -89,11 +90,13 @@
 	
 	<!-- 페이지네이션 시작 -->
 	<ul class="pagination pagination-sm justify-content-center">
+	 
 		<li class="page-item disabled"><a class="page-link text-dark" href="#">Previous</a></li>
-		<c:forEach begin="1" end="${lastPage }" step="1" var="pageNum">
-		<li class="page-item active"><a class="page-link text-dark" href="#">${pageNum }</a></li>
+		<c:forEach begin="1" end="${total_page }" step="1" var="page">
+		<li class="page-item active"><a class="page-link text-dark" href="#">${page }</a></li>
 		</c:forEach>
 		<li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
+	
 	</ul>
 
 	<!-- 글쓰기 버튼 -->
