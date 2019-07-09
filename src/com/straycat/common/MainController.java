@@ -39,7 +39,7 @@ public class MainController
 	@RequestMapping("/adopt")
 	public String adoptList()
 	{
-		return "StrayCatAdoptList";
+		return "AdoptCatList";
 	}
 	
 	// 실종 리스트 페이지로 이동
