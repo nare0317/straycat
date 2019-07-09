@@ -1,14 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+  "HTTP://mybatis.org/dtd/mybatis-3-config.dtd">
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-						http://www.springframework.org/schema/beans/spring-beans.xsd
-						http://www.springframework.org/schema/context 
-						http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- ○ 마이바티스 리소스 구성 내용 포함 -->
-	<import resource="mybatis/mybatis-context.xml" />
+<!-- ※ 마이바티스 관련 설정 -->
+<!--    http://www.mybatis.org/mybatis-3/ko/getting-started.html -->
 
-</beans>
+
+<!-- ○ 마이바티스 환경 설정 -->
+<configuration>
+	
+	<!-- ○ 런타임 시 마이바티스의 작동을 설정하기 위한 값 -->
+	<settings>
+	
+		<!-- ○ 설정에서 각 매퍼에 설정된 캐시를 전역적으로 사용할지 말지에 대한 여부 -->
+		<!--    → true | false 로 설정 -->
+		<!--    → default : true -->
+		<setting name="cacheEnabled" value="false" />
+		
+		<!-- ○ 생성키에 대한 JDBC 지원을 허용할지에 대한 여부 -->
+		<!--    → 지원하는 드라이버가 필요하다. -->
+		<!--    → true 로 설정하면 생성키를 강제로 생성한다. -->
+		<!--    → 일부 드라이버(예를들면, Derby)에서는 이 설정을 무시한다. -->
+		<!--    → true | false 로 설정 -->
+		<!--    → default : false -->
+		<setting name="useGeneratedKeys" value="true" />
+		
+		<!-- ○ 디폴트 실행자(executor) 설정 -->
+		<!--    → SIMPLE 실행자는 특별히 하는 것이 없다. -->
+		<!--    → REUSE 실행자는 PreparedStatement를 재사용한다. --> 
+		<!--    → BATCH 실행자는 구문을 재사용하고 수정을 배치 처리한다. -->
+		<!--    → SIMPLE | REUSE | BATCH 로 설정 -->
+		<!--    → default : SIMPLE -->
+		<setting name="defaultExecutorType" value="REUSE" />
+	</settings>
+	
+	<!-- ○ 별칭 -->
+	<!--    → 타입 별칭은 자바 타입에 대한 짧은 이름이다. -->
+	<!--    → 오직 XML 설정에서만 사용되며, 타이핑을 줄이기 위해 존재한다. -->
+	<!--
+		<typeAliases>
+			<typeAlias alias="Author" type="domain.blog.Author"/>
+			<typeAlias alias="Blog" type="domain.blog.Blog"/>
+			<typeAlias alias="Comment" type="domain.blog.Comment"/>
+			<typeAlias alias="Post" type="domain.blog.Post"/>
+			<typeAlias alias="Section" type="domain.blog.Section"/>
+			<typeAlias alias="Tag" type="domain.blog.Tag"/>
+		</typeAliases>
+	-->
+	<!--    → 이 설정에서 "Blog"는 여러군데에서 "domain.blog.Blog" 대신 사용할 수 있다. -->
+	
+	<!--    → 또한, 마이바티스가 빈을 찾도록 패키지를 명시할 수 있다. -->
+	<!-- 
+		<typeAliases>
+			<package name="domain.blog"/>
+		</typeAliases>
+	-->
+	<!--    → domain.blog 에서 빈을 검색하고 --> 
+	<!--       어노테이션이 없을 경우 빈의 이름이 소문자로 변환된 형태의 --> 
+	<!--       별칭으로 등록할 것이다.  -->
+	<!--       이때 빈의 패키지정보도 제거하고 등록된다. --> 
+	<!--       이를테면 domain.blog.Author는 author로 등록될 것이다. --> 
+	<!--       만약에 @Alias 어노테이션을 사용한다면  -->
+	<!--       이 어노테이션에서 지정한 값이 별칭으로 사용될 것이다. -->
+	<!-- 
+		@Alias("author")
+		public class Author 
+		{
+    		...
+		}
+	-->
+	<!--       공통의 자바타입에 대해서는 내장된 타입 별칭이 있다. -->
+	<!--       이 모두 대소문자를 가린다(구분한다). -->
+    <typeAliases>
+         <typeAlias alias="hashMap" type="java.util.HashMap" />
+         <typeAlias alias="map" type="java.util.Map" />
+    </typeAliases>	
+ 
+<!--
+	<mappers>
+		<mapper resource="mybatis/mapper/tempMapper.xml" />
+	</mappers>
+-->
+</configuration>
