@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>List.jsp</title>
+<title>자유게시판</title>
 
 <c:import url="Head.jsp"></c:import>
 	
