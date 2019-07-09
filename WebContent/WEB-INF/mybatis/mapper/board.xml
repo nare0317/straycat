@@ -23,12 +23,35 @@
 	    ON BR.BBS_CODE = BL2.BBS_CODE
 	LEFT JOIN (SELECT BC.BBS_CODE, COUNT(*) AS CMT_COUNT FROM BBS_CMT BC, BBS_REG BR WHERE BC.BBS_CODE = BR.BBS_CODE GROUP BY BC.BBS_CODE) BC2
 	    ON BR.BBS_CODE = BC2.BBS_CODE
+	<where>
+		<if test="searchKey=='name' ">
+			INSTR(U.USER_NAME, #{searchValue}) = 1
+		</if>
+		<if test="searchKey=='subject' ">
+			INSTR(BR.TITLE, #{searchValue}) &gt;= 1
+		</if>
+		<if test="searchKey=='content' ">
+			INSTR(BR.CONTENT, #{searchValue}) &gt;= 1
+		</if>
+	</where>
 	ORDER BY BR.POST_DATE DESC
+	
 </select>
 
 <select id="countList" resultType="java.lang.Integer">
 	SELECT COUNT(*)
 	FROM BBS_REG
+	<where>
+		<if test="searchKey=='name' ">
+			INSTR(NAME, #{searchValue}) = 1
+		</if>
+		<if test="searchKey=='subject' ">
+			INSTR(TITLE, #{searchValue}) &gt;= 1
+		</if>
+		<if test="searchKey=='content' ">
+			DBMS_LOB.INSTR(CONTENT, #{searchValue}) &gt;= 1
+		</if>
+	</where>
 </select>
 
 <select id="searchList" resultType="map">

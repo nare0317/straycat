@@ -6,7 +6,7 @@ import java.util.Map;
 
 public interface BoardService 
 {
-	public List<Map<String, Object>> listBoard();
+	public List<Map<String, Object>> listBoard(Map<String, Object> map);
 	public int getLastPage();
-	
+	public int dataCount(Map<String, Object> map);	
 }
