@@ -9,8 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.straycat.cat.CatCommonDAO;
+
 @Repository("CatDAO")
-public class CatDAOImpl implements CommonDAO
+public class CatDAOImpl implements CatCommonDAO
 {
 	@Autowired
 	private SqlSession sqlSession;
@@ -37,10 +39,22 @@ public class CatDAOImpl implements CommonDAO
 	}
 
 	@Override
-	public List<Map<String, Object>> selectList()
+	public List<String> selectList()
 	{
-		return null;
+		List<String> catLocation = null;
+		
+		try
+		{
+			catLocation = sqlSession.selectList("catDetail.catLocation");
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		
+		return catLocation;	
 	}
-	
 	
 }
