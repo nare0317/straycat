@@ -35,4 +35,22 @@ public class BoardDAOImpl implements CommonDAO
 		
 		return list;
 	}
+
+	@Override
+	public int countList()
+	{
+		int count = 0;
+		
+		try
+		{
+			count = sqlSession.selectOne("board.countList");
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return count;
+	}
+	
+	
 }

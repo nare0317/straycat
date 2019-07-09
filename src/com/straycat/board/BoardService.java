@@ -7,4 +7,6 @@ import java.util.Map;
 public interface BoardService 
 {
 	public List<Map<String, Object>> listBoard();
+	public int getLastPage();
+	
 }
