@@ -57,7 +57,7 @@
 					<span id="errorMsg">필수 약관에 동의하지 않았습니다.</span>
 					<br><br>
 				</div>
-				<button id="agreeBtn" type="submit" class="btn btn-secondary">이용약관 및 개인정보 수집/이용에 동의합니다.</button>
+				<button id="agreeBtn" type="button" class="btn btn-secondary">이용약관 및 개인정보 수집/이용에 동의합니다.</button>
 			</div>
 		</div>
 	</div>

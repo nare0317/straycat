@@ -29,7 +29,7 @@
       
    <!-- ★★★★★헤더 + breadcrumbs★★★★★ -->
 
-   <section class="header container-fluid ">
+   <section class="header container ">
       <div class="header-title">
          <h2 class="h2">실종<span class="sub-title">실종글</span></h2>
       </div>
@@ -51,7 +51,7 @@
    </section>
       
    <!-- ★★★★★내용★★★★★ -->
-   <section class="post-view container-fluid">
+   <section class="post-view container">
    
       <!-- 제목/작성자/작성일시/조회수 -->
       <div class="post-head row">
