@@ -10,7 +10,9 @@
 	
 	.header
 	{
-		margin-bottom: 40px;
+		padding-left: 50px;
+		margin-left: 30px;
+		padding-right: 50px;
 	}
 	
 	.post-view
@@ -24,7 +26,6 @@
 	
 	.header-title
 	{
-		padding-top: 1rem;
 		border-color: #ddd;
 		border-bottom: solid 1px #000000e0;
 	}
@@ -43,7 +44,7 @@
 	
 	
 	h2 {
-		font-weight: bold;
+		font-weight: 800;
 		letter-spacing: 5px;
 		margin-top:40px;
 	}
@@ -52,12 +53,11 @@
 
 /********* (본문 영역 .post-view) **************/
 	
-	/* 제목 부분 */
-	.post-title
+	.post-head
 	{
 		padding-bottom: 10px;
 	}
-	.title
+	.post-title
 	{
 		padding-bottom: 10px;
 	}
@@ -67,22 +67,6 @@
 		font-weight: bold;
 		font-family: 맑은고딕;
 	}
-	
-	.post-title-hr
-	{
-		margin-top: 0.5rem;
-		margin-bottom: 0.5rem;
-		border-top: 1px solid rgba(0,0,0,.2);
-		box-sizing: content-box;
-		height: 0;
-		overflow: visible;
-	}
-	
-	.post-head > #delete-btn
-	{
-		margin-left: 6px;
-	}
-	
 	
 	/* 글 상태 변경 .post-status */
 	.post-status
@@ -157,15 +141,16 @@
 		padding: 0px;
 		position:absolute;
 		right:5%;
-		width:auto;
+		width:200px;
+		
 	} 
 	
 	.apply
 	{
 		width:250px;
-		height:150px;
-		background-color: #fff;
-		border: 1px solid #b6b6b8;
+		height:auto;
+		background-color: #e6e6e6;
+		border: none;
 		border-radius: 5px;
 		padding: 15px;
 	}
@@ -184,6 +169,15 @@
 	{
 		width: 190px;
 		margin-bottom: 5px;
+	}
+	
+	.apply .deadline 
+	{
+		margin-top: 10px;
+		margin-bottom: 10px;
+		color: red;
+		font-size:13pt;
+		font-weight: bold;
 	}
 	
 	
@@ -465,7 +459,7 @@
 		align-items: flex-start;
 	}
 	
-	.comment-hr
+	hr
 	{
 		margin-top: 1rem;
 		margin-bottom: 1rem;

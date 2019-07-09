@@ -1,4 +1,4 @@
---○ 데이터 입력 쿼리문
+﻿--○ 데이터 입력 쿼리문
 
 -- ADDRESS 테이블 데이터 입력 쿼리문
 INSERT INTO ADDRESS(ADDRESS_CODE, ZIP_CODE, SI, GU, DONG) VALUES('ADR1', '40461', '서울시', '마포구', '서교동');
@@ -118,10 +118,10 @@ VALUES ('AR2', 'CAT2', 'US2', 'AT5', '길가다가 만났어요', '37.5564733023
 
 
 -- BBS_REG 테이블 데이터 입력 쿼리문
+INSERT INTO BBS_REG (BBS_CODE, USER_CODE, TITLE, CONTENT, TYPE_CODE, HIT_COUNT, POST_DATE)
+VALUES ('BR1', 'US1', '안녕하세요~', '저는 윤배에요~', 'BT1', 0, TO_DATE('2019-07-01','YYYY-MM-DD'));
 INSERT INTO BBS_REG (BBS_CODE, USER_CODE, TITLE, CONTENT, TYPE_CODE, HIT_COUNT)
-VALUES ('BR1', 'US1', '안녕하세요~', '저는 윤배에요~', 'BT1', 0);
-INSERT INTO BBS_REG (BBS_CODE, USER_CODE, TITLE, CONTENT, TYPE_CODE, HIT_COUNT)
-VALUES ('BR2', 'US1', '휴', '코딩하기 싫은 하루구만', 'BT3', 0);
+VALUES ('BR2', 'US1', '휴', '코딩하기 싫은 하루구만', 'BT3', 0, TO_DATE('2019-07-02','YYYY-MM-DD'));
 
 
 -- ADT_TYPE 테이블 데이터 입력 쿼리문
