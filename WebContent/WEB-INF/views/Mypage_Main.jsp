@@ -12,7 +12,7 @@
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
-	<link href="<%=cp%>/css/view/note_list.css" rel="stylesheet">
+	<link href="<%=cp%>/css/view/mypage_message.css" rel="stylesheet">
 	<script	src="<%=cp%>/js/view/mypage_main.js"></script>
 </head>
 <body>

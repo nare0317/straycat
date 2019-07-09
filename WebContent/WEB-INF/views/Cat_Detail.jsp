@@ -14,9 +14,9 @@
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
 	<link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
-	<link rel="stylesheet" href="css/view/straycatdetailpage.css">
+	<link rel="stylesheet" href="css/view/cat_detail.css">
 	<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
-	<script type="text/javascript" src="<%=cp %>/js/view/straycatdetailpage.js"></script>
+	<script type="text/javascript" src="<%=cp %>/js/view/cat_detail.js"></script>
 </head>
 <body>
 
