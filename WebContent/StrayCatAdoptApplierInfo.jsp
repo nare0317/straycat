@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
+request.setCharacterEncoding("UTF-8");
+String cp = request.getContextPath();
 %>
 
 <!DOCTYPE html>
@@ -51,58 +51,53 @@ span {
 	font-size: large;
 }
 
-.bbsHeader
-{
+.bbsHeader {
 	border-top: 3px solid black;
 	border-bottom: 1px solid black;
 }
 
-.header
-{
+.header {
 	font-weight: bold;
 }
 
-.no, .title, .writer, .writer, .date, .viewCount, .recomm
-{
+.no, .title, .board, .date {
 	display: inline-block;
 	height: 35px;
 	line-height: 35px;
 	text-align: center;
 }
 
-.no
-{
+.no {
 	width: 8px;
 }
 
-.title
-{
-	width: 50px;
+.title {
+	width: 10px;
 }
 
-.content
-{
+.container {
+	width: 1200px;
+}
+
+.content {
 	overflow: hidden;
 }
 
-.contentTitle
-{
+.contentTitle {
 	display: inline-block;
 	padding-left: 10px;
 	text-align: left;
 	max-width: 50px;
 	text-overflow: ellipsis;
 	overflow: hidden;
-	/* white-space: nowrap; */
+	white-space: nowrap;
 }
 
-.titleLeft
-{
+.titleLeft {
 	text-align: left;
 }
 
-.bbsContents
-{
+.bbsContents {
 	border-bottom: 1px solid black;
 	line-height: 35px;
 	height: 35px;
@@ -112,10 +107,14 @@ span {
 	margin-left: 1%;
 }
 
+.form {
+	width: 1200px;
+}
+
 div.Table {
 	border: 1px solid #E5E5E5;
 	background-color: #FFFFFF;
-	width: 100%;
+	width: 1200px;
 	height: 500px;
 	text-align: left;
 	border-collapse: collapse;
@@ -133,13 +132,15 @@ div.Table {
 .divTable.Table .divTableRow:nth-child(even) {
 	background: #E5E5E5;
 }
-/* .divTable.Table .divTableHeading {
-  background: #FFFFFF;
-  background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 66%, #FFFFFF 100%);
-  background: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 66%, #FFFFFF 100%);
-  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 66%, #FFFFFF 100%);
-  border-bottom: 1px solid #CECECE;
-} */
+
+.divTable.Table .divTableHeading {
+	background: #FFFFFF;
+	background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 66%, #FFFFFF 100%);
+	background: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 66%, #FFFFFF 100%);
+	background: linear-gradient(to bottom, #ffffff 0%, #ffffff 66%, #FFFFFF 100%);
+	border-bottom: 1px solid #CECECE;
+}
+
 .divTable.Table .divTableHeading .divTableHead {
 	font-size: 23px;
 	color: #000000;
@@ -180,7 +181,7 @@ div.Table {
 }
 
 #title {
-	margin-top: 5%;
+	margin-top: 1%;
 }
 
 .divTable {
@@ -211,11 +212,6 @@ div.Table {
 .divTableBody {
 	display: table-row-group;
 }
-
-#scroll
-{
-	overflow:scroll; width: 100%; height: 100%; padding:10px;
-}
 </style>
 
 <!-- 파비콘 -->
@@ -227,374 +223,373 @@ div.Table {
 	<div>
 		<c:import url="Menu.jsp"></c:import>
 
-		<div class="container">
-			<h1>
-				입양 <span>매칭프로세스(후보자 검증) | 후보자 상세 페이지 </span>
-			</h1>
-			<hr>
+<br> <br>
+<div class="container">
+	<h1>
+		입양 <span>매칭프로세스(후보자 검증) | 후보자 상세 페이지 </span>
+	</h1>
+	<div class="form">
+		<hr>
+		<div>
+			<h5>
+				ID : nare0317 <br>이름 : 임나래 <br>
+			</h5>
+			<a href="#"><ion-icon name="send" size="small"></ion-icon></a> <span>쪽지
+				보내기</span><br> <a href="#"><ion-icon name="pin" size="small"></ion-icon></a>
+			<span>서울시 마포구 서교동</span>
+		</div>
+		<hr>
+	</div>
 
-			<div class="form">
-				<div>
-					<h5>
-						ID : nare0317 <br>이름 : 임나래 <br>
-					</h5>
-					<a href="#"><ion-icon name="send" size="small"></ion-icon></a>
-					<span>쪽지 보내기</span><br> <a href="#"><ion-icon name="pin" size="small"></ion-icon></a>
-					<span>서울시 마포구 서교동</span>
+	<br>
+
+	<div class="divTable Table">
+		<div class="divTableHeading">
+			<div class="divTableRow">
+				<div class="divTableHead" id="head">
+					<h2 id="title">활동내역</h2>
 				</div>
-				<hr>
+				<div class="divTableHead" id="head">
+					<h2 id="title">신청내역</h2>
+				</div>
 			</div>
+		</div>
+		<div class="divTableBody">
+			<div class="divTableRow">
+				<div class="divTableCell">
+					<span>nare0317 님이 쓴 게시글</span> <br> <br>
+					<!-- 게시판 헤더 시작 -->
+					<div class="bbsHeader">
+						<div class="header no">No</div>
+						<div class="header board">게시판</div>
+						<div class="header title">제목</div>
+						<div class="header date">작성일</div>
+					</div>
 
-			<br>
+					<!-- 게시판 게시물 리스트 시작 -->
+					<div class="bbsContents">
+						<div class="content no">3</div>
+						<div class="content board">자유게시판</div>
+					</div>
+					<div class="content title titleLeft">
+						<div class="contentTitle">
+							<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 </a>
+						</div>
+						<div class="content date">2019-07-04</div>
+					</div>
+					<div class="bbsContents">
+						<div class="content no">2</div>
+						<div class="content title titleLeft">
+							<div class="contentTitle">
+								<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게
+									리듬을 타는 비트위의 나그네 아싸 가오리</a>
+							</div>
+							<div class="commentCount">
+								<i class='far fa-comment'>0</i>
+							</div>
+						</div>
+						<div class="content writer">아웃사이더</div>
+						<div class="content date">2019-07-04</div>
+						<div class="content viewCount">10</div>
+						<div class="content recomm">5</div>
+					</div>
+					<div class="bbsContents">
+						<div class="content no">1</div>
+						<div class="content title titleLeft">
+							<div class="contentTitle">
+								<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게
+									리듬을 타는 비트위의 나그네 아싸 가오리</a>
+							</div>
+							<div class="commentCount">
+								<i class='far fa-comment'>0</i>
+							</div>
+						</div>
+						<div class="content writer">아웃사이더</div>
+						<div class="content date">2019-07-04</div>
 
-			<div class="divTable Table">
-				<div class="divTableHeading">
-					<div class="divTableRow">
-						<div class="divTableHead" id="head">
-							<h2 id="title">활동내역</h2>
+					</div>
+					<span>nare0317 님이 쓴 댓글</span>
+					<!-- 게시판 헤더 시작 -->
+					<div class="bbsHeader">
+						<div class="header no">No</div>
+						<div class="header title">제목</div>
+						<div class="header board">게시판</div>
+						<div class="header date">작성일</div>
+
+					</div>
+
+					<!-- 게시판 게시물 리스트 시작 -->
+					<div class="bbsContents">
+						<div class="content no">10</div>
+						<div class="content title titleLeft">
+							<div class="contentTitle">
+								<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 </a>
+							</div>
+							<div class="commentCount">
+								<i class='far fa-comment'>0</i>
+							</div>
 						</div>
-						<div class="divTableHead" id="head">
-							<h2 id="title">신청내역</h2>
+						<div class="content board">자유게시판</div>
+						<div class="content date">2019-07-04</div>
+
+					</div>
+					<div class="bbsContents">
+						<div class="content no">9</div>
+						<div class="content title titleLeft">
+							<div class="contentTitle">
+								<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게
+									리듬을 타는 비트위의 나그네 아싸 가오리</a>
+							</div>
+							<div class="commentCount">
+								<i class='far fa-comment'>0</i>
+							</div>
 						</div>
+						<div class="content writer">아웃사이더</div>
+						<div class="content date">2019-07-04</div>
+
+					</div>
+					<div class="bbsContents">
+						<div class="content no">8</div>
+						<div class="content title titleLeft">
+							<div class="contentTitle">
+								<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게
+									리듬을 타는 비트위의 나그네 아싸 가오리</a>
+							</div>
+							<div class="commentCount">
+								<i class='far fa-comment'>0</i>
+							</div>
+						</div>
+						<div class="content writer">아웃사이더</div>
+						<div class="content date">2019-07-04</div>
+
 					</div>
 				</div>
-				<div class="divTableBody">
-					<div class="divTableRow">
-						<div class="divTableCell">
-							<span>nare0317 님이 쓴 게시글</span> <br>
-							<br>
-							<!-- 게시판 헤더 시작 -->
-							<div class="bbsHeader">
-								<div class="header no">No</div>
-								<div class="header board">게시판</div>
-								<div class="header title">제목</div>
-								<div class="header date">작성일</div>
-							</div>
 
-							<!-- 게시판 게시물 리스트 시작 -->
-							<div class="bbsContents">
-								<div class="content no">3</div>
-								<div class="content board">자유게시판</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 </a>
-								</div>
-								<div class="content date">2019-07-04</div>
-							</div>
-							<div class="bbsContents">
-								<div class="content no">2</div>
-								<div class="content title titleLeft">
-									<div class="contentTitle">
-										<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게
-											리듬을 타는 비트위의 나그네 아싸 가오리</a>
-									</div>
-									<div class="commentCount">
-										<i class='far fa-comment'>0</i>
-									</div>
-								</div>
-								<div class="content writer">아웃사이더</div>
-								<div class="content date">2019-07-04</div>
-								<div class="content viewCount">10</div>
-								<div class="content recomm">5</div>
-							</div>
-							<div class="bbsContents">
-								<div class="content no">1</div>
-								<div class="content title titleLeft">
-									<div class="contentTitle">
-										<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게
-											리듬을 타는 비트위의 나그네 아싸 가오리</a>
-									</div>
-									<div class="commentCount">
-										<i class='far fa-comment'>0</i>
-									</div>
-								</div>
-								<div class="content writer">아웃사이더</div>
-								<div class="content date">2019-07-04</div>
-					
-							</div>
-							<span>nare0317 님이 쓴 댓글</span>
-							<!-- 게시판 헤더 시작 -->
-							<div class="bbsHeader">
-								<div class="header no">No</div>
-								<div class="header title">제목</div>
-								<div class="header board">게시판</div>
-								<div class="header date">작성일</div>
-			
-							</div>
-
-							<!-- 게시판 게시물 리스트 시작 -->
-							<div class="bbsContents">
-								<div class="content no">10</div>
-								<div class="content title titleLeft">
-									<div class="contentTitle">
-										<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 </a>
-									</div>
-									<div class="commentCount">
-										<i class='far fa-comment'>0</i>
-									</div>
-								</div>
-								<div class="content board">자유게시판</div>
-								<div class="content date">2019-07-04</div>
-							
-							</div>
-							<div class="bbsContents">
-								<div class="content no">9</div>
-								<div class="content title titleLeft">
-									<div class="contentTitle">
-										<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게
-											리듬을 타는 비트위의 나그네 아싸 가오리</a>
-									</div>
-									<div class="commentCount">
-										<i class='far fa-comment'>0</i>
-									</div>
-								</div>
-								<div class="content writer">아웃사이더</div>
-								<div class="content date">2019-07-04</div>
-							
-							</div>
-							<div class="bbsContents">
-								<div class="content no">8</div>
-								<div class="content title titleLeft">
-									<div class="contentTitle">
-										<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게
-											리듬을 타는 비트위의 나그네 아싸 가오리</a>
-									</div>
-									<div class="commentCount">
-										<i class='far fa-comment'>0</i>
-									</div>
-								</div>
-								<div class="content writer">아웃사이더</div>
-								<div class="content date">2019-07-04</div>
-						
+				<div class="divTableCell">
+					<div class="col">
+						<div class="form-group row required">
+							<label for="colFormLabel" class="col-sm-2 col-form-label"><span
+								id="notice">*</span>이름</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" id="colFormLabel"
+									placeholder="ex)고길동">
 							</div>
 						</div>
 
-						<div class="divTableCell">
-							<div class="col">
-								<div class="form-group row required">
-									<label for="colFormLabel" class="col-sm-2 col-form-label"><span
-										id="notice">*</span>이름</label>
-									<div class="col-sm-3">
-										<input type="text" class="form-control" id="colFormLabel"
-											placeholder="ex)고길동">
-									</div>
-								</div>
+						<div class="form-group row required">
+							<label for="colFormLabel" class="col-sm-2 col-form-label"><span
+								id="notice">*</span>지역</label>
+							<div class="col-sm-2" id="select0">서울시</div>
+							<div class="col-sm-2">
+								<select class="custom-select" id="doSelect">
+									<option selected>구 선택</option>
+									<option value="1">마포구</option>
+									<option value="2">영등포구</option>
+									<option value="3">서대문구</option>
+								</select>
+							</div>
+							<div class="col-sm-2" id="select1">
+								<select class="custom-select" id="doSelect">
+									<option selected>동 선택</option>
+									<option value="1">연희동</option>
+									<option value="2">연남동</option>
+									<option value="3">서교동</option>
+								</select>
+							</div>
+						</div>
 
-								<div class="form-group row required">
-									<label for="colFormLabel" class="col-sm-2 col-form-label"><span
-										id="notice">*</span>지역</label>
-									<div class="col-sm-2" id="select0">서울시</div>
-									<div class="col-sm-2">
-										<select class="custom-select" id="doSelect">
-											<option selected>구 선택</option>
-											<option value="1">마포구</option>
-											<option value="2">영등포구</option>
-											<option value="3">서대문구</option>
-										</select>
-									</div>
-									<div class="col-sm-2" id="select1">
-										<select class="custom-select" id="doSelect">
-											<option selected>동 선택</option>
-											<option value="1">연희동</option>
-											<option value="2">연남동</option>
-											<option value="3">서교동</option>
-										</select>
-									</div>
+						<div class="form-group row">
+							<label for="colFormLabel" class="col-sm-2 col-form-label"><span
+								id="notice">*</span>성별</label>
+							<div class="col-sm-10" id="yesno">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline1"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline1">남</label>
 								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline2"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline2">여</label>
+								</div>
+							</div>
+						</div>
 
-								<div class="form-group row">
-									<label for="colFormLabel" class="col-sm-2 col-form-label"><span
-										id="notice">*</span>성별</label>
-									<div class="col-sm-10" id="yesno">
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline1"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline1">남</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline2"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline2">여</label>
-										</div>
-									</div>
-								</div>
+						<div class="form-group row">
+							<label for="colFormLabel" class="col-sm-2 col-form-label"><span
+								id="notice">*</span>연령대</label>
+							<div class="col-sm-3">
+								<select class="custom-select" id="custom-select">
+									<option selected>10대</option>
+									<option value="1">10대</option>
+									<option value="2">20대</option>
+									<option value="2">30대</option>
+									<option value="2">40대</option>
+									<option value="2">50대 이상</option>
+								</select>
+							</div>
+						</div>
 
-								<div class="form-group row">
-									<label for="colFormLabel" class="col-sm-2 col-form-label"><span
-										id="notice">*</span>연령대</label>
-									<div class="col-sm-3">
-										<select class="custom-select" id="custom-select">
-											<option selected>10대</option>
-											<option value="1">10대</option>
-											<option value="2">20대</option>
-											<option value="2">30대</option>
-											<option value="2">40대</option>
-											<option value="2">50대 이상</option>
-										</select>
-									</div>
-								</div>
+						<div class="form-group row">
+							<label for="colFormLabel" class="col-sm-2 col-form-label">주거형태</label>
+							<div class="col-sm-6">
+								<select class="custom-select" id="custom-select">
+									<option selected>아파트</option>
+									<option value="1">아파트</option>
+									<option value="2">단독주택</option>
+									<option value="3">다가구주택</option>
+									<option value="4">공동주택</option>
+								</select>
+							</div>
+						</div>
 
-								<div class="form-group row">
-									<label for="colFormLabel" class="col-sm-2 col-form-label">주거형태</label>
-									<div class="col-sm-6">
-										<select class="custom-select" id="custom-select">
-											<option selected>아파트</option>
-											<option value="1">아파트</option>
-											<option value="2">단독주택</option>
-											<option value="3">다가구주택</option>
-											<option value="4">공동주택</option>
-										</select>
-									</div>
+						<div class="form-group row">
+							<label for="colFormLabel" class="col-sm-2 col-form-label"><span
+								id="notice">*</span>고양이<br>양육경험</label>
+							<div class="col-sm-10" id="yesno1">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline3"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline3">있음</label>
 								</div>
-
-								<div class="form-group row">
-									<label for="colFormLabel" class="col-sm-2 col-form-label"><span
-										id="notice">*</span>고양이<br>양육경험</label>
-									<div class="col-sm-10" id="yesno1">
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline3"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline3">있음</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline4"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline4">없음</label>
-										</div>
-									</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline4"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline4">없음</label>
 								</div>
-								<div class="form-group row">
-									<label for="colFormLabel" class="col-sm-2 col-form-label"><span
-										id="notice">*</span>직업구분</label>
-									<div class="col-sm-10" id="yesno">
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline5"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline5">학생</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline6"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline6">직장인</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline7"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline7">기타</label>
-										</div>
-									</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="colFormLabel" class="col-sm-2 col-form-label"><span
+								id="notice">*</span>직업구분</label>
+							<div class="col-sm-10" id="yesno">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline5"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline5">학생</label>
 								</div>
-								<div class="form-group row">
-									<label for="colFormLabel" class="col-sm-2 col-form-label"><span
-										id="notice">*</span>결혼여부</label>
-									<div class="col-sm-10" id="yesno">
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline8"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline8">미혼</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline9"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline9">비혼</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline10"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline10">기혼</label>
-										</div>
-									</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline6"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline6">직장인</label>
 								</div>
-								<div class="form-group row">
-									<label for="colFormLabel" class="col-sm-2 col-form-label"><span
-										id="notice">*</span>가족<br>구성원 수</label>
-									<div class="col-sm-10" id="yesno1">
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline11"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline11">1명</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline12"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline12">2명</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline13"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline13">3명
-												이상</label>
-										</div>
-									</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline7"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline7">기타</label>
 								</div>
-								<div class="form-group row">
-									<label for="colFormLabel" class="col-sm-2 col-form-label">가족
-										내<br>동의 여부
-									</label>
-									<div class="col-sm-10" id="yesno1">
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline14"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline14">동의</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline15"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline15">일부
-												동의</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline16"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline16">비동의</label>
-										</div>
-									</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="colFormLabel" class="col-sm-2 col-form-label"><span
+								id="notice">*</span>결혼여부</label>
+							<div class="col-sm-10" id="yesno">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline8"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline8">미혼</label>
 								</div>
-								<div class="form-group row">
-									<label for="colFormLabel" class="col-sm-2 col-form-label">거주지<br>반려동물<br>가능여부
-									</label>
-									<div class="col-sm-10" id="yesno2">
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline17"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline17">가능</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline18"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline18">불가능</label>
-										</div>
-									</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline9"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline9">비혼</label>
 								</div>
-								<div class="form-group row">
-									<label for="colFormLabel" class="col-sm-2 col-form-label">키우는(*)<br>반려동물
-									</label>
-									<div class="col-sm-10" id="yesno1">
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline19"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline19">없음</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline20"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline20">1마리</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline21"
-												name="customRadioInline1" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline21">2마리</label>
-										</div>
-										<div class="custom-control custom-radio custom-control-inline">
-											<input type="radio" id="customRadioInline22"
-												name="customRadioInline4" class="custom-control-input">
-											<label class="custom-control-label" for="customRadioInline22">3마리
-												이상</label>
-										</div>
-									</div>
-									<label for="colFormLabel" class="col-sm-10 col-form-label"
-										style="color: blue;">*키우는 반려동물 종류/나이/성별/중성화여부</label> <br>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline10"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline10">기혼</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="colFormLabel" class="col-sm-2 col-form-label"><span
+								id="notice">*</span>가족<br>구성원 수</label>
+							<div class="col-sm-10" id="yesno1">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline11"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline11">1명</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline12"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline12">2명</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline13"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline13">3명
+										이상</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="colFormLabel" class="col-sm-2 col-form-label">가족
+								내<br>동의 여부
+							</label>
+							<div class="col-sm-10" id="yesno1">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline14"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline14">동의</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline15"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline15">일부
+										동의</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline16"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline16">비동의</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="colFormLabel" class="col-sm-2 col-form-label">거주지<br>반려동물<br>가능여부
+							</label>
+							<div class="col-sm-10" id="yesno2">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline17"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline17">가능</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline18"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline18">불가능</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="colFormLabel" class="col-sm-2 col-form-label">키우는(*)<br>반려동물
+							</label>
+							<div class="col-sm-10" id="yesno1">
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline19"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline19">없음</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline20"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline20">1마리</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline21"
+										name="customRadioInline1" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline21">2마리</label>
+								</div>
+								<div class="custom-control custom-radio custom-control-inline">
+									<input type="radio" id="customRadioInline22"
+										name="customRadioInline4" class="custom-control-input">
+									<label class="custom-control-label" for="customRadioInline22">3마리
+										이상</label>
+								</div>
+							</div>
+							<label for="colFormLabel" class="col-sm-10 col-form-label"
+								style="color: blue;">*키우는 반려동물 종류/나이/성별/중성화여부</label> <br>
 									<div class="col-sm-7">
 										<input type="text" class="form-control" id="colFormLabel"
 											placeholder="ex)강아지/2살/수컷/중성화했어요">
@@ -682,6 +677,42 @@ div.Table {
 									</div>
 								</div>
 							</div>
+							<div class="col">
+								<div>
+									<span class="input-group-text">1. 입양을 원하는 가장 큰 이유는
+										무엇인가요?</span>
+								</div>
+								<div class="input-group">
+									<div class="input-group-prepend"></div>
+									<textarea class="form-control" id="textarea"
+										aria-label="With textarea" placeholder="내용을 입력해주세요.">냥이 사연이 너무 안타깝네요.. 
+제가 평소에 고양이를 키우려고 알아보고 있었는데, 
+돈을 주고 사는 것보다는 입양을 통해서 불쌍한 아이들을 도와주고 싶은 마음에 신청하게 되었습니다. </textarea>
+								</div>
+								<br>
+								<div>
+									<span class="input-group-text">2. 입양을 결정하기까지 얼마나 오랜 시간
+										고민하셨나요?</span>
+								</div>
+								<div class="input-group">
+									<div class="input-group-prepend"></div>
+									<textarea class="form-control" id="textarea"
+										aria-label="With textarea" placeholder="내용을 입력해주세요."></textarea>
+								</div>
+								<br>
+								<div>
+									<span class="input-group-text text-left">3. 현재 다른 반려동물을
+										양육 중인 경우, 합사는 적어도 2주 정도 시간을 갖고 천천히 진행해야 합니다. <br>&nbsp;&nbsp;&nbsp;합사가
+										필요한 경우 간단한 합사 계획에 대해서 알려주세요. (ex. 2주 간 격리 후 천천히 대면 예정)
+									</span>
+								</div>
+								<div class="input-group">
+									<div class="input-group-prepend"></div>
+									<textarea class="form-control" id="textarea"
+										aria-label="With textarea" placeholder="내용을 입력해주세요."></textarea>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
