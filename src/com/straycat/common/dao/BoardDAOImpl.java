@@ -35,12 +35,5 @@ public class BoardDAOImpl implements CommonDAO
 		
 		return list;
 	}
-
-	@Override
-	public Map<String, Object> selectOne()
-	{
-		return null;
-	}
-	
 	
 }

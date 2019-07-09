@@ -1,20 +1,20 @@
 package com.straycat.cat;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.straycat.common.dao.CommonDAO;
 
 @Service("catDetail")
 public class CatServiceImpl implements CatService
 {
 	@Resource(name="CatDAO")
-	private CommonDAO dao;
+	private CatCommonDAO dao;
 
 	@Override
 	public Map<String, Object> catInfo()
@@ -31,4 +31,22 @@ public class CatServiceImpl implements CatService
 		
 		return catInfo;
 	}
+
+	@Override
+	public List<String> catLocation()
+	{
+		List<String> catLocation = new ArrayList<String>();
+		
+		try
+		{
+			catLocation = dao.selectList();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return catLocation;
+	}
+	
+	
 }
