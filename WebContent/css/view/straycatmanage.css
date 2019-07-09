@@ -6,24 +6,24 @@ div {
 }
 
 /************** (헤더+브레드크럼 영역) **************/
-	
+
 	.header
 	{
-		margin-bottom: 20px;
+		padding-left: 50px;
+		margin-left: 30px;
+		padding-right: 50px;
 	}
 	
 	.section-1
 	{
+		padding-left: 50px;
+		margin-left: 30px;
+		padding-right: 50px;
 		width: 100%;
-	    padding-right: 15px;
-	    padding-left: 15px;
-	    margin-right: auto;
-	    margin-left: auto;
 	}
 	
 	.header-title
 	{
-		padding-top: 1rem;
 		border-color: #ddd;
 		border-bottom: solid 1px #000000e0;
 	}
@@ -42,13 +42,19 @@ div {
 	
 	
 	h2 {
-		font-weight: bold;
+		font-weight: 800;
 		letter-spacing: 5px;
-		margin-top:40px;
+		margin-top:40px;f
 	}
 	
 	/******************************************/
 
+
+	.section-1 > .search
+	{
+		padding-left: 0px;
+	}
+	
 	.section-1 h5
 	{
 		padding-left: 15px;
@@ -56,6 +62,17 @@ div {
 		padding-top: 10px;
 		
 	}
+	
+	
+	/****** section-2 ************************************/
+	.section-2
+	{
+		padding-left: 50px;
+		margin-left: 30px;
+		padding-right: 50px;
+		width: 100%;
+	}
+	
 	
 	
 	.card {
@@ -100,9 +117,9 @@ div {
 		text-align: right;
 	}
 	
-	span {
+	/* span {
 		font-size: small;
-	}
+	} */
 	
 	.container2 {
 		margin-left: 100px;
@@ -110,10 +127,7 @@ div {
 		margin-top: 60px;
 	}
 	
-	.header
-	{
-		margin-top: 60px;
-	}
+	
 	.scroll
 	{
 		overflow-y: scroll; 
@@ -134,34 +148,72 @@ div {
 	{
 		padding: 0px;
 		position:absolute;
-		right:-50%;
+		right:-16%;
 		width:auto;
 	} 
 	
-	.apply
+	.mycat
 	{
-		width:250px;
-		height:150px;
-		background-color: #fff;
-		border: 1px solid #b6b6b8;
+		width:230px;
+		height:300px;
+		background-color: #f0f0f0;
 		border-radius: 5px;
-		padding: 15px;
+		padding: 7px;
 	}
 	
-	.apply h5
+	.mycat > .fas
+	{
+		font-size: 6px;
+	}
+	.mycat > .figure
+	{
+		margin-bottom: 0px;
+	}
+	.mycat > .col
+	{
+		padding: 0px;
+	}
+	.mycat-img
+	{
+		margin: 10px;
+	}
+	
+	.mycat-name
+	{
+		font-size: 10px;
+		text-align: center;
+	}
+	
+	.mycat p
 	{
 		font-weight: bold;
+		text-align: left;
+		text-decoration: underline;
+		font-size: 12pt;
+		margin-bottom: 0px;
+		letter-spacing: -0.4px;
 	}
 	
-	.apply h5 > span
+	.mycat a
 	{
-		font-weight: bold;
+		color: black;
 	}
 	
-	.apply button
+	
+	.mycat button
 	{
 		width: 190px;
 		margin-bottom: 5px;
+	}
+	
+	hr
+	{
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		border-top: 1px solid rgba(0,0,0,.2);
+		box-sizing: content-box;
+		height: 0;
+		overflow: visible;
 	}
 	
 	

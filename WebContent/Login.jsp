@@ -60,15 +60,6 @@
 <br />
 <br />
 <br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
 <div>
 	<c:import url="Footer.jsp"></c:import>
 </div>
