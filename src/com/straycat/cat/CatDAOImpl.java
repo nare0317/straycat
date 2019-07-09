@@ -57,4 +57,23 @@ public class CatDAOImpl implements CatDAO
 		return catLocation;	
 	}
 	
+	@Override
+	public List<String> selectActList()
+	{
+		List<String> catActReg = null;
+		
+		try
+		{
+			catActReg = sqlSession.selectList("catDetail.actReg");
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		
+		return catActReg;	
+	}
+	
 }
