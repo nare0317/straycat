@@ -35,13 +35,6 @@ public class MainController
 		return "StrayCatManage";
 	}
 	
-	// 입양 리스트 페이지로 이동
-	@RequestMapping("/adopt")
-	public String adoptList()
-	{
-		return "StrayCatAdoptList";
-	}
-	
 	// 실종 리스트 페이지로 이동
 	@RequestMapping("/missing")
 	public String missing()
