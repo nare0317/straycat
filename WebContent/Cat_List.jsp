@@ -9,7 +9,6 @@
 <head>
 <meta charset="UTF-8">
 <title>길냥이관리(리스트)</title>
-<c:import url="Head.jsp"></c:import>
 
 <!-- Head.jsp  -->
 <c:import url="Head.jsp"></c:import>
