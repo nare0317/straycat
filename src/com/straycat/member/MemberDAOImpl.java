@@ -37,15 +37,29 @@ public class MemberDAOImpl implements MemberDAO
 	@Override
 	public List<Map<String, Object>> selectList(String id, Object value)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		try 
+		{
+			return sqlSession.selectOne(id);
+		} catch (Exception e) 
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
 	}
 
 	@Override
 	public <T> T selectOne(String id)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		try 
+		{
+			return sqlSession.selectOne(id);
+		} catch (Exception e) 
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
 	}
  
 }

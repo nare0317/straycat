@@ -162,13 +162,30 @@ $(document).ready(function()
 	{
 		
 		//alert($("#idInput").val());
-		if ($("#idInput").val()  )
+		if ( $("#idInput").val()  )
 		{
 			
 		}
 		
 		
 		
+	});
+	
+	$("#nameCheck2").click(function()
+	{
+			var cname = $("#cname").val();
+			var ctel1 = $("#ctel1").val();
+			var ctel2 = $("#ctel2").val();
+			var ctel3 = $("#ctel3").val();
+	
+			$("#name").val(cname);
+			$("#tel1").val(ctel1);
+			$("#tel2").val(ctel2);
+			$("#tel3").val(ctel3);
+			
+			$("#modalForm").submit();
+			
+			
 	});
 	
 	

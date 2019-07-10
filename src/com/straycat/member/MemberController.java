@@ -20,11 +20,16 @@ public class MemberController
 
 	// 회원가입 페이지로 이동
 	@RequestMapping("/join")
-	public String join()
+	public String join(HttpServletRequest requset)
 	{
-		return "Join_Form";
+		String termCheck = requset.getParameter("termCheck");
+		
+		if (termCheck == null )
+			return "redirect:acceptterms";	
+		else
+			return "Join_Form";
+			
 	}
-	
 
 	// 약관동의 페이지로 이동
 	@RequestMapping("/acceptterms")

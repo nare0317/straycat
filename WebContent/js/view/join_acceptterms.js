@@ -23,17 +23,12 @@ $(document).ready(function()
 			
 			$("#errorDiv").css("display", "inline");
 			$("#errorMsg").css("display", "inline");
-			var termCheck1 = $('input:checkbox[id="termCheck1"]').is(':checked') + $('input:checkbox[id="termCheck2"]').is(':checked');
-			var termCheck2 = $('input:checkbox[id="termCheck2"]').is(':checked');
-			alert( termCheck1 );
+
 		}
 		else
 		{
-			var termCheck1 = $('input:checkbox[id="termCheck1"]').is(':checked');
-			var termCheck2 = $('input:checkbox[id="termCheck2"]').is(':checked');
-			
-			window.location.href='join?termCheck='+ $('input:checkbox[id="termCheck1"]').is(':checked') + $('input:checkbox[id="termCheck2"]').is(':checked');
-			
+			var termCheck = $('input:checkbox[id="termCheck1"]').is(":checked") + $('input:checkbox[id="termCheck2"]').is(":checked");
+			window.location.href='join?termCheck=' + $('input:checkbox[id="termCheck1"]').is(":checked") + $('input:checkbox[id="termCheck2"]').is(":checked");			
 		}
 	});
 });

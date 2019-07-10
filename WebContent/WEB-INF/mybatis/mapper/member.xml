@@ -4,25 +4,25 @@
 <mapper namespace="member">
 
 	<select id="checkId" resultType="java.lang.Integer">
-		SELECT COUNT(ID)
+		SELECT COUNT(ID) AS COUNT
 		FROM USER_REG
 		WHERE ID = #{id}
 	</select>
 
 	<select id="checkNickName" parameterType="map" resultType="java.lang.Integer">
-		SELECT COUNT(NICKNAME)
+		SELECT COUNT(NICKNAME) AS COUNT
 		FROM USER_REG
 		WHERE NICKNAME = #{nickname}
 	</select>
 	
 	<select id="checkEmail" parameterType="map" resultType="java.lang.Integer">
-		SELECT COUNT(EMAIL)
+		SELECT COUNT(EMAIL) AS COUNT
 		FROM USER_REG
 		WHERE EMAIL = #{email}	
 	</select>
 	
 	<select id="checkName" parameterType="map" resultType="java.lang.Integer">
-		SELECT COUNT(*)
+		SELECT COUNT(*) AS COUNT
 		FROM USER_REG
 		WHERE USER_NAME=#{user_name}
 		AND TEL = #{tel}
