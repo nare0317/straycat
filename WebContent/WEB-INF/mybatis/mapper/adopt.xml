@@ -10,11 +10,12 @@
 	     , CT.SPECIES AS CAT_TYPE
 	     , CS.SEX AS CAT_SEX
 	     , A.CAT_AGE AS CAT_AGE
-	     , AD.SI || AD.GU || AD.DONG AS CAT_ADDRESS
+	     , AD.SI || ' ' || AD.GU || ' ' || AD.DONG AS CAT_ADDRESS
 	     , AP.ADT_PROC AS ADT_PROC
 	     , AT.ADT_TYPE AS ADT_TYPE
 	     , A.HIT_COUNT AS HITCOUNT
 	     , A.POST_DATE AS POST_DATE
+	     , A.CAT_REP_IMG AS CAT_IMAGE
 	FROM ADT_REG A 
 	JOIN CAT_TYPE CT
 	ON A.CAT_SPECIES = CT.SPECIES_CODE
@@ -27,6 +28,16 @@
 	JOIN ADT_TYPE AT
 	ON A.ADT_TYPE = AT.ADT_TYPE_CODE
 	ORDER BY A.POST_DATE
+</select>
+
+<insert id="addAdopt">
+	EXEC PRC_ADT_REG_INSERT('ADP2', '윤배', ${ADDRESS}, TO_DATE('2019-07-07','YYYY-MM-DD'), 'SP3', 'ADCA2', '6개월', 'CS2', 'ADT3', '눈이 파랑색이에요', '아픈데 없이 다 건강해요', 'straycat.png', 'US2', '010-2252-6642','difenf@naver.com', '고양이 알레르기가 있어요ㅜㅜ','RT2' ,'ADJ1', 'RT2', 'ADFN3')
+</insert>
+
+<select id="searchAddress">
+	SELECT ADDRESS_CODE
+	FROM ADDRESS
+	WHERE SI = '서울시' AND GU = ${gu} AND DONG = ${dong};
 </select>
 
 </mapper>

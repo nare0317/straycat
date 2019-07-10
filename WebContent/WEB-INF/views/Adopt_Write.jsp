@@ -58,7 +58,8 @@
    <!-- ★★★★★내용★★★★★ -->
    <section class="content container">
       
-      <form class="needs-validation" novalidate>
+      <form action="<%=cp %>/adopt_write" method="get"
+            class="needs-validation" novalidate>
       
          <!-- ★★★★ 고양이 정보 입력 ★★★★  -->
          <div class="cat-info row">
@@ -83,7 +84,8 @@
                <div class="form-group row">
                   <label for="cat-name" class="col-sm-2 col-form-label">이름</label>
                   <div class="col-sm-4">
-                     <input type="text" class="form-control" id="cat-name" placeholder="ex.야옹이"  maxlength="10" required>
+                     <input type="text" class="form-control" id="cat_name" name="cat_name"
+                     placeholder="ex.야옹이"  maxlength="10" required>
                     </div>
                 </div>
                 
@@ -92,7 +94,7 @@
                   <label for="location" class="col-sm-2 col-form-label">지역</label>
                   <label id="seoul" class="col-sm-2 col-form-label">서울시</label>
                   <div class="col-sm-3 gu-select">
-                     <select id="gu" class="custom-select" required>   
+                     <select id="gu" name="gu" class="custom-select" required>   
                         <option value="">구 선택</option>
                         <option value="1">마포구</option>
                         <option value="2">영등포구</option>
@@ -100,7 +102,7 @@
                      </select>
                   </div>
                   <div class="col-sm-3">
-                     <select id="dong" class="custom-select" required>
+                     <select id="dong" name="dong" class="custom-select" required>
                         <option value="">동 선택</option>
                         <option value="1">연희동</option>
                         <option value="2">연남동</option>
@@ -122,7 +124,7 @@
                <div class="form-group row">
                   <label for="cat-species" class="col-sm-2 col-form-label">종류</label>
                   <div class="col-sm-4">
-                     <select class="custom-select" id="cat-species" required>
+                     <select class="custom-select" id="cat_species" name="cat_species" required>
                         <option value="" >고양이 종류 선택</option>
                         <option value="1">코리안숏헤어</option>
                         <option value="2">품종</option>
@@ -177,7 +179,8 @@
                   <div class="col-sm-10">
                   
                      <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadio3" name="customRadio2" class="custom-control-input" required>
+                        <input type="radio" id="customRadio3" name="customRadio2" 
+                        value="" class="custom-control-input" required>
                         <label class="custom-control-label" for="customRadio3">암컷</label>
                      </div>
                      
@@ -230,7 +233,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">고양이<br>
                      특이사항</label>
                   <div class="col-sm-10">
-                     <textarea class="form-control" id="exampleFormControlTextarea1"
+                     <textarea class="form-control" id="cat_etc1" name="cat_etc1"
                      placeholder="고양이의 특징이나 생김새에 대해 자세히 기술해주세요. 고양이를 찾는데 큰 도움이 됩니다."
                      rows="7" maxlength="1000" required></textarea>
                   </div>
@@ -241,7 +244,7 @@
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">기타사항</label>
                   <div class="col-sm-10">
-                     <textarea class="form-control" id="exampleFormControlTextarea1"
+                     <textarea class="form-control" id="cat_etc2" name="cat_etc2"
                      placeholder="고양이를 잃어버렸을 때의 상황, 고양이가 있을 것으로 예상되는 장소 등을 자세히 적어주시기 바랍니다.사례금이 있으실 경우, 사례금에 대한 내용도 작성해주세요."
                      rows="7" maxlength="1000" required></textarea>
                   </div>
@@ -258,20 +261,20 @@
          <div class="row">
          
             <!------------------ 왼쪽 등록 폼 이름 ----------------->
-            <div class="col-md-2 text-right">
+            <div class="col-md-3 text-right">
                <h1>
                   입양<br>보내는 분<br>정보
                </h1>
             </div>
             
             <!------------------ 작성자정보 등록 폼 ----------------->
-            <div class="col-md-7 offset-md-3">
+            <div class="col-md-7 offset-md-2">
             
                <!-- 이름(수정X)  -->
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">이름</label>
                   <div class="col-sm-3">
-                     <input type="text" readonly="readonly" class="form-control" id="name" placeholder="임나래" >
+                     <input type="text" readonly="readonly" class="form-control" id="name" name="name" placeholder="임나래" >
                   </div>
                </div>
                
@@ -279,7 +282,7 @@
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">연락처</label>
                   <div class="col-sm-5">
-                     <input type="text" class="form-control" id="tel" placeholder="010-1234-5678">
+                     <input type="text" class="form-control" id="tel" name="tel"placeholder="010-1234-5678">
                   </div>
                </div>
                
@@ -287,7 +290,7 @@
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">이메일</label>
                   <div class="col-sm-6">
-                     <input type="email" class="form-control" id="email" placeholder="test123@naver.com">
+                     <input type="email" class="form-control" id="email" name="email" placeholder="test123@naver.com">
                   </div>
                </div>
                
@@ -295,52 +298,8 @@
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">입양보내는 이유</label>
                   <div class="col-sm-10">
-                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" maxlength="1000" required></textarea>
-                  </div>
-               </div>
-               <br>
-               
-            </div>
-         </div><!-- 작성자 정보입력 끝 -->
-         
-          <hr>
-         
-         <!-- ★★★★ 서술형 질문 ★★★★  -->
-         <div class="row">
-         
-            <!------------------ 왼쪽 등록 폼 이름 ----------------->
-            <div class="col-md-2 text-right">
-               <h1>
-                  서술형<br>질문
-               </h1>
-            </div>
-            
-            <!------------------ 작성자정보 등록 폼 ----------------->
-            <div class="col-md-7 offset-md-3">
-            
-				<!-- 입양보내는 이유 -->   
-               <div class="form-group row">
-                  <label for="colFormLabel" class="col-sm-2 col-form-label">질문 1.</label>
-                  <div class="col-sm-10">
-                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" maxlength="1000" required placeholder="입양을 원하시는 가장 큰 이유는 무엇인가요?"></textarea>
-                  </div>
-               </div>
-               <br>
-               
-               <!-- 입양보내는 이유 -->   
-               <div class="form-group row">
-                  <label for="colFormLabel" class="col-sm-2 col-form-label">질문 2.</label>
-                  <div class="col-sm-10">
-                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" maxlength="1000" required placeholder="입양을 결정하기 까지 얼마나 오랜 시간을 고민하셨나요?"></textarea>
-                  </div>
-               </div>
-               <br>
-               
-               <!-- 입양보내는 이유 -->   
-               <div class="form-group row">
-                  <label for="colFormLabel" class="col-sm-2 col-form-label">입양보내는 이유</label>
-                  <div class="col-sm-10">
-                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="1000" required placeholder="현재 다른 반려동물이 있을 경우 합사는 적어도 2주 정도 시간을 갖고 천천히 진행해야 합니다. 합사가 필요한 경우 간단한 합사 계획에 대해서 알려주세요. (e.g, 2주 동안은 안방에서 격리 후 천천히 대면 예정)"></textarea>
+                     <textarea class="form-control" id="adt_reason" name="adt_reason"
+                     rows="7" maxlength="1000" required></textarea>
                   </div>
                </div>
                <br>
@@ -354,14 +313,14 @@
          <div class="row">
          
             <!------------------ 왼쪽 등록 폼 이름 ----------------->
-            <div class="col-md-2 text-right">
+            <div class="col-md-3 text-right">
                <h1>
                   입양매칭을<br>위한 설문
                </h1>
             </div>
             
             <!------------------ 작성자정보 등록 폼 ----------------->
-            <div class="col-md-7 offset-md-3">
+            <div class="col-md-7 offset-md-2">
             
 				<!-- 고양이 길러본 경험 -->
                <div class="form-group row">

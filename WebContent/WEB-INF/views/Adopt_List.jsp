@@ -51,9 +51,9 @@
 		<div class="form-group col-lg-10 search">
 			
 			<!-- row1 -->
-			<div class="row">
+			<!-- <div class="row">
 				<h5>동네에 어떤 길고양이들이 있는지 확인하세요!</h5>
-			</div>
+			</div> -->
 			
 			<!-- row2 -->
 			<div class="row">
@@ -88,8 +88,8 @@
 				<h5 class="col-lg-8">검색된 고양이<span> 5 </span>마리</h5>
 				
 				<div class="col-lg-4 text-right write">
-					<button type="button" class="btn btn-primary btn-lg" 
-					id="adopt_write">입양등록</button>
+					<input type="button" class="btn btn-primary btn-lg" 
+					id="adopt_write" onclick="location.href='<%=cp%>/adopt_form'">입양등록
 				</div>
 			</div>
 			
@@ -120,6 +120,7 @@
 				
 					<!-- 길냥이 대표이미지 -->
 					<div class="col-md-5 cat-photo">
+						<%-- <img src="${list.CAT_IMAGE }" class="card-img" alt=""> --%>
 						<img src="img/straycat.jpg" class="card-img" alt="">
 					</div>
 					
@@ -132,12 +133,14 @@
 							<div class="card-text">
 								<ul class="cat-info-list">
 									<li>${list.CAT_TYPE }(${list.CAT_SEX })</li>
+									<li>${list.CAT_AGE }</li>
 									<li>${list.CAT_ADDRESS}</li>
 									<li>${list.POST_DATE }</li>
 								</ul>	
 							</div>
 						</div>
-					</div>
+					</div><!-- 길냥이 정보 끝 -->
+					
 				</div>
 			</div>
 			</c:forEach>
@@ -237,48 +240,6 @@
 </div> <!-- end #content  -->
 
 
-
-		<!-- <div class="container2 header">
-		<div class="row">
-			<div class="col-9">
-			<h1>입양집사찾기</h1>
-			<hr>
-			<div class="row">
-				<div class="col-8">
-					<h5>
-						<a href="#" class="red">긴급입양</a>
-						<a href="#" class="purple">분실의심</a>
-						<a href="#" >수컷</a><a href="#">암컷</a>
-						<a href="#">아기묘</a><a href="#">성묘</a>
-					</h5>
-				</div>
-				<div class="col-1">
-					  <div class="form-group">
-					    <select class="form-control" id="exampleFormControlSelect1">
-					      <option selected="selected">동</option>
-					      <option>2</option>
-					      <option>3</option>
-					      <option>4</option>
-					      <option>5</option>
-					    </select>
-					  </div>
-				</div>
-				<div class="col-1">
-					  <div class="form-group">
-						    <select class="form-control" id="exampleFormControlSelect1">
-						      <option selected="selected">구</option>
-						      <option>2</option>
-						      <option>3</option>
-						      <option>4</option>
-						      <option>5</option>
-						    </select>
-						</div>
-				</div>
-				<div class="col-2">
-					<button type="button" class="btn btn-primary">지역검색</button>
-				</div>
-			</div> -->
-
 			<!-- <div class="col-3">
 			 <div class="text-right">
 			 	<button type="button" class="btn btn-primary">입양등록</button>
@@ -288,28 +249,9 @@
 						내가 올린 입양글
 					</div>
 				------------------------------------------------ 로그인 O --------------------------------------------------
-				<div class="card-body">
-					<div class="container">
-						<div class="row">
-						<div class="col">
-						<img src="img/straycat.jpg" class="card-img" alt="...">
-						</div>
-						<div class="col">
-						<img src="img/straycat.jpg" class="card-img" alt="...">
-						</div>
-						<div class="col">
-						<img src="img/straycat.jpg" class="card-img" alt="...">
-						</div>
-						<div class="col">
-						<img src="img/straycat.jpg" class="card-img" alt="...">
-						</div>
-						</div>
-					</div>
-					</div>
-				</div>
+
 				------------------------------------------------ 로그인 O --------------------------------------------------
 				------------------------------------------------ 로그인 X --------------------------------------------------
-				
 				<div class="card">
 					<div class="card-header">
 						내가 올린 입양글

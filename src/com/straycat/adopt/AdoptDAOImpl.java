@@ -19,8 +19,9 @@ public class AdoptDAOImpl implements AdoptDAO
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
+
 	@Override
-	public List<Map<String, Object>> selectList()
+	public List<Map<String, Object>> listAdopt()
 	{
 		List<Map<String, Object>> list = null; 
 		
@@ -37,5 +38,43 @@ public class AdoptDAOImpl implements AdoptDAO
 		
 		return list;
 	}
+
+	
+	@Override
+	public int addAdopt(Map<String, Object> map)
+	{
+		int result = 0; 
+		try
+		{
+			result = sqlSession.insert("adopt.addAdopt");
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		return result;
+	}
+
+
+	@Override
+	public String searchAddress(String gu, String dong)
+	{
+		String address = ""; 
+		try
+		{
+			address = sqlSession.selectOne("adopt.searchAddress");
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		return address;
+	}
+
+	
 	
 }
