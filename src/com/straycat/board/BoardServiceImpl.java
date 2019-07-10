@@ -81,6 +81,22 @@ public class BoardServiceImpl implements BoardService
 		return article;
 	}
 	
+	// 댓글 리스트를 불러오는 메소드
+	@Override
+	public List<Map<String, Object>> commentLoad(Map<String, Object> map) 
+	{
+		List<Map<String, Object>> list = null;
+		
+		try 
+		{
+			list = dao.selectList("board.commentLoad", map);
+		} catch (Exception e) 
+		{
+			System.out.println(e.toString());
+		}
+		return list;
+	}
+	
 	
 	
 	

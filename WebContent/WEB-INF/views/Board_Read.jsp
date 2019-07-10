@@ -114,15 +114,15 @@
 		<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
 		<div class="beforeafter list-group">
 			<a href="" onclick="" class=" prev list-group-item list-group-item-action"> 
-				<i class="fas fa-chevron-up"> 이전 글 </i><span>이전 글이 없습니다.</span>
+				<i class="fas fa-chevron-up"> 이전 글 </i><span>${prevArticle.TITLE }</span>
 			</a>
 			<a href="" onclick=""  class="next list-group-item list-group-item-action">
-				<i class="fas fa-chevron-down"> 다음 글 </i><span>저희 냥이 좀 찾아주세요ㅠㅠ</span>
+				<i class="fas fa-chevron-down"> 다음 글 </i><span>${nextArticle.TITLE }</span>
 			</a>
 		</div>
 		
 		<!-- 목록으로 돌아가기 버튼 -->
-		<button type="button" class="btn btn-dark pull-right">목록으로</button>
+		<button type="button" class="btn btn-dark pull-right" onclick="location.href='<%=cp %>/board'">목록으로</button>
 
 
 
@@ -158,46 +158,47 @@
 				</div>
 				
 				<!-- 댓글 1 -->
+				<c:forEach var="commentList" items="${commentList }">
 				<div id="comment-wrapper">
 
 					<div class="comment" data-id="16312" data-login="false">
 						<div class="comment-content">
 							<div class="comment-writer-date">
 								<!-- <div class="d-block"> -->
-									<h6 class="comment-writer">김경희
-									<span class="comment-date">2019-07-03 12:39</span>
+									<h6 class="comment-writer">${commentList.NICKNAME }
+									<span class="comment-date">${commentList.BBS_CMT_DATE }</span>
 									</h6>
 								<!-- </div> -->
 							</div>
-							<p>정말 많은 사람들이 고생하셨습니다..ㅜ.ㅜ 정부에서는 크게 도와주는게 없으니
-								동물보호단체에서라도 꾸준히 이후에도 관리를 해주셨으면 하는 바람입니다..ㅜ.ㅜ 정말 없어져서 기쁩니다!!</p>
+							<p>${commentList.CONTENT }</p>
 						</div>
 					</div><!-- end comment -->
 
 					<hr class="comment-hr">
 
 				</div><!-- end comment-wrapper -->
-				
-				<!-- 댓글 2 -->
+				</c:forEach>
+				<!-- 
+				댓글 2
 				<div id="comment-wrapper">
 
 					<div class="comment" data-id="16312" data-login="false">
 						<div class="comment-content">
 							<div class="comment-writer-date">
-								<!-- <div class="d-block"> -->
+								<div class="d-block">
 									<h6 class="comment-writer">임나래 <span class="comment-date g-color-gray-dark-v5 g-font-size-12 g-font-weight-300">2019-07-02 17:29</span>
 									</h6>
-								<!-- </div> -->
+								</div>
 							</div>
 							<p>야옹이 너무이쁘네요 ㅠㅠ 어쩌다 잃어버리셨을까.. ㅠㅠ 저희동네인데 
 							주위 잘 둘러보고 다녀야겠어요 ㅠㅠ </p>
 						</div>
-					</div><!-- end comment -->
+					</div>end comment
 
 					<hr class="comment-hr">
 
-				</div><!-- end comment-wrapper -->
-				
+				</div>end comment-wrapper
+ -->				
 			</div><!-- end comment-list area -->
 		</div><!-- end comment-area -->
 
