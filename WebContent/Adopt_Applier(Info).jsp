@@ -69,7 +69,7 @@
 				<div class="divTableBody">
 					<div class="divTableCell">
 					
-						<!-- 해당 후보자 게시글  -->
+						<!-- 해당 후보자 게시글 게시판 -->
 						<div class="col">
 							<br> <span>nare0317 님이 쓴 게시글</span> <br>
 							<!-- 게시판 헤더 시작 -->
@@ -116,7 +116,8 @@
 							</div>
 						</div>
 						<br> <br>
-
+						
+						<!-- 해당 후보자 댓글 게시판 -->
 						<div class="col">
 							<br> <span>nare0317 님이 쓴 댓글</span> <br>
 							<!-- 게시판 헤더 시작 -->
@@ -165,7 +166,7 @@
 					</div>
 
 
-
+					<!-- 입양 신청 선택형 질문 -->
 					<div class="divTableCell">
 						<br>
 						<div class="col">
@@ -480,6 +481,8 @@
 								</div>
 							</div>
 						</div>
+						
+						<!-- 입양 신청 주관식 질문 -->
 						<div class="col">
 							<div>
 								<span class="input-group-text">1. 입양을 원하는 가장 큰 이유는 무엇인가요?</span>

@@ -13,6 +13,8 @@
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
 	<link href="<%=cp%>/css/view/adopt_apply.css" rel="stylesheet">
+	<script src="<%=cp %>/js/view/adoption_apply.js"></script>
+	
 </head>
 <body>
 
@@ -289,18 +291,23 @@
 		<hr>		
 		<div><span class="input-group-text">1. 입양을 원하는 가장 큰 이유는 무엇인가요?</span></div>
 		<div class="input-group">		
-		  <div class="input-group-prepend">
-		  </div>
-		  <textarea class="form-control" id="textarea" aria-label="With textarea" placeholder="내용을 입력해주세요.">냥이 사연이 너무 안타깝네요.. 
+
+		  <textarea class="form-control" id="textarea" maxlength="300" aria-label="With textarea" placeholder="내용을 입력해주세요.">냥이 사연이 너무 안타깝네요.. 
 제가 평소에 고양이를 키우려고 알아보고 있었는데, 
-돈을 주고 사는 것보다는 입양을 통해서 불쌍한 아이들을 도와주고 싶은 마음에 신청하게 되었습니다. </textarea>
-		</div>
+돈을 주고 사는 것보다는 입양을 통해서 불쌍한 아이들을 도와주고 싶은 마음에 신청하게 되었습니다. 	
+</textarea>
+</div>
+<div class="wrap">
+<span id="counter">###</span>
+</div>
+
+		
 		<br>
 		<div><span class="input-group-text">2. 입양을 결정하기까지 얼마나 오랜 시간 고민하셨나요?</span></div>
 		<div class="input-group">		
 		  <div class="input-group-prepend">
 		  </div>
-		  <textarea class="form-control" id="textarea" aria-label="With textarea" placeholder="내용을 입력해주세요."></textarea>
+		  <textarea class="form-control" id="textarea" maxlength="300" aria-label="With textarea" placeholder="내용을 입력해주세요."></textarea>
 		</div>
 		<br>
 		<div><span class="input-group-text text-left">3. 현재 다른 반려동물을 양육 중인 경우, 합사는 적어도  2주 정도 시간을 갖고 천천히 진행해야 합니다.
@@ -308,13 +315,16 @@
 		<div class="input-group">		
 		  <div class="input-group-prepend">
 		  </div>
-		  <textarea class="form-control" id="textarea" aria-label="With textarea" placeholder="내용을 입력해주세요."></textarea>
+		  <textarea class="form-control" id="textarea" maxlength="300" aria-label="With textarea" placeholder="내용을 입력해주세요."></textarea>
 		</div>
 		</div>
+		
 		<br><br>
+		
+		<!-- 임시저장 / 작성완료 버튼 -->
 		<div class="col text-center">
-		   <button class="btn btn-light btn-md" type="submit">임시저장</button>
-		   <a class="btn btn-primary btn-md" href="#" role="button" id="completebtn">작성완료</a>
+		   <button class="btn btn-light btn-lg" type="submit">임시저장</button>
+		   <a class="btn btn-primary btn-lg" href="#" role="button" id="completebtn">작성완료</a>
 		</div>
 	  </div>
 
