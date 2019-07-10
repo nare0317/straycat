@@ -129,11 +129,13 @@
 	</section>
 	
 	<section class="section-2 container">
-		<c:forEach var="i" begin="0" end="7">
+		
+		<!-- 고양이 -->
 			<div class="card-deck">
 			
-				<!-- 1마리 -->
 				<div class="card mb-2" style="max-width: 540px;">
+
+				<c:forEach var="list" items="${list }">					
 					<div class="row no-gutters">
 					
 						<!-- 길냥이 대표이미지 -->
@@ -144,55 +146,24 @@
 						<!-- 길냥이 정보 -->
 						<div class="col-md-7 cat-info">
 							<div class="card-body">
-								<!-- 고양이 코드 -->
-								<small class="text-muted">#45827</small>
 								<!-- 고양이 이름 -->
-								<h5 class="card-title">야옹이</h5>
+								<h5 class="card-title">${list.CAT_NAME }</h5>
 								<!-- 고양이 정보 -->
 								<div class="card-text">
 									<ul class="cat-info-list">
-										<li>코리안숏헤어(女)</li>
-										<li>서울시 성동구 성수동</li>
-										<li>2019-06-08</li>
+										<li>${list.CAT_TYPE }(${list.CAT_SEX })</li>
+										<li>${list.CAT_ADDRESS}</li>
+										<li>${list.POST_DATE }</li>
 									</ul>	
 								</div>
 							</div>
 						</div>
-						
 					</div>
-				</div>
-				
-				<!-- 1마리 -->
-				<div class="card mb-2" style="max-width: 540px;">
-					<div class="row no-gutters">
+				</c:forEach>
 					
-						<!-- 길냥이 대표이미지 -->
-						<div class="col-md-5 cat-photo">
-							<img src="img/straycat.jpg" class="card-img" alt="">
-						</div>
-						
-						<!-- 길냥이 정보 -->
-						<div class="col-md-7 cat-info">
-							<div class="card-body">
-								<!-- 고양이 코드 -->
-								<small class="text-muted">#45827</small>
-								<!-- 고양이 이름 -->
-								<h5 class="card-title">야옹이</h5>
-								<!-- 고양이 정보 -->
-								<div class="card-text">
-									<ul class="cat-info-list">
-										<li>코리안숏헤어(女)</li>
-										<li>서울시 성동구 성수동</li>
-										<li>2019-06-08</li>
-									</ul>	
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
-				
 			</div>
-		</c:forEach>
+		
 	</section>
 	
 <!-- 	<section class="section-3">

@@ -23,6 +23,6 @@ public class AdoptController
 		
 		model.addAttribute("list", list);
 		
-		return "AdoptCatList";
+		return "Adopt_List";
 	}
 }
