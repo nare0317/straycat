@@ -7,4 +7,5 @@ public interface CatService
 {
 	public Map<String, Object> catInfo();
 	public List<String> catLocation();
+	public List<String> catActReg();
 }

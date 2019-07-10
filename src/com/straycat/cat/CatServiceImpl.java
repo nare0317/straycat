@@ -50,6 +50,20 @@ public class CatServiceImpl implements CatService
 		
 		return catLocation;
 	}
-	
-	
+
+	@Override
+	public List<String> catActReg()
+	{
+		List<String> catActReg = new ArrayList<String>();
+		
+		try
+		{
+			catActReg = dao.selectActList();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return catActReg;
+	}	
 }

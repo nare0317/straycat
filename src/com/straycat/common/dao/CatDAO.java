@@ -7,4 +7,5 @@ public interface CatDAO
 {
 	public Map<String, Object> selectOne();
 	public List<String> selectList();
+	public List<String> selectActList();
 }
