@@ -24,10 +24,9 @@ $(document).ready(function()
 			return;
 		}
 		
-		if (!($("#searchKey").val()!="subject" || $("#searchKey").val()!="name" || $("#searchKey").val()!="content"))
+		if ($("#searchKey").val()=="" || $("#searchKey").val()==null)
 		{
 			alert("검색기준을 선택해주세요.");
-			alert($("#searchKey").val());
 			return;
 		}
 		$("#searchForm").submit();

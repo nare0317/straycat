@@ -60,6 +60,17 @@ public class BoardController
 		// 검색기준과 검색어로 검색된 데이터가 몇 개인지 계산
 		dataCount = service.dataCount(searchMap);
 		
+		if (dataCount > 0 && dataCount % perPageList != 0)
+		{
+			total_page = dataCount / perPageList + 1;
+		}
+		else if (dataCount > 0 && dataCount % perPageList == 0)
+		{
+			total_page = dataCount / perPageList;
+		}
+		else
+			return "Board_List";
+			
 		/*
 		if (dataCount != 0)
 			total_page = util.pageCount(perPageList, dataCount);
@@ -72,8 +83,8 @@ public class BoardController
 		// 페이지 블럭 설정(한 페이지에 들어갈 페이지 목록 설정)
 		int start = (currentPage - 1) * perPageList + 1;
 		int end = currentPage * perPageList;
-		searchMap.put("start", start);
-		searchMap.put("end", end);
+		searchMap.put("start", start);	// -9
+		searchMap.put("end", end);		// 0
 		
 		// 페이지 블럭, searchKey, searchValue를 기반으로 게시판 목록을 불러옴
 		List<Map<String, Object>> list = service.listBoard(searchMap);

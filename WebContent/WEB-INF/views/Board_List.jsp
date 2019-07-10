@@ -13,10 +13,6 @@
 <title>자유게시판</title>
 
 <c:import url="Head.jsp"></c:import>
-	
-	<!-- 페이지 CSS, 자바스크립트 -->
-	<link rel="stylesheet" href="<%=cp %>/css/view/join_acceptterms.css">
-	<script type="text/javascript" src="<%=cp %>/js/view/join_acceptterms.js"></script>
 
 <!-- 로그인 페이지 자바스크립트, CSS -->
 <script src="<%=cp%>/js/view/board_list.js"></script>
