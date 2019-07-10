@@ -14,20 +14,20 @@
     <div class="collapse navbar-collapse" id="navbarsExample09" style="margin: 30px;">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="introduce">소개<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<%=cp %>/introduce">소개<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="cat">길냥이관리<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<%=cp %>/cat">길냥이관리<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">입양&실종</a>
           <div class="dropdown-menu" aria-labelledby="dropdown09">
-            <a class="dropdown-item" href="adopt">입양</a>
-            <a class="dropdown-item" href="missing">실종</a>
+            <a class="dropdown-item" href="<%=cp %>/adopt">입양</a>
+            <a class="dropdown-item" href="<%=cp %>/missing">실종</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="board">자유게시판<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<%=cp %>/board">자유게시판<span class="sr-only">(current)</span></a>
         </li>
       </ul>
       <form class="form-inline my-2 my-md-0">

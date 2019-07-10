@@ -64,6 +64,22 @@ public class BoardServiceImpl implements BoardService
 		
 		return result;
 	}
+
+	@Override
+	public Map<String, Object> articleLoad(Map<String, Object> map)
+	{
+		Map<String, Object> article = null;
+		
+		try
+		{
+			article = dao.selectOne("board.articleLoad", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return article;
+	}
 	
 	
 	
