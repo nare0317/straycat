@@ -150,6 +150,8 @@
 			<div class="col-4 cat_foot">
 				<h3>야옹이 발자취</h3>
 				<div id="map0" class="map0"></div>
+				<br>
+				<button type="button" class="btn btn-primary">팔로우</button>
 			</div>
 		</div>
 	</div>
@@ -290,19 +292,39 @@
 				</div><br>
 
 				<div class="scroll">
-					<div class="row">
+				
+				
+				<c:forEach var="catLocationList" items="${catLocation}">
+					${catLocationList.LATITUDE } 
+					${catLocationList.LONGITUDE }
+				</c:forEach>
+							
+				
+				
+				<c:forEach var="catActRegList" items="${catActReg}">
+				<div class="row">
 						<div class="col-2">
-							<h5>이용자 닉네임</h5>
-							<span>14:15</span>
-							<div>서울시 마포구 서교동</div>
+							<h5>${catActRegList.NICKNAME }</h5>
+							<span>${catActRegList.ACT_DATE }</span>
+							<div>${catActRegList.ACT_LOCATION }</div>
 						</div>
 						<div class="col-10">
-							<div class="row">
-								<img src="img/help.png"> <img src="img/water.png">
-							</div>
-							<div>길지 아니한 목숨을 사는가 싶이 살았으며 그들의 그림자는 천고에 사라지지 않는 것이다 이것은
-								현저하게 일월과 같은 예가 되려니와 그와 같지 못하다 할지라도 창공에 반짝이는 뭇 별과 같이 산야에 피어나는
-								군영과 같이 이상은</div>
+					 		<div class="row">
+							
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<c:choose>
+									<c:when test="${catActRegList.ACT_TYPE eq '먹이'}"><img src="img/fish.png"></c:when>
+									<c:when test="${catActRegList.ACT_TYPE eq '물'}"><img src="img/water.png"></c:when>
+									<c:when test="${catActRegList.ACT_TYPE eq '간식'}"><img src="img/cacao.png"></c:when>
+									<c:when test="${catActRegList.ACT_TYPE eq '약'}"><img src="img/help.png"></c:when>
+									<c:when test="${catActRegList.ACT_TYPE eq '만남'}"><img src="img/favorite.png"></c:when>
+									<c:otherwise></c:otherwise>
+								</c:choose>
+								 
+							</div><br> 
+							
+							
+							<h4>${catActRegList.CONTENT }</h4>
 						</div>
 					</div>
 
@@ -334,8 +356,8 @@
 								<button type="submit" class="btn btn-primary mb-2">입력</button>
 							</form>
 						</div>
-					</div>
-
+					</div><br><br><br>
+				</c:forEach>
 				</div>
 				<!-- 스크롤 end -->
 
@@ -396,17 +418,16 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script>
 <script>
 	/* 첫번째 지도 (마커 출력용 지도) */
-	var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div 
-	mapOption0 =
-	{
-		center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-		level : 3
-	// 지도의 확대 레벨
-	};
-	var map0 = new kakao.maps.Map(mapContainer0, mapOption0); // 지도를 생성합니다
+	var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div  
+	    mapOption0 = { 
+	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };
 	
+	var map0 = new kakao.maps.Map(mapContainer0, mapOption0); // 지도를 생성합니다
+	 
 	// 마커를 표시할 위치와 title 객체 배열입니다 
-	var positions = [
+	var positions0 = [
 	    {
 	        title: '카카오', 
 	        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
@@ -424,11 +445,11 @@
 	        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
 	    }
 	];
-
+	
 	// 마커 이미지의 이미지 주소입니다
 	var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
 	    
-	for (var i = 0; i < positions.length; i ++) {
+	for (var i = 0; i < positions0.length; i ++) {
 	    
 	    // 마커 이미지의 이미지 크기 입니다
 	    var imageSize = new kakao.maps.Size(24, 35); 
@@ -438,13 +459,12 @@
 	    
 	    // 마커를 생성합니다
 	    var marker0 = new kakao.maps.Marker({
-	        map: map, // 마커를 표시할 지도
-	        position: positions[i].latlng, // 마커를 표시할 위치
-	        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+	        map: map0, // 마커를 표시할 지도
+	        position: positions0[i].latlng, // 마커를 표시할 위치
+	        title : positions0[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 	        image : markerImage // 마커 이미지 
 	    });
 	}
-	
 	
 	
 	/* 두 번째 지도 (마커 생성용 지도) */
@@ -523,7 +543,7 @@
 				}
 			}
 		}
-	}
+	} 
 </script>
 </body>
 </html>
