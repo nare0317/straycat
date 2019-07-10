@@ -25,4 +25,10 @@ ON UR.USER_CODE = AR.USER_CODE
 WHERE AR.CAT_CODE='CAT1' AND AR.ACT_DATE = '2019-07-04'
 </select>
 
+<select id="locationCount" resultType="java.lang.Integer">
+SELECT COUNT(LATITUDE || LONGITUDE ) AS COUNT
+FROM ACT_REG
+WHERE CAT_CODE = 'CAT1'
+</select>
+
 </mapper>
