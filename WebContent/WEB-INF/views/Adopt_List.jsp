@@ -88,8 +88,8 @@
 				<h5 class="col-lg-8">검색된 고양이<span> 5 </span>마리</h5>
 				
 				<div class="col-lg-4 text-right write">
-					<input type="button" class="btn btn-primary btn-lg" 
-					id="adopt_write" onclick="location.href='<%=cp%>/adopt_form'">입양등록
+					<input type="button" class="btn btn-primary btn-lg" value="입양등록"
+					id="adopt_write" onclick="location.href='<%=cp%>/adopt_form'">
 				</div>
 			</div>
 			

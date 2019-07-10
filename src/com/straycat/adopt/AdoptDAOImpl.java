@@ -19,7 +19,8 @@ public class AdoptDAOImpl implements AdoptDAO
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
-
+	
+	// 게시글 리스트 조회 메소드
 	@Override
 	public List<Map<String, Object>> listAdopt()
 	{
@@ -40,6 +41,7 @@ public class AdoptDAOImpl implements AdoptDAO
 	}
 
 	
+	// 게시글 등록 메소드
 	@Override
 	public int addAdopt(Map<String, Object> map)
 	{
@@ -58,13 +60,14 @@ public class AdoptDAOImpl implements AdoptDAO
 	}
 
 
+	// 구와 동을 입력받아 주소코드를 받아오는 메소드
 	@Override
 	public String searchAddress(String gu, String dong)
 	{
 		String address = ""; 
 		try
 		{
-			address = sqlSession.selectOne("adopt.searchAddress");
+			address = (String)sqlSession.selectOne("adopt.searchAddress");
 			
 		} catch (Exception e)
 		{

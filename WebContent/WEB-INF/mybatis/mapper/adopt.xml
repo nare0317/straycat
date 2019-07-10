@@ -31,13 +31,13 @@
 </select>
 
 <insert id="addAdopt">
-	EXEC PRC_ADT_REG_INSERT('ADP2', '윤배', ${ADDRESS}, TO_DATE('2019-07-07','YYYY-MM-DD'), 'SP3', 'ADCA2', '6개월', 'CS2', 'ADT3', '눈이 파랑색이에요', '아픈데 없이 다 건강해요', 'straycat.png', 'US2', '010-2252-6642','difenf@naver.com', '고양이 알레르기가 있어요ㅜㅜ','RT2' ,'ADJ1', 'RT2', 'ADFN3')
+	EXEC PRC_ADT_REG_INSERT(${ADT_PROC}, ${CAT_NAME}, ${ADDRESS}, ${RSQ_DATE}, ${CAT_SPECIES}, ${CAT_AGE_TYPE}, ${CAT_AGE_NUM}, ${CAT_SEX}, ${ADT_TYPE}, ${CAT_ETC1}, ${CAT_ETC2}, 'straycat.png', 'US2', ${TEL},${EMAIL}, ${ADT_REASON}, ${ADT_CAT_EXP}, ${ADT_JOB}, ${ADT_MARRIAGE}, ${ADT_FAMILY_NUM})
 </insert>
 
-<select id="searchAddress">
+<select id="searchAddress" resultType="java.lang.String">
 	SELECT ADDRESS_CODE
 	FROM ADDRESS
-	WHERE SI = '서울시' AND GU = ${gu} AND DONG = ${dong};
+	WHERE SI = '서울시' AND GU = ${gu} AND DONG = ${dong}
 </select>
 
 </mapper>

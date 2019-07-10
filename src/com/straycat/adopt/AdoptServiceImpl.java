@@ -52,7 +52,16 @@ public class AdoptServiceImpl implements AdoptService
 	@Override
 	public String searchAddress(String gu, String dong)
 	{
-		// TODO Auto-generated method stub
+		String result = ""; 
+		
+		try
+		{
+			result = dao.searchAddress(gu, dong);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		return null;
 	}
 	
