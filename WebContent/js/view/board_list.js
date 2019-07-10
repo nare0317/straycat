@@ -8,6 +8,7 @@ $(document).ready(function()
 	{
 		$(this).css("color", "skyblue");
 		$(this).css("text-decoration","underline");
+		$(this).css("cursor", "pointer");
 	});
 	
 	$(".contentLink").mouseout(function()
@@ -30,5 +31,5 @@ $(document).ready(function()
 			return;
 		}
 		$("#searchForm").submit();
-	})
+	});
 });

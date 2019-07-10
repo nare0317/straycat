@@ -27,9 +27,10 @@ public class BoardController
 	@Autowired
 	private Util util;
 	
+	// 게시물 목록 불러오기
 	// RequestParam으로 현재 페이지, 검색구분, 검색어, Request 객체를 인자로 받음.
 	@RequestMapping(value="/board", method = RequestMethod.GET)
-	public String selectList(@RequestParam(name="currentPage", defaultValue="1") int currentPage
+	public String selectList(@RequestParam(name="page", defaultValue="1") int currentPage
 			, @RequestParam(name="searchKey", defaultValue = "") String searchKey
 			, @RequestParam(name="searchValue", defaultValue = "") String searchValue
 			, HttpServletRequest request
@@ -81,10 +82,10 @@ public class BoardController
 			currentPage = total_page;
 		
 		// 페이지 블럭 설정(한 페이지에 들어갈 페이지 목록 설정)
-		int start = (currentPage - 1) * perPageList + 1;
-		int end = currentPage * perPageList;
-		searchMap.put("start", start);	// -9
-		searchMap.put("end", end);		// 0
+		int start = (total_page - currentPage) * perPageList + 1;
+		int end = start+perPageList-1;
+		searchMap.put("start", start);
+		searchMap.put("end", end);
 		
 		// 페이지 블럭, searchKey, searchValue를 기반으로 게시판 목록을 불러옴
 		List<Map<String, Object>> list = service.listBoard(searchMap);
@@ -104,18 +105,21 @@ public class BoardController
 
 		String cp = request.getContextPath();
 		listUrl = cp + "/board";	// 
-		articleUrl = cp + "/board?article?page=" + currentPage;
+		articleUrl = cp + "/board/article?page=" + currentPage;
+		String pagenation = listUrl + "?page=";
 		if (query.length() != 0)
 		{
 			listUrl += "?" + query;
 			articleUrl += "&" + query;
+			pagenation += "?" + query;
 		}
 		
-		String paging = util.paging(currentPage, total_page, listUrl);
+		/* String paging = util.paging(currentPage, total_page, listUrl); */
 		
+		model.addAttribute("pagenation", pagenation);
 		model.addAttribute("list", list);
 		model.addAttribute("articleUrl", articleUrl);
-		model.addAttribute("paging", paging);
+		/* model.addAttribute("paging", paging); */
 		model.addAttribute("page", currentPage);
 		model.addAttribute("dataCount", dataCount);
 		model.addAttribute("total_page", total_page);
@@ -123,7 +127,20 @@ public class BoardController
 		return "Board_List";
 	}
 	
-	
+	// 게시물 조회
+	@RequestMapping(value="/board/article", method = RequestMethod.GET)
+	public String articleLoad(@RequestParam(name="articleNum") String articleNum
+			, Model model)
+	{
+		Map<String, Object> map = new HashMap<>();
+		map.put("articleNum", articleNum);
+		
+		Map<String, Object> article = service.articleLoad(map);
+		
+		model.addAttribute("article", article);
+		
+		return "Board_Read";
+	}
 	
 	
 }
