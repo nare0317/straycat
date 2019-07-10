@@ -81,12 +81,12 @@ public class MainController
 	}
 	*/
 	
-	/*
+	
 	// 회원가입 페이지로 이동
 	@RequestMapping("/signup")
 	public String signUp()
 	{
 		return "Join_Form";
 	}
-	*/
+	
 }

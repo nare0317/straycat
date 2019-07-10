@@ -112,7 +112,7 @@ $(document).ready(function()
 			return;
 		}
 		
-		// 닉네임이 20자 초과했을 때
+		// 닉네임이 10자 초과했을 때
 		if ($("#nickname").val().length > 10)
 		{
 			$(".err").text("닉네임은 최대 10자까지 입력할 수 있습니다.");
@@ -161,8 +161,18 @@ $(document).ready(function()
 	$("#idCheck").click(function()
 	{
 		
+		//alert($("#idInput").val());
+		if ($("#idInput").val()  )
+		{
+			
+		}
+		
+		
 		
 	});
+	
+	
+	
 	
 });
 

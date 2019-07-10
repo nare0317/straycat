@@ -3,13 +3,13 @@
 
 <mapper namespace="member">
 
-	<select id="checkId" parameterType="map"  resultType="java.lang.Integer">
+	<select id="checkId" resultType="java.lang.Integer">
 		SELECT COUNT(ID)
 		FROM USER_REG
 		WHERE ID = #{id}
 	</select>
 
-	<select id="checkNname" parameterType="map" resultType="java.lang.Integer">
+	<select id="checkNickName" parameterType="map" resultType="java.lang.Integer">
 		SELECT COUNT(NICKNAME)
 		FROM USER_REG
 		WHERE NICKNAME = #{nickname}
@@ -21,12 +21,16 @@
 		WHERE EMAIL = #{email}	
 	</select>
 	
-	<select id="checkName">
+	<select id="checkName" parameterType="map" resultType="java.lang.Integer">
 		SELECT COUNT(*)
 		FROM USER_REG
 		WHERE USER_NAME=#{user_name}
 		AND TEL = #{tel}
 	</select>
+	
+	<insert id="join">
+		
+	</insert>
 	
 
 </mapper>
