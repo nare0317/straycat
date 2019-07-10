@@ -47,6 +47,7 @@ th
 	margin-top: 100px;
 }
 .wrap span {
+	margin-top: -1%;
 	position: relative;
 	float: right;
 }
@@ -56,7 +57,7 @@ th
 }
 span
 {
-	font-size: small;
+	font-size: medium;
 }
 
 #completebtn
@@ -85,8 +86,11 @@ span
 	margin-left: -7%;
 }
 
-#textarea
+textarea
 {
+	rows: 3;
+	cols: 50;
+	resize: none;
 	height: 100px;
 }
 
@@ -115,11 +119,11 @@ span
 {
 	margin-left: 5%;
 }
-#counter {
-/*   background:rgba(255,0,0,0.5); */
+#counter, #counter1, #counter2 {
   border-radius: 0.5em;
   padding: 0 .5em 0 .5em;
-  font-size: 0.75em;
+  font-size: 12pt;
+  color: gray;
 }
 .m20
 {
