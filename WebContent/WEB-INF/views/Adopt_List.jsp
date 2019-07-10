@@ -14,13 +14,10 @@
 <c:import url="Head.jsp"></c:import>
 
 <!-- CSS 파일 -->
-<link rel="stylesheet" href="<%=cp%>/css/view/cat_list.css">
+<link rel="stylesheet" href="<%=cp%>/css/view/adopt_list.css">
 
 <!-- JS 파일  -->
-<script src="<%=cp %>/js/view/cat_list.js"></script>
-
-<%-- <!-- 페이지 CSS, 자바스크립트 -->
-<link rel="stylesheet" href="<%=cp%>/css/view/adopt_list.css"> --%>
+<script src="<%=cp %>/js/view/adopt_list.js"></script>
 
 </head>
 <body>
@@ -47,7 +44,7 @@
 		</div>
 	</section>
 	
-	<!-- ★★★★ 지역 검색 ★★★★★ -->
+	<!-- ★★★★ 섹션 1 ★★★★★ -->
 	<section class="section-1 continer-fluid">
 		
 		<!-------------------   10  ------------------------->
@@ -88,81 +85,104 @@
 			
 			<!-- row3 -->
 			<div class="row">
-				<h5>검색된 고양이<span> 5 </span>마리</h5>
-			</div>
-			
-			<!-------------------   2  ------------------------->
-			<!-- 우측 사이드바 (입양신청)-->
-			<div class="slidemenu col-lg-2 text-center">
-				<div class="mycat">
-					<div class="" align="left">
-						<p>내가 관리하는 길냥이</p>
-					</div>
-					<div class="" align="right">
-						<a href="#" class="mycat-prev"><i class="fas fa-chevron-left"></i></a>
-						<a href="#" class="mycat-next"><i class="fas fa-chevron-right"></i></a>
-					</div>
-					
-					<div class="col">
-						<figure class="figure">
-							<img src="img/straycat.jpg" class="mycat-img rounded" alt="" style="width: 80px; height: 80px;">
-	 						<figcaption class="figure-caption text-center">야옹이</figcaption>						
-	 					</figure>
-	 					<figure class="figure">
-							<img src="img/straycat.jpg" class="mycat-img rounded" alt="" style="width: 80px; height: 80px;">
-	 						<figcaption class="figure-caption text-center">나비</figcaption>						
-	 					</figure>
- 					</div>
- 					<div class="col">
-	 					<figure class="figure">
-							<img src="img/straycat.jpg" class="mycat-img rounded" alt="" style="width: 80px; height: 80px;">
-	 						<figcaption class="figure-caption text-center">개냥이</figcaption>						
-	 					</figure>	
-	 					<figure class="figure">
-							<img src="img/straycat.jpg" class="mycat-img rounded" alt="" style="width: 80px; height: 80px;">
-	 						<figcaption class="figure-caption text-center">호랭이</figcaption>						
-	 					</figure>		
-					</div>
+				<h5 class="col-lg-8">검색된 고양이<span> 5 </span>마리</h5>
+				
+				<div class="col-lg-4 text-right write">
+					<button type="button" class="btn btn-primary btn-lg" 
+					id="adopt_write">입양등록</button>
 				</div>
 			</div>
+			
+			<!-- row4 -->
+			<div class="row">
+				<div class="col-8">
+					<h5>
+						<a href="#" class="red">긴급입양</a>
+						<a href="#" class="purple">분실의심</a>
+						<a href="#" >수컷</a><a href="#">암컷</a>
+						<a href="#">아기묘</a><a href="#">성묘</a>
+					</h5>
+				</div>
+			</div>
+			
 		</div>
+		
 	</section>
 	
 	<section class="section-2 container">
 		
 		<!-- 고양이 -->
-			<div class="card-deck">
-			
-				<div class="card mb-2" style="max-width: 540px;">
-
-				<c:forEach var="list" items="${list }">					
-					<div class="row no-gutters">
+		<div class="card-deck">
+		
+			<c:forEach var="list" items="${list }">		
+			<div class="card">
+				<div class="row no-gutters">
+				
+					<!-- 길냥이 대표이미지 -->
+					<div class="col-md-5 cat-photo">
+						<img src="img/straycat.jpg" class="card-img" alt="">
+					</div>
 					
-						<!-- 길냥이 대표이미지 -->
-						<div class="col-md-5 cat-photo">
-							<img src="img/straycat.jpg" class="card-img" alt="">
-						</div>
-						
-						<!-- 길냥이 정보 -->
-						<div class="col-md-7 cat-info">
-							<div class="card-body">
-								<!-- 고양이 이름 -->
-								<h5 class="card-title">${list.CAT_NAME }</h5>
-								<!-- 고양이 정보 -->
-								<div class="card-text">
-									<ul class="cat-info-list">
-										<li>${list.CAT_TYPE }(${list.CAT_SEX })</li>
-										<li>${list.CAT_ADDRESS}</li>
-										<li>${list.POST_DATE }</li>
-									</ul>	
-								</div>
+					<!-- 길냥이 정보 -->
+					<div class="col-md-7 cat-info">
+						<div class="card-body">
+							<!-- 고양이 이름 -->
+							<h5 class="card-title">${list.CAT_NAME }</h5>
+							<!-- 고양이 정보 -->
+							<div class="card-text">
+								<ul class="cat-info-list">
+									<li>${list.CAT_TYPE }(${list.CAT_SEX })</li>
+									<li>${list.CAT_ADDRESS}</li>
+									<li>${list.POST_DATE }</li>
+								</ul>	
 							</div>
 						</div>
 					</div>
-				</c:forEach>
-					
 				</div>
 			</div>
+			</c:forEach>
+			
+		</div>
+
+		<!-- 우측 사이드바 (입양신청)-->
+		<div class="slidemenu text-center mycat">
+			<div class="row">
+				
+				<div class="col-10" align="left">
+					<p>내가 쓴 입양글</p>
+				</div>
+				
+				<div class="col-2" align="right">
+					<a href="#" class="mycat-prev"><i class="fas fa-chevron-left"></i></a>
+					<a href="#" class="mycat-next"><i class="fas fa-chevron-right"></i></a>
+				</div>
+			</div>
+			
+			<div class="row">
+			
+				<div class="col-6">
+					<figure class="figure">
+						<img src="img/straycat.jpg" class="mycat-img rounded" alt="" >
+ 						<figcaption class="figure-caption text-center">야옹이</figcaption>						
+ 					</figure>
+ 					<figure class="figure">
+						<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+ 						<figcaption class="figure-caption text-center">나비</figcaption>						
+ 					</figure>
+				</div>
+				<div class="col-6">
+ 					<figure class="figure">
+						<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+ 						<figcaption class="figure-caption text-center">개냥이</figcaption>						
+ 					</figure>	
+ 					<figure class="figure">
+						<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+ 						<figcaption class="figure-caption text-center">호랭이</figcaption>						
+ 					</figure>		
+				</div>
+				
+			</div>
+		</div>	
 		
 	</section>
 	
