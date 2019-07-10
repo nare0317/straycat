@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.straycat.common.Util;
 import com.straycat.service.BoardService;
 
 @Controller
@@ -23,9 +22,6 @@ public class BoardController
 {
 	@Autowired
 	private BoardService service;
-	
-	@Autowired
-	private Util util;
 	
 	// 게시물 목록 불러오기
 	// RequestParam으로 현재 페이지, 검색구분, 검색어, Request 객체를 인자로 받음.
@@ -129,15 +125,59 @@ public class BoardController
 	
 	// 게시물 조회
 	@RequestMapping(value="/board/article", method = RequestMethod.GET)
-	public String articleLoad(@RequestParam(name="articleNum") String articleNum
+	public String articleLoad(@RequestParam(name="page", defaultValue="1") int currentPage
+			, @RequestParam(name="searchKey", defaultValue = "") String searchKey
+			, @RequestParam(name="searchValue", defaultValue = "") String searchValue
+			,@RequestParam(name="articleNum") int articleNum
 			, Model model)
 	{
+		// 게시판 리스트에서 가져온 articleNum, searchKey, searchValue 정보로 본문 내용을 가져옴
 		Map<String, Object> map = new HashMap<>();
 		map.put("articleNum", articleNum);
+		map.put("searchKey", searchKey);
+		map.put("searchValue", searchValue);
 		
 		Map<String, Object> article = service.articleLoad(map);
 		
+		// 댓글 가져오기
+		List<Map<String, Object>> commentList = service.commentLoad(map);
+		
+		// 데이터 수 세기(다음 글 가져오기에서 사용할 변수)
+		int dataCount = service.dataCount(map);
+		
+		// 이전글, 다음글 변수 선언
+		Map<String,Object> prevArticle = new HashMap<String, Object>();
+		Map<String,Object> nextArticle = new HashMap<String, Object>();
+		
+		// 이전 글 가져오기
+		// 이전 글이 있다면(articleNum-1이 1보다 크거나 같으면)
+		if (articleNum-1 >= 1)
+		{
+			map.put("articleNum", articleNum-1);
+			prevArticle = service.articleLoad(map);
+			
+		}
+		else
+		{
+			prevArticle.put("TITLE", "이전 게시글이 없습니다.");
+		}
+		
+		// 다음 글 가져오기
+		// 다음 글이 있다면(articleNum+1이 전체 데이터 수보다 작으면)
+		if (articleNum+1 <= dataCount)
+		{
+			map.put("articleNum", articleNum+1);
+			nextArticle = service.articleLoad(map);
+		}
+		else
+		{
+			nextArticle.put("TITLE", "다음 게시글이 없습니다.");
+		}
+		
 		model.addAttribute("article", article);
+		model.addAttribute("commentList", commentList);
+		model.addAttribute("prevArticle", prevArticle);
+		model.addAttribute("nextArticle", nextArticle);
 		
 		return "Board_Read";
 	}
