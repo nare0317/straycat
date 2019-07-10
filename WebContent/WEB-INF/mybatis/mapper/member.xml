@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<select id="checkId" parameterType="map"  resultType="java.lang.Integer">
+		SELECT COUNT(ID)
+		FROM USER_REG
+		WHERE ID = #{id}
+	</select>
+
+	<select id="checkNname" parameterType="map" resultType="java.lang.Integer">
+		SELECT COUNT(NICKNAME)
+		FROM USER_REG
+		WHERE NICKNAME = #{nickname}
+	</select>
+	
+	<select id="checkEmail" parameterType="map" resultType="java.lang.Integer">
+		SELECT COUNT(EMAIL)
+		FROM USER_REG
+		WHERE EMAIL = #{email}	
+	</select>
+	
+	<select id="checkName">
+		SELECT COUNT(*)
+		FROM USER_REG
+		WHERE USER_NAME=#{user_name}
+		AND TEL = #{tel}
+	</select>
+	
+
+</mapper>

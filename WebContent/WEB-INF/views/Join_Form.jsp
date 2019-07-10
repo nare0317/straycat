@@ -41,7 +41,7 @@
 							<th>아이디<span class="required">*</span></th>
 							<td colspan="2">
 								<input id="idInput" type="text" class="form-control inputbox">
-								<button type="button" class="btn btn-outline-primary btn-sm">중복확인</button>
+								<button id="idCheck" type="button" class="btn btn-outline-primary btn-sm">중복확인</button>
 							</td>
 						</tr>
 						<tr>
@@ -107,27 +107,6 @@
 								<button type="button" class="btn btn-outline-primary btn-sm">검색</button>
 							</td>
 						</tr>
-						<tr>
-							<th>관심지역1<span class="required">*</span></th>
-							<td colspan="3">
-								<input id="favorite1" type="text" class="form-control inputbox local">
-								<button type="button" class="btn btn-outline-primary btn-sm">검색</button>
-							</td>
-						</tr>
-						<tr>
-							<th>관심지역2</th>
-							<td colspan="3">
-								<input id="favorite2" type="text" class="form-control inputbox local">
-								<button type="button" class="btn btn-outline-primary btn-sm">검색</button>
-							</td>
-						</tr>
-						<tr>
-							<th>관심지역3</th>
-							<td colspan="3">
-								<input id="favorite3" type="text" class="form-control inputbox local">
-								<button type="button" class="btn btn-outline-primary btn-sm">검색</button>
-							</td>
-						</tr>
 					</table><br>
 					<div class="errDiv">
 						<span class="err"></span>
@@ -135,7 +114,7 @@
 					<br>
 					<div class="mButton gCenter">
 						<button id="joinBtn" type="button" class="btn btn-primary">회원가입</button>
-						<button id="cancelBtn" type="button" class="btn btn-secondary">취소</button>
+						<button id="cancelBtn" type="button" class="btn btn-secondary" onclick="location.href='main'">취소</button>
 					</div>
 				</form>
 	    	</div>

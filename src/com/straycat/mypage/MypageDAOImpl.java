@@ -1,4 +1,4 @@
-package com.straycat.common.dao;
+package com.straycat.mypage;
 
 public class MypageDAOImpl
 {

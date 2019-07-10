@@ -49,7 +49,7 @@
 				<button id="loginBtn" type="button" class="btn btn-primary btn-lg btn-block">로그인</button>
 				<br>
 				<div style="text-align: center;">
-					<a href="#"> 아이디 찾기 |</a> <a href="#"> 비밀번호 찾기 |</a> <a href="#">
+					<a href="#"> 아이디 찾기 |</a> <a href="#"> 비밀번호 찾기 |</a> <a href="acceptterms">
 						회원가입</a>
 				</div>
 			</div>

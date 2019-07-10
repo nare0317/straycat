@@ -1,4 +1,4 @@
-package com.straycat.member;
+package com.straycat.service;
 
 public interface MemberService
 {

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="catDetail">
+
+<!-- 등록 고양이 정보를 가져오는 쿼리문 -->
+<select id="catInfo" resultType="map">
+SELECT CAT_CODE, CAT_NAME, CAT_SPECIES, CAT_SEX, CAT_ADDRESS, CAT_DATE, CAT_IMG, FOLLOW, ETC, HEALTH
+FROM CAT_INFO
+WHERE CAT_CODE = 'CAT1'
+</select>
+
+<select id="catLocation" resultType="map">
+SELECT LATITUDE AS LATITUDE, LONGITUDE AS LONGITUDE
+FROM ACT_REG
+WHERE CAT_CODE = 'CAT1'
+</select>
+
+<select id="actReg" resultType="map">
+SELECT UR.NICKNAME AS NICKNAME, AR.ACT_LOCATION AS ACT_LOCATION, AT.ACT_TYPE AS ACT_TYPE, AR.CONTENT AS CONTENT, AR.ACT_DATE AS ACT_DATE
+FROM USER_REG UR RIGHT JOIN ACT_REG AR
+ON UR.USER_CODE = AR.USER_CODE
+    LEFT JOIN ACT_TYPE AT
+        ON AR.ACT_TYPE = AT.ACT_TYPE_CODE
+WHERE AR.CAT_CODE='CAT1' AND AR.ACT_DATE = '2019-07-04'
+</select>
+
+</mapper>

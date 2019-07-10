@@ -1,4 +1,4 @@
-package com.straycat.common.dao;
+package com.straycat.member;
 
 public class MemberDAOImpl
 {

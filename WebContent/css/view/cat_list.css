@@ -44,7 +44,7 @@ div {
 	h2 {
 		font-weight: 800;
 		letter-spacing: 5px;
-		margin-top:40px;f
+		margin-top:40px;
 	}
 	
 	/******************************************/
@@ -63,7 +63,6 @@ div {
 		
 	}
 	
-	
 	/****** section-2 ************************************/
 	.section-2
 	{
@@ -72,8 +71,6 @@ div {
 		padding-right: 50px;
 		width: 100%;
 	}
-	
-	
 	
 	.card {
 		margin-top: 10px;
@@ -116,10 +113,6 @@ div {
 		padding: 0 4px 0 0;
 		text-align: right;
 	}
-	
-	/* span {
-		font-size: small;
-	} */
 	
 	.container2 {
 		margin-left: 100px;

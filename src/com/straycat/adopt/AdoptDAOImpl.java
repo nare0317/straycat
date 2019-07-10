@@ -1,4 +1,4 @@
-package com.straycat.common.dao;
+package com.straycat.adopt;
 
 import java.util.List;
 import java.util.Map;
@@ -9,8 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.straycat.common.dao.AdoptDAO;
+
 @Repository
-public class BoardDAOImpl implements CommonDAO
+public class AdoptDAOImpl implements AdoptDAO
 {
 	@Autowired
 	private SqlSession sqlSession;
@@ -24,7 +26,7 @@ public class BoardDAOImpl implements CommonDAO
 		
 		try 
 		{
-			list = sqlSession.selectList("board.listBoard");
+			list = sqlSession.selectList("adopt.listAdopt");
 		}
 		catch (Exception e) 
 		{
@@ -35,4 +37,5 @@ public class BoardDAOImpl implements CommonDAO
 		
 		return list;
 	}
+	
 }

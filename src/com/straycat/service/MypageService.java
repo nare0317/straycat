@@ -1,4 +1,4 @@
-package com.straycat.mypage;
+package com.straycat.service;
 
 public interface MypageService
 {
