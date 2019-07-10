@@ -11,6 +11,7 @@
 <meta charset="UTF-8">
 <title>입양 후보자 상세페이지</title>
 
+<!-- 헤드 -->
 <c:import url="Head.jsp"></c:import>
 
 <!-- 페이지 CSS, 자바스크립트 -->
@@ -27,12 +28,15 @@
 <body>
 	<div>
 		<c:import url="Menu.jsp"></c:import>
-
 		<br> <br>
+		
+		<!-- 입양 후보자 상세 페이지 헤드 -->
 		<div class="container">
 			<h1>
 				입양 <span>매칭프로세스(후보자 검증) | 후보자 상세 페이지 </span>
 			</h1>
+			
+			<!-- 해당 후보자 간략 프로필 -->
 			<div class="form">
 				<hr>
 				<div>
@@ -48,6 +52,7 @@
 
 			<br>
 
+			<!-- 활동내역 / 신청내역 테이블 -->
 			<div class="divTable Table">
 				<div class="divTableHeading">
 					<div class="divTableRow">
@@ -59,8 +64,12 @@
 						</div>
 					</div>
 				</div>
+				
+				<!-- 활동내역 -->
 				<div class="divTableBody">
 					<div class="divTableCell">
+					
+						<!-- 해당 후보자 게시글  -->
 						<div class="col">
 							<br> <span>nare0317 님이 쓴 게시글</span> <br>
 							<!-- 게시판 헤더 시작 -->
@@ -154,10 +163,6 @@
 							</div>
 						</div>
 					</div>
-
-
-
-
 
 
 
