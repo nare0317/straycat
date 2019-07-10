@@ -150,6 +150,8 @@
 			<div class="col-4 cat_foot">
 				<h3>야옹이 발자취</h3>
 				<div id="map0" class="map0"></div>
+				<br>
+				<button type="button" class="btn btn-primary">팔로우</button>
 			</div>
 		</div>
 	</div>
@@ -292,6 +294,13 @@
 				<div class="scroll">
 				
 				
+				<c:forEach var="catLocationList" items="${catLocation}">
+					${catLocationList.LATITUDE } 
+					${catLocationList.LONGITUDE }
+				</c:forEach>
+							
+				
+				
 				<c:forEach var="catActRegList" items="${catActReg}">
 				<div class="row">
 						<div class="col-2">
@@ -300,10 +309,22 @@
 							<div>${catActRegList.ACT_LOCATION }</div>
 						</div>
 						<div class="col-10">
-							<div class="row">
-								<img src="img/help.png"> <img src="img/water.png">
-							</div>
-							<div>${catActRegList.CONTENT }</div>
+					 		<div class="row">
+							
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<c:choose>
+									<c:when test="${catActRegList.ACT_TYPE eq '먹이'}"><img src="img/fish.png"></c:when>
+									<c:when test="${catActRegList.ACT_TYPE eq '물'}"><img src="img/water.png"></c:when>
+									<c:when test="${catActRegList.ACT_TYPE eq '간식'}"><img src="img/cacao.png"></c:when>
+									<c:when test="${catActRegList.ACT_TYPE eq '약'}"><img src="img/help.png"></c:when>
+									<c:when test="${catActRegList.ACT_TYPE eq '만남'}"><img src="img/favorite.png"></c:when>
+									<c:otherwise></c:otherwise>
+								</c:choose>
+								 
+							</div><br> 
+							
+							
+							<h4>${catActRegList.CONTENT }</h4>
 						</div>
 					</div>
 

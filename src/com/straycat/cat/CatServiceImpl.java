@@ -65,8 +65,5 @@ public class CatServiceImpl implements CatService
 		}
 		
 		return catActReg;
-	}
-	
-	
-	
+	}	
 }

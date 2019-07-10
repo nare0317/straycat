@@ -29,7 +29,5 @@ public class CatController
 		
 		return "Cat_Detail";
 	 }
-	 
-	 
 	
 }
