@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
    request.setCharacterEncoding("UTF-8");
    String cp = request.getContextPath();
@@ -30,29 +31,32 @@
 	</div>
 	<div class="breadcrumbs">
 		<ul>
-			<li class="list-inline-item"><a class="text-dark" href="<%=cp%>/Main.jsp"><i class="fas fa-home"></i></a></li>
+			<li class="list-inline-item"><a class="text-dark" href="main"><i class="fas fa-home"></i></a></li>
 			<li class="list-inline-item">></li>
 			<li class="list-inline-item">자유게시판</li>
 		</ul>
 	</div>
-
+<form id="searchForm" action="board" method="get">
 	<div class="form-group">
 		<div class="input-group mb-3 d-flex justify-content-end row align-items-start">
-			<div class="input-group-prepend">   
-				<select name="searchKey" class="selectFiled custom-select">
-					<option selected>선택</option>
+		
+			<div class="input-group-prepend">
+				<select id="searchKey" name="searchKey" class="selectFiled custom-select">
+					<option value="" selected>선택</option>
 					<option value="subject">제목</option>
 					<option value="name">작성자</option>
 					<option value="content">내용</option>
 				</select>
-				<input type="text" name="searchValue" class="textFiled" class="form-control">
+				<input id="searchValue" type="text" name="searchValue" class="textFiled" class="form-control">
 			</div>
          
 			<div class="input-group-append">
-				<button class="btn btn-secondary" type="button" id="button-addon2">검색</button>
+				<button id="searchBtn" class="btn btn-secondary" type="button" id="button-addon2">검색</button>
 			</div>
+		
 		</div>
 	</div>
+	</form>
 
 	<!-- 게시판 헤더 시작 -->
 	<div class="bbsHeader">
@@ -70,7 +74,7 @@
 		<div class="content no">${list.NUM }</div>
 		<div class="content title titleLeft">
 			<div class="contentTitle">
-				<a class="contentLink" href="#">${list.TITLE }</a>
+				<a class="contentLink" href="${articleUrl }&num=${list.NUM}">${list.TITLE }</a>
 			</div>
 			<div class="commentCount">
 					<i class='far fa-comment'><span id="cmtCount">${list.CMT_COUNT }</span></i>
@@ -82,150 +86,17 @@
 		<div class="content recomm">${list.LIKE_COUNT }</div>
 	</div>
 	</c:forEach>
-	<!-- <div class="bbsContents">
-		<div class="content no">9</div>
-		<div class="content title titleLeft">
-			<div class="contentTitle">
-				<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-			</div>
-			<div class="commentCount">
-					<i class='far fa-comment'>0</i>
-			</div>
-		</div>
-		<div class="content writer">아웃사이더</div>
-		<div class="content date">2019-07-04</div>
-		<div class="content viewCount">10</div>
-		<div class="content recomm">5</div>
-	</div>
-	<div class="bbsContents">
-		<div class="content no">8</div>
-		<div class="content title titleLeft">
-			<div class="contentTitle">
-				<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-			</div>
-			<div class="commentCount">
-					<i class='far fa-comment'>0</i>
-			</div>
-		</div>
-		<div class="content writer">아웃사이더</div>
-		<div class="content date">2019-07-04</div>
-		<div class="content viewCount">10</div>
-		<div class="content recomm">5</div>
-	</div>
-	<div class="bbsContents">
-		<div class="content no">7</div>
-		<div class="content title titleLeft">
-			<div class="contentTitle">
-				<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-			</div>
-			<div class="commentCount">
-					<i class='far fa-comment'>0</i>
-			</div>
-		</div>
-		<div class="content writer">아웃사이더</div>
-		<div class="content date">2019-07-04</div>
-		<div class="content viewCount">10</div>
-		<div class="content recomm">5</div>
-	</div>
-	<div class="bbsContents">
-		<div class="content no">6</div>
-		<div class="content title titleLeft">
-			<div class="contentTitle">
-				<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-			</div>
-			<div class="commentCount">
-					<i class='far fa-comment'>0</i>
-			</div>
-		</div>
-		<div class="content writer">아웃사이더</div>
-		<div class="content date">2019-07-04</div>
-		<div class="content viewCount">10</div>
-		<div class="content recomm">5</div>
-	</div>
-	<div class="bbsContents">
-		<div class="content no">5</div>
-		<div class="content title titleLeft">
-			<div class="contentTitle">
-				<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-			</div>
-			<div class="commentCount">
-					<i class='far fa-comment'>0</i>
-			</div>
-		</div>
-		<div class="content writer">아웃사이더</div>
-		<div class="content date">2019-07-04</div>
-		<div class="content viewCount">10</div>
-		<div class="content recomm">5</div>
-	</div>
-	<div class="bbsContents">
-		<div class="content no">4</div>
-		<div class="content title titleLeft">
-			<div class="contentTitle">
-				<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-			</div>
-			<div class="commentCount">
-					<i class='far fa-comment'>0</i>
-			</div>
-		</div>
-		<div class="content writer">아웃사이더</div>
-		<div class="content date">2019-07-04</div>
-		<div class="content viewCount">10</div>
-		<div class="content recomm">5</div>
-	</div>
-	<div class="bbsContents">
-		<div class="content no">3</div>
-		<div class="content title titleLeft">
-			<div class="contentTitle">
-				<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-			</div>
-			<div class="commentCount">
-					<i class='far fa-comment'>0</i>
-			</div>
-		</div>
-		<div class="content writer">아웃사이더</div>
-		<div class="content date">2019-07-04</div>
-		<div class="content viewCount">10</div>
-		<div class="content recomm">5</div>
-	</div>
-	<div class="bbsContents">
-		<div class="content no">2</div>
-		<div class="content title titleLeft">
-			<div class="contentTitle">
-				<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-			</div>
-			<div class="commentCount">
-					<i class='far fa-comment'>0</i>
-			</div>
-		</div>
-		<div class="content writer">아웃사이더</div>
-		<div class="content date">2019-07-04</div>
-		<div class="content viewCount">10</div>
-		<div class="content recomm">5</div>
-	</div>
-	<div class="bbsContents">
-		<div class="content no">1</div>
-		<div class="content title titleLeft">
-			<div class="contentTitle">
-				<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-			</div>
-			<div class="commentCount">
-					<i class='far fa-comment'>0</i>
-			</div>
-		</div>
-		<div class="content writer">아웃사이더</div>
-		<div class="content date">2019-07-04</div>
-		<div class="content viewCount">10</div>
-		<div class="content recomm">5</div>
-	</div> -->
 	<br><br>
 	
 	<!-- 페이지네이션 시작 -->
 	<ul class="pagination pagination-sm justify-content-center">
+	 
 		<li class="page-item disabled"><a class="page-link text-dark" href="#">Previous</a></li>
-		<li class="page-item active"><a class="page-link text-dark" href="#">1</a></li>
-		<li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
-		<li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+		<c:forEach begin="1" end="${total_page }" step="1" var="page">
+		<li class="page-item active"><a class="page-link text-dark" href="#">${page }</a></li>
+		</c:forEach>
 		<li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
+	
 	</ul>
 
 	<!-- 글쓰기 버튼 -->
