@@ -26,7 +26,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter
 		cp += "/login";
 		
 		// boolean 값이 true일 경우 컨트롤러 실행, false면 실행하지 않음
-		response.sendRedirect(cp);
+		//response.sendRedirect(cp);
 		return result;
 	}
 	
