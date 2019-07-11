@@ -1,5 +1,7 @@
 package com.straycat.member;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,23 +34,47 @@ public class MemberServiceImpl implements MemberService
 	@Override
 	public int checkNickName(String nickName)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		int check2 = 0;
+		try
+		{
+			check2 = dao.selectOne("member.checkNickName", nickName);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return check2;
 	}
 
 	@Override
 	public int checkEmail(String email)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		int check3 = 0;
+		try
+		{
+			check3 = dao.selectOne("member.checkEmail", email);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return check3;
 	}
 
+	
 	@Override
-	public int checkName(String Name, String tel)
+	public int checkName(Map<String, Object> map)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		int check4 = 0;
+		try
+		{
+			check4 = dao.selectOne("member.checkName", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return check4;
 	}
+	 
+	
 	
 	  
 }

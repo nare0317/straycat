@@ -65,14 +65,14 @@
 								<th>닉네임<span class="required">*</span></th>
 								<td colspan="2"><input id="nickname" type="text"
 									class="form-control inputbox">
-									<button type="button" class="btn btn-outline-primary btn-sm">중복확인</button>
+									<button id="nickNameCheck" type="button" class="btn btn-outline-primary btn-sm">중복확인</button>
 								</td>
 							</tr>
 							<tr>
 								<th>이메일<span class="required">*</span></th>
 								<td colspan="2"><input id="email" type="text"
 									class="form-control inputbox">
-									<button type="button" class="btn btn-outline-primary btn-sm">중복확인</button>
+									<button id="emailCheck" type="button" class="btn btn-outline-primary btn-sm">중복확인</button>
 								</td>
 							</tr>
 							<tr>
@@ -110,11 +110,22 @@
 								</td>
 							<tr>
 								<th>주소<span class="required">*</span></th>
-								<td colspan="3"><input id="address" type="text"
-									class="form-control inputbox local">
-									<button type="button" class="btn btn-outline-primary btn-sm">검색</button>
+								<td colspan="3">
+									<input type="text" id="sample6_postcode" class="form-control inputbox local" placeholder="우편번호" >
+									<button type="button" class="btn btn-outline-primary btn-sm" onclick="sample6_execDaumPostcode()">주소 검색</button>
 								</td>
 							</tr>
+								<tr>
+									<td>
+										<input type="text" id="sample6_address" placeholder="주소" readonly="readonly"><br>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="text" id="sample6_detailAddress" placeholder="상세주소">
+										<input type="text" id="sample6_extraAddress" placeholder="참고항목" >
+									</td>
+								</tr>
 						</table>
 						<br>
 						<div class="errDiv">
@@ -131,6 +142,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	<br />
 	<br />
@@ -179,14 +191,15 @@
 						<tr>
 					</table>
 					<div class="errDiv">
-						<span class="err"></span>
+						<span class="err1"></span>
 					</div>
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">취소</button>
-					<button id="nameCheck2" type="button" class="btn btn-primary">확인</button>
+					<button id="nameCheck2" type="button" class="btn btn-primary" >실명 확인</button>
+					<button type="button" class="btn btn-primary"
+						data-dismiss="modal">확인 완료</button>
+					
 				</div>
 			</div>
 		</div>

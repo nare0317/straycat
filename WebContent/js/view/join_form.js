@@ -163,52 +163,138 @@ $(document).ready(function()
 		
 		var id = $("#idInput").val();
 		
+		//alert(id);
 		if (id == "")
+		{
 			$(".err").text("아이디를 입력해주세요.");
 			return;
-			
+		}
+		
 		$.ajax({
-				url:"/checkJoin?id="+id,
-				type:"get",
+				url:"checkId",
+				type:"post",
 				data:{'id':id},
 				success:function(count){
 					if(count==0)
 					{
 						alert("사용가능한 아이디입니다.");
+						return;
 					}
 					else
 					{
 						alert("중복된 아이디입니다.");
-						return false;
+						return;
 					}
-					
-				}
-		
-				
-					
+				}			
 		});
-		
-			
-		
-		
-		
 	});
+	
+	
+	$("#nickNameCheck").click(function()
+	{
+		var nickName = $("#nickname").val();
+		
+		//alert(nickName);
+		if (nickName == "")
+		{
+			$(".err").text("닉네임을 입력해주세요.");
+			return;
+		}
+		
+		$.ajax({
+				url:"checkNickName",
+				type:"post",
+				data:{'nickName':nickName},
+				success:function(count){
+					if(count==0)
+					{
+						alert("사용가능한 닉네임입니다.");
+						return;
+					}
+					else
+					{
+						alert("중복된 닉네임입니다.");
+						return;
+					}
+				}			
+		});
+	});
+	
+	$("#emailCheck").click(function()
+			{
+				var email = $("#email").val();
+				
+				//alert(nickName);
+				if (email == "")
+				{
+					$(".err").text("이메일을 입력해주세요.");
+					return;
+				}
+				
+				$.ajax({
+						url:"checkEmail",
+						type:"post",
+						data:{'email':email},
+						success:function(count){
+							if(count==0)
+							{
+								alert("사용가능한 이메일입니다.");
+								return;
+							}
+							else
+							{
+								alert("중복된 이메일입니다.");
+								return;
+							}
+						}			
+				});
+			});
+	
+	
 	
 	$("#nameCheck2").click(function()
 	{
-			var cname = $("#cname").val();
-			var ctel1 = $("#ctel1").val();
-			var ctel2 = $("#ctel2").val();
-			var ctel3 = $("#ctel3").val();
+			var name = $("#cname").val();
+			var tel1 = $("#ctel1").val();
+			var tel2 = $("#ctel2").val();
+			var tel3 = $("#ctel3").val();
+			var tel = tel1 + "-" + tel2 + "-" + tel3; 
+			
+			if (name == "")
+			{
+				$(".err1").text("입력 정보가 누락되었습니다.");
+				return;
+			}
 	
-			$("#name").val(cname);
-			$("#tel1").val(ctel1);
-			$("#tel2").val(ctel2);
-			$("#tel3").val(ctel3);
+			$.ajax(
+			{
+				url : "checkName",
+				type : "post",
+				data :
+				{
+					'name' : name,
+					'tel' : tel
+					
+				},
+				success : function(count)
+				{
+					if (count == 0)
+					{
+						$(".err1").text("실명인증이 완료되었습니다. 확인 완료버튼을 눌러주세요.");
+						$("#name").val(name);
+						$("#tel1").val(tel1);
+						$("#tel2").val(tel2);
+						$("#tel3").val(tel3);
+						return;
+					} else
+					{
+						$(".err1").text("이미 가입된 정보입니다.");
+						return;
+					}
+				}
+			});
 			
-			$("#modalForm").submit();
-			
-			
+		
 	});
 	
 	
