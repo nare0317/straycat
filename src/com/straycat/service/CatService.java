@@ -6,6 +6,6 @@ import java.util.Map;
 public interface CatService
 {
 	public Map<String, Object> catInfo();
-	public List<String> catLocation();
-	public List<String> catActReg();
+	public List<Map<String, Object>> catLocation();
+	public List<Map<String, Object>> catActReg();
 }

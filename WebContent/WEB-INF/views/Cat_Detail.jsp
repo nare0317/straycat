@@ -24,137 +24,166 @@
 
 <div class="container2">
 	<div class="jumbotron">
-		<div class="row">
-			<div class="col-4 text-center">
-				<img src="img/straycat.jpg" class="img1"><br>
-				<br>
-				<div class="row">
-					<div class="col-6 text-right">
-						<img src="img/plus-button.png" class="img2">${catInfo.FOLLOW }
-					</div>
-					<div class="col-6 text-left">
-						<img src="img/user.png" class="img2"> 집사
-					</div>
-				</div>
-			</div>
-			<div class="col-4 text-left">
-				<div class="row">
-					<div class="col-4">
-						<h2>${catInfo.CAT_NAME }</h2>
-					</div>
-					<!------------------------  대표집자 3명에게 보여지는 수정 버튼  -------------------------->
-					<!-- 
-					<div class="col-8">
-						<button type="button" class="btn btn-primary">수정</button>
-					</div> 
-					-->
-					<!------------------------  대표집자 3명에게 보여지는 수정 버튼  -------------------------->
-				</div>
-				<div>
-					<h5>${catInfo.CAT_ADDRESS }</h5>
-				</div>
-				<div>
-					<h4>고양이 종류: ${catInfo.CAT_SPECIES }</h4>
-				</div>
-				<div>
-					<h4>고양이 성별: ${catInfo.CAT_SEX }</h4>
-				</div>
-				<div>
-					<h4>고양이 등록날짜: ${catInfo.CAT_DATE }</h4>
-				</div>
-				<div>
-					<h4>특이사항: ${catInfo.ETC }</h4>
-				</div>
-				<div>
-					<h4>건강사항: ${catInfo.HEALTH }</h4>
-				</div>
-				
-				<br>
-				<br>
-				<br>
-				<br>
-				<div class="row">
-					<div class="col-3">
-						<span>대표집사</span>
-					</div>
-					<div class="col-3">
-						<span>김대표집사</span>
-					</div>
-					<div class="col-3">
-						<span>김대표집사</span>
-					</div>
-					<div class="col-3">
-						<span>김대표집사</span>
-					</div>
+      <div class="row">
+         <div class="col-4 text-center">
+            <img src="img/straycat.jpg" class="img1"><br>
+            <br>
+            <div class="row">
+               <div class="col-6 text-right">
+                  <img src="img/plus-button.png" class="img2">${catInfo.FOLLOW }
+               </div>
+               <div class="col-6 text-left">
+                  <img src="img/user.png" class="img2"> 집사
+               </div>
+            </div>
+         </div>
+         <div class="col-4 text-left">
+            <div class="row">
+               <div class="col-4">
+                  <h2>${catInfo.CAT_NAME }</h2>
+               </div>
+               <!------------------------  대표집자 3명에게 보여지는 수정 버튼  -------------------------->
+               <!-- 
+               <div class="col-8">
+                  <button type="button" class="btn btn-primary">수정</button>
+               </div> 
+               -->
+               <!------------------------  대표집자 3명에게 보여지는 수정 버튼  -------------------------->
+            </div>
+            <div class="row">
+               <div class="col-6">
+                  <h5>${catInfo.CAT_ADDRESS }</h5>
+               </div>
+               <div class="col-6 align-right">
+                  ${catInfo.CAT_DATE }
+               </div>
+            </div>
+            
+            <div class="row">
+                  <div class="col-6">
+                      <label for="exampleInputEmail1">종류</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" value="${catInfo.CAT_SPECIES }" readonly="readonly">
+                  </div>
+                  
+                  <div class="col-6">
+                      <label for="exampleInputEmail1">성별</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" value="${catInfo.CAT_SEX }" readonly="readonly">
+                  </div>
+            </div><br>
+            <div class="form-group">
+                <label for="exampleInputEmail1">특이사항</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" value="${catInfo.ETC }" readonly="readonly">
+            </div>
+            
+            <div class="form-group">
+                <label for="exampleInputEmail1">건강사항</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" value="${catInfo.HEALTH }" readonly="readonly">
+            </div>
+            
+            
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+               <div class="col-3">
+                  <span>대표집사</span>
+               </div>
+               <div class="col-3">
+                  <span>김대표집사</span>
+               </div>
+               <div class="col-3">
+                  <span>김대표집사</span>
+               </div>
+               <div class="col-3">
+                  <span>김대표집사</span>
+               </div>
 
-				</div>
-				<br>
-				<div class="row">
-					<div>
-						<button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter"><img src="img/notification.png" class="img2"></button>신고하기
-						<!-- Modal -->
-						<form action="StrayCatDetailPage.jsp" method="post" id="modalForm">
-							<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-							  <div class="modal-dialog modal-dialog-centered" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="exampleModalCenterTitle">길냥이관리 게시판</h5>
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
-							        </button>
-							      </div>
-							      <div class="modal-body">
-							        <div class="container">
-							      	  <p>Post Number</p>
-							        	<input type="text" value="#19283" class="form-control" readonly="readonly"> 
-							        </div>
-							        <br>
-							        <div class="container">
-							        	<p>Description</p>
-								        <select class="form-control" id="declarationSelect">
-										  <option selected="selected">신고분류 선택</option>
-									      <option>부적절한 정보(욕설, 협박 등)</option>
-									      <option>고양이 사망</option>
-									      <option>잘못된 정보가 통합됨</option>
-										</select>
-							        </div>
-							        <br>
-							        <div class="container">
-							        	<p>Input</p>
-								       	 	<textarea class="form-control resize" id="declarationContent" rows="3"></textarea>
-								       	 <div class="row text-right">
-								       	 	<div class="col-8"></div>
-								       	 	<div class="col-4">
-								       	 		<div class="textCounter declaration"><span id="counter">0</span> / 1000 </div> 
-								       	 	</div>
-								       	 </div>
-								       	 <div class="row">
-								       	 	<span class="err1">필수 항목이 입력되지 않았습니다.</span>
-								       	 </div>
-								       	 <div class="row">
-								       	 	<span class="err2">신고분류를 선택해 주세요.</span>
-								       	 </div>
-							        </div>
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							        <button type="button" class="btn btn-primary" id="sendBtn">Save changes</button>
-							      </div>
-							    </div>
-							  </div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="col-4 cat_foot">
-				<h3>야옹이 발자취</h3>
-				<div id="map0" class="map0"></div>
-				<br>
-				<button type="button" class="btn btn-primary">팔로우</button>
-			</div>
-		</div>
-	</div>
+            </div>
+            <br>
+         </div>
+         <div class="col-4 cat_foot">
+            <h3>야옹이 발자취</h3>
+            <div id="map0" class="map0"></div>
+            <br>
+               <div class="row">
+               <div class="col-6">
+               
+               
+               
+               <!-- 팔로우 기능 구현 -->
+               <!-- 로그인 했을때 -->
+               <c:choose>
+               	<c:when test="${USER_CODE ne null}">
+               		<button type="button" class="btn btn-primary" onclick="javascript: login_need();" id="followBtn">팔로우</button>
+                </c:when>
+                <c:otherwise>
+                	<button type="button" class="btn btn-primary" onclick="javascript: follow_func();">팔로우</button>
+                </c:otherwise>
+               </c:choose>
+               
+               
+               
+               </div>
+                  <div class="col-6">
+                     <button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter"><img src="img/notification.png" class="img2"></button>신고하기
+                     <!-- Modal -->
+                     <form action="catdetail" method="post" id="modalForm">
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">길냥이관리 게시판</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="container">
+                                   <p>Post Number</p>
+                                   <input type="text" value="#19283" class="form-control" readonly="readonly"> 
+                                </div>
+                                <br>
+                                <div class="container">
+                                   <p>Description</p>
+                                   <select class="form-control" id="declarationSelect">
+                                   <option selected="selected">신고분류 선택</option>
+                                    <option>부적절한 정보(욕설, 협박 등)</option>
+                                    <option>고양이 사망</option>
+                                    <option>잘못된 정보가 통합됨</option>
+                                 </select>
+                                </div>
+                                <br>
+                                <div class="container">
+                                   <p>Input</p>
+                                         <textarea class="form-control resize" id="declarationContent" rows="3"></textarea>
+                                      <div class="row text-right">
+                                         <div class="col-8"></div>
+                                         <div class="col-4">
+                                            <div class="textCounter declaration"><span id="counter">0</span> / 1000 </div> 
+                                         </div>
+                                      </div>
+                                      <div class="row">
+                                         <span class="err1">필수 항목이 입력되지 않았습니다.</span>
+                                      </div>
+                                      <div class="row">
+                                         <span class="err2">신고분류를 선택해 주세요.</span>
+                                      </div>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="sendBtn">Save changes</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+         </div>
+      </div>
+   </div>
 	
 	<!----------------------------------------------  대표집자 3명에게 보여지는 유사한 고양이 그래프  ------------------------------------------------>
 	<div class="row">
@@ -294,13 +323,6 @@
 				<div class="scroll">
 				
 				
-				<c:forEach var="catLocationList" items="${catLocation}">
-					${catLocationList.LATITUDE } 
-					${catLocationList.LONGITUDE }
-				</c:forEach>
-							
-				
-				
 				<c:forEach var="catActRegList" items="${catActReg}">
 				<div class="row">
 						<div class="col-2">
@@ -414,13 +436,47 @@
 </div>
 
 
+<script type="text/javascript">
 
+
+
+/* 
+	(document).ready(function()
+	{
+		$.ajax({
+			type:'GET',
+			url : "<c:url value='/qtboard_comment_ajax'/>",
+			dataType : "json",
+			data : {"ID" : ${post.QT_ID }},
+			success : function(data)
+			{
+				var html = "";
+				var cCnt = data.length;
+				
+				if(data.length > 0)
+				{
+					for(i=0; i<data.length; i++)
+					{
+						
+					
+
+					}
+				}
+				
+				$("#commentList").html(html);
+				
+			}
+		});
+	});
+
+ */
+</script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script>
 <script>
 	/* 첫번째 지도 (마커 출력용 지도) */
 	var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div  
 	    mapOption0 = { 
-	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        center: new kakao.maps.LatLng(37.554396, 126.916707), // 지도의 중심좌표
 	        level: 3 // 지도의 확대 레벨
 	    };
 	
@@ -428,22 +484,12 @@
 	 
 	// 마커를 표시할 위치와 title 객체 배열입니다 
 	var positions0 = [
-	    {
-	        title: '카카오', 
-	        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
+		<c:forEach var='catLocationList' items='${catLocation}'>
+		{ 
+			title: '카카오',
+	        latlng: new kakao.maps.LatLng(${catLocationList.LATITUDE }, ${catLocationList.LONGITUDE })
 	    },
-	    {
-	        title: '생태연못', 
-	        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-	    },
-	    {
-	        title: '텃밭', 
-	        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-	    },
-	    {
-	        title: '근린공원',
-	        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-	    }
+	    </c:forEach>		
 	];
 	
 	// 마커 이미지의 이미지 주소입니다
@@ -544,6 +590,8 @@
 			}
 		}
 	} 
+	
+   
 </script>
 </body>
 </html>

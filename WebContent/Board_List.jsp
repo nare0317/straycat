@@ -76,7 +76,7 @@
 					<i class='far fa-comment'><span id="cmtCount">${list.CMT_COUNT }</span></i>
 			</div>
 		</div>
-		<div class="content writer">${list.NAME }</div>
+		<div class="content writer">${list.NICKNAME }</div>
 		<div class="content date">${list.POST_DATE }</div>
 		<div class="content viewCount">${list.HITCOUNT }</div>
 		<div class="content recomm">${list.LIKE_COUNT }</div>

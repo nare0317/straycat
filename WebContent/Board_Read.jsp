@@ -56,7 +56,7 @@
 		<div class="post-head row">
 			<div class="col-lg-12">
 				<!-- 글 제목 -->
-				<h3 class="post-title">홍대쪽 이쁜 길냥이 발견~!!</h3>
+				<h3 class="post-title">${article.TITLE }</h3>
 				<!-- 제목 밑에 줄 -->
 				<hr class="post-title-hr">
 			</div>
@@ -66,11 +66,11 @@
 			<div class="col-lg-6">
 				<!-- 작성자아이디, 작성일시, 조회수 -->
 				<ul class="list-inline">
-					<li class="list-inline-item g-mx-4">nare0317
+					<li class="list-inline-item g-mx-4">${article.NICKNAME }</li>
 					<li class="list-inline-item g-mx-4">|</li>
-					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item">2019-03-06 16:26</li>			
+					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item">${article.POST_DATE }</li>			
 					<li class="list-inline-item g-mx-4">|</li>
-					<li class="list-inline-item g-mx-4"><span class="icon-mouse" style="font-size: 11px;"></span> 1020</li>
+					<li class="list-inline-item g-mx-4">${article.HIT_COUNT }</li>
 				</ul>
 			</div>
 			
@@ -86,12 +86,7 @@
 			
 			<!-- 글 내용 -->
 			<div class="content col-lg-12">
-				<p class="text-justify">모든 기술은 저한테 맡겨주세요.관현악이며 미묘한 교향악이다 뼈 끝에 스며들어 가는 열락의 소리다. 이것은 피어나기 전인 유소년에게서 구하지 못할 바이며 시들어 가는 노년에게서 구하지 못할 바이며 오직 우리 청춘에서만 구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는</p>
-				<p class="text-justify">모든 기술은 저한테 맡겨주세요.관현악이며 미묘한 교향악이다 뼈 끝에 스며들어 가는 열락의 소리다. 이것은 피어나기 전인 유소년에게서 구하지 못할 바이며 시들어 가는 노년에게서 구하지 못할 바이며 오직 우리 청춘에서만 구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는</p>
-				<br>
-				<br>
-				<p class="text-justify">모든 기술은 저한테 맡겨주세요.관현악이며 미묘한 교향악이다 뼈 끝에 스며들어 가는 열락의 소리다. 이것은 피어나기 전인 유소년에게서 구하지 못할 바이며 시들어 가는 노년에게서 구하지 못할 바이며 오직 우리 청춘에서만 구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는</p>
-				<p class="text-justify">모든 기술은 저한테 맡겨주세요.관현악이며 미묘한 교향악이다 뼈 끝에 스며들어 가는 열락의 소리다. 이것은 피어나기 전인 유소년에게서 구하지 못할 바이며 시들어 가는 노년에게서 구하지 못할 바이며 오직 우리 청춘에서만 구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는</p>
+				<p class="text-justify">${article.CONTENT }</p>
 			</div>
 			
 		</div>
@@ -111,7 +106,7 @@
 					</ul>
 			</div>
 			<button class="btn_like">
-				<span class="fas fa-thumbs-up"></span><span class="text"> 추천<strong>5</strong></span>
+				<span class="fas fa-thumbs-up"></span><span class="text"> 추천<strong>${article.LIKE_COUNT }</strong></span>
 			</button>
 		</div>
 
