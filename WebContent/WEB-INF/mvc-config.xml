@@ -45,8 +45,16 @@
 	<!--    → 이 방식의 장점 중 하나는 --> 
     <!--       @Autowired와 @Qualifier Annotation을 인식할 수 있다는 것이다. -->
 	<context:component-scan base-package="com" />
-
-
+	
+	<!-- 로그인 인터셉터 -->
+<!--  	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/board/write"/>
+			<bean class="com.straycat.login.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+ -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="order" value="1" />
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
