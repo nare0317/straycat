@@ -55,7 +55,7 @@
 		<div class="post-head row">
 			<div class="col-lg-12">
 				<!-- 글 제목 -->
-				<h3 class="post-title"><span class="adt_status">[신규등록]</span>귀여운 치즈태비 입양하실분~!!</h3>
+				<h3 class="post-title"><span class="adt_status">[신규등록]</span>냥아취</h3>
 				<!-- 제목 밑에 줄 -->
 				<hr class="post-title-hr">
 			</div>

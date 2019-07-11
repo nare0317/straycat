@@ -55,7 +55,7 @@
 		<div class="post-head row">
 			<div class="col-lg-12">
 				<!-- 글 제목 -->
-				<h3 class="post-title"><span class="adt_status">[신규등록]</span>귀여운 치즈태비 입양하실분~!!</h3>
+				<h3 class="post-title"><span class="adt_status">[${post.ADT_PROC }]</span>${post.CAT_NAME }</h3>
 				<!-- 제목 밑에 줄 -->
 				<hr class="post-title-hr">
 			</div>
@@ -65,11 +65,11 @@
 			<div class="col-lg-6">
 				<!-- 작성자아이디, 작성일시, 조회수 -->
 				<ul class="list-inline">
-					<li class="list-inline-item g-mx-4">nare0317
+					<li class="list-inline-item g-mx-4">${post.USER_NICKNAME }
 					<li class="list-inline-item g-mx-4">|</li>
-					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item">2019-03-06 16:26</li>			
+					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item">${post.POST_DATE }</li>			
 					<li class="list-inline-item g-mx-4">|</li>
-					<li class="list-inline-item g-mx-4"><span class="icon-mouse font11"></span> 1020</li>
+					<li class="list-inline-item g-mx-4"><span class="icon-mouse font11"></span>조회수</li>
 				</ul>
 			</div>
 		</div>		
@@ -80,6 +80,9 @@
 			<!-- 고양이 대표사진 -->
 			<div class="iconic-photo col-lg-4">
 				<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail">
+				
+				<!-- 사진 불러오는 구문 -->
+				<%-- <img src="<%=cp %>/img/${post.CAT_IMAGE}" class="img-thumbnail"> --%>
 			</div>
 			
 			<!-- 글 내용 -->
@@ -87,38 +90,38 @@
 				<table class="missing-info table table-light">
 					<tr>
 						<th class="align-top th-sm th-lg">이름</th>
-						<td class="align-top">냥아취</td>
+						<td class="align-top">${post.CAT_NAME }</td>
 					</tr>
 					<tr>
 						<th class="align-top th-sm th-lg">종류</th>
-						<td class="align-top">고등어태비</td>
+						<td class="align-top">${post.CAT_TYPE }</td>
 					</tr>
 					<tr>
 						<th class="align-top th-sm th-lg">구조지역</th>
-						<td class="align-top">서울시 마포구 서교동 풍성빌딩 주차장 앞</td>
+						<td class="align-top">${post.CAT_ADDRESS }</td>
 					</tr>
 					<tr>
 						<th class="align-top th-sm th-lg">구조일</th>
-						<td class="align-top">2019-06-10</td>
+						<td class="align-top">${post.RSQ_DATE }</td>
 					</tr>
 					<tr>
 						<th class="align-top th-sm th-lg">나이</th>
-						<td class="align-top">아기묘(4개월)</td>
+						<td class="align-top">${post.CAT_AGE_TYPE }(${post.CAT_AGE })</td>
 					</tr>
 					<tr>
 						<th class="align-top th-sm th-lg">성별</th>
-						<td class="align-top">암컷</td>
+						<td class="align-top">${post.CAT_SEX }</td>
 					</tr>
 					<tr>
 						<th class="align-top th-sm th-lg">고양이<br>특이사항</th>
 						<td class="align-top">
-							<p>하얀색 수염이 길고 풍성해요~~얼굴이 통통해서 아주 귀엽게 생겼구요.. 발바닥은 검은젤리에요 ㅜㅜ</p>
+							<p>${post.CAT_ECT1 }</p>
 						</td>
 					</tr>
 					<tr>
 						<th class="align-top">건강상태</th>
 						<td class="align-top">
-							<p>매우 건강. 기생충 없음. 접종 미완료(아직 어려서 몇 주 후 접종이 가능하다고 합니다.)</p>
+							<p>${post.CAT_ECT2 }</p>
 						</td>
 					</tr>
 				</table>
@@ -127,13 +130,13 @@
 				<!-- 게시글 작성자 정보 -->
 				<div class="writer-info">
 					<div class="row writer-info-title">게시글 작성자 정보</div>
-					<div class="row writer-name"><label>이름 : </label>임나래
+					<div class="row writer-name"><label>이름 : </label>${post.USER_NAME }
 						<a href="" onclick=""  class="send-message">
 							<i class="fas fa-envelope"> 쪽지보내기 </i>
 						</a>
 					</div>
-					<div class="row writer-tel"><label>연락처 : </label>010-2493-4848</div>
-					<div class="row writer-email"><label>이메일 :</label>nare0317@gmail.com</div>
+					<div class="row writer-tel"><label>연락처 : </label>${post.USER_TEL }</div>
+					<div class="row writer-email"><label>이메일 :</label>${post.USER_EMAIL }</div>
 				</div>
 			</div>
 			
@@ -185,7 +188,7 @@
 		</div>
 		
 		<!-- 목록으로 돌아가기 버튼 -->
-		<button type="button" class="btn btn-dark pull-right">목록으로</button>
+		<input type="button" class="btn btn-dark pull-right" value="목록으로" onclick="location.href='<%=cp%>/adopt'">
 
 
 

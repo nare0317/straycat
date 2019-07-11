@@ -107,6 +107,46 @@ public class AdoptDAOImpl implements AdoptDAO
 		return address;
 	}
 
+	// 입양게시물 작성자 정보 조회 메소드 
+	@Override
+	public Map<String, Object> searchUserInfo(String user_id)
+	{
+		Map<String, Object> user = null;
+		
+		try
+		{
+			user = sqlSession.selectOne("adopt.searchUserInfo", user_id);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		
+		return user;
+	}
+	
+	
+	// 입양게시물 열람 메소드
+	@Override
+	public Map<String, Object> readAdopt(String id)
+	{
+		Map<String, Object> post = null; 
+		
+		try 
+		{
+			post = sqlSession.selectOne("adopt.readAdopt", id);
+		}
+		catch (Exception e) 
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		
+		return post;
+	}
+
 	
 	
 }
