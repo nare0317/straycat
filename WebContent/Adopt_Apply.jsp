@@ -34,10 +34,8 @@ String cp = request.getContextPath();
 	<form data-toggle="validator" role="form">
 	
 		<h4>선택형 질문</h4>
-		
-		.
 		<hr>
-		<div class="row" id="row">
+		<div class="row">
 			<div class="col-7">
 				<div class="form-group row">
 					<label for="colFormLabel" class="col-sm-2 col-form-label">이름</label>
@@ -351,67 +349,59 @@ String cp = request.getContextPath();
 						서술형 질문
 					</h4>
 					<hr>
-					<div>
-						<span class="input-group-text">1. 입양을 원하는 가장 큰 이유는 무엇인가요?</span>
-					</div>
-					<div class="input-group">
-						<textarea class="form-control" id="textarea" maxlength="300"
-							aria-label="With textarea" placeholder="내용을 입력해주세요." required>냥이 사연이 너무 안타깝네요.. 
-제가 평소에 고양이를 키우려고 알아보고 있었는데, 
-돈을 주고 사는 것보다는 입양을 통해서 불쌍한 아이들을 도와주고 싶은 마음에 신청하게 되었습니다.</textarea>
-					</div>
-					<br>
-					<div class="wrap">
+					
+					<div class="form-group">
+						<span class="input-group-text">1. 입양을 원하는 가장 큰 이유는 무엇인가요?</span>		
+	            <!--       <span class="input-group-text col-12 row">입양보내는 이유</span> -->
+	                  <div class="col-12 row">
+	                     <textarea class="form-control" aria-label="With textarea" id="exampleFormControlTextarea1" rows="4" maxlength="300" required></textarea>
+	                  </div>
+	               </div>
+	               	<div class="wrap">
 						<span id="counter">###</span>
 					</div>
-					<br> <br> <br>
-					<div>
-						<span class="input-group-text">2. 입양을 결정하기까지 얼마나 오랜 시간
-							고민하셨나요?</span>
-					</div>
-					<div class="input-group">
-						<textarea class="form-control" id="textarea1" maxlength="300"
-							aria-label="With textarea" placeholder="내용을 입력해주세요." required>냥이 사연이 너무 안타깝네요.. 
-제가 평소에 고양이를 키우려고 알아보고 있었는데, 
-돈을 주고 사는 것보다는 입양을 통해서 불쌍한 아이들을 도와주고 싶은 마음에 신청하게 되었습니다.</textarea>
-					</div>
-					<br>
+						
+					<br> <br>
+					
+					<div class="form-group">
+						<span class="input-group-text">2. 입양을 결정하기까지 얼마나 오랜 시간 고민하셨나요?</span>	
+					 <div class="col-12 row">
+	                     <textarea class="form-control" aria-label="With textarea" id="exampleFormControlTextarea1" rows="4" maxlength="300" required></textarea>
+	                  </div>	
+					</div>	
 					<div class="wrap">
 						<span id="counter1">###</span>
-					</div>
-					<br> <br>
-					<div>
+					</div>				
+		
+					<br>
+
+					<div class="form-group">
 						<span class="input-group-text text-left">3. 현재 다른 반려동물을 양육
 							중인 경우, 합사는 적어도 2주 정도 시간을 갖고 천천히 진행해야 합니다. <br>합사가 필요한 경우 간단한
-							합사 계획에 대해서 알려주세요. (ex. 2주 간 격리 후 천천히 대면 예정)
-						</span>
+							합사 계획에 대해서 알려주세요. (ex. 2주 간 격리 후 천천히 대면 예정)</span>
+						<div class="col-12 row">
+							<textarea class="form-control" aria-label="With textarea"
+								id="exampleFormControlTextarea" rows="4" maxlength="300"
+								required></textarea>
+						</div>
+						<div class="col-4">
+						 	<div class="textCounter declaration"><span id="counter">0</span> / 1000 </div> 
+					    </div>
 					</div>
-					<div class="input-group">
-						<textarea class="form-control" id="textarea2" maxlength="300"
-							aria-label="With textarea" placeholder="내용을 입력해주세요." required>냥이 사연이 너무 안타깝네요.. 
-제가 평소에 고양이를 키우려고 알아보고 있었는데, 
-돈을 주고 사는 것보다는 입양을 통해서 불쌍한 아이들을 도와주고 싶은 마음에 신청하게 되었습니다.</textarea>
-					</div>
-					<br>
-					<div class="wrap">
-						<span id="counter2">###</span>
-					</div>
-				</div>
+	
+
 
 				<br> <br>
+</div>
 
 				<!-- 임시저장 / 작성완료 버튼 -->
 			<div class="col text-center">
 				<button class="btn btn-light btn-lg" type="submit">임시저장</button>
-				<a class="btn btn-primary btn-lg" href="#" role="button"
-					id="completebtn">작성완료</a>
+				<a id="completebtn" href="#"><button class="btn btn-primary btn-lg" type="submit">작성완료</button></a>
 			</div>
 		</form>
 	</div>
 </div>
-
-
-
 
 
 <br />
@@ -421,7 +411,7 @@ String cp = request.getContextPath();
 <br />
 <div>
 	<c:import url="Footer.jsp"></c:import>
-	</div>
+</div>
 
 
 </body>

@@ -83,7 +83,7 @@
                <div class="form-group row">
                   <label for="cat-name" class="col-sm-2 col-form-label">이름</label>
                   <div class="col-sm-4">
-                     <input type="text" class="form-control" id="cat-name" placeholder="ex.야옹이"  maxlength="10" required>
+                     <input type="text" class="form-control" id="cat-name" placeholder="ex.야옹이" maxlength="10" required>
                     </div>
                 </div>
                 

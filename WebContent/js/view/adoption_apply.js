@@ -1,6 +1,6 @@
 $(function() {
 	
-	  // 서술형 질문1 300자 제한
+	  /*// 서술형 질문1 300자 제한
       $('#textarea').keyup(function (e){
           var content = $(this).val();
           $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
@@ -22,46 +22,28 @@ $(function() {
           $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
           $('#counter2').html(content.length + '/300');
       });
-      $('#textarea2').keyup();
+      $('#textarea2').keyup();*/
       
+	
+	// 신고 내용을 최대 1000 자까지 입력할 수 있도록 제한하는 function
+	// 1000 자를 초과 입력하면 1000 번째 글자까지 입력됨
+	$("#exampleFormControlTextarea").keyup(function()
+	{
+		if($("#exampleFormControlTextarea").val().length >= 1000)
+		{
+			$("#textCounter").css("color", "red");
+			var str = $("#exampleFormControlTextarea").val();
+			str = str.substring(0, 1000);
+			$("#exampleFormControlTextarea").val(str);
+		}
+		else
+		{
+			$("#textCounter").css("color", "black");
+			var textCnt = $("#exampleFormControlTextarea1").val().length;
+			$("#counter").text(textCnt);
+		}
+	});
       
-      // 선택형 질문 라디오 버튼
-      $(".image-radio").each(function(){	
-          if($(this).find('input[type="radio"]').first().attr("checked")){	
-              $(this).addClass('image-radio-checked');	
-          }else{	
-              $(this).removeClass('image-radio-checked');	
-          }	
-      });	
 
-      // sync the input state	
-      $(".image-radio").on("click", function(e){	
-          $(".image-radio").removeClass('image-radio-checked');	
-          $(this).addClass('image-radio-checked');	
-          var $radio = $(this).find('input[type="radio"]');	
-          $radio.prop("checked",!$radio.prop("checked"));	
-
-           e.preventDefault();	
-      });
-      
-      // 부트스트랩 form validation check	
-      (function() 	
-      {	
-        'use strict';	
-        window.addEventListener('load', function() {	
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to	
-          var forms = document.getElementsByClassName('needs-validation');	
-          // Loop over them and prevent submission	
-          var validation = Array.prototype.filter.call(forms, function(form) {	
-            form.addEventListener('submit', function(event) {	
-              if (form.checkValidity() === false) {	
-                event.preventDefault();	
-                event.stopPropagation();	
-              }	
-              form.classList.add('was-validated');	
-            }, false);	
-          });	
-        }, false);	
-      })();
       
 });

@@ -5,13 +5,6 @@ div
 	font-family: 'Nanum Gothic Coding', monospace;
 	font-family: 'Quicksand', sans-serif;
 }
-#row
-{
-	overflow-y:scroll;
-	overflow-x:hidden;
-	overflow-y:auto;
-	height: 350px;
-}
 .card
 {
 	margin-top: 30px;
@@ -32,6 +25,8 @@ th
 	background-color: #F6F6F6;
 	width: 30%;
 }
+
+
 .mButton.gCenter 
 { 
 	position:relative; text-align:center; 
@@ -53,13 +48,16 @@ th
 }
 .input-group
 {
-	height: 100px;	
+	height: 100px;		
 }
 span
 {
 	font-size: medium;
 }
-
+span.input-group-text
+{
+	width: 1025px;
+}
 #completebtn
 {
 	margin-left: 2%;
@@ -85,13 +83,15 @@ span
 {
 	margin-left: -7%;
 }
-
+element.style {
+    height: 100px; 
+}
 textarea
 {
-	rows: 3;
-	cols: 50;
 	resize: none;
-	height: 100px;
+  	overflow: hidden;
+  	width: 1060px; 
+ 	height: 100px;
 }
 
 #yesno
@@ -121,8 +121,9 @@ textarea
 }
 #counter, #counter1, #counter2 {
   border-radius: 0.5em;
-  padding: 0 .5em 0 .5em;
+  padding: -10px;
   font-size: 12pt;
+  margin-left: 30%;
   color: gray;
 }
 .m20
@@ -136,4 +137,9 @@ textarea
 .blue
 {
 	color: blue;
+}
+.resize
+{
+	/* resize: none; */
+	height: 100px;
 }
