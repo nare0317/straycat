@@ -28,8 +28,9 @@
 		AND TEL = #{tel}
 	</select>
 	
-	<insert id="join">
-		
+	<insert id="addJoin" parameterType="map">
+		INSERT INTO USER_REG (USER_CODE, ID, USER_NAME, PWD, TEL, EMAIL, GRADE, NICKNAME, ADDRESS)
+		VALUES ('US4', '#{idInput,jdbcType=VARCHAR}', '#{name,jdbcType=VARCHAR}', '#{pwd,jdbcType=VARCHAR}', '#{tel,jdbcType=VARCHAR}', '#{email,jdbcType=VARCHAR}', 'GR1', '#{nickname,jdbcType=VARCHAR}', '#{address,jdbcType=VARCHAR}')
 	</insert>
 	
 

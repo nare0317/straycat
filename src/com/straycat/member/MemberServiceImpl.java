@@ -74,6 +74,20 @@ public class MemberServiceImpl implements MemberService
 		return check4;
 	}
 	 
+	@Override
+	public void addJoin(Map<String, Object> param)
+	{
+
+		
+		try
+		{
+			dao.selectOne("member.addJoin", param);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+
+	}
 	
 	
 	  

@@ -80,7 +80,7 @@ $(document).ready(function()
 			return;
 		}
 		// 주소를 입력하지 않았을 때
-		if ($("#address").val()=="" || $("#address").val()==null)
+		if ($("#sample6_address").val()=="" || $("#sample6_address").val()==null)
 		{
 			$(".err").text("주소를 입력해주세요.");
 			
@@ -135,7 +135,7 @@ $(document).ready(function()
 		}
 		
 		// 주소가 100자를 초과했을 때
-		if ($("#address").val().length > 100)
+		if ($("#sample6_address").val().length > 100)
 		{
 			$(".err").text("주소는 최대 100자까지 입력할 수 있습니다.");
 			
@@ -293,9 +293,9 @@ $(document).ready(function()
 					}
 				}
 			});
-			
-		
 	});
+	
+	
 	
 	
 	
