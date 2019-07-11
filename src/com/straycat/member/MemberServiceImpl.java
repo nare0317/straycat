@@ -19,7 +19,7 @@ public class MemberServiceImpl implements MemberService
 		
 		try
 		{
-			check1 = dao.selectOne("member.checkId");
+			check1 = dao.selectOne("member.checkId", id);
 			
 		} catch (Exception e)
 		{

@@ -153,7 +153,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-				<form action="join?termCheck=truetrue" method="get" id="modalForm">
+				<form action="checkJoin" method="get" id="modalForm">
 					<table>
 						<tr>
 							<th>성명<span class="required">*</span></th>
@@ -178,6 +178,9 @@
 							</td>
 						<tr>
 					</table>
+					<div class="errDiv">
+						<span class="err"></span>
+					</div>
 					</form>
 				</div>
 				<div class="modal-footer">

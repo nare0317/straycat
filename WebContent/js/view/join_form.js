@@ -161,11 +161,34 @@ $(document).ready(function()
 	$("#idCheck").click(function()
 	{
 		
-		//alert($("#idInput").val());
-		if ( $("#idInput").val()  )
-		{
+		var id = $("#idInput").val();
+		
+		if (id == "")
+			$(".err").text("아이디를 입력해주세요.");
+			return;
 			
-		}
+		$.ajax({
+				url:"/checkJoin?id="+id,
+				type:"get",
+				data:{'id':id},
+				success:function(count){
+					if(count==0)
+					{
+						alert("사용가능한 아이디입니다.");
+					}
+					else
+					{
+						alert("중복된 아이디입니다.");
+						return false;
+					}
+					
+				}
+		
+				
+					
+		});
+		
+			
 		
 		
 		

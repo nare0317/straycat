@@ -39,4 +39,11 @@ public class MemberController
 	}
 
 	
+	@RequestMapping(value="/checkJoin", method = RequestMethod.GET)
+	public int joinCheck(@RequestParam("id") String id)
+	{
+		return service.checkId(id);
+		
+		
+	}
 }

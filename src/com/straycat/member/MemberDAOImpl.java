@@ -22,9 +22,11 @@ public class MemberDAOImpl implements MemberDAO
 	@Override
 	public <T> T selectOne(String id, Object value)
 	{
+		
 		try
 		{
 			return sqlSession.selectOne(id, value);
+			
 		} catch (Exception e)
 		{
 			logger.error(e.toString());
