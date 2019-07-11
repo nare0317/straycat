@@ -27,7 +27,6 @@
 		<div class="card-body center">
 			<div>
 			 	주변에 어떤 고양이가 있는지 확인하세요!
-			 	<%request.getAttribute("id"); %>
 			</div><br>
 			<div>
 				<h4><span id="loc">"서울시 성동구 성수동"</span>에 사는 고양이</h4>
