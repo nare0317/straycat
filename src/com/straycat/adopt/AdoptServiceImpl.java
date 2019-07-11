@@ -62,7 +62,8 @@ public class AdoptServiceImpl implements AdoptService
 		{
 			e.printStackTrace();
 		}
-		return null;
+		
+		return result;
 	}
 	
 	
