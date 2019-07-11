@@ -42,7 +42,23 @@ public class CatServiceImpl implements CatService
 		
 		try
 		{
-			catLocation = dao.selectList();
+			catLocation = dao.selectList("catDetail.catLocation");
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return catLocation;
+	}
+	
+	@Override
+	public List<String> catActReg()
+	{
+		List<String> catLocation = new ArrayList<String>();
+		
+		try
+		{
+			catLocation = dao.selectList("catDetail.actReg");
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -52,18 +68,21 @@ public class CatServiceImpl implements CatService
 	}
 
 	@Override
-	public List<String> catActReg()
+	public int locationCount()
 	{
-		List<String> catActReg = new ArrayList<String>();
+		int locationCount = 0;
 		
 		try
 		{
-			catActReg = dao.selectActList();
+			locationCount = dao.count("catDetail.locationCount");
 		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 		
-		return catActReg;
-	}	
+		
+		return locationCount;
+	}
+	
+	
 }

@@ -23,7 +23,7 @@ public class AdoptServiceImpl implements AdoptService
 		
 		try
 		{
-			list = dao.selectList();
+			list = dao.listAdopt();
 		} 
 		catch (Exception e)
 		{
@@ -32,5 +32,40 @@ public class AdoptServiceImpl implements AdoptService
 		
 		return list;
 	}
+
+	@Override
+	public int addAdopt(Map<String, Object> map)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = dao.addAdopt(map);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public String searchAddress(String gu, String dong)
+	{
+		String result = ""; 
+		
+		try
+		{
+			result = dao.searchAddress(gu, dong);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+
 
 }

@@ -22,10 +22,12 @@ public class CatController
 		Map<String, Object> catInfo = service.catInfo();
 		List<String> catLocation = service.catLocation();
 		List<String> catActReg = service.catActReg();
+		int locationCount = service.locationCount();
 		
 		model.addAttribute("catInfo",catInfo);
 		model.addAttribute("catLocation",catLocation);
 		model.addAttribute("catActReg",catActReg);
+		model.addAttribute("locationCount",locationCount);
 		
 		return "Cat_Detail";
 	 }
