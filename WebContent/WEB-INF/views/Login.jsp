@@ -23,19 +23,19 @@
 	<div style="margin-top: 60px;">
 		<h1>Login</h1>
 	</div>
-	<form id="loginForm" action="" method="post">
+	<form id="loginForm" action="<%=cp %>/login/check" method="post">
 		<div class="row" style="margin-top: 60px; width: 100%;">
 			<div class="col-md-6 offset-md-3">
 				<!-- 아이디 입력 폼 -->
 				<div class="form-group text-left">
 					<label for="exampleInputEmail1">아이디:</label> 
-					<input type="text" class="form-control form-control-lg" id="inputId" placeholder="ID">
+					<input type="text" class="form-control form-control-lg" id="inputId" placeholder="ID" name="id">
 				</div>
 
 				<!-- 비밀번호 입력 폼 -->
 				<div class="form-group text-left">
 					<label for="exampleInputEmail1">비밀번호:</label> 
-					<input type="password" class="form-control form-control-lg" id="inputPwd" placeholder="Password">
+					<input type="password" name="pwd" class="form-control form-control-lg" id="inputPwd" placeholder="Password">
 				</div>
 				<div class="form-group form-check text-left">
 				    <input type="checkbox" class="form-check-input" id="exampleCheck1">
