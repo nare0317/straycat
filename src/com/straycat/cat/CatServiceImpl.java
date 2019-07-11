@@ -1,6 +1,5 @@
 package com.straycat.cat;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,53 +35,14 @@ public class CatServiceImpl implements CatService
 	}
 
 	@Override
-	public List<String> catLocation()
-	{
-		List<String> catLocation = new ArrayList<String>();
-		
-		try
-		{
-			catLocation = dao.selectList("catDetail.catLocation");
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		
-		return catLocation;
-	}
-	
-	@Override
-	public List<String> catActReg()
-	{
-		List<String> catLocation = new ArrayList<String>();
-		
-		try
-		{
-			catLocation = dao.selectList("catDetail.actReg");
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		
-		return catLocation;
+	public List<Map<String, Object>> catLocation()
+	{		
+		return dao.selectList();
 	}
 
 	@Override
-	public int locationCount()
+	public List<Map<String, Object>> catActReg()
 	{
-		int locationCount = 0;
-		
-		try
-		{
-			locationCount = dao.count("catDetail.locationCount");
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		
-		
-		return locationCount;
-	}
-	
-	
+		return dao.selectActList();
+	}	
 }
