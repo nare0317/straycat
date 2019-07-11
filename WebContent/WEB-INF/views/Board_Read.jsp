@@ -56,7 +56,7 @@
 		<div class="post-head row">
 			<div class="col-lg-12">
 				<!-- 글 제목 -->
-				<h3 class="post-title">홍대쪽 이쁜 길냥이 발견~!!</h3>
+				<h3 class="post-title">${article.TITLE }</h3>
 				<!-- 제목 밑에 줄 -->
 				<hr class="post-title-hr">
 			</div>
@@ -66,11 +66,11 @@
 			<div class="col-lg-6">
 				<!-- 작성자아이디, 작성일시, 조회수 -->
 				<ul class="list-inline">
-					<li class="list-inline-item g-mx-4">nare0317
+					<li class="list-inline-item g-mx-4">${article.NICKNAME }</li>
 					<li class="list-inline-item g-mx-4">|</li>
-					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item">2019-03-06 16:26</li>			
+					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item">${article.POST_DATE }</li>			
 					<li class="list-inline-item g-mx-4">|</li>
-					<li class="list-inline-item g-mx-4"><span class="icon-mouse" style="font-size: 11px;"></span> 1020</li>
+					<li class="list-inline-item g-mx-4">${article.HIT_COUNT }</li>
 				</ul>
 			</div>
 			
@@ -86,12 +86,7 @@
 			
 			<!-- 글 내용 -->
 			<div class="content col-lg-12">
-				<p class="text-justify">모든 기술은 저한테 맡겨주세요.관현악이며 미묘한 교향악이다 뼈 끝에 스며들어 가는 열락의 소리다. 이것은 피어나기 전인 유소년에게서 구하지 못할 바이며 시들어 가는 노년에게서 구하지 못할 바이며 오직 우리 청춘에서만 구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는</p>
-				<p class="text-justify">모든 기술은 저한테 맡겨주세요.관현악이며 미묘한 교향악이다 뼈 끝에 스며들어 가는 열락의 소리다. 이것은 피어나기 전인 유소년에게서 구하지 못할 바이며 시들어 가는 노년에게서 구하지 못할 바이며 오직 우리 청춘에서만 구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는</p>
-				<br>
-				<br>
-				<p class="text-justify">모든 기술은 저한테 맡겨주세요.관현악이며 미묘한 교향악이다 뼈 끝에 스며들어 가는 열락의 소리다. 이것은 피어나기 전인 유소년에게서 구하지 못할 바이며 시들어 가는 노년에게서 구하지 못할 바이며 오직 우리 청춘에서만 구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는</p>
-				<p class="text-justify">모든 기술은 저한테 맡겨주세요.관현악이며 미묘한 교향악이다 뼈 끝에 스며들어 가는 열락의 소리다. 이것은 피어나기 전인 유소년에게서 구하지 못할 바이며 시들어 가는 노년에게서 구하지 못할 바이며 오직 우리 청춘에서만 구할 수 있는 것이다 청춘은 인생의 황금시대다 우리는</p>
+				<p class="text-justify">${article.CONTENT }</p>
 			</div>
 			
 		</div>
@@ -111,7 +106,7 @@
 					</ul>
 			</div>
 			<button class="btn_like">
-				<span class="fas fa-thumbs-up"></span><span class="text"> 추천<strong>5</strong></span>
+				<span class="fas fa-thumbs-up"></span><span class="text"> 추천<strong>${article.LIKE_COUNT }</strong></span>
 			</button>
 		</div>
 
@@ -119,15 +114,15 @@
 		<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
 		<div class="beforeafter list-group">
 			<a href="" onclick="" class=" prev list-group-item list-group-item-action"> 
-				<i class="fas fa-chevron-up"> 이전 글 </i><span>이전 글이 없습니다.</span>
+				<i class="fas fa-chevron-up"> 이전 글 </i><span>${prevArticle.TITLE }</span>
 			</a>
 			<a href="" onclick=""  class="next list-group-item list-group-item-action">
-				<i class="fas fa-chevron-down"> 다음 글 </i><span>저희 냥이 좀 찾아주세요ㅠㅠ</span>
+				<i class="fas fa-chevron-down"> 다음 글 </i><span>${nextArticle.TITLE }</span>
 			</a>
 		</div>
 		
 		<!-- 목록으로 돌아가기 버튼 -->
-		<button type="button" class="btn btn-dark pull-right">목록으로</button>
+		<button type="button" class="btn btn-dark pull-right" onclick="location.href='<%=cp %>/board'">목록으로</button>
 
 
 
@@ -163,46 +158,47 @@
 				</div>
 				
 				<!-- 댓글 1 -->
+				<c:forEach var="commentList" items="${commentList }">
 				<div id="comment-wrapper">
 
 					<div class="comment" data-id="16312" data-login="false">
 						<div class="comment-content">
 							<div class="comment-writer-date">
 								<!-- <div class="d-block"> -->
-									<h6 class="comment-writer">김경희
-									<span class="comment-date">2019-07-03 12:39</span>
+									<h6 class="comment-writer">${commentList.NICKNAME }
+									<span class="comment-date">${commentList.BBS_CMT_DATE }</span>
 									</h6>
 								<!-- </div> -->
 							</div>
-							<p>정말 많은 사람들이 고생하셨습니다..ㅜ.ㅜ 정부에서는 크게 도와주는게 없으니
-								동물보호단체에서라도 꾸준히 이후에도 관리를 해주셨으면 하는 바람입니다..ㅜ.ㅜ 정말 없어져서 기쁩니다!!</p>
+							<p>${commentList.CONTENT }</p>
 						</div>
 					</div><!-- end comment -->
 
 					<hr class="comment-hr">
 
 				</div><!-- end comment-wrapper -->
-				
-				<!-- 댓글 2 -->
+				</c:forEach>
+				<!-- 
+				댓글 2
 				<div id="comment-wrapper">
 
 					<div class="comment" data-id="16312" data-login="false">
 						<div class="comment-content">
 							<div class="comment-writer-date">
-								<!-- <div class="d-block"> -->
+								<div class="d-block">
 									<h6 class="comment-writer">임나래 <span class="comment-date g-color-gray-dark-v5 g-font-size-12 g-font-weight-300">2019-07-02 17:29</span>
 									</h6>
-								<!-- </div> -->
+								</div>
 							</div>
 							<p>야옹이 너무이쁘네요 ㅠㅠ 어쩌다 잃어버리셨을까.. ㅠㅠ 저희동네인데 
 							주위 잘 둘러보고 다녀야겠어요 ㅠㅠ </p>
 						</div>
-					</div><!-- end comment -->
+					</div>end comment
 
 					<hr class="comment-hr">
 
-				</div><!-- end comment-wrapper -->
-				
+				</div>end comment-wrapper
+ -->				
 			</div><!-- end comment-list area -->
 		</div><!-- end comment-area -->
 
@@ -213,4 +209,3 @@
 </div>
 </body>
 </html>
-

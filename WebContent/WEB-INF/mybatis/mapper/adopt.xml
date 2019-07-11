@@ -2,20 +2,23 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="board">
+<mapper namespace="adopt">
 
 <!-- 입양게시판 리스트 쿼리문 -->
 <select id="listAdopt" resultType="map">
 	SELECT A.CAT_NAME AS CAT_NAME
+	     , CT.SPECIES AS CAT_TYPE
 	     , CS.SEX AS CAT_SEX
 	     , A.CAT_AGE AS CAT_AGE
-	     , AD.SI AS SI
-	     , AD.GU AS GU
-	     , AD.DONG AS DONG
+	     , AD.SI || ' ' || AD.GU || ' ' || AD.DONG AS CAT_ADDRESS
 	     , AP.ADT_PROC AS ADT_PROC
 	     , AT.ADT_TYPE AS ADT_TYPE
-	     , A.HIT_COUNT AS HIT_COUNT
+	     , A.HIT_COUNT AS HITCOUNT
+	     , A.POST_DATE AS POST_DATE
+	     , A.CAT_REP_IMG AS CAT_IMAGE
 	FROM ADT_REG A 
+	JOIN CAT_TYPE CT
+	ON A.CAT_SPECIES = CT.SPECIES_CODE
 	JOIN CAT_SEX CS
 	ON A.CAT_SEX = CS.SEX_CODE
 	JOIN ADDRESS AD
@@ -25,6 +28,16 @@
 	JOIN ADT_TYPE AT
 	ON A.ADT_TYPE = AT.ADT_TYPE_CODE
 	ORDER BY A.POST_DATE
+</select>
+
+<insert id="addAdopt">
+	EXEC PRC_ADT_REG_INSERT(${ADT_PROC}, ${CAT_NAME}, ${ADDRESS}, ${RSQ_DATE}, ${CAT_SPECIES}, ${CAT_AGE_TYPE}, ${CAT_AGE_NUM}, ${CAT_SEX}, ${ADT_TYPE}, ${CAT_ETC1}, ${CAT_ETC2}, 'straycat.png', 'US2', ${TEL},${EMAIL}, ${ADT_REASON}, ${ADT_CAT_EXP}, ${ADT_JOB}, ${ADT_MARRIAGE}, ${ADT_FAMILY_NUM})
+</insert>
+
+<select id="searchAddress" resultType="java.lang.String">
+	SELECT ADDRESS_CODE
+	FROM ADDRESS
+	WHERE SI = '서울시' AND GU = ${gu} AND DONG = ${dong}
 </select>
 
 </mapper>

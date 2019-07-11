@@ -13,10 +13,6 @@
 <title>자유게시판</title>
 
 <c:import url="Head.jsp"></c:import>
-	
-	<!-- 페이지 CSS, 자바스크립트 -->
-	<link rel="stylesheet" href="<%=cp %>/css/view/join_acceptterms.css">
-	<script type="text/javascript" src="<%=cp %>/js/view/join_acceptterms.js"></script>
 
 <!-- 로그인 페이지 자바스크립트, CSS -->
 <script src="<%=cp%>/js/view/board_list.js"></script>
@@ -74,13 +70,13 @@
 		<div class="content no">${list.NUM }</div>
 		<div class="content title titleLeft">
 			<div class="contentTitle">
-				<a class="contentLink" href="${articleUrl }&num=${list.NUM}">${list.TITLE }</a>
+				<a class="contentLink" onclick="location.href='${articleUrl }&articleNum=${list.NUM}'">${list.TITLE }</a>
 			</div>
 			<div class="commentCount">
 					<i class='far fa-comment'><span id="cmtCount">${list.CMT_COUNT }</span></i>
 			</div>
 		</div>
-		<div class="content writer">${list.NAME }</div>
+		<div class="content writer">${list.NICKNAME }</div>
 		<div class="content date">${list.POST_DATE }</div>
 		<div class="content viewCount">${list.HITCOUNT }</div>
 		<div class="content recomm">${list.LIKE_COUNT }</div>
@@ -92,9 +88,11 @@
 	<ul class="pagination pagination-sm justify-content-center">
 	 
 		<li class="page-item disabled"><a class="page-link text-dark" href="#">Previous</a></li>
-		<c:forEach begin="1" end="${total_page }" step="1" var="page">
-		<li class="page-item active"><a class="page-link text-dark" href="#">${page }</a></li>
+		
+		<c:forEach begin="1" end="${total_page }" step="1" var="pageNum">
+			<li ${page eq pageNum ? "class='page-item active'" : "class='page-item'" } class="page-item active"><a class="page-link text-dark" href="${pagenation }${pageNum }">${pageNum }</a></li>
 		</c:forEach>
+		
 		<li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
 	
 	</ul>
