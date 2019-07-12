@@ -37,7 +37,7 @@ public class ImageServiceImpl implements ImageService
 		try
 		{
 			byte[] data = file.getBytes();
-			path = path + "/resource/" + saveFileName;
+			path = path + "/resource/";
 			
 			// 경로가 없다면 경로 생성
 			File dir = new File(path); 
@@ -45,7 +45,7 @@ public class ImageServiceImpl implements ImageService
                 dir.mkdirs();
             }
             
-			FileOutputStream fos = new FileOutputStream(url);
+			FileOutputStream fos = new FileOutputStream(path);
 			fos.write(data);
 			fos.close();
 		} catch (Exception e)

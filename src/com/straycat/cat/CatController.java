@@ -67,5 +67,11 @@ public class CatController
 
 		return new ResponseEntity(json.toString(), headers, HttpStatus.CREATED);
 	}
+	
+	@RequestMapping("/catregistration")
+	public String catRegister()
+	{
+		return "Cat_Registration";
+	}
 
 }
