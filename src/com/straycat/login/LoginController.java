@@ -65,6 +65,7 @@ public class LoginController
 		return "Login"; 
 	}
 	
+	
 	@RequestMapping("/logout")
 	public ModelAndView logout(HttpSession session, ModelAndView mav)
 	{
