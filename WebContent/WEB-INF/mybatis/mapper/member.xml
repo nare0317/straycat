@@ -29,12 +29,8 @@
 	</select>
 	
 	<insert id="addJoin" parameterType="map">
-		<selectKey resultType="string" keyProperty="USER_CODE" order="BEFORE">
-	        SELECT MAX(ROWNUM)+1
-	        FROM ADT_REG        
-		</selectKey>
 		INSERT INTO USER_REG (USER_CODE, ID, USER_NAME, PWD, TEL, EMAIL, GRADE, NICKNAME, ADDRESS_CODE)
-		VALUES ('US'||#{USER_CODE}, #{idInput,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 'GR1', #{nickname,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
+		VALUES ('US'||USER_CODE_SEQ.NEXTVAL, #{idInput,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 'GR1', #{nickname,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
 	</insert>
 	
 
