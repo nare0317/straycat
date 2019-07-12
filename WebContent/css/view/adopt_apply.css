@@ -5,13 +5,6 @@ div
 	font-family: 'Nanum Gothic Coding', monospace;
 	font-family: 'Quicksand', sans-serif;
 }
-#row
-{
-	overflow-y:scroll;
-	overflow-x:hidden;
-	overflow-y:auto;
-	height: 350px;
-}
 .card
 {
 	margin-top: 30px;
@@ -46,11 +39,23 @@ th
 {
 	margin-top: 100px;
 }
+.wrap span {
+	margin-top: -1%;
+	position: relative;
+	float: right;
+}
+.input-group
+{
+	height: 100px;		
+}
 span
 {
-	font-size: small;
+	font-size: medium;
 }
-
+span.input-group-text
+{
+	width: 1025px;
+}
 #completebtn
 {
 	margin-left: 2%;
@@ -76,10 +81,19 @@ span
 {
 	margin-left: -7%;
 }
-
-#textarea
+element.style {
+    height: 100px; 
+}
+textarea
 {
-	height: 100px;
+	resize: none;
+  	overflow: hidden;
+  	width: 1060px; 
+ 	height: 100px;
+}
+#textCounter
+{
+	margin-left: -1%;
 }
 
 #yesno
@@ -107,6 +121,13 @@ span
 {
 	margin-left: 5%;
 }
+#counter, #counter1, #counter2 {
+  border-radius: 0.5em;
+  padding: -10px;
+  font-size: 12pt;
+  margin-left: 30%;
+  color: gray;
+}
 .m20
 {
 	margin-top: 20px;
@@ -118,4 +139,9 @@ span
 .blue
 {
 	color: blue;
+}
+.resize
+{
+	/* resize: none; */
+	height: 100px;
 }
