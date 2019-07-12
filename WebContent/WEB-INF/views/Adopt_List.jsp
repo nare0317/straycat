@@ -61,9 +61,9 @@
 				<div class="col-lg-4">
 					<select class="custom-select">
 						<option selected>구 선택</option>
-						<option value="1">마포구</option>
-						<option value="2">영등포구</option>
-						<option value="3">서대문구</option>
+						<c:forEach var="gu" items="${gu }">
+							<option value="${gu.GU }">${gu.GU }</option>
+						</c:forEach>
 					</select>
 				</div>
 				<!-- 동 선택 -->
