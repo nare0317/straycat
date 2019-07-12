@@ -223,8 +223,7 @@ $(document).ready(function()
 	$("#emailCheck").click(function()
 			{
 				var email = $("#email").val();
-				
-				//alert(nickName);
+
 				if (email == "")
 				{
 					$(".err").text("이메일을 입력해주세요.");
