@@ -55,14 +55,16 @@
 			<bean class="com.straycat.login.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
- 
-  
+
 	<!-- 
 	<mvc:annotation-driven>
 		<mvc:argument-resolvers>
 			<bean class="com.straycat.common.CustomMapArgumentResolver"></bean>		
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven> -->
+
+	
+
 
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="order" value="1" />
