@@ -61,9 +61,9 @@
 				<div class="col-lg-4">
 					<select class="custom-select">
 						<option selected>구 선택</option>
-						<option value="1">마포구</option>
-						<option value="2">영등포구</option>
-						<option value="3">서대문구</option>
+						<c:forEach var="gu" items="${gu }">
+							<option value="${gu.GU }">${gu.GU }</option>
+						</c:forEach>
 					</select>
 				</div>
 				<!-- 동 선택 -->
@@ -90,6 +90,9 @@
 				<div class="col-lg-4 text-right write">
 					<input type="button" class="btn btn-primary btn-lg" value="입양등록"
 					id="adopt_write" onclick="location.href='<%=cp%>/adopt_form'">
+					<%-- <input type="button" class="btn btn-primary btn-lg" value="입양등록"
+					id="adopt_write" onclick="location.href='<%=cp%>/adopt_form?user_id=${ }'"> --%>
+					<!-- 사용자 아이디 값 받아오는걸로 위 구문 빈칸 채우면 됨. -->
 				</div>
 			</div>
 			
@@ -140,7 +143,7 @@
 							</div>
 						</div>
 					</div><!-- 길냥이 정보 끝 -->
-					
+					<a href="<%=cp %>/adopt_read?id=${list.ADT_CODE}" class="stretched-link"></a>
 				</div>
 			</div>
 			</c:forEach>

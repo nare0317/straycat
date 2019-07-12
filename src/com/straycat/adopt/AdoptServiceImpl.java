@@ -1,6 +1,7 @@
 package com.straycat.adopt;
 
-import java.util.ArrayList;
+import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,32 +17,61 @@ public class AdoptServiceImpl implements AdoptService
 	@Autowired
 	private AdoptDAO dao;
 	
+	// 입양 리스트 조회
 	@Override
-	public List<Map<String, Object>> listAdopt()
+	public Map<String, Object> listAdopt()
 	{
-		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<Map<String,Object>> list = null;
+		List<Map<String,Object>> gu = null;
 		
 		try
 		{
 			list = dao.listAdopt();
-		} 
-		catch (Exception e)
+			gu = dao.listGu();
+			
+			map.put("list", list);
+			map.put("gu", gu);
+
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-		
-		return list;
-	}
 
+		return map;
+	};
+	
+
+	// 입양 게시글 등록
 	@Override
-	public int addAdopt(Map<String, Object> map)
+	public int addAdopt(Map<String, Object> param)
 	{
 		int result = 0;
-		
+
 		try
 		{
-			result = dao.addAdopt(map);
-			
+			String address = dao.searchAddress((String) param.get("gu"), (String) param.get("dong"));
+			param.put("ADDRESS", address);
+			Date date = Date.valueOf((String) param.get("rsq_date"));
+			param.put("RSQ_DATE", date);
+			param.put("CAT_NAME", (String) param.get("cat_name"));
+			param.put("CAT_SPECIES", (String) param.get("cat_species"));
+			param.put("CAT_AGE_TYPE", (String) param.get("cat_age_type"));
+			param.put("CAT_AGE_NUM", (String) param.get("cat_age_num"));
+			param.put("CAT_SEX", (String) param.get("cat_sex"));
+			param.put("ADT_TYPE", (String) param.get("adt_type"));
+			param.put("CAT_ETC1", (String) param.get("cat_etc1"));
+			param.put("CAT_ETC2", (String) param.get("cat_etc2"));
+			param.put("TEL", (String) param.get("tel"));
+			param.put("EMAIL", (String) param.get("email"));
+			param.put("ADT_REASON", (String) param.get("adt_reason"));
+			param.put("ADT_CAT_EXP", (String) param.get("adt_cat_exp"));
+			param.put("ADT_JOB", (String) param.get("adt_job"));
+			param.put("ADT_MARRIAGE", (String) param.get("adt_marriage"));
+			param.put("ADT_FAMILY_NUM", (String) param.get("adt_family_num"));
+
+			result = dao.addAdopt(param);
+
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -49,23 +79,42 @@ public class AdoptServiceImpl implements AdoptService
 		return result;
 	}
 
+	// 게시물 작성자 정보 조회
 	@Override
-	public String searchAddress(String gu, String dong)
+	public Map<String, Object> searchUserInfo(String user_id)
 	{
-		String result = ""; 
-		
+		Map<String, Object> user = null;
+
 		try
 		{
-			result = dao.searchAddress(gu, dong);
-			
+			user = dao.searchUserInfo(user_id);
+
 		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-		return null;
-	}
-	
-	
 
+		return user;
+	}
+
+	// 게시글 열람
+	@Override
+	public Map<String, Object> readAdopt(String id)
+	{
+		Map<String, Object> post = null;
+
+		try
+		{
+			post = dao.readAdopt(id);
+
+			// 조회수 증가 메소드 추가해야함.
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return post;
+	}
 
 }

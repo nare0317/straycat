@@ -114,11 +114,11 @@
                <!-- 팔로우 기능 구현 -->
                <!-- 로그인 했을때 -->
                <c:choose>
-               	<c:when test="${USER_CODE ne null}">
-               		<button type="button" class="btn btn-primary" onclick="javascript: login_need();" id="followBtn">팔로우</button>
+               	<c:when test="${sessionScope.user_id != null }">
+               		<button type="button" class="btn btn-primary" onclick="javascript: follow_func();" id="loginNeed">팔로우</button>
                 </c:when>
                 <c:otherwise>
-                	<button type="button" class="btn btn-primary" onclick="javascript: follow_func();">팔로우</button>
+                	<button type="button" class="btn btn-primary" onclick="javascript: login_need();" id="followBtn">팔로우</button>
                 </c:otherwise>
                </c:choose>
                
@@ -248,70 +248,73 @@
 			<div class="tab-pane fade show active" id="nav-home">
 				<h4 class="write">활동작성</h4>
 				<!----------------------------------------------------- 로그인 O ----------------------------------------------------->
-				<div class="jumbotron select">
-					<form action="" method="post" id="activityForm">
-					<div class="row row2">
-						<div class="custom-control custom-radio custom-control-inline">
-						  <input type="radio" id="activity1" name="activityRadio" class="custom-control-input">
-						  <label class="custom-control-label" for="activity1">먹이</label>
-						</div>
-						<div class="custom-control custom-radio custom-control-inline">
-						  <input type="radio" id="activity2" name="activityRadio" class="custom-control-input">
-						  <label class="custom-control-label" for="activity2">물</label>
-						</div>
-						<div class="custom-control custom-radio custom-control-inline">
-						  <input type="radio" id="activity3" name="activityRadio" class="custom-control-input">
-						  <label class="custom-control-label" for="activity3">간식</label>
-						</div>
-						<div class="custom-control custom-radio custom-control-inline">
-						  <input type="radio" id="activity4" name="activityRadio" class="custom-control-input">
-						  <label class="custom-control-label" for="activity4">약</label>
-						</div>
-						<div class="custom-control custom-radio custom-control-inline">
-						  <input type="radio" id="activity5" name="activityRadio" class="custom-control-input">
-						  <label class="custom-control-label" for="activity5">만남</label>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-8 text-right">
-							<div class="form-group">
-								<textarea class="form-control resize" id="activityContent" rows="14"></textarea>
-								<div id="activityCounter"><span id="Acounter">0</span> / 9000</div>
+				<c:choose>
+               	<c:when test="${sessionScope.user_id != null }">	
+					<div class="jumbotron select">
+						<form action="" method="post" id="activityForm">
+						<div class="row row2">
+							<div class="custom-control custom-radio custom-control-inline">
+							  <input type="radio" id="activity1" name="activityRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="activity1">먹이</label>
+							</div>
+							<div class="custom-control custom-radio custom-control-inline">
+							  <input type="radio" id="activity2" name="activityRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="activity2">물</label>
+							</div>
+							<div class="custom-control custom-radio custom-control-inline">
+							  <input type="radio" id="activity3" name="activityRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="activity3">간식</label>
+							</div>
+							<div class="custom-control custom-radio custom-control-inline">
+							  <input type="radio" id="activity4" name="activityRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="activity4">약</label>
+							</div>
+							<div class="custom-control custom-radio custom-control-inline">
+							  <input type="radio" id="activity5" name="activityRadio" class="custom-control-input">
+							  <label class="custom-control-label" for="activity5">만남</label>
 							</div>
 						</div>
-						<div class="col-4 cat_foot">
-							<div class="map_wrap">
-								<div id="map" class="map"></div>
-								<div class="hAddr">
-									<span class="title">지도중심기준 행정동 주소정보</span> 
-										<span id="centerAddr"></span>
+						<br>
+						<div class="row">
+							<div class="col-8 text-right">
+								<div class="form-group">
+									<textarea class="form-control resize" id="activityContent" rows="14"></textarea>
+									<div id="activityCounter"><span id="Acounter">0</span> / 9000</div>
+								</div>
+							</div>
+							<div class="col-4 cat_foot">
+								<div class="map_wrap">
+									<div id="map" class="map"></div>
+									<div class="hAddr">
+										<span class="title">지도중심기준 행정동 주소정보</span> 
+											<span id="centerAddr"></span>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="row row2">
-						<div id="col text-center">
-							<input type="text" id="firstDatepicker" class="form-control3" name="firstDatepicker" readonly="readonly">
+						<div class="row row2">
+							<div id="col text-center">
+								<input type="text" id="firstDatepicker" class="form-control3" name="firstDatepicker" readonly="readonly">
+							</div>
 						</div>
+						<div class="row">
+				       	 	<span class="err1">필수 항목이 입력되지 않았습니다.</span>
+				       	</div>
+						<div class="text-center">
+							<button type="button" class="btn btn-primary" id="activityBtn">글쓰기</button>
+							<button type="button" class="btn btn-primary">취소</button>
+						</div>
+					</form>
 					</div>
-					<div class="row">
-			       	 	<span class="err1">필수 항목이 입력되지 않았습니다.</span>
-			       	</div>
-					<div class="text-center">
-						<button type="button" class="btn btn-primary" id="activityBtn">글쓰기</button>
-						<button type="button" class="btn btn-primary">취소</button>
-					</div>
-				</form>
-				</div>
-				<!----------------------------------------------------- 로그인 O ----------------------------------------------------->
+				</c:when>
 				
-				<!----------------------------------------------------- 로그인 X ----------------------------------------------------->
-				<!-- 
-				<div class="jumbotron text-center">
-				  <h1 class="display-4">로그인이 필요한 서비스 입니다!</h1>
-				  <a class="btn btn-primary btn-lg" href="Login.jsp" role="button">로그인</a>
-				</div>
+				<c:otherwise>
+					<div class="jumbotron text-center">
+					  <h1 class="display-4">로그인이 필요한 서비스 입니다!</h1>
+					  <a class="btn btn-primary btn-lg" href="Login.jsp" role="button">로그인</a>
+					</div>
+				</c:otherwise>
+				</c:choose>
 				 -->
 				<!----------------------------------------------------- 로그인 X ----------------------------------------------------->
 
@@ -459,6 +462,7 @@
 					{
 						
 					
+
 
 					}
 				}

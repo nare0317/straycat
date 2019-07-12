@@ -31,16 +31,23 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-md-0">
-        <button type="button" class="btn btn-primary" onclick="location.href='catregistration'">등록</button>&nbsp;&nbsp;
-        <!-- if 로그인 X -->
-        <button type="button" class="btn btn-outline-primary" onclick="location.href='login'">로그인</button>&nbsp;&nbsp;
-        <button type="button" class="btn btn-outline-primary" onclick="location.href='acceptterms'">회원가입</button>
-        <!-- else if 로그인 O -->
-      <!--   
-        <span>jyb7488님</span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="button" class="btn btn-outline-primary" onclick="location.href='#'">마이페이지</button>&nbsp;&nbsp;
-        <button type="button" class="btn btn-outline-primary" onclick="location.href='#'">로그아웃</button>
-       -->
+          <c:choose>
+	        <c:when test="${sessionScope.user_id != null }">
+	        	 <!-- else if 로그인 O --> 
+			        <button type="button" class="btn btn-primary" onclick="location.href='catregistration'">등록</button>&nbsp;&nbsp;
+			        <span>${sessionScope.user_id }</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			        <button type="button" class="btn btn-outline-primary" onclick="location.href='mypage'">마이페이지</button>&nbsp;&nbsp;
+			        <button type="button" class="btn btn-outline-primary" onclick="location.href='logout'">로그아웃</button>
+	        </c:when>
+	        <c:otherwise>
+	        	 <!-- if 로그인 X -->
+		        <button type="button" class="btn btn-outline-primary" onclick="location.href='login'">로그인</button>&nbsp;&nbsp;
+		        <button type="button" class="btn btn-outline-primary" onclick="location.href='acceptterms'">회원가입</button>
+	        </c:otherwise>
+	        
+        
+        
+        </c:choose>
       </form>
     </div>
   </nav>

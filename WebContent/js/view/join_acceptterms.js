@@ -20,12 +20,15 @@ $(document).ready(function()
 	{
 		if ($("#termCheck1").prop("checked") == false || $("#termCheck2").prop("checked") == false)
 		{
+			
 			$("#errorDiv").css("display", "inline");
 			$("#errorMsg").css("display", "inline");
+
 		}
 		else
 		{
-			window.location.href='join';
+			var termCheck = $('input:checkbox[id="termCheck1"]').is(":checked") + $('input:checkbox[id="termCheck2"]').is(":checked");
+			window.location.href='join?termCheck=' + $('input:checkbox[id="termCheck1"]').is(":checked") + $('input:checkbox[id="termCheck2"]').is(":checked");			
 		}
 	});
 });

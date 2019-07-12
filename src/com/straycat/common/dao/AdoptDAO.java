@@ -11,5 +11,10 @@ public interface AdoptDAO
 	
 	public String searchAddress(String gu, String dong);
 	
+	public Map<String, Object> searchUserInfo(String user_id);
 	
+	public Map<String, Object> readAdopt(String id);
+	
+	public List<Map<String, Object>> listGu();
+
 }

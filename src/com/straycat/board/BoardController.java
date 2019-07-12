@@ -142,9 +142,6 @@ public class BoardController
 		// 댓글 가져오기
 		List<Map<String, Object>> commentList = service.commentLoad(map);
 		
-		// 댓글 수 가져오기
-		int commentCount = service.commentCount(map);
-		
 		// 데이터 수 세기(다음 글 가져오기에서 사용할 변수)
 		int dataCount = service.dataCount(map);
 		
@@ -162,7 +159,6 @@ public class BoardController
 		}
 		else
 		{
-			prevArticle.put("NUM", null);
 			prevArticle.put("TITLE", "이전 게시글이 없습니다.");
 		}
 		
@@ -175,7 +171,6 @@ public class BoardController
 		}
 		else
 		{
-			nextArticle.put("NUM", null);
 			nextArticle.put("TITLE", "다음 게시글이 없습니다.");
 		}
 		
@@ -183,15 +178,9 @@ public class BoardController
 		model.addAttribute("commentList", commentList);
 		model.addAttribute("prevArticle", prevArticle);
 		model.addAttribute("nextArticle", nextArticle);
-		model.addAttribute("commentCount", commentCount);
 		
 		return "Board_Read";
 	}
 	
-	@RequestMapping(value="/board/write")
-	public String boardWrite()
-	{
-		
-		return "Board_Write";
-	}
+	
 }

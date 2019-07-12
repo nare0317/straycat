@@ -18,10 +18,11 @@
 	.post-view
 	{
 		width: 100%;
-	    padding-right: 15px;
-	    padding-left: 15px;
 	    margin-right: auto;
-	    margin-left: auto;
+	    padding-left: 50px;
+		margin-left: 30px;
+		padding-right: 50px;
+		width: 100%;
 	}
 	
 	.header-title
@@ -52,6 +53,14 @@
 
 
 /********* (본문 영역 .post-view) **************/
+	
+	.post_view
+	{
+		padding-left: 50px;
+		margin-left: 30px;
+		padding-right: 50px;
+		width: 100%;
+	}
 	
 	.post-head
 	{
@@ -140,7 +149,7 @@
 	{
 		padding: 0px;
 		position:absolute;
-		right:5%;
+		right:10%;
 		width:200px;
 		
 	} 
@@ -193,6 +202,15 @@
 	}
 	
 /************* (글아래 신고/공유/추천 버튼) **********/
+	
+	.post-view-bottom
+	{
+		padding-left: 50px;
+		margin-left: 30px;
+		padding-right: 50px;
+		width: 100%;
+	}
+	
 	.post-footer
 	{
 		margin-top: 50px;
