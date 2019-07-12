@@ -25,8 +25,6 @@ th
 	background-color: #F6F6F6;
 	width: 30%;
 }
-
-
 .mButton.gCenter 
 { 
 	position:relative; text-align:center; 
@@ -92,6 +90,10 @@ textarea
   	overflow: hidden;
   	width: 1060px; 
  	height: 100px;
+}
+#textCounter
+{
+	margin-left: -1%;
 }
 
 #yesno

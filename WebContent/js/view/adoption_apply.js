@@ -31,15 +31,15 @@ $(function() {
 	{
 		if($("#exampleFormControlTextarea").val().length >= 1000)
 		{
-			$("#textCounter").css("color", "red");
+			$("#counter").css("color", "red");
 			var str = $("#exampleFormControlTextarea").val();
 			str = str.substring(0, 1000);
 			$("#exampleFormControlTextarea").val(str);
 		}
 		else
 		{
-			$("#textCounter").css("color", "black");
-			var textCnt = $("#exampleFormControlTextarea1").val().length;
+			$("#counter").css("color", "black");
+			var textCnt = $("#exampleFormControlTextarea").val().length;
 			$("#counter").text(textCnt);
 		}
 	});
