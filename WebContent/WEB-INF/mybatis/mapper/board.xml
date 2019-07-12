@@ -10,13 +10,13 @@
 	FROM
 	(
 		SELECT
-		      ROW_NUMBER() OVER(ORDER BY BR.POST_DATE) AS NUM
+		      ROW_NUMBER() OVER(ORDER BY TO_NUMBER(SUBSTR(BR.BBS_CODE,3))) AS NUM
 		    , BR.BBS_CODE  AS CODE
 		    , U.NICKNAME  AS NICKNAME
 		    , BR.TITLE     AS TITLE
 		    , BR.CONTENT   AS CONTENT
 		    , BT.BBS_TYPE  AS TYPE
-		    , BR.POST_DATE AS POST_DATE
+		    , TO_CHAR(BR.POST_DATE, 'YYYY-MM-DD') AS POST_DATE
 		    , BR.HIT_COUNT AS HITCOUNT
 		    , NVL(BL2.LIKE_COUNT, 0)    AS LIKE_COUNT
 		    , NVL(BC2.CMT_COUNT, 0)    AS CMT_COUNT
@@ -39,11 +39,11 @@
 			</if>
 			
 		</where>
-		ORDER BY BR.POST_DATE DESC
 	)
 <![CDATA[
 	WHERE NUM <= #{end} and NUM >= #{start}
 ]]>
+	ORDER BY NUM DESC
 	
 </select>
 
@@ -112,7 +112,7 @@
 		    , BR.TITLE     AS TITLE
 		    , BR.CONTENT   AS CONTENT
 		    , BT.BBS_TYPE  AS TYPE
-		    , BR.POST_DATE AS POST_DATE
+		    , TO_CHAR(BR.POST_DATE, 'YYYY-MM-DD HH24:MI:SS') AS POST_DATE
 		    , BR.HIT_COUNT AS HITCOUNT
 		    , NVL(BL2.LIKE_COUNT, 0)    AS LIKE_COUNT
 		    , NVL(BC2.CMT_COUNT, 0)    AS CMT_COUNT
@@ -145,7 +145,7 @@
 	    , BC.BBS_CODE AS BBS_CODE
 	    , U.USER_CODE AS USER_CODE
 	    , BC.CONTENT AS CONTENT
-	    , BC.BBS_CMT_DATE AS BBS_CMT_DATE
+	    , TO_CHAR(BC.BBS_CMT_DATE, 'YYYY-MM-DD HH24:MI:SS') AS BBS_CMT_DATE
 	    , U.ID AS ID
 	    , U.USER_NAME AS USER_NAME
 	    , U.TEL AS TEL
@@ -154,6 +154,43 @@
 	    , U.NICKNAME AS NICKNAME
 	    , U.ADDRESS_CODE AS ADDRESS_CODE
 	    , U.JOIN_DATE AS JOIN_DATE
+	FROM BBS_CMT BC
+	JOIN USER_REG U ON U.USER_CODE = BC.USER_CODE
+	WHERE BC.BBS_CODE = 
+	(
+		SELECT CODE
+		FROM
+		(
+			SELECT
+			      ROW_NUMBER() OVER(ORDER BY BR.POST_DATE) AS NUM
+			    , BR.BBS_CODE  AS CODE
+			    , U.NICKNAME  AS NICKNAME
+			    , BR.TITLE     AS TITLE
+			    , BR.CONTENT   AS CONTENT
+			    , BR.POST_DATE AS POST_DATE
+			FROM BBS_REG BR
+			JOIN USER_REG U ON BR.USER_CODE = U.USER_CODE
+			<where>
+				<if test="searchKey=='name' ">
+					AND INSTR(U.NICKNAME, #{searchValue}) = 1
+				</if>
+				<if test="searchKey=='subject' ">
+					AND INSTR(BR.TITLE, #{searchValue}) &gt;= 1
+				</if>
+				<if test="searchKey=='content' ">
+					AND INSTR(BR.CONTENT, #{searchValue}) &gt;= 1
+				</if>
+			</where>
+			ORDER BY BR.POST_DATE DESC
+		)
+		WHERE NUM = ${articleNum }
+	)
+	ORDER BY TO_NUMBER(SUBSTR(BBS_CMT_CODE, 3))
+</select>
+
+<select id="commentCount" resultType="java.lang.Integer">
+	SELECT
+	    COUNT(*) AS COUNT
 	FROM BBS_CMT BC
 	JOIN USER_REG U ON U.USER_CODE = BC.USER_CODE
 	WHERE BC.BBS_CODE = 
