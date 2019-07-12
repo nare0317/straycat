@@ -42,7 +42,6 @@
             <li class="list-inline-item">
                <a class="text-dark" href="<%=cp%>/Main.jsp"><i class="fas fa-home"></i></a>
                <span class="breadcrumb-divider">></span>
-               
             </li>
             <li class="list-inline-item">
                <a class="text-dark" href="#">실종</a>
