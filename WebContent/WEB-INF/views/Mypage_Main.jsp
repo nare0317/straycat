@@ -64,31 +64,31 @@
 
 			<!-------------------------------------------------------- ① MyPage : 내가 관리하는 고양이 부분 -------------------------------------------------------->
 			<div class="tab-pane fade show active" id="straycat" role="tabpanel" aria-labelledby="straycat-tab">
-				<c:import url="MypageCatManage.jsp"></c:import>
+				<c:import url="Mypage_Cat.jsp"></c:import>
 			</div>
 			<!-------------------------------------------------------- ① MyPage : 내가 관리하는 고양이 부분 -------------------------------------------------------->
 
 			<!-------------------------------------------------------- ② MyPage : 회원정보 관리 부분 --------------------------------------------------------------->
 			<div class="tab-pane fade" id="memberupdate" role="tabpanel" aria-labelledby="memberupdate-tab">
-				<c:import url="MypageMemberManage.jsp"></c:import>
+				<c:import url="Mypage_MemberManage.jsp"></c:import>
 			</div>
 			<!-------------------------------------------------------- ② MyPage : 회원정보 관리 부분 --------------------------------------------------------------->
 
 			<!-------------------------------------------------------- ③ MyPage : 활동 내역 ------------------------------------------------------------------------>
 			<div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
-				<c:import url="MypageActivity.jsp"></c:import>
+				<c:import url="Mypage_Activity.jsp"></c:import>
 			</div>
 			<!-------------------------------------------------------- ③ MyPage : 활동 내역 ------------------------------------------------------------------------>
 			
 			<!-------------------------------------------------------- ④ MyPage : 입양 ----------------------------------------------------------------------------->
 			<div class="tab-pane fade" id="adoption" role="tabpanel" aria-labelledby="adoption-tab">
-				<c:import url="MypageAdoption.jsp"></c:import>
+				<c:import url="Mypage_Adopt.jsp"></c:import>
 			</div>
 			<!-------------------------------------------------------- ④ MyPage : 입양 ----------------------------------------------------------------------------->
 			
 			<!-------------------------------------------------------- ⑤ MyPage : 쪽지함 --------------------------------------------------------------------------->
 			<div class="tab-pane fade" id="notebox" role="tabpanel" aria-labelledby="notebox-tab">
-				<c:import url="MypageNote.jsp"></c:import>
+				<c:import url="Mypage_Message.jsp"></c:import>
 			</div>
 			<!-------------------------------------------------------- ⑤ MyPage : 쪽지함 --------------------------------------------------------------------------->
 		</div>

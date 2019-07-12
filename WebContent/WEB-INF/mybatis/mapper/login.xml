@@ -6,6 +6,6 @@
 <select id="loginCheck" parameterType="map" resultType="java.lang.Integer">
 	select count(*)
 	from user_reg
-	where id = #{user_id} and pwd = #{user_pwd}
+	where id = #{user_id} and pwd = CRYPTPACK.ENCRYPT(#{user_pwd},#{user_pwd})
 </select>
 </mapper>
