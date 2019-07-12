@@ -6,6 +6,6 @@ import java.util.Map;
 public interface CatDAO
 {
 	public Map<String, Object> selectOne();
-	public List<String> selectList(String id);
-	public int count(String id);
+	public List<Map<String, Object>> selectList();
+	public List<Map<String, Object>> selectActList();
 }
