@@ -14,7 +14,7 @@ function dongList()
 
 		});
 
-		// $("#city").append("<option value=''>::도시선ㅋ::</option>"); // 위의 반복문으로
+		// $("#city").append("<option value=''>::동선택::</option>"); // 위의 반복문으로
 		// 모두 삭제되어 있으므로 추가해준다.
 		// 위의 명령문은 바로의 위의 엘리먼트가 1이아닌 0이었을 때 사용하면 됨.
 
@@ -24,7 +24,13 @@ function dongList()
 	//var url = "/adopt";
 
 	var params = selectedGu;
+	/*var params = "?gu="+selectedGu;*/
+	//var params = {};
+	//params = JSON.stringify(params)
+	
+	console.log(params);
 
+   
 	$.ajax(
 	{
 		type : "post"
@@ -37,6 +43,13 @@ function dongList()
 		,
 		success : function(args)
 		{
+			var result = data.json;
+
+			$.each(result , function(idx, val) {
+			console.log(idx + " " + val.title);
+			});
+
+			console.log(JSON.stringify(args));
 			//alert("success!");
 			$("#dong option").each(function()
 			{ // id가 city인 option요소에 적용할 반복문

@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.straycat.service.AdoptService;
 
@@ -82,21 +84,19 @@ public class AdoptController
 		return "Adopt_Read";
 	}
 
-
-	  // 동 리스트 출력
-	  @RequestMapping(value = "/adopt_gu", method = RequestMethod.POST )
-	  public void dongList(HttpServletResponse response, String gu) throws Exception 
-	  { 
-		  List<Map<String, Object>> dong = service.listDong(gu);
-	  
-		  JSONArray json = new JSONArray();
-		  json.put(dong);
-		  
-		  response.setContentType("text/html;charset=utf-8");
-		  
-		  PrintWriter out = response.getWriter();
-		  out.print(json.toString()); 
-	  }
-	 
-
+	/*// 도저히 못하겠음.. 하.....................
+	 * // 동 리스트 출력
+	 * 
+	 * @RequestMapping(value = "/adopt_gu", method = RequestMethod.POST ) public
+	 * void dongList(HttpServletResponse response, String selectedGu) throws
+	 * Exception { List<Map<String, Object>> dong = service.listDong(selectedGu);
+	 * 
+	 * //System.out.println(dong.get(0));
+	 * 
+	 * JSONArray json = new JSONArray(); json.put(dong);
+	 * 
+	 * response.setContentType("text/html;charset=utf-8");
+	 * 
+	 * PrintWriter out = response.getWriter(); out.print(json.toString()); }
+	 */
 }

@@ -23,6 +23,6 @@ public interface AdoptService
 	public List<Map<String, Object>> listGu();
 	
 	// 동 리스트 조회
-	public List<Map<String, Object>> listDong(String gu);
+	public List<Map<String, Object>> listDong(String selectedGu);
 	
 }

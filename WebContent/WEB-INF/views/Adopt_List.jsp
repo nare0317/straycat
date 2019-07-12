@@ -18,7 +18,7 @@
 
 <!-- JS 파일  -->
 <script src="<%=cp %>/js/view/adopt_list.js"></script>
-<script src="<%=cp %>/js/view/gudong.js"></script>
+<%-- <script src="<%=cp %>/js/view/gudong.js"></script> --%>
 
 </head>
 <body>
@@ -70,7 +70,7 @@
 				<!-- 동 선택 -->
 				<div class="col-lg-4">
 					<select class="custom-select" id="dong">
-						<option value="">동 선택</option>
+						<!-- <option value="">동 선택</option> -->
 						<!-- <option value="1">연희동</option>
 						<option value="2">연남동</option>
 						<option value="3">서교동</option> -->

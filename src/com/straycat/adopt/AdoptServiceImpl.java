@@ -54,13 +54,13 @@ public class AdoptServiceImpl implements AdoptService
 	
 	// 동 셀렉트박스 리스트 조회 
 	@Override
-	public List<Map<String, Object>> listDong(String gu) 
+	public List<Map<String, Object>> listDong(String selectedGu) 
 	{
 		List<Map<String, Object>> list = null;
 
 		try 
 		{
-			list = dao.listDong(gu);
+			list = dao.listDong(selectedGu);
 
 		} catch (Exception e) 
 		{
@@ -82,6 +82,7 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADDRESS", address);
 			Date date = Date.valueOf((String) param.get("rsq_date"));
 			param.put("RSQ_DATE", date);
+			
 			param.put("CAT_NAME", (String) param.get("cat_name"));
 			param.put("CAT_SPECIES", (String) param.get("cat_species"));
 			param.put("CAT_AGE_TYPE", (String) param.get("cat_age_type"));
@@ -97,7 +98,7 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADT_JOB", (String) param.get("adt_job"));
 			param.put("ADT_MARRIAGE", (String) param.get("adt_marriage"));
 			param.put("ADT_FAMILY_NUM", (String) param.get("adt_family_num"));
-
+			
 			result = dao.addAdopt(param);
 
 		} catch (Exception e)
