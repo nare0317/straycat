@@ -90,6 +90,9 @@
 				<div class="col-lg-4 text-right write">
 					<input type="button" class="btn btn-primary btn-lg" value="입양등록"
 					id="adopt_write" onclick="location.href='<%=cp%>/adopt_form'">
+					<%-- <input type="button" class="btn btn-primary btn-lg" value="입양등록"
+					id="adopt_write" onclick="location.href='<%=cp%>/adopt_form?user_id=${ }'"> --%>
+					<!-- 사용자 아이디 값 받아오는걸로 위 구문 빈칸 채우면 됨. -->
 				</div>
 			</div>
 			
@@ -140,7 +143,7 @@
 							</div>
 						</div>
 					</div><!-- 길냥이 정보 끝 -->
-					
+					<a href="<%=cp %>/adopt_read?id=${list.ADT_CODE}" class="stretched-link"></a>
 				</div>
 			</div>
 			</c:forEach>

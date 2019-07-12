@@ -77,7 +77,7 @@
 							<th rowspan="4">실명확인<span class="required">*</span></th>
 						</tr>
 						<tr>
-							<td colspan="4"><button type="button" class="btn btn-outline-primary btn-sm">실명확인</button></td>
+							<td colspan="4"><button type="button" id="nameCheck" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModal" >실명확인</button></td>
 						</tr>
 						<tr>
 							<th>성명<span class="required">*</span></th>
@@ -151,6 +151,10 @@
 <div>
 	<c:import url="Footer.jsp"></c:import>
 </div>
+
+
+
+
 
 
 </body>

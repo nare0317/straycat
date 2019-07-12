@@ -56,3 +56,20 @@ function handleError(err)
 
 // 얻은 시, 구, 동으로 등록 고양이 DB 검색
 // (작성 중)
+
+
+
+$(document).ready(function()
+{
+	$("#loginBtn").unbind("click").click(function(e)
+	{
+		e.preventDefault();
+		fn_moveToLogin();
+	});
+	
+});
+
+function fn_moveToLogin()
+{
+	window.location.href="login";
+}

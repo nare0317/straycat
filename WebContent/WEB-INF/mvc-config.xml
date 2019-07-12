@@ -46,6 +46,7 @@
     <!--       @Autowired와 @Qualifier Annotation을 인식할 수 있다는 것이다. -->
 	<context:component-scan base-package="com" />
 	
+
 	<!-- 로그인 인터셉터 -->
 <!--  	
 	<mvc:interceptors>
@@ -55,6 +56,14 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
  -->
+  
+	<!-- 
+	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			<bean class="com.straycat.common.CustomMapArgumentResolver"></bean>		
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven> -->
+
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="order" value="1" />
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />

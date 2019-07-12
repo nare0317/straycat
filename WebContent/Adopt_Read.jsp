@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="<%=cp %>/css/view/adopt_read.css">
 
 <!-- JS 파일 -->
-<script src="<%=cp %>/js/view/adoption_read.js"></script>
+<script src="<%=cp %>/js/view/adopt_read.js"></script>
 </head>
 <body>
 
@@ -27,7 +27,7 @@
 		
 	<!-- ★★★★★헤더 + breadcrumbs★★★★★ -->
 
-	<section class="header container ">
+	<section class="header container-fluid">
 		<div class="header-title">
 			<h2 class="h2">입양<span class="sub-title">입양모집글</span></h2>
 		</div>
@@ -49,13 +49,13 @@
 	</section>
 	
 	<!-- ★★★★★내용★★★★★ -->
-	<section class="post-view container">
+	<section class="post-view continer-fluid">
 	
 		<!-- 제목/작성자/작성일시/조회수 -->
 		<div class="post-head row">
 			<div class="col-lg-12">
 				<!-- 글 제목 -->
-				<h3 class="post-title"><span class="adt_status">[신규등록]</span>귀여운 치즈태비 입양하실분~!!</h3>
+				<h3 class="post-title"><span class="adt_status">[신규등록]</span>냥아취</h3>
 				<!-- 제목 밑에 줄 -->
 				<hr class="post-title-hr">
 			</div>
@@ -78,12 +78,12 @@
 		<div class="post-content row">
 			
 			<!-- 고양이 대표사진 -->
-			<div class="iconic-photo col-lg-3">
+			<div class="iconic-photo col-lg-4">
 				<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail">
 			</div>
 			
 			<!-- 글 내용 -->
-			<div class="content col-lg-7">
+			<div class="content col-lg-5">
 				<table class="missing-info table table-light">
 					<tr>
 						<th class="align-top th-sm th-lg">이름</th>
@@ -139,7 +139,7 @@
 			
 			
 			<!-- 우측 사이드바 (입양신청)-->
-			<div class="slidemenu col-lg-2 text-center">
+			<div class="slidemenu col-lg-3 text-center">
 				<div class="apply">
 					<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
 					<p>남은시간 : <span>13일 00:57:30</span></p>
@@ -172,7 +172,7 @@
 		
 		
 		
-	<section class="post-view-bottom container">	
+	<section class="post-view-bottom continer-fluid">	
 
 		<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
 		<div class="beforeafter list-group">

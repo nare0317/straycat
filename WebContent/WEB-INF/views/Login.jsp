@@ -14,6 +14,35 @@
 	<!-- 페이지 CSS, 자바스크립트 -->
 	<link rel="stylesheet" href="<%=cp %>/css/view/login.css">
 	<script type="text/javascript" src="<%=cp %>/js/view/login.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			$("#loginBtn").click(function()
+			{
+				//console.log($("#inputId").val() , $("#inputPwd").val());
+				$.ajax({
+					type : "POST",
+					url : "<c:url value='/login_check_ajax'/>",
+					data : {'user_id' : $("#inputId").val() , 'user_pwd' : $("#inputPwd").val()},
+					success : function(data)
+					{
+						//console.log(data);
+						
+						if(data==1)
+						{
+							location.href='main';
+						}
+						else
+						{
+							alert("아이디 또는 패스워드가 일치하지 않습니다");
+							return;
+						}
+					}					
+				});
+			});
+		});
+	
+	</script>
 </head>
 <body>
 
