@@ -35,13 +35,6 @@ public class MainController
 		return "StrayCatManage";
 	}
 	
-	/*
-	 * // 입양 리스트 페이지로 이동
-	 * 
-	 * @RequestMapping("/adopt") public String adopt() { return "AdoptList"; }
-	 */
-	
-	
 	// 실종 리스트 페이지로 이동
 	@RequestMapping("/missing")
 	public String missing()
@@ -63,12 +56,15 @@ public class MainController
 		return "StrayCatRegistration";
 	}
 	
+	
+	/*
 	// 로그인 페이지로 이동
 	@RequestMapping("/login")
 	public String login()
 	{
 		return "Login";
 	}
+	*/
 	
 	/*
 	// 회원가입 페이지로 이동
@@ -88,13 +84,11 @@ public class MainController
 	}
 	*/
 	
-	/*
-	// 회원가입 페이지로 이동
-	@RequestMapping("/signup")
-	public String signUp()
-	{
-		return "Join_Form";
+	@RequestMapping("/mypage") 
+	public String mypage() 
+	{ 
+		
+		return "Mypage_Main"; 
 	}
-	*/
 	
 }

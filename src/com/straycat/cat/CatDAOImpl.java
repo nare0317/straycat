@@ -39,37 +39,16 @@ public class CatDAOImpl implements CatDAO
 	}
 
 	@Override
-	public List<String> selectList(String id)
+	public List<Map<String, Object>> selectList()
 	{
 		
-		
-		try
-		{
-			return sqlSession.selectList(id);
-			
-		} catch (Exception e)
-		{
-			logger.error(e.toString());
-			
-			throw e;
-		}
-		
+		return sqlSession.selectList("catDetail.catLocation");	
 	}
-
+	
 	@Override
-	public int count(String id)
-	{
-		try
-		{
-			return sqlSession.selectOne(id);
-		} catch (Exception e)
-		{
-			logger.error(e.toString());
-			
-			throw e;
-		}
+	public List<Map<String, Object>> selectActList()
+	{		
+		return sqlSession.selectList("catDetail.actReg");	
 	}
-	
-	
 	
 }
