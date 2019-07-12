@@ -9,6 +9,6 @@ $(document).ready(function()
 			return;
 		};
 		
-		$("#loginForm").submit();
-	});
+/*		$("#loginForm").submit();
+*/	});
 });
