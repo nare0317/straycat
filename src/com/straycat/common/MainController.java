@@ -56,6 +56,7 @@ public class MainController
 		return "StrayCatRegistration";
 	}
 	
+	
 	/*
 	// 로그인 페이지로 이동
 	@RequestMapping("/login")
@@ -83,12 +84,11 @@ public class MainController
 	}
 	*/
 	
-	
-	// 회원가입 페이지로 이동
-	@RequestMapping("/signup")
-	public String signUp()
-	{
-		return "Join_Form";
+	@RequestMapping("/mypage") 
+	public String mypage() 
+	{ 
+		
+		return "Mypage_Main"; 
 	}
 	
 }

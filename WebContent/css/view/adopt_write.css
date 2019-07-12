@@ -44,6 +44,11 @@ span {
 	font-size: small;
 }
 
+.adt_type > .custom-control
+{
+	margin: 0px;
+}
+
 .m30
 {
 	margin-top: 30px;
