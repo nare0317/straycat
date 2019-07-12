@@ -111,12 +111,21 @@
 	WHERE ADT_CODE = #{id}
 </select>
 
-<!-- 셀렉트 박스 내에 구 선택하면 동 조회되는 쿼리문 -->
-<!-- <select id="">
+<!-- 셀렉트 박스 구 리스트 조회 쿼리문-->
+<select id="listGu" resultType="map">
+	SELECT DISTINCT GU AS GU
+	FROM ADDRESS
+	ORDER BY GU ASC
+</select>
+
+<!-- 셀렉트 박스 동 리스트 조회 쿼리문 -->
+<!-- <select id="listDong" resultType="map">
 	SELECT DONG
 	FROM ADDRESS
 	WHERE GU='강남구'
-</select>
- -->
+	ORDER BY DONG ASC
+</select> -->
+
+
 
 </mapper>
