@@ -113,20 +113,10 @@
 		
 		<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
 		<div class="beforeafter list-group">
-			<c:if test="${prevArticle.NUM eq null }">
-			<a href='#' class="prev list-group-item list-group-item-action">
-			</c:if>
-			<c:if test="${prevArticle.NUM != null }">
-			<a href='<%=cp %>/board/article?articleNum=${prevArticle.NUM }' class="prev list-group-item list-group-item-action">
-			</c:if>
+			<a href="" onclick="" class=" prev list-group-item list-group-item-action"> 
 				<i class="fas fa-chevron-up"> 이전 글 </i><span>${prevArticle.TITLE }</span>
 			</a>
-			<c:if test="${nextArticle.NUM eq null }">
-			<a href='#' class="next list-group-item list-group-item-action">
-			</c:if>
-			<c:if test="${nextArticle.NUM != null }">
-			<a href='<%=cp %>/board/article?articleNum=${nextArticle.NUM }' class="next list-group-item list-group-item-action">
-			</c:if>
+			<a href="" onclick=""  class="next list-group-item list-group-item-action">
 				<i class="fas fa-chevron-down"> 다음 글 </i><span>${nextArticle.TITLE }</span>
 			</a>
 		</div>
@@ -140,7 +130,7 @@
 		<div class="comment-area">
 
 			<!-- 댓글 입력  -->
-			<form id="comment-form" action="<%=cp %>/board/article/commentinsert" method="post">
+			<form id="comment-form" action="" method="post">
 				<!-- <input id="boardId" name="boardId" value="11663" type="hidden"
 					value="11663" /> -->
 
@@ -164,7 +154,7 @@
 				
 				<div class="comment-head">
 					<h5>댓글 <span class="comment-number" 
-					id="comment-number">${commentCount }</span></h5>
+					id="comment-number">2</span></h5>
 				</div>
 				
 				<!-- 댓글 1 -->
@@ -188,6 +178,27 @@
 
 				</div><!-- end comment-wrapper -->
 				</c:forEach>
+				<!-- 
+				댓글 2
+				<div id="comment-wrapper">
+
+					<div class="comment" data-id="16312" data-login="false">
+						<div class="comment-content">
+							<div class="comment-writer-date">
+								<div class="d-block">
+									<h6 class="comment-writer">임나래 <span class="comment-date g-color-gray-dark-v5 g-font-size-12 g-font-weight-300">2019-07-02 17:29</span>
+									</h6>
+								</div>
+							</div>
+							<p>야옹이 너무이쁘네요 ㅠㅠ 어쩌다 잃어버리셨을까.. ㅠㅠ 저희동네인데 
+							주위 잘 둘러보고 다녀야겠어요 ㅠㅠ </p>
+						</div>
+					</div>end comment
+
+					<hr class="comment-hr">
+
+				</div>end comment-wrapper
+ -->				
 			</div><!-- end comment-list area -->
 		</div><!-- end comment-area -->
 
