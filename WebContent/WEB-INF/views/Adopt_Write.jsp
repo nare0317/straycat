@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>입양게시글작성</title>
+<title>입양게시글 작성</title>
 
 <!-- Head.jsp  -->
 <c:import url="Head.jsp"></c:import>
@@ -96,17 +96,17 @@
                   <div class="col-sm-3 gu-select">
                      <select id="gu" name="gu" class="custom-select" required>   
                         <option value="">구 선택</option>
-                        <option value="1">마포구</option>
-                        <option value="2">영등포구</option>
-                        <option value="3">서대문구</option>
+                        <option value="마포구">마포구</option>
+                        <option value="영등포구">영등포구</option>
+                        <option value="서대문구">서대문구</option>
                      </select>
                   </div>
                   <div class="col-sm-3">
                      <select id="dong" name="dong" class="custom-select" required>
                         <option value="">동 선택</option>
-                        <option value="1">연희동</option>
-                        <option value="2">연남동</option>
-                        <option value="3">서교동</option>
+                        <option value="연희동">연희동</option>
+                        <option value="연남동">연남동</option>
+                        <option value="서교동">서교동</option>
                      </select>
                   </div>
                </div>
@@ -140,14 +140,14 @@
                      <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
                          <label class="image-radio">
                            <img class="img-responsive" src="img/코숏고등어.png"/>
-                           <input type="radio" id="sp2" name="cat_species" value="sp2" class="custom-control-input" required>
+                           <input type="radio" id="SP2" name="cat_species" value="SP2" class="custom-control-input" required>
                         </label>
                      </div>
                      <!-- 코숏치즈 -->
                      <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
                          <label class="image-radio">
                            <img class="img-responsive" src="img/코숏치즈.png"/>
-                           <input type="radio" id="sp1" name="cat_species" value="sp1"class="custom-control-input" required>
+                           <input type="radio" id="SP1" name="cat_species" value="SP1"class="custom-control-input" required>
                         </label>
                      </div>
                   </div>
@@ -156,14 +156,14 @@
                      <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
                          <label class="image-radio">
                            <img class="img-responsive" src="img/코숏카오스.png"/>
-                           <input type="radio" id="sp3" name="cat_species" value="sp3" class="custom-control-input" required>
+                           <input type="radio" id="SP3" name="cat_species" value="SP3" class="custom-control-input" required>
                         </label>
                      </div>
                      <!-- 코숏삼색이 -->
                      <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
                          <label class="image-radio">
                            <img class="img-responsive" src="img/코숏삼색이.png"/>
-                           <input type="radio" id="sp4" name="cat_species" value="sp4" class="custom-control-input" required>
+                           <input type="radio" id="SP4" name="cat_species" value="SP4" class="custom-control-input" required>
                         </label>
                      </div>
                   </div>
@@ -196,19 +196,19 @@
                   <div class="col-sm-10">
                   
                      <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="female" name="cat_sex" value="" 
+                        <input type="radio" id="female" name="cat_sex" value="CS1" 
                         class="custom-control-input" required>
                         <label class="custom-control-label" for="female">암컷</label>
                      </div>
                      
                      <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="male" name="cat_sex" value=""
+                        <input type="radio" id="male" name="cat_sex" value="CS2"
                         class="custom-control-input" required>
                         <label class="custom-control-label" for="male">수컷</label>
                      </div>
                      
                      <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="dontknow" name="cat_sex" value=""
+                        <input type="radio" id="dontknow" name="cat_sex" value="CS3"
                         class="custom-control-input" required>
                         <label class="custom-control-label" for="dontknow">알수없음</label>
                      </div>
@@ -297,7 +297,10 @@
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">이름</label>
                   <div class="col-sm-3">
-                     <input type="text" readonly="readonly" class="form-control" id="name" name="name" placeholder="임나래" >
+                     <input type="text" readonly="readonly" class="form-control" id="name" name="name" 
+                     placeholder="임나래" >
+                     <%-- <input type="text" readonly="readonly" class="form-control" id="name" name="name" 
+                     placeholder="${user.USER_NAME }"> --%>
                   </div>
                </div>
                
@@ -305,7 +308,10 @@
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">연락처</label>
                   <div class="col-sm-5">
-                     <input type="text" class="form-control" id="tel" name="tel"placeholder="010-1234-5678">
+                     <input type="text" class="form-control" id="tel" name="tel" 
+                     placeholder="010-1234-5678" value="010-1234-5678">
+                   	<%-- <input type="text" class="form-control" id="tel" name="tel" 
+                     placeholder="${user.TEL}"> --%>
                   </div>
                </div>
                
@@ -313,7 +319,10 @@
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">이메일</label>
                   <div class="col-sm-6">
-                     <input type="email" class="form-control" id="email" name="email" placeholder="test123@naver.com">
+                     <input type="email" class="form-control" id="email" name="email" 
+                     placeholder="test123@naver.com" value="test123@naver.com">
+                     <%-- <input type="email" class="form-control" id="email" name="email" 
+                     placeholder="${user.EMAIL }"> --%>
                   </div>
                </div>
                
@@ -352,19 +361,19 @@
                   <div class="col-sm-8">
                   
                      <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="RT3" name="adt_cat_ext" value="RT3"
+                        <input type="radio" id="RT3" name="adt_cat_exp" value="RT3"
                         class="custom-control-input" required>
                         <label class="custom-control-label" for="RT3">상관없음</label>
                      </div>
                      
                      <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="RT1" name="adt_cat_ext" value="RT1"
+                        <input type="radio" id="RT1" name="adt_cat_exp" value="RT1"
                         class="custom-control-input" required>
                         <label class="custom-control-label" for="RT1">있음</label>
                      </div>
                      
                      <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="RT2" name="adt_cat_ext" value="RT2"
+                        <input type="radio" id="RT2" name="adt_cat_exp" value="RT2"
                         class="custom-control-input" required>
                         <label class="custom-control-label" for="RT2">없음</label>
                      </div>

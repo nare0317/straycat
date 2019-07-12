@@ -3,30 +3,35 @@
 
 <mapper namespace="member">
 
-	<select id="checkId" parameterType="map"  resultType="java.lang.Integer">
-		SELECT COUNT(ID)
+	<select id="checkId" parameterType="map" resultType="java.lang.Integer">
+		SELECT COUNT(ID) AS COUNT
 		FROM USER_REG
 		WHERE ID = #{id}
 	</select>
 
-	<select id="checkNname" parameterType="map" resultType="java.lang.Integer">
-		SELECT COUNT(NICKNAME)
+	<select id="checkNickName" parameterType="map" resultType="java.lang.Integer">
+		SELECT COUNT(NICKNAME) AS COUNT
 		FROM USER_REG
 		WHERE NICKNAME = #{nickname}
 	</select>
 	
 	<select id="checkEmail" parameterType="map" resultType="java.lang.Integer">
-		SELECT COUNT(EMAIL)
+		SELECT COUNT(EMAIL) AS COUNT
 		FROM USER_REG
 		WHERE EMAIL = #{email}	
 	</select>
 	
-	<select id="checkName">
-		SELECT COUNT(*)
+	<select id="checkName" parameterType="map" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
 		FROM USER_REG
-		WHERE USER_NAME=#{user_name}
+		WHERE USER_NAME=#{name}
 		AND TEL = #{tel}
 	</select>
+	
+	<insert id="addJoin" parameterType="map">
+		INSERT INTO USER_REG (USER_CODE, ID, USER_NAME, PWD, TEL, EMAIL, GRADE, NICKNAME, ADDRESS)
+		VALUES ('US4', '#{idInput,jdbcType=VARCHAR}', '#{name,jdbcType=VARCHAR}', '#{pwd,jdbcType=VARCHAR}', '#{tel,jdbcType=VARCHAR}', '#{email,jdbcType=VARCHAR}', 'GR1', '#{nickname,jdbcType=VARCHAR}', '#{address,jdbcType=VARCHAR}')
+	</insert>
 	
 
 </mapper>
