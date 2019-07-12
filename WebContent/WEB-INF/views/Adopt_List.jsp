@@ -18,6 +18,7 @@
 
 <!-- JS 파일  -->
 <script src="<%=cp %>/js/view/adopt_list.js"></script>
+<script src="<%=cp %>/js/view/gudong.js"></script>
 
 </head>
 <body>
@@ -59,8 +60,8 @@
 			<div class="row">
 				<!-- 구 선택 -->
 				<div class="col-lg-4">
-					<select class="custom-select">
-						<option selected>구 선택</option>
+					<select class="custom-select" id="gu" onchange="dongList();">
+						<option value="">구 선택</option>
 						<c:forEach var="gu" items="${gu }">
 							<option value="${gu.GU }">${gu.GU }</option>
 						</c:forEach>
@@ -68,16 +69,16 @@
 				</div>
 				<!-- 동 선택 -->
 				<div class="col-lg-4">
-					<select class="custom-select">
-						<option selected>동 선택</option>
-						<option value="1">연희동</option>
+					<select class="custom-select" id="dong">
+						<option value="">동 선택</option>
+						<!-- <option value="1">연희동</option>
 						<option value="2">연남동</option>
-						<option value="3">서교동</option>
+						<option value="3">서교동</option> -->
 					</select>
 				</div>
 				<!-- 조회버튼 -->
 				<div class="col-lg-2">
-					<button type="button" class="btn btn-primary">조회</button>
+					<button type="button" class="btn btn-primary" onclick="result();">조회</button>
 				</div>
 			</div>
 			

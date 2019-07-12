@@ -49,12 +49,12 @@
 
 	<!-- 로그인 인터셉터 -->
   	
-	<mvc:interceptors>
+	<!-- <mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/board/write"/>
 			<bean class="com.straycat.login.LoginInterceptor"></bean>
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors> -->
 
 	<!-- 
 	<mvc:annotation-driven>
