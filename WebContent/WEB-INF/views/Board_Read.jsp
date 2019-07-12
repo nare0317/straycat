@@ -154,7 +154,7 @@
 				
 				<div class="comment-head">
 					<h5>댓글 <span class="comment-number" 
-					id="comment-number">2</span></h5>
+					id="comment-number">${commentCount }</span></h5>
 				</div>
 				
 				<!-- 댓글 1 -->
