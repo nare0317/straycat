@@ -1,6 +1,5 @@
 package com.straycat.adopt;
 
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,33 +44,12 @@ public class AdoptDAOImpl implements AdoptDAO
 	
 	// 게시글 등록 메소드
 	@Override
-	public int addAdopt(Map<String, Object> param)
+	public int addAdopt(Map<String, Object> map)
 	{
 		int result = 0; 
 		try
 		{
-			String address = searchAddress((String)param.get("gu"),(String)param.get("dong"));
-			param.put("ADDRESS", address);
-			Date date = Date.valueOf((String)param.get("rsq_date"));
-			param.put("RSQ_DATE", date);
-			
-			param.put("CAT_NAME", (String)param.get("cat_name"));
-			param.put("CAT_SPECIES", (String)param.get("cat_species"));
-			param.put("CAT_AGE_TYPE", (String)param.get("cat_age_type"));
-			param.put("CAT_AGE_NUM", (String)param.get("cat_age_num"));
-			param.put("CAT_SEX", (String)param.get("cat_sex"));
-			param.put("ADT_TYPE", (String)param.get("adt_type"));
-			param.put("CAT_ETC1", (String)param.get("cat_etc1"));
-			param.put("CAT_ETC2", (String)param.get("cat_etc2"));
-			param.put("TEL", (String)param.get("tel"));
-			param.put("EMAIL", (String)param.get("email"));
-			param.put("ADT_REASON", (String)param.get("adt_reason"));
-			param.put("ADT_CAT_EXP", (String)param.get("adt_cat_exp"));
-			param.put("ADT_JOB", (String)param.get("adt_job"));
-			param.put("ADT_MARRIAGE", (String)param.get("adt_marriage"));
-			param.put("ADT_FAMILY_NUM", (String)param.get("adt_family_num"));
-			
-			result = sqlSession.insert("adopt.addAdopt", param);
+			result = sqlSession.insert("adopt.addAdopt", map);
 			
 		} catch (Exception e)
 		{
@@ -147,6 +125,25 @@ public class AdoptDAOImpl implements AdoptDAO
 		return post;
 	}
 
-	
+	// 셀렉트 박스 옵션에 구 정보를 넣어주는 메소드
+	@Override
+	public List<Map<String, Object>> listGu()
+	{
+		List<Map<String, Object>> list = null; 
+		
+		try
+		{
+			list = sqlSession.selectList("adopt.listGu");
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		
+		return list;
+	}
+
 	
 }
