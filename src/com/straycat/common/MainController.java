@@ -41,48 +41,6 @@ public class MainController
 	{
 		return "MissingCatList";
 	}
-	/*
-	// 자유게시판으로 이동
-	@RequestMapping("/board")
-	public String board()
-	{
-		return "BoardList";
-	}
-	*/
-	// 등록 페이지로 이동
-	@RequestMapping("/catregistration")
-	public String catRegistration()
-	{
-		return "StrayCatRegistration";
-	}
-	
-	
-	/*
-	// 로그인 페이지로 이동
-	@RequestMapping("/login")
-	public String login()
-	{
-		return "Login";
-	}
-	*/
-	
-	/*
-	// 회원가입 페이지로 이동
-	@RequestMapping("/join")
-	public String join()
-	{
-		return "Join_Form";
-	}
-	*/
-	
-	/*
-	// 약관동의 페이지로 이동
-	@RequestMapping("/acceptterms")
-	public String acceptTerm()
-	{
-		return "Join_AcceptTerms";
-	}
-	*/
 	
 	@RequestMapping("/mypage") 
 	public String mypage() 
