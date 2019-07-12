@@ -45,8 +45,8 @@
 		</div>
 		<div class="row text-right">
 			<div class="col-10"></div>
-			<div class="wrap">
-				<span id="counter">0</span> / 9000
+			<div class="col-2">
+				<div id="textCounter"><span id="counter">0</span> / 9000</div>
 			</div>
 		</div>
 		<br>
