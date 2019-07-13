@@ -26,4 +26,10 @@ $(document).ready(function()
 			$("input[name='allCheck2']").prop("checked",false);
 		}
 	});
+	
+		$("#update").click(function()
+		{
+			alert("확인");
+			$(location).attr("href", "memberupdate");
+		});
 });

@@ -1,5 +1,8 @@
 package com.straycat.common;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,9 +46,12 @@ public class MainController
 	}
 	
 	@RequestMapping("/mypage") 
-	public String mypage() 
+	public String mypage(HttpServletRequest request, HttpSession session) 
 	{ 
 		
+		String user_id = (String) session.getAttribute("user_id");
+		session.setAttribute("user_id", user_id);
+		System.out.println(user_id);
 		return "Mypage_Main"; 
 	}
 	
