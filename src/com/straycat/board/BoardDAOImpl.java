@@ -67,6 +67,24 @@ public class BoardDAOImpl implements BoardDAO
 		}		
 	}
 
+	@Override
+	public int insert(String id, Object value) {
+		
+		int result = 0;
+		
+		try 
+		{
+			result = sqlSession.insert(id, value);
+		} catch (Exception e) 
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		
+		return result;
+	}
+
 	
 	
 	

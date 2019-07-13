@@ -11,5 +11,7 @@ public interface BoardService
 	public int dataCount(Map<String, Object> map);
 	public Map<String, Object> articleLoad(Map<String, Object> map);
 	public List<Map<String, Object>> commentLoad(Map<String, Object> map);
+	
 	public int commentCount(Map<String, Object> map);
+	public int commentInsert(Map<String, String> map);
 }

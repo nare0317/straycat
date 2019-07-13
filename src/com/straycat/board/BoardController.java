@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.straycat.service.BoardService;
 
@@ -144,12 +146,6 @@ public class BoardController
 		
 		Map<String, Object> article = service.articleLoad(map);
 		
-		// 댓글 가져오기
-		List<Map<String, Object>> commentList = service.commentLoad(map);
-		
-		// 댓글 수 가져오기
-		int commentCount = service.commentCount(map);
-		
 		// 데이터 수 세기(다음 글 가져오기에서 사용할 변수)
 		int dataCount = service.dataCount(map);
 		
@@ -183,13 +179,47 @@ public class BoardController
 		}
 		
 		model.addAttribute("article", article);
-		model.addAttribute("commentList", commentList);
 		model.addAttribute("prevArticle", prevArticle);
 		model.addAttribute("nextArticle", nextArticle);
-		model.addAttribute("commentCount", commentCount);
 		
 		return "Board_Read";
 	}
 	
+	@RequestMapping(value="/commentload.ajax")
+	@ResponseBody
+	public List<Map<String, Object>> commentLoad(HttpServletRequest request)
+	{
+		// 게시판 리스트에서 가져온 articleNum, searchKey, searchValue 정보를 가져옴
+		Map<String, Object> map = new HashMap<>();
+		map.put("bbs_code", request.getParameter("bbs_code"));
+		System.out.println(request.getParameter("bbs_code"));
+		
+		// 댓글 가져오기
+		List<Map<String, Object>> commentList = service.commentLoad(map);
+		
+		// 댓글 수 가져오기
+		//int commentCount = service.commentCount(map);
+		
+		//model.addAttribute("commentList", commentList);
+		//model.addAttribute("commentCount", commentCount);
+		
+		return commentList;
+	}
 	
+	@RequestMapping("/commentinsert.ajax")
+	public String commentInsert(@RequestParam(name="bbs_code") String bbs_code
+			, @RequestParam(name="user_id") String user_id
+			, @RequestParam(name="content") String content
+			)
+	{
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("bbs_code", bbs_code);
+		map.put("user_id", user_id);
+		map.put("content", content);
+		
+		// 댓글 insert
+		service.commentInsert(map);
+		
+		return "success";
+	}
 }

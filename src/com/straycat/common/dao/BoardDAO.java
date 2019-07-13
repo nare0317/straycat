@@ -13,4 +13,6 @@ public interface BoardDAO
 	
 	// mapper의 id를 인자로 받아서 리스트를 반환하는 메소드 (모든 데이터)
 	public <T> T selectOne(String id);
+	
+	public int insert(String id, Object value);
 }

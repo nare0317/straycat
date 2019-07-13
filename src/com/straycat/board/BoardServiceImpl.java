@@ -97,7 +97,7 @@ public class BoardServiceImpl implements BoardService
 		return list;
 	}
 	
-	// 댓글 수를 가져오는 메소
+	// 댓글 수를 가져오는 메소드
 	@Override
 	public int commentCount(Map<String, Object> map)
 	{
@@ -112,6 +112,22 @@ public class BoardServiceImpl implements BoardService
 			System.out.println(e.toString());
 		}
 		
+		return result;
+	}
+
+	// 댓글을 추가하는 메소드
+	@Override
+	public int commentInsert(Map<String, String> map) 
+	{
+		int result = 0;
+		
+		try 
+		{
+			result = dao.insert("board.commentInsert", map);
+		} catch (Exception e) 
+		{
+			System.out.println(e.toString());
+		}
 		return result;
 	}
 	

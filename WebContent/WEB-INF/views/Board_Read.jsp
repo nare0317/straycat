@@ -18,7 +18,6 @@
 
 <!-- JS 파일 -->
 <script type="text/javascript" src="<%=cp %>/js/view/board_read.js"></script>
-<script type="text/javascript" src="<%=cp %>/js/view/bbs_comment.js"></script>
 
 </head>
 <body>
@@ -32,7 +31,7 @@
 
 	<section class="header container ">
 		<div class="header-title">
-			<h2 class="h2">자유게시판<span class="sub-title"></span></h2>
+			<h2 id="test" class="h2">자유게시판<span class="sub-title"></span></h2>
 		</div>
 		<div class="breadcrumbs">
 			<ul>
@@ -104,7 +103,7 @@
 			<div class="post_share">
 					<button class="btn_share" data-toggle="dropdown"><span class="fa fa-share-square-o"></span> 공유</button>
 					<ul class="dropdown-menu share">
-						<li><a href="javascript:;" onclick="prompt('주소를 복사하세요.', ''"><span class="fa fa-link"></span>주소복사</a></li>
+						<li><a href="javascript:;" onclick="prompt('주소를 복사하세요.')"><span class="fa fa-link"></span>주소복사</a></li>
 						<li><a href="" class="facebook" target="_blank"><span class="fa fa-facebook"></span>Facebook</a></li>
 						<li><a href="" class="twitter" target="_blank"><span class="fa fa-twitter"></span>Twitter</a></li>
 					</ul>
@@ -128,11 +127,9 @@
 		<!-- 목록으로 돌아가기 버튼 -->
 		<button type="button" class="btn btn-dark pull-right" onclick="location.href='<%=cp %>/board'">목록으로</button>
 
-
-
 		<!-- ★★★★★ 댓글 ★★★★★★ -->
 		<div class="comment-area">
-
+		<input type="hidden" id="code" value="${article.CODE }">
 			<!-- 댓글 입력  -->
 			<form id="comment_form" action="/commentwrite" method="post">
 				<!-- <input id="boardId" name="boardId" value="11663" type="hidden"
@@ -151,7 +148,7 @@
 		         placeholder="로그인이 필요합니다." maxlength="300" disabled></textarea>
 				<p class="word-num text-right">(<span id="current-word">6</span>/300)</p>
 				</c:if>
- 
+
  				<!-- 댓글입력 버튼 -->
 				<div class="text-right">
 				<c:if test="${sessionScope.user_id == null }">
@@ -164,9 +161,9 @@
 				</div>
 			</form>
 
-
+			<c:import url="Board_Comment.jsp"></c:import>
 			<!-- 댓글 리스트  -->
-			<div class="comment-list-area">
+			<%-- <div class="comment-list-area">
 				
 				<div class="comment-head">
 					<h5>댓글 <span class="comment-number" 
@@ -194,28 +191,7 @@
 
 				</div><!-- end comment-wrapper -->
 				</c:forEach>
-				<!-- 
-				댓글 2
-				<div id="comment-wrapper">
-
-					<div class="comment" data-id="16312" data-login="false">
-						<div class="comment-content">
-							<div class="comment-writer-date">
-								<div class="d-block">
-									<h6 class="comment-writer">임나래 <span class="comment-date g-color-gray-dark-v5 g-font-size-12 g-font-weight-300">2019-07-02 17:29</span>
-									</h6>
-								</div>
-							</div>
-							<p>야옹이 너무이쁘네요 ㅠㅠ 어쩌다 잃어버리셨을까.. ㅠㅠ 저희동네인데 
-							주위 잘 둘러보고 다녀야겠어요 ㅠㅠ </p>
-						</div>
-					</div>end comment
-
-					<hr class="comment-hr">
-
-				</div>end comment-wrapper
- -->				
-			</div><!-- end comment-list area -->
+			</div><!-- end comment-list area --> --%>
 		</div><!-- end comment-area -->
 
 	</section>
@@ -224,4 +200,83 @@
 	<c:import url="Footer.jsp"></c:import>
 </div>
 </body>
+<script type="text/javascript">
+$(document).ready(getCommentList());
+
+//댓글 글자수 세기
+$(function() {
+$('#comment_input').keyup(function (e){
+   var content = $(this).val();
+   $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
+   $('#current-word').html(content.length);
+});
+$('#comment_input').keyup();
+});
+
+$(document).ready(function(){
+	$("#comment_submit").click(function(){
+		if ($("#comment_input").val().length<0)
+		{
+			alert("댓글 내용을 입력해주세요.");
+			return;
+		}
+		
+		$.ajax({
+			type: "GET",
+			url: "<c:url value='commentinsert.ajax'/>",
+			data: {
+				"bbs_code" : $("#code").val(), 
+				"content" : $("#comment_input").val()
+			},
+			success: function(){
+				$("#comment-wrapper").empty();
+				getCommentList();
+			}
+		})
+	})
+});
+
+function getCommentList(){
+	$.ajax({
+	type:'GET',
+	url : "<c:url value='/commentload.ajax'/>",
+	data:{"bbs_code" : $("#code").val()},
+	success : function(data){
+		var html = "";
+		var commentCount = data.length;
+		if(data.length > 0)
+		{
+			for(i=0; i<data.length; i++)
+			{
+				html += "<div class='comment'>";
+				html += "<div class='comment-content'>";
+				html += "<div class='comment-writer-date'>";
+				html += "<h6 class='comment-writer'>" + data[i].NICKNAME;
+				html += "<span class='comment-date'>" + data[i].BBS_CMT_DATE + "</span>";
+				html += "</h6>";
+				html += "</div>";
+				html += "<p id='commentContent'>" + data[i].CONTENT + "</p>";
+				html += "</div></div>";
+				html += "<hr class='comment-hr'>";
+			}
+		} 
+		else 
+		{
+			html += "<div class='comment'>";
+			html += "<div class='comment-content'>";
+			html += "<p id='commentContent'><strong>등록된 댓글이 없습니다.</strong></p>";
+			html += "</div></div>";
+			html += "<hr class='comment-hr'>";
+		}
+       
+		$("#comment-number").text(commentCount);
+		$("#comment-wrapper").html(html);
+       
+	},
+	error:function(request,status,error){
+	}
+   
+	});
+}
+</script>
 </html>
