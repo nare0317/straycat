@@ -75,10 +75,13 @@
 			</div>
 			
 			<!-- 수정/삭제 버튼 -->
+			<c:if test="${sessionScope.user_id != null && sessionScope.user_id == article.ID }">
 			<div class="col-md-2 offset-md-4">
 				<button class="btn btn-secondary btn-sm pull-right" id="modify-btn">수정</button>
 				<button class="btn btn-secondary btn-sm pull-right" id="delete-btn">삭제</button>
 			</div>
+			</c:if>
+			
 		</div>
 		
 		<!-- ★★★★★글내용★★★★★ -->	
