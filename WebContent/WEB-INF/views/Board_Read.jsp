@@ -137,17 +137,29 @@
 				<!-- <input id="boardId" name="boardId" value="11663" type="hidden"
 					value="11663" /> -->
 
-				<h5>댓글 남기기 <span class="login-notice">- 로그인 필요</span></h5>
+				<h5>댓글 남기기</h5>
  				
  				<!-- 댓글입력 창 -->
+ 				<c:if test="${sessionScope.user_id != null }">
 		        <textarea id="comment_input" class="form-control" name="comment" rows="2"
 		         placeholder="댓글을 입력해주세요." maxlength="300" required></textarea>
 				<p class="word-num text-right">(<span id="current-word">6</span>/300)</p>
-
+				</c:if>
+				<c:if test="${sessionScope.user_id == null }">
+				<textarea id="comment_input" class="form-control" name="comment" rows="2"
+		         placeholder="로그인이 필요합니다." maxlength="300" disabled></textarea>
+				<p class="word-num text-right">(<span id="current-word">6</span>/300)</p>
+				</c:if>
  
  				<!-- 댓글입력 버튼 -->
 				<div class="text-right">
+				<c:if test="${sessionScope.user_id == null }">
+					<button type="submit" id="comment_submit" class="btn btn-outline-primary" disabled>댓글등록</button>
+				</c:if>
+				<c:if test="${sessionScope.user_id != null }">
 					<button type="submit" id="comment_submit" class="btn btn-outline-primary">댓글등록</button>
+				</c:if>
+				
 				</div>
 			</form>
 
