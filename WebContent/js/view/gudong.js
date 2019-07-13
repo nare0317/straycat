@@ -13,22 +13,11 @@ function dongList()
 											  // index 번째의 엘리먼트 선택
 
 		});
-
-		// $("#city").append("<option value=''>::동선택::</option>"); // 위의 반복문으로
-		// 모두 삭제되어 있으므로 추가해준다.
-		// 위의 명령문은 바로의 위의 엘리먼트가 1이아닌 0이었을 때 사용하면 됨.
+		
+		//$("#dong").append("<option value=''>동 선택</option>"); // 동 선택을 붙인다.
 
 		return;
 	}
-
-	//var url = "/adopt";
-
-	var params = selectedGu;
-	/*var params = "?gu="+selectedGu;*/
-	//var params = {};
-	//params = JSON.stringify(params)
-	
-	console.log(params);
 
    
 	$.ajax(
@@ -37,43 +26,49 @@ function dongList()
 		,
 		url : 'adopt_gu'
 		,
-		data : { "dong" : params }
+		data : {"selectedGu" : selectedGu}
 		,
-		dataType : "json"
-		,
-		success : function(args)
+		success : function(result)
 		{
-			var result = data.json;
-
-			$.each(result , function(idx, val) {
-			console.log(idx + " " + val.title);
-			});
-
-			console.log(JSON.stringify(args));
 			//alert("success!");
+			//alert(selectedGu);
+			
+			var str = {};
+			
+			//alert(result.length);
+			
 			$("#dong option").each(function()
 			{ // id가 city인 option요소에 적용할 반복문
 
-				$("#dong option:eq(0)").remove(); // city option의 0번째 항목이
-													// 없을때까지 0번쨰 항목을 지운다. (기존에
-													// 있는거 모두 지운다.)
-
+				$("#dong option:eq(0)").remove();   // 동 option의 0번째 항목이
+													// 없을때까지 0번쨰 항목을 지운다. 
+													// (기존에 있는거 모두 지운다.)
 			});
-
-			$("#dong").append("<option value=''>::동 선택::</option>"); // 동 선택을 붙인다.
 			
-			console.log(args.data);
+			$("#dong").append("<option value=''>동 선택</option>"); // 동 선택을 붙인다.
 			
-			for (var idx = 0; idx < args.data.length; idx++)
+			/*
+			//방법1
+			for (var i = 0; i < result.length; i++) {
+				str += '<option value="' + result[i].DONG + '">' + result[i].DONG + '</option>';
+				console.log(result[i].dong);
+			}
+			
+			$('#dong').html(str);
+			*/
+			
+			// 방법2
+			for (var i = 0; i < result.length; i++)
 			{ // 새로 가져온 데이터를 데이터 갯수만큼 반복해서 붙여준다.
 
 				$("#dong").append(
-						"<option value='" + args.data[idx].dong + "'>"
-								+ args.data[idx].dong + "</option>");
+						"<option value='" + result[i].DONG + "'>"
+								+ result[i].DONG + "</option>");
 
-				// append : 셀렉터로 선택된 놈의(여기서는 id가 city인 놈) 자식에게 계속 내용을 붙여준다. 기존
+				// append : 셀렉터로 선택된 놈의(여기서는 id가 dong인 놈) 자식에게 계속 내용을 붙여준다. 기존
 				// 자식이 있다면 그 뒤에 붙여줌.
 			}
+			
 		}
 		,
 		error : function(e)
@@ -103,6 +98,8 @@ function result()
 
 	var s = selectedGu + ":" + gu + ", " + selectedDong + ":" + dong;
 
-	alert(s);
+	//alert(s);
+	
+	
 
 }

@@ -10,11 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.straycat.service.AdoptService;
@@ -84,19 +87,23 @@ public class AdoptController
 		return "Adopt_Read";
 	}
 
-	/*// 도저히 못하겠음.. 하.....................
-	 * // 동 리스트 출력
-	 * 
-	 * @RequestMapping(value = "/adopt_gu", method = RequestMethod.POST ) public
-	 * void dongList(HttpServletResponse response, String selectedGu) throws
-	 * Exception { List<Map<String, Object>> dong = service.listDong(selectedGu);
-	 * 
-	 * //System.out.println(dong.get(0));
-	 * 
-	 * JSONArray json = new JSONArray(); json.put(dong);
-	 * 
-	 * response.setContentType("text/html;charset=utf-8");
-	 * 
-	 * PrintWriter out = response.getWriter(); out.print(json.toString()); }
-	 */
+	  // 셀렉트박스 구 선택하면 동 리스트 출력
+	  @RequestMapping(value="/adopt_gu", method=RequestMethod.POST)
+	  @ResponseBody
+	  public ResponseEntity<List<Map<String, Object>>> dongList(String selectedGu) throws Exception 
+	  {
+			ResponseEntity<List<Map<String, Object>>> entity =null;
+			try{
+				
+				List<Map<String, Object>> list = service.listDong(selectedGu);
+				entity = new ResponseEntity<List<Map<String, Object>>>(list, HttpStatus.OK);
+				
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			
+			return entity;
+		}
+	 
 }
