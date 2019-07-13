@@ -78,8 +78,13 @@ public class BoardController
 			currentPage = total_page;
 		
 		// 페이지 블럭 설정(한 페이지에 들어갈 페이지 목록 설정)
-		int start = (total_page - currentPage) * perPageList + 1;
-		int end = start+perPageList-1;
+		//int start = (total_page - currentPage) * perPageList + 1;
+		int end = dataCount-(currentPage-1)*perPageList;
+		int start = dataCount - currentPage * perPageList + 1;
+		
+		if (start < 1)
+			start = 1;
+		//int end = start+perPageList-1;
 		searchMap.put("start", start);
 		searchMap.put("end", end);
 		
@@ -142,6 +147,9 @@ public class BoardController
 		// 댓글 가져오기
 		List<Map<String, Object>> commentList = service.commentLoad(map);
 		
+		// 댓글 수 가져오기
+		int commentCount = service.commentCount(map);
+		
 		// 데이터 수 세기(다음 글 가져오기에서 사용할 변수)
 		int dataCount = service.dataCount(map);
 		
@@ -178,6 +186,7 @@ public class BoardController
 		model.addAttribute("commentList", commentList);
 		model.addAttribute("prevArticle", prevArticle);
 		model.addAttribute("nextArticle", nextArticle);
+		model.addAttribute("commentCount", commentCount);
 		
 		return "Board_Read";
 	}
