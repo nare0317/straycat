@@ -16,5 +16,7 @@ public interface AdoptDAO
 	public Map<String, Object> readAdopt(String id);
 	
 	public List<Map<String, Object>> listGu();
+	
+	public List<Map<String, Object>> listDong(String selectedGu);
 
 }

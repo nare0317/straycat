@@ -58,14 +58,10 @@
 <!-- 입양 게시글 등록 쿼리문 -->
 <!-- 로그인 기능 완료되면 이용자 + 이미지첨부기능  -->
 <insert id="addAdopt" parameterType="hashmap">
-	 <selectKey resultType="string" keyProperty="ADT_CODE" order="BEFORE">
-        SELECT MAX(ROWNUM)+1
-        FROM ADT_REG        
-    </selectKey>
 	INSERT INTO ADT_REG (ADT_CODE, ADT_PROC_CODE, CAT_NAME, CAT_ADDRESS, RSQ_DATE, CAT_SPECIES
         , CAT_AGE_CODE, CAT_AGE, CAT_SEX, ADT_TYPE, CAT_ECT1, CAT_ECT2, CAT_REP_IMG, USER_CODE, TEL
         , EMAIL, ADT_REASON, ADT_CAT_EXP, ADT_JOB, ADT_MARRIAGE, ADT_FAMILY_NUM)
-	VALUES ('ADO'||#{ADT_CODE}, 'ADP1', #{CAT_NAME,jdbcType=VARCHAR}, #{ADDRESS,jdbcType=VARCHAR}
+	VALUES ('ADO'||ADT_CODE_SEQ.NEXTVAL, 'ADP1', #{CAT_NAME,jdbcType=VARCHAR}, #{ADDRESS,jdbcType=VARCHAR}
 	, #{RSQ_DATE,jdbcType=DATE},#{CAT_SPECIES,jdbcType=VARCHAR}, #{CAT_AGE_TYPE,jdbcType=VARCHAR}
 	, #{CAT_AGE_NUM,jdbcType=VARCHAR}, #{CAT_SEX,jdbcType=VARCHAR}, #{ADT_TYPE,jdbcType=VARCHAR}
 	, #{CAT_ETC1,jdbcType=VARCHAR}, #{CAT_ETC2,jdbcType=VARCHAR}, 'aaa124.png', 'US3', #{TEL,jdbcType=VARCHAR}
@@ -119,13 +115,11 @@
 </select>
 
 <!-- 셀렉트 박스 동 리스트 조회 쿼리문 -->
-<!-- <select id="listDong" resultType="map">
+<select id="listDong"  resultType="map">
 	SELECT DONG
 	FROM ADDRESS
-	WHERE GU='강남구'
+	WHERE GU=#{selectedGu,jdbcType=VARCHAR}
 	ORDER BY DONG ASC
-</select> -->
-
-
+</select>
 
 </mapper>
