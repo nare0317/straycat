@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -25,12 +27,59 @@ public class CatController
 	@Autowired
 	private CatService service;
 
-	@RequestMapping("/catdetail")
-	public String selectList(Model model, @RequestParam(name="user_code", defaultValue="") String user_code)
+	
+////////////////////////////////// 고양이 리스트 부분 ////////////////////////////////////////////////////////////////////////////////////////
+	
+	// 입양게시판 리스트 조회
+	@RequestMapping(value="/cat") 
+	public String selectList(Model model
+			, HttpServletRequest request) 
 	{
-		Map<String, Object> catInfo = service.catInfo();
-		List<Map<String, Object>> catLocation = service.catLocation();
-		List<Map<String, Object>> catActReg = service.catActReg();
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("gu", request.getParameter("gu"));
+		map.put("dong", request.getParameter("dong"));
+		
+		Map<String, Object> location = service.listCat(map);
+
+		model.addAttribute("list", map.get("list"));
+	  	
+		return "Cat_List"; 
+	}
+	
+	// 입양등록 버튼 클릭시 입양게시글 등록페이지로 이동  
+	//(→ 로그인 기능 완성되면 이용자 아이디 값 받아서 다시 수정해야함.)
+	/*
+	 * @RequestMapping(value="/adopt_form", method=RequestMethod.GET) public String
+	 * adoptForm(Model model, @RequestParam String user_id)
+	 */
+	/*
+	@RequestMapping(value="/catregistration")
+	public String catRegistration(Model model)
+	{
+		// 사용자 정보(이름,전화번호,이메일) 넘기기
+		//Map<String, Object> user = service.searchUserInfo(user_id);
+		//model.addAttribute("user", user);
+		
+		// 구 셀렉트박스 값 넘기기
+		Map<String, Object> map = service.listCat();
+		model.addAttribute("gu", map.get("gu"));
+		
+		return "Cat_Registration";
+	}
+	*/
+	
+	
+////////////////////////////////// 고양이 리스트 부분 ////////////////////////////////////////////////////////////////////////////////////////
+
+	
+	////////////////////////////////// 고상페 페이지부분 ////////////////////////////////////////////////////////////////////////////////////////
+	@RequestMapping("/catdetail")
+	public String selectList(Model model, @RequestParam String id, @RequestParam(name="user_code", defaultValue="") String user_code)
+	{
+		Map<String, Object> catInfo = service.catInfo(id);
+		List<Map<String, Object>> catLocation = service.catLocation(id);
+		List<Map<String, Object>> catActReg = service.catActReg(id);
 
 		model.addAttribute("catInfo", catInfo);
 		model.addAttribute("catActReg", catActReg);
@@ -47,7 +96,7 @@ public class CatController
 		HttpHeaders headers = new HttpHeaders();
 		ArrayList<HashMap> hmlist = new ArrayList<HashMap>();
 
-		List<Map<String, Object>> commList = service.catLocation();
+		List<Map<String, Object>> commList = service.catLocation(cat_id);
 
 		if (commList.size() > 0)
 		{
@@ -68,10 +117,6 @@ public class CatController
 		return new ResponseEntity(json.toString(), headers, HttpStatus.CREATED);
 	}
 	
-	@RequestMapping("/catregistration")
-	public String catRegister()
-	{
-		return "Cat_Registration";
-	}
+//////////////////////////////////고상페 페이지부분 ////////////////////////////////////////////////////////////////////////////////////////
 
 }

@@ -151,130 +151,78 @@
 		</div>
 
 		<!-- 우측 사이드바 (입양신청)-->
-		<div class="slidemenu text-center mycat">
-			<div class="row">
-				
-				<div class="col-10" align="left">
-					<p>내가 쓴 입양글</p>
-				</div>
-				
-				<div class="col-2" align="right">
-					<a href="#" class="mycat-prev"><i class="fas fa-chevron-left"></i></a>
-					<a href="#" class="mycat-next"><i class="fas fa-chevron-right"></i></a>
-				</div>
-			</div>
-			
-			<div class="row">
-			
-				<div class="col-6">
-					<figure class="figure">
-						<img src="img/straycat.jpg" class="mycat-img rounded" alt="" >
- 						<figcaption class="figure-caption text-center">야옹이</figcaption>						
- 					</figure>
- 					<figure class="figure">
-						<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
- 						<figcaption class="figure-caption text-center">나비</figcaption>						
- 					</figure>
-				</div>
-				<div class="col-6">
- 					<figure class="figure">
-						<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
- 						<figcaption class="figure-caption text-center">개냥이</figcaption>						
- 					</figure>	
- 					<figure class="figure">
-						<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
- 						<figcaption class="figure-caption text-center">호랭이</figcaption>						
- 					</figure>		
-				</div>
-				
-			</div>
-		</div>	
+			<c:choose>
+		        <c:when test="${sessionScope.user_id != null }">
+					<div class="slidemenu text-center mycat">
+						<div class="row">
+							
+							<div class="col-10" align="left">
+								<p>내가 쓴 입양글</p>
+							</div>
+							
+							<div class="col-2" align="right">
+								<a href="#" class="mycat-prev"><i class="fas fa-chevron-left"></i></a>
+								<a href="#" class="mycat-next"><i class="fas fa-chevron-right"></i></a>
+							</div>
+						</div>
+						
+						<div class="row">
+						
+							<div class="col-6">
+								<figure class="figure">
+									<img src="img/straycat.jpg" class="mycat-img rounded" alt="" >
+			 						<figcaption class="figure-caption text-center">야옹이</figcaption>						
+			 					</figure>
+			 					<figure class="figure">
+									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+			 						<figcaption class="figure-caption text-center">나비</figcaption>						
+			 					</figure>
+							</div>
+							<div class="col-6">
+			 					<figure class="figure">
+									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+			 						<figcaption class="figure-caption text-center">개냥이</figcaption>						
+			 					</figure>	
+			 					<figure class="figure">
+									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+			 						<figcaption class="figure-caption text-center">호랭이</figcaption>						
+			 					</figure>		
+							</div>
+							
+						</div>
+					</div>			
+				</c:when>
+				<c:otherwise>
+					<div class="slidemenu text-center mycat">
+						<div class="row">
+							
+							<div class="col-10" align="left">
+								<p>내가 쓴 입양글</p>
+							</div>
+							
+							<div class="col-2" align="right">
+								<a href="#" class="mycat-prev"><i class="fas fa-chevron-left"></i></a>
+								<a href="#" class="mycat-next"><i class="fas fa-chevron-right"></i></a>
+							</div>
+							
+								</div>
+								<br><br>
+										<h4>로그인을 하세요</h4>
+										<br>
+										<a class="btn btn-primary" href="login" role="button">로그인</a>
+					
+					</div>					
+				</c:otherwise>
+			</c:choose>
+		
+		
 		
 	</section>
 	
-<!-- 	<section class="section-3">
-		
-		<div class="card-header">
-			내가 관리하는 고양이
-		</div>
-			------------------------------------------------ 로그인 O --------------------------------------------------
-		<div class="card-body">
-			<div class="container">
-				<div class="row">
-				<div class="col">
-				<img src="img/straycat.jpg" class="card-img" alt="...">
-				</div>
-				<div class="col">
-				<img src="img/straycat.jpg" class="card-img" alt="...">
-				</div>
-				<div class="col">
-				<img src="img/straycat.jpg" class="card-img" alt="...">
-				</div>
-				<div class="col">
-				<img src="img/straycat.jpg" class="card-img" alt="...">
-				</div>
-				</div>
-			</div>
-		</div>
-		------------------------------------------------ 로그인 O --------------------------------------------------
-		------------------------------------------------ 로그인 X --------------------------------------------------
-		
-		<div class="card">
-			<div class="card-header">
-				내가 올린 입양글
-			</div>
-			<div class="card-body">
-			<div class="container">
-				<div class="jumbotron text-center">
-					<h4>로그인을 하세요</h4>
-					<br>
-					<a class="btn btn-primary" href="#" role="button">로그인</a>
-				</div>
-			</div>
-			</div>
-		</div>
-		
-		------------------------------------------------ 로그인 X --------------------------------------------------
-	</section> -->
-	
+
 	<!-- ★★★★★ 푸터 ★★★★★ -->
 	<c:import url="Footer.jsp"></c:import>
 	
-</div> <!-- end #content  -->
-
-
-			<!-- <div class="col-3">
-			 <div class="text-right">
-			 	<button type="button" class="btn btn-primary">입양등록</button>
-			 </div>
-				<div class="card">
-					<div class="card-header">
-						내가 올린 입양글
-					</div>
-				------------------------------------------------ 로그인 O --------------------------------------------------
-
-				------------------------------------------------ 로그인 O --------------------------------------------------
-				------------------------------------------------ 로그인 X --------------------------------------------------
-				<div class="card">
-					<div class="card-header">
-						내가 올린 입양글
-					</div>
-					<div class="card-body">
-					<div class="container">
-						<div class="jumbotron text-center">
-							<h4>로그인을 하세요</h4>
-							<br>
-							<a class="btn btn-primary" href="#" role="button">로그인</a>
-						</div>
-					</div>
-					</div>
-				</div>
-				
-				------------------------------------------------ 로그인 X --------------------------------------------------
-			</div>
-			</div>
-		</div>
-	</div> -->
-
+</div>
 </body>
 </html>

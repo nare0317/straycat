@@ -29,7 +29,7 @@
 			</div><br>
 			<div>
 				<h4><span id="loc">"서울시 성동구 성수동"</span>에 사는 고양이</h4>
-				<h4><a href="cat" id="catCount">0</a></h4>
+				<h4><a id="catCount">0</a></h4>
 			</div><br>
 			<div class="input-group mb-3">
 				<input type="text" class="form-control" placeholder="Search">
@@ -214,10 +214,16 @@ $(document).ready(function()
 		,data: {'gu':gu, 'dong':dong}
 		,success : function(data)
 		{
-			$("#catCount").text(data);
+			$("#catCount").text(data + "마리");
 		}
 	});
+	
+
+	$("#catCount").attr("href", "cat?gu=" + gu + "&dong=" + dong);
+	
 });
+
+
 </script>
 </body>
 </html>
