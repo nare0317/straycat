@@ -106,8 +106,9 @@
 	FROM
 	(
 		SELECT
-		      ROW_NUMBER() OVER(ORDER BY BR.POST_DATE) AS NUM
+		      ROW_NUMBER() OVER(ORDER BY TO_NUMBER(SUBSTR(BR.BBS_CODE,3))) AS NUM
 		    , BR.BBS_CODE  AS CODE
+		    , U.ID	AS ID
 		    , U.NICKNAME  AS NICKNAME
 		    , BR.TITLE     AS TITLE
 		    , BR.CONTENT   AS CONTENT
@@ -134,7 +135,7 @@
 				INSTR(BR.CONTENT, #{searchValue}) &gt;= 1
 			</if>
 		</where>
-		ORDER BY BR.POST_DATE DESC
+		ORDER BY NUM DESC
 	)
 	WHERE NUM = ${articleNum }
 </select>
