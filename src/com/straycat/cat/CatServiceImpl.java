@@ -77,14 +77,6 @@ public class CatServiceImpl implements CatService
 		}
 		return result;
 	}
-	
-	
-	
-	
-	
-	
-	
-
 
 	@Override
 	public Map<String, Object> catInfo(String id)

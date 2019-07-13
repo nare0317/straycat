@@ -39,14 +39,10 @@
 	<!-- 입양 게시글 등록 쿼리문 -->
 <!-- 로그인 기능 완료되면 이용자 + 이미지첨부기능  -->
 	<insert id="addCat" parameterType="hashmap">
-		 <selectKey resultType="string" keyProperty="ADT_CODE" order="BEFORE">
-	        SELECT MAX(ROWNUM)+1
-			FROM CAT      
-	    </selectKey>
 		INSERT INTO CAT(CAT_CODE, CAT_NAME, CAT_ADDRESS, CAT_SPECIES,CAT_SEX, CAT_ECT1, CAT_ECT2,CAT_STATUS, CAT_REP_IMG,CAT_DATE, USER_CODE)
-		VALUES ('CAT'||#{CAT_CODE}, #{CAT_NAME,jdbcType=VARCHAR}, #{CAT_ADDRESS,jdbcType=VARCHAR}
-		,#{CAT_SPECIES,jdbcType=VARCHAR}, #{CAT_SEX,jdbcType=VARCHAR}, #{CAT_ETC1,jdbcType=VARCHAR}, #{CAT_ETC2,jdbcType=VARCHAR}, #{CAT_STATUS,jdbcType=DATE},'aaa124.png', #{CAT_DATE,jdbcType=DATE}
-		,'US3'
+		VALUES ('CAT'||CAT_CODE_SEQ.NEXTVAL, #{CAT_NAME,jdbcType=VARCHAR}, #{CAT_ADDRESS,jdbcType=VARCHAR}
+		,#{CAT_SPECIES,jdbcType=VARCHAR}, #{CAT_SEX,jdbcType=VARCHAR}, #{CAT_ETC1,jdbcType=VARCHAR}, #{CAT_ETC2,jdbcType=VARCHAR}
+		, #{CAT_STATUS,jdbcType=DATE},'aaa124.png', #{CAT_DATE,jdbcType=DATE},'US3')
 	</insert>
 	
 	<!-- 셀렉트 박스 구 리스트 조회 쿼리문-->
