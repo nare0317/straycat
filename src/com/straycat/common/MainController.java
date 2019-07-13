@@ -28,12 +28,14 @@ public class MainController
 		return "Introduce";
 	}
 
+	/*
 	// 길냥이 관리 페이지로 이동
 	@RequestMapping("/cat")
 	public String catList()
 	{
-		return "StrayCatManage";
+		return "Cat_List";
 	}
+	*/
 	
 	// 실종 리스트 페이지로 이동
 	@RequestMapping("/missing")
