@@ -97,7 +97,23 @@ public class BoardServiceImpl implements BoardService
 		return list;
 	}
 	
-	
+	// 댓글 수를 가져오는 메소
+	@Override
+	public int commentCount(Map<String, Object> map)
+	{
+		int result = 0;
+		
+		try 
+		{
+			result = dao.selectOne("board.commentCount", map);
+			System.out.println(result);
+		} catch (Exception e) 
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+	}
 	
 	
 }

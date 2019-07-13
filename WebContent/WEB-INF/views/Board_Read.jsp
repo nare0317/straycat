@@ -75,10 +75,13 @@
 			</div>
 			
 			<!-- 수정/삭제 버튼 -->
+			<c:if test="${sessionScope.user_id != null && sessionScope.user_id == article.ID }">
 			<div class="col-md-2 offset-md-4">
 				<button class="btn btn-secondary btn-sm pull-right" id="modify-btn">수정</button>
 				<button class="btn btn-secondary btn-sm pull-right" id="delete-btn">삭제</button>
 			</div>
+			</c:if>
+			
 		</div>
 		
 		<!-- ★★★★★글내용★★★★★ -->	
@@ -154,7 +157,7 @@
 				
 				<div class="comment-head">
 					<h5>댓글 <span class="comment-number" 
-					id="comment-number">2</span></h5>
+					id="comment-number">${commentCount }</span></h5>
 				</div>
 				
 				<!-- 댓글 1 -->
