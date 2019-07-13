@@ -3,28 +3,20 @@
 
 <mapper namespace="cat">
 	<!-- 입양게시판 리스트 쿼리문 -->
-	<select id="listCat" resultType="map">
-		SELECT C.CAT_CODE AS CAT_CODE
-             ,C.CAT_NAME AS CAT_NAME
-		     , CT.SPECIES AS CAT_TYPE
-		     , CS.SEX AS CAT_SEX
-		     , AD.SI || ' ' || AD.GU || ' ' || AD.DONG AS CAT_ADDRESS
-		     , C.CAT_DATE AS CAT_DATE
-		     , C.CAT_REP_IMG AS CAT_IMAGE
-		     , C.USER_CODE AS USER_CODE
-             , C.CAT_ECT1 AS CAT_ECT1
-             , C.CAT_ECT2 AS CAT_ECT2
-             , CST.STATUS AS CAT_STATUS
-		FROM CAT C 
-		JOIN CAT_TYPE CT
-		ON C.CAT_SPECIES = CT.SPECIES_CODE
-		JOIN CAT_SEX CS
-		ON C.CAT_SEX = CS.SEX_CODE
-		JOIN ADDRESS AD
-		ON C.CAT_ADDRESS = AD.ADDRESS_CODE
-        JOIN CAT_STATUS CST
-        ON C.CAT_STATUS = CST.STATUS_CODE
-        WHERE AD.GU = #{gu} AND AD.DONG = #{dong}
+	<select id="listCat" resultType="map">		
+		SELECT C.CAT_CODE AS CAT_CODE ,C.CAT_NAME AS CAT_NAME , CT.SPECIES AS CAT_TYPE , CS.SEX AS 
+		CAT_SEX , AD.SI || ' ' || AD.GU || ' ' || AD.DONG AS CAT_ADDRESS , C.CAT_DATE AS CAT_DATE , 
+		C.CAT_REP_IMG AS CAT_IMAGE , C.USER_CODE AS USER_CODE , C.CAT_ECT1 AS CAT_ECT1 , C.CAT_ECT2 
+		AS CAT_ECT2 , CST.STATUS AS CAT_STATUS 
+		FROM CAT C LEFT JOIN CAT_TYPE CT 
+		ON C.CAT_SPECIES = CT.SPECIES_CODE 
+		LEFT JOIN CAT_SEX CS 
+		ON C.CAT_SEX = CS.SEX_CODE 
+		LEFT JOIN ADDRESS AD 
+		ON C.CAT_ADDRESS = AD.ADDRESS_CODE 
+		LEFT JOIN CAT_STATUS CST 
+		ON C.CAT_STATUS = CST.STATUS_CODE 
+		WHERE AD.GU = #{gu} AND AD.DONG = #{dong}
 		ORDER BY C.CAT_DATE
 	</select>
 
@@ -41,8 +33,8 @@
 	<insert id="addCat" parameterType="hashmap">
 		INSERT INTO CAT(CAT_CODE, CAT_NAME, CAT_ADDRESS, CAT_SPECIES,CAT_SEX, CAT_ECT1, CAT_ECT2,CAT_STATUS, CAT_REP_IMG,CAT_DATE, USER_CODE)
 		VALUES ('CAT'||CAT_CODE_SEQ.NEXTVAL, #{CAT_NAME,jdbcType=VARCHAR}, #{CAT_ADDRESS,jdbcType=VARCHAR}
-		,#{CAT_SPECIES,jdbcType=VARCHAR}, #{CAT_SEX,jdbcType=VARCHAR}, #{CAT_ETC1,jdbcType=VARCHAR}, #{CAT_ETC2,jdbcType=VARCHAR}
-		, #{CAT_STATUS,jdbcType=DATE},'aaa124.png', #{CAT_DATE,jdbcType=DATE},'US3')
+		,#{CAT_SPECIES,jdbcType=VARCHAR}, 'CS1', #{CAT_ETC1,jdbcType=VARCHAR}, #{CAT_ETC2,jdbcType=VARCHAR}
+		, 'CST1','aaa124.png', #{CAT_DATE,jdbcType=DATE},'US3')
 	</insert>
 	
 	<!-- 셀렉트 박스 구 리스트 조회 쿼리문-->
@@ -50,5 +42,13 @@
 		SELECT DISTINCT GU AS GU
 		FROM ADDRESS
 		ORDER BY GU ASC
+	</select>
+	
+	<!-- 셀렉트 박스 동 리스트 조회 쿼리문 -->
+	<select id="listDong"  resultType="map">
+		SELECT DONG
+		FROM ADDRESS
+		WHERE GU=#{selectedGu,jdbcType=VARCHAR}
+		ORDER BY DONG ASC
 	</select>
 </mapper>

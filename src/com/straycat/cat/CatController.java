@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.straycat.service.CatService;
 
@@ -98,14 +99,27 @@ public class CatController
 //////////////////////////////////고상페 페이지부분 ////////////////////////////////////////////////////////////////////////////////////////
 	
 	
-	  // 입양게시판 리스트 조회
+	  // 길고양이 게시판 리스트 조회
 	  
-	  @RequestMapping(value="/catregistration") 
-	  public String catregistration(@RequestParam Map<String,Object> param) 
+	  @RequestMapping(value="/registration") 
+	  public String catregistration(@RequestParam Map<String,Object> param, HttpServletRequest request, Model model) 
 	  {
-		  service.addCat(param); 
-		  return "Cat_Registration"; 
+			
+			model.addAttribute("gu", request.getParameter("gu"));
+			model.addAttribute("dong", request.getParameter("dong"));
+			
+			return "Cat_List";
+		  	
 	  }
 	  
+	  @RequestMapping(value="/catregistration") 
+	  public String catregistrationForm(Model model) 
+	  {
+		// 구 셀렉트박스 값 넘기기
+			List<Map<String, Object>> gu = service.listGu();
+			model.addAttribute("gu", gu);
+
+			return "Cat_Registration";
+	  }
 	 
 }
