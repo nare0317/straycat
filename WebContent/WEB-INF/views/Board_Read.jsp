@@ -17,7 +17,8 @@
 <link rel="stylesheet" href="<%=cp %>/css/view/board_read.css">
 
 <!-- JS 파일 -->
-<script src="<%=cp %>/js/view/board_read.js"></script>
+<script type="text/javascript" src="<%=cp %>/js/view/board_read.js"></script>
+<script type="text/javascript" src="<%=cp %>/js/view/bbs_comment.js"></script>
 
 </head>
 <body>
@@ -133,7 +134,7 @@
 		<div class="comment-area">
 
 			<!-- 댓글 입력  -->
-			<form id="comment-form" action="" method="post">
+			<form id="comment_form" action="/commentwrite" method="post">
 				<!-- <input id="boardId" name="boardId" value="11663" type="hidden"
 					value="11663" /> -->
 
@@ -154,10 +155,10 @@
  				<!-- 댓글입력 버튼 -->
 				<div class="text-right">
 				<c:if test="${sessionScope.user_id == null }">
-					<button type="submit" id="comment_submit" class="btn btn-outline-primary" disabled>댓글등록</button>
+					<button type="button" id="comment_submit" class="btn btn-outline-primary" disabled>댓글등록</button>
 				</c:if>
 				<c:if test="${sessionScope.user_id != null }">
-					<button type="submit" id="comment_submit" class="btn btn-outline-primary">댓글등록</button>
+					<button type="button" id="comment_submit" class="btn btn-outline-primary">댓글등록</button>
 				</c:if>
 				
 				</div>

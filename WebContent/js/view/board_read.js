@@ -8,3 +8,22 @@ $(function() {
     });
     $('#comment_input').keyup();
 });
+
+$(document).ready(function(){
+	$("#comment_submit").click(function(){
+		if ($("#comment_input").val().length<0)
+		{
+			alert("댓글 내용을 입력해주세요.");
+			return;
+		}
+		
+		$.ajax({
+			type : "POST",
+			url : "",
+			sucess : function()
+			{
+				
+			}
+		})
+	})
+});
