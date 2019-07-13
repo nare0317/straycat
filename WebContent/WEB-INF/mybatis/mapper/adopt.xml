@@ -4,7 +4,7 @@
 
 <mapper namespace="adopt">
 
-<!-- 입양게시판 리스트 쿼리문 -->
+<!-- 입양게시판 전체 리스트 출력 쿼리문 -->
 <select id="listAdopt" resultType="map">
 	SELECT A.CAT_NAME AS CAT_NAME
 	     , CT.SPECIES AS CAT_TYPE
@@ -30,16 +30,6 @@
 	ON A.ADT_TYPE = AT.ADT_TYPE_CODE
 	ORDER BY A.POST_DATE
 </select>
-
-<!-- <insert id="addAdopt">
-	<selectKey keyProperty="ADDRESS" resultType="map" order="BEFORE">
-		SELECT ADDRESS_CODE AS ADDRESS
-		FROM ADDRESS
-		WHERE SI = '서울시' AND GU = #{gu} AND DONG = #{dong}
-	</selectKey>
-	EXEC PRC_ADT_REG_INSERT(#{ADT_PROC}, #{CAT_NAME}, #{ADDRESS}, #{RSQ_DATE}, #{CAT_SPECIES}, #{CAT_AGE_TYPE}, #{CAT_AGE_NUM}, #{CAT_SEX}, #{ADT_TYPE}, #{CAT_ETC1}, #{CAT_ETC2}, 'straycat.png', 'US2', #{TEL},#{EMAIL}, #{ADT_REASON}, #{ADT_CAT_EXP}, #{ADT_JOB}, #{ADT_MARRIAGE}, #{ADT_FAMILY_NUM})
-</insert>
--->
  
 <!-- 구와 동을 입력받아 주소 코드를 반환하는 쿼리문 -->
 <select id="searchAddress" parameterType="map" resultType="java.lang.String">
@@ -55,7 +45,7 @@
 	WHERE USER_CODE = #{user_id}
 </select>
  
-<!-- 입양 게시글 등록 쿼리문 -->
+<!-- 입양 모집글 등록 쿼리문 -->
 <!-- 로그인 기능 완료되면 이용자 + 이미지첨부기능  -->
 <insert id="addAdopt" parameterType="hashmap">
 	INSERT INTO ADT_REG (ADT_CODE, ADT_PROC_CODE, CAT_NAME, CAT_ADDRESS, RSQ_DATE, CAT_SPECIES
@@ -69,7 +59,7 @@
 	, #{ADT_JOB,jdbcType=VARCHAR}, #{ADT_MARRIAGE,jdbcType=VARCHAR}, #{ADT_FAMILY_NUM,jdbcType=VARCHAR})
 </insert> 
  
-
+<!-- 입양 모집글 열람 쿼리문 -->
 <select id="readAdopt" parameterType="java.lang.String" resultType="map">
 	SELECT A.CAT_NAME AS CAT_NAME
 	     , U.NICKNAME AS USER_NICKNAME
