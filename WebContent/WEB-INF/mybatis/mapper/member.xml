@@ -31,8 +31,19 @@
 	<insert id="addJoin" parameterType="map">
 		INSERT INTO USER_REG (USER_CODE, ID, USER_NAME, PWD, TEL, EMAIL, GRADE, NICKNAME, ADDRESS_CODE)
 		VALUES ('US'||USER_CODE_SEQ.NEXTVAL, #{idInput,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 'GR1', #{nickname,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
-	
 	</insert>
+	
+	<select id="searchUser" parameterType="map" resultType="map">
+	SELECT EMAIL, PWD
+	FROM USER_REG
+	WHERE ID = #{id}
+	</select>
+	
+	<update id="userUpdate">
+	UPDATE USER_REG
+	SET PWD = #{pwd}, EMAIL = #{email}
+	WHERE ID = #{id}
+	</update>
 	
 
 </mapper>

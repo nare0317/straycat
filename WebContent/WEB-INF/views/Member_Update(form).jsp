@@ -29,7 +29,9 @@
 		    	<table class="table">
 				    <tr>
 				      <th>이메일</th>
-				      <td>jyb7488@naver.com <button type="button" class="btn btn-outline-primary btn-sm">이메일 변경</button></td>
+				      <td><input type="text" id="updateEmail" name="updateEmail" readonly="readonly" value="${memberInfo.EMAIL }">
+				      <button type="button"  id="checkEmail" class="btn btn-outline-primary btn-sm" data-toggle="modal"
+										data-target="#exampleModal">이메일 변경</button></td>
 				    </tr>
 				    <tr>
 				      <th>비밀번호 변경</th>
@@ -38,7 +40,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">현재 비밀번호</span>
 								</div>
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" value="${memberInfo.PWD }">
 							</div><br>
 							<div class="input-group w50">
 								<div class="input-group-prepend">
@@ -65,6 +67,39 @@
 	  </div>
 	</div>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">실명 확인</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<table>
+						<tr>
+							<th>새 이메일<span class="required">*</span></th>
+							<td colspan="2"><input type="text" id="ceamail" 	class="form-control" ></td>
+						</tr>
+
+					</table>
+					<div class="errDiv">
+						<span class="err1"></span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="nameCheck2" type="button" class="btn btn-primary" >중복 확인</button>
+					<button type="button" class="btn btn-primary"
+						data-dismiss="modal">확인 완료</button>
+					
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 

@@ -29,7 +29,6 @@ $(document).ready(function()
 	
 		$("#update").click(function()
 		{
-			alert("확인");
 			$(location).attr("href", "memberupdate");
 		});
 });
