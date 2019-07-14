@@ -14,4 +14,6 @@ public interface BoardService
 	
 	public int commentCount(Map<String, Object> map);
 	public int commentInsert(Map<String, String> map);
+	
+	public Map<String, Object> selectUserId(Map<String, String> map);
 }

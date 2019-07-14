@@ -140,6 +140,7 @@
 		<!-- ★★★★★ 댓글 ★★★★★★ -->
 		<div class="comment-area">
 		<input type="hidden" id="code" value="${article.CODE }">
+		<input type="hidden" id="user_id" value="${sessionScope.user_id }">
 			<!-- 댓글 입력  -->
 			<form id="comment_form" action="/commentwrite" method="post">
 				<!-- <input id="boardId" name="boardId" value="11663" type="hidden"
@@ -230,17 +231,27 @@ $(document).ready(function(){
 			alert("댓글 내용을 입력해주세요.");
 			return;
 		}
-		
+		console.log("#code: " + $("#code").val());
+		console.log("#code: " + $("#user_id").val());
+		console.log("#code: " + $("#comment_input").val());
 		$.ajax({
 			type: "GET",
-			url: "<c:url value='commentinsert.ajax'/>",
+			url: "<c:url value='/commentinsert.ajax'/>",
 			data: {
 				"bbs_code" : $("#code").val(), 
+				"user_id" : $("#user_id").val(),
 				"content" : $("#comment_input").val()
 			},
-			success: function(){
-				$("#comment-wrapper").empty();
-				getCommentList();
+			success: function(data){
+				console.log("in success");
+				if(data>0)
+				{
+					$("#comment_input").val("");
+					$("#comment-wrapper").empty();
+					getCommentList();
+				}
+				else
+					return;
 			}
 		})
 	})

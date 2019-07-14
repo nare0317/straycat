@@ -142,17 +142,17 @@
 
 <select id="commentLoad" resultType="map">
 	SELECT
-    BC.BBS_CMT_CODE AS BBS_CMT_CODE
-    , BC.BBS_CODE AS BBS_CODE
-    , U.USER_CODE AS USER_CODE
-    , U.ID  AS ID
-    , U.NICKNAME AS NICKNAME
-    , BC.CONTENT AS CONTENT
-    , TO_CHAR(BC.BBS_CMT_DATE, 'YYYY-MM-DD HH24:MI:SS') AS BBS_CMT_DATE
-FROM BBS_CMT BC
-JOIN USER_REG U ON BC.USER_CODE = U.USER_CODE
-WHERE BBS_CODE=#{bbs_code}
-ORDER BY TO_NUMBER(SUBSTR(BBS_CMT_CODE,3))
+	    BC.BBS_CMT_CODE AS BBS_CMT_CODE
+	    , BC.BBS_CODE AS BBS_CODE
+	    , U.USER_CODE AS USER_CODE
+	    , U.ID  AS ID
+	    , U.NICKNAME AS NICKNAME
+	    , BC.CONTENT AS CONTENT
+	    , TO_CHAR(BC.BBS_CMT_DATE, 'YYYY-MM-DD HH24:MI:SS') AS BBS_CMT_DATE
+	FROM BBS_CMT BC
+	JOIN USER_REG U ON BC.USER_CODE = U.USER_CODE
+	WHERE BBS_CODE=#{bbs_code}
+	ORDER BY TO_NUMBER(SUBSTR(BBS_CMT_CODE,3))
 </select>
 
 <select id="commentCount" resultType="java.lang.Integer">
@@ -189,6 +189,25 @@ ORDER BY TO_NUMBER(SUBSTR(BBS_CMT_CODE,3))
 		)
 		WHERE NUM = ${articleNum }
 	)
+</select>
+
+<insert id="commentInsert">
+	INSERT INTO BBS_CMT(BBS_CMT_CODE, BBS_CODE, USER_CODE, CONTENT, BBS_CMT_DATE) 
+	VALUES('BC'||BBS_CMT_SEQ.NEXTVAL, #{bbs_code, jdbcType=VARCHAR}, #{user_code, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR}, SYSDATE)
+</insert>
+
+<select id="selectUser" resultType="map">
+	SELECT
+	    USER_CODE
+	    , USER_NAME
+	    , TEL
+	    , EMAIL
+	    , GRADE
+	    , NICKNAME
+	    , ADDRESS_CODE
+	    , JOIN_DATE
+	FROM USER_REG
+	WHERE ID=#{id}
 </select>
 
 </mapper>

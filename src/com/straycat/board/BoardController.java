@@ -194,14 +194,22 @@ public class BoardController
 	}
 	
 	@RequestMapping("/commentinsert.ajax")
+	@ResponseBody
 	public int commentInsert(@RequestParam(name="bbs_code") String bbs_code
 			, @RequestParam(name="user_id") String user_id
 			, @RequestParam(name="content") String content
 			)
 	{
+		// USER의 CODE 알아내기
+		Map<String, String> idMap = new HashMap<String, String>();
+		idMap.put("id", user_id);
+		
+		Map<String, Object> selectResult = service.selectUserId(idMap);
+		
+		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("bbs_code", bbs_code);
-		map.put("user_id", user_id);
+		map.put("user_code", (String)selectResult.get("USER_CODE"));
 		map.put("content", content);
 		
 		// 댓글 insert
