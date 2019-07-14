@@ -16,4 +16,6 @@ public interface CatDAO
 	public String searchAddress(String gu, String dong);
 	
 	public List<Map<String, Object>> listGu();
+	
+	public List<Map<String, Object>> listDong(String selectedGu);
 }
