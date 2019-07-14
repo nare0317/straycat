@@ -78,13 +78,13 @@
  
 <!-- 입양게시글 등록자 정보 조회 --> 
 <select id="searchUserInfo" parameterType="java.lang.String" resultType="map">
-	SELECT USER_NAME, TEL, EMAIL
+	SELECT USER_CODE, ID, USER_NAME, TEL, EMAIL
 	FROM USER_REG
-	WHERE ID = #{id, jdbcType=VARCHAR}
+	WHERE ID = #{user_id, jdbcType=VARCHAR}
 </select>
  
 <!-- 입양 모집글 등록 쿼리문 -->
-<!-- 로그인 기능 완료되면 이용자 + 이미지첨부기능  -->
+<!-- 이미지첨부 기능 완료되면 이미지 파일 값 넘겨야..  -->
 <insert id="addAdopt" parameterType="hashmap">
 	INSERT INTO ADT_REG (ADT_CODE, ADT_PROC_CODE, CAT_NAME, CAT_ADDRESS, RSQ_DATE, CAT_SPECIES
         , CAT_AGE_CODE, CAT_AGE, CAT_SEX, ADT_TYPE, CAT_ECT1, CAT_ECT2, CAT_REP_IMG, USER_CODE, TEL
@@ -92,10 +92,11 @@
 	VALUES ('ADO'||ADT_CODE_SEQ.NEXTVAL, 'ADP1', #{CAT_NAME,jdbcType=VARCHAR}, #{ADDRESS,jdbcType=VARCHAR}
 	, #{RSQ_DATE,jdbcType=DATE},#{CAT_SPECIES,jdbcType=VARCHAR}, #{CAT_AGE_TYPE,jdbcType=VARCHAR}
 	, #{CAT_AGE_NUM,jdbcType=VARCHAR}, #{CAT_SEX,jdbcType=VARCHAR}, #{ADT_TYPE,jdbcType=VARCHAR}
-	, #{CAT_ETC1,jdbcType=VARCHAR}, #{CAT_ETC2,jdbcType=VARCHAR}, 'aaa124.png', 'US3', #{TEL,jdbcType=VARCHAR}
+	, #{CAT_ETC1,jdbcType=VARCHAR}, #{CAT_ETC2,jdbcType=VARCHAR}, 'aaa124.png', #{USER_CODE,jdbcType=VARCHAR}, #{TEL,jdbcType=VARCHAR}
 	, #{EMAIL,jdbcType=VARCHAR}, #{ADT_REASON,jdbcType=VARCHAR}, #{ADT_CAT_EXP,jdbcType=VARCHAR}
 	, #{ADT_JOB,jdbcType=VARCHAR}, #{ADT_MARRIAGE,jdbcType=VARCHAR}, #{ADT_FAMILY_NUM,jdbcType=VARCHAR})
 </insert> 
+
  
 <!-- 입양 모집글 열람 쿼리문 -->
 <select id="readAdopt" parameterType="java.lang.String" resultType="map">
@@ -114,6 +115,7 @@
 	     , A.CAT_REP_IMG AS CAT_IMAGE
 	     , A.CAT_ECT1 AS CAT_ECT1
 	     , A.CAT_ECT2 AS CAT_ECT2
+	     , U.ID AS USER_ID
 	     , U.USER_NAME AS USER_NAME
 	     , U.TEL AS USER_TEL
 	     , U.EMAIL AS USER_EMAIL

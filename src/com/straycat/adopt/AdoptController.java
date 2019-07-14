@@ -75,10 +75,10 @@ public class AdoptController
 	@RequestMapping(value = "/adopt_form", method = RequestMethod.GET)
 	public String adoptForm(Model model
 							, HttpServletRequest request
-							, @RequestParam String id)
+							, @RequestParam String user_id)
 	{
 		// 사용자 id로 찾아낸 정보(이름,전화번호,이메일) 넘기기
-		Map<String, Object> user = service.searchUserInfo(id);
+		Map<String, Object> user = service.searchUserInfo(user_id);
 		model.addAttribute("user", user);
 
 		// 구 셀렉트박스 값 넘기기
