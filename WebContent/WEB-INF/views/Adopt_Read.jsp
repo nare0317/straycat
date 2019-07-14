@@ -18,6 +18,25 @@
 
 <!-- JS 파일 -->
 <script src="<%=cp %>/js/view/adopt_read.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		
+		$("#adt_proc_change").click(function()
+		{
+			//alert("성공");
+			$(location).attr("href", "<%=cp%>/adopt_proc?adt_proc=" + $("#adt_proc").val());
+		});
+
+	}); 
+	
+
+</script>
+
+
+
+
 </head>
 <body>
 
@@ -82,25 +101,23 @@
 			<!--★★★★★ 게시글 상태 변경 ★★★★★ -->
 			<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
 				<div class="post-status row">
-					<form action="" method="get">
-						<div class="input-group">
-						
-					    	<div class="input-group-prepend">
-				        	  <div class="input-group-text">게시글 상태</div>
-				       	 	</div>
-				       	 	
-				        	<select class="custom-select mr-sm-2" id="adt_proc" name="adt_proc">
-						        <option value="ADP1">신규등록</option>
-						        <option value="ADP2">입양진행중</option>
-						        <option value="ADP3">매칭진행중</option>
-						        <option value="ADP4">입양보류</option>
-						        <option value="ADP5">입양확정</option>
-						        <option value="ADP6">입양완료</option>
-						    </select>
-						    
-				      		<button type="submit" class="btn btn-dark">변경</button>
-				      </div>
-					</form>
+					<div class="input-group">
+					
+				    	<div class="input-group-prepend">
+			        	  <div class="input-group-text">게시글 상태</div>
+			       	 	</div>
+			       	 	
+			        	<select class="custom-select mr-sm-2" id="adt_proc" name="adt_proc">
+					        <option value="ADP1">신규등록</option>
+					        <option value="ADP2">입양진행중</option>
+					        <option value="ADP3">매칭진행중</option>
+					        <option value="ADP4">입양보류</option>
+					        <option value="ADP5">입양확정</option>
+					        <option value="ADP6">입양완료</option>
+					    </select>
+					    
+			      		<input type="button" class="btn btn-dark" id="adt_proc_change" value="변경">
+			      </div>
 				</div>
 			</c:if>
 		

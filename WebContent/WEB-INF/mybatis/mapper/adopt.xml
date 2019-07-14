@@ -152,7 +152,12 @@
 	ORDER BY DONG ASC
 </select>
 
-
-
+<!-- 게시글 상태 변경 쿼리문 -->
+<!-- <update id="changeProcess" parameterType="map">
+	UPDATE ADT_REG
+	SET ADT_PROC_CODE = 'ADP2'
+	WHERE ADT_CODE = 'ADO29'
+</update>
+ -->
 
 </mapper>

@@ -17,7 +17,7 @@ public class AdoptServiceImpl implements AdoptService
 	private AdoptDAO dao;
 	
 	
-	// 입양 리스트 조회
+	// 입양 전체 리스트 조회
 	@Override
 	public List<Map<String,Object>> listAdopt()
 	{
@@ -35,7 +35,7 @@ public class AdoptServiceImpl implements AdoptService
 		return list;
 	};
 	
-	
+	// 구와 동 검색 후 리스트 출력하는 메소드 
 	@Override
 	public List<Map<String, Object>> listAdopt(String searchGu, String searchDong)
 	{
@@ -193,6 +193,17 @@ public class AdoptServiceImpl implements AdoptService
 		}
 		return dataCount;
 	}
+
+
+	/*
+	 * @Override public int changeProcess(String adt_proc) { int result = 0;
+	 * 
+	 * try { result = dao.changeProcess(adt_proc);
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); }
+	 * 
+	 * return result; }
+	 */
 
 	
 	
