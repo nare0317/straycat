@@ -277,8 +277,9 @@ function getCommentList(){
 				// 세션 아이디(input type="hidden")와 댓글 아이디가 같으면 수정/삭제 버튼을 표시함
 				if ($("#user_id").val() == data[i].ID)
 				{
-					html += "<button type='button' class='btn btn-primary btn-sm'>수정</button>";
-					html += "<button type='button' class='btn btn-secondary btn-sm'>삭제</button></h6>";
+					html += "<button type='button' id='comment_modify' class='btn btn-primary btn-sm'>수정</button>";
+					html += "<button type='button' id='comment_delete' class='btn btn-secondary btn-sm'>삭제</button></h6>";
+					html += "<input type='hidden' id='comment_id' value=" + data[i].BBS_CMT_CODE + ">";
 				}
 				html += "</h6>";
 				html += "</div>";
@@ -302,5 +303,31 @@ function getCommentList(){
 	}
 	});
 }
+
+$.(function() {
+	// 댓글 수정 버튼 클릭
+	$("#comment_modify").click(function() {
+		
+	})
+	
+	// 댓글 삭제 버튼 클릭
+	$("#comment_delete").click(function() {
+		if (confirm("정말로 삭제하시겠습니까?"))
+		{
+			$.ajax({
+				type: "GET",
+				url: "<c:url value='/commentdelete'>",
+				data: {"bbs_cmt_code":$("#bbs_cmt_code").val()},
+				success: function(data) {
+					if (data>0)
+					{
+						alert("댓글이 삭제되었습니다.");
+						getCommentList();
+					}
+				}
+			})
+		}
+	})
+})
 </script>
 </html>
