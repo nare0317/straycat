@@ -77,10 +77,10 @@
 
  
 <!-- 입양게시글 등록자 정보 조회 --> 
-<select id="searchUserInfo">
+<select id="searchUserInfo" parameterType="java.lang.String" resultType="map">
 	SELECT USER_NAME, TEL, EMAIL
 	FROM USER_REG
-	WHERE USER_CODE = #{user_id}
+	WHERE ID = #{id, jdbcType=VARCHAR}
 </select>
  
 <!-- 입양 모집글 등록 쿼리문 -->

@@ -1,16 +1,10 @@
 package com.straycat.adopt;
 
-import java.io.PrintWriter;
-import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.straycat.service.AdoptService;
 
@@ -57,8 +50,6 @@ public class AdoptController
 				dataCount = service.dataCount(searchGu, searchDong);
 			}
 			
-			
-			
 			// 셀렉트박스안의 구 리스트를 불러옴
 			List<Map<String, Object>> gu = service.listGu();
 			
@@ -81,12 +72,14 @@ public class AdoptController
 	 * @RequestMapping(value="/adopt_form", method=RequestMethod.GET) public String
 	 * adoptForm(Model model, @RequestParam String user_id)
 	 */
-	@RequestMapping(value = "/adopt_form")
-	public String adoptForm(Model model)
+	@RequestMapping(value = "/adopt_form", method = RequestMethod.GET)
+	public String adoptForm(Model model
+							, HttpServletRequest request
+							, @RequestParam String id)
 	{
-		// 사용자 정보(이름,전화번호,이메일) 넘기기
-		// Map<String, Object> user = service.searchUserInfo(user_id);
-		// model.addAttribute("user", user);
+		// 사용자 id로 찾아낸 정보(이름,전화번호,이메일) 넘기기
+		Map<String, Object> user = service.searchUserInfo(id);
+		model.addAttribute("user", user);
 
 		// 구 셀렉트박스 값 넘기기
 		List<Map<String, Object>> gu = service.listGu();

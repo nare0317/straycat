@@ -55,13 +55,20 @@ div {
 		padding-left: 0px;
 	}
 	
-	.section-1 h5
+	.searchCount
 	{
-		padding-left: 15px;
+		padding-left: 12px;
 		padding-bottom: 10px;
-		padding-top: 10px;
+		padding-top: 5px;
 		
 	}
+	
+	.tab-btn > h6 > a
+	{
+		margin-right: 20px;
+	}
+	
+	
 	
 	/****** section-2 ************************************/
 	.section-2

@@ -301,9 +301,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">이름</label>
                   <div class="col-sm-3">
                      <input type="text" readonly="readonly" class="form-control" id="name" name="name" 
-                     placeholder="임나래" >
-                     <%-- <input type="text" readonly="readonly" class="form-control" id="name" name="name" 
-                     placeholder="${user.USER_NAME }"> --%>
+                     placeholder="${user.USER_NAME }">
                   </div>
                </div>
                
@@ -312,9 +310,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">연락처</label>
                   <div class="col-sm-5">
                      <input type="text" class="form-control" id="tel" name="tel" 
-                     placeholder="010-1234-5678" value="010-1234-5678">
-                      <%-- <input type="text" class="form-control" id="tel" name="tel" 
-                     placeholder="${user.TEL}"> --%>
+                     placeholder="${user.TEL}">
                   </div>
                </div>
                
@@ -323,9 +319,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">이메일</label>
                   <div class="col-sm-6">
                      <input type="email" class="form-control" id="email" name="email" 
-                     placeholder="test123@naver.com" value="test123@naver.com">
-                     <%-- <input type="email" class="form-control" id="email" name="email" 
-                     placeholder="${user.EMAIL }"> --%>
+                     placeholder="${user.EMAIL }">
                   </div>
                </div>
                
