@@ -6,7 +6,8 @@
 
 <!-- 입양게시판 전체 리스트 출력 쿼리문 -->
 <select id="listAdopt" resultType="map">
-	SELECT A.CAT_NAME AS CAT_NAME
+	SELECT A.ADT_CODE AS CAT_CODE
+         , A.CAT_NAME AS CAT_NAME
 	     , CT.SPECIES AS CAT_TYPE
 	     , CS.SEX AS CAT_SEX
 	     , A.CAT_AGE AS CAT_AGE

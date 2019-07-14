@@ -32,3 +32,23 @@ div
 	width: 800px; 
 	height: 400px;
 }
+
+.container2
+{
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+.catImg
+{
+	width:300px;
+	object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+    margin: 20px;
+}
+
+p
+{
+	margin-bottom: 0px;
+}
