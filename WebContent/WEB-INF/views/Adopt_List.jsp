@@ -96,12 +96,10 @@
 				<!-- 입양등록 -->
 				<div class="col-lg-3 offset-lg-1 text-right write">
 					<c:choose>
-					<!-- 로그인 O -->
 		       			<c:when test="${sessionScope.user_id != null }">
 							<input type="button" class="btn btn-warning btn-lg" value="입양등록" id="adopt_write" 
 							onclick="location.href='<%=cp%>/adopt_form?user_id=${sessionScope.user_id }'">
 						</c:when>
-					<!-- 로그인 X -->
 						<c:otherwise>
 							<input type="button" class="btn btn-warning btn-lg" value="입양등록" id="adopt_write" 
 							onclick="location.href='<%=cp%>/login'">
@@ -175,7 +173,6 @@
 
 		<!-- 우측 사이드바 (입양신청)-->
 			<c:choose>
-			<!-- 로그인 O -->
 		        <c:when test="${sessionScope.user_id != null }">
 					<div class="slidemenu text-center mycat">
 						<div class="row">
@@ -201,6 +198,14 @@
 									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
 			 						<figcaption class="figure-caption text-center">나비</figcaption>						
 			 					</figure>
+			 					<figure class="figure">
+									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+			 						<figcaption class="figure-caption text-center">개냥이</figcaption>						
+			 					</figure>	
+			 					<figure class="figure">
+									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+			 						<figcaption class="figure-caption text-center">호랭이</figcaption>						
+			 					</figure>	
 							</div>
 							<div class="col-6">
 			 					<figure class="figure">
@@ -216,7 +221,7 @@
 						</div>
 					</div>			
 				</c:when>
-				<%-- <c:otherwise>
+				<c:otherwise>
 					<div class="slidemenu text-center mycat">
 						<div class="row">
 							
@@ -236,7 +241,7 @@
 										<a class="btn btn-primary" href="login" role="button">로그인</a>
 					
 					</div>					
-				</c:otherwise> --%>
+				</c:otherwise>
 			</c:choose>
 		
 		
