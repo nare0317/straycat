@@ -9,5 +9,9 @@
 		WHERE CAT_ADDRESS = (SELECT ADDRESS_CODE FROM ADDRESS WHERE GU = #{gu} AND DONG=#{dong})
 	</select>
 
+	<select id="mainAdoptCat" resultType="map">
+	
+	
+	</select>
 
 </mapper>
