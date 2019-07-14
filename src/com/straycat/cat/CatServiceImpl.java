@@ -41,7 +41,6 @@ public class CatServiceImpl implements CatService
 		return map;
 	}
 	
-	
 	// 구 셀렉트박스 리스트 조회 
 	@Override
 	public List<Map<String, Object>> listGu() 
@@ -59,7 +58,7 @@ public class CatServiceImpl implements CatService
 		return list;
 	}
 	
-	
+
 	// 동 셀렉트박스 리스트 조회 
 	@Override
 	public List<Map<String, Object>> listDong(String selectedGu) 
@@ -131,4 +130,25 @@ public class CatServiceImpl implements CatService
 	{
 		return dao.selectActList(id);
 	}	
+	
+	
+
+	// 지역 검색 후 조회된 데이터 갯수 조회
+	@Override
+	public int dataCount(String searchGu, String searchDong)
+	{
+		int dataCount = 0;
+		try
+		{
+			dataCount = dao.dataCount(searchGu, searchDong);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return dataCount;
+	}
+
+	
+	
 }

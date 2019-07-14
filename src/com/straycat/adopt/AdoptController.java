@@ -74,10 +74,10 @@ public class AdoptController
 	@RequestMapping(value = "/adopt_form", method = RequestMethod.GET)
 	public String adoptForm(Model model
 							, HttpServletRequest request
-							, @RequestParam String id)
+							, @RequestParam String user_id)
 	{
 		// 사용자 id로 찾아낸 정보(이름,전화번호,이메일) 넘기기
-		Map<String, Object> user = service.searchUserInfo(id);
+		Map<String, Object> user = service.searchUserInfo(user_id);
 		model.addAttribute("user", user);
 
 		// 구 셀렉트박스 값 넘기기
@@ -129,6 +129,15 @@ public class AdoptController
 		
 		return entity;
 	}
+	 
+	// 입양 상태 변경 
+	/*
+	 * @RequestMapping(value = "/adopt_proc", method = RequestMethod.GET) public
+	 * String changeProcess(@RequestParam String adt_proc) {
+	 * service.changeProcess(adt_proc);
+	 * 
+	 * return "redirect:/adopt"; //-- 상태가 변경되었습니다. 팝업창 띄우는 페이지로 수정해야.. }
+	 */
 	  
 	    
 	 

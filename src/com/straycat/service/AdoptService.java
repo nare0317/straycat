@@ -27,6 +27,9 @@ public interface AdoptService
 	
 	// 조회된 데이터 개수 출력
 	public int dataCount(String searchGu, String searchDong);
+	
+	// 게시글 상태 변경
+	//public int changeProcess(String adt_proc);
 
 	
 	

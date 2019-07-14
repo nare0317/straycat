@@ -311,7 +311,7 @@
 				<c:otherwise>
 					<div class="jumbotron text-center">
 					  <h1 class="display-4">로그인이 필요한 서비스 입니다!</h1>
-					  <a class="btn btn-primary btn-lg" href="Login.jsp" role="button">로그인</a>
+					  <a class="btn btn-primary btn-lg" href="login" role="button">로그인</a>
 					</div>
 				</c:otherwise>
 				</c:choose>
@@ -594,7 +594,19 @@
 		}
 	} 
 	
-   
+/*     $(document).ready(function()
+    {
+    	$.ajax(
+    	{
+    		url: 'act_registration'
+    		, type: 'get'
+    		, data: {'':,'':,'':,'':}
+    		, success : function(data)
+    		{
+    			
+    		}
+    	});
+    }); */
 </script>
 </body>
 </html>

@@ -20,4 +20,10 @@ public interface CatService
 	
 	// 동 리스트 조회
 	public List<Map<String, Object>> listDong(String selectedGu);
+	
+	// 조회된 데이터 개수 출력
+	public int dataCount(String searchGu, String searchDong);
+
+	
+	
 }

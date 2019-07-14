@@ -18,6 +18,25 @@
 
 <!-- JS 파일 -->
 <script src="<%=cp %>/js/view/adopt_read.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		
+		$("#adt_proc_change").click(function()
+		{
+			//alert("성공");
+			$(location).attr("href", "<%=cp%>/adopt_proc?adt_proc=" + $("#adt_proc").val());
+		});
+
+	}); 
+	
+
+</script>
+
+
+
+
 </head>
 <body>
 
@@ -49,13 +68,13 @@
 	</section>
 	
 	<!-- ★★★★★내용★★★★★ -->
-	<section class="post-view continer-fluid">
+	<section class="post-view container">
 	
 		<!-- 제목/작성자/작성일시/조회수 -->
-		<div class="post-head row">
+		<div class="post-title row">
 			<div class="col-lg-12">
 				<!-- 글 제목 -->
-				<h3 class="post-title"><span class="adt_status">[${post.ADT_PROC }]</span>${post.CAT_NAME }</h3>
+				<h3 class="title"><span class="adt_status">[${post.ADT_PROC }]</span>${post.CAT_NAME }</h3>
 				<!-- 제목 밑에 줄 -->
 				<hr class="post-title-hr">
 			</div>
@@ -72,84 +91,113 @@
 					<li class="list-inline-item g-mx-4"><span class="icon-mouse font11"></span>조회수</li>
 				</ul>
 			</div>
-		</div>		
+			
+			<!-- 수정/삭제 버튼 -->
+			<div class="col-md-2 offset-md-4" align="right">
+				<button class="btn btn-secondary btn-sm" id="modify-btn">수정</button>
+				<button class="btn btn-secondary btn-sm" id="delete-btn">삭제</button>
+			</div>
+				
+			<!--★★★★★ 게시글 상태 변경 ★★★★★ -->
+			<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
+				<div class="post-status row">
+					<div class="input-group">
+					
+				    	<div class="input-group-prepend">
+			        	  <div class="input-group-text">게시글 상태</div>
+			       	 	</div>
+			       	 	
+			        	<select class="custom-select mr-sm-2" id="adt_proc" name="adt_proc">
+					        <option value="ADP1">신규등록</option>
+					        <option value="ADP2">입양진행중</option>
+					        <option value="ADP3">매칭진행중</option>
+					        <option value="ADP4">입양보류</option>
+					        <option value="ADP5">입양확정</option>
+					        <option value="ADP6">입양완료</option>
+					    </select>
+					    
+			      		<input type="button" class="btn btn-dark" id="adt_proc_change" value="변경">
+			      </div>
+				</div>
+			</c:if>
+		
+		</div>
 		
 		<!-- ★★★★★글내용★★★★★ -->	
 		<div class="post-content row">
 			
-			<!-- 고양이 대표사진 -->
-			<div class="iconic-photo col-lg-4">
-				<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail">
+				<!-- 고양이 대표사진 -->
+				<div class="iconic-photo col-lg-3">
+					<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail">
+					
+					<!-- 사진 불러오는 구문 -->
+					<%-- <img src="<%=cp %>/img/${post.CAT_IMAGE}" class="img-thumbnail"> --%>
+				</div>
 				
-				<!-- 사진 불러오는 구문 -->
-				<%-- <img src="<%=cp %>/img/${post.CAT_IMAGE}" class="img-thumbnail"> --%>
-			</div>
-			
-			<!-- 글 내용 -->
-			<div class="content col-lg-5">
-				<table class="missing-info table table-light">
-					<tr>
-						<th class="align-top th-sm th-lg">이름</th>
-						<td class="align-top">${post.CAT_NAME }</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">종류</th>
-						<td class="align-top">${post.CAT_TYPE }</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">구조지역</th>
-						<td class="align-top">${post.CAT_ADDRESS }</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">구조일</th>
-						<td class="align-top">${post.RSQ_DATE }</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">나이</th>
-						<td class="align-top">${post.CAT_AGE_TYPE }(${post.CAT_AGE })</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">성별</th>
-						<td class="align-top">${post.CAT_SEX }</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">고양이<br>특이사항</th>
-						<td class="align-top">
-							<p>${post.CAT_ECT1 }</p>
-						</td>
-					</tr>
-					<tr>
-						<th class="align-top">건강상태</th>
-						<td class="align-top">
-							<p>${post.CAT_ECT2 }</p>
-						</td>
-					</tr>
-				</table>
+				<!-- 글 내용 -->
+				<div class="content col-lg-7">
+					<table class="missing-info table table-light">
+						<tr>
+							<th class="align-top th-sm th-lg">이름</th>
+							<td class="align-top">${post.CAT_NAME }</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">종류</th>
+							<td class="align-top">${post.CAT_TYPE }</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">구조지역</th>
+							<td class="align-top">${post.CAT_ADDRESS }</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">구조일</th>
+							<td class="align-top">${post.RSQ_DATE }</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">나이</th>
+							<td class="align-top">${post.CAT_AGE_TYPE }(${post.CAT_AGE })</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">성별</th>
+							<td class="align-top">${post.CAT_SEX }</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">고양이<br>특이사항</th>
+							<td class="align-top">
+								<p>${post.CAT_ECT1 }</p>
+							</td>
+						</tr>
+						<tr>
+							<th class="align-top">건강상태</th>
+							<td class="align-top">
+								<p>${post.CAT_ECT2 }</p>
+							</td>
+						</tr>
+					</table>
 				
-				
-				<!-- 게시글 작성자 정보 -->
-				<div class="writer-info">
-					<div class="row writer-info-title">게시글 작성자 정보</div>
-					<div class="row writer-name"><label>이름 : </label>${post.USER_NAME }
-						<a href="" onclick=""  class="send-message">
-							<i class="fas fa-envelope"> 쪽지보내기 </i>
-						</a>
+					
+					<!-- 게시글 작성자 정보 -->
+					<div class="writer-info">
+						<div class="row writer-info-title">게시글 작성자 정보</div>
+						<div class="row writer-name"><label>이름 : </label>${post.USER_NAME }
+							<a href="" onclick=""  class="send-message">
+								<i class="fas fa-envelope"> 쪽지보내기 </i>
+							</a>
+						</div>
+						<div class="row writer-tel"><label>연락처 : </label>${post.USER_TEL }</div>
+						<div class="row writer-email"><label>이메일 :</label>${post.USER_EMAIL }</div>
 					</div>
-					<div class="row writer-tel"><label>연락처 : </label>${post.USER_TEL }</div>
-					<div class="row writer-email"><label>이메일 :</label>${post.USER_EMAIL }</div>
 				</div>
-			</div>
-			
-			
-			<!-- 우측 사이드바 (입양신청)-->
-			<div class="slidemenu col-lg-3 text-center">
-				<div class="apply">
-					<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
-					<p>남은시간 : <span>13일 00:57:30</span></p>
-					<button class="btn btn-primary">입양 신청</button>
+				
+				<!-- 우측 사이드바 (입양신청)-->
+				<div class="slidemenu col-lg-2 text-center">
+					<div class="apply">
+						<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
+						<p>남은시간 : <span>13일 00:57:30</span></p>
+						<button class="btn btn-primary">입양 신청</button>
+					</div>
 				</div>
-			</div>
-						
+				
 		</div>
 		
 		
@@ -171,6 +219,8 @@
 			</button>
 		</div>
 	</section>
+	
+	
 </div> <!-- end #content  -->
 		
 		
