@@ -82,24 +82,23 @@ function dongList()
 
 // 확인 버튼을 누르면 실행될 함수
 	
-function result()
+/*function search()
 {
-
-	var gu = $("#gu").val();
-
-	var dong = $("#dong").val();
-
+	alert("성공");
+	//var gu = $("#gu").val();
+	//var dong = $("#dong").val();
 	var selectedGu = $("#gu :selected").text();
-
 	var selectedDong = $("#dong :selected").text();
 
 	if (gu == "" || dong == "")
 		return;
-
-	var s = selectedGu + ":" + gu + ", " + selectedDong + ":" + dong;
+	
+	location.href='/adopt?searchGu='+selectedGu+'&searchDong='+selectedDong;
+	
+	//var s = selectedGu + ":" + gu + ", " + selectedDong + ":" + dong;
 
 	//alert(s);
-	
-	
 
 }
+*/
+

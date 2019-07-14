@@ -19,6 +19,22 @@
 <!-- JS 파일  -->
 <script src="<%=cp %>/js/view/adopt_list.js"></script>
 <script src="<%=cp %>/js/view/gudong.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		$("#searchAddress").click(function()
+		{
+			//alert("성공");
+			$(location).attr("href", "<%=cp%>/adopt?searchGu=" + $("#gu").val() + "&searchDong=" + $("#dong").val());
+			
+			$('#searchCount').append("<p>검색된 고양이" + ${dataCount} + "마리</p>");
+		});
+
+	}); 
+	
+
+</script>
 
 </head>
 <body>
@@ -75,7 +91,7 @@
 				</div>
 				<!-- 조회버튼 -->
 				<div class="col-lg-2">
-					<button type="button" class="btn btn-primary" onclick="result();">조회</button>
+					<input type="button" value="조회" class="btn btn-primary" id="searchAddress">
 				</div>
 			</div>
 			
@@ -83,7 +99,7 @@
 			
 			<!-- row3 -->
 			<div class="row">
-				<h5 class="col-lg-8">검색된 고양이<span> 5 </span>마리</h5>
+				<h5 class="col-lg-8" id="searchCount"><p>검색된 고양이${dataCount}마리</p></h5>
 				
 				<div class="col-lg-4 text-right write">
 					<input type="button" class="btn btn-primary btn-lg" value="입양등록"
