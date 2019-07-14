@@ -274,6 +274,12 @@ function getCommentList(){
 				html += "<div class='comment-writer-date'>";
 				html += "<h6 class='comment-writer'>" + data[i].NICKNAME;
 				html += "<span class='comment-date'>" + data[i].BBS_CMT_DATE + "</span>";
+				// 세션 아이디(input type="hidden")와 댓글 아이디가 같으면 수정/삭제 버튼을 표시함
+				if ($("#user_id").val() == data[i].ID)
+				{
+					html += "<button type='button' class='btn btn-primary btn-sm'>수정</button>";
+					html += "<button type='button' class='btn btn-secondary btn-sm'>삭제</button></h6>";
+				}
 				html += "</h6>";
 				html += "</div>";
 				html += "<p id='commentContent'>" + data[i].CONTENT + "</p>";
@@ -293,10 +299,7 @@ function getCommentList(){
 		$("#comment-number").text(commentCount);
 		$("#comment-wrapper").html(html);
        
-	},
-	error:function(request,status,error){
 	}
-   
 	});
 }
 </script>
