@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,13 +59,9 @@ public class BoardController
 		dataCount = service.dataCount(searchMap);
 		
 		if (dataCount > 0 && dataCount % perPageList != 0)
-		{
 			total_page = dataCount / perPageList + 1;
-		}
 		else if (dataCount > 0 && dataCount % perPageList == 0)
-		{
 			total_page = dataCount / perPageList;
-		}
 		else
 			return "Board_List";
 			
@@ -116,8 +111,6 @@ public class BoardController
 			articleUrl += "&" + query;
 			pagenation += "?" + query;
 		}
-		
-		/* String paging = util.paging(currentPage, total_page, listUrl); */
 		
 		model.addAttribute("pagenation", pagenation);
 		model.addAttribute("list", list);
@@ -197,17 +190,11 @@ public class BoardController
 		// 댓글 가져오기
 		List<Map<String, Object>> commentList = service.commentLoad(map);
 		
-		// 댓글 수 가져오기
-		//int commentCount = service.commentCount(map);
-		
-		//model.addAttribute("commentList", commentList);
-		//model.addAttribute("commentCount", commentCount);
-		
 		return commentList;
 	}
 	
 	@RequestMapping("/commentinsert.ajax")
-	public String commentInsert(@RequestParam(name="bbs_code") String bbs_code
+	public int commentInsert(@RequestParam(name="bbs_code") String bbs_code
 			, @RequestParam(name="user_id") String user_id
 			, @RequestParam(name="content") String content
 			)
@@ -218,8 +205,8 @@ public class BoardController
 		map.put("content", content);
 		
 		// 댓글 insert
-		service.commentInsert(map);
+		int result = service.commentInsert(map);
 		
-		return "success";
+		return result;
 	}
 }
