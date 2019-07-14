@@ -214,7 +214,7 @@
                   
                </div>
                
-               <!-- 고양이 분류 -->
+               <!-- 입양 분류 -->
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">분류</label>
                   
@@ -295,6 +295,9 @@
             
             <!------------------ 작성자정보 등록 폼 ----------------->
             <div class="col-md-7 offset-md-2">
+            
+            	<!-- 아이디(hidden) -->
+            	<input type="hidden" id="user_id" name="user_id" value="${sessionScope.user_id }">
             
                <!-- 이름(수정X)  -->
                <div class="form-group row">

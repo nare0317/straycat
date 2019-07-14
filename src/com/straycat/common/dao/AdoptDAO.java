@@ -31,5 +31,7 @@ public interface AdoptDAO
 
 	// 리스트 개수 조회 메소드 
 	public int dataCount(String searchGu, String searchDong);
+	
+	
 
 }
