@@ -1,5 +1,6 @@
 package com.straycat.cat;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,13 +20,98 @@ public class CatServiceImpl implements CatService
 	private CatDAO dao;
 
 	@Override
-	public Map<String, Object> catInfo()
+	public Map<String, Object> listCat(Map<String, Object> map)
+	{
+		List<Map<String,Object>> list = null;
+		List<Map<String,Object>> gu = null;
+		
+		try
+		{
+			list = dao.listCat(map);
+			gu = dao.listGu();
+			
+			map.put("list", list);
+			map.put("gu", gu);
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return map;
+	}
+	
+	
+	// 구 셀렉트박스 리스트 조회 
+	@Override
+	public List<Map<String, Object>> listGu() 
+	{
+		List<Map<String, Object>> list = null;
+
+		try 
+		{
+			list = dao.listGu();
+
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
+	// 동 셀렉트박스 리스트 조회 
+	@Override
+	public List<Map<String, Object>> listDong(String selectedGu) 
+	{
+		List<Map<String, Object>> list = null;
+
+		try 
+		{
+			list = dao.listDong(selectedGu);
+
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	@Override
+	public int addCat(Map<String, Object> param)
+	{
+		int result = 0;
+
+		try
+		{
+			String address = dao.searchAddress((String)param.get("gu"), (String)param.get("dong"));
+			param.put("CAT_NAME", (String) param.get("cat_name"));
+			param.put("CAT_ADDRESS", address);
+			param.put("CAT_SPECIES", (String) param.get("cat_species"));
+			param.put("CAT_ETC1", (String) param.get("cat_etc1"));
+			param.put("CAT_ETC2", (String) param.get("cat_etc2"));
+			param.put("CAT_REP_IMG", (String) param.get("cat_rep_img"));
+			Date date = Date.valueOf((String) param.get("cat_date"));
+			param.put("CAT_DATE", date);
+			param.put("USER_CODE", (String) param.get("user_code"));
+
+			result = dao.addCat(param);
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public Map<String, Object> catInfo(String id)
 	{
 		Map<String, Object> catInfo = new HashMap<String, Object>();
 		
 		try
 		{
-			catInfo = dao.selectOne();
+			catInfo = dao.selectOne(id);
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -35,14 +121,14 @@ public class CatServiceImpl implements CatService
 	}
 
 	@Override
-	public List<Map<String, Object>> catLocation()
+	public List<Map<String, Object>> catLocation(String id)
 	{		
-		return dao.selectList();
+		return dao.selectList(id);
 	}
 
 	@Override
-	public List<Map<String, Object>> catActReg()
+	public List<Map<String, Object>> catActReg(String id)
 	{
-		return dao.selectActList();
+		return dao.selectActList(id);
 	}	
 }

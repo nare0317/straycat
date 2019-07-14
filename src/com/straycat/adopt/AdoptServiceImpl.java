@@ -1,7 +1,6 @@
 package com.straycat.adopt;
 
 import java.sql.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,30 +16,79 @@ public class AdoptServiceImpl implements AdoptService
 	@Autowired
 	private AdoptDAO dao;
 	
+	
 	// 입양 리스트 조회
 	@Override
-	public Map<String, Object> listAdopt()
+	public List<Map<String,Object>> listAdopt()
 	{
-		Map<String, Object> map = new HashMap<String, Object>();
 		List<Map<String,Object>> list = null;
-		List<Map<String,Object>> gu = null;
 		
 		try
 		{
-			list = dao.listAdopt();
-			gu = dao.listGu();
-			
-			map.put("list", list);
-			map.put("gu", gu);
+			list = dao.listAdopt();			//-- 리스트 전체 목록 조회 메소드
 
 		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 
-		return map;
+		return list;
 	};
 	
+	
+	@Override
+	public List<Map<String, Object>> listAdopt(String searchGu, String searchDong)
+	{
+		List<Map<String,Object>> list = null;
+		
+		try
+		{
+			list = dao.listAdopt(searchGu, searchDong);
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+	
+	// 구 셀렉트박스 리스트 조회 
+	@Override
+	public List<Map<String, Object>> listGu() 
+	{
+		List<Map<String, Object>> list = null;
+
+		try 
+		{
+			list = dao.listGu();
+
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+
+	// 동 셀렉트박스 리스트 조회 
+	@Override
+	public List<Map<String, Object>> listDong(String selectedGu) 
+	{
+		List<Map<String, Object>> list = null;
+
+		try 
+		{
+			list = dao.listDong(selectedGu);
+
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 
 	// 입양 게시글 등록
 	@Override
@@ -69,7 +117,7 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADT_JOB", (String) param.get("adt_job"));
 			param.put("ADT_MARRIAGE", (String) param.get("adt_marriage"));
 			param.put("ADT_FAMILY_NUM", (String) param.get("adt_family_num"));
-
+			
 			result = dao.addAdopt(param);
 
 		} catch (Exception e)
@@ -117,4 +165,25 @@ public class AdoptServiceImpl implements AdoptService
 		return post;
 	}
 
+
+	// 지역 검색 후 조회된 데이터 갯수 조회
+	@Override
+	public int dataCount(String searchGu, String searchDong)
+	{
+		int dataCount = 0;
+		try
+		{
+			dataCount = dao.dataCount(searchGu, searchDong);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return dataCount;
+	}
+
+	
+	
+	
+	
 }
