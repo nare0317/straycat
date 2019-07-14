@@ -14,4 +14,10 @@ public interface CatService
 	
 	// 입양게시판 리스트 조회
 	public Map<String, Object> listCat(Map<String, Object> map);
+	
+	// 구 리스트 조회 
+	public List<Map<String, Object>> listGu();
+	
+	// 동 리스트 조회
+	public List<Map<String, Object>> listDong(String selectedGu);
 }

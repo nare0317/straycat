@@ -19,10 +19,6 @@
 <!-- JS 파일 -->
 <script src="<%=cp%>/js/view/miss_write.js"></script>
 
-
-<link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
-<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
-
 <script type="text/javascript">
 	$(document).ready(function()
 	{
@@ -105,7 +101,7 @@
                <div class="form-group row">
                   <label for="cat-name" class="col-sm-2 col-form-label">이름</label>
                   <div class="col-sm-4">
-                     <input type="text" class="form-control" id="cat-name" placeholder="ex.야옹이"  maxlength="10" required>
+                     <input type="text" class="form-control" id="cat_name" name="cat_name" placeholder="ex.야옹이"  maxlength="10" required>
                     </div>
                 </div>
                 
@@ -114,19 +110,19 @@
                   <label for="location" class="col-sm-2 col-form-label">지역</label>
                   <label id="seoul" class="col-sm-2 col-form-label">서울시</label>
                   <div class="col-sm-3 gu-select">
-                     <select id="gu" class="custom-select" required>   
+                    <select id="gu" name="gu" class="custom-select" required>   
                         <option value="">구 선택</option>
-                        <option value="1">마포구</option>
-                        <option value="2">영등포구</option>
-                        <option value="3">서대문구</option>
+                        <c:forEach var="gu" items="${gu }">
+							<option value="${gu.GU }">${gu.GU }</option>
+						</c:forEach>
                      </select>
                   </div>
                   <div class="col-sm-3">
-                     <select id="dong" class="custom-select" required>
+                     <select id="dong" name="dong" class="custom-select" required>
                         <option value="">동 선택</option>
-                        <option value="1">연희동</option>
-                        <option value="2">연남동</option>
-                        <option value="3">서교동</option>
+                        <option value="연희동">연희동</option>
+                        <option value="연남동">연남동</option>
+                        <option value="서교동">서교동</option>
                      </select>
                   </div>
                </div>
@@ -135,7 +131,7 @@
                <div class="form-group row">
                   <label for="rsq-date" class="col-sm-2 col-form-label">구조일시</label>
                   <div class="col-sm-4">
-                     <input type="text" class="form-control" id="date" name="date" 
+                     <input type="text" class="form-control" id="cat_date" name="cat_date" 
                      placeholder="날짜를 선택하세요." required>
                   </div>
                </div>
@@ -144,7 +140,7 @@
                <div class="form-group row">
                   <label for="cat-species" class="col-sm-2 col-form-label">종류</label>
                   <div class="col-sm-4">
-                     <select class="custom-select" id="cat-species" required>
+                     <select class="custom-select" id="cat_type" name="cat_type" required>
                         <option value="" >고양이 종류 선택</option>
                         <option value="1">코리안숏헤어</option>
                         <option value="2">품종</option>
@@ -179,7 +175,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">고양이<br>
                      특이사항</label>
                   <div class="col-sm-10">
-                     <textarea class="form-control" id="exampleFormControlTextarea1"
+                     <textarea class="form-control" id="cat_etc1" name="cat_etc1"
                      placeholder="고양이의 특징이나 생김새에 대해 자세히 기술해주세요. 고양이를 찾는데 큰 도움이 됩니다."
                      rows="7" maxlength="1000" required></textarea>
                   </div>
@@ -190,7 +186,7 @@
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">기타사항</label>
                   <div class="col-sm-10">
-                     <textarea class="form-control" id="exampleFormControlTextarea1"
+                     <textarea class="form-control" id="cat_etc2" name="cat_etc2"
                      placeholder="고양이를 잃어버렸을 때의 상황, 고양이가 있을 것으로 예상되는 장소 등을 자세히 적어주시기 바랍니다.사례금이 있으실 경우, 사례금에 대한 내용도 작성해주세요."
                      rows="7" maxlength="1000" required></textarea>
                   </div>
@@ -205,7 +201,7 @@
          <!-- ★★★★ 임시저장 / 작성완료 버튼 ★★★★  -->
          <div id="button-section" class="text-center">
             <button id="save-btn" type="button" class="btn btn-secondary">임시저장</button>
-            <button id="submit-btn" type="submit" class="btn btn-primary">작성완료</button>
+            <button id="submit-btn" type="button" class="btn btn-primary">작성완료</button>
          </div>
          
       </form>
@@ -214,6 +210,15 @@
    
    <!-- ★★★★★ 푸터 ★★★★★ -->
    <c:import url="Footer.jsp"></c:import>
+
+<script type="text/javascript">
+
+$(document).ready(function()
+{
+	$("#submit-btn").attr("href", "cat?gu=" + ${gu} + "&dong=" + ${dong});
+});
+
+</script>
 
 </body>
 </html>
