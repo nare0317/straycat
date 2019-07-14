@@ -116,10 +116,20 @@
 		
 		<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
 		<div class="beforeafter list-group">
-			<a href="" onclick="" class=" prev list-group-item list-group-item-action"> 
+			<c:if test="${prevArticle.NUM eq null }">
+			<a href='#' class="prev list-group-item list-group-item-action">
+			</c:if>
+			<c:if test="${prevArticle.NUM != null }">
+			<a href='<%=cp %>/board/article?articleNum=${prevArticle.NUM }' class="prev list-group-item list-group-item-action">
+			</c:if>
 				<i class="fas fa-chevron-up"> 이전 글 </i><span>${prevArticle.TITLE }</span>
 			</a>
-			<a href="" onclick=""  class="next list-group-item list-group-item-action">
+			<c:if test="${nextArticle.NUM eq null }">
+			<a href='#' class="next list-group-item list-group-item-action">
+			</c:if>
+			<c:if test="${nextArticle.NUM != null }">
+			<a href='<%=cp %>/board/article?articleNum=${nextArticle.NUM }' class="next list-group-item list-group-item-action">
+			</c:if>
 				<i class="fas fa-chevron-down"> 다음 글 </i><span>${nextArticle.TITLE }</span>
 			</a>
 		</div>
