@@ -16,6 +16,7 @@ public class AdoptServiceImpl implements AdoptService
 	@Autowired
 	private AdoptDAO dao;
 	
+	
 	// 입양 리스트 조회
 	@Override
 	public List<Map<String,Object>> listAdopt()
@@ -34,6 +35,25 @@ public class AdoptServiceImpl implements AdoptService
 		return list;
 	};
 	
+	
+	@Override
+	public List<Map<String, Object>> listAdopt(String searchGu, String searchDong)
+	{
+		List<Map<String,Object>> list = null;
+		
+		try
+		{
+			list = dao.listAdopt(searchGu, searchDong);
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+	
 	// 구 셀렉트박스 리스트 조회 
 	@Override
 	public List<Map<String, Object>> listGu() 
@@ -51,7 +71,7 @@ public class AdoptServiceImpl implements AdoptService
 		return list;
 	}
 	
-	
+
 	// 동 셀렉트박스 리스트 조회 
 	@Override
 	public List<Map<String, Object>> listDong(String selectedGu) 
@@ -82,7 +102,6 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADDRESS", address);
 			Date date = Date.valueOf((String) param.get("rsq_date"));
 			param.put("RSQ_DATE", date);
-			
 			param.put("CAT_NAME", (String) param.get("cat_name"));
 			param.put("CAT_SPECIES", (String) param.get("cat_species"));
 			param.put("CAT_AGE_TYPE", (String) param.get("cat_age_type"));
@@ -146,4 +165,25 @@ public class AdoptServiceImpl implements AdoptService
 		return post;
 	}
 
+
+	// 지역 검색 후 조회된 데이터 갯수 조회
+	@Override
+	public int dataCount(String searchGu, String searchDong)
+	{
+		int dataCount = 0;
+		try
+		{
+			dataCount = dao.dataCount(searchGu, searchDong);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return dataCount;
+	}
+
+	
+	
+	
+	
 }

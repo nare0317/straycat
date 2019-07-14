@@ -21,7 +21,7 @@ public class AdoptDAOImpl implements AdoptDAO
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	
-	// 게시글 리스트 조회 메소드
+	// 전체 게시글 리스트 조회 메소드
 	@Override
 	public List<Map<String, Object>> listAdopt()
 	{
@@ -40,8 +40,32 @@ public class AdoptDAOImpl implements AdoptDAO
 		
 		return list;
 	}
-
 	
+	// 지역 검색 후 게시글 리스트 조회 메소드 
+	@Override
+	public List<Map<String, Object>> listAdopt(String searchGu, String searchDong)
+	{
+		List<Map<String, Object>> list = null; 
+		
+		try 
+		{
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("searchGu", searchGu);
+			map.put("searchDong", searchDong);
+			
+			list = sqlSession.selectList("adopt.searchList", map);
+		}
+		catch (Exception e) 
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		
+		return list;
+	}
+
+
 	// 게시글 등록 메소드
 	@Override
 	public int addAdopt(Map<String, Object> map)
@@ -160,6 +184,26 @@ public class AdoptDAOImpl implements AdoptDAO
 			throw e;
 		}
 		return list;
+	}
+
+	@Override
+	public int dataCount(String searchGu, String searchDong)
+	{
+		int dataCount = 0;
+		try
+		{
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("searchGu", searchGu);
+			map.put("searchDong", searchDong);
+			
+			dataCount = sqlSession.selectOne("adopt.countList", map);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return dataCount;
 	}
 
 	
