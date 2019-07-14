@@ -18,10 +18,10 @@
 
 <!-- JS 파일 -->
 <script src="<%=cp%>/js/view/miss_write.js"></script>
+<script src="<%=cp %>/js/view/gudong.js"></script>
 
-
-<link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
-<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
+<%-- <link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
+<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script> --%>
 
 </head>
 <body>
@@ -94,7 +94,7 @@
                   <label for="location" class="col-sm-2 col-form-label">지역</label>
                   <label id="seoul" class="col-sm-2 col-form-label">서울시</label>
                   <div class="col-sm-3 gu-select">
-                     <select id="gu" name="gu" class="custom-select" required>   
+                     <select id="gu" name="gu" class="custom-select"  onchange="dongList();" required>   
                         <option value="">구 선택</option>
                         <c:forEach var="gu" items="${gu }">
 							<option value="${gu.GU }">${gu.GU }</option>
@@ -102,12 +102,9 @@
                      </select>
                   </div>
                   <div class="col-sm-3">
-                     <select id="dong" name="dong" class="custom-select" required>
-                        <option value="">동 선택</option>
-                        <option value="연희동">연희동</option>
-                        <option value="연남동">연남동</option>
-                        <option value="서교동">서교동</option>
-                     </select>
+                     <select class="custom-select" id="dong" name="dong">
+						<option value="">동 선택</option>
+					</select>
                   </div>
                </div>
                
@@ -304,9 +301,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">이름</label>
                   <div class="col-sm-3">
                      <input type="text" readonly="readonly" class="form-control" id="name" name="name" 
-                     placeholder="임나래" >
-                     <%-- <input type="text" readonly="readonly" class="form-control" id="name" name="name" 
-                     placeholder="${user.USER_NAME }"> --%>
+                     placeholder="${user.USER_NAME }">
                   </div>
                </div>
                
@@ -315,9 +310,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">연락처</label>
                   <div class="col-sm-5">
                      <input type="text" class="form-control" id="tel" name="tel" 
-                     placeholder="010-1234-5678" value="010-1234-5678">
-                      <%-- <input type="text" class="form-control" id="tel" name="tel" 
-                     placeholder="${user.TEL}"> --%>
+                     placeholder="${user.TEL}">
                   </div>
                </div>
                
@@ -326,9 +319,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">이메일</label>
                   <div class="col-sm-6">
                      <input type="email" class="form-control" id="email" name="email" 
-                     placeholder="test123@naver.com" value="test123@naver.com">
-                     <%-- <input type="email" class="form-control" id="email" name="email" 
-                     placeholder="${user.EMAIL }"> --%>
+                     placeholder="${user.EMAIL }">
                   </div>
                </div>
                

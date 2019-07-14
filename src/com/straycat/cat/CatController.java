@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.straycat.service.CatService;
 
@@ -46,28 +47,6 @@ public class CatController
 	  	
 		return "Cat_List"; 
 	}
-	
-	// 입양등록 버튼 클릭시 입양게시글 등록페이지로 이동  
-	//(→ 로그인 기능 완성되면 이용자 아이디 값 받아서 다시 수정해야함.)
-	/*
-	 * @RequestMapping(value="/adopt_form", method=RequestMethod.GET) public String
-	 * adoptForm(Model model, @RequestParam String user_id)
-	 */
-	/*
-	@RequestMapping(value="/catregistration")
-	public String catRegistration(Model model)
-	{
-		// 사용자 정보(이름,전화번호,이메일) 넘기기
-		//Map<String, Object> user = service.searchUserInfo(user_id);
-		//model.addAttribute("user", user);
-		
-		// 구 셀렉트박스 값 넘기기
-		Map<String, Object> map = service.listCat();
-		model.addAttribute("gu", map.get("gu"));
-		
-		return "Cat_Registration";
-	}
-	*/
 	
 	
 ////////////////////////////////// 고양이 리스트 부분 ////////////////////////////////////////////////////////////////////////////////////////
@@ -118,5 +97,29 @@ public class CatController
 	}
 	
 //////////////////////////////////고상페 페이지부분 ////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	  // 길고양이 게시판 리스트 조회
+	  
+	  @RequestMapping(value="/registration") 
+	  public String catregistration(@RequestParam Map<String,Object> param, HttpServletRequest request, Model model) 
+	  {
+			
+			model.addAttribute("gu", request.getParameter("gu"));
+			model.addAttribute("dong", request.getParameter("dong"));
+			
+			return "Cat_List";
+		  	
+	  }
+	  
+	  @RequestMapping(value="/catregistration") 
+	  public String catregistrationForm(Model model) 
+	  {
+		// 구 셀렉트박스 값 넘기기
+			List<Map<String, Object>> gu = service.listGu();
+			model.addAttribute("gu", gu);
 
+			return "Cat_Registration";
+	  }
+	 
 }

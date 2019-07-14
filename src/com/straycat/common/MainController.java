@@ -25,7 +25,7 @@ public class MainController
 	@RequestMapping("/introduce")
 	public String introduce()
 	{
-		return "Introduce";
+		return "Intro";
 	}
 
 	/*

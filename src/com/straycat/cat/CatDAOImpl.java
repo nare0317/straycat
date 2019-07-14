@@ -131,4 +131,22 @@ public class CatDAOImpl implements CatDAO
 		return sqlSession.selectList("catDetail.actReg",id);	
 	}
 	
+
+
+	// 셀렉트 박스 옵션에 동 정보를 넣어주는 메소드
+	@Override
+	public List<Map<String, Object>> listDong(String selectedGu)
+	{
+		List<Map<String, Object>> list = null; 
+		try
+		{
+			list = sqlSession.selectList("cat.listDong", selectedGu);	
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return list;
+	}
 }

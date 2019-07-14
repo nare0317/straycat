@@ -19,6 +19,21 @@
 <!-- JS 파일  -->
 <script src="<%=cp %>/js/view/adopt_list.js"></script>
 <script src="<%=cp %>/js/view/gudong.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		
+		$("#searchAddress").click(function()
+		{
+			//alert("성공");
+			$(location).attr("href", "<%=cp%>/adopt?searchGu=" + $("#gu").val() + "&searchDong=" + $("#dong").val());
+		});
+
+	}); 
+	
+
+</script>
 
 </head>
 <body>
@@ -49,7 +64,7 @@
 	<section class="section-1 continer-fluid">
 		
 		<!-------------------   10  ------------------------->
-		<div class="form-group col-lg-10 search">
+		<div class="form-group col-lg-12 search">
 			
 			<!-- row1 -->
 			<!-- <div class="row">
@@ -59,7 +74,7 @@
 			<!-- row2 -->
 			<div class="row">
 				<!-- 구 선택 -->
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<select class="custom-select" id="gu" onchange="dongList();">
 						<option value="">구 선택</option>
 						<c:forEach var="gu" items="${gu }">
@@ -68,44 +83,52 @@
 					</select>
 				</div>
 				<!-- 동 선택 -->
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<select class="custom-select" id="dong" name="dong">
 						<option value="">동 선택</option>
 					</select>
 				</div>
 				<!-- 조회버튼 -->
 				<div class="col-lg-2">
-					<button type="button" class="btn btn-primary" onclick="result();">조회</button>
+					<input type="button" value="조회" class="btn btn-primary" id="searchAddress">
+				</div>
+				
+				<!-- 입양등록 -->
+				<div class="col-lg-3 offset-lg-1 text-right write">
+					<c:choose>
+		       			<c:when test="${sessionScope.user_id != null }">
+							<input type="button" class="btn btn-warning btn-lg" value="입양등록" id="adopt_write" 
+							onclick="location.href='<%=cp%>/adopt_form?user_id=${sessionScope.user_id }'">
+						</c:when>
+						<c:otherwise>
+							<input type="button" class="btn btn-warning btn-lg" value="입양등록" id="adopt_write" 
+							onclick="location.href='<%=cp%>/login'">
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 			
 			<hr>
 			
 			<!-- row3 -->
-			<div class="row">
-				<h5 class="col-lg-8">검색된 고양이<span> 5 </span>마리</h5>
-				
-				<div class="col-lg-4 text-right write">
-					<input type="button" class="btn btn-primary btn-lg" value="입양등록"
-					id="adopt_write" onclick="location.href='<%=cp%>/adopt_form'">
-					<%-- <input type="button" class="btn btn-primary btn-lg" value="입양등록"
-					id="adopt_write" onclick="location.href='<%=cp%>/adopt_form?user_id=${ }'"> --%>
-					<!-- 사용자 아이디 값 받아오는걸로 위 구문 빈칸 채우면 됨. -->
-				</div>
+			<div class="row">		
+				<c:if test="${dataCount!=0}">
+					<h6 class="col-lg-8" class="searchCount">검색된 고양이 <span style="font-size: 22px; font-weight: bold;">${dataCount}</span>마리</h6>
+				</c:if>
 			</div>
 			
 			<!-- row4 -->
-			<div class="row">
-				<div class="col-8">
-					<h5>
-						<a href="#" class="red">긴급입양</a>
-						<a href="#" class="purple">분실의심</a>
-						<a href="#" >수컷</a><a href="#">암컷</a>
-						<a href="#">아기묘</a><a href="#">성묘</a>
-					</h5>
-				</div>
-			</div>
-			
+			<div class="row tag-buttons">	
+				<h6 class="mx-auto">
+					<a href="#" class="btn btn-outline-primary btn-sm active" role="button" aria-pressed="false">긴급입양</a>
+					<a href="#" class="btn btn-outline-danger btn-sm active" role="button" aria-pressed="false">분실의심</a>
+					<a href="#" class="btn btn-outline-warning btn-sm active" role="button" aria-pressed="false">수컷</a>
+					<a href="#" class="btn btn-outline-info btn-sm active" role="button" aria-pressed="false">암컷</a>
+					<a href="#" class="btn btn-outline-light btn-sm active" role="button" aria-pressed="false">아기묘</a>
+					<a href="#" class="btn btn-outline-success btn-sm active" role="button" aria-pressed="false">성묘</a>
+				</h6>
+			</div>	
+
 		</div>
 		
 	</section>
@@ -175,6 +198,14 @@
 									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
 			 						<figcaption class="figure-caption text-center">나비</figcaption>						
 			 					</figure>
+			 					<figure class="figure">
+									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+			 						<figcaption class="figure-caption text-center">개냥이</figcaption>						
+			 					</figure>	
+			 					<figure class="figure">
+									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+			 						<figcaption class="figure-caption text-center">호랭이</figcaption>						
+			 					</figure>	
 							</div>
 							<div class="col-6">
 			 					<figure class="figure">
