@@ -18,6 +18,22 @@
 
 <!-- JS 파일  -->
 <script src="<%=cp %>/js/view/adopt_list.js"></script>
+<script src="<%=cp %>/js/view/gudong.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		
+		$("#searchAddress").click(function()
+		{
+			//alert("성공");
+			$(location).attr("href", "<%=cp%>/cat?searchGu=" + $("#gu").val() + "&searchDong=" + $("#dong").val());
+		});
+
+	}); 
+	
+
+</script>
 
 </head>
 <body>
@@ -67,17 +83,14 @@
 					</select>
 				</div>
 				<!-- 동 선택 -->
-				<div class="col-lg-4">
-					<select class="custom-select">
-						<option selected>동 선택</option>
-						<option value="1">연희동</option>
-						<option value="2">연남동</option>
-						<option value="3">서교동</option>
+				<div class="col-lg-3">
+					<select class="custom-select" id="dong" name="dong">
+						<option value="">동 선택</option>
 					</select>
 				</div>
 				<!-- 조회버튼 -->
 				<div class="col-lg-2">
-					<button type="button" class="btn btn-primary">조회</button>
+					<button type="button" class="btn btn-primary" id="searchAddress">조회</button>
 				</div>
 			</div>
 			
@@ -88,11 +101,14 @@
 				<h5 class="col-lg-8">검색된 고양이<span> 5 </span>마리</h5>
 				
 				<div class="col-lg-4 text-right write">
-					<input type="button" class="btn btn-primary btn-lg" value="길냥이등록"
-					id="adopt_write" onclick="location.href='<%=cp%>/catregistration'">
-					<%-- <input type="button" class="btn btn-primary btn-lg" value="입양등록"
-					id="adopt_write" onclick="location.href='<%=cp%>/adopt_form?user_id=${ }'"> --%>
-					<!-- 사용자 아이디 값 받아오는걸로 위 구문 빈칸 채우면 됨. -->
+					<c:choose>
+	               	<c:when test="${sessionScope.user_id != null }">
+						<input type="button" class="btn btn-primary btn-lg" value="길냥이등록" id="cat_write" onclick="javascript: write_func();">
+					</c:when>
+					<c:otherwise>
+						<input type="button" class="btn btn-primary btn-lg" value="길냥이등록" id="cat_write" onclick="javascript: login_need();">
+					</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 			

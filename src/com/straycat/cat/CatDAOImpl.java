@@ -80,26 +80,6 @@ public class CatDAOImpl implements CatDAO
 	}
 
 	@Override
-	public List<Map<String, Object>> listGu()
-	{
-		List<Map<String, Object>> list = null; 
-		
-		try
-		{
-			list = sqlSession.selectList("cat.listGu");
-			
-		} catch (Exception e)
-		{
-			logger.error(e.toString());
-			
-			throw e;
-		}
-		
-		return list;
-	}
-
-
-	@Override
 	public Map<String, Object> selectOne(String id)
 	{
 		Map<String, Object> catInfo = null;
@@ -131,7 +111,26 @@ public class CatDAOImpl implements CatDAO
 		return sqlSession.selectList("catDetail.actReg",id);	
 	}
 	
-
+	
+	// 셀렉트 박스 옵션에 구 정보를 넣어주는 메소드
+	@Override
+	public List<Map<String, Object>> listGu()
+	{
+		List<Map<String, Object>> list = null; 
+		
+		try
+		{
+			list = sqlSession.selectList("adopt.listGu");
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		
+		return list;
+	}
 
 	// 셀렉트 박스 옵션에 동 정보를 넣어주는 메소드
 	@Override
@@ -140,7 +139,7 @@ public class CatDAOImpl implements CatDAO
 		List<Map<String, Object>> list = null; 
 		try
 		{
-			list = sqlSession.selectList("cat.listDong", selectedGu);	
+			list = sqlSession.selectList("adopt.listDong", selectedGu);	
 			
 		} catch (Exception e)
 		{
@@ -149,4 +148,25 @@ public class CatDAOImpl implements CatDAO
 		}
 		return list;
 	}
+
+	@Override
+	public int dataCount(String searchGu, String searchDong)
+	{
+		int dataCount = 0;
+		try
+		{
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("searchGu", searchGu);
+			map.put("searchDong", searchDong);
+			
+			dataCount = sqlSession.selectOne("adopt.countList", map);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return dataCount;
+	}
+
 }

@@ -120,12 +120,12 @@
 			<!-- row4 -->
 			<div class="row tag-buttons">	
 				<h6 class="mx-auto">
-					<a href="#" class="btn btn-outline-primary btn-sm active" role="button" aria-pressed="false">긴급입양</a>
-					<a href="#" class="btn btn-outline-danger btn-sm active" role="button" aria-pressed="false">분실의심</a>
-					<a href="#" class="btn btn-outline-warning btn-sm active" role="button" aria-pressed="false">수컷</a>
-					<a href="#" class="btn btn-outline-info btn-sm active" role="button" aria-pressed="false">암컷</a>
-					<a href="#" class="btn btn-outline-light btn-sm active" role="button" aria-pressed="false">아기묘</a>
-					<a href="#" class="btn btn-outline-success btn-sm active" role="button" aria-pressed="false">성묘</a>
+					<a href="#" class="btn btn-outline-primary btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">긴급입양</a>
+					<a href="#" class="btn btn-outline-danger btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">분실의심</a>
+					<a href="#" class="btn btn-outline-warning btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">수컷</a>
+					<a href="#" class="btn btn-outline-info btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">암컷</a>
+					<a href="#" class="btn btn-outline-light btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">아기묘</a>
+					<a href="#" class="btn btn-outline-success btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">성묘</a>
 				</h6>
 			</div>	
 
@@ -172,77 +172,62 @@
 		</div>
 
 		<!-- 우측 사이드바 (입양신청)-->
-			<c:choose>
-		        <c:when test="${sessionScope.user_id != null }">
-					<div class="slidemenu text-center mycat">
-						<div class="row">
-							
-							<div class="col-10" align="left">
-								<p>내가 쓴 입양글</p>
-							</div>
-							
-							<div class="col-2" align="right">
-								<a href="#" class="mycat-prev"><i class="fas fa-chevron-left"></i></a>
-								<a href="#" class="mycat-next"><i class="fas fa-chevron-right"></i></a>
-							</div>
+		<%-- <c:choose>
+	        <c:when test="${sessionScope.user_id != null }">
+				<div class="slidemenu text-center mycat">
+					<div class="row">
+						
+						<div class="col-10" align="left">
+							<p>내가 쓴 입양글</p>
 						</div>
 						
-						<div class="row">
-						
-							<div class="col-6">
-								<figure class="figure">
-									<img src="img/straycat.jpg" class="mycat-img rounded" alt="" >
-			 						<figcaption class="figure-caption text-center">야옹이</figcaption>						
-			 					</figure>
-			 					<figure class="figure">
-									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
-			 						<figcaption class="figure-caption text-center">나비</figcaption>						
-			 					</figure>
-			 					<figure class="figure">
-									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
-			 						<figcaption class="figure-caption text-center">개냥이</figcaption>						
-			 					</figure>	
-			 					<figure class="figure">
-									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
-			 						<figcaption class="figure-caption text-center">호랭이</figcaption>						
-			 					</figure>	
-							</div>
-							<div class="col-6">
-			 					<figure class="figure">
-									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
-			 						<figcaption class="figure-caption text-center">개냥이</figcaption>						
-			 					</figure>	
-			 					<figure class="figure">
-									<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
-			 						<figcaption class="figure-caption text-center">호랭이</figcaption>						
-			 					</figure>		
-							</div>
-							
+						<div class="col-2" align="right">
+							<a href="#" class="mycat-prev"><i class="fas fa-chevron-left"></i></a>
+							<a href="#" class="mycat-next"><i class="fas fa-chevron-right"></i></a>
 						</div>
-					</div>			
-				</c:when>
-				<c:otherwise>
-					<div class="slidemenu text-center mycat">
-						<div class="row">
-							
-							<div class="col-10" align="left">
-								<p>내가 쓴 입양글</p>
-							</div>
-							
-							<div class="col-2" align="right">
-								<a href="#" class="mycat-prev"><i class="fas fa-chevron-left"></i></a>
-								<a href="#" class="mycat-next"><i class="fas fa-chevron-right"></i></a>
-							</div>
-							
-								</div>
-								<br><br>
-										<h4>로그인을 하세요</h4>
-										<br>
-										<a class="btn btn-primary" href="login" role="button">로그인</a>
+					</div>
 					
-					</div>					
-				</c:otherwise>
-			</c:choose>
+					<div class="row">
+					
+						<div class="col-6">
+							<figure class="figure">
+								<img src="img/straycat.jpg" class="mycat-img rounded" alt="" >
+		 						<figcaption class="figure-caption text-center">야옹이</figcaption>						
+		 					</figure>
+		 					<figure class="figure">
+								<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+		 						<figcaption class="figure-caption text-center">나비</figcaption>						
+		 					</figure>
+						</div>
+						<div class="col-6">
+		 					<figure class="figure">
+								<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+		 						<figcaption class="figure-caption text-center">개냥이</figcaption>						
+		 					</figure>	
+		 					<figure class="figure">
+								<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+		 						<figcaption class="figure-caption text-center">호랭이</figcaption>						
+		 					</figure>		
+						</div>
+						
+					</div>
+				</div>			
+			</c:when>
+			<c:otherwise>
+				<div class="text-center mycat " style="width: 250px; height: 250px;">
+					<div class="row">
+						<div class="col-10" align="left">
+							<p>내가 쓴 입양글</p>
+						</div>
+					</div>
+					<br><br>
+					<h4>로그인을 하세요</h4>
+					<br>
+					<a class="btn btn-primary" href="login" role="button">로그인</a>
+				
+				</div>					
+			</c:otherwise>
+		</c:choose> --%>
 		
 		
 		

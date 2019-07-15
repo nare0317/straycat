@@ -15,7 +15,13 @@ public interface CatDAO
 	
 	public String searchAddress(String gu, String dong);
 	
+	// 셀렉트 박스 내 구 리스트 조회 메소드
 	public List<Map<String, Object>> listGu();
 	
+	// 셀렉트 박스 내 동 리스트 조회 메소드 
 	public List<Map<String, Object>> listDong(String selectedGu);
+
+	// 리스트 개수 조회 메소드 
+	public int dataCount(String searchGu, String searchDong);
+
 }

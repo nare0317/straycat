@@ -32,3 +32,14 @@ $(document).ready(function() {
 	}).scroll();
 	
 });
+
+function login_need()
+{
+	alert("로그인이 필요합니다.");
+	window.location.href="login";
+}
+
+function write_func()
+{
+	$("#cat_write").attr("href","catregistration");
+}

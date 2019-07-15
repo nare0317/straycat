@@ -1,15 +1,22 @@
 package com.straycat.common;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.straycat.service.AdoptService;
+
 @Controller
 public class MainController
 {
+	
+	@Autowired
+	private AdoptService service;
+	
 	// 루트로 접속하면 메인 페이지로 리다이렉트
 	@RequestMapping("/")
 	public String mainRedirect()
@@ -21,6 +28,18 @@ public class MainController
 	@RequestMapping("/main")
 	public String list(Model model)
 	{
+		List<Map<String, Object>> list = null;
+		
+		try
+		{
+			list = service.listAdopt();		
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+		
+		model.addAttribute("list", list);
+		
 		return "Main";
 	};
 
@@ -48,12 +67,9 @@ public class MainController
 	}
 	
 	@RequestMapping("/mypage") 
-	public String mypage(HttpServletRequest request, HttpSession session) 
+	public String mypage() 
 	{ 
 		
-		String user_id = (String) session.getAttribute("user_id");
-		session.setAttribute("user_id", user_id);
-		System.out.println(user_id);
 		return "Mypage_Main"; 
 	}
 	
