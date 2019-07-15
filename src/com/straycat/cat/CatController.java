@@ -1,11 +1,13 @@
 package com.straycat.cat;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -146,6 +148,30 @@ public class CatController
 
 			return "Cat_Registration";
 	  }
-	 
+	  
+	  
+	  // 고상페 활동 날짜 변경 
+	 @RequestMapping(value="/act_date")
+	 @ResponseBody
+	 public List<Map<String, Object>> actDate(@RequestParam(name="id") String id,
+			 			 @RequestParam(name="act_date") String act_date, 
+			 			 HttpServletResponse response) throws IOException
+	 {
+		 List<Map<String, Object>> result = new ArrayList<Map<String,Object>>();
+		 
+		 act_date=act_date.replaceAll("-", "");
+		 
+		 Map<String, String> map = new HashMap<String, String>();
+		 map.put("cat_code", id);
+		 map.put("act_date", act_date);
+		 
+		 service.actDate(map);
+		 
+		 //JSONArray json = new JSONArray(service.actDate(id,act_date));
+		 
+		 //response.getWriter().print(json.toString());	
+		 
+		 return result;
+	 }
 }
 

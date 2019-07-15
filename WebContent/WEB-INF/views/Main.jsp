@@ -12,6 +12,7 @@
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
 	<link href="<%=cp%>/css/view/main.css" rel="stylesheet">
+	<script type="text/javascript" src="<%=cp%>/js/view/gudong.js"></script>
 </head>
 <body>
 
@@ -31,13 +32,30 @@
 				<h4><span id="loc">"서울시 성동구 성수동"</span>에 사는 고양이</h4>
 				<h4><a id="catCount">0</a></h4>
 			</div><br>
-			<div class="input-group mb-3">
-				<input type="text" class="form-control" placeholder="Search">
-				<div class="input-group-append">
-					<button class="btn btn-primary" type="submit">Go</button>
+			
+			<div class="row">
+				<!-- 구 선택 -->
+				<div class="col-lg-5">
+					<select class="custom-select" id="gu" onchange="dongList();">
+						<option selected>구 선택</option>
+						<c:forEach var="guList" items="${guList }">
+							<option value="${guList.GU }">${guList.GU }</option>
+						</c:forEach>
+					</select>
 				</div>
-			</div><br>
-		</div>
+				<!-- 동 선택 -->
+				<div class="col-lg-5">
+					<select class="custom-select" id="dong" name="dong">
+						<option value="">동 선택</option>
+					</select>
+				</div>
+				<!-- 조회버튼 -->
+				<div class="col-lg-2">
+					<button type="button" class="btn btn-primary" id="searchAddress">조회</button>
+				</div>
+			</div>
+			
+		</div><br>
 	</div>
 	<br><br><br>
 	
@@ -113,5 +131,20 @@
 	<c:import url="Footer.jsp"></c:import>
 </div>
 
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#searchAddress").click(function()
+	{
+		var gu = $("#gu").val();
+		var dong = $("#dong").val();
+		
+		location.href = "<%=cp%>/cat?gu=" + gu + "&dong=" + dong;
+	});	
+});
+
+
+</script>
 </body>
 </html>
