@@ -22,19 +22,33 @@
 
 	$(document).ready(function()
 	{
+		// 게시글의 게시글상태(ADT_PROC)에 맞춰 셀렉트박스에 "selected" 옵션 추가
+		$("#adt_proc option").each(function()
+		{
+			var adt_proc_selected = $("#adt_proc_selected").val();
+			//alert(adt_proc_selected);
+			
+			if($(this).html()== adt_proc_selected)
+		    {
+		      $(this).attr("selected","selected");  
+		    };
+		});
+		
 		
 		// 입양상태 변경 버튼 클릭 시 모달 창 호출
 		$("#modal_call").click(function()
 		{
-			alert("성공");
-			$(location).attr("href", "<%=cp%>/adopt_proc?adt_proc=" + $("#adt_proc").val() + "&adt_code=" + $("#adt_code").val());
-			//$("#proc_change_modal").modal();
+			//alert("성공");
+			$("#proc_change_modal").modal();
 		});
 		
 		$("#confirm").click(function()
 		{
 			//alert("성공");
-			<%-- $(location).attr("href", "<%=cp%>/adopt_proc?adt_proc=" + $("#adt_proc").val() + "&adt_code=" + $("#adt_code").val()); --%>
+			//alert("adt_proc : " + $("#adt_proc").val());
+			//alert("adt_code : " +$("#adt_code").val());
+			$(location).attr("href", "<%=cp%>/adopt_proc?adt_proc=" + $("#adt_proc").val() + "&adt_code=" + $("#adt_code").val());
+			
 		});
 		
 	}); 
@@ -112,29 +126,33 @@
 					<div class="input-group">
 						
 						<!-- 게시글코드(hidden) -->
-            			<input type="hidden" id="adt_code" name="adt_code" value="${list.ADT_CODE}">
+            			<input type="hidden" id="adt_code" name="adt_code" value="${post.ADT_CODE}">
+						<!-- 게시글상태(hidden) ※ 해당 게시글의 게시글상태-->
+						<input type="hidden" id="adt_proc_selected" name="adt_proc_selected" value="${post.ADT_PROC}">
 						
+						
+						<!-- 게시글상태 -->
 				    	<div class="input-group-prepend">
 			        	  <div class="input-group-text">게시글 상태</div>
 			       	 	</div>
 			       	 	
 			        	<select class="custom-select mr-sm-2" id="adt_proc" name="adt_proc">
 					        <option value="">== 선택 ==</option>
-					        <option value="ADP1">신규등록</option>
-					        <option value="ADP2">입양진행중</option>
-					        <option value="ADP3">매칭진행중</option>
-					        <option value="ADP4">입양보류</option>
-					        <option value="ADP5">입양확정</option>
-					        <option value="ADP6">입양완료</option>
+					        <option value="ADP1" >신규등록</option>
+					        <option value="ADP2" >입양진행중</option>
+					        <option value="ADP3" >매칭진행중</option>
+					        <option value="ADP4" >입양보류</option>
+					        <option value="ADP5" >입양확정</option>
+					        <option value="ADP6" <c:if test="${post.ADT_PROC} eq 'ADP6'">selected</c:if>>입양완료</option>
 					    </select>
 					    
-			      		<!-- Button trigger modal -->
+			      		<!-- 게시글상태 변경 버튼 -->
 						<button type="button" class="btn btn-dark" id="modal_call" data-toggle="modal" data-target="proc_change_modal">
 						  변경
 						</button>
 			  
 				
-						<!-- Modal -->
+						<!-- 변경하시겠습니까? 팝업 -->
 						<div class="modal fade" id="proc_change_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
 						    <div class="modal-content">
@@ -155,6 +173,16 @@
 						  </div>
 						</div>
 						
+						<!-- 변경 완료 팝업 -->
+						<div class="modal fade success_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						  <div class="modal-dialog modal-sm">
+						    <div class="modal-content">
+						      게시글 상태가 성공적으로 변경되었습니다. 
+						    </div>
+						  </div>
+						</div>
+
+
 				    </div>
 				</div>
 			</c:if>

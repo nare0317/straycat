@@ -66,23 +66,27 @@ public class AdoptController
 			
 	
 	// 입양등록 버튼 클릭시 입양게시글 등록페이지로 이동
-	// (→ 로그인 기능 완성되면 이용자 아이디 값 받아서 다시 수정해야함.)
-	/*
-	 * @RequestMapping(value="/adopt_form", method=RequestMethod.GET) public String
-	 * adoptForm(Model model, @RequestParam String user_id)
-	 */
 	@RequestMapping(value = "/adopt_form", method = RequestMethod.GET)
 	public String adoptForm(Model model
 							, HttpServletRequest request
 							, @RequestParam String user_id)
 	{
-		// 사용자 id로 찾아낸 정보(이름,전화번호,이메일) 넘기기
-		Map<String, Object> user = service.searchUserInfo(user_id);
-		model.addAttribute("user", user);
+		Map<String, Object> user = null;
+		
+		try
+		{
+			// 사용자 id로 찾아낸 정보(이름,전화번호,이메일) 넘기기
+			user = service.searchUserInfo(user_id);
+			model.addAttribute("user", user);
 
-		// 구 셀렉트박스 값 넘기기
-		List<Map<String, Object>> gu = service.listGu();
-		model.addAttribute("gu", gu);
+			// 구 셀렉트박스 값 넘기기
+			List<Map<String, Object>> gu = service.listGu();
+			model.addAttribute("gu", gu);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 
 		return "Adopt_Write";
 	}
@@ -91,22 +95,38 @@ public class AdoptController
 	@RequestMapping(value = "/adopt_write", method = RequestMethod.GET)
 	public String adoptWrite(@RequestParam Map<String, Object> param)
 	{
-		service.addAdopt(param);
-		/*
-		 * int result = service.addAdopt(param);
-		 * 
-		 * if (result != 1) { return null; // -- 등록중에 오류 발생했을 시, 이동할 페이지 넣어줘야함. }
-		 */
+		try
+		{
+			service.addAdopt(param);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 		return "redirect:/adopt";
 	}
 
 	// 입양게시글 열람
 	@RequestMapping(value = "/adopt_read", method = RequestMethod.GET)
-	public String adoptRead(@RequestParam String adt_code, Model model)
+	public String adoptRead(@RequestParam String adt_code
+							, HttpServletRequest request
+							, Model model)
 	{
-		Map<String, Object> post = service.readAdopt(adt_code);
-
-		model.addAttribute("post", post);
+		Map<String, Object> post = null;
+		
+		try
+		{
+			request.getParameter("adt_code");
+			
+			post = service.readAdopt(adt_code);
+			model.addAttribute("post", post);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 
 		return "Adopt_Read";
 	}
@@ -117,8 +137,8 @@ public class AdoptController
 	 public ResponseEntity<List<Map<String, Object>>> dongList(String selectedGu) throws Exception 
 	 {
 		ResponseEntity<List<Map<String, Object>>> entity =null;
-		try{
-			
+		try
+		{
 			List<Map<String, Object>> list = service.listDong(selectedGu);
 			entity = new ResponseEntity<List<Map<String, Object>>>(list, HttpStatus.OK);
 			
@@ -133,13 +153,21 @@ public class AdoptController
 	// 입양 상태 변경 
 	@RequestMapping(value = "/adopt_proc", method = RequestMethod.GET) 
 	public String changeStatus(@RequestParam String adt_proc
-							 , @RequestParam String adt_code) 
+							 , @RequestParam String adt_code
+							 , HttpServletRequest request) 
 	{
-		service.changeStatus(adt_proc, adt_code);
-		return "redirect:/adopt_read"; //-- 상태가 변경되었습니다. 팝업창 띄우는 페이지로 수정해야.. 
+		try
+		{
+			adt_proc = request.getParameter("adt_proc");
+			adt_code = request.getParameter("adt_code");
+			
+			service.changeStatus(adt_proc, adt_code);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		 
+		return "redirect:/adopt_read?adt_code="+adt_code;
 	} 
-	 
-	  
-	    
-	 
 }

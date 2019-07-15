@@ -4,9 +4,10 @@
 
 <mapper namespace="adopt">
 
-<!-- 입양게시판 전체 리스트 출력 쿼리문 -->
+<!-- 입양게시판 전체 리스트 출력 쿼리문 (list) -->
 <select id="listAdopt" resultType="map">
-	SELECT A.CAT_NAME AS CAT_NAME
+	SELECT A.ADT_CODE AS ADT_CODE
+         , A.CAT_NAME AS CAT_NAME
 	     , U.NICKNAME AS USER_NICKNAME
 	     , A.RSQ_DATE AS RSQ_DATE
 	     , CT.SPECIES AS CAT_TYPE
@@ -42,17 +43,11 @@
 	ON A.ADT_TYPE = AT.ADT_TYPE_CODE
     ORDER BY A.POST_DATE
 </select>
- 
-<!-- 구와 동을 입력받아 주소 코드를 반환하는 쿼리문 -->
-<select id="searchAddress" parameterType="map" resultType="java.lang.String">
-	SELECT ADDRESS_CODE
-	FROM ADDRESS
-	WHERE SI = '서울시' AND GU = #{gu} AND DONG = #{dong}
-</select>
 
-<!-- 입양게시판 지역 검색 후 리스트 출력 쿼리문 -->
+<!-- 입양게시판 지역 검색 후 리스트 출력 쿼리문 (list) -->
 <select id="searchList" parameterType="map" resultType="map">
-	SELECT A.CAT_NAME AS CAT_NAME
+	SELECT A.ADT_CODE AS ADT_CODE
+         , A.CAT_NAME AS CAT_NAME
 	     , U.NICKNAME AS USER_NICKNAME
 	     , A.RSQ_DATE AS RSQ_DATE
 	     , CT.SPECIES AS CAT_TYPE
@@ -89,6 +84,7 @@
     WHERE AD.GU = #{searchGu} AND AD.DONG = #{searchDong}
 	ORDER BY A.POST_DATE
 </select>
+ 
 
 <!-- 검색된 게시글 수 조회 쿼리문  -->
 <select id="countList" parameterType="map" resultType="java.lang.Integer">
@@ -97,16 +93,17 @@
 	LEFT JOIN ADDRESS AD
 	ON A.CAT_ADDRESS = AD.ADDRESS_CODE
 	WHERE AD.GU = #{searchGu} AND AD.DONG = #{searchDong}
+</select> 
+ 
+ 
+<!-- 구와 동을 입력받아 주소 코드를 반환하는 쿼리문 -->
+<select id="searchAddress" parameterType="map" resultType="java.lang.String">
+	SELECT ADDRESS_CODE
+	FROM ADDRESS
+	WHERE SI = '서울시' AND GU = #{gu} AND DONG = #{dong}
 </select>
 
- 
-<!-- 입양게시글 등록자 정보 조회 --> 
-<select id="searchUserInfo" parameterType="java.lang.String" resultType="map">
-	SELECT USER_CODE, ID, USER_NAME, TEL, EMAIL
-	FROM USER_REG
-	WHERE ID = #{user_id, jdbcType=VARCHAR}
-</select>
- 
+
 <!-- 입양 모집글 등록 쿼리문 -->
 <!-- 이미지첨부 기능 완료되면 이미지 파일 값 넘겨야..  -->
 <insert id="addAdopt" parameterType="hashmap">
@@ -121,8 +118,14 @@
 	, #{ADT_JOB,jdbcType=VARCHAR}, #{ADT_MARRIAGE,jdbcType=VARCHAR}, #{ADT_FAMILY_NUM,jdbcType=VARCHAR})
 </insert> 
 
+<!-- 입양게시글 등록자 정보 조회 --> 
+<select id="searchUserInfo" parameterType="java.lang.String" resultType="map">
+	SELECT USER_CODE, ID, USER_NAME, TEL, EMAIL
+	FROM USER_REG
+	WHERE ID = #{user_id, jdbcType=VARCHAR}
+</select>
  
-<!-- 입양 모집글 열람 쿼리문 -->
+<!-- 입양 모집글 열람 쿼리문 (post) -->
 <select id="readAdopt" parameterType="java.lang.String" resultType="map">
 	SELECT A.ADT_CODE AS ADT_CODE
          , A.CAT_NAME AS CAT_NAME
@@ -134,6 +137,7 @@
 	     , AD.SI || ' ' || AD.GU || ' ' || AD.DONG AS CAT_ADDRESS
 	     , CA.CAT_AGE_TYPE AS CAT_AGE_TYPE
 	     , AP.ADT_PROC AS ADT_PROC
+	     , A.ADT_PROC_CODE AS ADT_PROC_CODE
 	     , AT.ADT_TYPE AS ADT_TYPE
 	     , A.HIT_COUNT AS HITCOUNT
 	     , A.POST_DATE AS POST_DATE
@@ -180,7 +184,7 @@
 <!-- 게시글 상태 변경 쿼리문 -->
 <update id="updateStatus" parameterType="map">
 	UPDATE ADT_REG
-	SET ADT_PROC_CODE = #{adp_code, jdbcType=VARCHAR}
+	SET ADT_PROC_CODE = #{adt_proc, jdbcType=VARCHAR}
 	WHERE ADT_CODE = #{adt_code, jdbcType=VARCHAR}
 </update>
 
