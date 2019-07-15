@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="<%=cp %>/css/view/board_read.css">
 
 <!-- JS 파일 -->
-<script src="<%=cp %>/js/view/board_read.js"></script>
+<script type="text/javascript" src="<%=cp %>/js/view/board_read.js"></script>
 
 </head>
 <body>
@@ -31,7 +31,7 @@
 
 	<section class="header container ">
 		<div class="header-title">
-			<h2 class="h2">자유게시판<span class="sub-title"></span></h2>
+			<h2 id="test" class="h2">자유게시판<span class="sub-title"></span></h2>
 		</div>
 		<div class="breadcrumbs">
 			<ul>
@@ -94,8 +94,6 @@
 			
 		</div>
 		
-		
-		
 		<!-- ★★★★★ 신고/공유/추천 버튼 ★★★★★★ -->
 		<div class="post-footer row justify-content-center">
 			<button class="btn_report" onclick=""><span class="fa fa-ban"></span> 신고</button>
@@ -103,9 +101,7 @@
 			<div class="post_share">
 					<button class="btn_share" data-toggle="dropdown"><span class="fa fa-share-square-o"></span> 공유</button>
 					<ul class="dropdown-menu share">
-						<li><a href="javascript:;" onclick="prompt('주소를 복사하세요.', ''"><span class="fa fa-link"></span>주소복사</a></li>
-						<li><a href="" class="facebook" target="_blank"><span class="fa fa-facebook"></span>Facebook</a></li>
-						<li><a href="" class="twitter" target="_blank"><span class="fa fa-twitter"></span>Twitter</a></li>
+						<li><a href="" onclick=""><span class="fa fa-link"></span>주소복사</a></li>
 					</ul>
 			</div>
 			<button class="btn_like">
@@ -116,10 +112,20 @@
 		
 		<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
 		<div class="beforeafter list-group">
-			<a href="" onclick="" class=" prev list-group-item list-group-item-action"> 
+			<c:if test="${prevArticle.NUM eq null }">
+			<a href='#' class="prev list-group-item list-group-item-action">
+			</c:if>
+			<c:if test="${prevArticle.NUM != null }">
+			<a href='<%=cp %>/board/article?articleNum=${prevArticle.NUM }' class="prev list-group-item list-group-item-action">
+			</c:if>
 				<i class="fas fa-chevron-up"> 이전 글 </i><span>${prevArticle.TITLE }</span>
 			</a>
-			<a href="" onclick=""  class="next list-group-item list-group-item-action">
+			<c:if test="${nextArticle.NUM eq null }">
+			<a href='#' class="next list-group-item list-group-item-action">
+			</c:if>
+			<c:if test="${nextArticle.NUM != null }">
+			<a href='<%=cp %>/board/article?articleNum=${nextArticle.NUM }' class="next list-group-item list-group-item-action">
+			</c:if>
 				<i class="fas fa-chevron-down"> 다음 글 </i><span>${nextArticle.TITLE }</span>
 			</a>
 		</div>
@@ -127,33 +133,44 @@
 		<!-- 목록으로 돌아가기 버튼 -->
 		<button type="button" class="btn btn-dark pull-right" onclick="location.href='<%=cp %>/board'">목록으로</button>
 
-
-
 		<!-- ★★★★★ 댓글 ★★★★★★ -->
 		<div class="comment-area">
-
+		<input type="hidden" id="code" value="${article.CODE }">
+		<input type="hidden" id="user_id" value="${sessionScope.user_id }">
 			<!-- 댓글 입력  -->
-			<form id="comment-form" action="" method="post">
+			<form id="comment_form" action="/commentwrite" method="post">
 				<!-- <input id="boardId" name="boardId" value="11663" type="hidden"
 					value="11663" /> -->
 
-				<h5>댓글 남기기 <span class="login-notice">- 로그인 필요</span></h5>
+				<h5>댓글 남기기</h5>
  				
  				<!-- 댓글입력 창 -->
+ 				<c:if test="${sessionScope.user_id != null }">
 		        <textarea id="comment_input" class="form-control" name="comment" rows="2"
 		         placeholder="댓글을 입력해주세요." maxlength="300" required></textarea>
 				<p class="word-num text-right">(<span id="current-word">6</span>/300)</p>
+				</c:if>
+				<c:if test="${sessionScope.user_id == null }">
+				<textarea id="comment_input" class="form-control" name="comment" rows="2"
+		         placeholder="로그인이 필요합니다." maxlength="300" disabled></textarea>
+				<p class="word-num text-right">(<span id="current-word">6</span>/300)</p>
+				</c:if>
 
- 
  				<!-- 댓글입력 버튼 -->
 				<div class="text-right">
-					<button type="submit" id="comment_submit" class="btn btn-outline-primary">댓글등록</button>
+				<c:if test="${sessionScope.user_id == null }">
+					<button type="button" id="comment_submit" class="btn btn-outline-primary" disabled>댓글등록</button>
+				</c:if>
+				<c:if test="${sessionScope.user_id != null }">
+					<button type="button" id="comment_submit" class="btn btn-outline-primary">댓글등록</button>
+				</c:if>
+				
 				</div>
 			</form>
 
-
+			<c:import url="Board_Comment.jsp"></c:import>
 			<!-- 댓글 리스트  -->
-			<div class="comment-list-area">
+			<%-- <div class="comment-list-area">
 				
 				<div class="comment-head">
 					<h5>댓글 <span class="comment-number" 
@@ -181,28 +198,7 @@
 
 				</div><!-- end comment-wrapper -->
 				</c:forEach>
-				<!-- 
-				댓글 2
-				<div id="comment-wrapper">
-
-					<div class="comment" data-id="16312" data-login="false">
-						<div class="comment-content">
-							<div class="comment-writer-date">
-								<div class="d-block">
-									<h6 class="comment-writer">임나래 <span class="comment-date g-color-gray-dark-v5 g-font-size-12 g-font-weight-300">2019-07-02 17:29</span>
-									</h6>
-								</div>
-							</div>
-							<p>야옹이 너무이쁘네요 ㅠㅠ 어쩌다 잃어버리셨을까.. ㅠㅠ 저희동네인데 
-							주위 잘 둘러보고 다녀야겠어요 ㅠㅠ </p>
-						</div>
-					</div>end comment
-
-					<hr class="comment-hr">
-
-				</div>end comment-wrapper
- -->				
-			</div><!-- end comment-list area -->
+			</div><!-- end comment-list area --> --%>
 		</div><!-- end comment-area -->
 
 	</section>
@@ -211,4 +207,133 @@
 	<c:import url="Footer.jsp"></c:import>
 </div>
 </body>
+<script type="text/javascript">
+$(document).ready(getCommentList());
+
+//댓글 글자수 세기
+$(function() {
+$('#comment_input').keyup(function (e){
+   var content = $(this).val();
+   $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
+   $('#current-word').html(content.length);
+});
+$('#comment_input').keyup();
+});
+
+$(document).ready(function(){
+	$("#comment_submit").click(function(){
+		if ($("#comment_input").val().length<0)
+		{
+			alert("댓글 내용을 입력해주세요.");
+			return;
+		}
+		console.log("#code: " + $("#code").val());
+		console.log("#code: " + $("#user_id").val());
+		console.log("#code: " + $("#comment_input").val());
+		$.ajax({
+			type: "GET",
+			url: "<c:url value='/commentinsert.ajax'/>",
+			data: {
+				"bbs_code" : $("#code").val(), 
+				"user_id" : $("#user_id").val(),
+				"content" : $("#comment_input").val()
+			},
+			success: function(data){
+				console.log("in success");
+				if(data>0)
+				{
+					$("#comment_input").val("");
+					$("#comment-wrapper").empty();
+					getCommentList();
+				}
+				else
+					return;
+			}
+		})
+	})
+});
+
+function getCommentList(){
+	$.ajax({
+	type:'GET',
+	url : "<c:url value='/commentload.ajax'/>",
+	data:{"bbs_code" : $("#code").val()},
+	success : function(data){
+		var html = "";
+		var commentCount = data.length;
+		if(data.length > 0)
+		{
+			for(i=0; i<data.length; i++)
+			{
+				html += "<div class='comment'>";
+				html += "<div class='comment-content'>";
+				html += "<div class='comment-writer-date'>";
+				html += "<h6 class='comment-writer'>" + data[i].NICKNAME;
+				html += "<span class='comment-date'>" + data[i].BBS_CMT_DATE + "</span>";
+				// 세션 아이디(input type="hidden")와 댓글 아이디가 같으면 수정/삭제 버튼을 표시함
+				if ($("#user_id").val() == data[i].ID)
+				{
+					html += "<button type='button' class='comment_modify' value='" + data[i].BBS_CMT_CODE + "'>수정</button>";
+					html += "<button type='button' class='comment_delete' value='" + data[i].BBS_CMT_CODE + "'>삭제</button></h6>";
+					/* html += "<button type='button' class='btn btn-primary btn-sm comment_modify' value='" + data[i].BBS_CMT_CODE + "'>수정</button>";
+					html += "<button type='button' class='btn btn-secondary btn-sm comment_delete' value='" + data[i].BBS_CMT_CODE + "'>삭제</button></h6>"; */
+					html += "<input type='hidden' id='comment_id' value=" + data[i].BBS_CMT_CODE + ">";
+				}
+				html += "</h6>";
+				html += "</div>";
+				html += "<p id='commentContent'>" + data[i].CONTENT + "</p>";
+				html += "</div></div>";
+				html += "<hr class='comment-hr'>";
+			}
+		} 
+		else 
+		{
+			html += "<div class='comment'>";
+			html += "<div class='comment-content'>";
+			html += "<p id='commentContent'><strong>등록된 댓글이 없습니다.</strong></p>";
+			html += "</div></div>";
+			html += "<hr class='comment-hr'>";
+		}
+       
+		$("#comment-number").text(commentCount);
+		$("#comment-wrapper").html(html);
+       
+	}
+	});
+}
+
+$(document).ready(function() {
+	// 댓글 수정 버튼 클릭
+	$(".comment_modify").click(function() {
+		alert("클릭");
+	})
+	
+	$(".btn_report").click(function()
+	{
+		alert("클릭");
+	})
+	
+	// 댓글 삭제 버튼 클릭
+	$(".comment_delete").click(function() {
+		alert("클릭");
+		/*
+		if (confirm("정말로 삭제하시겠습니까?"))
+		{
+			$.ajax({
+				type: "GET",
+				url: "<c:url value='/commentdelete.ajax'/>",
+				data: {"bbs_cmt_code":$(this).val()},
+				success: function(data) {
+					if (data>0)
+					{
+						alert("댓글이 삭제되었습니다.");
+						getCommentList();
+					}
+				}
+			})
+		}
+		*/
+	})
+})
+</script>
 </html>

@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.straycat.service.BoardService;
 
@@ -58,13 +59,9 @@ public class BoardController
 		dataCount = service.dataCount(searchMap);
 		
 		if (dataCount > 0 && dataCount % perPageList != 0)
-		{
 			total_page = dataCount / perPageList + 1;
-		}
 		else if (dataCount > 0 && dataCount % perPageList == 0)
-		{
 			total_page = dataCount / perPageList;
-		}
 		else
 			return "Board_List";
 			
@@ -115,8 +112,6 @@ public class BoardController
 			pagenation += "?" + query;
 		}
 		
-		/* String paging = util.paging(currentPage, total_page, listUrl); */
-		
 		model.addAttribute("pagenation", pagenation);
 		model.addAttribute("list", list);
 		model.addAttribute("articleUrl", articleUrl);
@@ -143,12 +138,6 @@ public class BoardController
 		map.put("searchValue", searchValue);
 		
 		Map<String, Object> article = service.articleLoad(map);
-		
-		// 댓글 가져오기
-		List<Map<String, Object>> commentList = service.commentLoad(map);
-		
-		// 댓글 수 가져오기
-		int commentCount = service.commentCount(map);
 		
 		// 데이터 수 세기(다음 글 가져오기에서 사용할 변수)
 		int dataCount = service.dataCount(map);
@@ -183,13 +172,62 @@ public class BoardController
 		}
 		
 		model.addAttribute("article", article);
-		model.addAttribute("commentList", commentList);
 		model.addAttribute("prevArticle", prevArticle);
 		model.addAttribute("nextArticle", nextArticle);
-		model.addAttribute("commentCount", commentCount);
 		
 		return "Board_Read";
 	}
 	
+	@RequestMapping(value="/commentload.ajax")
+	@ResponseBody
+	public List<Map<String, Object>> commentLoad(HttpServletRequest request)
+	{
+		// 게시판 리스트에서 가져온 articleNum, searchKey, searchValue 정보를 가져옴
+		Map<String, Object> map = new HashMap<>();
+		map.put("bbs_code", request.getParameter("bbs_code"));
+		System.out.println(request.getParameter("bbs_code"));
+		
+		// 댓글 가져오기
+		List<Map<String, Object>> commentList = service.commentLoad(map);
+		
+		return commentList;
+	}
 	
+	@RequestMapping("/commentinsert.ajax")
+	@ResponseBody
+	public int commentInsert(@RequestParam(name="bbs_code") String bbs_code
+			, @RequestParam(name="user_id") String user_id
+			, @RequestParam(name="content") String content
+			)
+	{
+		// USER의 CODE 알아내기
+		Map<String, String> idMap = new HashMap<String, String>();
+		idMap.put("id", user_id);
+		
+		Map<String, Object> selectResult = service.selectUserId(idMap);
+		
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("bbs_code", bbs_code);
+		map.put("user_code", (String)selectResult.get("USER_CODE"));
+		map.put("content", content);
+		
+		// 댓글 insert
+		int result = service.commentInsert(map);
+		
+		return result;
+	}
+	
+	@RequestMapping("/commentdelete.ajax")
+	public int commentDelete(@RequestParam(name="bbs_cmt_code") String bbs_cmt_code)
+	{
+		int result = 0;
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("bbs_cmt_code", bbs_cmt_code);
+		
+		result = service.commentDelete(map);
+		
+		return result;
+	}
 }

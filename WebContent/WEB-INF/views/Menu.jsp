@@ -6,7 +6,7 @@
 %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light rounded site-header sticky-top py-1">
-    <a class="navbar-brand" href="main"><img src="<%=cp%>/img/cat_main.jpg" style="width: 60px; margin-left: 30px;"></a>
+    <a class="navbar-brand" href="<%=cp %>/main"><img src="<%=cp%>/img/cat_main.jpg" style="width: 60px; margin-left: 30px;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,7 +17,7 @@
           <a class="nav-link" href="<%=cp %>/introduce">소개<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="catManage">길냥이관리<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<%=cp %>/cat" id="catManage">길냥이관리<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">입양&실종</a>
@@ -56,9 +56,9 @@
 <script type="text/javascript">
 // 카카오 맵 객체 생성
 var geocoder = new kakao.maps.services.Geocoder();
-var si = "서울";
-var gu = "마포구";
-var dong = "서교동";
+var si = null;
+var gu = null;
+var dong = null;
 
 // 현 위치를 알아내는 스크립트
 // 브라우저가 위치 정보를 제공하는지 물어봄
@@ -68,7 +68,10 @@ if (navigator.geolocation)
 }
 else
 {
-	
+	alert("in");
+	si = "서울";
+	gu = "마포구";
+	dong = "서교동";	
 	var juso = "\"" + si + " " + gu + " " + dong + "\"";
 	
 	$("#loc").text(juso);
@@ -97,6 +100,21 @@ function result(info)
 		$("#loc").text(juso);
 		break;
 	};
+	
+	$.ajax(
+	{
+		url: 'checkCount'
+		,type: 'get'
+		,data: {'gu':gu, 'dong':dong}
+		,success : function(data)
+		{
+			$("#catCount").text(data + "마리");
+		}
+	});
+	console.log(gu + "," + dong);
+
+	$("#catCount").attr("href", "<%=cp %>/cat?gu=" + gu + "&dong=" + dong);
+	$("#catManage").attr("href", "<%=cp %>/cat?gu=" + gu + "&dong=" + dong);
 };
 
 function handleError(err) 
@@ -132,25 +150,6 @@ function fn_moveToLogin()
 {
 	window.location.href="login";
 } */
-
-$(document).ready(function()
-{	
-	$.ajax(
-	{
-		url: 'checkCount'
-		,type: 'get'
-		,data: {'gu':gu, 'dong':dong}
-		,success : function(data)
-		{
-			$("#catCount").text(data + "마리");
-		}
-	});
-	
-
-	$("#catCount").attr("href", "cat?gu=" + gu + "&dong=" + dong);
-	$("#catManage").attr("href", "cat?gu=" + gu + "&dong=" + dong);
-	
-});
 
 
 </script>
