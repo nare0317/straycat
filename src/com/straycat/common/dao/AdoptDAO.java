@@ -35,5 +35,11 @@ public interface AdoptDAO
 	// 입양 게시글 상태 변경 메소드
 	public int changeStatus(String adt_proc, String adt_code);
 	
+	// 추천수 조회 메소드
+	public int countLike(String adt_code);
+	
+	// 댓글수 조회 메소드 
+	public int countComment(String adt_code);
+	
 
 }

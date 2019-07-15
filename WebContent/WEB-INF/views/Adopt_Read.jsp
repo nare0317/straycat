@@ -65,7 +65,7 @@
 		
 	<!-- ★★★★★헤더 + breadcrumbs★★★★★ -->
 
-	<section class="header container-fluid">
+	<section class="header container">
 		<div class="header-title">
 			<h2 class="h2">입양<span class="sub-title">입양모집글</span></h2>
 		</div>
@@ -100,14 +100,14 @@
 		</div>
 		
 		<div class="post-head row">
-			<div class="col-lg-6">
+			<div class="col-lg-9">
 				<!-- 작성자아이디, 작성일시, 조회수 -->
 				<ul class="list-inline">
 					<li class="list-inline-item g-mx-4">${post.USER_NICKNAME }
 					<li class="list-inline-item g-mx-4">|</li>
-					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item">${post.POST_DATE }</li>			
+					<li id="timestamp" data-timestamp="2019-03-06 16:26:27" class="list-inline-item">${post.POST_DATE }</li>			
 					<li class="list-inline-item g-mx-4">|</li>
-					<li class="list-inline-item g-mx-4"><span class="icon-mouse font11"></span>조회수</li>
+					<li class="list-inline-item g-mx-4"><span class="icon-mouse font11"></span>${post.HIT_COUNT }</li>
 				</ul>
 			</div>
 			
@@ -116,7 +116,7 @@
 			<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
 				<div class="col-md-2 offset-md-4" align="right">
 					<button class="btn btn-secondary btn-sm" id="modify-btn">수정</button>
-					<button class="btn btn-secondary btn-sm" id="delete-btn">삭제</button>
+					<button class="btn btn-secondary btn-sm" id="delete-btn" disabled="disabled">삭제</button>
 				</div>
 			</c:if>	
 			
@@ -239,6 +239,12 @@
 								<p>${post.CAT_ECT2 }</p>
 							</td>
 						</tr>
+						<tr>
+							<th class="align-top">입양보내는 이유</th>
+							<td class="align-top">
+								<p>${post.ADT_REASON }</p>
+							</td>
+						</tr>
 					</table>
 				
 					
@@ -302,7 +308,7 @@
 					</ul>
 			</div>
 			<button class="btn_like">
-				<span class="fas fa-thumbs-up"></span><span class="text"> 추천<strong>5</strong></span>
+				<span class="fas fa-thumbs-up"></span><span class="text"> 추천<strong>${post.LIKE_COUNT }</strong></span>
 			</button>
 		</div>
 	</section>

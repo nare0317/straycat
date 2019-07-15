@@ -165,9 +165,17 @@ public class AdoptServiceImpl implements AdoptService
 
 		try
 		{
-			post = dao.readAdopt(adt_code);
-
 			// 조회수 증가 메소드 추가해야함.
+			
+			// 게시글 내용 가져옴.
+			post = dao.readAdopt(adt_code);
+			
+			// 게시글 내용에 추천수 추가 
+			post.put("LIKE_COUNT", dao.countLike(adt_code));
+			
+			// 게시글 내용에 댓글수 추가
+			post.put("CMT_COUNT", dao.countComment(adt_code));
+			
 
 		} catch (Exception e)
 		{

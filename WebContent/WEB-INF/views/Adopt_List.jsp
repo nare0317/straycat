@@ -23,15 +23,13 @@
 
 	$(document).ready(function()
 	{
-		
 		$("#searchAddress").click(function()
 		{
 			//alert("성공");
 			$(location).attr("href", "<%=cp%>/adopt?searchGu=" + $("#gu").val() + "&searchDong=" + $("#dong").val());
 		});
+	});
 
-	}); 
-	
 </script>
 
 </head>
@@ -151,7 +149,7 @@
 						<!-- 게시글 상태에 따라 색상 변경 -->
 						<c:choose>
 						<c:when test="${list.ADT_PROC eq '신규등록'}">
-							<div class="cp-status" style="background-color: #f1c40f; color: white;">
+							<div class="cp-status" style="background-color: #f78fb3; color: white;">
 								<p id="adt_proc_tag">${list.ADT_PROC }</p>
 							</div>
 						</c:when>
@@ -171,7 +169,7 @@
 							</div>
 						</c:when>
 						<c:when test="${list.ADT_PROC eq '입양확정'}">
-							<div class="cp-status" style="background-color: #bdc3c7;  color: white;">
+							<div class="cp-status" style="background-color: #596275;  color: white;">
 								<p id="adt_proc_tag">${list.ADT_PROC }</p>
 							</div>
 						</c:when>
@@ -196,6 +194,9 @@
 									<li>${list.CAT_AGE }</li>
 									<li>${list.CAT_ADDRESS}</li>
 									<li>${list.POST_DATE }</li>
+									<li><i class="fas fa-eye" >${list.HIT_COUNT }</i></li>
+									<%-- <li><i class="far fa-thumbs-up"> ${list.LIKE_COUNT }</i></li> --%>
+									<%-- <li><i class="far fa-comment-dots">${list.HIT_COUNT }</i></li> --%>
 								</ul>	
 							</div>
 						</div>

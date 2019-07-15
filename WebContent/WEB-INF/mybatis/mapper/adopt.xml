@@ -26,6 +26,7 @@
 	     , U.USER_NAME AS USER_NAME
 	     , U.TEL AS USER_TEL
 	     , U.EMAIL AS USER_EMAIL
+         , A.HIT_COUNT AS HIT_COUNT
 	FROM ADT_REG A 
 	LEFT JOIN USER_REG U
 	ON A.USER_CODE = U.USER_CODE
@@ -66,6 +67,7 @@
 	     , U.USER_NAME AS USER_NAME
 	     , U.TEL AS USER_TEL
 	     , U.EMAIL AS USER_EMAIL
+         , A.HIT_COUNT AS HIT_COUNT
 	FROM ADT_REG A 
 	LEFT JOIN USER_REG U
 	ON A.USER_CODE = U.USER_CODE
@@ -148,6 +150,8 @@
 	     , U.USER_NAME AS USER_NAME
 	     , A.TEL AS USER_TEL
 	     , A.EMAIL AS USER_EMAIL
+	     , A.ADT_REASON AS ADT_REASON
+         , A.HIT_COUNT AS HIT_COUNT
 	FROM ADT_REG A 
 	LEFT JOIN USER_REG U
 	ON A.USER_CODE = U.USER_CODE
@@ -163,6 +167,20 @@
 	ON A.ADT_PROC_CODE = AP.ADT_PROC_CODE
 	JOIN ADT_TYPE AT
 	ON A.ADT_TYPE = AT.ADT_TYPE_CODE
+	WHERE ADT_CODE = #{adt_code}
+</select>
+
+<!-- 추천수 조회 쿼리문 -->
+<select id="countLike" parameterType="java.lang.String" resultType="java.lang.Integer">
+	SELECT COUNT(*) AS LIKE_COUNT 
+	FROM ADT_LIKE
+	WHERE ADT_CODE = #{adt_code}
+</select>
+
+<!-- 댓글수 조회 쿼리문 --> 
+<select id="countComment" parameterType="java.lang.String" resultType="java.lang.Integer">
+	SELECT COUNT(*) AS CMT_COUNT
+	FROM ADT_CMT
 	WHERE ADT_CODE = #{adt_code}
 </select>
 

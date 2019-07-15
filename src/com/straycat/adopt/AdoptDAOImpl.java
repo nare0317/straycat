@@ -208,6 +208,7 @@ public class AdoptDAOImpl implements AdoptDAO
 		return dataCount;
 	}
 
+	// 입양게시글 상태 변경 메소드
 	@Override
 	public int changeStatus(String adt_proc, String adt_code)
 	{
@@ -226,6 +227,40 @@ public class AdoptDAOImpl implements AdoptDAO
 			throw e;
 		}
 		return result;
+	}
+
+	// 추천수 조회 메소드
+	@Override
+	public int countLike(String adt_code)
+	{
+		int count = 0; 
+		try
+		{
+			count = sqlSession.selectOne("adopt.countLike", adt_code);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return count;
+	}
+
+	// 댓글수 조회 메소드
+	@Override
+	public int countComment(String adt_code)
+	{
+		int count = 0; 
+		try
+		{
+			count = sqlSession.selectOne("adopt.countComment", adt_code);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return count;
 	}
 
 	
