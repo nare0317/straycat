@@ -36,7 +36,7 @@
 		<div class="breadcrumbs">
 			<ul>
 				<li class="list-inline-item">
-					<a class="text-dark" href="<%=cp%>/Main.jsp"><i class="fas fa-home"></i></a>
+					<a class="text-dark" href="<%=cp%>/main"><i class="fas fa-home"></i></a>
 					<span class="breadcrumb-divider">></span>
 				</li>
 				<li class="list-inline-item">
@@ -70,7 +70,7 @@
 					<li class="list-inline-item g-mx-4">|</li>
 					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item">${article.POST_DATE }</li>			
 					<li class="list-inline-item g-mx-4">|</li>
-					<li class="list-inline-item g-mx-4">${article.HIT_COUNT }</li>
+					<li class="list-inline-item g-mx-4">조회수 ${article.HITCOUNT }</li>
 				</ul>
 			</div>
 			

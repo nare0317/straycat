@@ -136,7 +136,6 @@ public class BoardController
 		map.put("articleNum", articleNum);
 		map.put("searchKey", searchKey);
 		map.put("searchValue", searchValue);
-		
 		Map<String, Object> article = service.articleLoad(map);
 		
 		// 데이터 수 세기(다음 글 가져오기에서 사용할 변수)
@@ -152,7 +151,6 @@ public class BoardController
 		{
 			map.put("articleNum", articleNum-1);
 			prevArticle = service.articleLoad(map);
-			
 		}
 		else
 		{
@@ -178,6 +176,11 @@ public class BoardController
 		// 댓글 가져오기
 		List<Map<String, Object>> commentList = service.commentLoad(commentMap);
 		
+		// 조회수 증가 처리를 위해 게시물 코드 값을 받음
+		Map<String, String> updateMap = new HashMap<String, String>();
+		updateMap.put("CODE", (String)article.get("CODE"));
+		service.viewCountUpdate(updateMap);
+		
 		model.addAttribute("article", article);
 		model.addAttribute("prevArticle", prevArticle);
 		model.addAttribute("nextArticle", nextArticle);
@@ -186,6 +189,7 @@ public class BoardController
 		return "Board_Read";
 	}
 	
+	// 댓글 업데이트 메소드
 	@RequestMapping("/commentupdate")
 	@ResponseBody
 	public int commentUpdate(HttpServletRequest request)
@@ -199,6 +203,7 @@ public class BoardController
 		return result;
 	}
 	
+	// 댓글 삭제 메소드
 	@RequestMapping("/commentdelete")
 	public int commentDelete(@RequestParam(name="bbs_cmt_code") String bbs_cmt_code)
 	{
@@ -212,6 +217,7 @@ public class BoardController
 		return result;
 	}
 	
+	// 댓글 추가 메소드
 	@RequestMapping("/commentwrite")
 	@ResponseBody
 	public int commentInsert(@RequestParam(name="bbs_code") String bbs_code
@@ -236,23 +242,6 @@ public class BoardController
 		int result = service.commentInsert(map);
 		
 		return result;
-	}
-	
-	///////////////////////아래의 메소들은 사용하지 않음///////////////////////////////
-	
-	@RequestMapping(value="/commentload.ajax")
-	@ResponseBody
-	public List<Map<String, Object>> commentLoad(HttpServletRequest request)
-	{
-		// 게시판 리스트에서 가져온 articleNum, searchKey, searchValue 정보를 가져옴
-		Map<String, Object> commentMap = new HashMap<>();
-		commentMap.put("bbs_code", request.getParameter("bbs_code"));
-		System.out.println(request.getParameter("bbs_code"));
-		
-		// 댓글 가져오기
-		List<Map<String, Object>> commentList = service.commentLoad(commentMap);
-		
-		return commentList;
 	}
 	
 	
