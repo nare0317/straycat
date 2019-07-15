@@ -103,6 +103,23 @@ public class BoardDAOImpl implements BoardDAO
 		return result;
 	}
 
+	@Override
+	public int update(String id, Object value)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = sqlSession.update(id, value);
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		return result;
+	}
+
 	
 	
 	

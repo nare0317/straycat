@@ -214,4 +214,10 @@
 	DELETE FROM BBS_CMT WHERE BBS_CMT_CODE = #{bbs_cmt_code}
 </delete>
 
+<update id="commentUpdate">
+	UPDATE BBS_CMT
+	SET CONTENT = #{content}, BBS_CMT_DATE = SYSDATE
+	WHERE BBS_CMT_CODE = #{bbs_cmt_code}
+</update>
+
 </mapper>

@@ -18,4 +18,6 @@ public interface BoardDAO
 	
 	public int delete(String id, Object value);
 	
+	public int update(String id, Object value);
+	
 }
