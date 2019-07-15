@@ -1,5 +1,6 @@
 package com.straycat.board;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -97,7 +98,7 @@ public class BoardServiceImpl implements BoardService
 		return list;
 	}
 	
-	// 댓글 수를 가져오는 메소
+	// 댓글 수를 가져오는 메소드
 	@Override
 	public int commentCount(Map<String, Object> map)
 	{
@@ -114,6 +115,58 @@ public class BoardServiceImpl implements BoardService
 		
 		return result;
 	}
+
+	// 댓글을 추가하는 메소드
+	@Override
+	public int commentInsert(Map<String, String> map) 
+	{
+		int result = 0;
+		
+		try 
+		{
+			result = dao.insert("board.commentInsert", map);
+		} catch (Exception e) 
+		{
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+
+	// 이용자의 USER_CODE를 알아내는 메소드
+	@Override
+	public Map<String, Object> selectUserId(Map<String, String> map) 
+	{
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		try 
+		{
+			result = dao.selectOne("board.selectUser", map);
+		} catch (Exception e) 
+		{
+			System.out.println(e.toString());
+		}
+		
+		
+		return result;
+	}
+	
+	// 댓글을 삭제하는 메소드
+	@Override
+	public int commentDelete(Map<String, String> map)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = dao.delete("board.commentDelete", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+	}
+	
 	
 	
 }
