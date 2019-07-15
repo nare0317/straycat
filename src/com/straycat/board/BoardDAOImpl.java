@@ -85,6 +85,24 @@ public class BoardDAOImpl implements BoardDAO
 		return result;
 	}
 
+	@Override
+	public int delete(String id, Object value)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = sqlSession.delete(id, value);
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		
+		return result;
+	}
+
 	
 	
 	

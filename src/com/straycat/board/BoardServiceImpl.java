@@ -150,6 +150,23 @@ public class BoardServiceImpl implements BoardService
 		return result;
 	}
 	
+	// 댓글을 삭제하는 메소드
+	@Override
+	public int commentDelete(Map<String, String> map)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = dao.delete("board.commentDelete", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+	}
+	
 	
 	
 }

@@ -94,8 +94,6 @@
 			
 		</div>
 		
-		
-		
 		<!-- ★★★★★ 신고/공유/추천 버튼 ★★★★★★ -->
 		<div class="post-footer row justify-content-center">
 			<button class="btn_report" onclick=""><span class="fa fa-ban"></span> 신고</button>
@@ -103,9 +101,7 @@
 			<div class="post_share">
 					<button class="btn_share" data-toggle="dropdown"><span class="fa fa-share-square-o"></span> 공유</button>
 					<ul class="dropdown-menu share">
-						<li><a href="javascript:;" onclick="prompt('주소를 복사하세요.')"><span class="fa fa-link"></span>주소복사</a></li>
-						<li><a href="" class="facebook" target="_blank"><span class="fa fa-facebook"></span>Facebook</a></li>
-						<li><a href="" class="twitter" target="_blank"><span class="fa fa-twitter"></span>Twitter</a></li>
+						<li><a href="" onclick=""><span class="fa fa-link"></span>주소복사</a></li>
 					</ul>
 			</div>
 			<button class="btn_like">
@@ -277,8 +273,10 @@ function getCommentList(){
 				// 세션 아이디(input type="hidden")와 댓글 아이디가 같으면 수정/삭제 버튼을 표시함
 				if ($("#user_id").val() == data[i].ID)
 				{
-					html += "<button type='button' id='comment_modify' class='btn btn-primary btn-sm'>수정</button>";
-					html += "<button type='button' id='comment_delete' class='btn btn-secondary btn-sm'>삭제</button></h6>";
+					html += "<button type='button' class='comment_modify' value='" + data[i].BBS_CMT_CODE + "'>수정</button>";
+					html += "<button type='button' class='comment_delete' value='" + data[i].BBS_CMT_CODE + "'>삭제</button></h6>";
+					/* html += "<button type='button' class='btn btn-primary btn-sm comment_modify' value='" + data[i].BBS_CMT_CODE + "'>수정</button>";
+					html += "<button type='button' class='btn btn-secondary btn-sm comment_delete' value='" + data[i].BBS_CMT_CODE + "'>삭제</button></h6>"; */
 					html += "<input type='hidden' id='comment_id' value=" + data[i].BBS_CMT_CODE + ">";
 				}
 				html += "</h6>";
@@ -304,20 +302,27 @@ function getCommentList(){
 	});
 }
 
-$.(function() {
+$(document).ready(function() {
 	// 댓글 수정 버튼 클릭
-	$("#comment_modify").click(function() {
-		
+	$(".comment_modify").click(function() {
+		alert("클릭");
+	})
+	
+	$(".btn_report").click(function()
+	{
+		alert("클릭");
 	})
 	
 	// 댓글 삭제 버튼 클릭
-	$("#comment_delete").click(function() {
+	$(".comment_delete").click(function() {
+		alert("클릭");
+		/*
 		if (confirm("정말로 삭제하시겠습니까?"))
 		{
 			$.ajax({
 				type: "GET",
-				url: "<c:url value='/commentdelete'>",
-				data: {"bbs_cmt_code":$("#bbs_cmt_code").val()},
+				url: "<c:url value='/commentdelete.ajax'/>",
+				data: {"bbs_cmt_code":$(this).val()},
 				success: function(data) {
 					if (data>0)
 					{
@@ -327,6 +332,7 @@ $.(function() {
 				}
 			})
 		}
+		*/
 	})
 })
 </script>

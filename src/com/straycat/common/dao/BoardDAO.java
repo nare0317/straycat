@@ -16,4 +16,6 @@ public interface BoardDAO
 	
 	public int insert(String id, Object value);
 	
+	public int delete(String id, Object value);
+	
 }

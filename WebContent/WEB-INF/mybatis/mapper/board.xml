@@ -210,4 +210,8 @@
 	WHERE ID=#{id}
 </select>
 
+<delete id="commentDelete">
+	DELETE FROM BBS_CMT WHERE BBS_CMT_CODE = #{bbs_cmt_code}
+</delete>
+
 </mapper>

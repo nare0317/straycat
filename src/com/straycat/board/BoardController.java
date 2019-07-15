@@ -217,4 +217,17 @@ public class BoardController
 		
 		return result;
 	}
+	
+	@RequestMapping("/commentdelete.ajax")
+	public int commentDelete(@RequestParam(name="bbs_cmt_code") String bbs_cmt_code)
+	{
+		int result = 0;
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("bbs_cmt_code", bbs_cmt_code);
+		
+		result = service.commentDelete(map);
+		
+		return result;
+	}
 }
