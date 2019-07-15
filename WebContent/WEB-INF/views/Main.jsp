@@ -50,13 +50,13 @@
 				    <div class="row">
 				      <c:forEach var="adoptList" items="${list }" begin="1" end="3">
 					      <div class="col-lg-4 text-center">
-					      		<img src="<%=cp%>/img/straycat.jpg" class="catImg">
+					      		<img src="img/straycat.jpg" class="catImg">
 					        <h2>${adoptList.CAT_NAME }</h2>
 					        <p>종 : ${adoptList.CAT_TYPE }</p>
 					        <p>성별 : ${adoptList.CAT_SEX }</p>
 					        <p>나이 : ${adoptList.CAT_AGE }</p>
 					        <p>사는곳 : ${adoptList.CAT_ADDRESS }</p><br>
-					        <p><a class="btn btn-secondary" href="adopt_read?id=${adoptList.ADT_CODE }" role="button">View details »</a></p>
+					        <p><a class="btn btn-secondary" href="<%=cp %>/adopt_read?id=${adoptList.ADT_CODE }" role="button">View details »</a></p>
 					      </div><!-- /.col-lg-4 -->
 				      </c:forEach>
 				    </div><!-- /.row -->
