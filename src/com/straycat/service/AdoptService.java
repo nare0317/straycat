@@ -17,7 +17,7 @@ public interface AdoptService
 	public Map<String, Object> searchUserInfo(String user_id);
 	
 	// 입양게시글 열람
-	public Map<String, Object> readAdopt(String id);
+	public Map<String, Object> readAdopt(String adt_code);
 	
 	// 구 리스트 조회 
 	public List<Map<String, Object>> listGu();
@@ -28,8 +28,8 @@ public interface AdoptService
 	// 조회된 데이터 개수 출력
 	public int dataCount(String searchGu, String searchDong);
 	
-	// 게시글 상태 변경
-	//public int changeProcess(String adt_proc);
+	// 입양 게시글 상태 변경
+	public int changeStatus(String adt_proc, String adt_code);
 
 	
 	

@@ -80,6 +80,29 @@ div {
 		max-width: 500px;
 	}
 	
+	.cat-photo-wrap
+	{
+		position: relative;
+	}
+	
+	.cp-status
+	{
+		position: absolute;
+		top: 0%;
+		left: 0%;
+		padding: 5px 7px;
+		background-color: white;
+		text-align: center;
+		border-radius: 3px;
+	}
+	
+	.cp-status > p
+	{
+		margin-bottom: 0px;
+		font-family: 'Nanum Gothic Coding';
+		font-size: 11pt;
+		font-weight: bold;
+	}	
 	.card-title
 	{
 		padding-left: 0px;

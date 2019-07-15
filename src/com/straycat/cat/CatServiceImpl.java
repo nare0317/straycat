@@ -20,7 +20,7 @@ public class CatServiceImpl implements CatService
 	private CatDAO dao;
 
 	@Override
-	public Map<String, Object> listCat(Map<String, Object> map)
+	public List<Map<String, Object>> listCat(Map<String, Object> map)
 	{
 		List<Map<String,Object>> list = null;
 		List<Map<String,Object>> gu = null;
@@ -28,17 +28,13 @@ public class CatServiceImpl implements CatService
 		try
 		{
 			list = dao.listCat(map);
-			gu = dao.listGu();
-			
-			map.put("list", list);
-			map.put("gu", gu);
 
 		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 
-		return map;
+		return list;
 	}
 	
 	// 구 셀렉트박스 리스트 조회 
@@ -57,25 +53,7 @@ public class CatServiceImpl implements CatService
 		}
 		return list;
 	}
-	
 
-	// 동 셀렉트박스 리스트 조회 
-	@Override
-	public List<Map<String, Object>> listDong(String selectedGu) 
-	{
-		List<Map<String, Object>> list = null;
-
-		try 
-		{
-			list = dao.listDong(selectedGu);
-
-		} catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-		return list;
-	}
-	
 	@Override
 	public int addCat(Map<String, Object> param)
 	{
@@ -131,8 +109,6 @@ public class CatServiceImpl implements CatService
 		return dao.selectActList(id);
 	}	
 	
-	
-
 	// 지역 검색 후 조회된 데이터 갯수 조회
 	@Override
 	public int dataCount(String searchGu, String searchDong)
@@ -149,6 +125,22 @@ public class CatServiceImpl implements CatService
 		return dataCount;
 	}
 
+
+	@Override
+	public List<Map<String, Object>> listDong(String selectedGu)
+	{
+		List<Map<String, Object>> list = null;
+		
+		try
+		{
+			list = dao.listDong(selectedGu);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 	
 	
 }

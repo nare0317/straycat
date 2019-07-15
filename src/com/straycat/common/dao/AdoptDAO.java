@@ -21,7 +21,7 @@ public interface AdoptDAO
 	public Map<String, Object> searchUserInfo(String user_id);
 	
 	// 입양 모집글 열람 메소드
-	public Map<String, Object> readAdopt(String id);
+	public Map<String, Object> readAdopt(String adt_code);
 	
 	// 셀렉트 박스 내 구 리스트 조회 메소드
 	public List<Map<String, Object>> listGu();
@@ -32,6 +32,14 @@ public interface AdoptDAO
 	// 리스트 개수 조회 메소드 
 	public int dataCount(String searchGu, String searchDong);
 	
+	// 입양 게시글 상태 변경 메소드
+	public int changeStatus(String adt_proc, String adt_code);
+	
+	// 추천수 조회 메소드
+	public int countLike(String adt_code);
+	
+	// 댓글수 조회 메소드 
+	public int countComment(String adt_code);
 	
 
 }

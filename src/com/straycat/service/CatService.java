@@ -12,8 +12,8 @@ public interface CatService
 	// 길냥이 등록
 	public int addCat(Map<String, Object> map);
 	
-	// 입양게시판 리스트 조회
-	public Map<String, Object> listCat(Map<String, Object> map);
+	// 길냥이 관리 게시판 리스트 조회
+	public List<Map<String, Object>> listCat(Map<String, Object> map);
 	
 	// 구 리스트 조회 
 	public List<Map<String, Object>> listGu();
