@@ -263,8 +263,25 @@ public class AdoptDAOImpl implements AdoptDAO
 		return count;
 	}
 
+
 	
-	
+	// 조회수 증가 메소드 
+	@Override
+	public int addHitCount(String adt_code)
+	{
+		int result = 0; 
+		
+		try
+		{
+			result = sqlSession.update("adopt.addHitCount", adt_code);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return result; 
+	}
 	
 	
 }

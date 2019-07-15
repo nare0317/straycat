@@ -206,5 +206,16 @@
 	WHERE ADT_CODE = #{adt_code, jdbcType=VARCHAR}
 </update>
 
+<!-- 조회수 증가 쿼리문(열람) -->
+<update id="addHitCount" parameterType="java.lang.String">
+	UPDATE ADT_REG
+	SET HIT_COUNT = HIT_COUNT+1
+	WHERE ADT_CODE = #{adt_code}
+</update>
+
+<!-- 게시글 수정  -->
+<!-- <update id="">
+	
+</update> -->
 
 </mapper>

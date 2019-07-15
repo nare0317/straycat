@@ -41,5 +41,8 @@ public interface AdoptDAO
 	// 댓글수 조회 메소드 
 	public int countComment(String adt_code);
 	
+	// 조회수 증가 메소드 
+	public int addHitCount(String adt_code);
+	
 
 }
