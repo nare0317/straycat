@@ -4,7 +4,7 @@ $(document).ready(function() {
 	//var startPosition = parseInt($(".section-1").css('height'));
 	//console.log(startPosition);
 
-	$(".slidemenu").css("top", '165px');
+	$(".slidemenu").css("top", '431px');
 	
 	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
 	var floatPosition = parseInt($(".slidemenu").css('top'));
@@ -32,3 +32,14 @@ $(document).ready(function() {
 	}).scroll();
 	
 });
+
+function login_need()
+{
+	alert("로그인이 필요합니다.");
+	window.location.href="login";
+}
+
+function write_func()
+{
+	window.location.href="catregistration";
+}

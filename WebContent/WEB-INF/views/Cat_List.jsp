@@ -8,13 +8,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>입양리스트</title>
+<title>길냥이리스트</title>
 
 <!-- Head.jsp  -->
 <c:import url="Head.jsp"></c:import>
 
 <!-- CSS 파일 -->
-<link rel="stylesheet" href="<%=cp%>/css/view/adopt_list.css">
+<link rel="stylesheet" href="<%=cp%>/css/view/cat_list.css">
 
 <!-- JS 파일  -->
 <script src="<%=cp %>/js/view/adopt_list.js"></script>
@@ -27,7 +27,7 @@
 		$("#searchAddress").click(function()
 		{
 			//alert("성공");
-			$(location).attr("href", "<%=cp%>/cat?searchGu=" + $("#gu").val() + "&searchDong=" + $("#dong").val());
+			$(location).attr("href", "<%=cp%>/cat?gu=" + $("#gu").val() + "&dong=" + $("#dong").val());
 		});
 
 	}); 
@@ -74,8 +74,8 @@
 			<!-- row2 -->
 			<div class="row">
 				<!-- 구 선택 -->
-				<div class="col-lg-4">
-					<select class="custom-select">
+				<div class="col-lg-3">
+					<select class="custom-select" id="gu" onchange="dongList();">
 						<option selected>구 선택</option>
 						<c:forEach var="gu" items="${gu }">
 							<option value="${gu.GU }">${gu.GU }</option>
@@ -92,15 +92,9 @@
 				<div class="col-lg-2">
 					<button type="button" class="btn btn-primary" id="searchAddress">조회</button>
 				</div>
-			</div>
-			
-			<hr>
-			
-			<!-- row3 -->
-			<div class="row">
-				<h5 class="col-lg-8">검색된 고양이<span> 5 </span>마리</h5>
 				
-				<div class="col-lg-4 text-right write">
+						
+				<div class="col-lg-3 offset-lg-1 text-right write">
 					<c:choose>
 	               	<c:when test="${sessionScope.user_id != null }">
 						<input type="button" class="btn btn-primary btn-lg" value="길냥이등록" id="cat_write" onclick="javascript: write_func();">
@@ -110,7 +104,13 @@
 					</c:otherwise>
 					</c:choose>
 				</div>
+				
 			</div>
+			
+			<hr>
+			
+				<h5 class="col-lg-8">검색된 고양이<span> ${dataCount } </span>마리</h5>
+		
 			
 		</div>
 		
@@ -139,10 +139,12 @@
 							<!-- 고양이 정보 -->
 							<div class="card-text">
 								<ul class="cat-info-list">
+									<li>${list.CAT_CODE }</li>
 									<li>${list.CAT_TYPE }(${list.CAT_SEX })</li>
 									<li>${list.CAT_AGE }</li>
 									<li>${list.CAT_ADDRESS}</li>
 									<li>${list.POST_DATE }</li>
+									<li>${list.CAT_STATUS }</li>
 								</ul>	
 							</div>
 						</div>
@@ -161,7 +163,7 @@
 						<div class="row">
 							
 							<div class="col-10" align="left">
-								<p>내가 쓴 입양글</p>
+								<p>내가 등록한 길냥이</p>
 							</div>
 							
 							<div class="col-2" align="right">
@@ -201,7 +203,7 @@
 						<div class="row">
 							
 							<div class="col-10" align="left">
-								<p>내가 쓴 입양글</p>
+								<p>내가 등록한 길냥이</p>
 							</div>
 							
 							<div class="col-2" align="right">

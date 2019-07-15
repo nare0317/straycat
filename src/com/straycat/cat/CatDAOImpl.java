@@ -37,7 +37,7 @@ public class CatDAOImpl implements CatDAO
 		}
 		
 		return list;
-	}
+	}	
 
 	@Override
 	public int addCat(Map<String, Object> map)
@@ -131,7 +131,7 @@ public class CatDAOImpl implements CatDAO
 		
 		return list;
 	}
-
+	
 	// 셀렉트 박스 옵션에 동 정보를 넣어주는 메소드
 	@Override
 	public List<Map<String, Object>> listDong(String selectedGu)

@@ -41,5 +41,5 @@ function login_need()
 
 function write_func()
 {
-	$("#cat_write").attr("href","catregistration");
+	window.location.href="catregistration";
 }

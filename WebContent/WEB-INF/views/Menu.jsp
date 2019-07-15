@@ -86,20 +86,24 @@ function callback(position)
 // 메인에 시, 구, 동을 표시함.
 function result(info)
 {	
-	for(var i = 0; i < 1; i++) 
+	var url = window.location.pathname
+	
+	if(url=="/FinalPrj/cat" || url=="/FinalPrj/main" || url=="/FinalPrj/adopt" || url=="/FinalPrj/missing" || url=="/FinalPrj/introduce")
 	{
-		var si = info[0].address.region_1depth_name;
-		var gu = info[0].address.region_2depth_name;
-		var dong = info[0].address.region_3depth_name;
-		
-		var juso = "\"" + si + " " + gu + " " + dong + "\"";
-		
-		/* $("#si").text(si);
-		$("#gu").text(gu);
-		$("#dong").text(dong); */
-		$("#loc").text(juso);
-		break;
-	};
+		for(var i = 0; i < 1; i++) 
+		{
+			var si = info[0].address.region_1depth_name;
+			var gu = info[0].address.region_2depth_name;
+			var dong = info[0].address.region_3depth_name;
+			
+			var juso = "\"" + si + " " + gu + " " + dong + "\"";
+			
+			/* $("#si").text(si);
+			$("#gu").text(gu);
+			$("#dong").text(dong); */
+			$("#loc").text(juso);
+			break;
+		};
 	
 	$.ajax(
 	{
@@ -115,6 +119,9 @@ function result(info)
 
 	$("#catCount").attr("href", "<%=cp %>/cat?gu=" + gu + "&dong=" + dong);
 	$("#catManage").attr("href", "<%=cp %>/cat?gu=" + gu + "&dong=" + dong);
+	
+	}	
+	
 };
 
 function handleError(err) 
@@ -130,26 +137,6 @@ function handleError(err)
 	var juso = "\"" + si + " " + gu + " " + dong + "\"";
 	$("#loc").text(juso);
 }
-
-// 얻은 시, 구, 동으로 등록 고양이 DB 검색
-// (작성 중)
-
-
-/* 
-$(document).ready(function()
-{
-	$("#loginBtn").unbind("click").click(function(e)
-	{
-		e.preventDefault();
-		fn_moveToLogin();
-	});
-	
-});
-
-function fn_moveToLogin()
-{
-	window.location.href="login";
-} */
 
 
 </script>
