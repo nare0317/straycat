@@ -41,3 +41,8 @@ function login_need()
 	window.location.href="login";
 }
 
+
+function write_func()
+{
+	window.location.href="catregistration";
+}

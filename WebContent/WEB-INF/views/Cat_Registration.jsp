@@ -76,7 +76,7 @@
    <!-- ★★★★★내용★★★★★ -->
    <section class="content container">
       
-      <form class="needs-validation" novalidate>
+      <form class="needs-validation" novalidate action="registration" method="GET">
       
          <!-- ★★★★ 고양이 정보 입력 ★★★★  -->
          <div class="cat-info row">
@@ -148,27 +148,42 @@
                   </div>
                </div>
                
-               <!-- 고양이 상세 종류(+사진) → Ajax 처리필요  -->
+                              <!-- 고양이 상세 종류(+사진) → Ajax 처리필요  -->
                <div class="form-group row">
-                  <label for="colFormLabel" class="col-sm-2 col-form-label"></label>
-                  <div class="col-sm-10">
+                 <!--  <label for="colFormLabel" class="col-sm-2 col-form-label"></label> -->
+                  <div class="col-sm-10 offset-sm-2">
                      <!-- 코숏고등어 -->
-                     <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline" required>
+                     <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
                          <label class="image-radio">
                            <img class="img-responsive" src="img/코숏고등어.png"/>
-                           <input type="radio" id="customRadioInline1"   name="customRadioInline1" class="custom-control-input" required>
+                           <input type="radio" id="SP2" name="cat_species" value="SP2" class="custom-control-input" required>
                         </label>
                      </div>
                      <!-- 코숏치즈 -->
                      <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
                          <label class="image-radio">
                            <img class="img-responsive" src="img/코숏치즈.png"/>
-                           <input type="radio" id="customRadioInline1"   name="customRadioInline1" class="custom-control-input" required>
+                           <input type="radio" id="SP1" name="cat_species" value="SP1"class="custom-control-input" required>
+                        </label>
+                     </div>
+                  </div>
+                  <div class="col-sm-12 offset-sm-2">
+                     <!-- 코숏카오스-->
+                     <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
+                         <label class="image-radio">
+                           <img class="img-responsive" src="img/코숏카오스.png"/>
+                           <input type="radio" id="SP3" name="cat_species" value="SP3" class="custom-control-input" required>
+                        </label>
+                     </div>
+                     <!-- 코숏삼색이 -->
+                     <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
+                         <label class="image-radio">
+                           <img class="img-responsive" src="img/코숏삼색이.png"/>
+                           <input type="radio" id="SP4" name="cat_species" value="SP4" class="custom-control-input" required>
                         </label>
                      </div>
                   </div>
                </div>
-               
                
                <!-- 특이사항 -->   
                <div class="form-group row">
@@ -201,7 +216,7 @@
          <!-- ★★★★ 임시저장 / 작성완료 버튼 ★★★★  -->
          <div id="button-section" class="text-center">
             <button id="save-btn" type="button" class="btn btn-secondary">임시저장</button>
-            <button id="submit-btn" type="button" class="btn btn-primary">작성완료</button>
+            <button id="submit-btn" type="submit" class="btn btn-primary">작성완료</button>
          </div>
          
       </form>
@@ -213,10 +228,10 @@
 
 <script type="text/javascript">
 
-$(document).ready(function()
+/* $(document).ready(function()
 {
 	$("#submit-btn").attr("href", "cat?gu=" + ${gu} + "&dong=" + ${dong});
-});
+}); */
 
 </script>
 

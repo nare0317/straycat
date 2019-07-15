@@ -17,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.straycat.service.CatService;
 
@@ -29,27 +28,47 @@ public class CatController
 	private CatService service;
 
 	
-////////////////////////////////// 고양이 리스트 부분 ////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////// 고양이 리스트 부분 ////////////////////////////////////////////////////////////////////////////////////////
 	
-	// 입양게시판 리스트 조회
+	// 길냥이관리 게시판 리스트 조회
 	@RequestMapping(value="/cat") 
 	public String selectList(Model model
+			, @RequestParam(name="searchGu", defaultValue = "") String searchGu
+			, @RequestParam(name="searchDong", defaultValue = "") String searchDong
 			, HttpServletRequest request) 
 	{
+		List<Map<String, Object>> location = null;
 		Map<String, Object> map = new HashMap<>();
+		int dataCount = 0;
 		
-		map.put("gu", request.getParameter("gu"));
-		map.put("dong", request.getParameter("dong"));
-		
-		Map<String, Object> location = service.listCat(map);
+		try
+		{
+			map.put("gu", request.getParameter("gu"));
+			map.put("dong", request.getParameter("dong"));
+			
+			location = service.listCat(map);
+			
+			dataCount = service.dataCount(searchGu, searchDong);
+			
+			List<Map<String, Object>> gu = service.listGu();
 
-		model.addAttribute("list", map.get("list"));
-	  	
+			model.addAttribute("list", location);
+			model.addAttribute("gu", gu);
+			model.addAttribute("dataCount", dataCount);
+			
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 		return "Cat_List"; 
 	}
 	
 	
-////////////////////////////////// 고양이 리스트 부분 ////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	////////////////////////////////// 고양이 리스트 부분 ////////////////////////////////////////////////////////////////////////////////////////
 
 	
 	////////////////////////////////// 고상페 페이지부분 ////////////////////////////////////////////////////////////////////////////////////////
@@ -96,22 +115,28 @@ public class CatController
 		return new ResponseEntity(json.toString(), headers, HttpStatus.CREATED);
 	}
 	
-//////////////////////////////////고상페 페이지부분 ////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////고상페 페이지부분 ////////////////////////////////////////////////////////////////////////////////////////
 	
 	
-	  // 길고양이 게시판 리스트 조회
+	  // 길고양이 등록 컨트롤러
 	  
 	  @RequestMapping(value="/registration") 
 	  public String catregistration(@RequestParam Map<String,Object> param, HttpServletRequest request, Model model) 
 	  {
 			
+		  	service.addCat(param);
+		  
 			model.addAttribute("gu", request.getParameter("gu"));
 			model.addAttribute("dong", request.getParameter("dong"));
 			
-			return "Cat_List";
+		
+			
+			return "redirect:cat";
 		  	
 	  }
 	  
+	  
+	  // 길고양이 등록 폼 컨트롤러
 	  @RequestMapping(value="/catregistration") 
 	  public String catregistrationForm(Model model) 
 	  {
@@ -123,3 +148,4 @@ public class CatController
 	  }
 	 
 }
+
