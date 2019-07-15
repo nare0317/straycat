@@ -30,7 +30,7 @@
 			</div><br>
 			<div>
 				<h4><span id="loc">"서울시 성동구 성수동"</span>에 사는 고양이</h4>
-				<h4><a id="catCount">0</a></h4>
+				<h4><a id="catCount">0 마리</a></h4>
 			</div><br>
 			
 			<div class="row">

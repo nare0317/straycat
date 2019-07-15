@@ -18,4 +18,6 @@ public interface BoardService
 	public int commentUpdate(Map<String, String> map);
 	
 	public Map<String, Object> selectUserId(Map<String, String> map); 
+	
+	public int viewCountUpdate(Map<String, String> map);
 }

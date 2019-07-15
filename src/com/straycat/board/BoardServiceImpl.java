@@ -182,5 +182,23 @@ public class BoardServiceImpl implements BoardService
 		}
 		return result;
 	}
+
+	// 조회수를 증가시키는 메소드
+	@Override
+	public int viewCountUpdate(Map<String, String> map) 
+	{
+		int result = 0;
+		
+		try 
+		{
+			result = dao.update("board.viewCountUpdate", map);
+		} catch (Exception e) 
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+	}
+	
 	
 }
