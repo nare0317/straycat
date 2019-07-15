@@ -134,8 +134,11 @@
 	     , U.NICKNAME AS USER_NICKNAME
 	     , A.RSQ_DATE AS RSQ_DATE
 	     , CT.SPECIES AS CAT_TYPE
+	     , CT.SPECIES_CODE AS CAT_TYPE_CODE
 	     , CS.SEX AS CAT_SEX
 	     , A.CAT_AGE AS CAT_AGE
+	     , AD.GU AS GU
+	     , AD.DONG AS DONG
 	     , AD.SI || ' ' || AD.GU || ' ' || AD.DONG AS CAT_ADDRESS
 	     , CA.CAT_AGE_TYPE AS CAT_AGE_TYPE
 	     , AP.ADT_PROC AS ADT_PROC
@@ -206,5 +209,35 @@
 	WHERE ADT_CODE = #{adt_code, jdbcType=VARCHAR}
 </update>
 
+<!-- 조회수 증가 쿼리문(열람) -->
+<update id="addHitCount" parameterType="java.lang.String">
+	UPDATE ADT_REG
+	SET HIT_COUNT = HIT_COUNT+1
+	WHERE ADT_CODE = #{adt_code}
+</update>
+
+<!-- 게시글 수정  -->
+<update id="updateAdopt" parameterType="map">
+	UPDATE ADT_REG
+	SET CAT_NAME = #{CAT_NAME,jdbcType=VARCHAR}
+	  , CAT_ADDRESS = #{CAT_ADDRESS,jdbcType=VARCHAR}
+	  , RSQ_DATE = #{RSQ_DATE,jdbcType=DATE}
+	  , CAT_SPECIES = #{CAT_SPECIES,jdbcType=VARCHAR}
+	  , CAT_AGE_CODE = #{CAT_AGE_TYPE,jdbcType=VARCHAR}
+	  , CAT_AGE = #{CAT_AGE_NUM,jdbcType=VARCHAR}
+	  , CAT_SEX = #{CAT_SEX,jdbcType=VARCHAR}
+	  , ADT_TYPE = #{ADT_TYPE,jdbcType=VARCHAR}
+	  , CAT_ECT1 = #{CAT_ECT1,jdbcType=VARCHAR}
+	  , CAT_ECT2 = #{CAT_ECT2,jdbcType=VARCHAR}
+	  , CAT_REP_IMG = #{CAT_REP_IMG,jdbcType=VARCHAR}
+	  , TEL = #{TEL,jdbcType=VARCHAR}
+	  , EMAIL = #{EMAIL,jdbcType=VARCHAR}
+	  , ADT_REASON = #{ADT_REASON,jdbcType=VARCHAR}
+	  , ADT_CAT_EXP = #{ADT_CAT_EXP,jdbcType=VARCHAR}
+	  , ADT_JOB = #{ADT_JOB,jdbcType=VARCHAR}
+	  , ADT_MARRIAGE = #{ADT_MARRIAGE,jdbcType=VARCHAR}
+	  , ADT_FAMILY_NUM = #{ADT_FAMILY_NUM,jdbcType=VARCHAR}
+	WHERE ADT_CODE = #{ADT_CODE,jdbcType=VARCHAR}
+</update>
 
 </mapper>

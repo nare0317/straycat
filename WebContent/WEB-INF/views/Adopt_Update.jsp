@@ -1,14 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
+   request.setCharacterEncoding("UTF-8");
+   String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>입양게시글 수정</title>
+
 <!-- Head.jsp  -->
 <c:import url="Head.jsp"></c:import>
 
@@ -17,10 +18,12 @@
 
 <!-- JS 파일 -->
 <script src="<%=cp%>/js/view/miss_write.js"></script>
+<!-- 구/동 JS 파일 수정해야해서 아래 adopt_update.js에 포함시킴 -->
+<%-- <script src="<%=cp %>/js/view/gudong.js"></script> --%>
+<script src="<%=cp %>/js/view/adopt_update.js"></script>
 
-
-<link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
-<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
+<%-- <link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
+<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script> --%>
 
 </head>
 <body>
@@ -33,7 +36,7 @@
    <section id="header" class="container ">
    
       <div id="header-title">
-         <h2 id="title">입양<span id="sub-title">게시글수정</span></h2>
+         <h2 id="title">입양<span id="sub-title">게시글작성</span></h2>
       </div>
       
       <div id="breadcrumbs">
@@ -57,7 +60,7 @@
    <!-- ★★★★★내용★★★★★ -->
    <section class="content container">
       
-      <form action="<%=cp %>/adopt_write" method="get"
+      <form action="<%=cp %>/adopt_update" method="get"
             class="needs-validation" novalidate>
       
          <!-- ★★★★ 고양이 정보 입력 ★★★★  -->
@@ -84,7 +87,7 @@
                   <label for="cat-name" class="col-sm-2 col-form-label">이름</label>
                   <div class="col-sm-4">
                      <input type="text" class="form-control" id="cat_name" name="cat_name"
-                     placeholder="ex.야옹이"  maxlength="10" required>
+                     placeholder="${post.CAT_NAME }" maxlength="10" required>
                     </div>
                 </div>
                 
@@ -93,20 +96,23 @@
                   <label for="location" class="col-sm-2 col-form-label">지역</label>
                   <label id="seoul" class="col-sm-2 col-form-label">서울시</label>
                   <div class="col-sm-3 gu-select">
+                  	 <!-- 구 선택값 hidden 엘리먼트 -->
+					 <input type="hidden" id="gu_selected" name="gu_selected" value="${post.GU }">                     
+                     
                      <select id="gu" name="gu" class="custom-select" required>   
                         <option value="">구 선택</option>
-                        <option value="마포구">마포구</option>
-                        <option value="영등포구">영등포구</option>
-                        <option value="서대문구">서대문구</option>
+                        <c:forEach var="gu" items="${gu }">
+							<option value="${gu.GU }">${gu.GU }</option>
+						</c:forEach>
                      </select>
                   </div>
                   <div class="col-sm-3">
-                     <select id="dong" name="dong" class="custom-select" required>
-                        <option value="">동 선택</option>
-                        <option value="연희동">연희동</option>
-                        <option value="연남동">연남동</option>
-                        <option value="서교동">서교동</option>
-                     </select>
+                  	  <!-- 동 선택값 hidden 엘리먼트 -->
+                  	  <input type="hidden" id="dong_selected" name="dong_selected" value="${post.DONG }">                     
+                     
+                     <select class="custom-select" id="dong" name="dong">
+						<option value="">동 선택</option>
+					</select>
                   </div>
                </div>
                
@@ -115,7 +121,7 @@
                   <label for="rsq-date" class="col-sm-2 col-form-label">구조일시</label>
                   <div class="col-sm-4">
                      <input type="text" class="form-control" id="rsq_date" name="rsq_date" 
-                     placeholder="날짜를 선택하세요." required>
+                     placeholder="${post.RSQ_DATE }" required>
                   </div>
                </div>
                
@@ -123,6 +129,16 @@
                <div class="form-group row">
                   <label for="cat-species" class="col-sm-2 col-form-label">종류</label>
                   <div class="col-sm-4">
+                   <!-- 고양이종류 선택값 hidden 엘리먼트 -->
+                  <c:choose>
+                  	 <c:when test="${post.CAT_TYPE eq 'SP1'||'SP2'||'SP3'||'SP4'||'SP5'||'SP6'||'SP7'||'SP8' }">
+                  		 <input type="hidden" id="cat_type_selected" name="cat_type_selected" value="1">
+                  	 </c:when>
+                  	 <c:otherwise>
+                  	 	 <input type="hidden" id="cat_type_selected" name="cat_type_selected" value="2">
+                  	 </c:otherwise>
+                  </c:choose>
+                  
                      <select class="custom-select" id="cat_type" name="cat_type" required>
                         <option value="" >고양이 종류 선택</option>
                         <option value="1">코리안숏헤어</option>
@@ -135,6 +151,10 @@
                <div class="form-group row">
                  <!--  <label for="colFormLabel" class="col-sm-2 col-form-label"></label> -->
                   <div class="col-sm-10 offset-sm-2">
+                     
+                     <!-- 고양이종류 선택값 hidden 엘리먼트 -->
+                  	 <input type="hidden" id="cat_species_selected" name="cat_species_selected" value="${post.CAT_TYPE_CODE }">                     
+                     
                      <!-- 코숏고등어 -->
                      <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
                          <label class="image-radio">
@@ -146,7 +166,7 @@
                      <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
                          <label class="image-radio">
                            <img class="img-responsive" src="img/코숏치즈.png"/>
-                           <input type="radio" id="SP1" name="cat_species" value="SP1"class="custom-control-input" required>
+                           <input type="radio" id="SP1" name="cat_species" value="SP1" class="custom-control-input" required>
                         </label>
                      </div>
                   </div>
@@ -172,6 +192,12 @@
                <!-- 고양이 나이 -->
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">나이</label>
+                  
+                  <!-- 고양이나이 선택값 hidden 엘리먼트 -->
+                  <input type="hidden" id="cat_age_type_selected" name="cat_age_type_selected" 
+                  value="${post.CAT_AGE_TYPE }">                     
+                  
+                  
                   <div class="col-sm-10">
                      <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="baby" name="cat_age_type" value="ADCA2" class="custom-control-input" required>
@@ -183,7 +209,7 @@
                      </div>
                      <div class="custom-control custom-control-inline col-sm-4">
                         <input type="text" class="form-control" id="cat_age_num" name="cat_age_num"
-                        placeholder="ex.2살/1개월" maxlength="10" required>
+                        placeholder="${post.CAT_AGE }" maxlength="10" required>
                      </div>
                   </div>
                </div>
@@ -216,7 +242,7 @@
                   
                </div>
                
-               <!-- 고양이 분류 -->
+               <!-- 입양 분류 -->
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">분류</label>
                   
@@ -246,6 +272,12 @@
                         <label class="custom-control-label" for="ADT4">장애있음</label>
                      </div>
                      
+                     <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="ADT5" name="adt_type" value="ADT5"
+                        class="custom-control-input" required>
+                        <label class="custom-control-label" for="ADT5">해당없음</label>
+                     </div>
+                     
                   </div>
                   
                </div>
@@ -256,18 +288,18 @@
                      특이사항</label>
                   <div class="col-sm-10">
                      <textarea class="form-control" id="cat_etc1" name="cat_etc1"
-                     placeholder="고양이의 특징이나 생김새에 대해 자세히 기술해주세요. 고양이를 찾는데 큰 도움이 됩니다."
+                     placeholder="${post.CAT_ECT1 }"
                      rows="7" maxlength="1000" required></textarea>
                   </div>
                </div>
                <br>
                
-               <!-- 기타사항 -->
+               <!-- 건강사항 -->
                <div class="form-group row">
-                  <label for="colFormLabel" class="col-sm-2 col-form-label">기타사항</label>
+                  <label for="colFormLabel" class="col-sm-2 col-form-label">건강사항</label>
                   <div class="col-sm-10">
                      <textarea class="form-control" id="cat_etc2" name="cat_etc2"
-                     placeholder="고양이를 잃어버렸을 때의 상황, 고양이가 있을 것으로 예상되는 장소 등을 자세히 적어주시기 바랍니다.사례금이 있으실 경우, 사례금에 대한 내용도 작성해주세요."
+                     placeholder="${post.CAT_ECT2 }"
                      rows="7" maxlength="1000" required></textarea>
                   </div>
                </div>
@@ -292,11 +324,15 @@
             <!------------------ 작성자정보 등록 폼 ----------------->
             <div class="col-md-7 offset-md-2">
             
+            	<!-- 아이디(hidden) -->
+            	<input type="hidden" id="user_id" name="user_id" value="${sessionScope.user_id }">
+            
                <!-- 이름(수정X)  -->
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-2 col-form-label">이름</label>
                   <div class="col-sm-3">
-                     <input type="text" readonly="readonly" class="form-control" id="name" name="name" placeholder="임나래" >
+                     <input type="text" readonly="readonly" class="form-control" id="name" name="name" 
+                     placeholder="${post.USER_NAME }">
                   </div>
                </div>
                
@@ -305,8 +341,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">연락처</label>
                   <div class="col-sm-5">
                      <input type="text" class="form-control" id="tel" name="tel" 
-                     placeholder="010-1234-5678" value="010-1234-5678">
-                   	<!-- 전화번호,이메일 value값을 userId로 찾아서 넣어줘야함.. -->
+                     placeholder="${post.USER_TEL}" value="${post.USER_TEL}">
                   </div>
                </div>
                
@@ -315,7 +350,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">이메일</label>
                   <div class="col-sm-6">
                      <input type="email" class="form-control" id="email" name="email" 
-                     placeholder="test123@naver.com" value="test123@naver.com">
+                     placeholder="${post.USER_EMAIL }" value="${post.USER_EMAIL }">
                   </div>
                </div>
                
@@ -324,6 +359,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">입양보내는 이유</label>
                   <div class="col-sm-10">
                      <textarea class="form-control" id="adt_reason" name="adt_reason"
+                     placeholder="${post.ADT_REASON }"
                      rows="7" maxlength="1000" required></textarea>
                   </div>
                </div>
@@ -347,7 +383,7 @@
             <!------------------ 작성자정보 등록 폼 ----------------->
             <div class="col-md-7 offset-md-2">
             
-				<!-- 고양이 길러본 경험 -->
+            <!-- 고양이 길러본 경험 -->
                <div class="form-group row">
                   <label for="colFormLabel" class="col-sm-4 col-form-label">고양이 길러본 경험</label>
                   
@@ -474,8 +510,8 @@
             
          <!-- ★★★★ 임시저장 / 작성완료 버튼 ★★★★  -->
          <div id="button-section" class="text-center">
-            <button id="save-btn" type="button" class="btn btn-secondary">임시저장</button>
-            <button id="submit-btn" type="submit" class="btn btn-primary">작성완료</button>
+            <button id="reset-btn" type="reset" class="btn btn-secondary">취소</button>
+            <button id="submit-btn" type="submit" class="btn btn-primary">수정완료</button>
          </div>
          
       </form>
