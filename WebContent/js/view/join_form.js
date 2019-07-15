@@ -155,6 +155,37 @@ $(document).ready(function()
 			return;
 		}
 		
+		var pw = $("#pwd").val();
+		
+		var pattern1 = /[0-9]/;
+
+        var pattern2 = /[a-zA-Z]/;
+
+        var pattern3 = /[~!@\#$%<>^&*]/; 
+
+		// 비밀번호 패턴 확인
+        if(!pattern1.test(pw)||!pattern2.test(pw)||!pattern3.test(pw)|| pw.length < 8 || pw.lenghth >20)
+        {
+
+            
+            $(".err").text("영문+숫자+특수기호 8자리 이상으로 구성하여야 합니다.");
+			
+			// 가입 에러가 나면 비밀번호를 초기화 함
+			$("#pwd").val("");
+			$("#pwdConfirm").val("");
+			return false;
+
+
+        }
+        
+        if($("#check1").val()!="1" || $("#check2").val()!="1" || $("#check3").val()!="1" || $("#check4").val()!="1")
+        {
+        	$(".err").text("중복확인 또는 실명인증을 확인해주세요.");
+        	$("#pwd").val("");
+			$("#pwdConfirm").val("");
+        	return;
+        }
+		
 		$("#joinForm").submit();
 	});
 	
@@ -178,6 +209,7 @@ $(document).ready(function()
 					if(count==0)
 					{
 						alert("사용가능한 아이디입니다.");
+						$("#check1").val("1");
 						return;
 					}
 					else
@@ -209,6 +241,7 @@ $(document).ready(function()
 					if(count==0)
 					{
 						alert("사용가능한 닉네임입니다.");
+						$("#check2").val("1");
 						return;
 					}
 					else
@@ -223,8 +256,7 @@ $(document).ready(function()
 	$("#emailCheck").click(function()
 			{
 				var email = $("#email").val();
-				
-				//alert(nickName);
+
 				if (email == "")
 				{
 					$(".err").text("이메일을 입력해주세요.");
@@ -239,6 +271,7 @@ $(document).ready(function()
 							if(count==0)
 							{
 								alert("사용가능한 이메일입니다.");
+								$("#check3").val("1");
 								return;
 							}
 							else
@@ -285,6 +318,7 @@ $(document).ready(function()
 						$("#tel1").val(tel1);
 						$("#tel2").val(tel2);
 						$("#tel3").val(tel3);
+						$("#check4").val("1");
 						return;
 					} else
 					{

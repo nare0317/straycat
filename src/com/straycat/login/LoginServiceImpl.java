@@ -27,5 +27,13 @@ public class LoginServiceImpl implements LoginService
 	{
 		session.invalidate();
 	}
+
+	@Override
+	public int leaveCheck(Map<String, Object> param)
+	{
+		return dao.leaveCheck(param);
+	}
+	
+	
 	
 }

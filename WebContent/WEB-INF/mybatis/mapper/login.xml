@@ -8,4 +8,11 @@
 	from user_reg
 	where id = #{user_id} and pwd = CRYPTPACK.ENCRYPT(#{user_pwd},#{user_pwd})
 </select>
+
+<select id="leaveCheck" parameterType="map" resultType="java.lang.Integer">
+	select count(*)
+	from user_reg
+	where id = #{user_id} and user_status ='USS2'
+</select>
+
 </mapper>

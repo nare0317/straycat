@@ -9,4 +9,7 @@ public interface LoginService
 {
 	public int loginCheck(Map<String, Object> map);
 	public void logout(HttpSession session);
+	public int leaveCheck(Map<String, Object> param);
+	
+	
 }
