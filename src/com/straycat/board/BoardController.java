@@ -199,6 +199,45 @@ public class BoardController
 		return result;
 	}
 	
+	@RequestMapping("/commentdelete")
+	public int commentDelete(@RequestParam(name="bbs_cmt_code") String bbs_cmt_code)
+	{
+		int result = 0;
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("bbs_cmt_code", bbs_cmt_code);
+		
+		result = service.commentDelete(map);
+		
+		return result;
+	}
+	
+	@RequestMapping("/commentwrite")
+	@ResponseBody
+	public int commentInsert(@RequestParam(name="bbs_code") String bbs_code
+			, @RequestParam(name="user_id") String user_id
+			, @RequestParam(name="content") String content
+			)
+	{
+		// USER의 CODE 알아내기
+		Map<String, String> idMap = new HashMap<String, String>();
+		idMap.put("id", user_id);
+		
+		Map<String, Object> selectResult = service.selectUserId(idMap);
+		
+		content = content.replaceAll("\n", "<br>");
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("bbs_code", bbs_code);
+		map.put("user_code", (String)selectResult.get("USER_CODE"));
+		map.put("content", content);
+		
+		// 댓글 insert
+		int result = service.commentInsert(map);
+		
+		return result;
+	}
+	
 	///////////////////////아래의 메소들은 사용하지 않음///////////////////////////////
 	
 	@RequestMapping(value="/commentload.ajax")
@@ -216,41 +255,7 @@ public class BoardController
 		return commentList;
 	}
 	
-	@RequestMapping("/commentinsert.ajax")
-	@ResponseBody
-	public int commentInsert(@RequestParam(name="bbs_code") String bbs_code
-			, @RequestParam(name="user_id") String user_id
-			, @RequestParam(name="content") String content
-			)
-	{
-		// USER의 CODE 알아내기
-		Map<String, String> idMap = new HashMap<String, String>();
-		idMap.put("id", user_id);
-		
-		Map<String, Object> selectResult = service.selectUserId(idMap);
-		
-		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("bbs_code", bbs_code);
-		map.put("user_code", (String)selectResult.get("USER_CODE"));
-		map.put("content", content);
-		
-		// 댓글 insert
-		int result = service.commentInsert(map);
-		
-		return result;
-	}
 	
-	@RequestMapping("/commentdelete.ajax")
-	public int commentDelete(@RequestParam(name="bbs_cmt_code") String bbs_cmt_code)
-	{
-		int result = 0;
-		
-		Map<String, String> map = new HashMap<>();
-		map.put("bbs_cmt_code", bbs_cmt_code);
-		
-		result = service.commentDelete(map);
-		
-		return result;
-	}
+	
+	
 }

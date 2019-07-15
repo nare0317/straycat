@@ -389,7 +389,7 @@
 	
 	.comment-writer-date
 	{
-		display: flex;
+		display: inline-block;
 		align-items: flex-start;
 	}
 	
@@ -401,4 +401,9 @@
 		box-sizing: content-box;
 		height: 0;
 		overflow: visible;
+	}
+	
+	.comment_modify, .comment_delete
+	{
+		height: 25px;
 	}

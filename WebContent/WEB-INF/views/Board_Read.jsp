@@ -135,27 +135,28 @@
 
 		<!-- ★★★★★ 댓글 ★★★★★★ -->
 		<div class="comment-area">
-		<input type="hidden" id="code" value="${article.CODE }">
-		<input type="hidden" id="user_id" value="${sessionScope.user_id }">
+		
 			<!-- 댓글 입력  -->
-			<form id="comment_form" action="/commentwrite" method="post">
-				<!-- <input id="boardId" name="boardId" value="11663" type="hidden"
-					value="11663" /> -->
-
+			<form id="comment_form" action="<%=cp %>/commentwrite" method="post">
+				
 				<h5>댓글 남기기</h5>
  				
  				<!-- 댓글입력 창 -->
  				<c:if test="${sessionScope.user_id != null }">
-		        <textarea id="comment_input" class="form-control" name="comment" rows="2"
+		        <textarea id="comment_input" class="form-control" name="content" rows="2"
 		         placeholder="댓글을 입력해주세요." maxlength="300" required></textarea>
 				<p class="word-num text-right">(<span id="current-word">0</span>/300)</p>
 				</c:if>
 				<c:if test="${sessionScope.user_id == null }">
-				<textarea id="comment_input" class="form-control" name="comment" rows="2"
+				<textarea id="comment_input" class="form-control" name="content" rows="2"
 		         placeholder="로그인이 필요합니다." maxlength="300" disabled></textarea>
 				<p class="word-num text-right">(<span id="current-word">0</span>/300)</p>
 				</c:if>
-
+				
+				<!-- 댓글 입력을 위한 hidden -->
+				<input type="hidden" id="bbs_code" value="${article.CODE }" name="bbs_code">
+				<input type="hidden" id="user_id" value="${sessionScope.user_id }" name="user_id">
+								
  				<!-- 댓글입력 버튼 -->
 				<div class="text-right">
 				<c:if test="${sessionScope.user_id == null }">
@@ -213,13 +214,32 @@
 
 
 $(document).ready(function(){
+	// 댓글 입력
+	$("#comment_submit").click(function()
+	{
+		if ($("#comment_input").val() == "")
+		{
+			alert("등록할 내용을 입력하세요.");
+			return;
+		}
+	
+		$.ajax({
+			method: "GET",
+			url: "<c:url value='/commentwrite'/>",
+			data: {"user_id":$("#user_id").val(), "bbs_code":$("#bbs_code").val(), "content":$("#comment_input").val()},
+			complete: function()
+			{
+				location.reload();
+			}
+		})
+	})
+	
 	//댓글 입력 글자 수 세기
 	$('#comment_input').keyup(function (e){
 	   var content = $(this).val();
 	   $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
 	   $('#current-word').html(content.length);
 	});
-	
 	
 	
 	// 서로 다른 수정 버튼을 두 번 클릭했을 때, 이전에 클릭한 수정 버튼과 댓글 값을 저장하기 위한 변수 생성.
@@ -286,9 +306,6 @@ $(document).ready(function(){
 				method: "GET",
 				url: "<c:url value='/commentupdate' />",
 				data: {"bbs_cmt_code":bbs_cmt_code, "content":content},
-				success: function(data){
-					alert("성공, " + data);
-				},
 				complete: function(){
 					location.reload();						
 				}
@@ -296,8 +313,26 @@ $(document).ready(function(){
 		})// end .confirmModify click event
 	})// end .comment_modify click event
 	
-	
-});
+	// 댓글 삭제 버튼을 클릭한 경우
+	$(".comment_delete").click(function()
+	{
+		if (confirm("정말 삭제하시겠습니까?"))
+		{
+			// 댓글 삭제를 위한 id 값 저장
+			var bbs_cmt_code = $(this).val();
+			
+			$.ajax({
+				method: "GET",
+				url: "<c:url value='/commentdelete'/>",
+				data: {"bbs_cmt_code":bbs_cmt_code},
+				complete: function(){
+					alert("삭제되었습니다.");
+					location.reload();
+				}
+			})// end ajax
+		}
+	})// end .comment_delete click event
+});// jQuery end
 
 </script>
 </html>
