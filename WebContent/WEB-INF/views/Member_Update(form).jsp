@@ -41,12 +41,6 @@
 				    <tr>
 				      <th>비밀번호 변경</th>
 				      <td><small class="small">영문+숫자+특수기호를 모두 포함하여 8자리 이상으로 구성하여야 합니다.</small>
-								<div class="input-group w50">
-								<div class="input-group-prepend">
-									<span class="input-group-text">현재 비밀번호</span>
-								</div>
-									<input type="password" id="pwd1" name="pwd1" class="form-control" value=""><input type="hidden" id="pwd2" name="pwd2" value="${memberInfo.PWD }">
-							</div><br>
 							<div class="input-group w50">
 								<div class="input-group-prepend">
 									<span class="input-group-text">신규 비밀번호</span>
@@ -65,12 +59,13 @@
 					<th>주소<span class="required">*</span></th>
 					<td colspan="3">
 						<input type="text" id="sample6_address"	name="address" class="form-control inputbox local" placeholder="주소" readonly="readonly">
+						<input type="hidden" id="memAddress" name="memAddress" value="${memberInfo.ADDRESS_CODE }">
 						<button type="button" class="btn btn-outline-primary btn-sm" onclick="sample6_execDaumPostcode()">주소 검색</button>
 					</td>
 					</tr>
 			</table>
 				<div class="alignRight">탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요. 
-				<button type="button" class="btn btn-secondary btn-sm">회원탈퇴</button></div><br><br>
+				<button type="button" id="memberLeaveBtn" class="btn btn-secondary btn-sm" onclick="location.href='<%=cp%>/leaveAgree'">회원탈퇴</button></div><br><br>
 				<div class="mButton gCenter">
 					<button type="button" id="memberUpdateBtn" name="memberUpdateBtn" class="btn btn-secondary">변경하기</button>
 				</div>

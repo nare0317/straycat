@@ -29,6 +29,6 @@ $(document).ready(function()
 	
 		$("#update").click(function()
 		{
-			$(location).attr("href", "memberupdate");
+			$(location).attr("href", "memberupdatepw");
 		});
 });

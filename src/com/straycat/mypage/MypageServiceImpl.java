@@ -2,6 +2,8 @@ package com.straycat.mypage;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +44,26 @@ public class MypageServiceImpl implements MypageService
 		{
 			System.out.println(e.toString());
 		}
+		
+	}
+
+	@Override
+	public void leaveMember(Map<String, Object> map)
+	{
+		try
+		{
+			dao.selectOne("member.userLeave", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+	}
+
+	@Override
+	public void logout(HttpSession session)
+	{
+		session.invalidate();
 		
 	}
 

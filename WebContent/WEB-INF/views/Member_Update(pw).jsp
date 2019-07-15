@@ -13,6 +13,7 @@
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
 	<link rel="stylesheet" href="<%=cp %>/css/view/member_confirmation.css">
+	<script	src="<%=cp%>/js/view/memberupdate.js"></script>
 </head>
 <body>
 
@@ -26,9 +27,9 @@
 		<div class="card-header">
 			<h1>회원정보확인</h1>
 		</div>
-		<form action="" onSubmit="return check()">
+		<form id="updateForm" action="memberupdate">
 			<br>
-			<h4>000님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인합니다.</h4>
+			<h4>${memberInfo.USER_NAME }님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인합니다.</h4>
 			<div class="row mw">
 				<div class="col-md-6 offset-md-3">
 					<!-- 아이디 입력 폼 -->
@@ -36,7 +37,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text bolck">아이디</span>
 						</div>
-						<input type="text" id="userId" name="userId" class="form-control" readonly="readonly" value="jyb7488@test.com">
+						<input type="text" id="userId" name="userId" class="form-control" readonly="readonly" value="${memberInfo.ID }">
 					</div>
 					<br>
 
@@ -45,12 +46,12 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text bolck">비밀번호</span>
 						</div>
-						<input type="password" id="userPwd" name="userPwd"
-							class="form-control" required="required">
+						<input type="password" id="userPwd" name="userPwd" class="form-control" required="required">
+						<input type="hidden" id="userPwd1" name="userPwd1" value="${memberInfo.PWD }">
 					</div>
 					<br> <br> <br>
-					<button type="submit" class="btn btn-primary btn-lg">확인</button>
-					<button type="button" class="btn btn-secondary btn-lg" onclick="location.href='Main.jsp'">취소</button>
+					<button id="updateBtn1" type="button" class="btn btn-primary btn-lg">확인</button>
+					<button type="button" class="btn btn-secondary btn-lg" onclick="location.href='main'">취소</button>
 					<br>
 					<br>
 				</div>

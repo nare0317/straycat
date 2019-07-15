@@ -26,17 +26,36 @@ public class LoginController
 	public void loginCheck(HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException
 	{
 		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> param = new HashMap<>();
 		
 		map.put("user_id", request.getParameter("user_id"));
 		map.put("user_pwd", request.getParameter("user_pwd"));
 		
+		param.put("user_id", request.getParameter("user_id"));
+		
+		
 		// 서비스로 id,pwd 를 맵에 담아서 보내
 		int result = loginService.loginCheck(map);
+		int result1 = loginService.leaveCheck(param);
+		int leaveCheck = result+result1;
 		
-		if(result > 0)
+		System.out.println("-------------------------");
+		System.out.println(result); // 1
+		System.out.println(result1); // 1
+		System.out.println(leaveCheck); // 2
+		System.out.println("-------------------------");
+		
+	
+		if(result ==1 && result1 == 0)
 		{
 			response.getWriter().print("1");
 			session.setAttribute("user_id", request.getParameter("user_id"));
+			return;
+			
+		}
+		if(leaveCheck > 1)
+		{
+			response.getWriter().print("2");
 			return;
 		}
 		else
