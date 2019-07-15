@@ -32,3 +32,17 @@ $(document).ready(function() {
 	}).scroll();
 	
 });
+
+// 입양등록 버튼 클릭 시, 
+// 로그인 안한 사용자일 경우 로그인 페이지로 이동
+function login_need()
+{
+	alert("로그인이 필요합니다.");
+	window.location.href="login";
+}
+
+
+function write_func()
+{
+	window.location.href="catregistration";
+}

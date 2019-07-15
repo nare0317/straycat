@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Adoption_Read.jsp(입양글 열람 페이지 -일반 사용자)</title>
+<title>입양글 열람 페이지</title>
 
 <!-- Head.jsp  -->
 <c:import url="Head.jsp"></c:import>
@@ -18,6 +18,44 @@
 
 <!-- JS 파일 -->
 <script src="<%=cp %>/js/view/adopt_read.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		// 게시글의 게시글상태(ADT_PROC)에 맞춰 셀렉트박스에 "selected" 옵션 추가
+		$("#adt_proc option").each(function()
+		{
+			var adt_proc_selected = $("#adt_proc_selected").val();
+			//alert(adt_proc_selected);
+			
+			if($(this).html()== adt_proc_selected)
+		    {
+		      $(this).attr("selected","selected");  
+		    };
+		});
+		
+		
+		// 입양상태 변경 버튼 클릭 시 모달 창 호출
+		$("#modal_call").click(function()
+		{
+			//alert("성공");
+			$("#proc_change_modal").modal();
+		});
+		
+		$("#confirm").click(function()
+		{
+			//alert("성공");
+			//alert("adt_proc : " + $("#adt_proc").val());
+			//alert("adt_code : " +$("#adt_code").val());
+			$(location).attr("href", "<%=cp%>/adopt_proc?adt_proc=" + $("#adt_proc").val() + "&adt_code=" + $("#adt_code").val());
+			
+		});
+		
+	}); 
+	
+
+</script>
+
 </head>
 <body>
 
@@ -27,7 +65,7 @@
 		
 	<!-- ★★★★★헤더 + breadcrumbs★★★★★ -->
 
-	<section class="header container-fluid">
+	<section class="header container">
 		<div class="header-title">
 			<h2 class="h2">입양<span class="sub-title">입양모집글</span></h2>
 		</div>
@@ -49,107 +87,210 @@
 	</section>
 	
 	<!-- ★★★★★내용★★★★★ -->
-	<section class="post-view continer-fluid">
+	<section class="post-view container">
 	
 		<!-- 제목/작성자/작성일시/조회수 -->
-		<div class="post-head row">
+		<div class="post-title row">
 			<div class="col-lg-12">
 				<!-- 글 제목 -->
-				<h3 class="post-title"><span class="adt_status">[${post.ADT_PROC }]</span>${post.CAT_NAME }</h3>
+				<h3 class="title"><span class="adt_status">[${post.ADT_PROC }]</span>${post.CAT_NAME }</h3>
 				<!-- 제목 밑에 줄 -->
 				<hr class="post-title-hr">
 			</div>
 		</div>
 		
 		<div class="post-head row">
-			<div class="col-lg-6">
+			<div class="col-lg-9">
 				<!-- 작성자아이디, 작성일시, 조회수 -->
 				<ul class="list-inline">
 					<li class="list-inline-item g-mx-4">${post.USER_NICKNAME }
 					<li class="list-inline-item g-mx-4">|</li>
-					<li id="timestamp" data-timestamp="2019-03-06 16:26:27.0" class="list-inline-item">${post.POST_DATE }</li>			
+					<li id="timestamp" data-timestamp="2019-03-06 16:26:27" class="list-inline-item">${post.POST_DATE }</li>			
 					<li class="list-inline-item g-mx-4">|</li>
-					<li class="list-inline-item g-mx-4"><span class="icon-mouse font11"></span>조회수</li>
+					<li class="list-inline-item g-mx-4"><span class="icon-mouse font11"></span>${post.HIT_COUNT }</li>
 				</ul>
 			</div>
-		</div>		
+			
+			
+			<!-- 수정/삭제 버튼 -->
+			<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
+				<div class="col-md-2 offset-md-4" align="right">
+					<button class="btn btn-secondary btn-sm" id="modify-btn">수정</button>
+					<button class="btn btn-secondary btn-sm" id="delete-btn" disabled="disabled">삭제</button>
+				</div>
+			</c:if>	
+			
+			<!--★★★★★ 게시글 상태 변경 ★★★★★ -->
+			<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
+				<div class="post-status row">
+					<div class="input-group">
+						
+						<!-- 게시글코드(hidden) -->
+            			<input type="hidden" id="adt_code" name="adt_code" value="${post.ADT_CODE}">
+						<!-- 게시글상태(hidden) ※ 해당 게시글의 게시글상태-->
+						<input type="hidden" id="adt_proc_selected" name="adt_proc_selected" value="${post.ADT_PROC}">
+						
+						
+						<!-- 게시글상태 -->
+				    	<div class="input-group-prepend">
+			        	  <div class="input-group-text">게시글 상태</div>
+			       	 	</div>
+			       	 	
+			        	<select class="custom-select mr-sm-2" id="adt_proc" name="adt_proc">
+					        <option value="">== 선택 ==</option>
+					        <option value="ADP1" >신규등록</option>
+					        <option value="ADP2" >입양진행중</option>
+					        <option value="ADP3" >매칭진행중</option>
+					        <option value="ADP4" >입양보류</option>
+					        <option value="ADP5" >입양확정</option>
+					        <option value="ADP6" <c:if test="${post.ADT_PROC} eq 'ADP6'">selected</c:if>>입양완료</option>
+					    </select>
+					    
+			      		<!-- 게시글상태 변경 버튼 -->
+						<button type="button" class="btn btn-dark" id="modal_call" data-toggle="modal" data-target="proc_change_modal">
+						  변경
+						</button>
+			  
+				
+						<!-- 변경하시겠습니까? 팝업 -->
+						<div class="modal fade" id="proc_change_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="exampleModalLabel">입양 상태 변경</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+						       현재 게시글의 상태를 변경하시겠습니까?
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+						        <button type="button" class="btn btn-primary" id="confirm">변경</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						
+						<!-- 변경 완료 팝업 -->
+						<div class="modal fade success_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+						  <div class="modal-dialog modal-sm">
+						    <div class="modal-content">
+						      게시글 상태가 성공적으로 변경되었습니다. 
+						    </div>
+						  </div>
+						</div>
+
+
+				    </div>
+				</div>
+			</c:if>
+		
+		</div>
 		
 		<!-- ★★★★★글내용★★★★★ -->	
 		<div class="post-content row">
 			
-			<!-- 고양이 대표사진 -->
-			<div class="iconic-photo col-lg-4">
-				<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail">
+				<!-- 고양이 대표사진 -->
+				<div class="iconic-photo col-lg-3">
+					<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail">
+					
+					<!-- 사진 불러오는 구문 -->
+					<%-- <img src="<%=cp %>/img/${post.CAT_IMAGE}" class="img-thumbnail"> --%>
+				</div>
 				
-				<!-- 사진 불러오는 구문 -->
-				<%-- <img src="<%=cp %>/img/${post.CAT_IMAGE}" class="img-thumbnail"> --%>
-			</div>
-			
-			<!-- 글 내용 -->
-			<div class="content col-lg-5">
-				<table class="missing-info table table-light">
-					<tr>
-						<th class="align-top th-sm th-lg">이름</th>
-						<td class="align-top">${post.CAT_NAME }</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">종류</th>
-						<td class="align-top">${post.CAT_TYPE }</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">구조지역</th>
-						<td class="align-top">${post.CAT_ADDRESS }</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">구조일</th>
-						<td class="align-top">${post.RSQ_DATE }</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">나이</th>
-						<td class="align-top">${post.CAT_AGE_TYPE }(${post.CAT_AGE })</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">성별</th>
-						<td class="align-top">${post.CAT_SEX }</td>
-					</tr>
-					<tr>
-						<th class="align-top th-sm th-lg">고양이<br>특이사항</th>
-						<td class="align-top">
-							<p>${post.CAT_ECT1 }</p>
-						</td>
-					</tr>
-					<tr>
-						<th class="align-top">건강상태</th>
-						<td class="align-top">
-							<p>${post.CAT_ECT2 }</p>
-						</td>
-					</tr>
-				</table>
+				<!-- 글 내용 -->
+				<div class="content col-lg-7">
+					<table class="missing-info table table-light">
+						<tr>
+							<th class="align-top th-sm th-lg">이름</th>
+							<td class="align-top">${post.CAT_NAME }</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">종류</th>
+							<td class="align-top">${post.CAT_TYPE }</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">구조지역</th>
+							<td class="align-top">${post.CAT_ADDRESS }</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">구조일</th>
+							<td class="align-top">${post.RSQ_DATE }</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">나이</th>
+							<td class="align-top">${post.CAT_AGE_TYPE }(${post.CAT_AGE })</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">성별</th>
+							<td class="align-top">${post.CAT_SEX }</td>
+						</tr>
+						<tr>
+							<th class="align-top th-sm th-lg">고양이<br>특이사항</th>
+							<td class="align-top">
+								<p>${post.CAT_ECT1 }</p>
+							</td>
+						</tr>
+						<tr>
+							<th class="align-top">건강상태</th>
+							<td class="align-top">
+								<p>${post.CAT_ECT2 }</p>
+							</td>
+						</tr>
+						<tr>
+							<th class="align-top">입양보내는 이유</th>
+							<td class="align-top">
+								<p>${post.ADT_REASON }</p>
+							</td>
+						</tr>
+					</table>
 				
-				
-				<!-- 게시글 작성자 정보 -->
-				<div class="writer-info">
-					<div class="row writer-info-title">게시글 작성자 정보</div>
-					<div class="row writer-name"><label>이름 : </label>${post.USER_NAME }
-						<a href="" onclick=""  class="send-message">
-							<i class="fas fa-envelope"> 쪽지보내기 </i>
-						</a>
+					
+					<!-- 게시글 작성자 정보 -->
+					<div class="writer-info">
+						<div class="row writer-info-title">게시글 작성자 정보</div>
+						<div class="row writer-name"><label>이름 : </label>${post.USER_NAME }
+							<a href="" onclick=""  class="send-message">
+								<i class="fas fa-envelope"> 쪽지보내기 </i>
+							</a>
+						</div>
+						<div class="row writer-tel"><label>연락처 : </label>${post.USER_TEL }</div>
+						<div class="row writer-email"><label>이메일 :</label>${post.USER_EMAIL }</div>
 					</div>
-					<div class="row writer-tel"><label>연락처 : </label>${post.USER_TEL }</div>
-					<div class="row writer-email"><label>이메일 :</label>${post.USER_EMAIL }</div>
 				</div>
-			</div>
-			
-			
-			<!-- 우측 사이드바 (입양신청)-->
-			<div class="slidemenu col-lg-3 text-center">
-				<div class="apply">
-					<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
-					<p>남은시간 : <span>13일 00:57:30</span></p>
-					<button class="btn btn-primary">입양 신청</button>
+				
+				<!-- 우측 사이드바 (입양신청 - 일반사용자)-->
+				<div class="slidemenu col-lg-2 text-center">
+					<div class="apply">
+						<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
+						<p>남은시간 : <span>13일 00:57:30</span></p>
+						<button class="btn btn-primary">입양 신청</button>
+					</div>
 				</div>
-			</div>
-						
+				
+				<!-- 우측 사이드바 (입양신청 - 작성자)-->
+				<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
+					<div class="slidemenu col-lg-2 text-center">
+						<div class="apply">
+							<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
+							<p>남은시간 : <span>13일 00:57:30</span></p>
+							<button class="btn btn-success">입양 신청자 확인</button>
+						</div>
+					</div>
+				</c:if>
+				
+				<!-- 우측 사이드바 (입양신청 - 입양신청자)-->
+				<!-- <div class="slidemenu col-lg-2 text-center">
+					<div class="apply">
+						<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
+						<p class="deadline">남은시간 : <span>13일 00:57:30</span></p>
+						<button class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
+						title="2019.06.20 18:20:39에 이미 신청하셨습니다">내 신청내역</button>
+					</div>
+				</div> -->
+				
 		</div>
 		
 		
@@ -167,10 +308,12 @@
 					</ul>
 			</div>
 			<button class="btn_like">
-				<span class="fas fa-thumbs-up"></span><span class="text"> 추천<strong>5</strong></span>
+				<span class="fas fa-thumbs-up"></span><span class="text"> 추천<strong>${post.LIKE_COUNT }</strong></span>
 			</button>
 		</div>
 	</section>
+	
+	
 </div> <!-- end #content  -->
 		
 		

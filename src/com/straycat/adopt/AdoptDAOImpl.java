@@ -21,7 +21,7 @@ public class AdoptDAOImpl implements AdoptDAO
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	
-	// 게시글 리스트 조회 메소드
+	// 전체 게시글 리스트 조회 메소드
 	@Override
 	public List<Map<String, Object>> listAdopt()
 	{
@@ -40,8 +40,32 @@ public class AdoptDAOImpl implements AdoptDAO
 		
 		return list;
 	}
-
 	
+	// 지역 검색 후 게시글 리스트 조회 메소드 
+	@Override
+	public List<Map<String, Object>> listAdopt(String searchGu, String searchDong)
+	{
+		List<Map<String, Object>> list = null; 
+		
+		try 
+		{
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("searchGu", searchGu);
+			map.put("searchDong", searchDong);
+			
+			list = sqlSession.selectList("adopt.searchList", map);
+		}
+		catch (Exception e) 
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		
+		return list;
+	}
+
+
 	// 게시글 등록 메소드
 	@Override
 	public int addAdopt(Map<String, Object> map)
@@ -107,13 +131,13 @@ public class AdoptDAOImpl implements AdoptDAO
 	
 	// 입양게시물 열람 메소드
 	@Override
-	public Map<String, Object> readAdopt(String id)
+	public Map<String, Object> readAdopt(String adt_code)
 	{
 		Map<String, Object> post = null; 
 		
 		try 
 		{
-			post = sqlSession.selectOne("adopt.readAdopt", id);
+			post = sqlSession.selectOne("adopt.readAdopt", adt_code);
 		}
 		catch (Exception e) 
 		{
@@ -145,5 +169,102 @@ public class AdoptDAOImpl implements AdoptDAO
 		return list;
 	}
 
+	// 셀렉트 박스 옵션에 동 정보를 넣어주는 메소드
+	@Override
+	public List<Map<String, Object>> listDong(String selectedGu)
+	{
+		List<Map<String, Object>> list = null; 
+		try
+		{
+			list = sqlSession.selectList("adopt.listDong", selectedGu);	
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return list;
+	}
+
+	
+	// 지역 검색 후 데이터 갯수 조회 메소드
+	@Override
+	public int dataCount(String searchGu, String searchDong)
+	{
+		int dataCount = 0;
+		try
+		{
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("searchGu", searchGu);
+			map.put("searchDong", searchDong);
+			
+			dataCount = sqlSession.selectOne("adopt.countList", map);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return dataCount;
+	}
+
+	// 입양게시글 상태 변경 메소드
+	@Override
+	public int changeStatus(String adt_proc, String adt_code)
+	{
+		int result = 0; 
+		try
+		{
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("adt_proc", adt_proc);
+			map.put("adt_code", adt_code);
+			
+			result = sqlSession.update("adopt.updateStatus", map);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return result;
+	}
+
+	// 추천수 조회 메소드
+	@Override
+	public int countLike(String adt_code)
+	{
+		int count = 0; 
+		try
+		{
+			count = sqlSession.selectOne("adopt.countLike", adt_code);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return count;
+	}
+
+	// 댓글수 조회 메소드
+	@Override
+	public int countComment(String adt_code)
+	{
+		int count = 0; 
+		try
+		{
+			count = sqlSession.selectOne("adopt.countComment", adt_code);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return count;
+	}
+
+	
+	
+	
 	
 }

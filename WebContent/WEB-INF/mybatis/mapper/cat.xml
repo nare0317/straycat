@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cat">
+	<!-- 길냥이 관리 게시판 리스트 쿼리문 -->
+	<select id="listCat" resultType="map">		
+		SELECT C.CAT_CODE AS CAT_CODE 
+			  ,C.CAT_NAME AS CAT_NAME 
+			  , CT.SPECIES AS CAT_TYPE 
+			  , CS.SEX AS CAT_SEX 
+			  , AD.SI || ' ' || AD.GU || ' ' || AD.DONG AS CAT_ADDRESS 
+			  , C.CAT_DATE AS CAT_DATE 
+			  ,	C.CAT_REP_IMG AS CAT_IMAGE 
+			  , C.USER_CODE AS USER_CODE 
+			  , C.CAT_ECT1 AS CAT_ECT1 
+			  , C.CAT_ECT2 AS CAT_ECT2 
+			  , CST.STATUS AS CAT_STATUS 
+		FROM CAT C LEFT JOIN CAT_TYPE CT 
+			ON C.CAT_SPECIES = CT.SPECIES_CODE 
+				LEFT JOIN CAT_SEX CS 
+			ON C.CAT_SEX = CS.SEX_CODE 
+				LEFT JOIN ADDRESS AD 
+			ON C.CAT_ADDRESS = AD.ADDRESS_CODE 
+				LEFT JOIN CAT_STATUS CST 
+			ON C.CAT_STATUS = CST.STATUS_CODE 
+		WHERE AD.GU = #{gu} AND AD.DONG = #{dong}
+		ORDER BY C.CAT_DATE
+	</select>
+
+	<!-- 구와 동을 입력받아 주소 코드를 반환하는 쿼리문 -->
+	<select id="searchAddress" parameterType="map" resultType="java.lang.String">
+		SELECT ADDRESS_CODE
+		FROM ADDRESS
+		WHERE SI = '서울시' AND GU = #{gu} AND DONG = #{dong}
+	</select>
+
+	<!-- 입양 게시글 등록 쿼리문 -->
+	<!-- 로그인 기능 완료되면 이용자 + 이미지첨부기능  -->
+	<insert id="addCat" parameterType="hashmap">
+		INSERT INTO CAT(CAT_CODE, CAT_NAME, CAT_ADDRESS, CAT_SPECIES,CAT_SEX, CAT_ECT1, CAT_ECT2,CAT_STATUS, CAT_REP_IMG,CAT_DATE, USER_CODE)
+		VALUES ('CAT'||CAT_CODE_SEQ.NEXTVAL, #{CAT_NAME,jdbcType=VARCHAR}, #{CAT_ADDRESS,jdbcType=VARCHAR}
+		,#{CAT_SPECIES,jdbcType=VARCHAR}, 'CS1', #{CAT_ETC1,jdbcType=VARCHAR}, #{CAT_ETC2,jdbcType=VARCHAR}
+		, 'CST1','aaa124.png', #{CAT_DATE,jdbcType=DATE},'US3')
+	</insert>
+	
+	<!-- 셀렉트 박스 구 리스트 조회 쿼리문-->
+	<select id="listGu" resultType="map">
+		SELECT DISTINCT GU AS GU
+		FROM ADDRESS
+		ORDER BY GU ASC
+	</select>
+	
+	<!-- 셀렉트 박스 동 리스트 조회 쿼리문 -->
+	<select id="listDong"  resultType="map">
+		SELECT DONG
+		FROM ADDRESS
+		WHERE GU=#{selectedGu,jdbcType=VARCHAR}
+		ORDER BY DONG ASC
+	</select>
+</mapper>

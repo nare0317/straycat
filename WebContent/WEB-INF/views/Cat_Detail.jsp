@@ -14,7 +14,7 @@
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
 	<link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
-	<link rel="stylesheet" href="css/view/cat_detail.css">
+	<link rel="stylesheet" href="<%=cp %>/css/view/cat_detail.css">
 	<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="<%=cp %>/js/view/cat_detail.js"></script>
 </head>
@@ -26,14 +26,14 @@
 	<div class="jumbotron">
       <div class="row">
          <div class="col-4 text-center">
-            <img src="img/straycat.jpg" class="img1"><br>
+            <img src="<%=cp %>/img/straycat.jpg" class="img1"><br>
             <br>
             <div class="row">
                <div class="col-6 text-right">
-                  <img src="img/plus-button.png" class="img2">${catInfo.FOLLOW }
+                  <img src="<%=cp %>/img/plus-button.png" class="img2">${catInfo.FOLLOW }
                </div>
                <div class="col-6 text-left">
-                  <img src="img/user.png" class="img2"> 집사
+                  <img src="<%=cp %>/img/user.png" class="img2"> 집사
                </div>
             </div>
          </div>
@@ -311,11 +311,10 @@
 				<c:otherwise>
 					<div class="jumbotron text-center">
 					  <h1 class="display-4">로그인이 필요한 서비스 입니다!</h1>
-					  <a class="btn btn-primary btn-lg" href="Login.jsp" role="button">로그인</a>
+					  <a class="btn btn-primary btn-lg" href="login" role="button">로그인</a>
 					</div>
 				</c:otherwise>
 				</c:choose>
-				 -->
 				<!----------------------------------------------------- 로그인 X ----------------------------------------------------->
 
 				<h4 class="write">활동피드</h4>
@@ -595,7 +594,19 @@
 		}
 	} 
 	
-   
+/*     $(document).ready(function()
+    {
+    	$.ajax(
+    	{
+    		url: 'act_registration'
+    		, type: 'get'
+    		, data: {'':,'':,'':,'':}
+    		, success : function(data)
+    		{
+    			
+    		}
+    	});
+    }); */
 </script>
 </body>
 </html>

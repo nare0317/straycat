@@ -18,6 +18,19 @@
 
 <!-- JS 파일  -->
 <script src="<%=cp %>/js/view/adopt_list.js"></script>
+<script src="<%=cp %>/js/view/gudong.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		$("#searchAddress").click(function()
+		{
+			//alert("성공");
+			$(location).attr("href", "<%=cp%>/adopt?searchGu=" + $("#gu").val() + "&searchDong=" + $("#dong").val());
+		});
+	});
+
+</script>
 
 </head>
 <body>
@@ -48,7 +61,7 @@
 	<section class="section-1 continer-fluid">
 		
 		<!-------------------   10  ------------------------->
-		<div class="form-group col-lg-10 search">
+		<div class="form-group col-lg-12 search">
 			
 			<!-- row1 -->
 			<!-- <div class="row">
@@ -58,56 +71,61 @@
 			<!-- row2 -->
 			<div class="row">
 				<!-- 구 선택 -->
-				<div class="col-lg-4">
-					<select class="custom-select">
-						<option selected>구 선택</option>
+				<div class="col-lg-3">
+					<select class="custom-select" id="gu" onchange="dongList();">
+						<option value="">구 선택</option>
 						<c:forEach var="gu" items="${gu }">
 							<option value="${gu.GU }">${gu.GU }</option>
 						</c:forEach>
 					</select>
 				</div>
 				<!-- 동 선택 -->
-				<div class="col-lg-4">
-					<select class="custom-select">
-						<option selected>동 선택</option>
-						<option value="1">연희동</option>
-						<option value="2">연남동</option>
-						<option value="3">서교동</option>
+				<div class="col-lg-3">
+					<select class="custom-select" id="dong" name="dong">
+						<option value="">동 선택</option>
 					</select>
 				</div>
 				<!-- 조회버튼 -->
 				<div class="col-lg-2">
-					<button type="button" class="btn btn-primary">조회</button>
+					<input type="button" value="조회" class="btn btn-primary" id="searchAddress">
+				</div>
+				
+				<!-- 입양등록 -->
+				<div class="col-lg-3 offset-lg-1 text-right write">
+					<c:choose>
+		       			<c:when test="${sessionScope.user_id != null }">
+							<input type="button" class="btn btn-warning btn-lg" value="입양등록" id="adopt_write" 
+							onclick="location.href='<%=cp%>/adopt_form?user_id=${sessionScope.user_id }'">
+						</c:when>
+						<c:otherwise>
+							<input type="button" class="btn btn-warning btn-lg" value="입양등록" id="adopt_write" 
+							onclick="location.href='<%=cp%>/login'">
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 			
 			<hr>
 			
 			<!-- row3 -->
-			<div class="row">
-				<h5 class="col-lg-8">검색된 고양이<span> 5 </span>마리</h5>
-				
-				<div class="col-lg-4 text-right write">
-					<input type="button" class="btn btn-primary btn-lg" value="입양등록"
-					id="adopt_write" onclick="location.href='<%=cp%>/adopt_form'">
-					<%-- <input type="button" class="btn btn-primary btn-lg" value="입양등록"
-					id="adopt_write" onclick="location.href='<%=cp%>/adopt_form?user_id=${ }'"> --%>
-					<!-- 사용자 아이디 값 받아오는걸로 위 구문 빈칸 채우면 됨. -->
-				</div>
+			<div class="row">		
+				<c:if test="${dataCount!=0}">
+					<h6 class="col-lg-8" class="searchCount">검색된 고양이 <span style="font-size: 22px; font-weight: bold;">${dataCount}</span>마리</h6>
+				</c:if>
 			</div>
 			
 			<!-- row4 -->
-			<div class="row">
-				<div class="col-8">
-					<h5>
-						<a href="#" class="red">긴급입양</a>
-						<a href="#" class="purple">분실의심</a>
-						<a href="#" >수컷</a><a href="#">암컷</a>
-						<a href="#">아기묘</a><a href="#">성묘</a>
-					</h5>
-				</div>
-			</div>
-			
+			<div class="row tag-buttons">	
+				<h6 class="mx-auto">
+					<a href="#" class="btn btn-outline-primary btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">긴급입양</a>
+					<a href="#" class="btn btn-outline-danger btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">분실의심</a>
+					<a href="#" class="btn btn-outline-warning btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">수컷</a>
+					<a href="#" class="btn btn-outline-info btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">암컷</a>
+					<a href="#" class="btn btn-outline-light btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">아기묘</a>
+					<a href="#" class="btn btn-outline-success btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">성묘</a>
+				</h6>
+			</div>	
+
 		</div>
 		
 	</section>
@@ -122,9 +140,46 @@
 				<div class="row no-gutters">
 				
 					<!-- 길냥이 대표이미지 -->
-					<div class="col-md-5 cat-photo">
+					<div class="col-md-5 cat-photo cat-photo-wrap">
 						<%-- <img src="${list.CAT_IMAGE }" class="card-img" alt=""> --%>
-						<img src="img/straycat.jpg" class="card-img" alt="">
+						<div class="cp-image">
+							<img src="img/straycat.jpg" class="card-img" alt="">
+						</div>
+						
+						<!-- 게시글 상태에 따라 색상 변경 -->
+						<c:choose>
+						<c:when test="${list.ADT_PROC eq '신규등록'}">
+							<div class="cp-status" style="background-color: #f78fb3; color: white;">
+								<p id="adt_proc_tag">${list.ADT_PROC }</p>
+							</div>
+						</c:when>
+						<c:when test="${list.ADT_PROC eq '입양진행중'}">
+							<div class="cp-status" style="background-color: #778beb;  color: white;">
+								<p id="adt_proc_tag">${list.ADT_PROC }</p>
+							</div>
+						</c:when>
+						<c:when test="${list.ADT_PROC eq '매칭진행중'}">
+							<div class="cp-status" style="background-color: #1abc9c;  color: white;">
+								<p id="adt_proc_tag">${list.ADT_PROC }</p>
+							</div>
+						</c:when>
+						<c:when test="${list.ADT_PROC eq '입양보류'}">
+							<div class="cp-status" style="background-color: #b2bec3;  color: white;">
+								<p id="adt_proc_tag">${list.ADT_PROC }</p>
+							</div>
+						</c:when>
+						<c:when test="${list.ADT_PROC eq '입양확정'}">
+							<div class="cp-status" style="background-color: #596275;  color: white;">
+								<p id="adt_proc_tag">${list.ADT_PROC }</p>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="cp-status" style="background-color: #2d3436; color: white;">
+								<p id="adt_proc_tag">${list.ADT_PROC }</p>
+							</div>
+						</c:otherwise>
+						</c:choose>
+						
 					</div>
 					
 					<!-- 길냥이 정보 -->
@@ -139,11 +194,14 @@
 									<li>${list.CAT_AGE }</li>
 									<li>${list.CAT_ADDRESS}</li>
 									<li>${list.POST_DATE }</li>
+									<li><i class="fas fa-eye" >${list.HIT_COUNT }</i></li>
+									<%-- <li><i class="far fa-thumbs-up"> ${list.LIKE_COUNT }</i></li> --%>
+									<%-- <li><i class="far fa-comment-dots">${list.HIT_COUNT }</i></li> --%>
 								</ul>	
 							</div>
 						</div>
 					</div><!-- 길냥이 정보 끝 -->
-					<a href="<%=cp %>/adopt_read?id=${list.ADT_CODE}" class="stretched-link"></a>
+					<a href="<%=cp %>/adopt_read?adt_code=${list.ADT_CODE}" class="stretched-link"></a>
 				</div>
 			</div>
 			</c:forEach>
@@ -151,130 +209,71 @@
 		</div>
 
 		<!-- 우측 사이드바 (입양신청)-->
-		<div class="slidemenu text-center mycat">
-			<div class="row">
+		<%-- <c:choose>
+	        <c:when test="${sessionScope.user_id != null }">
+				<div class="slidemenu text-center mycat">
+					<div class="row">
+						
+						<div class="col-10" align="left">
+							<p>내가 쓴 입양글</p>
+						</div>
+						
+						<div class="col-2" align="right">
+							<a href="#" class="mycat-prev"><i class="fas fa-chevron-left"></i></a>
+							<a href="#" class="mycat-next"><i class="fas fa-chevron-right"></i></a>
+						</div>
+					</div>
+					
+					<div class="row">
+					
+						<div class="col-6">
+							<figure class="figure">
+								<img src="img/straycat.jpg" class="mycat-img rounded" alt="" >
+		 						<figcaption class="figure-caption text-center">야옹이</figcaption>						
+		 					</figure>
+		 					<figure class="figure">
+								<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+		 						<figcaption class="figure-caption text-center">나비</figcaption>						
+		 					</figure>
+						</div>
+						<div class="col-6">
+		 					<figure class="figure">
+								<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+		 						<figcaption class="figure-caption text-center">개냥이</figcaption>						
+		 					</figure>	
+		 					<figure class="figure">
+								<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
+		 						<figcaption class="figure-caption text-center">호랭이</figcaption>						
+		 					</figure>		
+						</div>
+						
+					</div>
+				</div>			
+			</c:when>
+			<c:otherwise>
+				<div class="text-center mycat " style="width: 250px; height: 250px;">
+					<div class="row">
+						<div class="col-10" align="left">
+							<p>내가 쓴 입양글</p>
+						</div>
+					</div>
+					<br><br>
+					<h4>로그인을 하세요</h4>
+					<br>
+					<a class="btn btn-primary" href="login" role="button">로그인</a>
 				
-				<div class="col-10" align="left">
-					<p>내가 쓴 입양글</p>
-				</div>
-				
-				<div class="col-2" align="right">
-					<a href="#" class="mycat-prev"><i class="fas fa-chevron-left"></i></a>
-					<a href="#" class="mycat-next"><i class="fas fa-chevron-right"></i></a>
-				</div>
-			</div>
-			
-			<div class="row">
-			
-				<div class="col-6">
-					<figure class="figure">
-						<img src="img/straycat.jpg" class="mycat-img rounded" alt="" >
- 						<figcaption class="figure-caption text-center">야옹이</figcaption>						
- 					</figure>
- 					<figure class="figure">
-						<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
- 						<figcaption class="figure-caption text-center">나비</figcaption>						
- 					</figure>
-				</div>
-				<div class="col-6">
- 					<figure class="figure">
-						<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
- 						<figcaption class="figure-caption text-center">개냥이</figcaption>						
- 					</figure>	
- 					<figure class="figure">
-						<img src="img/straycat.jpg" class="mycat-img rounded" alt="">
- 						<figcaption class="figure-caption text-center">호랭이</figcaption>						
- 					</figure>		
-				</div>
-				
-			</div>
-		</div>	
+				</div>					
+			</c:otherwise>
+		</c:choose> --%>
+		
+		
 		
 	</section>
 	
-<!-- 	<section class="section-3">
-		
-		<div class="card-header">
-			내가 관리하는 고양이
-		</div>
-			------------------------------------------------ 로그인 O --------------------------------------------------
-		<div class="card-body">
-			<div class="container">
-				<div class="row">
-				<div class="col">
-				<img src="img/straycat.jpg" class="card-img" alt="...">
-				</div>
-				<div class="col">
-				<img src="img/straycat.jpg" class="card-img" alt="...">
-				</div>
-				<div class="col">
-				<img src="img/straycat.jpg" class="card-img" alt="...">
-				</div>
-				<div class="col">
-				<img src="img/straycat.jpg" class="card-img" alt="...">
-				</div>
-				</div>
-			</div>
-		</div>
-		------------------------------------------------ 로그인 O --------------------------------------------------
-		------------------------------------------------ 로그인 X --------------------------------------------------
-		
-		<div class="card">
-			<div class="card-header">
-				내가 올린 입양글
-			</div>
-			<div class="card-body">
-			<div class="container">
-				<div class="jumbotron text-center">
-					<h4>로그인을 하세요</h4>
-					<br>
-					<a class="btn btn-primary" href="#" role="button">로그인</a>
-				</div>
-			</div>
-			</div>
-		</div>
-		
-		------------------------------------------------ 로그인 X --------------------------------------------------
-	</section> -->
-	
+
 	<!-- ★★★★★ 푸터 ★★★★★ -->
 	<c:import url="Footer.jsp"></c:import>
 	
-</div> <!-- end #content  -->
-
-
-			<!-- <div class="col-3">
-			 <div class="text-right">
-			 	<button type="button" class="btn btn-primary">입양등록</button>
-			 </div>
-				<div class="card">
-					<div class="card-header">
-						내가 올린 입양글
-					</div>
-				------------------------------------------------ 로그인 O --------------------------------------------------
-
-				------------------------------------------------ 로그인 O --------------------------------------------------
-				------------------------------------------------ 로그인 X --------------------------------------------------
-				<div class="card">
-					<div class="card-header">
-						내가 올린 입양글
-					</div>
-					<div class="card-body">
-					<div class="container">
-						<div class="jumbotron text-center">
-							<h4>로그인을 하세요</h4>
-							<br>
-							<a class="btn btn-primary" href="#" role="button">로그인</a>
-						</div>
-					</div>
-					</div>
-				</div>
-				
-				------------------------------------------------ 로그인 X --------------------------------------------------
-			</div>
-			</div>
-		</div>
-	</div> -->
-
+</div>
 </body>
 </html>

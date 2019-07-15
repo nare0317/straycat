@@ -1,7 +1,6 @@
 package com.straycat.adopt;
 
 import java.sql.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,30 +16,79 @@ public class AdoptServiceImpl implements AdoptService
 	@Autowired
 	private AdoptDAO dao;
 	
-	// 입양 리스트 조회
+	
+	// 입양 전체 리스트 조회
 	@Override
-	public Map<String, Object> listAdopt()
+	public List<Map<String,Object>> listAdopt()
 	{
-		Map<String, Object> map = new HashMap<String, Object>();
 		List<Map<String,Object>> list = null;
-		List<Map<String,Object>> gu = null;
 		
 		try
 		{
-			list = dao.listAdopt();
-			gu = dao.listGu();
-			
-			map.put("list", list);
-			map.put("gu", gu);
+			list = dao.listAdopt();			//-- 리스트 전체 목록 조회 메소드
 
 		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 
-		return map;
+		return list;
 	};
 	
+	// 구와 동 검색 후 리스트 출력하는 메소드 
+	@Override
+	public List<Map<String, Object>> listAdopt(String searchGu, String searchDong)
+	{
+		List<Map<String,Object>> list = null;
+		
+		try
+		{
+			list = dao.listAdopt(searchGu, searchDong);
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+	
+	// 구 셀렉트박스 리스트 조회 
+	@Override
+	public List<Map<String, Object>> listGu() 
+	{
+		List<Map<String, Object>> list = null;
+
+		try 
+		{
+			list = dao.listGu();
+
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+
+	// 동 셀렉트박스 리스트 조회 
+	@Override
+	public List<Map<String, Object>> listDong(String selectedGu) 
+	{
+		List<Map<String, Object>> list = null;
+
+		try 
+		{
+			list = dao.listDong(selectedGu);
+
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 
 	// 입양 게시글 등록
 	@Override
@@ -50,10 +98,14 @@ public class AdoptServiceImpl implements AdoptService
 
 		try
 		{
+			// 입력된 구와 동 정보를 가져와 dao의 searchAddress() 메소드로 주소 코드값을 얻어냄. 
 			String address = dao.searchAddress((String) param.get("gu"), (String) param.get("dong"));
 			param.put("ADDRESS", address);
+			
+			// 입력된 날짜의 데이터타입을 String 에서 Date로 변경 
 			Date date = Date.valueOf((String) param.get("rsq_date"));
 			param.put("RSQ_DATE", date);
+			
 			param.put("CAT_NAME", (String) param.get("cat_name"));
 			param.put("CAT_SPECIES", (String) param.get("cat_species"));
 			param.put("CAT_AGE_TYPE", (String) param.get("cat_age_type"));
@@ -62,6 +114,14 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADT_TYPE", (String) param.get("adt_type"));
 			param.put("CAT_ETC1", (String) param.get("cat_etc1"));
 			param.put("CAT_ETC2", (String) param.get("cat_etc2"));
+			
+			// session에 저장된 user_id값을 받아서 dao의 searchUserInfo() 메소드로 사용자 정보를 map 자료구조에 담음.
+			Map<String, Object> userInfo = dao.searchUserInfo((String)param.get("user_id"));
+			// map자료구조 안에서 "USER_CODE" 키 값으로 되어있는 USER_CODE 값을 가져옴.
+			String user_code = (String) userInfo.get("USER_CODE");
+			// param에 USER_CODE값을 넣음.
+			param.put("USER_CODE", user_code);
+			
 			param.put("TEL", (String) param.get("tel"));
 			param.put("EMAIL", (String) param.get("email"));
 			param.put("ADT_REASON", (String) param.get("adt_reason"));
@@ -69,7 +129,7 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADT_JOB", (String) param.get("adt_job"));
 			param.put("ADT_MARRIAGE", (String) param.get("adt_marriage"));
 			param.put("ADT_FAMILY_NUM", (String) param.get("adt_family_num"));
-
+			
 			result = dao.addAdopt(param);
 
 		} catch (Exception e)
@@ -99,15 +159,23 @@ public class AdoptServiceImpl implements AdoptService
 
 	// 게시글 열람
 	@Override
-	public Map<String, Object> readAdopt(String id)
+	public Map<String, Object> readAdopt(String adt_code)
 	{
 		Map<String, Object> post = null;
 
 		try
 		{
-			post = dao.readAdopt(id);
-
 			// 조회수 증가 메소드 추가해야함.
+			
+			// 게시글 내용 가져옴.
+			post = dao.readAdopt(adt_code);
+			
+			// 게시글 내용에 추천수 추가 
+			post.put("LIKE_COUNT", dao.countLike(adt_code));
+			
+			// 게시글 내용에 댓글수 추가
+			post.put("CMT_COUNT", dao.countComment(adt_code));
+			
 
 		} catch (Exception e)
 		{
@@ -117,4 +185,46 @@ public class AdoptServiceImpl implements AdoptService
 		return post;
 	}
 
+
+	// 지역 검색 후 조회된 데이터 갯수 조회
+	@Override
+	public int dataCount(String searchGu, String searchDong)
+	{
+		int dataCount = 0;
+		try
+		{
+			dataCount = dao.dataCount(searchGu, searchDong);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return dataCount;
+	}
+
+	// 입양 게시글 상태 변경 메소드
+	@Override
+	public int changeStatus(String adt_proc, String adt_code)
+	{
+		int result = 0;
+
+		try
+		{
+			result = dao.changeStatus(adt_proc, adt_code);
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+
+	
+
+	
+	
+	
+	
 }

@@ -10,13 +10,13 @@
 	FROM
 	(
 		SELECT
-		      ROW_NUMBER() OVER(ORDER BY BR.POST_DATE) AS NUM
+		      ROW_NUMBER() OVER(ORDER BY TO_NUMBER(SUBSTR(BR.BBS_CODE,3))) AS NUM
 		    , BR.BBS_CODE  AS CODE
 		    , U.NICKNAME  AS NICKNAME
 		    , BR.TITLE     AS TITLE
 		    , BR.CONTENT   AS CONTENT
 		    , BT.BBS_TYPE  AS TYPE
-		    , BR.POST_DATE AS POST_DATE
+		    , TO_CHAR(BR.POST_DATE, 'YYYY-MM-DD') AS POST_DATE
 		    , BR.HIT_COUNT AS HITCOUNT
 		    , NVL(BL2.LIKE_COUNT, 0)    AS LIKE_COUNT
 		    , NVL(BC2.CMT_COUNT, 0)    AS CMT_COUNT
@@ -39,11 +39,11 @@
 			</if>
 			
 		</where>
-		ORDER BY BR.POST_DATE DESC
 	)
 <![CDATA[
 	WHERE NUM <= #{end} and NUM >= #{start}
 ]]>
+	ORDER BY NUM DESC
 	
 </select>
 
@@ -106,13 +106,14 @@
 	FROM
 	(
 		SELECT
-		      ROW_NUMBER() OVER(ORDER BY BR.POST_DATE) AS NUM
+		      ROW_NUMBER() OVER(ORDER BY TO_NUMBER(SUBSTR(BR.BBS_CODE,3))) AS NUM
 		    , BR.BBS_CODE  AS CODE
+		    , U.ID	AS ID
 		    , U.NICKNAME  AS NICKNAME
 		    , BR.TITLE     AS TITLE
 		    , BR.CONTENT   AS CONTENT
 		    , BT.BBS_TYPE  AS TYPE
-		    , BR.POST_DATE AS POST_DATE
+		    , TO_CHAR(BR.POST_DATE, 'YYYY-MM-DD HH24:MI:SS') AS POST_DATE
 		    , BR.HIT_COUNT AS HITCOUNT
 		    , NVL(BL2.LIKE_COUNT, 0)    AS LIKE_COUNT
 		    , NVL(BC2.CMT_COUNT, 0)    AS CMT_COUNT
@@ -134,7 +135,7 @@
 				INSTR(BR.CONTENT, #{searchValue}) &gt;= 1
 			</if>
 		</where>
-		ORDER BY BR.POST_DATE DESC
+		ORDER BY NUM DESC
 	)
 	WHERE NUM = ${articleNum }
 </select>
@@ -144,16 +145,19 @@
 	    BC.BBS_CMT_CODE AS BBS_CMT_CODE
 	    , BC.BBS_CODE AS BBS_CODE
 	    , U.USER_CODE AS USER_CODE
-	    , BC.CONTENT AS CONTENT
-	    , BC.BBS_CMT_DATE AS BBS_CMT_DATE
-	    , U.ID AS ID
-	    , U.USER_NAME AS USER_NAME
-	    , U.TEL AS TEL
-	    , U.EMAIL AS EMAIL
-	    , U.GRADE AS GRADE
+	    , U.ID  AS ID
 	    , U.NICKNAME AS NICKNAME
-	    , U.ADDRESS_CODE AS ADDRESS_CODE
-	    , U.JOIN_DATE AS JOIN_DATE
+	    , BC.CONTENT AS CONTENT
+	    , TO_CHAR(BC.BBS_CMT_DATE, 'YYYY-MM-DD HH24:MI:SS') AS BBS_CMT_DATE
+	FROM BBS_CMT BC
+	JOIN USER_REG U ON BC.USER_CODE = U.USER_CODE
+	WHERE BBS_CODE=#{bbs_code}
+	ORDER BY TO_NUMBER(SUBSTR(BBS_CMT_CODE,3))
+</select>
+
+<select id="commentCount" resultType="java.lang.Integer">
+	SELECT
+	    COUNT(*) AS COUNT
 	FROM BBS_CMT BC
 	JOIN USER_REG U ON U.USER_CODE = BC.USER_CODE
 	WHERE BC.BBS_CODE = 
@@ -186,5 +190,34 @@
 		WHERE NUM = ${articleNum }
 	)
 </select>
+
+<insert id="commentInsert">
+	INSERT INTO BBS_CMT(BBS_CMT_CODE, BBS_CODE, USER_CODE, CONTENT, BBS_CMT_DATE) 
+	VALUES('BC'||BBS_CMT_SEQ.NEXTVAL, #{bbs_code, jdbcType=VARCHAR}, #{user_code, jdbcType=VARCHAR}, #{content, jdbcType=VARCHAR}, SYSDATE)
+</insert>
+
+<select id="selectUser" resultType="map">
+	SELECT
+	    USER_CODE
+	    , USER_NAME
+	    , TEL
+	    , EMAIL
+	    , GRADE
+	    , NICKNAME
+	    , ADDRESS_CODE
+	    , JOIN_DATE
+	FROM USER_REG
+	WHERE ID=#{id}
+</select>
+
+<delete id="commentDelete">
+	DELETE FROM BBS_CMT WHERE BBS_CMT_CODE = #{bbs_cmt_code}
+</delete>
+
+<update id="commentUpdate">
+	UPDATE BBS_CMT
+	SET CONTENT = #{content}, BBS_CMT_DATE = SYSDATE
+	WHERE BBS_CMT_CODE = #{bbs_cmt_code}
+</update>
 
 </mapper>

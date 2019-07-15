@@ -20,6 +20,7 @@ public class LoginController
 {
 	@Resource(name="LoginService")
 	private LoginService loginService;
+
 	
 	@RequestMapping(value="/login_check_ajax")
 	public void loginCheck(HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException
