@@ -159,15 +159,23 @@ public class AdoptServiceImpl implements AdoptService
 
 	// 게시글 열람
 	@Override
-	public Map<String, Object> readAdopt(String id)
+	public Map<String, Object> readAdopt(String adt_code)
 	{
 		Map<String, Object> post = null;
 
 		try
 		{
-			post = dao.readAdopt(id);
-
 			// 조회수 증가 메소드 추가해야함.
+			
+			// 게시글 내용 가져옴.
+			post = dao.readAdopt(adt_code);
+			
+			// 게시글 내용에 추천수 추가 
+			post.put("LIKE_COUNT", dao.countLike(adt_code));
+			
+			// 게시글 내용에 댓글수 추가
+			post.put("CMT_COUNT", dao.countComment(adt_code));
+			
 
 		} catch (Exception e)
 		{
@@ -194,16 +202,26 @@ public class AdoptServiceImpl implements AdoptService
 		return dataCount;
 	}
 
+	// 입양 게시글 상태 변경 메소드
+	@Override
+	public int changeStatus(String adt_proc, String adt_code)
+	{
+		int result = 0;
 
-	/*
-	 * @Override public int changeProcess(String adt_proc) { int result = 0;
-	 * 
-	 * try { result = dao.changeProcess(adt_proc);
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); }
-	 * 
-	 * return result; }
-	 */
+		try
+		{
+			result = dao.changeStatus(adt_proc, adt_code);
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+
+	
 
 	
 	
