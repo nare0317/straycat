@@ -166,7 +166,21 @@ public class BoardServiceImpl implements BoardService
 		
 		return result;
 	}
-	
-	
+
+	// 댓글을 업데이트 하는 메소드
+	@Override
+	public int commentUpdate(Map<String, String> map)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = dao.update("board.commentUpdate", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return result;
+	}
 	
 }

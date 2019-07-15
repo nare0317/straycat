@@ -171,29 +171,48 @@ public class BoardController
 			nextArticle.put("TITLE", "다음 게시글이 없습니다.");
 		}
 		
+		// 게시판 리스트에서 가져온 articleNum, searchKey, searchValue 정보를 가져옴
+		Map<String, Object> commentMap = new HashMap<>();
+		commentMap.put("bbs_code", article.get("CODE"));
+		
+		// 댓글 가져오기
+		List<Map<String, Object>> commentList = service.commentLoad(commentMap);
+		
 		model.addAttribute("article", article);
 		model.addAttribute("prevArticle", prevArticle);
 		model.addAttribute("nextArticle", nextArticle);
+		model.addAttribute("commentList", commentList);
 		
 		return "Board_Read";
 	}
 	
-	@RequestMapping(value="/commentload.ajax")
+	@RequestMapping("/commentupdate")
 	@ResponseBody
-	public List<Map<String, Object>> commentLoad(HttpServletRequest request)
+	public int commentUpdate(HttpServletRequest request)
 	{
-		// 게시판 리스트에서 가져온 articleNum, searchKey, searchValue 정보를 가져옴
-		Map<String, Object> map = new HashMap<>();
-		map.put("bbs_code", request.getParameter("bbs_code"));
-		System.out.println(request.getParameter("bbs_code"));
+		Map <String, String> map = new HashMap<>();
+		map.put("bbs_cmt_code", request.getParameter("bbs_cmt_code"));
+		map.put("content", request.getParameter("content"));
 		
-		// 댓글 가져오기
-		List<Map<String, Object>> commentList = service.commentLoad(map);
+		int result = service.commentUpdate(map);
 		
-		return commentList;
+		return result;
 	}
 	
-	@RequestMapping("/commentinsert.ajax")
+	@RequestMapping("/commentdelete")
+	public int commentDelete(@RequestParam(name="bbs_cmt_code") String bbs_cmt_code)
+	{
+		int result = 0;
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("bbs_cmt_code", bbs_cmt_code);
+		
+		result = service.commentDelete(map);
+		
+		return result;
+	}
+	
+	@RequestMapping("/commentwrite")
 	@ResponseBody
 	public int commentInsert(@RequestParam(name="bbs_code") String bbs_code
 			, @RequestParam(name="user_id") String user_id
@@ -206,6 +225,7 @@ public class BoardController
 		
 		Map<String, Object> selectResult = service.selectUserId(idMap);
 		
+		content = content.replaceAll("\n", "<br>");
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("bbs_code", bbs_code);
@@ -218,16 +238,24 @@ public class BoardController
 		return result;
 	}
 	
-	@RequestMapping("/commentdelete.ajax")
-	public int commentDelete(@RequestParam(name="bbs_cmt_code") String bbs_cmt_code)
+	///////////////////////아래의 메소들은 사용하지 않음///////////////////////////////
+	
+	@RequestMapping(value="/commentload.ajax")
+	@ResponseBody
+	public List<Map<String, Object>> commentLoad(HttpServletRequest request)
 	{
-		int result = 0;
+		// 게시판 리스트에서 가져온 articleNum, searchKey, searchValue 정보를 가져옴
+		Map<String, Object> commentMap = new HashMap<>();
+		commentMap.put("bbs_code", request.getParameter("bbs_code"));
+		System.out.println(request.getParameter("bbs_code"));
 		
-		Map<String, String> map = new HashMap<>();
-		map.put("bbs_cmt_code", bbs_cmt_code);
+		// 댓글 가져오기
+		List<Map<String, Object>> commentList = service.commentLoad(commentMap);
 		
-		result = service.commentDelete(map);
-		
-		return result;
+		return commentList;
 	}
+	
+	
+	
+	
 }

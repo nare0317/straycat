@@ -135,27 +135,28 @@
 
 		<!-- ★★★★★ 댓글 ★★★★★★ -->
 		<div class="comment-area">
-		<input type="hidden" id="code" value="${article.CODE }">
-		<input type="hidden" id="user_id" value="${sessionScope.user_id }">
+		
 			<!-- 댓글 입력  -->
-			<form id="comment_form" action="/commentwrite" method="post">
-				<!-- <input id="boardId" name="boardId" value="11663" type="hidden"
-					value="11663" /> -->
-
+			<form id="comment_form" action="<%=cp %>/commentwrite" method="post">
+				
 				<h5>댓글 남기기</h5>
  				
  				<!-- 댓글입력 창 -->
  				<c:if test="${sessionScope.user_id != null }">
-		        <textarea id="comment_input" class="form-control" name="comment" rows="2"
+		        <textarea id="comment_input" class="form-control" name="content" rows="2"
 		         placeholder="댓글을 입력해주세요." maxlength="300" required></textarea>
-				<p class="word-num text-right">(<span id="current-word">6</span>/300)</p>
+				<p class="word-num text-right">(<span id="current-word">0</span>/300)</p>
 				</c:if>
 				<c:if test="${sessionScope.user_id == null }">
-				<textarea id="comment_input" class="form-control" name="comment" rows="2"
+				<textarea id="comment_input" class="form-control" name="content" rows="2"
 		         placeholder="로그인이 필요합니다." maxlength="300" disabled></textarea>
-				<p class="word-num text-right">(<span id="current-word">6</span>/300)</p>
+				<p class="word-num text-right">(<span id="current-word">0</span>/300)</p>
 				</c:if>
-
+				
+				<!-- 댓글 입력을 위한 hidden -->
+				<input type="hidden" id="bbs_code" value="${article.CODE }" name="bbs_code">
+				<input type="hidden" id="user_id" value="${sessionScope.user_id }" name="user_id">
+								
  				<!-- 댓글입력 버튼 -->
 				<div class="text-right">
 				<c:if test="${sessionScope.user_id == null }">
@@ -168,9 +169,8 @@
 				</div>
 			</form>
 
-			<c:import url="Board_Comment.jsp"></c:import>
 			<!-- 댓글 리스트  -->
-			<%-- <div class="comment-list-area">
+			<div class="comment-list-area">
 				
 				<div class="comment-head">
 					<h5>댓글 <span class="comment-number" 
@@ -181,16 +181,18 @@
 				<c:forEach var="commentList" items="${commentList }">
 				<div id="comment-wrapper">
 
-					<div class="comment" data-id="16312" data-login="false">
-						<div class="comment-content">
+					<div class="comment">
+						<div id="${commentList.BBS_CMT_CODE }" class="comment-content">
 							<div class="comment-writer-date">
-								<!-- <div class="d-block"> -->
-									<h6 class="comment-writer">${commentList.NICKNAME }
-									<span class="comment-date">${commentList.BBS_CMT_DATE }</span>
-									</h6>
-								<!-- </div> -->
+								<h6 class="comment-writer">${commentList.NICKNAME }
+								<span class="comment-date">${commentList.BBS_CMT_DATE }</span>
+								</h6>
 							</div>
-							<p>${commentList.CONTENT }</p>
+							<c:if test="${sessionScope.user_id == commentList.ID }">
+							<button class="comment_modify btn btn-sm btn-secondary" type="button" value="${commentList.BBS_CMT_CODE }">수정</button>
+							<button class="comment_delete btn btn-sm btn-secondary" type="button" value="${commentList.BBS_CMT_CODE }">삭제</button>
+							</c:if>
+							<div class="cmt_content">${commentList.CONTENT }</div>
 						</div>
 					</div><!-- end comment -->
 
@@ -198,7 +200,7 @@
 
 				</div><!-- end comment-wrapper -->
 				</c:forEach>
-			</div><!-- end comment-list area --> --%>
+			</div><!-- end comment-list area -->
 		</div><!-- end comment-area -->
 
 	</section>
@@ -208,132 +210,129 @@
 </div>
 </body>
 <script type="text/javascript">
-$(document).ready(getCommentList());
 
-//댓글 글자수 세기
-$(function() {
-$('#comment_input').keyup(function (e){
-   var content = $(this).val();
-   $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
-   $('#current-word').html(content.length);
-});
-$('#comment_input').keyup();
-});
+
 
 $(document).ready(function(){
-	$("#comment_submit").click(function(){
-		if ($("#comment_input").val().length<0)
+	// 댓글 입력
+	$("#comment_submit").click(function()
+	{
+		if ($("#comment_input").val() == "")
 		{
-			alert("댓글 내용을 입력해주세요.");
+			alert("등록할 내용을 입력하세요.");
 			return;
 		}
-		console.log("#code: " + $("#code").val());
-		console.log("#code: " + $("#user_id").val());
-		console.log("#code: " + $("#comment_input").val());
+	
 		$.ajax({
-			type: "GET",
-			url: "<c:url value='/commentinsert.ajax'/>",
-			data: {
-				"bbs_code" : $("#code").val(), 
-				"user_id" : $("#user_id").val(),
-				"content" : $("#comment_input").val()
-			},
-			success: function(data){
-				console.log("in success");
-				if(data>0)
-				{
-					$("#comment_input").val("");
-					$("#comment-wrapper").empty();
-					getCommentList();
-				}
-				else
-					return;
+			method: "GET",
+			url: "<c:url value='/commentwrite'/>",
+			data: {"user_id":$("#user_id").val(), "bbs_code":$("#bbs_code").val(), "content":$("#comment_input").val()},
+			complete: function()
+			{
+				location.reload();
 			}
 		})
 	})
-});
-
-function getCommentList(){
-	$.ajax({
-	type:'GET',
-	url : "<c:url value='/commentload.ajax'/>",
-	data:{"bbs_code" : $("#code").val()},
-	success : function(data){
-		var html = "";
-		var commentCount = data.length;
-		if(data.length > 0)
-		{
-			for(i=0; i<data.length; i++)
-			{
-				html += "<div class='comment'>";
-				html += "<div class='comment-content'>";
-				html += "<div class='comment-writer-date'>";
-				html += "<h6 class='comment-writer'>" + data[i].NICKNAME;
-				html += "<span class='comment-date'>" + data[i].BBS_CMT_DATE + "</span>";
-				// 세션 아이디(input type="hidden")와 댓글 아이디가 같으면 수정/삭제 버튼을 표시함
-				if ($("#user_id").val() == data[i].ID)
-				{
-					html += "<button type='button' class='comment_modify' value='" + data[i].BBS_CMT_CODE + "'>수정</button>";
-					html += "<button type='button' class='comment_delete' value='" + data[i].BBS_CMT_CODE + "'>삭제</button></h6>";
-					/* html += "<button type='button' class='btn btn-primary btn-sm comment_modify' value='" + data[i].BBS_CMT_CODE + "'>수정</button>";
-					html += "<button type='button' class='btn btn-secondary btn-sm comment_delete' value='" + data[i].BBS_CMT_CODE + "'>삭제</button></h6>"; */
-					html += "<input type='hidden' id='comment_id' value=" + data[i].BBS_CMT_CODE + ">";
-				}
-				html += "</h6>";
-				html += "</div>";
-				html += "<p id='commentContent'>" + data[i].CONTENT + "</p>";
-				html += "</div></div>";
-				html += "<hr class='comment-hr'>";
-			}
-		} 
-		else 
-		{
-			html += "<div class='comment'>";
-			html += "<div class='comment-content'>";
-			html += "<p id='commentContent'><strong>등록된 댓글이 없습니다.</strong></p>";
-			html += "</div></div>";
-			html += "<hr class='comment-hr'>";
-		}
-       
-		$("#comment-number").text(commentCount);
-		$("#comment-wrapper").html(html);
-       
-	}
+	
+	//댓글 입력 글자 수 세기
+	$('#comment_input').keyup(function (e){
+	   var content = $(this).val();
+	   $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
+	   $('#current-word').html(content.length);
 	});
-}
-
-$(document).ready(function() {
-	// 댓글 수정 버튼 클릭
-	$(".comment_modify").click(function() {
-		alert("클릭");
-	})
 	
-	$(".btn_report").click(function()
+	
+	// 서로 다른 수정 버튼을 두 번 클릭했을 때, 이전에 클릭한 수정 버튼과 댓글 값을 저장하기 위한 변수 생성.
+	var oldElement = null;
+	var oldContent = null;
+	var oldModifyElement = null;
+	var oldDeleteElement = null;
+	$(".comment_modify").click(function()
 	{
-		alert("클릭");
-	})
-	
-	// 댓글 삭제 버튼 클릭
-	$(".comment_delete").click(function() {
-		alert("클릭");
-		/*
-		if (confirm("정말로 삭제하시겠습니까?"))
+		// 수정 버튼을 클릭했을 때, 다른 댓글을 수정하고 있었다면,
+		if (oldElement != null && oldContent!=null)
 		{
-			$.ajax({
-				type: "GET",
-				url: "<c:url value='/commentdelete.ajax'/>",
-				data: {"bbs_cmt_code":$(this).val()},
-				success: function(data) {
-					if (data>0)
-					{
-						alert("댓글이 삭제되었습니다.");
-						getCommentList();
-					}
-				}
-			})
+			// 다른 댓글 영역의 textarea 엘리먼트를 지우고 원본 텍스트를 넣음
+			oldElement.empty();
+			oldElement.html(oldContent);
 		}
-		*/
-	})
-})
+		
+		oldModifyElement = $(this);
+		oldDeleteElement = $(this).next();
+		
+		// 클릭한 버튼이 속한 댓글의 내용을 변수에 담기
+		oldElement = $(this).parent().find(".cmt_content");
+		oldContent = $(this).parent().find(".cmt_content").html();
+		
+		// 댓글의 내용을 비우고 textarea 엘리먼트를 넣기
+		oldElement.empty();
+		oldElement.html("<br><textarea class='form-control txtAreaModify' name='comment' rows='2' placeholder='댓글을 입력해주세요.'maxlength='300' required></textarea>" + 
+				" <p class='word-num text-right'>(<span class='current-word'>0</span>/300)</p>" +
+				"<button class='confirmModify' type='button'>수정</button>" +
+				"<button class='cancelModify' type='button'>취소</button>");
+		
+		// 수정, 삭제 버튼 지우기
+		oldModifyElement.remove();
+		oldDeleteElement.remove();
+		
+		// 생성한 textarea에 기존 값 채우기
+		// textarea에 넣으려면 <br> 태그를 개행문자로 변경해야 함
+		$(".txtAreaModify").val(oldContent.replaceAll("<br>", "\n"));
+		
+		// 수정을 위해 코멘트의 id 값을 저장
+		var bbs_cmt_code = $(this).val();
+		
+		
+		// 댓글 수정 입력란의 글자 수 세기
+	 	$('.txtAreaModify').keyup(function (e){
+		   var modifyContent = $(this).val();
+		   $('.current-word').html(modifyContent.length);
+		});
+		
+		// 수정을 취소할 경우 페이지 리로드
+	 	$(".cancelModify").click(function()
+		{
+			location.reload();
+		})
+		
+		// 코멘트를 수정한다면, 수정한 내용을 반영한 다음에 페이지 리로드
+		$(".confirmModify").click(function name()
+		{
+			// 댓글 업데이트를 위해 content 값 저장
+			// textarea의 개행문자를 <br> 태그로 치환하여 저장
+			var content = $(".txtAreaModify").val().replaceAll("\n","<br/>");
+			
+			$.ajax({
+				method: "GET",
+				url: "<c:url value='/commentupdate' />",
+				data: {"bbs_cmt_code":bbs_cmt_code, "content":content},
+				complete: function(){
+					location.reload();						
+				}
+			})// end ajax
+		})// end .confirmModify click event
+	})// end .comment_modify click event
+	
+	// 댓글 삭제 버튼을 클릭한 경우
+	$(".comment_delete").click(function()
+	{
+		if (confirm("정말 삭제하시겠습니까?"))
+		{
+			// 댓글 삭제를 위한 id 값 저장
+			var bbs_cmt_code = $(this).val();
+			
+			$.ajax({
+				method: "GET",
+				url: "<c:url value='/commentdelete'/>",
+				data: {"bbs_cmt_code":bbs_cmt_code},
+				complete: function(){
+					alert("삭제되었습니다.");
+					location.reload();
+				}
+			})// end ajax
+		}
+	})// end .comment_delete click event
+});// jQuery end
+
 </script>
 </html>

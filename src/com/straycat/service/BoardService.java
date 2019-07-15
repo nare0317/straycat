@@ -15,6 +15,7 @@ public interface BoardService
 	public int commentInsert(Map<String, String> map);
 	public List<Map<String, Object>> commentLoad(Map<String, Object> map);
 	public int commentDelete(Map<String, String> map);
+	public int commentUpdate(Map<String, String> map);
 	
 	public Map<String, Object> selectUserId(Map<String, String> map); 
 }
