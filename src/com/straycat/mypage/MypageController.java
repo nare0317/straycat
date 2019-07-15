@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.straycat.service.MypageService;
@@ -33,12 +34,16 @@ public class MypageController
 		return "Member_Update(form)";
 	}
 	
-	/*
-	 * @RequestMapping(value="/userEmail") public String selectUser(Model
-	 * model, @RequestParam String id, @RequestParam(name="user_code",
-	 * defaultValue="") String user_code) {
-	 * 
-	 * }
-	 * 
-	 */
+	@RequestMapping(value="/updateComplete", method = RequestMethod.POST)
+	public String updateComplete(Map<String, Object> map, HttpSession session, HttpServletRequest request)
+	{
+		String id = (String)session.getAttribute("user_id");
+		
+		String email = request.getParameter("eamil");
+		
+		
+		return "Mypage_MemberManage.jsp";
+	}
+	
+	
 }
