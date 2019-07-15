@@ -44,5 +44,8 @@ public interface AdoptDAO
 	// 조회수 증가 메소드 
 	public int addHitCount(String adt_code);
 	
+	// 입양게시글 수정 메소드
+	public int updateAdopt(Map<String,Object> param);
+	
 
 }

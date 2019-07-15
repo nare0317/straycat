@@ -282,6 +282,26 @@ public class AdoptDAOImpl implements AdoptDAO
 		}
 		return result; 
 	}
+
+	
+	
+	// 게시물 수정 메소드
+	@Override
+	public int updateAdopt(Map<String, Object> param)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = sqlSession.update("adopt.updateAdopt", param);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return result;
+	}
 	
 	
 }
