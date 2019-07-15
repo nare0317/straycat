@@ -5,7 +5,7 @@ $(document).ready(function()
 		showOn : "button",
 		buttonImage : "./img/small-calendar.png",
 		buttonImageOnly : true,
-		dateFormat : "yy.m.d.",
+		dateFormat : "yy-mm-dd",
 		changeMonth : true,
 		changeYear : true
 	});
@@ -15,7 +15,7 @@ $(document).ready(function()
 		showOn : "button",
 		buttonImage : "./img/small-calendar.png",
 		buttonImageOnly : true,
-		dateFormat : "yy.m.d.",
+		dateFormat : "yy-mm-dd",
 		changeMonth : true,
 		changeYear : true
 	});
@@ -108,6 +108,27 @@ $(document).ready(function()
 		}
 			$("#activityForm").submit();
 	});
+	
+	alert($("#cat_id").val());
+	
+	
+	$("#secondDatepicker").on("change", function()
+	{
+		//alert($("#secondDatepicker").val());
+		$.ajax(
+		{
+			url: 'act_date'
+			,type: 'get'
+			,data: {'id': $("#cat_id").val(),'act_date' :  $("#secondDatepicker").val()}
+			,success:function(data)
+			{
+				console.log(data);
+			}
+				
+		});
+	});
+	
+	
 	
 });
 

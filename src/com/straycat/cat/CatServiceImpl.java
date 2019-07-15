@@ -1,6 +1,7 @@
 package com.straycat.cat;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -106,7 +107,7 @@ public class CatServiceImpl implements CatService
 	@Override
 	public List<Map<String, Object>> catActReg(String id)
 	{
-		return dao.selectActList(id);
+		return dao.selectActStartList(id);
 	}	
 	
 	// 지역 검색 후 조회된 데이터 갯수 조회
@@ -141,6 +142,19 @@ public class CatServiceImpl implements CatService
 		
 		return list;
 	}
+
+	@Override
+	public List<Map<String, String>> actDate(Map<String, String> map)
+	{ 
+		List<Map<String, String>> result = new ArrayList<Map<String,String>>(); 
+		
+		result = dao.actDate(map);
+		
+		return result;
+	}
+	
+	
+	
 	
 	
 }

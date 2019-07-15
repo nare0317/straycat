@@ -1,5 +1,6 @@
 package com.straycat.cat;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -106,9 +107,9 @@ public class CatDAOImpl implements CatDAO
 	}
 	
 	@Override
-	public List<Map<String, Object>> selectActList(String id)
+	public List<Map<String, Object>> selectActStartList(String id)
 	{		
-		return sqlSession.selectList("catDetail.actReg",id);	
+		return sqlSession.selectList("catDetail.actRegStart",id);	
 	}
 	
 	
@@ -169,4 +170,20 @@ public class CatDAOImpl implements CatDAO
 		return dataCount;
 	}
 
+	@Override
+	public List<Map<String, String>> actDate(Map<String, String> map)
+	{
+		List<Map<String, String>> result = new ArrayList<Map<String,String>>();
+		
+		try
+		{
+			result = sqlSession.selectList("catDetail.actReg", map);
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return result;
+	}
+	
 }

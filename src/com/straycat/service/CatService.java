@@ -24,6 +24,8 @@ public interface CatService
 	// 조회된 데이터 개수 출력
 	public int dataCount(String searchGu, String searchDong);
 
+	// 고상페 활동 내역 리스트 출력
+	public List<Map<String, String>> actDate(Map<String, String> map);
 	
 	
 }

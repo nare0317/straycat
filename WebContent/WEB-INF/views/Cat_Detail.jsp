@@ -59,6 +59,8 @@
                </div>
             </div>
             
+            <input type="hidden" value="${catInfo.CAT_CODE }" id="cat_id">
+            
             <div class="row">
                   <div class="col-6">
                       <label for="exampleInputEmail1">종류</label>

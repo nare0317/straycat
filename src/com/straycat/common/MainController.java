@@ -9,13 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.straycat.service.AdoptService;
+import com.straycat.service.CatService;
 
 @Controller
 public class MainController
 {
 	
 	@Autowired
-	private AdoptService service;
+	private AdoptService adoptService;
+	
+	@Autowired
+	private CatService catService;
 	
 	// 루트로 접속하면 메인 페이지로 리다이렉트
 	@RequestMapping("/")
@@ -29,16 +33,19 @@ public class MainController
 	public String list(Model model)
 	{
 		List<Map<String, Object>> list = null;
+		List<Map<String, Object>> guList = null;
 		
 		try
 		{
-			list = service.listAdopt();		
+			list = adoptService.listAdopt();	
+			guList = catService.listGu();
 		} catch (Exception e)
 		{
 			// TODO: handle exception
 		}
 		
 		model.addAttribute("list", list);
+		model.addAttribute("guList", guList);
 		
 		return "Main";
 	};
