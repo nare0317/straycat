@@ -131,13 +131,13 @@ public class AdoptDAOImpl implements AdoptDAO
 	
 	// 입양게시물 열람 메소드
 	@Override
-	public Map<String, Object> readAdopt(String id)
+	public Map<String, Object> readAdopt(String adt_code)
 	{
 		Map<String, Object> post = null; 
 		
 		try 
 		{
-			post = sqlSession.selectOne("adopt.readAdopt", id);
+			post = sqlSession.selectOne("adopt.readAdopt", adt_code);
 		}
 		catch (Exception e) 
 		{
@@ -186,6 +186,8 @@ public class AdoptDAOImpl implements AdoptDAO
 		return list;
 	}
 
+	
+	// 지역 검색 후 데이터 갯수 조회 메소드
 	@Override
 	public int dataCount(String searchGu, String searchDong)
 	{
@@ -204,6 +206,26 @@ public class AdoptDAOImpl implements AdoptDAO
 			throw e;
 		}
 		return dataCount;
+	}
+
+	@Override
+	public int changeStatus(String adt_proc, String adt_code)
+	{
+		int result = 0; 
+		try
+		{
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("adt_proc", adt_proc);
+			map.put("adt_code", adt_code);
+			
+			result = sqlSession.update("adopt.updateStatus", map);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		return result;
 	}
 
 	

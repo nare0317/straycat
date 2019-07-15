@@ -313,7 +313,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">연락처</label>
                   <div class="col-sm-5">
                      <input type="text" class="form-control" id="tel" name="tel" 
-                     placeholder="${user.TEL}">
+                     placeholder="${user.TEL}" value="${user.TEL}">
                   </div>
                </div>
                
@@ -322,7 +322,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">이메일</label>
                   <div class="col-sm-6">
                      <input type="email" class="form-control" id="email" name="email" 
-                     placeholder="${user.EMAIL }">
+                     placeholder="${user.EMAIL }" value="${user.EMAIL }">
                   </div>
                </div>
                

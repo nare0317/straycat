@@ -102,9 +102,9 @@ public class AdoptController
 
 	// 입양게시글 열람
 	@RequestMapping(value = "/adopt_read", method = RequestMethod.GET)
-	public String adoptRead(@RequestParam String id, Model model)
+	public String adoptRead(@RequestParam String adt_code, Model model)
 	{
-		Map<String, Object> post = service.readAdopt(id);
+		Map<String, Object> post = service.readAdopt(adt_code);
 
 		model.addAttribute("post", post);
 
@@ -131,13 +131,14 @@ public class AdoptController
 	}
 	 
 	// 입양 상태 변경 
-	/*
-	 * @RequestMapping(value = "/adopt_proc", method = RequestMethod.GET) public
-	 * String changeProcess(@RequestParam String adt_proc) {
-	 * service.changeProcess(adt_proc);
-	 * 
-	 * return "redirect:/adopt"; //-- 상태가 변경되었습니다. 팝업창 띄우는 페이지로 수정해야.. }
-	 */
+	@RequestMapping(value = "/adopt_proc", method = RequestMethod.GET) 
+	public String changeStatus(@RequestParam String adt_proc
+							 , @RequestParam String adt_code) 
+	{
+		service.changeStatus(adt_proc, adt_code);
+		return "redirect:/adopt_read"; //-- 상태가 변경되었습니다. 팝업창 띄우는 페이지로 수정해야.. 
+	} 
+	 
 	  
 	    
 	 

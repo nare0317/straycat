@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Adoption_Read.jsp(입양글 열람 페이지 -일반 사용자)</title>
+<title>입양글 열람 페이지</title>
 
 <!-- Head.jsp  -->
 <c:import url="Head.jsp"></c:import>
@@ -23,19 +23,24 @@
 	$(document).ready(function()
 	{
 		
-		$("#adt_proc_change").click(function()
+		// 입양상태 변경 버튼 클릭 시 모달 창 호출
+		$("#modal_call").click(function()
+		{
+			alert("성공");
+			$(location).attr("href", "<%=cp%>/adopt_proc?adt_proc=" + $("#adt_proc").val() + "&adt_code=" + $("#adt_code").val());
+			//$("#proc_change_modal").modal();
+		});
+		
+		$("#confirm").click(function()
 		{
 			//alert("성공");
-			$(location).attr("href", "<%=cp%>/adopt_proc?adt_proc=" + $("#adt_proc").val());
+			<%-- $(location).attr("href", "<%=cp%>/adopt_proc?adt_proc=" + $("#adt_proc").val() + "&adt_code=" + $("#adt_code").val()); --%>
 		});
-
+		
 	}); 
 	
 
 </script>
-
-
-
 
 </head>
 <body>
@@ -92,22 +97,29 @@
 				</ul>
 			</div>
 			
+			
 			<!-- 수정/삭제 버튼 -->
-			<div class="col-md-2 offset-md-4" align="right">
-				<button class="btn btn-secondary btn-sm" id="modify-btn">수정</button>
-				<button class="btn btn-secondary btn-sm" id="delete-btn">삭제</button>
-			</div>
-				
+			<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
+				<div class="col-md-2 offset-md-4" align="right">
+					<button class="btn btn-secondary btn-sm" id="modify-btn">수정</button>
+					<button class="btn btn-secondary btn-sm" id="delete-btn">삭제</button>
+				</div>
+			</c:if>	
+			
 			<!--★★★★★ 게시글 상태 변경 ★★★★★ -->
 			<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
 				<div class="post-status row">
 					<div class="input-group">
-					
+						
+						<!-- 게시글코드(hidden) -->
+            			<input type="hidden" id="adt_code" name="adt_code" value="${list.ADT_CODE}">
+						
 				    	<div class="input-group-prepend">
 			        	  <div class="input-group-text">게시글 상태</div>
 			       	 	</div>
 			       	 	
 			        	<select class="custom-select mr-sm-2" id="adt_proc" name="adt_proc">
+					        <option value="">== 선택 ==</option>
 					        <option value="ADP1">신규등록</option>
 					        <option value="ADP2">입양진행중</option>
 					        <option value="ADP3">매칭진행중</option>
@@ -116,8 +128,34 @@
 					        <option value="ADP6">입양완료</option>
 					    </select>
 					    
-			      		<input type="button" class="btn btn-dark" id="adt_proc_change" value="변경">
-			      </div>
+			      		<!-- Button trigger modal -->
+						<button type="button" class="btn btn-dark" id="modal_call" data-toggle="modal" data-target="proc_change_modal">
+						  변경
+						</button>
+			  
+				
+						<!-- Modal -->
+						<div class="modal fade" id="proc_change_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="exampleModalLabel">입양 상태 변경</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+						       현재 게시글의 상태를 변경하시겠습니까?
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+						        <button type="button" class="btn btn-primary" id="confirm">변경</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						
+				    </div>
 				</div>
 			</c:if>
 		
@@ -189,7 +227,7 @@
 					</div>
 				</div>
 				
-				<!-- 우측 사이드바 (입양신청)-->
+				<!-- 우측 사이드바 (입양신청 - 일반사용자)-->
 				<div class="slidemenu col-lg-2 text-center">
 					<div class="apply">
 						<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
@@ -197,6 +235,27 @@
 						<button class="btn btn-primary">입양 신청</button>
 					</div>
 				</div>
+				
+				<!-- 우측 사이드바 (입양신청 - 작성자)-->
+				<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
+					<div class="slidemenu col-lg-2 text-center">
+						<div class="apply">
+							<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
+							<p>남은시간 : <span>13일 00:57:30</span></p>
+							<button class="btn btn-success">입양 신청자 확인</button>
+						</div>
+					</div>
+				</c:if>
+				
+				<!-- 우측 사이드바 (입양신청 - 입양신청자)-->
+				<!-- <div class="slidemenu col-lg-2 text-center">
+					<div class="apply">
+						<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
+						<p class="deadline">남은시간 : <span>13일 00:57:30</span></p>
+						<button class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
+						title="2019.06.20 18:20:39에 이미 신청하셨습니다">내 신청내역</button>
+					</div>
+				</div> -->
 				
 		</div>
 		
