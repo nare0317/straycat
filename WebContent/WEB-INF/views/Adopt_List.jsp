@@ -32,7 +32,6 @@
 
 	}); 
 	
-
 </script>
 
 </head>
@@ -143,9 +142,46 @@
 				<div class="row no-gutters">
 				
 					<!-- 길냥이 대표이미지 -->
-					<div class="col-md-5 cat-photo">
+					<div class="col-md-5 cat-photo cat-photo-wrap">
 						<%-- <img src="${list.CAT_IMAGE }" class="card-img" alt=""> --%>
-						<img src="img/straycat.jpg" class="card-img" alt="">
+						<div class="cp-image">
+							<img src="img/straycat.jpg" class="card-img" alt="">
+						</div>
+						
+						<!-- 게시글 상태에 따라 색상 변경 -->
+						<c:choose>
+						<c:when test="${list.ADT_PROC eq '신규등록'}">
+							<div class="cp-status" style="background-color: #f1c40f; color: white;">
+								<p id="adt_proc_tag">${list.ADT_PROC }</p>
+							</div>
+						</c:when>
+						<c:when test="${list.ADT_PROC eq '입양진행중'}">
+							<div class="cp-status" style="background-color: #778beb;  color: white;">
+								<p id="adt_proc_tag">${list.ADT_PROC }</p>
+							</div>
+						</c:when>
+						<c:when test="${list.ADT_PROC eq '매칭진행중'}">
+							<div class="cp-status" style="background-color: #1abc9c;  color: white;">
+								<p id="adt_proc_tag">${list.ADT_PROC }</p>
+							</div>
+						</c:when>
+						<c:when test="${list.ADT_PROC eq '입양보류'}">
+							<div class="cp-status" style="background-color: #b2bec3;  color: white;">
+								<p id="adt_proc_tag">${list.ADT_PROC }</p>
+							</div>
+						</c:when>
+						<c:when test="${list.ADT_PROC eq '입양확정'}">
+							<div class="cp-status" style="background-color: #bdc3c7;  color: white;">
+								<p id="adt_proc_tag">${list.ADT_PROC }</p>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="cp-status" style="background-color: #2d3436; color: white;">
+								<p id="adt_proc_tag">${list.ADT_PROC }</p>
+							</div>
+						</c:otherwise>
+						</c:choose>
+						
 					</div>
 					
 					<!-- 길냥이 정보 -->
