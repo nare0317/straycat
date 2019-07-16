@@ -1,5 +1,6 @@
 package com.straycat.mypage;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -24,7 +25,6 @@ public class MypageServiceImpl implements MypageService
 		try
 		{
 			memberInfo = dao.selectOne("member.searchUser", id);
-			System.out.println(id);
 			
 		} catch (Exception e)
 		{
@@ -65,6 +65,36 @@ public class MypageServiceImpl implements MypageService
 	{
 		session.invalidate();
 		
+	}
+
+	@Override
+	public Map<String, Object> myInfo(String id)
+	{
+		Map<String, Object> myInfo = null;
+		
+		try
+		{
+			myInfo = dao.selectOne("member.memberList", id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return myInfo;
+	}
+
+	@Override
+	public List<Map<String, Object>> followList(String id)
+	{
+		List<Map<String, Object>> followList = null;
+		
+		try
+		{
+			followList = dao.selectList("member.followList", id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return followList;
 	}
 
 	

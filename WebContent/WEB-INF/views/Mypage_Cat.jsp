@@ -1,5 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String cp = request.getContextPath();
+%>
 
 <div class="gil">
 	<h1>길냥이관리</h1>
@@ -79,7 +83,8 @@
 						<button type="button" class="btn btn-primary" >목록에서 삭제</button>
 					</div>
 				</div>
-				<c:forEach var="i" begin="0" end="2">
+				<!-- 팔로우한 고양이들 정보 리스트 출력 -->
+				<c:forEach var="followList" items="${followList }">
 					<div>
 						<div class="card-deck">
 							<div class="card mb-3 catCard">
@@ -90,23 +95,23 @@
 									<div class="col-md-10">
 										<div class="card-body">
 											<div class="col-9">
-												<h5 class="card-title">Card title</h5>
+												<h5 class="card-title">${followList.CAT_NAME }</h5>			
 											</div>
-											<p class="card-text">
-												This is a wider card with
-												supporting text below as a natural lead-in to
-												additional content. This content is a little bit
-												longer.
-											</p>
-											<p class="card-text">
-												<small class="text-muted">Last updated 3 mins ago</small>
-											</p>
+											
+												<ul>
+													<li>${followList.CAT_CODE }</li>
+													<li>${followList.SPECIES }</li>
+													<li>${followList.ADDRESS }</li>
+													<li>${followList.STATUS }</li>
+												</ul>
+											
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					<a href="<%=cp %>/catdetail?id=${followList.CAT_CODE}" class="stretched-link"></a>
 				</c:forEach>
 
 				<nav aria-label="Page navigation example">

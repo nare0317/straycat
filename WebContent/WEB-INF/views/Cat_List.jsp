@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="<%=cp%>/css/view/cat_list.css">
 
 <!-- JS 파일  -->
-<script src="<%=cp %>/js/view/adopt_list.js"></script>
+<script src="<%=cp %>/js/view/cat_list.js"></script>
 <script src="<%=cp %>/js/view/gudong.js"></script>
 <script type="text/javascript">
 
@@ -127,8 +127,8 @@
 				
 					<!-- 길냥이 대표이미지 -->
 					<div class="col-md-5 cat-photo">
-						<%-- <img src="${list.CAT_IMAGE }" class="card-img" alt=""> --%>
-						<img src="img/straycat.jpg" class="card-img" alt="">
+						<img src="<%=cp %>/${list.CAT_IMAGE }" class="card-img" alt="">
+						<!-- <img src="img/straycat.jpg" class="card-img" alt=""> -->
 					</div>
 					
 					<!-- 길냥이 정보 -->

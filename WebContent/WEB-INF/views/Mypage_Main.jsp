@@ -25,7 +25,7 @@
 		<div class="row">
 			<div class="col-6">
 				<div class="left">
-					<h2>임나래</h2>
+					<h3>${myInfo.NAME }</h3>
 				</div>
 			</div>
 			<div class="col-2">..</div>
@@ -33,7 +33,7 @@
 		</div>
 		<div class="row left">
 			<div>
-				<h5>test0123님</h5>
+				<h5>${myInfo.ID }님</h5>
 			</div>
 		</div>
 		<div class="row left">
@@ -46,7 +46,7 @@
 		<div class="row left">
 			<div>
 				<h5>
-					등급 <span>열혈집사</span>
+					등급 <span>${myInfo.GRADE }</span>
 				</h5>
 			</div>
 		</div>

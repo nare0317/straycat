@@ -68,7 +68,6 @@ public class CatServiceImpl implements CatService
 			param.put("CAT_SPECIES", (String) param.get("cat_species"));
 			param.put("CAT_ETC1", (String) param.get("cat_etc1"));
 			param.put("CAT_ETC2", (String) param.get("cat_etc2"));
-			param.put("CAT_REP_IMG", (String) param.get("cat_rep_img"));
 			Date date = Date.valueOf((String) param.get("cat_date"));
 			param.put("CAT_DATE", date);
 			param.put("USER_CODE", (String) param.get("user_code"));

@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.straycat.service.CatService;
+import com.straycat.service.ImageService;
 
 @Controller
 public class CatController
@@ -28,6 +32,9 @@ public class CatController
 
 	@Autowired
 	private CatService service;
+	
+	@Autowired
+	private ImageService imageService;
 
 	
 	////////////////////////////////// 고양이 리스트 부분 ////////////////////////////////////////////////////////////////////////////////////////
@@ -122,24 +129,30 @@ public class CatController
 	
 	  // 길고양이 등록 컨트롤러
 	  
-	  @RequestMapping(value="/registration") 
-	  public String catregistration(@RequestParam Map<String,Object> param, HttpServletRequest request, Model model) 
+	  @RequestMapping(value="/catregistration", method = RequestMethod.POST) 
+	  public String catregistration(@RequestParam Map<String,Object> param
+			  , HttpServletRequest request
+			  , HttpSession session
+			  , MultipartFile file
+			  , Model model) 
 	  {
-			
-		  	service.addCat(param);
+		  // 이미지를 저장하고 저장된 이미지 경로를 반환함
+		  // 이미지 경로를 자료구조(고양이 등록정보)에 넣음
+		  String path = session.getServletContext().getRealPath("/");
+		  String imageUrl = imageService.saveImage(file, path);
+		  param.put("CAT_REP_IMG", imageUrl);
+		  		  
+		  service.addCat(param);
 		  
-			model.addAttribute("gu", request.getParameter("gu"));
-			model.addAttribute("dong", request.getParameter("dong"));
-			
-		
-			
-			return "redirect:cat";
-		  	
+		  model.addAttribute("gu", request.getParameter("gu"));
+		  model.addAttribute("dong", request.getParameter("dong"));
+		  
+		  return "redirect:cat";
 	  }
 	  
 	  
 	  // 길고양이 등록 폼 컨트롤러
-	  @RequestMapping(value="/catregistration") 
+	  @RequestMapping(value="/catregistrationform") 
 	  public String catregistrationForm(Model model) 
 	  {
 		// 구 셀렉트박스 값 넘기기
