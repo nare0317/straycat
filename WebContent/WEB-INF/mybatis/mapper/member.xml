@@ -51,5 +51,12 @@
 	WHERE ID = #{id}
 	</update>
 	
+	<select id="memberList" parameterType="map" resultType="map">
+	SELECT US.ID AS ID, US.USER_NAME AS NAME, US.EMAIL AS EMAIL, GR.GRADE_NAME AS GRADE, US.ADDRESS_CODE AS ADDRESS
+	FROM USER_REG US LEFT JOIN USER_GRADE GR
+	ON US.GRADE = GR.GRADE_CODE
+	WHERE ID = #{id}
+	</select>
+	
 
 </mapper>

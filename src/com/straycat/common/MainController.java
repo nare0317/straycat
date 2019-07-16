@@ -1,7 +1,10 @@
 package com.straycat.common;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.straycat.service.AdoptService;
 import com.straycat.service.CatService;
+import com.straycat.service.MemberService;
+import com.straycat.service.MypageService;
 
 @Controller
 public class MainController
@@ -20,6 +25,9 @@ public class MainController
 	
 	@Autowired
 	private CatService catService;
+	
+	@Autowired
+	private MypageService mypageService;
 	
 	// 루트로 접속하면 메인 페이지로 리다이렉트
 	@RequestMapping("/")
@@ -74,8 +82,12 @@ public class MainController
 	}
 	
 	@RequestMapping("/mypage") 
-	public String mypage() 
+	public String mypage(HttpSession session, Model model) 
 	{ 
+		String id = (String)session.getAttribute("user_id");
+		
+		mypageService.myInfo(id);
+		model.addAttribute("myInfo", mypageService.myInfo(id));
 		
 		return "Mypage_Main"; 
 	}

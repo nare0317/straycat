@@ -30,7 +30,7 @@ public class MainCatCountController
 		int catCount = service.checkCount(map);
 		response.getWriter().print(service.checkCount(map));
 		
-		//model.addAttribute("catCount",catCount);
+		model.addAttribute("catCount",catCount);
 		
 	}
 		

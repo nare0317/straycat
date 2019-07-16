@@ -88,7 +88,7 @@ function result(info)
 {	
 	var url = window.location.pathname
 	
-	if(url=="/FinalPrj/cat" || url=="/FinalPrj/main" || url=="/FinalPrj/adopt" || url=="/FinalPrj/missing" || url=="/FinalPrj/introduce")
+	if(url=="<%=cp%>/cat" || url=="<%=cp%>/main" || url=="<%=cp%>/adopt" || url=="<%=cp%>/missing" || url=="<%=cp%>/introduce")
 	{
 		for(var i = 0; i < 1; i++) 
 		{

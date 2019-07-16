@@ -13,4 +13,6 @@ public interface MypageService
 	public void leaveMember(Map<String, Object> map);
 	
 	public void logout(HttpSession session);
+	
+	public Map<String, Object> myInfo(String id);
 }
