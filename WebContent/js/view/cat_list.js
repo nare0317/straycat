@@ -41,5 +41,5 @@ function login_need()
 
 function write_func()
 {
-	window.location.href="catregistration";
+	window.location.href="catregistrationform";
 }
