@@ -130,6 +130,8 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADT_MARRIAGE", (String) param.get("adt_marriage"));
 			param.put("ADT_FAMILY_NUM", (String) param.get("adt_family_num"));
 			
+			param.put("CAT_IMG", (String)param.get("cat_img"));
+			
 			result = dao.addAdopt(param);
 
 		} catch (Exception e)
@@ -237,12 +239,11 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("CAT_ADDRESS", address);
 			
 			// 입력된 날짜의 데이터타입을 String 에서 Date로 변경 
-			//Date date = Date.valueOf((String) param.get("rsq_date"));
-			param.put("RSQ_DATE", (String) param.get("rsq_date"));
+			//Date date = Date.valueOf((String)param.get("rsq_date"));
+			param.put("RSQ_DATE", (String)param.get("rsq_date"));
 			
 			param.put("CAT_NAME", (String) param.get("cat_name"));
 			param.put("CAT_SPECIES", (String) param.get("cat_species"));
-			System.out.println((String) param.get("cat_species")));
 			param.put("CAT_AGE_TYPE", (String) param.get("cat_age_type"));
 			param.put("CAT_AGE_NUM", (String) param.get("cat_age_num"));
 			param.put("CAT_SEX", (String) param.get("cat_sex"));
@@ -256,7 +257,9 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADT_CAT_EXP", (String) param.get("adt_cat_exp"));
 			param.put("ADT_JOB", (String) param.get("adt_job"));
 			param.put("ADT_MARRIAGE", (String) param.get("adt_marriage"));
-			param.put("ADT_FAMILY_NUM", (String) param.get("adt_family_num"));		  
+			param.put("ADT_FAMILY_NUM", (String) param.get("adt_family_num"));
+			
+			// 게시글코드(adt_code) 값 넘김
 			param.put("ADT_CODE", (String)param.get("adt_code"));
 			
 			result = dao.updateAdopt(param);
