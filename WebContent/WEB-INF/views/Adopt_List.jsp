@@ -136,7 +136,7 @@
 		<div class="card-deck">
 		
 			<c:forEach var="list" items="${list }">		
-			<div class="card">
+			<div class="card border-light" style="width: 18rem;">
 				<div class="row no-gutters">
 				
 					<!-- 길냥이 대표이미지 -->
@@ -185,6 +185,8 @@
 					<!-- 길냥이 정보 -->
 					<div class="col-md-7 cat-info">
 						<div class="card-body">
+							<!-- 고양이코드 -->
+							<span class="cat-code">#ADO38<%-- ${list.CAT_CODE } --%></span>
 							<!-- 고양이 이름 -->
 							<h5 class="card-title">${list.CAT_NAME }</h5>
 							<!-- 고양이 정보 -->
