@@ -179,29 +179,22 @@ public class CatController
 		  return result;
 	  }
 	  
-	  
 	  // 고상페 활동 날짜 변경 
 	 @RequestMapping(value="/act_date")
 	 @ResponseBody
-	 public List<Map<String, Object>> actDate(@RequestParam(name="id") String id,
+	 public void actDate(@RequestParam(name="id") String id,
 			 			 @RequestParam(name="act_date") String act_date, 
 			 			 HttpServletResponse response) throws IOException
 	 {
-		 List<Map<String, Object>> result = new ArrayList<Map<String,Object>>();
-		 
-		 act_date=act_date.replaceAll("-", "");
+		 response.setCharacterEncoding("UTF-8");
 		 
 		 Map<String, String> map = new HashMap<String, String>();
 		 map.put("cat_code", id);
 		 map.put("act_date", act_date);
 		 
-		 service.actDate(map);
+		 JSONArray json = new JSONArray(service.actDate(map));
 		 
-		 //JSONArray json = new JSONArray(service.actDate(id,act_date));
-		 
-		 //response.getWriter().print(json.toString());	
-		 
-		 return result;
+		 response.getWriter().print(json.toString());	
 	 }
 }
 
