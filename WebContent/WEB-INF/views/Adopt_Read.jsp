@@ -205,6 +205,8 @@
 				<!-- 글 내용 -->
 				<div class="content col-lg-7">
 					<table class="missing-info table table-light">
+						<!-- 입양분류(ADT_TYPE) 체크박스로 표시해주는 내용 추가해야 됨. -->
+					
 						<tr>
 							<th class="align-top th-sm th-lg">이름</th>
 							<td class="align-top">${post.CAT_NAME }</td>
