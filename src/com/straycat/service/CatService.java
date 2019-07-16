@@ -29,4 +29,6 @@ public interface CatService
 	
 	// 길냥이 등록 동 리스트 조회
 	public List<Map<String, String>> getCatDong(Map<String, String> map);
+	
+	public void addAct(Map<String, Object> param);
 }

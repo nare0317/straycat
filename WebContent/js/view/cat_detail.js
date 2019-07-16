@@ -1,11 +1,16 @@
 $(document).ready(function()
 {
+	//var test =$("#cat_id").val(); 
+	//alert("확인");
+	//alert(test);
+	
+	
 	$("#firstDatepicker").datepicker(
 	{
 		showOn : "button",
 		buttonImage : "./img/small-calendar.png",
 		buttonImageOnly : true,
-		dateFormat : "yymmdd",
+		dateFormat : "yy-mm-dd",
 		changeMonth : true,
 		changeYear : true
 	});
@@ -105,7 +110,7 @@ $(document).ready(function()
 		{
 			$(".err1").css("display", "block");
 			return;
-		}
+		}		
 			$("#activityForm").submit();
 	});
 	

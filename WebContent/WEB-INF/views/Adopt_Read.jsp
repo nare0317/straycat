@@ -270,7 +270,8 @@
 					<div class="apply">
 						<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
 						<p>남은시간 : <span>13일 00:57:30</span></p>
-						<button class="btn btn-primary">입양 신청</button>
+						<input type="button" class="btn btn-primary" value="입양신청"
+						onclick="location.href='<%=cp%>/adopt/apply_form?adt_code=${post.ADT_CODE }'">
 					</div>
 				</div>
 				
