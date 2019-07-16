@@ -27,5 +27,6 @@ public interface CatService
 	// 고상페 활동 내역 리스트 출력
 	public List<Map<String, String>> actDate(Map<String, String> map);
 	
-	
+	// 길냥이 등록 동 리스트 조회
+	public List<Map<String, String>> getCatDong(Map<String, String> map);
 }
