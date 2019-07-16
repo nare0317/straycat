@@ -86,12 +86,14 @@ function callback(position)
 // 메인에 시, 구, 동을 표시함.
 function result(info)
 {	
+	console.log("path name:" + window.location.url);
 	var url = window.location.pathname
 	
 	if(url=="/FinalPrj/cat" || url=="/FinalPrj/main" || url=="/FinalPrj/adopt" || url=="/FinalPrj/missing" || url=="/FinalPrj/introduce")
 	{
 		for(var i = 0; i < 1; i++) 
 		{
+			console.log("for문")
 			var si = info[0].address.region_1depth_name;
 			var gu = info[0].address.region_2depth_name;
 			var dong = info[0].address.region_3depth_name;
@@ -103,6 +105,7 @@ function result(info)
 			$("#dong").text(dong); */
 			$("#loc").text(juso);
 			break;
+			
 		};
 	
 	$.ajax(

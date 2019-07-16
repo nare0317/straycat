@@ -152,6 +152,22 @@ public class CatServiceImpl implements CatService
 		
 		return result;
 	}
+
+	// 길냥이 등록 페이지에서 동 리스트를 반환하는 메소드
+	@Override
+	public List<Map<String, String>> getCatDong(Map<String, String> map)
+	{
+		List<Map<String, String>> result = new ArrayList<>();
+		
+		try
+		{
+			result = dao.selectList(map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return result;
+	}
 	
 	
 	
