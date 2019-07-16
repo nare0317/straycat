@@ -3,6 +3,7 @@ package com.straycat.adopt;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -69,12 +70,15 @@ public class AdoptController
 	@RequestMapping(value = "/adopt_form", method = RequestMethod.GET)
 	public String adoptForm(Model model
 							, HttpServletRequest request
-							, @RequestParam String user_id)
+							)
 	{
 		Map<String, Object> user = null;
 		
 		try
 		{
+			HttpSession session = request.getSession();
+			String user_id = (String)session.getAttribute("user_id");
+			
 			// 사용자 id로 찾아낸 정보(이름,전화번호,이메일) 넘기기
 			user = service.searchUserInfo(user_id);
 			model.addAttribute("user", user);

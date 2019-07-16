@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="<%=cp%>/css/jquery-ui.structure.css"> --%>
 
 <!-- jquery ui js -->
-<%-- <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script> --%>
+<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 <%-- <script type="text/javascript" src="<%=cp%>/js/jquery-ui.min.js"></script> --%>
 
 <!-- Bootstrap CSS -->

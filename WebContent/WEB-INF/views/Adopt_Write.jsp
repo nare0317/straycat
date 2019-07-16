@@ -19,6 +19,7 @@
 <!-- JS 파일 -->
 <script src="<%=cp%>/js/view/miss_write.js"></script>
 <script src="<%=cp %>/js/view/gudong.js"></script>
+<script src="<%=cp %>/js/view/adopt_write.js"></script>
 
 <%-- <link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script> --%>
@@ -71,9 +72,9 @@
             
             <!---------------- 고양이 대표 이미지 첨부 --------------->
             <div class="col-3 text-center">
-               <img src="img/straycat.jpg" style="width: 200px;"><br> <br>
+               <img id="catPicture" src="img/straycat.jpg" style="width: 200px;"><br> <br>
                <label class="btn btn-primary"> 사진첨부<input type="file"
-                  class="form-control-file" id="exampleFormControlFile1"
+                  class="form-control-file" id="uploadPicture"
                   style="display: none;"></label>
             </div>
             

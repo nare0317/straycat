@@ -185,5 +185,22 @@ public class CatDAOImpl implements CatDAO
 		}
 		return result;
 	}
+
+	@Override
+	public List<Map<String, String>> selectList(Map<String, String> map)
+	{
+		List<Map<String, String>> result = new ArrayList<>();
+		
+		try
+		{
+			result = sqlSession.selectList("cat.catGetDong", map);
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		
+		return result;
+	}
 	
 }
