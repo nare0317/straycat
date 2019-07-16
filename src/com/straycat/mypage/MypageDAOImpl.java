@@ -42,7 +42,7 @@ public class MypageDAOImpl implements MypageDAO
 	{
 		try 
 		{
-			return sqlSession.selectOne(id);
+			return sqlSession.selectList(id,value);
 		} catch (Exception e) 
 		{
 			logger.error(e.toString());

@@ -1,5 +1,6 @@
 package com.straycat.mypage;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -79,6 +80,21 @@ public class MypageServiceImpl implements MypageService
 			System.out.println(e.toString());
 		}
 		return myInfo;
+	}
+
+	@Override
+	public List<Map<String, Object>> followList(String id)
+	{
+		List<Map<String, Object>> followList = null;
+		
+		try
+		{
+			followList = dao.selectList("member.followList", id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return followList;
 	}
 
 	

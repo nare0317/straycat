@@ -61,19 +61,6 @@ public class LoginController
 	@RequestMapping("/login") 
 	public String login() 
 	{ 
-		/*
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		if(user_id == null)
-		{
-			return "Login"; 
-		}
-		else
-		{
-			return "redirect:main";
-		}
-		*/
-		
 		return "Login"; 
 	}
 	

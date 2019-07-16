@@ -81,12 +81,19 @@ public class MainController
 		return "MissingCatList";
 	}
 	
+	// 마이페이지로 이동
 	@RequestMapping("/mypage") 
 	public String mypage(HttpSession session, Model model) 
 	{ 
 		String id = (String)session.getAttribute("user_id");
+		Map<String, Object> map = new HashMap<>();
 		
-		mypageService.myInfo(id);
+		map.put("id", id);
+		
+		mypageService.myInfo(id);	// 로그인 유저 정보
+		mypageService.followList(id);	// 로그인 유저 팔로우한 고양이 정보
+		
+		model.addAttribute("followList", mypageService.followList(id));
 		model.addAttribute("myInfo", mypageService.myInfo(id));
 		
 		return "Mypage_Main"; 
