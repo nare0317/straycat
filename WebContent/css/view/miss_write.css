@@ -3,7 +3,6 @@
 
  	/************ Breadcrumbs 부분 ************/	
 
-
  		#header	
 		{	
 			margin-bottom: 40px;	
@@ -23,6 +22,7 @@
 			letter-spacing: 5px;	
 			margin-top:40px;	
 		}	
+		
 		#header-title  #sub-title	
 		{	
 			font-size: medium;	
@@ -107,7 +107,7 @@
 	}	
 
  	/******아래는 윤비가 먹인 CSS ***************************************/	
-
+/* 
  	div {	
 		font-family: 'Nanum Gothic Coding', monospace;	
 		font-family: 'Quicksand', sans-serif;	
@@ -146,4 +146,4 @@
 
  	.card {	
 		margin-top: 100px;	
-	}
+	} */

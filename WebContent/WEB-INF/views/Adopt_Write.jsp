@@ -257,10 +257,10 @@
                
                <!-- 특이사항 -->   
                <div class="form-group row">
-                  <label for="colFormLabel" class="col-sm-2 col-form-label">고양이<br>
+                  <label for="cat_ect1" class="col-sm-2 col-form-label">고양이<br>
                      특이사항</label>
                   <div class="col-sm-10">
-                     <textarea class="form-control" id="cat_etc1" name="cat_etc1"
+                     <textarea class="form-control" id="cat_ect1" name="cat_ect1"
                      placeholder="고양이의 특징이나 생김새에 대해 자세히 기술해주세요."
                      rows="7" maxlength="1000" required></textarea>
                   </div>
@@ -269,9 +269,9 @@
                
                <!-- 건강사항 -->
                <div class="form-group row">
-                  <label for="colFormLabel" class="col-sm-2 col-form-label">건강사항</label>
+                  <label for="cat_ect2" class="col-sm-2 col-form-label">건강사항</label>
                   <div class="col-sm-10">
-                     <textarea class="form-control" id="cat_etc2" name="cat_etc2"
+                     <textarea class="form-control" id="cat_ect2" name="cat_ect2"
                      placeholder="고양이의 건강상태에 대해 자세히 기술해주세요. 책임비가 있으실 경우, 책임비에 대한 내용도 작성해주세요. (예. 책임비 5만원. 중성화 수술 확인 후 돌려드림.)"
                      rows="7" maxlength="1000" required></textarea>
                   </div>

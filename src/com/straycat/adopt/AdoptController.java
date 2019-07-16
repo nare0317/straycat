@@ -121,7 +121,7 @@ public class AdoptController
 		
 		try
 		{
-			request.getParameter("adt_code");
+			adt_code = request.getParameter("adt_code");
 			
 			post = service.readAdopt(adt_code);
 			model.addAttribute("post", post);
@@ -207,11 +207,12 @@ public class AdoptController
 	
 	
 	// 입양 게시글 수정
-	@RequestMapping(value = "/adopt_update", method = RequestMethod.GET)
+	@RequestMapping(value = "/adopt_update", method = RequestMethod.POST)
 	public String adoptUpdate(@RequestParam Map<String, Object> param
-	/* , @RequestParam String adt_code */)
+							, @RequestParam String adt_code
+							, HttpServletRequest request)
 	{
-		String adt_code = (String) param.get("ADT_CODE");
+		adt_code = request.getParameter("adt_code");
 		
 		try
 		{
