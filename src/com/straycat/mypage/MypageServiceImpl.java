@@ -112,24 +112,8 @@ public class MypageServiceImpl implements MypageService
 		return myBoardList;
 	}
 
-	/*
-	@Override
-	public int boardComment(String id)
-	{
-		int check = 0;
-		
-		try
-		{
-			check = dao.selectOne("member.boardComment", id);
-			
-		} catch (Exception e)
-		{
-			System.out.println(e.toString());
-		}
-		
-		return check;
-	}
-	*/
+
+	
 
 	
 	

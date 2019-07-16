@@ -37,10 +37,10 @@
 							<div class="content no">${myBoardList.ROWNUM }</div>
 							<div class="content title titleLeft">
 								<div class="contentTitle">
-									<a class="contentLink" href="<%=cp%>/ReceiveNoteDetail.jsp?bbs_code">${myBoardList.TITLE } </a>
+									<a class="contentLink" href="myBoard&bbs_code="${myBoardList.BBS_CODE }>${myBoardList.TITLE } </a>
 								</div>
 								<div class="commentCount">
-									<i class='far fa-comment'>??</i>
+									<i class='far fa-comment'>${myBoardList.COUNT }</i>
 								</div>
 							</div>
 							<div class="content writer">${myBoardList.NICKNAME }</div><input type="hidden" id="bbs_code" name="bbs_code" value="${myBoardList.BBS_CODE }">

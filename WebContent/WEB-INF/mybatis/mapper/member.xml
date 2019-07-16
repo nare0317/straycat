@@ -79,19 +79,17 @@
 	<!-- 내가 쓴 자유게시판 글 리스트 정보 -->
 	<select id="myBoardList" parameterType="map" resultType="map">
 	SELECT BR.TITLE AS TITLE, US.NICKNAME AS NICKNAME, BR.POST_DATE AS POST_DATE, BR.HIT_COUNT AS HIT_COUNT, ROWNUM, BR.BBS_CODE
+	, (
+	   SELECT COUNT(*) AS COUNT
+	   FROM BBS_CMT BC
+	   WHERE BC.BBS_CODE = BR.BBS_CODE
+	 ) AS COUNT
 	FROM USER_REG US LEFT JOIN BBS_REG BR
 	ON US.USER_CODE = BR.USER_CODE
 	WHERE ID=#{id}
 	ORDER BY ROWNUM DESC
 	</select>
 	
-	<!-- 내가 쓴 자유게시판 글의 댓글 갯수 -->
-	<select id="BoardComment" parameterType="map" resultType="java.lang.Integer">
-	SELECT COUNT(*) AS COUNT
-	FROM BBS_REG BR LEFT JOIN BBS_CMT BC
-	ON BR.BBS_CODE = BC.BBS_CODE
-	WHERE BR.BBS_CODE=#{bbs_code}
-	</select>
 	
 	
 	
