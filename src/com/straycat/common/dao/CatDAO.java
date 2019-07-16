@@ -29,5 +29,7 @@ public interface CatDAO
     public List<Map<String, String>> actDate(Map<String, String> map);
     
     public <T> T selectOne(String id, Object value);
+    
+    public int insert(String id, Object value);
 	
 }

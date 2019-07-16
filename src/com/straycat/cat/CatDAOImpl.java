@@ -221,4 +221,24 @@ public class CatDAOImpl implements CatDAO
 		
 	}
 	
+	// insert 메소드
+	@Override
+	public int insert(String id, Object value) 
+	{
+		int result = 0;
+		
+		try 
+		{
+			sqlSession.insert(id, value);
+		} catch (Exception e) 
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		
+		return result;
+	}
+	
+	
+	
 }
