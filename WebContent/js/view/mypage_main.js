@@ -31,4 +31,10 @@ $(document).ready(function()
 		{
 			$(location).attr("href", "memberupdatepw");
 		});
+		
+		$("#activity-tab").click(function()
+		{
+			//$(location).attr("href", "mypageactivity");
+			
+		});
 });

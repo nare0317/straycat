@@ -1,5 +1,6 @@
 package com.straycat.mypage;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.straycat.service.MypageService;
+
 
 @Controller
 public class MypageController
@@ -92,13 +94,41 @@ public class MypageController
 		return mav;
 	}
 	
-	
-	@RequestMapping(value="/mypagemain")
-	public String userInfo()
-	{
-		return "mypage_main";
+	// 마이페이지로 이동
+	@RequestMapping("/mypage") 
+	public String mypage(HttpSession session, Model model, HttpServletRequest request) 
+	{ 
+		String id = (String)session.getAttribute("user_id");
+		Map<String, Object> map = new HashMap<>();
+		//String bbs_code = request.getParameter("bbs_code");
+		
+		map.put("id", id);
+		
+		service.myBoardList(id);
+		service.myInfo(id);	// 로그인 유저 정보
+		service.followList(id);	// 로그인 유저 팔로우한 고양이 정보
+		//service.boardComment(bbs_code);
+		
+		model.addAttribute("myBoardList", service.myBoardList(id));
+		model.addAttribute("followList", service.followList(id));
+		model.addAttribute("myInfo", service.myInfo(id));
+		//model.addAttribute("boardComment", service.boardComment(bbs_code));
+		
+		return "Mypage_Main"; 
 	}
 	
+	
+	/*
+	 * @RequestMapping(value="/mypagemain") public String userInfo(HttpSession
+	 * session, Map<String, Object> map, Model model) { String id =
+	 * (String)session.getAttribute("user_id"); map.put("id", id);
+	 * 
+	 * service.myBoardList(id);
+	 * 
+	 * model.addAttribute("myBoardList", service.myBoardList(id));
+	 * 
+	 * return "mypage_main"; }
+	 */
 	
 	
 }

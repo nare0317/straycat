@@ -97,6 +97,40 @@ public class MypageServiceImpl implements MypageService
 		return followList;
 	}
 
+	@Override
+	public List<Map<String, Object>> myBoardList(String id)
+	{
+		List<Map<String, Object>> myBoardList = null;
+		
+		try
+		{
+			myBoardList = dao.selectList("member.myBoardList", id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return myBoardList;
+	}
+
+	/*
+	@Override
+	public int boardComment(String id)
+	{
+		int check = 0;
+		
+		try
+		{
+			check = dao.selectOne("member.boardComment", id);
+			
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return check;
+	}
+	*/
+
 	
 	
 	
