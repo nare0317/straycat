@@ -196,5 +196,74 @@ public class CatController
 		 
 		 response.getWriter().print(json.toString());	
 	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 // 고양이 활동 등록하는 부분
+	 @RequestMapping(value="/actregistration", method = RequestMethod.POST)
+	 public String actRegistration(Map<String, Object> param, Model model, HttpServletRequest request, HttpSession session)
+	 {
+		 String act_type = request.getParameter("activityRadio");
+		 String cat_code = request.getParameter("cat_id");
+		 String user_code = (String) session.getAttribute("user_id");
+		 String content = request.getParameter("activityContent");
+		 String latitude = request.getParameter("latitude");
+		 String longitude = request.getParameter("longitude");
+		 String gu = request.getParameter("gu");
+		 String dong = request.getParameter("dong");
+		 String act_date = request.getParameter("firstDatepicker");
+		 
+		 String act_location = gu + " " + dong;
+		 
+		 
+		 System.out.println(act_type);
+		 System.out.println(cat_code);
+		 System.out.println(user_code);
+		 System.out.println(content);
+		 System.out.println(latitude);
+		 System.out.println(longitude);
+		 System.out.println(act_location);
+		 System.out.println(act_date);
+		 
+		 param.put("cat_code", cat_code);
+		 param.put("user_code", user_code);
+		 param.put("act_type", act_type);
+		 param.put("content", content);
+		 param.put("latitude", latitude);
+		 param.put("longitude", longitude);
+		 param.put("act_location", act_location);
+		 param.put("act_date", act_date);
+		 
+		 service.addAct(param);
+		 
+		 return "redirect:/catdetail";
+		 
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 }
 
