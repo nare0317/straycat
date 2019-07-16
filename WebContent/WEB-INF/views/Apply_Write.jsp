@@ -8,11 +8,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>입양신청 페이지</title>
-	<c:import url="Head.jsp"></c:import>
-	
-	<!-- 페이지 CSS, 자바스크립트 -->
-	<link href="<%=cp%>/css/view/adopt_apply.css" rel="stylesheet">
+<title>입양신청 페이지</title>
+<c:import url="Head.jsp"></c:import>
+
+<!-- 페이지 CSS, 자바스크립트 -->
+<link href="<%=cp%>/css/view/adopt_apply.css" rel="stylesheet">
 </head>
 <body>
 

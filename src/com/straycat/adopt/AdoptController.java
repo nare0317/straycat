@@ -226,6 +226,25 @@ public class AdoptController
 		return "redirect:/adopt_read?adt_code="+adt_code;
 	}
 
+	@RequestMapping(value="/adopt/apply_form", method = RequestMethod.GET)
+	public String applyForm(@RequestParam String adt_code
+							, HttpServletRequest request
+							, Model model)
+	{
+		try
+		{
+			adt_code = request.getParameter("adt_code");
+			model.addAttribute("adt_code", adt_code);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return "Apply_Write";
+	}
+	
+	
 	
 
 

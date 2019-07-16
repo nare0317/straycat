@@ -141,8 +141,8 @@
 				
 					<!-- 길냥이 대표이미지 -->
 					<div class="col-md-5 cat-photo cat-photo-wrap">
-						<%-- <img src="${list.CAT_IMAGE }" class="card-img" alt=""> --%>
 						<div class="cp-image">
+							<%-- <img src="${list.CAT_IMAGE }" class="card-img" alt=""> --%>
 							<img src="img/straycat.jpg" class="card-img" alt="">
 						</div>
 						

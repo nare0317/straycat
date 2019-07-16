@@ -130,6 +130,8 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADT_MARRIAGE", (String) param.get("adt_marriage"));
 			param.put("ADT_FAMILY_NUM", (String) param.get("adt_family_num"));
 			
+			param.put("CAT_IMG", (String)param.get("cat_img"));
+			
 			result = dao.addAdopt(param);
 
 		} catch (Exception e)
