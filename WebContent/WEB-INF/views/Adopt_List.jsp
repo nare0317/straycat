@@ -194,7 +194,9 @@
 									<li>${list.CAT_AGE }</li>
 									<li>${list.CAT_ADDRESS}</li>
 									<li>${list.POST_DATE }</li>
-									<li><i class="fas fa-eye" >${list.HIT_COUNT }</i></li>
+									<li><i class="fas fa-eye" > ${list.HIT_COUNT }</i></li>
+									
+									<!-- 추천수, 댓글수 추가해야함..  -->
 									<%-- <li><i class="far fa-thumbs-up"> ${list.LIKE_COUNT }</i></li> --%>
 									<%-- <li><i class="far fa-comment-dots">${list.HIT_COUNT }</i></li> --%>
 								</ul>	

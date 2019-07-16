@@ -29,13 +29,27 @@
 	</select>
 	
 	<insert id="addJoin" parameterType="map">
-		<selectKey resultType="string" keyProperty="USER_CODE" order="BEFORE">
-        SELECT MAX(ROWNUM)+1
-        FROM ADT_REG        
-		</selectKey>
 		INSERT INTO USER_REG (USER_CODE, ID, USER_NAME, PWD, TEL, EMAIL, GRADE, NICKNAME, ADDRESS_CODE)
-		VALUES ('US'||#{USER_CODE}, #{idInput,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 'GR1', #{nickname,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
+		VALUES ('US'||USER_CODE_SEQ.NEXTVAL, #{idInput,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, CRYPTPACK.ENCRYPT(#{pwd,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}), #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 'GR1', #{nickname,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
 	</insert>
+	
+	<select id="searchUser" parameterType="map" resultType="map">
+	SELECT EMAIL, PWD, NICKNAME, ADDRESS_CODE, ID, USER_NAME
+	FROM USER_REG
+	WHERE ID = #{id}
+	</select>
+	
+	<update id="userUpdate" parameterType="map">
+	UPDATE USER_REG
+	SET PWD =  CRYPTPACK.ENCRYPT(#{pwd,jdbcType=VARCHAR},#{pwd,jdbcType=VARCHAR}), EMAIL = #{email,jdbcType=VARCHAR}, NICKNAME = #{nickname,jdbcType=VARCHAR}, ADDRESS_CODE = #{address,jdbcType=VARCHAR}  
+	WHERE ID = #{id}
+	</update>
+	
+	<update id="userLeave" parameterType="map">
+	UPDATE USER_REG
+	SET USER_STATUS = 'USS2'
+	WHERE ID = #{id}
+	</update>
 	
 
 </mapper>

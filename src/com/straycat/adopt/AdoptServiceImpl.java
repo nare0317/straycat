@@ -166,6 +166,7 @@ public class AdoptServiceImpl implements AdoptService
 		try
 		{
 			// 조회수 증가 메소드 추가해야함.
+			dao.addHitCount(adt_code);
 			
 			// 게시글 내용 가져옴.
 			post = dao.readAdopt(adt_code);
@@ -221,7 +222,51 @@ public class AdoptServiceImpl implements AdoptService
 	}
 
 
-	
+
+	// 입양게시글 수정 
+	@Override
+	public int updateAdopt(Map<String, Object> param)
+	{
+		int result = 0; 
+		
+		try
+		{
+			
+			// 입력된 구와 동 정보를 가져와 dao의 searchAddress() 메소드로 주소 코드값을 얻어냄. 
+			String address = dao.searchAddress((String) param.get("gu"), (String) param.get("dong"));
+			param.put("ADDRESS", address);
+			
+			// 입력된 날짜의 데이터타입을 String 에서 Date로 변경 
+			Date date = Date.valueOf((String) param.get("rsq_date"));
+			param.put("RSQ_DATE", date);
+			
+			param.put("CAT_NAME", (String) param.get("cat_name"));
+			param.put("CAT_SPECIES", (String) param.get("cat_species"));
+			param.put("CAT_AGE_TYPE", (String) param.get("cat_age_type"));
+			param.put("CAT_AGE_NUM", (String) param.get("cat_age_num"));
+			param.put("CAT_SEX", (String) param.get("cat_sex"));
+			param.put("ADT_TYPE", (String) param.get("adt_type"));
+			param.put("CAT_ETC1", (String) param.get("cat_etc1"));
+			param.put("CAT_ETC2", (String) param.get("cat_etc2"));
+			param.put("CAT_REP_IMG", (String) param.get("cat_rep_img"));
+			param.put("TEL", (String) param.get("tel"));
+			param.put("EMAIL", (String) param.get("email"));
+			param.put("ADT_REASON", (String) param.get("adt_reason"));
+			param.put("ADT_CAT_EXP", (String) param.get("adt_cat_exp"));
+			param.put("ADT_JOB", (String) param.get("adt_job"));
+			param.put("ADT_MARRIAGE", (String) param.get("adt_marriage"));
+			param.put("ADT_FAMILY_NUM", (String) param.get("adt_family_num"));		  
+			
+			result = dao.updateAdopt(param);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
 
 	
 	

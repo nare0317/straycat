@@ -220,4 +220,10 @@
 	WHERE BBS_CMT_CODE = #{bbs_cmt_code}
 </update>
 
+<update id="viewCountUpdate">
+	UPDATE BBS_REG
+	SET HIT_COUNT = HIT_COUNT+1
+	WHERE BBS_CODE = #{CODE}
+</update>
+
 </mapper>

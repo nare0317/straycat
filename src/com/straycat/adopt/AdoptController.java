@@ -170,4 +170,58 @@ public class AdoptController
 		 
 		return "redirect:/adopt_read?adt_code="+adt_code;
 	} 
+	
+	// 게시글 수정 버튼 클릭시 입양게시글 수정페이지로 이동
+	@RequestMapping(value = "/adopt_update_form", method = RequestMethod.GET)
+	public String updateForm(Model model
+							, HttpServletRequest request
+							, @RequestParam String adt_code)
+	{
+		Map<String, Object> post = null;
+		try
+		{
+			// 게시글 코드 값 받기 
+			adt_code = request.getParameter("adt_code");
+			
+			// 해당 게시글 정보 얻어내기
+			post = service.readAdopt(adt_code);
+			
+			// 게시글 정보 넘기기 
+			model.addAttribute("post", post);
+			
+			// 구 셀렉트박스 값 넘기기
+			List<Map<String, Object>> gu = service.listGu();
+			model.addAttribute("gu", gu);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return "Adopt_Update";
+	}
+	
+	
+	// 입양 게시글 수정
+	@RequestMapping(value = "/adopt_update", method = RequestMethod.GET)
+	public String adoptUpdate(@RequestParam Map<String, Object> param
+	/* , @RequestParam String adt_code */)
+	{
+		String adt_code = (String) param.get("ADT_CODE");
+		
+		try
+		{
+			service.updateAdopt(param);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return "redirect:/adopt_read?adt_code="+adt_code;
+	}
+
+	
+
+
 }

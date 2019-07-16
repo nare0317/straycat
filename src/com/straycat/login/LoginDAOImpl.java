@@ -19,5 +19,13 @@ public class LoginDAOImpl implements LoginDAO
 	{
 		return sqlSession.selectOne("login.loginCheck", map);
 	}
+
+	@Override
+	public int leaveCheck(Map<String, Object> param)
+	{
+		return sqlSession.selectOne("login.leaveCheck", param);
+	}
+	
+	
 	
 }

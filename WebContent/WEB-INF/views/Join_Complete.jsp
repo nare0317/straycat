@@ -24,8 +24,7 @@
 	<div class="card text-center">
 		<div class="card-header"><h1><span style="color: #007BFF">회원가입</span>을 축하드립니다.</h1></div>
 		<div class="card-body">
-			<h5 class="card-title">홍길동님 반갑습니다.</h5>
-			<p class="card-text">로그인을 하셔서 길고양이를 등록해보세요~</p>
+			<p class="card-title">로그인을 하셔서 길고양이를 등록해보세요~</p>
 			<button type="button" class="btn btn-primary">로그인</button>
 		</div>
 	</div>

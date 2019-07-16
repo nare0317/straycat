@@ -30,6 +30,9 @@ public interface AdoptService
 	
 	// 입양 게시글 상태 변경
 	public int changeStatus(String adt_proc, String adt_code);
+	
+	// 입양게시글 수정 
+	public int updateAdopt(Map<String, Object> param);
 
 	
 	

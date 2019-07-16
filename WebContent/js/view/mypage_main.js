@@ -26,4 +26,9 @@ $(document).ready(function()
 			$("input[name='allCheck2']").prop("checked",false);
 		}
 	});
+	
+		$("#update").click(function()
+		{
+			$(location).attr("href", "memberupdatepw");
+		});
 });

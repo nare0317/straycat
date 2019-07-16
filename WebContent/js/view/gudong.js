@@ -79,26 +79,3 @@ function dongList()
 	});
 
 }
-
-// 확인 버튼을 누르면 실행될 함수
-	
-/*function search()
-{
-	alert("성공");
-	//var gu = $("#gu").val();
-	//var dong = $("#dong").val();
-	var selectedGu = $("#gu :selected").text();
-	var selectedDong = $("#dong :selected").text();
-
-	if (gu == "" || dong == "")
-		return;
-	
-	location.href='/adopt?searchGu='+selectedGu+'&searchDong='+selectedDong;
-	
-	//var s = selectedGu + ":" + gu + ", " + selectedDong + ":" + dong;
-
-	//alert(s);
-
-}
-*/
-

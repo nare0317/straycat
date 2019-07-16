@@ -42,16 +42,16 @@
 						<table class="table">
 							<tr>
 								<th>아이디<span class="required">*</span></th>
-								<td colspan="2"><input id="idInput" type="text" name="idInput"	class="form-control inputbox">
-									<button id="idCheck" type="button"
-										class="btn btn-outline-primary btn-sm">중복확인</button></td>
+								<td colspan="2">
+									<input id="idInput" type="text" name="idInput"	class="form-control inputbox">
+									<button id="idCheck" type="button" class="btn btn-outline-primary btn-sm">중복확인</button>
+									<input id="check1" type="hidden">
+								</td>
 							</tr>
 							<tr>
 								<th>비밀번호<span class="required">*</span></th>
 								<td class="inputbox" colspan="2"><input type="password" name="pwd" id="pwd" class="form-control" class="w300"><br> <span
-									class="caution">영문대문자, 영문소문자, 숫자, 특수기호 중 3가지를 포함한 8자리
-										이상의 암호나</span><br> <span class="caution">2가지를 포함한 10자리
-										이상의 암호를 사용할 수 있습니다.</span></td>
+									class="caution">영문+숫자+특수기호를 모두 포함하여 8자리 이상으로 구성하여야 합니다.</span><br></td>
 							</tr>
 							<tr>
 								<th>비밀번호 확인<span class="required">*</span></th>
@@ -62,12 +62,14 @@
 								<th>닉네임<span class="required">*</span></th>
 								<td colspan="2"><input id="nickname" type="text" name="nickname" class="form-control inputbox">
 									<button id="nickNameCheck" type="button" class="btn btn-outline-primary btn-sm">중복확인</button>
+									<input id="check2" type="hidden">
 								</td>
 							</tr>
 							<tr>
 								<th>이메일<span class="required">*</span></th>
-								<td colspan="2"><input id="email" name="email" type="text" class="form-control inputbox">
+								<td colspan="2"><input id="email" name="email" type="email" class="form-control inputbox">
 									<button id="emailCheck" type="button" class="btn btn-outline-primary btn-sm">중복확인</button>
+									<input id="check3" type="hidden">
 								</td>
 							</tr>
 							<tr>
@@ -76,7 +78,9 @@
 							<tr>
 								<td colspan="4"><button type="button"
 										class="btn btn-outline-primary btn-sm" data-toggle="modal"
-										data-target="#exampleModal">실명확인</button></td>
+										data-target="#exampleModal">실명확인</button>
+										<input id="check4" type="hidden"></td>
+										
 							</tr>
 							<tr>
 								<th>성명<span class="required">*</span></th>
@@ -97,7 +101,7 @@
 										</div>
 										-
 										<div class="col">
-											<input id="tel3"" name="tel3"  type="text" class="form-control"
+											<input id="tel3" name="tel3"  type="text" class="form-control"
 												readonly="readonly">
 										</div>
 									</div>

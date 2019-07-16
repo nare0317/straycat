@@ -100,7 +100,7 @@
 		</div>
 		
 		<div class="post-head row">
-			<div class="col-lg-9">
+			<div class="col-lg-6">
 				<!-- 작성자아이디, 작성일시, 조회수 -->
 				<ul class="list-inline">
 					<li class="list-inline-item g-mx-4">${post.USER_NICKNAME }
@@ -115,7 +115,9 @@
 			<!-- 수정/삭제 버튼 -->
 			<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
 				<div class="col-md-2 offset-md-4" align="right">
-					<button class="btn btn-secondary btn-sm" id="modify-btn">수정</button>
+					<input type="button" class="btn btn-secondary btn-sm" id="modify-btn" value="수정"
+					onclick="location.href='<%=cp%>/adopt_update_form?adt_code=${post.ADT_CODE}'">
+					
 					<button class="btn btn-secondary btn-sm" id="delete-btn" disabled="disabled">삭제</button>
 				</div>
 			</c:if>	
