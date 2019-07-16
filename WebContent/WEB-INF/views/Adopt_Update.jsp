@@ -24,21 +24,6 @@
 <link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 
-<script type="text/javascript">
-
-$(document).ready(function()
-{
-	$("#submit-btn").click(function()
-	{
-		//alert("함수호출와뇰");
-		$("#updateForm").submit();	
-	});
-});
-	
-	
-</script>
-
-
 </head>
 <body>
 
@@ -76,6 +61,7 @@ $(document).ready(function()
       
       <form action="<%=cp %>/adopt_update" method="post" 
       id="updateForm" class="needs-validation" novalidate>
+      
       
          <!-- ★★★★ 고양이 정보 입력 ★★★★  -->
          <div class="cat-info row">
@@ -177,14 +163,14 @@ $(document).ready(function()
                      
                      <!-- 코숏고등어 -->
                      <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
-                         <label class="image-radio">
+                         <label class="image-radio" for="SP2">
                            <img class="img-responsive" src="img/코숏고등어.png"/>
                            <input type="radio" id="SP2" name="cat_species" value="SP2" class="custom-control-input" required>
                         </label>
                      </div>
                      <!-- 코숏치즈 -->
                      <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
-                         <label class="image-radio">
+                         <label class="image-radio" for="SP1">
                            <img class="img-responsive" src="img/코숏치즈.png"/>
                            <input type="radio" id="SP1" name="cat_species" value="SP1" class="custom-control-input" required>
                         </label>
@@ -193,14 +179,14 @@ $(document).ready(function()
                   <div class="col-sm-12 offset-sm-2">
                      <!-- 코숏카오스-->
                      <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
-                         <label class="image-radio">
+                         <label class="image-radio" for="SP3">
                            <img class="img-responsive" src="img/코숏카오스.png"/>
                            <input type="radio" id="SP3" name="cat_species" value="SP3" class="custom-control-input" required>
                         </label>
                      </div>
                      <!-- 코숏삼색이 -->
                      <div class="col-xs-10 col-sm-8 col-md-4 col-lg-4 nopad text-center custom-control custom-radio custom-control-inline">
-                         <label class="image-radio">
+                         <label class="image-radio" for="SP4">
                            <img class="img-responsive" src="img/코숏삼색이.png"/>
                            <input type="radio" id="SP4" name="cat_species" value="SP4" class="custom-control-input" required>
                         </label>
@@ -553,7 +539,7 @@ $(document).ready(function()
          <div id="button-section" class="text-center">
             <input id="back-btn" type="button" class="btn btn-secondary" value="취소"
             onclick="location.href='<%=cp%>/adopt_read?adt_code=${post.ADT_CODE}'">
-            <button id="submit-btn" type="button" class="btn btn-primary">수정완료</button>
+            <button id="submit-btn" type="submit" class="btn btn-primary">수정완료</button>
          </div>
          
       </form>

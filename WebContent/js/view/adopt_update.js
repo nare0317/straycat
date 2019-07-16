@@ -1,5 +1,4 @@
 // ★★★★ jQuery 달력 ui ★★★★	
-
  $(document).ready(function()		
 {	
 	 $(".datepicker").datepicker(
@@ -14,31 +13,9 @@
 
  });	
 
+//--------------------------------------------------------------------------------
 
-//★★★★ 고양이종류사진 radio 버튼 ★★★★	
-$(document).ready(function(){	
-    // add/remove checked class	
-    $(".image-radio").each(function(){	
-        if($(this).find('input[type="radio"]').first().attr("checked")){	
-            $(this).addClass('image-radio-checked');	
-        }else{	
-            $(this).removeClass('image-radio-checked');	
-        }	
-    });	
-
-     // sync the input state	
-    $(".image-radio").on("click", function(e){	
-        $(".image-radio").removeClass('image-radio-checked');	
-        $(this).addClass('image-radio-checked');	
-        var $radio = $(this).find('input[type="radio"]');	
-        $radio.prop("checked",!$radio.prop("checked"));	
-
-         e.preventDefault();	
-    });	
-});	
-
-
- // ★★★★ 부트스트랩 form validation check ★★★★	
+// ★★★★ 부트스트랩 form validation check ★★★★	
 (function() 	
 {	
   'use strict';	
@@ -58,9 +35,9 @@ $(document).ready(function(){
   }, false);	
 })();
 
+//--------------------------------------------------------------------------------
 
-
-//★★★ 게시글 등록 시 선택값으로 세팅 ★★★
+//★★★★ 게시글 등록 시 선택값으로 세팅 ★★★★
 $(document).ready(function()
 {	
 	//alert($("#cat_type_selected").val());
@@ -100,10 +77,28 @@ $(document).ready(function()
 		gudongChange();
 	});
 	
-	// 고양이종류 라디오버튼 세팅 (안됨 ㅠㅠ 사진때문에 추가로 작업해줘야할듯..)
-	console.log($("#cat_species_selected").val());
+	// 고양이종류 라디오버튼 세팅 
+	
+	// 1 - 등록 시 선택한 고양이종류값을 가져와 image-radio-checked 클래스를 추가(테두리효과)
 	var cat_species_selected = $("#cat_species_selected").val()
-	 $("input:radio[name='cat_age_type'][value='"+cat_species_selected+"']").prop('checked', true);
+	$("label[for='"+cat_species_selected+"']").addClass('image-radio-checked');
+	
+	
+	// 2 - 다른 고양이 종류를 클릭했을 때, 
+    $(".image-radio").on("click", function(e){	
+        
+    	// 원래 선택되어 있던 종류에서 image-radio-checked 클래스를 제거하고(테두리효과 없어짐)
+    	$(".image-radio").removeClass('image-radio-checked');	
+    	// 클릭한 고양이에게 image-radio-checked 클래스를 부여함(테두리효과)
+    	$(this).addClass('image-radio-checked');	
+    	// 클릭한 고양이종류의 값을 가져와 
+        var cat_species = $(this).val();
+        // checked 속성을 부여함. 
+        $("input:radio[name='cat_species'][value='"+cat_species+"']").prop('checked', true);
+        
+        e.preventDefault();	
+    });	
+	
 	
     // 고양이나이(성묘/아기묘) 라디오버튼 세팅
 	var cat_age_type_selected = $("#cat_age_type_selected").val()
@@ -138,7 +133,7 @@ $(document).ready(function()
 
 //--------------------------------------------------------------------------------
 
-//★★★ 구/동 리스트 불러오는 함수 ★★★
+//★★★★ 구/동 리스트 불러오는 함수 ★★★★
 $(document).ready(function()
 {
    

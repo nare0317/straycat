@@ -1,112 +1,115 @@
 @charset "UTF-8";	
 
 
- 	/************ Breadcrumbs 부분 ************/	
+/************ Breadcrumbs 부분 ************/	
 
- 		#header	
-		{	
-			margin-bottom: 40px;	
-			font-family: 맑은 고딕;	
-		}	
+#header	
+{	
+	margin-bottom: 40px;	
+	font-family: 맑은 고딕;	
+}	
 
- 		#header-title	
-		{	
-			padding-top: 1rem;	
-			border-color: #ddd;	
-			border-bottom: solid 1px #000000e0;	
-		}	
+#header-title	
+{	
+	padding-top: 1rem;	
+	border-color: #ddd;	
+	border-bottom: solid 1px #000000e0;	
+}	
 
- 		#header-title  #title	
-		{	
-			font-weight: bold;	
-			letter-spacing: 5px;	
-			margin-top:40px;	
-		}	
-		
-		#header-title  #sub-title	
-		{	
-			font-size: medium;	
-			letter-spacing: 0px;	
-		}	
+#header-title  #title	
+{	
+	font-weight: bold;	
+	letter-spacing: 5px;	
+	margin-top:40px;	
+}	
 
- 		#breadcrumbs ul	
-		{	
-			padding-top: 10px;	
-			padding-left: 0px;	
-		}	
+#header-title  #sub-title	
+{	
+	font-size: medium;	
+	letter-spacing: 0px;	
+}	
 
- 		#breadcrumbs span a	
-		{	
-			font-size: 13px;	
-		}	
+#breadcrumbs ul	
+{	
+	padding-top: 10px;	
+	padding-left: 0px;	
+}	
+
+#breadcrumbs span a	
+{	
+	font-size: 13px;	
+}	
 
 
 
- 	/************ 고양이 종류 option 이미지 ************/	
+/************ 고양이 종류 option 이미지 ************/	
 
- 	.image-radio {	
-	    cursor: pointer;	
-	    box-sizing: border-box;	
-	    -moz-box-sizing: border-box;	
-	    -webkit-box-sizing: border-box;	
-	    border: 4px solid transparent;	
-	    margin-bottom: 0;	
-	    outline: 0;	
-	}	
-	.image-radio input[type="radio"] {	
-	    display: none;	
-	}	
-	.image-radio-checked {	
-	    border-color: #4783B0;	
-	}	
+.image-radio 
+{	
+    cursor: pointer;	
+    box-sizing: border-box;	
+    -moz-box-sizing: border-box;	
+    -webkit-box-sizing: border-box;	
+    border: 4px solid transparent;	
+    margin-bottom: 0;	
+    outline: 0;	
+}	
 
- 	.image-radio img	
-	{	
-		width: 170px;	
-		height: auto;	
-	}	
+.image-radio input[type="radio"] {	
+    display: none;	
+}	
 
- 	/************ 본문영역 *************/	
+.image-radio-checked {	
+    border-color: #4783B0;	
+}	
 
- 	textarea	
-	{	
-		resize: none;	
-	}	
+.image-radio img	
+{	
+	width: 170px;	
+	height: auto;	
+}	
 
- 	#seoul	
-	{	
-		margin-right: -40px;	
-	}	
+/************ 본문영역 *************/	
 
- 	.gu-select	
-	{	
-		margin-right: -20px;	
-	}	
+textarea	
+{	
+	resize: none;	
+}	
 
- 	#name	
-	{	
-		background-color: #fff;	
-	}	
+#seoul	
+{	
+	margin-right: -40px;	
+}	
 
- 	/************ 임시저장 & 작성완료 버튼 부분 ************/	
+.gu-select	
+{	
+	margin-right: -20px;	
+}	
 
- 	#button-section	
-	{	
-		padding-top: 80px;	
-		padding-bottom: 150px;	
-	}	
+#name	
+{	
+	background-color: #fff;	
+}	
 
- 	#save-btn, #submit-btn	
-	{	
-		padding-top: 10px;	
-		padding-bottom: 10px;	
-		padding-left: 35px;	
-		padding-right: 35px;	
-		margin-left: 20px;	
-		margin-right: 20px;	
-	}	
+/************ 임시저장 & 작성완료 버튼 부분 ************/	
 
- 	/******아래는 윤비가 먹인 CSS ***************************************/	
+#button-section	
+{	
+	padding-top: 80px;	
+	padding-bottom: 150px;	
+}	
+
+#save-btn, #submit-btn	
+{	
+	padding-top: 10px;	
+	padding-bottom: 10px;	
+	padding-left: 35px;	
+	padding-right: 35px;	
+	margin-left: 20px;	
+	margin-right: 20px;	
+}	
+
+/******아래는 윤비가 먹인 CSS ***************************************/	
 /* 
  	div {	
 		font-family: 'Nanum Gothic Coding', monospace;	
