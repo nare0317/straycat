@@ -228,9 +228,9 @@ public class CatController
 		 System.out.println(act_location);
 		 System.out.println(act_date);
 		 
-		 param.put("act_type", act_type);
 		 param.put("cat_code", cat_code);
 		 param.put("user_code", user_code);
+		 param.put("act_type", act_type);
 		 param.put("content", content);
 		 param.put("latitude", latitude);
 		 param.put("longitude", longitude);
@@ -239,7 +239,7 @@ public class CatController
 		 
 		 service.addAct(param);
 		 
-		 return "redirect:catdetail";
+		 return "redirect:/catdetail";
 		 
 	 }
 	 

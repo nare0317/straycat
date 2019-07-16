@@ -57,8 +57,7 @@
 			</div>
 		</div>
             
-		<input type="hidden" value="${catInfo.CAT_CODE }" id="cat_id" name="cat_id">
-            
+		
 		<div class="row">
 			<div class="col-6">
 				<label for="exampleInputEmail1">종류</label>
@@ -233,7 +232,7 @@
 						<div class="jumbotron select">
 						
 							<form action="actregistration" method="POST" id="activityForm">
-							
+							<input type="text" value="${catInfo.CAT_CODE }" id="cat_id" name="cat_id">
 							<div class="row row2">
 								<div class="custom-control custom-radio custom-control-inline">
 									<input type="radio" id="activity1" name="activityRadio" class="custom-control-input" value="AT1">
@@ -271,10 +270,16 @@
 												<span id="centerAddr"></span>
 											</div>
 											
+											<!-- 
 											<input type="hidden" id="latitude" name="latitude">
 											<input type="hidden" id="longitude" name="longitude">
 											<input type="hidden" id="gu" name="gu">
-											<input type="hidden" id="dong" name="dong">
+											<input type="hidden" id="dong" name="dong"> -->
+											
+												<input type="hidden" id="latitude" name="latitude">
+												<input type="hidden" id="longitude" name="longitude">
+												<input type="hidden" id="gu" name="gu">
+												<input type="hidden" id="dong" name="dong">
 									</div>
 								</div>
 							</div>
@@ -555,11 +560,10 @@
 				
 				test3 = marker.getPosition(new kakao.maps.LatLng());
 				
-				test5.innerHTML = test3.getLat();
-				test6.innerHTML = test3.getLng();
-				
-				test7.innerHTML = result[0].address.region_2depth_name;		// 마커 클릭시 구 이름 받기
-				test8.innerHTML = result[0].address.region_3depth_name;
+				$("#latitude").val(test3.getLat());
+				$("#longitude").val(test3.getLng());
+				$("#gu").val(result[0].address.region_2depth_name);
+				$("#dong").val(result[0].address.region_3depth_name);
 			}
 		});
 	});
