@@ -38,20 +38,12 @@ public class LoginController
 		int result = loginService.loginCheck(map);
 		int result1 = loginService.leaveCheck(param);
 		int leaveCheck = result+result1;
-		
-		System.out.println("-------------------------");
-		System.out.println(result); // 1
-		System.out.println(result1); // 1
-		System.out.println(leaveCheck); // 2
-		System.out.println("-------------------------");
-		
 	
 		if(result ==1 && result1 == 0)
 		{
 			response.getWriter().print("1");
 			session.setAttribute("user_id", request.getParameter("user_id"));
 			return;
-			
 		}
 		if(leaveCheck > 1)
 		{
@@ -69,19 +61,6 @@ public class LoginController
 	@RequestMapping("/login") 
 	public String login() 
 	{ 
-		/*
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		if(user_id == null)
-		{
-			return "Login"; 
-		}
-		else
-		{
-			return "redirect:main";
-		}
-		*/
-		
 		return "Login"; 
 	}
 	

@@ -55,6 +55,7 @@ public class MypageController
 		return "Mypage_Main";
 	}
 	
+	
 	@RequestMapping(value="/memberupdatepw")
 	public String updatePw(HttpSession session, Model model)
 	{
@@ -66,11 +67,14 @@ public class MypageController
 		
 		return "Member_Update(pw)";
 	}
+	
+	
 	@RequestMapping(value="/leaveAgree")
 	public String leaveAgree()
 	{
 		return "Member_Leave(agree)";
 	}
+	
 	
 	
 	@RequestMapping(value="/memberLeave")
@@ -87,4 +91,14 @@ public class MypageController
 		
 		return mav;
 	}
+	
+	
+	@RequestMapping(value="/mypagemain")
+	public String userInfo()
+	{
+		return "mypage_main";
+	}
+	
+	
+	
 }

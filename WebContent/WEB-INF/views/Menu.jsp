@@ -34,7 +34,7 @@
           <c:choose>
 	        <c:when test="${sessionScope.user_id != null }">
 	        	 <!-- else if 로그인 O --> 
-			        <button type="button" class="btn btn-primary" onclick="location.href='<%=cp %>/catregistration'">등록</button>&nbsp;&nbsp;
+			        <button type="button" class="btn btn-primary" onclick="location.href='<%=cp %>/catregistrationform'">등록</button>&nbsp;&nbsp;
 			        <span>${sessionScope.user_id }</span>&nbsp;&nbsp;&nbsp;&nbsp;
 			        <button type="button" class="btn btn-outline-primary" onclick="location.href='<%=cp%>/mypage'">마이페이지</button>&nbsp;&nbsp;
 			        <button type="button" class="btn btn-outline-primary" onclick="location.href='<%=cp%>/logout'">로그아웃</button>
@@ -89,7 +89,6 @@ function result(info)
 	console.log("path name:" + window.location.url);
 	var url = window.location.pathname
 	
-	//if(url=="/FinalPrj/cat" || url=="/FinalPrj/main" || url=="/FinalPrj/adopt" || url=="/FinalPrj/missing" || url=="/FinalPrj/introduce")
 	if(url=="<%=cp%>/cat" || url=="<%=cp%>/main" || url=="<%=cp%>/adopt" || url=="<%=cp%>/missing" || url=="<%=cp%>/introduce")
 	{
 		for(var i = 0; i < 1; i++) 

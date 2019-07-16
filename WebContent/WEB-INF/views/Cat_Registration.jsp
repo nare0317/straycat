@@ -103,7 +103,7 @@
 	<!-- ★★★★★내용★★★★★ -->
 	<section class="content container">
       
-		<form class="needs-validation" novalidate action="registration" method="GET">
+		<form class="needs-validation" novalidate action="catregistration" enctype="multipart/form-data" method="post">
       
 		<!-- ★★★★ 고양이 정보 입력 ★★★★  -->
 		<div class="cat-info row">
@@ -130,7 +130,7 @@
 					</div>
 				</div>
                 
-				<!-- 실종 지역 -->
+				<!-- 발견 지역 -->
 				<div class="form-group row">
 					<label for="location" class="col-sm-2 col-form-label">지역</label>
 					<label id="seoul" class="col-sm-2 col-form-label">서울시</label>
