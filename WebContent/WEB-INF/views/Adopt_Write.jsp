@@ -41,7 +41,7 @@
       <div id="breadcrumbs">
          <ul>
             <li class="list-inline-item">
-               <a class="text-dark" href="<%=cp%>/Main.jsp"><i class="fas fa-home"></i></a>
+               <a class="text-dark" href="<%=cp%>/main"><i class="fas fa-home"></i></a>
                <span class="breadcrumb-divider">></span>
             </li>
             <li class="list-inline-item">
@@ -103,7 +103,7 @@
                      </select>
                   </div>
                   <div class="col-sm-3">
-                     <select class="custom-select" id="dong" name="dong">
+                     <select class="custom-select" id="dong" name="dong" required>
 						<option value="">동 선택</option>
 					</select>
                   </div>
@@ -409,7 +409,7 @@
                      <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="ADJ4" name="adt_job" value="ADJ4"
                         class="custom-control-input" required>
-                        <label class="custom-control-label" for="ADJ4">없음</label>
+                        <label class="custom-control-label" for="ADJ4">기타</label>
                      </div>
                      
                   </div>
@@ -471,7 +471,7 @@
                      <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="ADFN4" name="adt_family_num" value="ADFN4"
                         class="custom-control-input" required>
-                        <label class="custom-control-label" for="ADFN4">3명</label>
+                        <label class="custom-control-label" for="ADFN4">3명이상</label>
                      </div>
                      
                   </div>

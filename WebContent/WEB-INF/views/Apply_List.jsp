@@ -17,7 +17,7 @@
 	
 	<!-- ionicons 기타 아이콘  -->
 	<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-	<link rel="stylesheet" href="<%=cp%>/css/view/adopt_applier.css">
+	<link rel="stylesheet" href="<%=cp%>/css/view/apply_list.css">
 
 </head>
 <body>
