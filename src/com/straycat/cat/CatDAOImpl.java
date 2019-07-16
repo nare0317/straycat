@@ -203,4 +203,22 @@ public class CatDAOImpl implements CatDAO
 		return result;
 	}
 	
+	
+	@Override
+	public <T> T selectOne(String id, Object value)
+	{
+		
+		try
+		{
+			return sqlSession.selectOne(id, value);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		
+	}
+	
 }

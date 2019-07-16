@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+
+/************ Breadcrumbs 부분 ************/	
+
+#header	
+{	
+	margin-bottom: 40px;	
+	font-family: 맑은 고딕;	
+}	
+
+#header-title	
+{	
+	padding-top: 1rem;	
+	border-color: #ddd;	
+	border-bottom: solid 1px #000000e0;	
+}	
+
+#header-title  #title	
+{	
+	font-weight: bold;	
+	letter-spacing: 1px;	
+	margin-top:40px;	
+}	
+
+#header-title  #sub-title	
+{	
+	font-size: medium;	
+	letter-spacing: 0px;	
+}	
+
+#breadcrumbs ul	
+{	
+	padding-top: 10px;	
+	padding-left: 0px;	
+}	
+
+#breadcrumbs span a	
+{	
+	font-size: 13px;	
+}	
+
+/*****************************************/	
+
+textarea	
+{	
+	resize: none;	
+}	
+
+#seoul	
+{	
+	margin-right: -40px;	
+}	
+
+.gu-select	
+{	
+	margin-right: -20px;	
+}	
+
+#name	
+{	
+	background-color: #fff;	
+}	
+
+/************ 임시저장 & 작성완료 버튼 부분 ************/	
+
+#button-section	
+{	
+	padding-top: 80px;	
+	padding-bottom: 150px;	
+}	
+
+#save-btn, #submit-btn	
+{	
+	padding-top: 10px;	
+	padding-bottom: 10px;	
+	padding-left: 35px;	
+	padding-right: 35px;	
+	margin-left: 20px;	
+	margin-right: 20px;	
+}	
+
+/***************************************************/
+
+div
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
+.card
+{
+	margin-top: 30px;
+	padding: 30px;
+}
+.dt1
+{
+	width: 50%;
+	display: inline;
+}
+.dt2
+{
+	width: 50%;
+	display: inline;
+}
+th
+{
+	background-color: #F6F6F6;
+	width: 30%;
+}
+.mButton.gCenter 
+{ 
+	position:relative; text-align:center; 
+}
+.alignRight
+{
+	margin: 10px 0;
+   	padding: 0 4px 0 0;
+   	text-align: right;
+}
+.card
+{
+	margin-top: 100px;
+}
+.wrap span {
+	margin-top: -1%;
+	position: relative;
+	float: right;
+}
+.input-group
+{
+	height: 100px;		
+}
+span
+{
+	font-size: medium;
+}
+
+#completebtn
+{
+	margin-left: 2%;
+}
+#alert
+{
+	color: blue;	
+}
+.custom-select
+{
+	width:100px;
+}
+#custom-select1
+{
+	width:200px;
+}
+#select0
+{
+	margin-top: 7px;
+}
+#select1
+{
+	margin-left: -14%;
+}
+
+#select2
+{
+	margin-left: -7%;
+}
+element.style 
+{
+    height: 100px; 
+}
+
+#textCounter
+{
+	margin-left: -2%;
+}
+
+#yesno
+{
+	margin-top: 20px;
+}
+#yesno1
+{
+	margin-top: 30px;
+}
+#yesno2
+{
+	margin-top: 7px;
+}
+#questionbtn
+{
+	margin-top: -10px;
+	float: right;
+}
+#container
+{
+	margin-top: 5%;
+}
+
+#counter, #counter1, #counter2 {
+  border-radius: 0.5em;
+  padding: -10px;
+  font-size: 12pt;
+  margin-left: 30%;
+}
+.m20
+{
+	margin-top: 20px;
+}
+.m7
+{
+	margin-top: 7px;
+}
+.blue
+{
+	color: blue;
+}
+.resize
+{
+	height: 100px;
+}
