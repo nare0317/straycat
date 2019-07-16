@@ -1,5 +1,6 @@
 package com.straycat.board;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -195,6 +196,22 @@ public class BoardServiceImpl implements BoardService
 		} catch (Exception e) 
 		{
 			System.out.println(e.toString());
+		}
+		
+		return result;
+	}
+
+	@Override
+	public List<Map<String, String>> bbsWriteCat()
+	{
+		List<Map<String, String>> result = new ArrayList<Map<String,String>>();
+		
+		try
+		{
+			result = dao.selectList();
+		} catch (Exception e)
+		{
+			// TODO: handle exception
 		}
 		
 		return result;

@@ -174,7 +174,7 @@ public class CatServiceImpl implements CatService
 	{
 		try
 		{
-			dao.selectOne("catDetail.addAct", param);
+			dao.insert("catDetail.addAct", param);
 		} catch (Exception e)
 		{
 			System.out.println(e.toString());

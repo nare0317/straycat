@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.straycat.service.BoardService;
 import com.straycat.service.CatService;
 import com.straycat.service.ImageService;
 
@@ -35,6 +36,9 @@ public class CatController
 	
 	@Autowired
 	private ImageService imageService;
+	
+	@Autowired
+	private BoardService boardService;
 
 	
 	////////////////////////////////// 고양이 리스트 부분 ////////////////////////////////////////////////////////////////////////////////////////
@@ -206,40 +210,42 @@ public class CatController
 	 @RequestMapping(value="/actregistration", method = RequestMethod.POST)
 	 public String actRegistration(Map<String, Object> param, Model model, HttpServletRequest request, HttpSession session)
 	 {
+		 /*
 		 String act_type = request.getParameter("activityRadio");
 		 String cat_code = request.getParameter("cat_id");
-		 String user_code = (String) session.getAttribute("user_id");
+		 String user_code = (String)session.getAttribute("user_id");
 		 String content = request.getParameter("activityContent");
 		 String latitude = request.getParameter("latitude");
 		 String longitude = request.getParameter("longitude");
 		 String gu = request.getParameter("gu");
 		 String dong = request.getParameter("dong");
 		 String act_date = request.getParameter("firstDatepicker");
-		 
 		 String act_location = gu + " " + dong;
+		 */
 		 
+		 // 사용자 id로 user_code를 알아냄
+		 Map<String, String> map = new HashMap<String, String>();
+		 map.put("id", (String)session.getAttribute("user_id"));
+		 Map<String, Object> selectResult = boardService.selectUserId(map);
+		 String user_code = (String)selectResult.get("USER_CODE");
 		 
-		 System.out.println(act_type);
-		 System.out.println(cat_code);
-		 System.out.println(user_code);
-		 System.out.println(content);
-		 System.out.println(latitude);
-		 System.out.println(longitude);
-		 System.out.println(act_location);
-		 System.out.println(act_date);
-		 
-		 param.put("cat_code", cat_code);
+		 // insert 할 자료들 매핑
+		 param.put("cat_code", request.getParameter("cat_id"));
 		 param.put("user_code", user_code);
-		 param.put("act_type", act_type);
-		 param.put("content", content);
-		 param.put("latitude", latitude);
-		 param.put("longitude", longitude);
-		 param.put("act_location", act_location);
-		 param.put("act_date", act_date);
+		 param.put("act_type", request.getParameter("activityRadio"));
+		 param.put("content", request.getParameter("activityContent"));
+		 param.put("latitude", request.getParameter("latitude"));
+		 param.put("longitude", request.getParameter("longitude"));
+		 param.put("act_location", request.getParameter("gu")+" "+request.getParameter("dong"));
+		 param.put("act_date", request.getParameter("firstDatepicker"));
 		 
+		 // 활동 추가 메소드 실행
 		 service.addAct(param);
 		 
-		 return "redirect:/catdetail";
+		 // 리다이렉트를 위해 url 작성
+		 String redirect = "redirect:/catdetail?id="+request.getParameter("cat_id");
+		 
+		 return redirect;
 		 
 	 }
 	 

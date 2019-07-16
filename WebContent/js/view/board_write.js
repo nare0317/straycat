@@ -1,20 +1,25 @@
-$(document).ready(function()
+/*$(document).ready(function()
 {
 	// 필수 입력 사항 확인
 	$("#sendBtn").click(function() 
 	{
 		// 다 안넣을때
+		console.log("0");
 		$(".err1").css("display", "none");
 		$(".err2").css("display", "none");
-		if(($("#boardContent").val()=="" || $("#boardContent").val()==null) && ($("#title").val()=="" || $("#title").val()==null) && ($("#categorySelect option").index($("#categorySelect option:selected")) == 0))
+		
+		if(($("#ir1").text()=="" || $("#ir1").text()==null) && ($("#title").val()=="" || $("#title").val()==null) && ($("#categorySelect option").index($("#categorySelect option:selected")) == 0))
 		{
+			console.log("1");
 			$(".err1").css("display", "block");
 			$(".err2").css("display", "block");
 			return;
 		}
 		// 필수입력사항만 안했을때
-		else if(($("#boardContent").val()=="" || $("#boardContent").val()==null) && ($("#title").val()=="" || $("#title").val()==null))
+		else if(($("#ir1").text()=="" || $("#ir1").text()==null) && ($("#title").val()=="" || $("#title").val()==null))
 		{
+			console.log("2");
+			console.log($("#ir1").val());
 			$(".err1").css("display", "block");
 			return;						
 		}
@@ -22,6 +27,7 @@ $(document).ready(function()
 		// select만 안했을때
 		else if($("#categorySelect option").index($("#categorySelect option:selected")) == 0)
 		{
+			console.log("3");
 			$(".err2").css("display", "block");
 			return;		
 		}
@@ -37,3 +43,4 @@ $(document).ready(function()
 
 
 
+*/

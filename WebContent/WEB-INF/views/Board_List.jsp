@@ -99,7 +99,7 @@
 
 	<!-- 글쓰기 버튼 -->
 	<div id="rightHeader" class="row align-items-end justify-content-end">
-		<button class="btn btn-secondary pull-right" onclick="javascript:location.href='<%=cp%>/Created.jsp'">
+		<button class="btn btn-secondary pull-right" onclick="javascript:location.href='<%=cp%>/board/write'">
 		<i class="fa fa-pencil-square-o"></i>글쓰기</button>
 	</div>
     
