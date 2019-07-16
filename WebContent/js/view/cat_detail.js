@@ -5,7 +5,7 @@ $(document).ready(function()
 		showOn : "button",
 		buttonImage : "./img/small-calendar.png",
 		buttonImageOnly : true,
-		dateFormat : "yy-mm-dd",
+		dateFormat : "yymmdd",
 		changeMonth : true,
 		changeYear : true
 	});
@@ -15,7 +15,7 @@ $(document).ready(function()
 		showOn : "button",
 		buttonImage : "./img/small-calendar.png",
 		buttonImageOnly : true,
-		dateFormat : "yy-mm-dd",
+		dateFormat : "yymmdd",
 		changeMonth : true,
 		changeYear : true
 	});
@@ -109,7 +109,7 @@ $(document).ready(function()
 			$("#activityForm").submit();
 	});
 	
-	alert($("#cat_id").val());
+	//alert($("#cat_id").val());
 	
 	
 	$("#secondDatepicker").on("change", function()
@@ -118,11 +118,94 @@ $(document).ready(function()
 		$.ajax(
 		{
 			url: 'act_date'
-			,type: 'get'
+			,type: 'POST'
 			,data: {'id': $("#cat_id").val(),'act_date' :  $("#secondDatepicker").val()}
+			,dataType : "JSON"
 			,success:function(data)
 			{
-				console.log(data);
+				//console.log(data);
+				
+							
+					$("#cat").empty();
+					
+					var str = "";
+					
+					var cCnt = data.length;
+					
+					
+					for(var i=0; i<cCnt; i++)
+					{
+						
+						str += "				<div class='row'>";
+						str += "						<div class='col-2'>";
+						str += "							<h5>" + data[i].NICKNAME + "</h5>";
+						str += "							<span>" + data[i].ACT_DATE + "</span>";
+						str += "							<div>" + data[i].ACT_LOCATION + "</div>";
+						str += "						</div>";
+						str += "						<div class='col-10'>";
+						str += "					 		<div class='row'>";
+						str += "								&nbsp;&nbsp;&nbsp;&nbsp;";
+						
+						if(data[i].ACT_TYPE == "먹이")
+						{
+						str += "<img src='img/fish.png'>";
+						}
+						else if(data[i].ACT_TYPE == "물")
+						{
+						str += "<img src='img/fish.png'>";
+						}
+						else if(data[i].ACT_TYPE == "간식")
+						{
+						str += "<img src='img/fish.png'>";	
+						}
+						else if(data[i].ACT_TYPE == "약")
+						{
+						str += "<img src='img/fish.png'>";	
+						}
+						else if(data[i].ACT_TYPE == "만남")
+						{
+						str += "<img src='img/fish.png'>";	
+						}
+						str += "							</div><br> ";
+						str += "							<h4>" + data[i].CONTENT + "</h4>";
+						str += "						</div>";
+						str += "					</div>";
+						str += "					<div class='row'>";
+						str += "						<div class='col-2'></div>";
+						str += "						<div class='col-10'>";
+						str += "							<div class='row'>";
+						
+						for(var j=0; j<1; j++)
+						{
+							for(var k=0; k<1; k++)
+							{
+								str += "										<div class='col-6'>";
+								str += "											<img src='img/straycat.jpg' class='rounded mx-auto d-block catImg'>";
+								str += "										</div>";
+							}
+							str += "									<br>";
+							str += "									<br>";
+						}
+						str += "							</div>";
+						str += "						</div>";
+						str += "					</div>";
+						str += "					<div class='row'>";
+						str += "						<div class='col-2'></div>";
+						str += "						<div class='col-10'>";
+						str += "							<form class='form-inline'>";
+						str += "								<div class='form-group mx-sm-3 mb-2'>";
+						str += "									<input type='text' class='form-control comment'	id='inputPassword2' placeholder='댓글달기' style='width: 1350px;'>";
+						str += "								</div>";
+						str += "								<button type='submit' class='btn btn-primary mb-2'>입력</button>";
+						str += "							</form>";
+						str += "						</div>";
+						str += "					</div><br><br><br>";
+					}
+					
+					
+					
+					$("#cat").append(str);
+					
 			}
 				
 		});
