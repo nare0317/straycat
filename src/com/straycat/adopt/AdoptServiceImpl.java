@@ -242,7 +242,7 @@ public class AdoptServiceImpl implements AdoptService
 			
 			param.put("CAT_NAME", (String) param.get("cat_name"));
 			param.put("CAT_SPECIES", (String) param.get("cat_species"));
-			System.out.println((String) param.get("cat_species")));
+			System.out.println((String) param.get("cat_species"));
 			param.put("CAT_AGE_TYPE", (String) param.get("cat_age_type"));
 			param.put("CAT_AGE_NUM", (String) param.get("cat_age_num"));
 			param.put("CAT_SEX", (String) param.get("cat_sex"));

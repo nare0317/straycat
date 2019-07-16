@@ -27,5 +27,7 @@ public interface CatDAO
     
     // 고상페 활동 내역 리스트 
     public List<Map<String, String>> actDate(Map<String, String> map);
+    
+    public <T> T selectOne(String id, Object value);
 	
 }

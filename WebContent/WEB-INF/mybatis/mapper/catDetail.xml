@@ -52,4 +52,18 @@ WHERE AR.CAT_CODE=#{cat_code} AND AR.ACT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE,'Y
 	WHERE CAT_CODE = #{cat_code}
 </select>
 
+
+
+<insert id="addAct" parameterType="map">
+    <selectKey resultType="string" keyProperty="USER_CODE" order="BEFORE">
+        select user_code
+        from user_reg
+        where id=#{user_id};       
+    </selectKey>
+    INSERT INTO ACT_REG(ACT_CODE, CAT_CODE, USER_CODE, ACT_TYPE, CONTENT, POST_DATE, LATITUDE, LONGITUDE, ACT_LOCATION, ACT_DATE)
+	VALUES(ACT_REG_SQE.NEXTVAL, #{cat_code, jdbcType=VARCHAR}, #{USER_CODE}, #{act_type, jdbcType=VARCHAR},#{content, jdbcType=VARCHAR}, SYSDATE, #{latitude, jdbcType=VARCHAR} ,#{longitude, jdbcType=VARCHAR}, #{act_location, jdbcType=VARCHAR} ,TO_DATE(#{act_date, jdbcType=DATE},'YYYY-MM-DD'));
+</insert>
+    
+
+
 </mapper>

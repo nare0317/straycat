@@ -57,7 +57,7 @@
 			</div>
 		</div>
             
-		<input type="hidden" value="${catInfo.CAT_CODE }" id="cat_id">
+		<input type="hidden" value="${catInfo.CAT_CODE }" id="cat_id" name="cat_id">
             
 		<div class="row">
 			<div class="col-6">
@@ -232,34 +232,34 @@
 					<c:when test="${sessionScope.user_id != null }">	
 						<div class="jumbotron select">
 						
-						
-							<form action="actregistration" method="post" id="activityForm">
+							<form action="actregistration" method="POST" id="activityForm">
+							
 							<div class="row row2">
 								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" id="activity1" name="activityRadio" class="custom-control-input">
+									<input type="radio" id="activity1" name="activityRadio" class="custom-control-input" value="AT1">
 									<label class="custom-control-label" for="activity1">먹이</label>
 								</div>
 								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" id="activity2" name="activityRadio" class="custom-control-input">
+									<input type="radio" id="activity2" name="activityRadio" class="custom-control-input" value="AT2">
 									<label class="custom-control-label" for="activity2">물</label>
 								</div>
 								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" id="activity3" name="activityRadio" class="custom-control-input">
+									<input type="radio" id="activity3" name="activityRadio" class="custom-control-input" value="AT3">
 									<label class="custom-control-label" for="activity3">간식</label>
 								</div>
 								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" id="activity4" name="activityRadio" class="custom-control-input">
+									<input type="radio" id="activity4" name="activityRadio" class="custom-control-input" value="AT4">
 									<label class="custom-control-label" for="activity4">약</label>
 								</div>
 								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" id="activity5" name="activityRadio" class="custom-control-input">
+									<input type="radio" id="activity5" name="activityRadio" class="custom-control-input" value="AT5">
 									<label class="custom-control-label" for="activity5">만남</label>
 								</div>
 							</div><br>
 							<div class="row">
 								<div class="col-8 text-right">
 									<div class="form-group">
-										<textarea class="form-control resize" id="activityContent" rows="14"></textarea>
+										<textarea class="form-control resize" id="activityContent" rows="14" name="activityContent"></textarea>
 										<div id="activityCounter"><span id="Acounter">0</span> / 9000</div>
 									</div>
 								</div>
@@ -270,6 +270,11 @@
 												<span class="title">지도중심기준 행정동 주소정보</span> 
 												<span id="centerAddr"></span>
 											</div>
+											
+											<input type="hidden" id="latitude" name="latitude">
+											<input type="hidden" id="longitude" name="longitude">
+											<input type="hidden" id="gu" name="gu">
+											<input type="hidden" id="dong" name="dong">
 									</div>
 								</div>
 							</div>
@@ -497,6 +502,15 @@
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/* 두 번째 지도 (마커 생성용 지도) */
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption =
@@ -538,6 +552,14 @@
 				// 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
 				infowindow.setContent(content);
 				infowindow.open(map, marker);
+				
+				test3 = marker.getPosition(new kakao.maps.LatLng());
+				
+				test5.innerHTML = test3.getLat();
+				test6.innerHTML = test3.getLng();
+				
+				test7.innerHTML = result[0].address.region_2depth_name;		// 마커 클릭시 구 이름 받기
+				test8.innerHTML = result[0].address.region_3depth_name;
 			}
 		});
 	});
