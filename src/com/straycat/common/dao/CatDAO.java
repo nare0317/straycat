@@ -7,6 +7,7 @@ public interface CatDAO
 {
     public Map<String, Object> selectOne(String id);
     public List<Map<String, Object>> selectList(String id);
+    public List<Map<String, String>> selectList(Map<String, String> map);
     public List<Map<String, Object>> selectActStartList(String id);
     
     public List<Map<String, Object>> listCat(Map<String, Object> map);
@@ -27,5 +28,4 @@ public interface CatDAO
     // 고상페 활동 내역 리스트 
     public List<Map<String, String>> actDate(Map<String, String> map);
 	
-
 }

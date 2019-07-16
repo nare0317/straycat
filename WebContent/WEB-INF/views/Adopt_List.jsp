@@ -95,7 +95,7 @@
 					<c:choose>
 		       			<c:when test="${sessionScope.user_id != null }">
 							<input type="button" class="btn btn-warning btn-lg" value="입양등록" id="adopt_write" 
-							onclick="location.href='<%=cp%>/adopt_form?user_id=${sessionScope.user_id }'">
+							onclick="location.href='<%=cp%>/adopt_form'">
 						</c:when>
 						<c:otherwise>
 							<input type="button" class="btn btn-warning btn-lg" value="입양등록" id="adopt_write" 

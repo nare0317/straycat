@@ -57,4 +57,10 @@
 		WHERE GU=#{selectedGu,jdbcType=VARCHAR}
 		ORDER BY DONG ASC
 	</select>
+	
+	<select id="catGetDong" resultType="map">
+		SELECT DONG
+		FROM ADDRESS
+		WHERE GU=#{gu}
+	</select>
 </mapper>

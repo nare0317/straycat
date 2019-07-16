@@ -149,6 +149,23 @@ public class CatController
 			return "Cat_Registration";
 	  }
 	  
+	  // 고양이 등록 페이지 지역(동)을 가져오는 메소드
+	  @RequestMapping("/catgetdong")
+	  @ResponseBody
+	  public List<Map<String,String>> getDong(@RequestParam(name="gu") String gu)
+	  {
+		  // 리턴 변수 설정
+		  List<Map<String, String>> result = new ArrayList<>();
+		  
+		  // 모델에 필요한 구 매개변수 설정
+		  Map<String, String> guMap = new HashMap<>();
+		  guMap.put("gu", gu);
+		  
+		  result = service.getCatDong(guMap);
+		  
+		  return result;
+	  }
+	  
 	  
 	  // 고상페 활동 날짜 변경 
 	 @RequestMapping(value="/act_date")
