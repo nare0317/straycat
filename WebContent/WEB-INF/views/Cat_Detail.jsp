@@ -319,7 +319,7 @@
 				<div class="row">
 				<div class="col-2">
 					<div class="row">
-					<c:if test="${catActReg == null }">
+					<c:if test="${empty catActReg}">
 						<div class="row">등록된 활동이 없습니다.</div>
 					</c:if>
 						<div>

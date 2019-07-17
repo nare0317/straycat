@@ -195,6 +195,21 @@ public class BoardServiceImpl implements BoardService
 	}
 	
 	
+	@Override
+	public int articleCmtDelete(Map<String, String> map)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = dao.delete("board.articleCmtDelete", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+
 	// 게시물을 삭제하는 메소드
 	@Override
 	public int articleDelete(Map<String, String> map)
@@ -282,13 +297,13 @@ public class BoardServiceImpl implements BoardService
 	
 	// 게시물 업데이트 리스트 보여주는 메소드
 	@Override
-	public List<Map<String, Object>> articleUpdateList(String id)
+	public Map<String, Object> articleUpdateValue(String id)
 	{
-		List<Map<String,Object>> result = new ArrayList<Map<String,Object>>();
+		Map<String,Object> result = new HashMap<String, Object>();
 		
 		try
 		{
-			result = dao.selectList("board.articleUpdateList", id);
+			result = dao.selectOne("board.articleUpdateValue", id);
 		} catch (Exception e)
 		{
 			System.out.println(e.toString());
@@ -297,5 +312,23 @@ public class BoardServiceImpl implements BoardService
 		return result;		
 	}
 	
+	
+	// 게시물 업데이트 수행
+	@Override
+	public int articleUpdate(Map<String, String> map)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = dao.update("board.articleUpdate", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return result;
+		
+		
+	}
 	
 }
