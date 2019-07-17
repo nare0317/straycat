@@ -69,6 +69,8 @@
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/login"/>
+			<mvc:mapping path="/join"/>
+			<mvc:mapping path="/acceptterms"/>
 			<bean class="com.straycat.interceptor.MemberInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
