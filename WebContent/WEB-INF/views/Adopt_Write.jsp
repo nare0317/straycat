@@ -79,8 +79,8 @@
    <!-- ★★★★★내용★★★★★ -->
    <section class="content container">
       
-      <form action="<%=cp %>/adopt_write" method="get"
-            class="needs-validation" novalidate>
+      <form action="<%=cp %>/adopt_write" method="post"
+            class="needs-validation" novalidate enctype="multipart/form-data">
       
          <!-- ★★★★ 고양이 정보 입력 ★★★★  -->
          <div class="cat-info row">
@@ -94,7 +94,7 @@
             <div class="col-3 text-center">
                <img id="catPicture" src="img/straycat.jpg" style="width: 200px;"><br> <br>
                <label class="btn btn-primary"> 사진첨부<input type="file" class="form-control-file" 
-               id="uploadPicture" style="display: none;" accept=".jpeg, .png, .jpg"></label>
+               id="uploadPicture" style="display: none;" accept=".jpeg, .png, .jpg" name="file"></label>
             </div>
             
             <!------------------ 고양이정보 등록 폼 ----------------->
