@@ -183,10 +183,16 @@ public class MypageController
 	}
 	
 	@RequestMapping(value = "semessageread", method = RequestMethod.GET)
-	public String readSendMessages(HttpSession session, @RequestParam(name="mes_code") String mes_code)
+	public String readSendMessages(HttpSession session, @RequestParam(name="mes_code") String mes_code, Map<String, Object> map,Model model)
 	{
+		String id = (String)session.getAttribute("user_id");
 		
-		//return "Message_Read(Sended)?mes_code="+mes_code;
-		return "Message_Read(Sended)";
+		map.put("id", id);
+		service.seMessageList(id);
+		
+		model.addAttribute("seMessageList",service.seMessageList(id));
+		
+		return "Message_Read(Sended)?mes_code="+mes_code;
+
 	}
 }
