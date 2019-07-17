@@ -52,5 +52,11 @@ public interface AdoptDAO
 	
 	// 입양 신청자 리스트 조회 메소드
 	public List<Map<String, Object>> applicantList(String adt_code);
+	
+	// 입양 신청자 수 조회 메소드(한 입양글)
+	public int countApplicant(String adt_code);
+	
+	// 매칭 후보자 리스트 조회 메소드
+	public List<Map<String, Object>> listApply(String adt_code);
 
 }

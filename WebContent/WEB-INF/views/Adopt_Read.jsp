@@ -266,12 +266,10 @@
 				</div>
 				
 				<!-- 우측 사이드바 (입양신청 - 일반사용자)-->
-				<c:if test="${sessionScope.user_id == null }">
+				<c:if test="${sessionScope.user_id ne null && user_id ne applicant.APPLICANT_ID}">
 				<div class="slidemenu col-lg-2 text-center">
 					<div class="apply">
-						<p>★<span>${user_id }</span>★</p>
-						<p>★<span>${applicant_list.APPLICANT_ID }</span>★</p>
-						<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
+						<h5 class="">현재 신청자 수:<span> ${post.APP_COUNT } </span>명</h5>
 						<p>남은시간 : <span>13일 00:57:30</span></p>
 						<input type="button" class="btn btn-primary" value="입양신청"
 						onclick="location.href='<%=cp%>/adopt/apply_form?adt_code=${post.ADT_CODE }'">
@@ -279,13 +277,14 @@
 				</div>
 				</c:if>
 				
-				<!-- 우측 사이드바 (입양신청 - 작성자)-->
-				<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
+				<!-- 우측 사이드바 (입양신청 - 게시글작성자)-->
+				<c:if test="${sessionScope.user_id ne null && sessionScope.user_id eq post.USER_ID }">
 					<div class="slidemenu col-lg-2 text-center">
 						<div class="apply">
-							<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
+							<h5 class="">현재 신청자 수:<span> ${post.APP_COUNT } </span>명</h5>
 							<p>남은시간 : <span>13일 00:57:30</span></p>
-							<button class="btn btn-success">입양 신청자 확인</button>
+							<input type="button" class="btn btn-success" value="입양 신청자 확인"
+							onclick="location.href='<%=cp%>/adopt/apply_list?adt_code=${post.ADT_CODE }'">
 						</div>
 					</div>
 				</c:if>
@@ -293,17 +292,14 @@
 				<!-- 우측 사이드바 (입양신청 - 입양신청자)-->
 				<c:forEach var="applicant" items="${applicantList }">
 				<c:if test="${user_id ne null && user_id eq applicant.APPLICANT_ID}">
-				
 				<div class="slidemenu col-lg-2 text-center">
 					<div class="apply">
-						<p>${applicant.APPLICANT_ID }</p>
-						<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
+						<h5 class="">현재 신청자 수:<span> ${post.APP_COUNT } </span>명</h5>
 						<p class="deadline">남은시간 : <span>13일 00:57:30</span></p>
-						<button class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
-						title="2019.06.20 18:20:39에 이미 신청하셨습니다">내 신청내역</button>
+						<button class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" disabled="disabled"
+						title="2019.06.20 18:20:39에 이미 신청하셨습니다">신청하기</button>
 					</div>
 				</div>
-				
 				</c:if>
 				</c:forEach>
 				

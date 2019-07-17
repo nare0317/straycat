@@ -40,4 +40,7 @@ public interface AdoptService
 	// 입양신청자 리스트 조회 
 	public List<Map<String, Object>> listApplicant(String adt_code);
 	
+	// 매칭 후보자 리스트 조회 메소드
+	public List<Map<String, Object>> listApply(String adt_code);
+	
 }
