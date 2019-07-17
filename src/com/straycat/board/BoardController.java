@@ -308,20 +308,20 @@ public class BoardController
 		return "Board_UpdateWrite";
 	}
 	
-	/*
-	 * // 게시글 업데이트 메소드
-	 * 
-	 * @RequestMapping("/articleupdate") public String
-	 * articleUpdate(HttpServletRequest request) { Map <String, String> map = new
-	 * HashMap<>(); map.put("bbs_code", request.getParameter("bbs_code"));
-	 * map.put("title", request.getParameter("title")); map.put("categorySelect",
-	 * request.getParameter("categorySelect")); map.put("content",
-	 * request.getParameter("content"));
-	 * 
-	 * service.articleUpdate(map);
-	 * 
-	 * return "redirect:/board"; }
-	 */
 	
-	
+	  // 게시글 업데이트 메소드
+	  
+	  @RequestMapping("/articleupdate") 
+	  public String articleUpdate(HttpServletRequest request) 
+	  { 
+		  Map <String, String> map = new
+		  HashMap<>(); map.put("bbs_code", request.getParameter("bbs_code"));
+		  map.put("title", request.getParameter("title")); 
+		  map.put("categorySelect", request.getParameter("categorySelect")); 
+		  map.put("content", request.getParameter("content"));
+	  
+		  service.articleUpdate(map);
+	  
+		  return "redirect:/board"; 
+	  }
 }
