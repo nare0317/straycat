@@ -44,9 +44,9 @@
 			<tr class="stretched-link">
 				<th>
 					<div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" id="customRadioInline1"
-							name="customRadioInline1" class="custom-control-input">
-						<label class="custom-control-label" for="customRadioInline1"></label>
+						<input type="radio" id="${app.ID }"
+							name="applicant_radio" class="custom-control-input">
+						<label class="custom-control-label" for="${app.ID }"></label>
 					</div>
 				</th>
 				
@@ -65,43 +65,41 @@
 				
 				<td>
 					<div class="">
-						<div class="borderless">
-							<%-- <div class="row">
-								<div class="col">
-								<ion-icon name="checkmark"></ion-icon>
-								고양이 양육경험: ${app.A1 == RT1 ? '있음' : '없음' }
-								</div>
-								<div class="col">
-								<ion-icon name="checkmark"></ion-icon>
-								직업구분: ${app.A2 } <br>
-								</div>
-								<div class="w-100"></div>
-								<div class="col">
-								<ion-icon name="checkmark"></ion-icon>
-								<span>결혼여부 : ${app.A3 == RT1 ? '기혼' : '미혼' }</span> 
-								</div>
-								<div class="col">
-								<ion-icon id="checkmark1" name="checkmark"></ion-icon>
-								<span>가족구성원: ${app.A4 }</span>
-								</div>
-							</div>	 --%>
-							
-							<ul class="list-group list-group-horizontal">
-							  <li class="list-group-item  flex-fill" style="border: none">고양이 양육경험: ${app.A1 == RT1 ? '있음' : '없음' }</li>
-							  <li class="list-group-item  flex-fill" style="border: none">직업구분: ${app.A2 }</li>
-							</ul>
-							<ul class="list-group list-group-horizontal"> 
-							  <li class="list-group-item  flex-fill" style="border: none">결혼여부 : ${app.A3 == RT1 ? '기혼' : '미혼' }</li>
-							  <li class="list-group-item  flex-fill" style="border: none">가족구성원: ${app.A4 }</li>
-							</ul>
-						</div>
+					       <%--<div class="row">
+							<div class="col">
+							<ion-icon name="checkmark"></ion-icon>
+							고양이 양육경험: ${app.A1 == RT1 ? '있음' : '없음' }
+							</div>
+							<div class="col">
+							<ion-icon name="checkmark"></ion-icon>
+							직업구분: ${app.A2 } <br>
+							</div>
+							<div class="w-100"></div>
+							<div class="col">
+							<ion-icon name="checkmark"></ion-icon>
+							<span>결혼여부 : ${app.A3 == RT1 ? '기혼' : '미혼' }</span> 
+							</div>
+							<div class="col">
+							<ion-icon id="checkmark1" name="checkmark"></ion-icon>
+							<span>가족구성원: ${app.A4 }</span>
+							</div>
+						</div>	 --%>
+						
+						<ul class="list-group list-group-horizontal">
+						  <li class="list-group-item  flex-fill" style="border: none">고양이 양육경험: ${app.A1 == RT1 ? '있음' : '없음' }</li>
+						  <li class="list-group-item  flex-fill" style="border: none">직업구분: ${app.A2 }</li>
+						</ul>
+						<ul class="list-group list-group-horizontal"> 
+						  <li class="list-group-item  flex-fill" style="border: none">결혼여부 : ${app.A3 == RT1 ? '기혼' : '미혼' }</li>
+						  <li class="list-group-item  flex-fill" style="border: none">가족구성원: ${app.A4 }</li>
+						</ul>
 					</div>
 				</td>
 				
 				<td>
 					<div class="custom-control custom-button">
-						<button id="infoBtn" type="button" class="btn btn-outline-primary btn-sm">
-							자세히보기<ion-icon name="arrow-forward"></ion-icon>
+						<button id="# ${app.Id }" type="button" 
+						class="btn btn-outline-primary btn-sm">자세히보기<ion-icon name="arrow-forward"></ion-icon>
 						</button>
 					</div>
 				</td>
