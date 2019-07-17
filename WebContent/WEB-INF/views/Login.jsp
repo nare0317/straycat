@@ -21,6 +21,9 @@
 <c:import url="Menu.jsp"></c:import>
 
 <div class="text-center container">
+	<c:if test="${sessionScope.alert != null }">
+	<div id="alert">${alert }</div>
+	</c:if>
 	<div style="margin-top: 60px;">
 		<h1>Login</h1>
 	</div>

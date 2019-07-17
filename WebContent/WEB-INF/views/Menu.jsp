@@ -41,7 +41,7 @@
 	        </c:when>
 	        <c:otherwise>
 	        	 <!-- if 로그인 X -->
-		        <button type="button" class="btn btn-outline-primary" onclick="location.href='<%=cp%>/login'">로그인</button>&nbsp;&nbsp;
+		        <button type="button" class="btn btn-outline-primary" onclick="location.href='<%=cp%>/login?check=y'">로그인</button>&nbsp;&nbsp;
 		        <button type="button" class="btn btn-outline-primary" onclick="location.href='<%=cp%>/acceptterms'">회원가입</button>
 	        </c:otherwise>
 	        
