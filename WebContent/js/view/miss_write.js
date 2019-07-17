@@ -35,7 +35,7 @@ $(document).ready(function(){
 });	
 
 
- // ★★★★ 부트스트랩 form validation check ★★★★	
+// ★★★★ 부트스트랩 form validation check ★★★★	
 (function() 	
 {	
   'use strict';	

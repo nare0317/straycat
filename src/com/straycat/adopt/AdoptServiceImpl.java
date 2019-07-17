@@ -272,7 +272,59 @@ public class AdoptServiceImpl implements AdoptService
 		return result;
 	}
 
+	// 입양 신청
+	@Override
+	public int applyAdopt(Map<String, Object> param)
+	{
+		int result = 0;
 
+		try
+		{
+			  param.put("ADT_CODE", (String) param.get("adt_code"));
+			  
+			  // session에 저장된 user_id값을 받아서 dao의 searchUserInfo() 메소드로 사용자 정보를 map 자료구조에 담음. 
+			  Map<String, Object> userInfo =  dao.searchUserInfo((String)param.get("user_id")); 
+			  // map자료구조 안에서 "USER_CODE" 키 값으로 되어있는 USER_CODE 값을 가져옴. 
+			  String user_code = (String)userInfo.get("USER_CODE"); 
+			  // param에 USER_CODE값을 넣음. 
+			  param.put("USER_CODE",user_code);
+			  
+			  param.put("ADT_GENDER", (String) param.get("adt_gender"));
+			  param.put("ADT_AGE", (String) param.get("adt_age"));
+			  param.put("ADT_RESIDENCE", (String) param.get("adt_residence")); 
+			  
+			  param.put("ADT_CAT_EXP", (String) param.get("adt_cat_exp")); 
+			  param.put("ADT_JOB", (String) param.get("adt_job")); 
+			  param.put("ADT_MARRIAGE", (String)param.get("adt_marriage"));
+			  param.put("ADT_FAMILY_NUM", (String)param.get("adt_family_num"));
+			  param.put("ADT_FAMILY_CONSENT", (String)param.get("adt_family_consent"));
+			  
+			  param.put("ADT_ALLOW", (String)param.get("adt_allow"));
+			  param.put("ADT_PET_NUM", (String)param.get("adt_pet_num"));
+			  param.put("ADT_PET_TEXT", (String)param.get("adt_pet_text"));
+			  param.put("ADT_CARE_TIME", (String)param.get("adt_care_time"));
+			  param.put("ADT_ALLERGY", (String)param.get("adt_allergy"));
+			  
+			  param.put("ADT_ABANDON", (String)param.get("adt_abandon"));
+			  param.put("ADT_ADOPTION", (String)param.get("adt_adoption"));
+			  param.put("A1", (String)param.get("a1"));
+			  param.put("A2", (String)param.get("a2"));
+			  param.put("A3", (String)param.get("a3"));
+			  
+			  //System.out.println("■■■■■■■■■■■■■■■■■■■■■■■");
+			  //System.out.println(param.values());
+			  //System.out.println("■■■■■■■■■■■■■■■■■■■■■■■");
+			  
+			  result = dao.applyAdopt(param);
+			 
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	
 	
 	
 	

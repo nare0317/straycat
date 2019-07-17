@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+*
+{
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Quicksand', sans-serif;
+}
 
 /************ Breadcrumbs 부분 ************/	
 
@@ -40,27 +45,44 @@
 	font-size: 13px;	
 }	
 
-/*****************************************/	
+/***************** 본문 영역 *****************/	
+
+.alert {
+    border-radius: 0;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.alert>p, .alert>ul {
+    margin-bottom: 0;
+}
+
+.fade.in {
+    opacity: 1;
+}
+
+li{
+    color: #555;
+}
 
 textarea	
 {	
 	resize: none;	
 }	
 
-#seoul	
-{	
-	margin-right: -40px;	
-}	
-
-.gu-select	
-{	
-	margin-right: -20px;	
-}	
-
 #name	
 {	
 	background-color: #fff;	
 }	
+
 
 /************ 임시저장 & 작성완료 버튼 부분 ************/	
 
@@ -82,11 +104,7 @@ textarea
 
 /***************************************************/
 
-div
-{
-	font-family: 'Nanum Gothic Coding', monospace;
-	font-family: 'Quicksand', sans-serif;
-}
+
 .card
 {
 	margin-top: 30px;
@@ -145,7 +163,7 @@ span
 }
 .custom-select
 {
-	width:100px;
+	width:200px;
 }
 #custom-select1
 {
@@ -209,10 +227,6 @@ element.style
 .m7
 {
 	margin-top: 7px;
-}
-.blue
-{
-	color: blue;
 }
 .resize
 {
