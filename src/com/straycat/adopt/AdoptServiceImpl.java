@@ -1,6 +1,7 @@
 package com.straycat.adopt;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -277,7 +278,6 @@ public class AdoptServiceImpl implements AdoptService
 	public int applyAdopt(Map<String, Object> param)
 	{
 		int result = 0;
-
 		try
 		{
 			  param.put("ADT_CODE", (String) param.get("adt_code"));
@@ -324,7 +324,22 @@ public class AdoptServiceImpl implements AdoptService
 		return result;
 	}
 
-	
+	// 
+	@Override
+	public List<Map<String, Object>> listApplicant(String adt_code) 
+	{
+		List<Map<String, Object>> applicantList = null;
+
+		try 
+		{
+			applicantList = dao.applicantList(adt_code);
+
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		return applicantList;
+	}
 	
 	
 	

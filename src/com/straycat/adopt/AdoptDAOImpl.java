@@ -1,5 +1,6 @@
 package com.straycat.adopt;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -319,6 +320,25 @@ public class AdoptDAOImpl implements AdoptDAO
 			throw e;
 		}
 		return result;
+	}
+
+	// 입양 신청자 리스트 조회 메소드
+	@Override
+	public List<Map<String, Object>> applicantList(String adt_code)
+	{
+		List<Map<String, Object>> applicant_list = null;
+				
+		try
+		{
+			applicant_list = sqlSession.selectList("adopt.applicantList", adt_code);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		return applicant_list;
 	}
 	
 	

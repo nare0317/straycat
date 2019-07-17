@@ -37,4 +37,7 @@ public interface AdoptService
 	// 입양 신청
 	public int applyAdopt(Map<String,Object> param);
 	
+	// 입양신청자 리스트 조회 
+	public List<Map<String, Object>> listApplicant(String adt_code);
+	
 }

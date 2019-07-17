@@ -49,5 +49,8 @@ public interface AdoptDAO
 	
 	// 입양 신청 등록 메소드 
 	public int applyAdopt(Map<String, Object> map);
+	
+	// 입양 신청자 리스트 조회 메소드
+	public List<Map<String, Object>> applicantList(String adt_code);
 
 }
