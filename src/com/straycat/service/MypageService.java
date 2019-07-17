@@ -30,4 +30,7 @@ public interface MypageService
 	public Map<String, Object> myBoardRead(Map<String, Object> map);
 	
 	public void sendMessage(Map<String, Object> map);	// 쪽지 쓰기
+	
+	public List<Map<String, Object>> reMessageList(String id);// 받은 쪽지 리스트
+	public List<Map<String, Object>> seMessageList(String id);// 보낸 쪽지 리스트
 }

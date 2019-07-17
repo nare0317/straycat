@@ -114,7 +114,8 @@ public class MypageController
 		service.myActComment(id);	// 로그인 유저가 쓴 고양이 활동 댓글
 		service.myAdoptComment(id);	// 로그인 유저가 쓴 입양모집글 댓글 
 		service.myMissComment(id);	// 로그인 유저가 쓴 실종글 댓글
-		
+		service.reMessageList(id);		// 로그인 유저가 받은 쪽지 리스트
+		service.seMessageList(id);	// 로그인 유저가 보낸 쪽지 리스트
 		
 		
 		model.addAttribute("myBoardList", service.myBoardList(id));
@@ -125,6 +126,9 @@ public class MypageController
 		model.addAttribute("myActComment", service.myActComment(id));
 		model.addAttribute("myAdoptComment", service.myAdoptComment(id));
 		model.addAttribute("myMissComment", service.myMissComment(id));
+		model.addAttribute("reMessageList", service.reMessageList(id));
+		model.addAttribute("seMessageList", service.seMessageList(id));
+		
 		
 		return "Mypage_Main"; 
 	}
@@ -175,6 +179,14 @@ public class MypageController
 		
 		service.sendMessage(map);
 		
-		return "Mypage_message";
+		return "redirect:/mypage";
+	}
+	
+	@RequestMapping(value = "semessageread", method = RequestMethod.GET)
+	public String readSendMessages(HttpSession session, @RequestParam(name="mes_code") String mes_code)
+	{
+		
+		//return "Message_Read(Sended)?mes_code="+mes_code;
+		return "Message_Read(Sended)";
 	}
 }

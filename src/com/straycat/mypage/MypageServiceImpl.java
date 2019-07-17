@@ -220,6 +220,36 @@ public class MypageServiceImpl implements MypageService
 		
 	}
 
+	@Override
+	public List<Map<String, Object>> reMessageList(String id)
+	{
+		List<Map<String, Object>> reMessageList = null;
+		
+		try
+		{
+			reMessageList = dao.selectList("member.reMessageList", id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return reMessageList;
+	}
+
+	@Override
+	public List<Map<String, Object>> seMessageList(String id)
+	{
+		List<Map<String, Object>> seMessageList = null;
+		
+		try
+		{
+			seMessageList = dao.selectList("member.seMessageList", id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return seMessageList;
+	}
+
 	
 	
 
