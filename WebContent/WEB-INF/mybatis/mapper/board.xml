@@ -140,6 +140,11 @@
 	WHERE NUM = ${articleNum }
 </select>
 
+<insert id="articleInsert">
+	INSERT INTO BBS_REG (BBS_CODE, USER_CODE, TITLE, CONTENTS, TYPE_CODE, POST_DATE)
+	VALUES ('BR'||BBS_REG_SEQ.NEXTVAL, #{user_code, jdbcType=VARCHAR}, #{title, jdbcType=VARCHAR }, #{contents }, #{type_code, jdbcType=VARCHAR }, SYSDATE)
+</insert>
+
 <select id="commentLoad" resultType="map">
 	SELECT
 	    BC.BBS_CMT_CODE AS BBS_CMT_CODE
