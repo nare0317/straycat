@@ -9,13 +9,28 @@ th
 {
 	padding: 0 4px 0 0;
 	background-color: #F6F6F6;
-	width: 10ppx;
+	width: 10px;
 }
 td
 {
 	position: relative;
 	text-align: left;
 }
+
+.send-message > i
+{
+	font-size: 13px;
+	color: black;
+	margin-left: 6px;
+	
+}
+
+.send-message
+{
+	font-size: 13px;
+	color: black;
+}
+
 span
 {
 	margin-left: 10px;
