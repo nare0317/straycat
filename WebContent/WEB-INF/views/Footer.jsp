@@ -9,7 +9,7 @@
 	<p class="float-right">
       <a href="#">Back to top</a>
     </p>
-    <p><a href="<%=cp %>/termsofservice" style="padding-right: 40px;">이용약관</a><a href="<%=cp %>/privacy" style="padding-right: 40px;">개인정보 처리방침</a><a href="EmailWrite.jsp">이메일 문의</a></p>
+    <p><a href="<%=cp %>/termsofservice" style="padding-right: 40px;">이용약관</a><a href="<%=cp %>/privacy" style="padding-right: 40px;">개인정보 처리방침</a><a href="<%=cp %>/emailqna">이메일 문의</a></p>
     <div class="row">
     	<div class="col-4">
     		<p>개발자</p>

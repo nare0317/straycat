@@ -114,4 +114,10 @@ public class MainController
 	{
 		return "Privacy";
 	}
+	
+	@RequestMapping("/emailqna")
+	public String email()
+	{
+		return "Email_Inquiry";
+	}
 }
