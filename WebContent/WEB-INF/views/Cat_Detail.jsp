@@ -232,7 +232,7 @@
 						<div class="jumbotron select">
 						
 							<form action="actregistration" method="POST" id="activityForm">
-							<input type="text" value="${catInfo.CAT_CODE }" id="cat_id" name="cat_id">
+							<input type="hidden" value="${catInfo.CAT_CODE }" id="cat_id" name="cat_id">
 							<div class="row row2">
 								<div class="custom-control custom-radio custom-control-inline">
 									<input type="radio" id="activity1" name="activityRadio" class="custom-control-input" value="AT1">
@@ -430,47 +430,13 @@
 
 
 <script type="text/javascript">
-
-
-
-/* 
-	(document).ready(function()
-	{
-		$.ajax({
-			type:'GET',
-			url : "<c:url value='/qtboard_comment_ajax'/>",
-			dataType : "json",
-			data : {"ID" : ${post.QT_ID }},
-			success : function(data)
-			{
-				var html = "";
-				var cCnt = data.length;
-				
-				if(data.length > 0)
-				{
-					for(i=0; i<data.length; i++)
-					{
-						
-					
-
-
-					}
-				}
-				
-				$("#commentList").html(html);
-				
-			}
-		});
-	});
-
- */
 </script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script>
 <script>
 	/* 첫번째 지도 (마커 출력용 지도) */
 	var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div  
 	    mapOption0 = { 
-	        center: new kakao.maps.LatLng(37.554396, 126.916707), // 지도의 중심좌표
+	        center: new kakao.maps.LatLng("${avgLoc.LATITUDE }","${avgLoc.LONGITUDE }"), // 지도의 중심좌표
 	        level: 3 // 지도의 확대 레벨
 	    };
 	
@@ -505,16 +471,6 @@
 	        image : markerImage // 마커 이미지 
 	    });
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	/* 두 번째 지도 (마커 생성용 지도) */
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -600,20 +556,6 @@
 			}
 		}
 	} 
-	
-/*     $(document).ready(function()
-    {
-    	$.ajax(
-    	{
-    		url: 'act_registration'
-    		, type: 'get'
-    		, data: {'':,'':,'':,'':}
-    		, success : function(data)
-    		{
-    			
-    		}
-    	});
-    }); */
 </script>
 </body>
 </html>

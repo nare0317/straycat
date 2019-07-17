@@ -89,6 +89,7 @@ public class CatDAOImpl implements CatDAO
 		{
 			catInfo = sqlSession.selectOne("catDetail.catInfo", id);
 			
+			
 		} catch (Exception e)
 		{
 			logger.error(e.toString());
@@ -97,6 +98,21 @@ public class CatDAOImpl implements CatDAO
 		}
 		
 		return catInfo;
+	}
+	
+	@Override
+	public Map<String, Object> selectOneOne(String id, Object value)
+	{
+		try
+		{
+			return sqlSession.selectOne(id, value);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
 	}
 
 	@Override

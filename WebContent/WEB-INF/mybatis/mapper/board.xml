@@ -235,4 +235,17 @@
 	SELECT BBS_TYPE_CODE, BBS_TYPE FROM BBS_TYPE
 </select>
 
+<select id="articleDelete">
+	DELETE
+	FROM BBS_REG
+	WHERE BBS_CODE = #{bbs_code}
+</select>
+
+
+<select id="articleUpdateList" resultType="map">
+	 SELECT TITLE, TYPE_CODE, CONTENTS
+	 FROM BBS_REG
+	 WHERE BBS_CODE = #{bbs_code}
+</select>
+
 </mapper>
