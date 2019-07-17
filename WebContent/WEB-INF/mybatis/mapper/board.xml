@@ -111,7 +111,7 @@
 		    , U.ID	AS ID
 		    , U.NICKNAME  AS NICKNAME
 		    , BR.TITLE     AS TITLE
-		    , BR.CONTENT   AS CONTENT
+		    , BR.CONTENTS   AS CONTENT
 		    , BT.BBS_TYPE  AS TYPE
 		    , TO_CHAR(BR.POST_DATE, 'YYYY-MM-DD HH24:MI:SS') AS POST_DATE
 		    , BR.HIT_COUNT AS HITCOUNT
@@ -225,5 +225,9 @@
 	SET HIT_COUNT = HIT_COUNT+1
 	WHERE BBS_CODE = #{CODE}
 </update>
+
+<select id="bbsWriteCat" resultType="map">
+	SELECT BBS_TYPE_CODE, BBS_TYPE FROM BBS_TYPE
+</select>
 
 </mapper>

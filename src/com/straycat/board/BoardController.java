@@ -2,6 +2,7 @@ package com.straycat.board;
 
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -244,7 +245,25 @@ public class BoardController
 		return result;
 	}
 	
+	// 글쓰기 폼으로 이동하는 메소드
+	@RequestMapping("/board/write")
+	public String bbsWriteForm(Model model)
+	{
+		List<Map<String, String>> bbsWriteCat = new ArrayList<Map<String,String>>();
+		bbsWriteCat = service.bbsWriteCat();
+		
+		model.addAttribute("bbsWriteCat", bbsWriteCat);
+		
+		return "Board_Write";
+	}
 	
-	
-	
+	@RequestMapping("/boardinsert")
+	public String bbsWrite(HttpServletRequest request, Model model)
+	{
+		Map<String,String> map = new HashMap<>();
+		
+		
+		//return "Board_List";
+		return null;
+	}
 }

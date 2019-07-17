@@ -169,6 +169,18 @@ public class CatServiceImpl implements CatService
 	}
 	
 	
+	@Override
+	public void addAct(Map<String, Object> param)
+	{
+		try
+		{
+			dao.insert("catDetail.addAct", param);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+	}
+	
 	
 	
 	
