@@ -1,6 +1,7 @@
-function dongList()
+function dongList(dong)
 {
 	var selectedGu = $("#gu").val(); // ID가 gu인 요소의 값을 불러옴
+	var selectedDong = dong;
 
 	if (selectedGu == "")
 	{ // selectedGu에 ""가 선택되어있다면
@@ -30,9 +31,6 @@ function dongList()
 		,
 		success : function(result)
 		{
-			alert("success!");
-			//alert(selectedGu);
-			
 			var str = {};
 			
 			//alert(result.length);
@@ -60,11 +58,19 @@ function dongList()
 			// 방법2
 			for (var i = 0; i < result.length; i++)
 			{ // 새로 가져온 데이터를 데이터 갯수만큼 반복해서 붙여준다.
-
-				$("#dong").append(
-						"<option value='" + result[i].DONG + "'>"
-								+ result[i].DONG + "</option>");
-
+				if (result[i].DONG == selectedDong)
+				{
+					$("#dong").append(
+							"<option value='" + result[i].DONG + "' selected>"
+									+ result[i].DONG + "</option>");
+				}
+				else
+				{
+					$("#dong").append(
+							"<option value='" + result[i].DONG + "'>"
+									+ result[i].DONG + "</option>");
+				}
+				
 				// append : 셀렉터로 선택된 놈의(여기서는 id가 dong인 놈) 자식에게 계속 내용을 붙여준다. 기존
 				// 자식이 있다면 그 뒤에 붙여줌.
 			}

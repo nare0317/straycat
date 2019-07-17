@@ -115,7 +115,7 @@
 	VALUES ('ADO'||ADT_CODE_SEQ.NEXTVAL, 'ADP1', #{CAT_NAME,jdbcType=VARCHAR}, #{CAT_ADDRESS,jdbcType=VARCHAR}
 	, #{RSQ_DATE,jdbcType=DATE},#{CAT_SPECIES,jdbcType=VARCHAR}, #{CAT_AGE_TYPE,jdbcType=VARCHAR}
 	, #{CAT_AGE_NUM,jdbcType=VARCHAR}, #{CAT_SEX,jdbcType=VARCHAR}, #{ADT_TYPE,jdbcType=VARCHAR}
-	, #{CAT_ECT1,jdbcType=VARCHAR}, #{CAT_ECT2,jdbcType=VARCHAR}, 'aaa124.png', #{USER_CODE,jdbcType=VARCHAR}, #{TEL,jdbcType=VARCHAR}
+	, #{CAT_ECT1,jdbcType=VARCHAR}, #{CAT_ECT2,jdbcType=VARCHAR}, #{CAT_REP_IMG, jdbcType=VARCHAR}, #{USER_CODE,jdbcType=VARCHAR}, #{TEL,jdbcType=VARCHAR}
 	, #{EMAIL,jdbcType=VARCHAR}, #{ADT_REASON,jdbcType=VARCHAR}, #{ADT_CAT_EXP,jdbcType=VARCHAR}
 	, #{ADT_JOB,jdbcType=VARCHAR}, #{ADT_MARRIAGE,jdbcType=VARCHAR}, #{ADT_FAMILY_NUM,jdbcType=VARCHAR})
 </insert> 
@@ -265,6 +265,34 @@
 	JOIN USER_REG UR
 	ON AP.USER_CODE = UR.USER_CODE
 	WHERE AP.ADT_CODE = #{ADT_CODE,jdbcType=VARCHAR}
+</select>
+
+<!-- 한 모집글의 입양신청자 수 조회 쿼리문 -->
+<select id="countApplicant" parameterType="java.lang.String" resultType="java.lang.Integer">
+	SELECT COUNT(*) AS APP_COUNT
+	FROM ADT_APPLY
+	WHERE ADT_CODE = #{ADT_CODE,jdbcType=VARCHAR}
+</select>
+
+<!-- 입양신청자(후보자) 리스트 조회 쿼리문 -->
+<select id="listApply" parameterType="java.lang.String" resultType="map">
+	SELECT U.ID AS ID
+	     , U.USER_NAME AS NAME
+	     , U.ADDRESS_CODE AS ADDRESS
+	     , AP.ADT_CAT_EXP AS A1
+	     , AJ.ANSWER AS A2
+	     , AP.ADT_MARRIAGE AS A3
+	     , AFN.ANSWER AS A4
+	FROM ADT_APPLY AP
+	JOIN USER_REG U
+	ON U.USER_CODE = AP.USER_CODE
+	JOIN ADT_REG AR
+	ON AP.ADT_CODE = AR.ADT_CODE
+	JOIN ADT_JOB AJ
+	ON AP.ADT_JOB IN AJ.ADT_JOB
+	JOIN ADT_FAMILY_NUM AFN
+	ON AP.ADT_FAMILY_NUM IN AFN.ADT_FAMILY_NUM
+	WHERE AR.ADT_CODE = #{adt_code}
 </select>
 
 

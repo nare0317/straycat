@@ -19,13 +19,16 @@
         <li class="nav-item">
           <a class="nav-link" href="<%=cp %>/cat" id="catManage">길냥이관리<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item">
+          <a class="nav-link" href="<%=cp %>/adopt" id="adopt">입양<span class="sr-only">(current)</span></a>
+        </li>
+        <%-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">입양&실종</a>
           <div class="dropdown-menu" aria-labelledby="dropdown09">
             <a class="dropdown-item" href="<%=cp %>/adopt">입양</a>
             <a class="dropdown-item" href="<%=cp %>/missing">실종</a>
           </div>
-        </li>
+        </li> --%>
         <li class="nav-item">
           <a class="nav-link" href="<%=cp %>/board">자유게시판<span class="sr-only">(current)</span></a>
         </li>
