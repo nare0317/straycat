@@ -112,6 +112,66 @@ public class MypageServiceImpl implements MypageService
 		return myBoardList;
 	}
 
+	@Override
+	public List<Map<String, Object>> myBoardComment(String id)
+	{
+		List<Map<String, Object>> myBoardComment = null;
+		
+		try
+		{
+			myBoardComment = dao.selectList("member.myBoardComment", id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return myBoardComment;
+	}
+
+	@Override
+	public List<Map<String, Object>> myAdoptComment(String id)
+	{
+		List<Map<String, Object>> myAdoptComment = null;
+		
+		try
+		{
+			myAdoptComment = dao.selectList("member.myAdoptComment", id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return myAdoptComment;
+	}
+
+	@Override
+	public List<Map<String, Object>> myActComment(String id)
+	{
+		List<Map<String, Object>> myActComment = null;
+		
+		try
+		{
+			myActComment = dao.selectList("member.myActComment", id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return myActComment;
+	}
+
+	@Override
+	public List<Map<String, Object>> myMissComment(String id)
+	{
+		List<Map<String, Object>> myMissComment = null;
+		
+		try
+		{
+			myMissComment = dao.selectList("member.myMissComment", id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return myMissComment;
+	}
+
 
 	
 

@@ -21,4 +21,8 @@ public interface MypageService
 	
 	public List<Map<String, Object>> myBoardList(String id);	// 내가 쓴 자유게시판 글 리스트
 	
+	public List<Map<String, Object>> myBoardComment(String id);		// 내가 쓴 자유게시판 댓글
+	public List<Map<String, Object>> myAdoptComment(String id);		// 내가 쓴 입양모집글 댓글
+	public List<Map<String, Object>> myActComment(String id);		// 내가 쓴 고양이 활동 댓글
+	public List<Map<String, Object>> myMissComment(String id);		// 내가 쓴 실종글 댓글
 }

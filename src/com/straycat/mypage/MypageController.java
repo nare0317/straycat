@@ -105,14 +105,24 @@ public class MypageController
 		
 		map.put("id", id);
 		
-		service.myBoardList(id);
+		
 		service.myInfo(id);	// 로그인 유저 정보
 		service.followList(id);	// 로그인 유저 팔로우한 고양이 정보
-
+		service.myBoardList(id);	// 로그인 유저가 쓴 자유게시판 글
+		service.myBoardComment(id);	// 로그인 유저가 쓴 자유게시판 댓글
+		service.myActComment(id);	// 로그인 유저가 쓴 고양이 활동 댓글
+		service.myAdoptComment(id);	// 로그인 유저가 쓴 입양모집글 댓글 
+		service.myMissComment(id);	// 로그인 유저가 쓴 실종글 댓글
+		
+		
 		
 		model.addAttribute("myBoardList", service.myBoardList(id));
 		model.addAttribute("followList", service.followList(id));
 		model.addAttribute("myInfo", service.myInfo(id));
+		model.addAttribute("myBoardComment", service.myBoardComment(id));
+		model.addAttribute("myActComment", service.myActComment(id));
+		model.addAttribute("myAdoptComment", service.myAdoptComment(id));
+		model.addAttribute("myMissComment", service.myMissComment(id));
 		
 		return "Mypage_Main"; 
 	}
