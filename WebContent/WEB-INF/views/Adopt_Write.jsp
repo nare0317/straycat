@@ -21,6 +21,29 @@
 <script src="<%=cp%>/js/view/miss_write.js"></script>
 <script src="<%=cp %>/js/view/adopt_write.js"></script>
 
+<script type="text/javascript">
+	$(document).ready(function()
+	{
+		// 업로드 input 엘리먼트의 상태가 바뀌면,
+		$("#uploadPicture").on("change",function(){readURL(this);});
+		
+		function readURL(input) { 
+			if (input.files && input.files[0]) 
+			{ 
+				var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성 
+	            
+				// 파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+				reader.onload = function (e) { 
+					// 이미지 Tag의 SRC속성에 읽어들인 File내용(아래 코드에서 읽어들인 dataURL형식)을 지정 
+					$('#catPicture').attr('src', e.target.result); 
+	            }                    
+				reader.readAsDataURL(input.files[0]);
+				//File내용을 읽어 dataURL형식의 문자열로 저장 
+	      	}// end if
+	    }
+	});// end jQuery
+</script>
+
 </head>
 <body>
 
@@ -56,8 +79,8 @@
    <!-- ★★★★★내용★★★★★ -->
    <section class="content container">
       
-      <form action="<%=cp %>/adopt_write" method="get"
-            class="needs-validation" novalidate>
+      <form action="<%=cp %>/adopt_write" method="post"
+            class="needs-validation" novalidate enctype="multipart/form-data">
       
          <!-- ★★★★ 고양이 정보 입력 ★★★★  -->
          <div class="cat-info row">
@@ -70,9 +93,8 @@
             <!---------------- 고양이 대표 이미지 첨부 --------------->
             <div class="col-3 text-center">
                <img id="catPicture" src="img/straycat.jpg" style="width: 200px;"><br> <br>
-               <label class="btn btn-primary"> 사진첨부<input type="file"
-                  class="form-control-file" id="uploadPicture"
-                  style="display: none;"></label>
+               <label class="btn btn-primary"> 사진첨부<input type="file" class="form-control-file" 
+               id="uploadPicture" style="display: none;" accept=".jpeg, .png, .jpg" name="file"></label>
             </div>
             
             <!------------------ 고양이정보 등록 폼 ----------------->

@@ -115,7 +115,7 @@
 	VALUES ('ADO'||ADT_CODE_SEQ.NEXTVAL, 'ADP1', #{CAT_NAME,jdbcType=VARCHAR}, #{CAT_ADDRESS,jdbcType=VARCHAR}
 	, #{RSQ_DATE,jdbcType=DATE},#{CAT_SPECIES,jdbcType=VARCHAR}, #{CAT_AGE_TYPE,jdbcType=VARCHAR}
 	, #{CAT_AGE_NUM,jdbcType=VARCHAR}, #{CAT_SEX,jdbcType=VARCHAR}, #{ADT_TYPE,jdbcType=VARCHAR}
-	, #{CAT_ECT1,jdbcType=VARCHAR}, #{CAT_ECT2,jdbcType=VARCHAR}, 'aaa124.png', #{USER_CODE,jdbcType=VARCHAR}, #{TEL,jdbcType=VARCHAR}
+	, #{CAT_ECT1,jdbcType=VARCHAR}, #{CAT_ECT2,jdbcType=VARCHAR}, #{CAT_REP_IMG, jdbcType=VARCHAR}, #{USER_CODE,jdbcType=VARCHAR}, #{TEL,jdbcType=VARCHAR}
 	, #{EMAIL,jdbcType=VARCHAR}, #{ADT_REASON,jdbcType=VARCHAR}, #{ADT_CAT_EXP,jdbcType=VARCHAR}
 	, #{ADT_JOB,jdbcType=VARCHAR}, #{ADT_MARRIAGE,jdbcType=VARCHAR}, #{ADT_FAMILY_NUM,jdbcType=VARCHAR})
 </insert> 

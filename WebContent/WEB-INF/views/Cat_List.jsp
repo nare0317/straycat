@@ -26,10 +26,11 @@
 		
 		$("#searchAddress").click(function()
 		{
-			//alert("성공");
-			$(location).attr("href", "<%=cp%>/cat?gu=" + $("#gu").val() + "&dong=" + $("#dong").val());
+			$(location).attr("href", "<%=cp%>/cat?gu=" + $("#gu").val() + "&dong=" + $("#dong").val());			
 		});
-
+		
+		dongList("${dongString}");
+		
 	}); 
 	
 
@@ -76,23 +77,27 @@
 				<!-- 구 선택 -->
 				<div class="col-lg-3">
 					<select class="custom-select" id="gu" onchange="dongList();">
-						<option selected>구 선택</option>
+						<option>구 선택</option>
 						<c:forEach var="gu" items="${gu }">
-							<option value="${gu.GU }">${gu.GU }</option>
+							<option value="${gu.GU }" ${gu.GU == guString ? 'selected' : '' }>${gu.GU }</option>
 						</c:forEach>
 					</select>
 				</div>
 				<!-- 동 선택 -->
 				<div class="col-lg-3">
 					<select class="custom-select" id="dong" name="dong">
+					<%-- <c:if test="${dongString != null }">
+						<option value="${dongString }">${dongString }</option>
+					</c:if>
+					<c:if test="${dongString == null }">
 						<option value="">동 선택</option>
+					</c:if> --%>
 					</select>
 				</div>
 				<!-- 조회버튼 -->
 				<div class="col-lg-2">
 					<button type="button" class="btn btn-primary" id="searchAddress">조회</button>
 				</div>
-				
 						
 				<div class="col-lg-3 offset-lg-1 text-right write">
 					<c:choose>

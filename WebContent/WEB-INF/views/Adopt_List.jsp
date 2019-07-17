@@ -143,8 +143,13 @@
 					<!-- 길냥이 대표이미지 -->
 					<div class="col-md-5 cat-photo cat-photo-wrap">
 						<div class="cp-image">
-							<%-- <img src="${list.CAT_IMAGE }" class="card-img" alt=""> --%>
-							<img src="img/straycat.jpg" class="card-img" alt="">
+						<c:if test="${list.CAT_IMAGE != null }">
+							<img src="<%=cp %>${list.CAT_IMAGE }" class="card-img" alt="">
+						</c:if>
+						<c:if test="${list.CAT_IMAGE == null }">
+							<img src="<%=cp %>/img/defaultCat.png" class="card-img" alt="">
+						</c:if>
+							<!-- <img src="img/straycat.jpg" class="card-img" alt=""> -->
 						</div>
 						
 						<!-- 게시글 상태에 따라 색상 변경 -->

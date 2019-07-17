@@ -68,6 +68,8 @@ public class CatController
 			model.addAttribute("list", location);
 			model.addAttribute("gu", gu);
 			model.addAttribute("dataCount", dataCount);
+			model.addAttribute("guString", request.getParameter("gu"));
+			model.addAttribute("dongString", request.getParameter("dong"));
 			
 			
 		} catch (Exception e)
