@@ -11,6 +11,7 @@ public interface BoardService
 	public int dataCount(Map<String, Object> map);
 	public Map<String, Object> articleLoad(Map<String, Object> map);
 	public List<Map<String, String>> bbsWriteCat();
+	public int bbsWrite(Map<String, Object> map);
 	
 	public int commentCount(Map<String, Object> map);
 	public int commentInsert(Map<String, String> map);

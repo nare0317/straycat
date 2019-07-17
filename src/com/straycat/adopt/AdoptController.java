@@ -69,13 +69,14 @@ public class AdoptController
 	// 입양등록 버튼 클릭시 입양게시글 등록페이지로 이동
 	@RequestMapping(value = "/adopt_form", method = RequestMethod.GET)
 	public String adoptForm(Model model
-						  , HttpServletRequest request)
+						  , HttpServletRequest request
+						  , HttpSession session)
 	{
 		Map<String, Object> user = null;
 		
 		try
 		{
-			HttpSession session = request.getSession();
+			//HttpSession session = request.getSession();
 			String user_id = (String)session.getAttribute("user_id");
 			
 			// 사용자 id로 찾아낸 정보(이름,전화번호,이메일) 넘기기
@@ -125,6 +126,10 @@ public class AdoptController
 			post = service.readAdopt(adt_code);
 			model.addAttribute("post", post);
 			
+			// 입양신청자 리스트 넘기기
+			List<Map<String, Object>> applicantList = service.listApplicant(adt_code);
+			model.addAttribute("applicantList", applicantList);
+
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -235,6 +240,7 @@ public class AdoptController
 		
 		try
 		{
+			// 로그인한 사용자 id값 세션에서 가져오기
 			HttpSession session = request.getSession();
 			String user_id = (String)session.getAttribute("user_id");
 			
@@ -258,13 +264,20 @@ public class AdoptController
 	// 입양 신청 등록
 	@RequestMapping(value = "/adopt/apply", method = RequestMethod.GET)
 	public String applyWrite(HttpServletRequest request
-							, @RequestParam Map<String, Object> param
+							, @RequestParam Map<String, Object> apply
 							, Model model)
 	{
 		String adt_code = ""; 
 		
 		try
 		{
+			// 로그인한 사용자 id값 세션에서 가져오기
+			//HttpSession session = request.getSession();
+			//String user_id = (String)session.getAttribute("user_id");
+			
+			// 세션에서 가져온 사용자 id값 넘기기 
+			//model.addAttribute("applicant_id", user_id);
+			
 			// 입양모집글 코드 값 받아서 넘기기
 			adt_code = request.getParameter("adt_code");
 			model.addAttribute("adt_code", adt_code);
@@ -273,8 +286,9 @@ public class AdoptController
 			//System.out.println(param.values());
 			//System.out.println("★★★★★★★★★★★★★★★★★★★★★★★");
 			
-			// 입양신청폼 등록
-			service.applyAdopt(param);
+			// 입양신청폼 넘기기
+			service.applyAdopt(apply);
+			model.addAttribute("apply", apply);
 			
 		} catch (Exception e)
 		{

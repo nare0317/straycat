@@ -21,7 +21,7 @@
 
 	<div class="container marTop">
 	<div><h1>새 게시물 작성</h1></div><br>
-	<form action="/boardinsert" id="boardForm" method="post">
+	<form action="<%=cp %>/boardinsert" id="boardForm" method="post">
 		<div class="row">
 			<div class="col-2">제목<span class="required">*</span></div>
 			<div class="col-10">
@@ -46,7 +46,7 @@
 		<div class="row">
 			<div class="col-2">내용<span class="required">*</span></div>
 			<div class="col-10">
-					<textarea name="ir1" id="ir1" rows="10" cols="100"></textarea>
+				<textarea name="ir1" id="ir1" rows="10" cols="100"></textarea>
 			</div>
 		</div>
 		<div class="row text-left">
@@ -67,7 +67,7 @@
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-10">
-					<button type="submit" class="btn btn-primary" id="sendBtn">작성완료</button>
+					<button type="button" class="btn btn-primary" id="sendBtn" onclick="submitContents()">작성완료</button>
 					<button type="button" class="btn btn-secondary">작성취소</button>
 			</div>
 		</div>
@@ -83,14 +83,47 @@
 
 
 </body>
-<script type="text/javascript" src="<%=cp %>/editor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="<%=cp %>/resource/se/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
-		var oEditors = [];
-		nhn.husky.EZCreator.createInIFrame({
-			oAppRef: oEditors,
-			elPlaceHolder: "ir1",
-			sSkinURI: "<%=cp%>/editor/SmartEditor2Skin.html",
-			fCreator: "createSEditor2"
-		});
+	var oEditors = [];
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef: oEditors,
+		elPlaceHolder: "ir1",
+		sSkinURI: "<%=cp%>/resource/se/SmartEditor2Skin.html",
+		fCreator: "createSEditor2",
+		htParams : {
+			bUseToolbar : true,
+			bUseModeChanger : false	
+		}
+	});
+
+	function pasteHTML() {
+		var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
+		oEditor.exec("PASTE_HTML", [sHTML]);
+	}
+	
+	function showHTML() {
+		var sHTML = oEditor.getIR();
+		alert(sHTML);
+	}
+	
+	function submitContents() {
+		oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
+		
+		// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
+		var contents = $.trim(oEditors[0].getContents());
+		if (contents == '<p>&bnsp;</p>' || contents == '' || contents == '<p><br></p>')
+		{
+			alert("내용을 입력해주세요.");
+			return;
+		}
+		$("#boardForm").submit();
+	}
+	
+	function setDefaultFont() {
+		var sDefaultFont = '궁서';
+		var nFontSize = 24;
+		oEditor.setDefaultFont(sDefaultFont, nFontSize);
+	}
 </script>
 </html>

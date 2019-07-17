@@ -320,13 +320,15 @@ $(document).ready(function(){
 		{
 			// 댓글 삭제를 위한 id 값 저장
 			var bbs_cmt_code = $(this).val();
-			
+			console.log(bbs_cmt_code);
 			$.ajax({
 				method: "GET",
 				url: "<c:url value='/commentdelete'/>",
 				data: {"bbs_cmt_code":bbs_cmt_code},
-				complete: function(){
+				success: function(){
 					alert("삭제되었습니다.");
+				},
+				complete: function(){
 					location.reload();
 				}
 			})// end ajax
