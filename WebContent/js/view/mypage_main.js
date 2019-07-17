@@ -32,9 +32,13 @@ $(document).ready(function()
 			$(location).attr("href", "memberupdatepw");
 		});
 		
-		$("#activity-tab").click(function()
+		$("#messageWrite1").click(function()
 		{
-			//$(location).attr("href", "mypageactivity");
-			
+			$(location).attr("href", "messagewrite");
 		});
+		$("#messageWrite2").click(function()
+		{
+			$(location).attr("href", "messagewrite");
+		});
+		
 });

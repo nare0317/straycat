@@ -28,7 +28,7 @@ $(document).ready(function()
 			return;
 		}
 		
-		$("#emailForm").submit();
+		$("#messageForm").submit();
 	});
 	
 });

@@ -82,6 +82,23 @@ public class MypageServiceImpl implements MypageService
 		return myInfo;
 	}
 
+	
+	@Override
+	public List<Map<String, Object>> manageCat(String id)
+	{
+		List<Map<String, Object>> manageCat = null;
+		
+		try
+		{
+			manageCat = dao.selectList("member.manageCat", id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return manageCat;
+	}
+
+	
 	@Override
 	public List<Map<String, Object>> followList(String id)
 	{
@@ -189,6 +206,21 @@ public class MypageServiceImpl implements MypageService
 				
 	}
 
+	@Override
+	public void sendMessage(Map<String, Object> map)
+	{
+		try
+		{
+			dao.selectOne("member.sendMessages", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		
+	}
+
+	
 	
 
 	

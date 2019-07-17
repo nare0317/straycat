@@ -108,6 +108,7 @@ public class MypageController
 		
 		service.myInfo(id);	// 로그인 유저 정보
 		service.followList(id);	// 로그인 유저 팔로우한 고양이 정보
+		service.manageCat(id);	// 로그인 유저가 관리하는 고양이 정보
 		service.myBoardList(id);	// 로그인 유저가 쓴 자유게시판 글
 		service.myBoardComment(id);	// 로그인 유저가 쓴 자유게시판 댓글
 		service.myActComment(id);	// 로그인 유저가 쓴 고양이 활동 댓글
@@ -118,6 +119,7 @@ public class MypageController
 		
 		model.addAttribute("myBoardList", service.myBoardList(id));
 		model.addAttribute("followList", service.followList(id));
+		model.addAttribute("manageCat", service.manageCat(id));
 		model.addAttribute("myInfo", service.myInfo(id));
 		model.addAttribute("myBoardComment", service.myBoardComment(id));
 		model.addAttribute("myActComment", service.myActComment(id));
@@ -127,6 +129,9 @@ public class MypageController
 		return "Mypage_Main"; 
 	}
 	
+	
+	
+	/*
 	@RequestMapping(value="/myBoard")
 	public String myBoardRead(HttpSession session, HttpServletRequest request, Map<String, Object> map)
 	{
@@ -144,5 +149,32 @@ public class MypageController
 		return result;
 		//return "Board_Read";
 	}
+	*/
+	@RequestMapping(value="/messagewrite")
+	public String messageWrite(HttpSession session)
+	{
+		String id = (String)session.getAttribute("user_id");
+		
+		return "Message_Write";
+	}
 	
+	
+	@RequestMapping(value="/sendMessage", method = RequestMethod.POST)
+	public String sendMessage(HttpSession session, HttpServletRequest requset, Map<String, Object> map)
+	{
+		String id = (String)session.getAttribute("user_id");
+		
+		String re_id = requset.getParameter("receive");
+		String title = requset.getParameter("title");
+		String content = requset.getParameter("noteContent");
+		
+		map.put("id", id);
+		map.put("re_id", re_id);
+		map.put("title", title);
+		map.put("content", content);
+		
+		service.sendMessage(map);
+		
+		return "Mypage_message";
+	}
 }

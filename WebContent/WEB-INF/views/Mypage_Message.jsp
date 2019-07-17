@@ -248,7 +248,7 @@
 	
 						<!-- 글쓰기 버튼 -->
 						<div id="rightHeader" class="row align-items-end justify-content-end">
-							<button class="btn btn-secondary pull-right" onclick="javascript:location.href='<%=cp%>/NoteWrite.jsp'">
+							<button class="btn btn-secondary pull-right" id="messageWrite1">
 								<i class="fa fa-pencil-square-o"></i>쪽지쓰기
 							</button>
 						</div>
@@ -489,7 +489,7 @@
 	
 						<!-- 글쓰기 버튼 -->
 						<div id="rightHeader" class="row align-items-end justify-content-end">
-							<button class="btn btn-secondary pull-right" onclick="javascript:location.href='<%=cp%>/NoteWrite.jsp'">
+							<button class="btn btn-secondary pull-right" id="messageWrite2">
 								<i class="fa fa-pencil-square-o"></i>쪽지쓰기
 							</button>
 						</div>
