@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +26,11 @@ public class LoginController
 	@RequestMapping(value="/login_check_ajax")
 	public void loginCheck(HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException
 	{
+		if (session.getAttribute("alert")!=null)
+		{
+			session.setAttribute("alert", null);
+		}
+		
 		Map<String, Object> map = new HashMap<>();
 		Map<String, Object> param = new HashMap<>();
 		
@@ -59,8 +65,9 @@ public class LoginController
 	
 	
 	@RequestMapping("/login") 
-	public String login() 
+	public String login(HttpServletRequest request, HttpSession session) 
 	{ 
+		
 		return "Login"; 
 	}
 	

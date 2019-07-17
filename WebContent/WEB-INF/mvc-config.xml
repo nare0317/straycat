@@ -48,12 +48,32 @@
 	
 
 	<!-- 로그인 인터셉터 -->
- 	<!-- <mvc:interceptors>
+ 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/board/write"/>
-			<bean class="com.straycat.interceptor.CommonInterceptor"></bean>
+			<mvc:mapping path="/commentupdate"/>
+			<mvc:mapping path="/commentdelete"/>
+			<mvc:mapping path="/commentwrite"/>
+			<mvc:mapping path="/boardinsert"/>
+			<mvc:mapping path="/adopt_form"/>
+			<mvc:mapping path="/adopt_read"/>
+			<mvc:mapping path="/adopt_write"/>
+			<mvc:mapping path="/adopt_proc"/>
+			<mvc:mapping path="/adopt_update_form"/>
+			<mvc:mapping path="/adopt_update"/>
+			<mvc:mapping path="/adopt/apply_form"/>
+			<mvc:mapping path="/adopt/apply"/>
+			<mvc:mapping path="/catregistrationform"/>
+			<mvc:mapping path="/actregistration"/>
+        	<bean class="com.straycat.interceptor.CommonInterceptor"/>
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+		<mvc:interceptor>
+			<mvc:mapping path="/login"/>
+			<mvc:mapping path="/join"/>
+			<mvc:mapping path="/acceptterms"/>
+			<bean class="com.straycat.interceptor.MemberInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<!-- 
 	<mvc:annotation-driven>

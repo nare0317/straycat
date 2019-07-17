@@ -91,11 +91,18 @@ textarea
 	background-color: #fff;	
 }	
 
+.col-form-label:not(#seoul)
+{
+	font-weight: bold;
+	font-size: 12pt;
+	
+}
+
 /************ 임시저장 & 작성완료 버튼 부분 ************/	
 
 #button-section	
 {	
-	padding-top: 80px;	
+	padding-top: 60px;	
 	padding-bottom: 150px;	
 }	
 
@@ -108,45 +115,3 @@ textarea
 	margin-left: 20px;	
 	margin-right: 20px;	
 }	
-
-/******아래는 윤비가 먹인 CSS ***************************************/	
-/* 
- 	div {	
-		font-family: 'Nanum Gothic Coding', monospace;	
-		font-family: 'Quicksand', sans-serif;	
-	}	
-
- 	.card {	
-		margin-top: 30px;	
-		padding: 30px;	
-	}	
-
- 	.dt1 {	
-		width: 50%;	
-		display: inline;	
-	}	
-
- 	.dt2 {	
-		width: 50%;	
-		display: inline;	
-	}	
-
- 	th {	
-		background-color: #F6F6F6;	
-		width: 30%;	
-	}	
-
- 	.mButton.gCenter {	
-		position: relative;	
-		text-align: center;	
-	}	
-
- 	.alignRight {	
-		margin: 10px 0;	
-		padding: 0 4px 0 0;	
-		text-align: right;	
-	}	
-
- 	.card {	
-		margin-top: 100px;	
-	} */

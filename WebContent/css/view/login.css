@@ -22,3 +22,12 @@ div
 	color: red !important;
 	text-align: center;
 }
+
+#alert
+{
+	text-align: center;
+	margin-top: 60px;
+	color: red;
+	font-weight: bold;
+	font-size: 15px;
+}

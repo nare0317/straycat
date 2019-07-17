@@ -17,12 +17,9 @@
 <link rel="stylesheet" href="<%=cp%>/css/view/miss_write.css">
 
 <!-- JS 파일 -->
-<script src="<%=cp%>/js/view/miss_write.js"></script>
 <script src="<%=cp %>/js/view/gudong.js"></script>
+<script src="<%=cp%>/js/view/miss_write.js"></script>
 <script src="<%=cp %>/js/view/adopt_write.js"></script>
-
-<%-- <link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
-<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script> --%>
 
 </head>
 <body>
