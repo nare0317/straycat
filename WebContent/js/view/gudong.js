@@ -30,7 +30,7 @@ function dongList()
 		,
 		success : function(result)
 		{
-			//alert("success!");
+			alert("success!");
 			//alert(selectedGu);
 			
 			var str = {};

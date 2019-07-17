@@ -11,7 +11,7 @@ public interface AdoptService
 	public List<Map<String, Object>> listAdopt(String searchGu, String searchDong);
 	
 	// 입양게시글 등록
-	public int addAdopt(Map<String, Object> map);
+	public int addAdopt(Map<String, Object> param);
 	
 	// 사용자 정보 검색
 	public Map<String, Object> searchUserInfo(String user_id);
@@ -34,6 +34,7 @@ public interface AdoptService
 	// 입양게시글 수정 
 	public int updateAdopt(Map<String, Object> param);
 
-	
+	// 입양 신청
+	public int applyAdopt(Map<String,Object> param);
 	
 }
