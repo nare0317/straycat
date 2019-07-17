@@ -182,6 +182,22 @@ public class CatServiceImpl implements CatService
 	}
 	
 	
+	@Override
+	public Map<String, Object> avgLoc(Map<String, String> map)
+	{
+		Map<String, Object> avgLoc = new HashMap<String, Object>();
+		
+		try
+		{
+			avgLoc = dao.selectOneOne("catDetail.avgLoc",map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return avgLoc;
+	}
+
 	
 	
 }

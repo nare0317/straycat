@@ -22,4 +22,10 @@ public interface BoardService
 	public Map<String, Object> selectUserId(Map<String, String> map); 
 	
 	public int viewCountUpdate(Map<String, String> map);
+	
+	// 게시물 삭제한느 메소드
+	public int articleDelete(Map<String, String> map);
+	
+	// 게시물 업데이트 리스트 가져오는 메소드
+	public List<Map<String, Object>> articleUpdateList(String id);
 }
