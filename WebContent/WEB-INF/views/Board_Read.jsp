@@ -77,8 +77,8 @@
 			<!-- 수정/삭제 버튼 -->
 			<c:if test="${sessionScope.user_id != null && sessionScope.user_id == article.ID }">
 			<div class="col-md-2 offset-md-4">
-				<button class="btn btn-secondary btn-sm pull-right" id="modify-btn">수정</button>
-				<button class="btn btn-secondary btn-sm pull-right" id="delete-btn">삭제</button>
+				<button class="btn btn-secondary btn-sm pull-right" id="modify-btn" value="${article.CODE }">수정</button>
+				<button class="btn btn-secondary btn-sm pull-right" id="delete-btn" value="${article.CODE }">삭제</button>
 			</div>
 			</c:if>
 			
@@ -334,7 +334,41 @@ $(document).ready(function(){
 			})// end ajax
 		}
 	})// end .comment_delete click event
+	
+	
+	// 게시글 삭제 버튼을 클릭한 경우
+	$("#delete-btn").click(function()
+	{
+		var result = confirm('정말 삭제하시겠습니까?'); 
+		
+		var bbs_code = $("#delete-btn").val();
+		
+		//alert(bbs_code);
+		
+		if(result) 
+		{
+			location.href = "<%=cp%>/articledelete?bbs_code=" + bbs_code;
+		} 
+		else 
+		{ 	
+			return;
+		}
+
+	});
+	
+	// 게시글 업데이트 버튼을 클릭한 경우
+	$("#modify-btn").click(function()
+	{
+		var bbs_code = $("#delete-btn").val();
+		
+		location.href="<%=cp%>/board/articleupdateform?bbs_code=" + bbs_code;
+	});
+
+	
 });// jQuery end
+
+
+
 
 </script>
 </html>
