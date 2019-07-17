@@ -127,6 +127,22 @@ public class MypageController
 		return "Mypage_Main"; 
 	}
 	
-	
+	@RequestMapping(value="/myBoard")
+	public String myBoardRead(HttpSession session, HttpServletRequest request, Map<String, Object> map)
+	{
+		String id = (String)session.getAttribute("user_id");
+		String bbs_code = request.getParameter("bbs_code");
+		
+		map.put("id", id);
+		map.put("bbs_code", bbs_code);
+		System.out.println(bbs_code);
+		
+		service.myBoardRead(map);
+		
+		String result = "/Board_Read?/article/bbs_code=" +bbs_code;
+		
+		return result;
+		//return "Board_Read";
+	}
 	
 }

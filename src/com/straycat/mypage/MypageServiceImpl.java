@@ -172,6 +172,24 @@ public class MypageServiceImpl implements MypageService
 		return myMissComment;
 	}
 
+	@Override
+	public Map<String, Object> myBoardRead(Map<String, Object> map)
+	{	
+		Map<String, Object> myBoardRead = null;
+		
+		try
+		{
+			myBoardRead = dao.selectOne("member.myBoardRead", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return myBoardRead;
+				
+	}
+
+	
 
 	
 
