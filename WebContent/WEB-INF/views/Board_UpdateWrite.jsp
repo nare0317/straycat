@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>자유게시판 게시글 작성페이지</title>
+	<title>자유게시판 게시글 수정페이지</title>
 	<c:import url="Head.jsp"></c:import>
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
@@ -20,13 +20,14 @@
 <c:import url="Menu.jsp"></c:import>
 
 	<div class="container marTop">
-	<div><h1>새 게시물 작성</h1></div><br>
-	<form action="<%=cp %>/boardinsert" id="boardForm" method="post">
+	<div><h1>게시물 수정</h1></div><br>
+	<form action="<%=cp %>/articleupdate" id="boardForm" method="post">
 		<div class="row">
 			<div class="col-2">제목<span class="required">*</span></div>
 			<div class="col-10">
-				<input type="text" class="form-control" id="tile" name="title" value="">
+				<input type="text" class="form-control" id="tile" name="title" value="${articleUpdateValue.TITLE}">
 			</div>
+			<input type="hidden" class="form-control" id="bbs_code" name="bbs_code" value="${articleUpdateValue.BBS_CODE}">
 		</div>
 		<br>
 		<br>
@@ -36,9 +37,18 @@
 				<select class="form-control category" id="categorySelect" name="categorySelect">
 					<option selected="selected">구분 선택</option>
 					<c:forEach var="category" items="${bbsWriteCat }">
-					<option value="${category.BBS_TYPE_CODE }">${category.BBS_TYPE }</option>
+						<%-- <c:choose>
+							<c:when test="${articleUpdateValue.TYPE_CODE eq ${category.BBS_TYPE_CODE }"></c:when>
+						
+						</c:choose> --%>
+						<option value="${category.BBS_TYPE_CODE }">${category.BBS_TYPE }</option>
+						
+						
+						
 				</c:forEach>
 				</select>
+				
+				${articleUpdateValue.BBS_TYPE}
 			</div>
 		</div>
 		<br>
@@ -46,7 +56,7 @@
 		<div class="row">
 			<div class="col-2">내용<span class="required">*</span></div>
 			<div class="col-10">
-				<textarea name="ir1" id="ir1" rows="10" cols="100"></textarea>
+				<textarea name="content" id="ir1" rows="10" cols="100">${articleUpdateValue.CONTENTS}</textarea>
 			</div>
 		</div>
 		<div class="row text-left">
@@ -67,7 +77,7 @@
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-10">
-					<button type="button" class="btn btn-primary" id="sendBtn" onclick="submitContents()">작성완료</button>
+					<button type="button" class="btn btn-primary" id="sendBtn" onclick="submitContents()">수정완료</button>
 					<button type="button" class="btn btn-secondary">작성취소</button>
 			</div>
 		</div>

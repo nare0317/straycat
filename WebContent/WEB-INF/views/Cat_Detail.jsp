@@ -314,68 +314,68 @@
 						<input type="text" id="secondDatepicker" name="secondDatepicker" class="form-control2 text-center" readonly="readonly">
 				</div><br>
 
-				
-				<c:forEach var="catActRegList" items="${catActReg}">
-				<div class="row">
-				<div class="col-2">
+				<div id="cat">
+					<c:forEach var="catActRegList" items="${catActReg}">
 					<div class="row">
-					<c:if test="${catActReg == null }">
-						<div class="row">등록된 활동이 없습니다.</div>
-					</c:if>
-						<div>
-							<h5>${catActRegList.NICKNAME }</h5>
-							<span>${catActRegList.ACT_DATE }</span>
-							<div>${catActRegList.ACT_LOCATION }</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-10">
-		 		<div class="row">
-				
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<c:choose>
-						<c:when test="${catActRegList.ACT_TYPE eq '먹이'}"><img src="img/fish.png"></c:when>
-						<c:when test="${catActRegList.ACT_TYPE eq '물'}"><img src="img/water.png"></c:when>
-						<c:when test="${catActRegList.ACT_TYPE eq '간식'}"><img src="img/cacao.png"></c:when>
-						<c:when test="${catActRegList.ACT_TYPE eq '약'}"><img src="img/help.png"></c:when>
-						<c:when test="${catActRegList.ACT_TYPE eq '만남'}"><img src="img/favorite.png"></c:when>
-						<c:otherwise></c:otherwise>
-					</c:choose>
-					 
-				</div>
-				</div>
-				</div>
-				
-					<div class="row">
-						<div class="col-2"></div>
-						<div class="col-10">
-							<div class="row">
-								<div class="col-4">
-									<img src="img/straycat.jpg" style="max-width: 300px;" class="rounded">
-								</div>
-								<div class="col-8">
-									<span>${catActRegList.CONTENT }</span>
-								</div>
+					<div class="col-2">
+						<div class="row">
+						<c:if test="${empty catActReg}">
+							<div class="row">등록된 활동이 없습니다.</div>
+						</c:if>
+							<div>
+								<h5>${catActRegList.NICKNAME }</h5>
+								<span>${catActRegList.ACT_DATE }</span>
+								<div>${catActRegList.ACT_LOCATION }</div>
 							</div>
 						</div>
 					</div>
-
-					<!-- <div class="row">
-						<div class="col-2"></div>
-						<div class="col-10">
-							<form class="form-inline">
-								<div style="margin-top: 30px;">
-									<input type="text" id="inputPassword2" placeholder="댓글달기"  style="width: 100%;">
+					<div class="col-10">
+			 		<div class="row">
+					
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<c:choose>
+							<c:when test="${catActRegList.ACT_TYPE eq '먹이'}"><img src="img/fish.png"></c:when>
+							<c:when test="${catActRegList.ACT_TYPE eq '물'}"><img src="img/water.png"></c:when>
+							<c:when test="${catActRegList.ACT_TYPE eq '간식'}"><img src="img/cacao.png"></c:when>
+							<c:when test="${catActRegList.ACT_TYPE eq '약'}"><img src="img/help.png"></c:when>
+							<c:when test="${catActRegList.ACT_TYPE eq '만남'}"><img src="img/favorite.png"></c:when>
+							<c:otherwise></c:otherwise>
+						</c:choose>
+						 
+					</div>
+					</div>
+					</div>
+					
+						<div class="row">
+							<div class="col-2"></div>
+							<div class="col-10">
+								<div class="row">
+									<div class="col-4">
+										<img src="img/straycat.jpg" style="max-width: 300px;" class="rounded">
+									</div>
+									<div class="col-8">
+										<span>${catActRegList.CONTENT }</span>
+									</div>
 								</div>
-								<button type="submit" class="btn btn-primary mb-2">입력</button>
-							</form>
+							</div>
 						</div>
-					</div> --><br>
-					<hr><br>
-				</c:forEach>
-				<!-- </div> -->
-				<!-- 스크롤 end -->
-
+	
+						<!-- <div class="row">
+							<div class="col-2"></div>
+							<div class="col-10">
+								<form class="form-inline">
+									<div style="margin-top: 30px;">
+										<input type="text" id="inputPassword2" placeholder="댓글달기"  style="width: 100%;">
+									</div>
+									<button type="submit" class="btn btn-primary mb-2">입력</button>
+								</form>
+							</div>
+						</div> --><br>
+						<hr><br>
+					</c:forEach>
+					<!-- </div> -->
+					<!-- 스크롤 end -->
+				</div>
 			</div>
 			<!-----------------------------------------------------  활동 탭  ----------------------------------------------------------->
 			
@@ -422,11 +422,24 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script>
 <script>
 	/* 첫번째 지도 (마커 출력용 지도) */
-	var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div  
+	
+
+	if("${avgLoc.LATITUDE }" == "" && "${avgLoc.LONGITUDE }"== "" )
+	{
+		var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div  
 	    mapOption0 = { 
-	        center: new kakao.maps.LatLng("${avgLoc.LATITUDE }","${avgLoc.LONGITUDE }"), // 지도의 중심좌표
+	        center: new kakao.maps.LatLng(37.566826,126.9786567), // 지도의 중심좌표
 	        level: 3 // 지도의 확대 레벨
 	    };
+	}
+	else
+	{
+		var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div  
+		    mapOption0 = { 
+		        center: new kakao.maps.LatLng("${avgLoc.LATITUDE }","${avgLoc.LONGITUDE }"), // 지도의 중심좌표
+		        level: 3 // 지도의 확대 레벨
+		    };
+	}
 	
 	var map0 = new kakao.maps.Map(mapContainer0, mapOption0); // 지도를 생성합니다
 	 

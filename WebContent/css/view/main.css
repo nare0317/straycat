@@ -8,7 +8,7 @@ div
 .card 
 {
 	left: 100px;
-	width: 600px;
+	width: 700px;
 	heigth: 400px;
 	bottom: 25%;
 	font-size: 1.8em;
@@ -16,6 +16,19 @@ div
 	position: absolute;
 	border-radius: 15px;
 }
+
+/* .card 
+{
+	left: 1200px;
+	width: 700px;
+	heigth: 500px;
+	bottom: 20%;
+	font-size: 1.8em;
+	font-weight: bold;
+	position: absolute;
+	border-radius: 15px;
+} */
+
 
 .mainImg
 {

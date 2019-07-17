@@ -265,13 +265,25 @@
 					</div>
 				</div>
 				
-				<!-- 우측 사이드바 (입양신청 - 일반사용자)-->
-				<c:if test="${sessionScope.user_id == null }">
+				
+				<!-- 우측 사이드바 (입양신청 - 로그인X)-->
+				<c:if test="${sessionScope.user_id eq null}">
 				<div class="slidemenu col-lg-2 text-center">
 					<div class="apply">
-						<p>★<span>${user_id }</span>★</p>
-						<p>★<span>${applicant_list.APPLICANT_ID }</span>★</p>
-						<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
+						<h5 class="">현재 신청자 수:<span> ${post.APP_COUNT } </span>명</h5>
+						<p>남은시간 : <span>13일 00:57:30</span></p>
+						<input type="button" class="btn btn-primary disabled" value="입양신청">
+						<p style="font-size: 10pt;">로그인 후 입양 신청이<br> 가능합니다.</p>
+					</div>
+				</div>
+				</c:if>
+				
+				
+				<!-- 우측 사이드바 (입양신청 - 일반사용자)-->
+				<c:if test="${sessionScope.user_id ne null}">
+				<div class="slidemenu col-lg-2 text-center">
+					<div class="apply">
+						<h5 class="">현재 신청자 수:<span> ${post.APP_COUNT } </span>명</h5>
 						<p>남은시간 : <span>13일 00:57:30</span></p>
 						<input type="button" class="btn btn-primary" value="입양신청"
 						onclick="location.href='<%=cp%>/adopt/apply_form?adt_code=${post.ADT_CODE }'">
@@ -279,31 +291,30 @@
 				</div>
 				</c:if>
 				
-				<!-- 우측 사이드바 (입양신청 - 작성자)-->
-				<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
+				<!-- 우측 사이드바 (입양신청 - 게시글작성자)-->
+				<c:if test="${sessionScope.user_id ne null && sessionScope.user_id eq post.USER_ID }">
 					<div class="slidemenu col-lg-2 text-center">
 						<div class="apply">
-							<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
+							<h5 class="">현재 신청자 수:<span> ${post.APP_COUNT } </span>명</h5>
 							<p>남은시간 : <span>13일 00:57:30</span></p>
-							<button class="btn btn-success">입양 신청자 확인</button>
+							<input type="button" class="btn btn-success" value="입양 신청자 확인"
+							onclick="location.href='<%=cp%>/adopt/apply_list?adt_code=${post.ADT_CODE }'">
 						</div>
 					</div>
 				</c:if>
 				
+			
 				<!-- 우측 사이드바 (입양신청 - 입양신청자)-->
 				<c:forEach var="applicant" items="${applicantList }">
 				<c:if test="${user_id ne null && user_id eq applicant.APPLICANT_ID}">
-				
 				<div class="slidemenu col-lg-2 text-center">
 					<div class="apply">
-						<p>${applicant.APPLICANT_ID }</p>
-						<h5 class="">현재 신청자 수:<span> 5 </span>명</h5>
+						<h5 class="">현재 신청자 수:<span> ${post.APP_COUNT } </span>명</h5>
 						<p class="deadline">남은시간 : <span>13일 00:57:30</span></p>
-						<button class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" 
-						title="2019.06.20 18:20:39에 이미 신청하셨습니다">내 신청내역</button>
+						<button class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" disabled="disabled"
+						title="2019.06.20 18:20:39에 이미 신청하셨습니다">신청하기</button>
 					</div>
 				</div>
-				
 				</c:if>
 				</c:forEach>
 				
@@ -314,7 +325,7 @@
 		
 		<!-- ★★★★★ 신고/공유/추천 버튼 ★★★★★★ -->
 		<div class="post-footer row justify-content-center" id="post_footer">
-			<button class="btn_report" onclick=""><span class="fa fa-ban"></span> 신고</button>
+			<button class="btn_report" data-toggle="modal" data-target="#exampleModalCenter"><span class="fa fa-ban"></span> 신고</button>
 			
 			<div class="post_share">
 					<button class="btn_share" data-toggle="dropdown"><span class="fa fa-share-square-o"></span> 공유</button>
@@ -328,6 +339,67 @@
 				<span class="fas fa-thumbs-up"></span><span class="text"> 추천<strong>${post.LIKE_COUNT }</strong></span>
 			</button>
 		</div>
+		
+		
+		<!-- Modal -->
+		<form action="catdetail" method="post" id="modalForm">
+			<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalCenterTitle">입양게시판</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="container">
+								<p>Post Number</p>
+								<input type="text" value="#19283" class="form-control" readonly="readonly"> 
+							</div><br>
+							<div class="container">
+								<p>Description</p>
+								<select class="form-control" id="declarationSelect">
+									<option selected="selected">신고분류 선택</option>
+									<option>부적절한 정보(욕설, 협박 등)</option>
+									<option>실종된 고양이</option>
+									<option>불법 가정분양 의심</option>
+								</select>
+							</div>
+							<br>
+							<div class="container">
+								<p>Input</p>
+								<textarea class="form-control resize" id="comment_input" rows="3"></textarea>
+								<div class="row text-right">
+									<div class="col-8"></div>
+										<div class="col-4">
+											<div class="textCounter declaration"><span id="current-word">0</span> / 1000</div> 
+										</div>
+								</div>
+								<!-- <div class="row">
+									<span class="err1">필수 항목이 입력되지 않았습니다.</span>
+								</div> -->
+								<!-- <div class="row">
+									<span class="err2">신고분류를 선택해 주세요.</span>
+								</div> -->
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary" id="sendBtn">Save changes</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		</div>
+		
+		
+		
+		
+		
+		
+		
 	</section>
 	
 	

@@ -58,6 +58,25 @@
 	WHERE ID = #{id}
 	</select>
 	
+	<select id="manageCat" parameterType="map" resultType="map">
+	SELECT AR.ACT_CODE, C.CAT_CODE, US.USER_CODE, C.CAT_NAME, US.NICKNAME, US.ID, C.CAT_DATE, ADR.SI || ' ' || ADR.GU ||  ' ' || ADR.DONG AS ADDRESS
+	, C.CAT_REP_IMG, CS.SEX, CST.STATUS, CT.SPECIES 
+	FROM ACT_REG AR LEFT JOIN USER_REG US
+	ON AR.USER_CODE = US.USER_CODE
+	JOIN CAT C
+	ON AR.CAT_CODE = C.CAT_CODE
+	JOIN ADDRESS ADR
+	ON ADR.ADDRESS_CODE = C.CAT_ADDRESS
+	JOIN CAT_TYPE CT
+	ON C.CAT_SPECIES = CT.SPECIES_CODE
+	JOIN CAT_STATUS CST
+	ON C.CAT_STATUS = CST.STATUS_CODE
+	JOIN CAT_SEX CS
+	ON C.CAT_SEX = CS.SEX_CODE
+	WHERE ID=#{id}
+	</select>
+	
+	
 	<select id="followList" parameterType="map" resultType="map">
 	SELECT F.CAT_CODE, F.USER_CODE, F.FOLLOW_DATE, C.CAT_NAME, AD.SI || ' ' || AD.GU ||  ' ' || AD.DONG AS ADDRESS, CS.SEX, C.CAT_ECT1, C.CAT_ECT2, C.CAT_REP_IMG
     , CT.STATUS, TY.SPECIES AS SPECIES
@@ -75,6 +94,81 @@
 	ON C.CAT_SPECIES = TY.SPECIES_CODE
 	WHERE US.ID = #{id}
 	</select>
+	
+	<!-- 내가 쓴 자유게시판 글 리스트 정보 -->
+	<select id="myBoardList" parameterType="map" resultType="map">
+	SELECT BR.TITLE AS TITLE, US.NICKNAME AS NICKNAME, BR.POST_DATE AS POST_DATE, BR.HIT_COUNT AS HIT_COUNT, ROWNUM, BR.BBS_CODE
+	, (
+	   SELECT COUNT(*) AS COUNT
+	   FROM BBS_CMT BC
+	   WHERE BC.BBS_CODE = BR.BBS_CODE
+	 ) AS COUNT
+	FROM USER_REG US LEFT JOIN BBS_REG BR
+	ON US.USER_CODE = BR.USER_CODE
+	WHERE ID=#{id}
+	ORDER BY ROWNUM DESC
+	</select>
+	
+	<!-- 내가 쓴 게시판 별 댓글들 -->
+	<select id="myBoardComment" parameterType="map" resultType="map">
+	SELECT *
+	FROM BBS_CMT BC LEFT JOIN USER_REG US
+	ON BC.USER_CODE = US.USER_CODE
+	WHERE US.ID = #{id}
+	</select>
+	
+	<select id="myAdoptComment" parameterType="map" resultType="map">
+	SELECT *
+	FROM ADT_CMT AD LEFT JOIN USER_REG US
+	ON AD.USER_CODE = US.USER_CODE
+	WHERE US.ID = #{id}
+	</select>
+	
+	<select id="myActComment" parameterType="map" resultType="map">
+	SELECT *
+	FROM ACT_CMT AC LEFT JOIN USER_REG US
+	ON AC.USER_CODE = US.USER_CODE
+	WHERE US.ID = #{id}
+	</select>
+	
+	<select id="myMissComment" parameterType="map" resultType="map">
+	SELECT *
+	FROM MIS_CMT MC LEFT JOIN USER_REG US
+	ON MC.USER_CODE = US.USER_CODE
+	WHERE US.ID = #{id}
+	</select>
+	
+	<select id="myBoardRead" parameterType="map" resultType="map">
+	SELECT *
+	FROM BBS_REG BR LEFT JOIN USER_REG US
+	ON BR.USER_CODE = US.USER_CODE
+	WHERE ID = #{id}
+	AND BR.BBS_CODE= #{bbs_code}
+	</select>
+	 
+	<insert id="sendMessages" parameterType="map">
+	INSERT INTO SEND_MESSAGES (MES_CODE, USER_CODE1, USER_CODE2, MES_TITLE, MES_CONTENT, SEND_DATE, READ_DATE, SEND_DEL_DATE, READ_DEL_DATE)
+	VALUES ('SM'||MES_CODE_SEQ.NEXTVAL, ( SELECT USER_CODE FROM USER_REG WHERE ID=#{id}), (SELECT USER_CODE FROM USER_REG WHERE ID=#{re_id,jdbcType=VARCHAR})
+	, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, SYSDATE, NULL, NULL, NULL)
+	</insert>
+	
+	<select id="reMessageList" parameterType="map" resultType="map">
+	SELECT SM.MES_TITLE AS TITLE, SM.MES_CONTENT, SM.SEND_DATE, US.ID, SM.READ_DATE, SM.MES_CODE
+	, (SELECT DISTINCT(NICKNAME) FROM USER_REG US LEFT JOIN SEND_MESSAGES SM ON US.USER_CODE = SM.USER_CODE1 WHERE US.USER_CODE=SM.USER_CODE1) AS NICKNAME
+	FROM SEND_MESSAGES SM LEFT JOIN USER_REG US
+	ON SM.USER_CODE2 = US.USER_CODE
+	WHERE ID=#{id}
+	</select>
+	
+	<select id="seMessageList" parameterType="map" resultType="map">
+	SELECT SM.MES_TITLE, SM.MES_CONTENT, SM.SEND_DATE, US.ID, SM.READ_DATE, SM.MES_CODE
+	, (SELECT DISTINCT(NICKNAME) FROM USER_REG US LEFT JOIN SEND_MESSAGES SM ON US.USER_CODE = SM.USER_CODE2 WHERE US.USER_CODE=SM.USER_CODE2) AS NICKNAME
+	FROM SEND_MESSAGES SM LEFT JOIN USER_REG US
+	ON SM.USER_CODE1 = US.USER_CODE
+	WHERE ID=#{id}
+	</select>
+	 
+	 
 	
 
 </mapper>

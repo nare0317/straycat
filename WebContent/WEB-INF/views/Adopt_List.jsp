@@ -40,7 +40,7 @@
 		
 	<!-- ★★★★★헤더 + breadcrumbs★★★★★ -->
 
-	<section class="header container-fluid ">
+	<section class="header container">
 		<div class="header-title">
 			<h2 class="h2">입양</h2>
 		</div>
@@ -58,7 +58,7 @@
 	</section>
 	
 	<!-- ★★★★ 섹션 1 ★★★★★ -->
-	<section class="section-1 continer-fluid">
+	<section class="section-1 container">
 		
 		<!-------------------   10  ------------------------->
 		<div class="form-group col-lg-12 search">
@@ -109,9 +109,10 @@
 			
 			<!-- row3 -->
 			<div class="row">		
-				<c:if test="${dataCount!=0}">
+				<c:if test="${dataCount ne 0}">
 					<h6 class="col-lg-8" class="searchCount">검색된 고양이 <span style="font-size: 22px; font-weight: bold;">${dataCount}</span>마리</h6>
 				</c:if>
+			
 			</div>
 			
 			<!-- row4 -->
@@ -191,7 +192,7 @@
 					<div class="col-md-7 cat-info">
 						<div class="card-body">
 							<!-- 고양이코드 -->
-							<span class="cat-code">#ADO38<%-- ${list.CAT_CODE } --%></span>
+							<span class="adt-code">#${list.ADT_CODE }</span>
 							<!-- 고양이 이름 -->
 							<h5 class="card-title">${list.CAT_NAME }</h5>
 							<!-- 고양이 정보 -->

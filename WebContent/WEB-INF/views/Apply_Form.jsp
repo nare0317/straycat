@@ -320,7 +320,7 @@
 						<!-- 반려동물 설명 -->
 						<div class="col-sm-7 offset-sm-2">
 							<input type="text" class="form-control" id="adt_pet_text" name="adt_pet_text"
-							placeholder="키우는 반려동물 종류/나이/성별/중성화여부" maxlength="200">
+							placeholder="키우는 반려동물 종류/나이/성별/중성화여부를 적어주세요.(키우고 계신 반려동물이 없을 경우에는 '없음'이라고 작성해주세요.)" maxlength="200" required>
 						</div>
 
 					</div>
