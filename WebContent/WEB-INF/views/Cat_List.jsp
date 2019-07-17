@@ -26,14 +26,11 @@
 		
 		$("#searchAddress").click(function()
 		{
-			searchAddress();			
+			$(location).attr("href", "<%=cp%>/cat?gu=" + $("#gu").val() + "&dong=" + $("#dong").val());			
 		});
 		
-		function searchAddress()
-		{
-			$(location).attr("href", "<%=cp%>/cat?gu=" + $("#gu").val() + "&dong=" + $("#dong").val());
-		}
-
+		dongList("${dongString}");
+		
 	}); 
 	
 
@@ -89,12 +86,12 @@
 				<!-- 동 선택 -->
 				<div class="col-lg-3">
 					<select class="custom-select" id="dong" name="dong">
-					<c:if test="${dongString != null }">
+					<%-- <c:if test="${dongString != null }">
 						<option value="${dongString }">${dongString }</option>
 					</c:if>
 					<c:if test="${dongString == null }">
 						<option value="">동 선택</option>
-					</c:if>
+					</c:if> --%>
 					</select>
 				</div>
 				<!-- 조회버튼 -->
