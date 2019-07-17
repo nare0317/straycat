@@ -16,7 +16,6 @@ FROM ACT_REG
 WHERE CAT_CODE = #{cat_code}
 </select>
 
-
 <select id="actRegStart" resultType="map">
 SELECT 
     UR.NICKNAME AS NICKNAME
@@ -60,7 +59,12 @@ WHERE AR.CAT_CODE=#{cat_code} AND AR.ACT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE,'Y
 	,#{content, jdbcType=VARCHAR}, SYSDATE, #{latitude, jdbcType=VARCHAR} ,#{longitude, jdbcType=VARCHAR}, '서울시' || ' ' || #{act_location, jdbcType=VARCHAR} 
 	,TO_DATE(#{act_date, jdbcType=VARCHAR},'YYYY-MM-DD'))
 </insert>
-    
+
+<select id="avgLoc" resultType="map">
+	SELECT AVG(LATITUDE) AS LATITUDE, AVG(LONGITUDE) AS LONGITUDE
+	FROM ACT_REG
+	WHERE CAT_CODE = #{cat_code}
+</select>
 
 
 </mapper>

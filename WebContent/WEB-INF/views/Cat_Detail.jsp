@@ -232,7 +232,7 @@
 						<div class="jumbotron select">
 						
 							<form action="actregistration" method="POST" id="activityForm">
-							<input type="text" value="${catInfo.CAT_CODE }" id="cat_id" name="cat_id">
+							<input type="hidden" value="${catInfo.CAT_CODE }" id="cat_id" name="cat_id">
 							<div class="row row2">
 								<div class="custom-control custom-radio custom-control-inline">
 									<input type="radio" id="activity1" name="activityRadio" class="custom-control-input" value="AT1">
@@ -424,7 +424,7 @@
 	/* 첫번째 지도 (마커 출력용 지도) */
 	var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div  
 	    mapOption0 = { 
-	        center: new kakao.maps.LatLng(37.554396, 126.916707), // 지도의 중심좌표
+	        center: new kakao.maps.LatLng("${avgLoc.LATITUDE }","${avgLoc.LONGITUDE }"), // 지도의 중심좌표
 	        level: 3 // 지도의 확대 레벨
 	    };
 	
@@ -543,8 +543,7 @@
 				}
 			}
 		}
-	} 
-	
+	}
 </script>
 </body>
 </html>
