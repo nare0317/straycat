@@ -69,8 +69,7 @@ public class AdoptController
 	// 입양등록 버튼 클릭시 입양게시글 등록페이지로 이동
 	@RequestMapping(value = "/adopt_form", method = RequestMethod.GET)
 	public String adoptForm(Model model
-						  , HttpServletRequest request
-							)
+						  , HttpServletRequest request)
 	{
 		Map<String, Object> user = null;
 		
@@ -228,11 +227,11 @@ public class AdoptController
 
 	// 입양 신청 버튼 클릭 시 입양 신청폼 페이지로 이동
 	@RequestMapping(value="/adopt/apply_form", method = RequestMethod.GET)
-	public String applyForm(@RequestParam String adt_code
-							, HttpServletRequest request
+	public String applyForm(HttpServletRequest request
 							, Model model)
 	{
 		Map<String, Object> user = null;
+		String adt_code = ""; 
 		
 		try
 		{
@@ -243,6 +242,7 @@ public class AdoptController
 			user = service.searchUserInfo(user_id);
 			model.addAttribute("user", user);
 			
+			// 입양모집글 코드 값 받아서 넘기기 
 			adt_code = request.getParameter("adt_code");
 			model.addAttribute("adt_code", adt_code);
 			
@@ -254,6 +254,36 @@ public class AdoptController
 		return "Apply_Form";
 	}
 	
+	
+	// 입양 신청 등록
+	@RequestMapping(value = "/adopt/apply", method = RequestMethod.GET)
+	public String applyWrite(HttpServletRequest request
+							, @RequestParam Map<String, Object> param
+							, Model model)
+	{
+		String adt_code = ""; 
+		
+		try
+		{
+			// 입양모집글 코드 값 받아서 넘기기
+			adt_code = request.getParameter("adt_code");
+			model.addAttribute("adt_code", adt_code);
+			
+			//System.out.println("★★★★★★★★★★★★★★★★★★★★★★★");
+			//System.out.println(param.values());
+			//System.out.println("★★★★★★★★★★★★★★★★★★★★★★★");
+			
+			// 입양신청폼 등록
+			service.applyAdopt(param);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return "redirect:/adopt_read";
+	}
+
 	
 	
 

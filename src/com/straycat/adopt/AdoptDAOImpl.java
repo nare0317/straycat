@@ -302,6 +302,27 @@ public class AdoptDAOImpl implements AdoptDAO
 		}
 		return result;
 	}
+
+	// 입양 신청 등록 메소드 
+	@Override
+	public int applyAdopt(Map<String, Object> map)
+	{
+		int result = 0; 
+		try
+		{
+			result = sqlSession.insert("adopt.applyAdopt", map);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		return result;
+	}
+	
+	
+	
 	
 	
 }
