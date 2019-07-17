@@ -341,7 +341,44 @@ public class AdoptDAOImpl implements AdoptDAO
 		return applicant_list;
 	}
 	
+	// 입양 신청자 수 조회 메소드(한 입양글)
+	@Override
+	public int countApplicant(String adt_code)
+	{
+		int count = 0; 
+		try
+		{
+			count = sqlSession.selectOne("adopt.countApplicant", adt_code);
+			
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		return count;
+		
+	}
 	
+	// 매칭 후보자 리스트 조회 메소드
+	@Override
+	public List<Map<String, Object>> listApply(String adt_code)
+	{
+		List<Map<String, Object>> list = null; 
+		
+		try 
+		{
+			list = sqlSession.selectList("adopt.listApply", adt_code);
+		}
+		catch (Exception e) 
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		
+		return list;
+	}
 	
 	
 	

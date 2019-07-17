@@ -9,13 +9,28 @@ th
 {
 	padding: 0 4px 0 0;
 	background-color: #F6F6F6;
-	width: 10ppx;
+	width: 10px;
 }
 td
 {
 	position: relative;
 	text-align: left;
 }
+
+.send-message > i
+{
+	font-size: 13px;
+	color: black;
+	margin-left: 6px;
+	
+}
+
+.send-message
+{
+	font-size: 13px;
+	color: black;
+}
+
 span
 {
 	margin-left: 10px;
@@ -26,15 +41,13 @@ p
 	text-align: justify;
 	margin-left: 1%;
 }	
-.jumbotron.jumbotron-fluid
-{ 
-	padding: 10px 0px 0 10px;
-	margin-bottom: 0;
-	margin-left: 10px;
-	margin-right:0;
-   	width: 380px;
-   	height:100px;
+
+li 
+{
+	border: none;
+	border-top: 0 none; 
 }
+
 .table td
 {
 	margin-left: -2%;
@@ -46,12 +59,13 @@ p
 }
 .lead
 {
-	padding: 0px 4px 0 0;
+	padding: 8px 4px 0 0;
 	font-size: large;
 }
 .lead>span
 {
 	margin-left: 1%;
+	margin-bottom: 10%;
 }
 .custom-control.custom-radio.custom-control-inline
 {

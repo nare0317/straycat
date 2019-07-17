@@ -81,6 +81,7 @@ public class MainController
 		return "MissingCatList";
 	}
 	
+	/*
 	// 마이페이지로 이동
 	@RequestMapping("/mypage") 
 	public String mypage(HttpSession session, Model model) 
@@ -98,5 +99,6 @@ public class MainController
 		
 		return "Mypage_Main"; 
 	}
+	*/
 	
 }
