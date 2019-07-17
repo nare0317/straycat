@@ -120,6 +120,24 @@ public class BoardDAOImpl implements BoardDAO
 		return result;
 	}
 
+	@Override
+	public List<Map<String, String>> selectList()
+	{
+		List<Map<String, String>> result = null;
+		
+		try
+		{
+			result = sqlSession.selectList("board.bbsWriteCat");
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		
+		return result;
+	}
+
 	
 	
 	

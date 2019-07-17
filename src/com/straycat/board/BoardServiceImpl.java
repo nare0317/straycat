@@ -1,5 +1,9 @@
 package com.straycat.board;
 
+import java.io.BufferedReader;
+import java.io.Reader;
+import java.sql.Clob;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import com.straycat.common.dao.BoardDAO;
 import com.straycat.service.BoardService;
+
+import oracle.sql.CLOB;
 
 @Service("board")
 public class BoardServiceImpl implements BoardService 
@@ -73,7 +79,27 @@ public class BoardServiceImpl implements BoardService
 		
 		try
 		{
+			// 특정 게시물의 데이터를 map에 넣음
 			article = dao.selectOne("board.articleLoad", map);
+			
+			// map의 key 값 중 CLOB를 꺼내서 Clob 객체에 넣음
+			Clob clob = (Clob)article.get("CONTENT");
+			
+			// getCharacterStream()의 결과로 CLOB 객체의 값을 담은 Reader 객체를 반환
+			Reader contentReader = clob.getCharacterStream();
+			
+			// 얻어놓은 Clob 객체의 길이만큼의 char 배열 선언
+			char[] charArray = new char[(int)clob.length()];
+			
+			// read 메소드를 통해 Reader 객체의 값을 읽어서 char 배열의 칸마다 글자를 넣음 
+			contentReader.read(charArray);
+			
+			// char 배열을 String 으로 변환
+			String content = new String(charArray);
+			
+			// 얻은 String 문자열을 다시 map에 넣어서 메소드의 실행결과로 반환함
+			article.put("CONTENT", content);
+			
 		} catch (Exception e)
 		{
 			System.out.println(e.toString());
@@ -195,6 +221,22 @@ public class BoardServiceImpl implements BoardService
 		} catch (Exception e) 
 		{
 			System.out.println(e.toString());
+		}
+		
+		return result;
+	}
+
+	@Override
+	public List<Map<String, String>> bbsWriteCat()
+	{
+		List<Map<String, String>> result = new ArrayList<Map<String,String>>();
+		
+		try
+		{
+			result = dao.selectList();
+		} catch (Exception e)
+		{
+			// TODO: handle exception
 		}
 		
 		return result;

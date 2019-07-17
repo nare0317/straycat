@@ -13,6 +13,7 @@
 	<!-- 페이지 CSS, 자바스크립트 -->
 	<link rel="stylesheet" href="<%=cp %>/css/view/board_write.css">
 	<script type="text/javascript" src="<%=cp%>/js/view/board_write.js"></script>
+	
 </head>
 <body>
 
@@ -20,11 +21,11 @@
 
 	<div class="container marTop">
 	<div><h1>새 게시물 작성</h1></div><br>
-	<form action="BoardList.jsp" id="boardForm" method="post">
+	<form action="/boardinsert" id="boardForm" method="post">
 		<div class="row">
 			<div class="col-2">제목<span class="required">*</span></div>
 			<div class="col-10">
-				<input type="text" class="form-control" id="tile">
+				<input type="text" class="form-control" id="tile" name="title">
 			</div>
 		</div>
 		<br>
@@ -32,11 +33,11 @@
 		<div class="row">
 			<div class="col-2">구분<span class="required">*</span></div>
 			<div class="col-10">
-				<select class="form-control category" id="categorySelect">
-			      <option selected="selected">구분 선택</option>
-			      <option>잡담</option>
-			      <option>질문</option>
-			      <option>일기</option>
+				<select class="form-control category" id="categorySelect" name="categorySelect">
+					<option selected="selected">구분 선택</option>
+					<c:forEach var="category" items="${bbsWriteCat }">
+					<option value="${category.BBS_TYPE_CODE }">${category.BBS_TYPE }</option>
+				</c:forEach>
 				</select>
 			</div>
 		</div>
@@ -45,10 +46,10 @@
 		<div class="row">
 			<div class="col-2">내용<span class="required">*</span></div>
 			<div class="col-10">
-					<textarea class="form-control resize" id="boardContent" rows="10"></textarea>
+					<textarea name="ir1" id="ir1" rows="10" cols="100"></textarea>
 			</div>
 		</div>
-		<div class="row text-right">
+		<div class="row text-left">
 			<div class="col-10"></div>
 			<div class="col-2">
 				<div id="textCounter"><span id="counter">0</span> / 9000</div>
@@ -66,7 +67,7 @@
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-10">
-					<button type="button" class="btn btn-primary" id="sendBtn">작성완료</button>
+					<button type="submit" class="btn btn-primary" id="sendBtn">작성완료</button>
 					<button type="button" class="btn btn-secondary">작성취소</button>
 			</div>
 		</div>
@@ -76,23 +77,20 @@
 
 
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
 <div>
 	<c:import url="Footer.jsp"></c:import>
 </div>
 
 
 </body>
+<script type="text/javascript" src="<%=cp %>/editor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript">
+		var oEditors = [];
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef: oEditors,
+			elPlaceHolder: "ir1",
+			sSkinURI: "<%=cp%>/editor/SmartEditor2Skin.html",
+			fCreator: "createSEditor2"
+		});
+</script>
 </html>
