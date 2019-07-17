@@ -1,7 +1,6 @@
 package com.straycat.adopt;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -165,7 +164,6 @@ public class AdoptServiceImpl implements AdoptService
 	public Map<String, Object> readAdopt(String adt_code)
 	{
 		Map<String, Object> post = null;
-
 		try
 		{
 			// 조회수 증가 메소드 추가해야함.
@@ -180,7 +178,9 @@ public class AdoptServiceImpl implements AdoptService
 			// 게시글 내용에 댓글수 추가
 			post.put("CMT_COUNT", dao.countComment(adt_code));
 			
-
+			// 게시글 내용에 입양신청자수 추가
+			post.put("APP_COUNT", dao.countApplicant(adt_code));
+			
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -324,21 +324,39 @@ public class AdoptServiceImpl implements AdoptService
 		return result;
 	}
 
-	// 
+	// 입양신청자 리스트 조회 
 	@Override
 	public List<Map<String, Object>> listApplicant(String adt_code) 
 	{
 		List<Map<String, Object>> applicantList = null;
-
+		
 		try 
 		{
 			applicantList = dao.applicantList(adt_code);
-
+			
 		} catch (Exception e) 
 		{
 			e.printStackTrace();
 		}
 		return applicantList;
+	}
+
+	// 매칭 후보자 리스트 조회 메소드
+	@Override
+	public List<Map<String, Object>> listApply(String adt_code)
+	{
+		List<Map<String,Object>> list = null;
+		
+		try
+		{
+			list = dao.listApply(adt_code);
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 	
 	
