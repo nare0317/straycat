@@ -19,7 +19,7 @@ public class ImageController
 	private ImageService service;
 	
 	@RequestMapping("/upload")
-	public String upload(
+	public void upload(
 			@RequestParam("file") MultipartFile file
 			, HttpServletRequest request
 			, HttpSession session
@@ -29,6 +29,5 @@ public class ImageController
 		
 		String imageUrl = service.saveImage(file, path);
 		model.addAttribute("imageUrl", imageUrl);
-		return "Test";
 	}
 }

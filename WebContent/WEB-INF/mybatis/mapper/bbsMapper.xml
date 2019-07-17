@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="bbs">
+
+	<insert id="insertBoard" parameterType="com.sp.bbs.Board">
+		INSERT INTO BBS(NUM, NAME, SUBJECT, CONTENT, PWD, IPADDR)
+		VALUES(BBS_SEQ.NEXTVAL, #{name}, #{subject}, #{content}, #{pwd}, #{ipAddr})
+	</insert>
+	
+	<!-- 인덱스 반환 instr(문자열,찾을문자열,시작위치,몇번째) -->
+	<!-- 인덱스 반환 instr(문자열,찾을문자열) -->
+	
+	<!-- &gt; → > -->
+	<!-- &lt; → < -->
+	
+	<sql id="where-list">
+		<if test="searchKey=='name' ">
+			INSTR(NAME, #{searchValue}) = 1
+		</if>
+		<if test="searchKey=='subject' ">
+			INSTR(SUBJECT, #{searchValue}) &gt;= 1
+		</if>
+		<if test="searchKey=='content' ">
+			DBMS_LOB.INSTR(CONTENT, #{searchValue}) &gt;= 1
+		</if>
+		<if test="searchKey=='created' ">
+			(TO_CHAR(CREATED, 'YYYY-MM-DD') = #{searchValue} OR
+			    TO_CHAR(CREATED, 'YYYYMMDD') = #{searchValue})
+		</if>
+	</sql>
+	
+	<select id="dataCount" resultType="Integer" parameterType="map">
+	    SELECT NVL(COUNT(*), 0) FROM BBS
+	    <where>
+	    	<if test="searchValue!=null and searchValue !='' ">
+	    	     <include refid="where-list"/>
+	    	</if>
+	    </where>
+    </select>
+	
+	<select id="listBoard" parameterType="map" resultType="com.sp.bbs.Board">
+		SELECT * FROM
+		(
+			SELECT ROWNUM AS RNUM, TB.*
+			FROM
+			(
+				SELECT NUM, NAME, SUBJECT, HITCOUNT
+					 , TO_CHAR(CREATED, 'YYYY-MM-DD') AS CREATED
+				FROM BBS
+				<where>
+					<if test="searchValue != null and searchValue != '' ">
+						<include refid="where-list"/>
+					</if>
+				</where>
+				ORDER BY NUM DESC
+<![CDATA[
+			)TB WHERE ROWNUM <= #{end}
+		) WHERE RNUM >= #{start}
+]]>
+	</select>
+    
+	<select id="readBoard" parameterType="Integer" resultType="com.sp.bbs.Board">
+		SELECT NUM, NAME, SUBJECT, CONTENT, CREATED, PWD, IPADDR, HITCOUNT
+		FROM BBS WHERE NUM = #{num}
+	</select>
+	
+	<update id="updateHitCount" parameterType="Integer">
+		UPDATE BBS SET HITCOUNT=HITCOUNT+1 WHERE NUM = #{num}
+	</update>
+	
+	<select id="preReadBoard" parameterType="map" resultType="com.sp.bbs.Board">
+		SELECT TB.* 
+		FROM 
+		(
+			SELECT NUM, SUBJECT
+			FROM BBS
+			<where>
+				<if test="searchValue != null and searchValue != '' ">
+					<include refid="where-list"/>
+				</if>
+				<![CDATA[
+					AND (NUM > #{num})
+				]]>
+			</where>
+			ORDER BY NUM ASC
+		)TB
+		WHERE ROWNUM=1
+	</select>
+	
+	<select id="nextReadBoard" parameterType="map" resultType="com.sp.bbs.Board">
+		SELECT TB.* 
+		FROM 
+		(
+			SELECT NUM, SUBJECT
+			FROM BBS
+			<where>
+				<if test="searchValue != null and searchValue != '' ">
+					<include refid="where-list"/>
+				</if>
+				<![CDATA[
+					AND (NUM < #{num})
+				]]>
+			</where>
+			ORDER BY NUM DESC
+		)TB
+		WHERE ROWNUM=1
+	</select>
+	
+	<update id="updateBoard" parameterType="com.sp.bbs.Board">
+         UPDATE BBS
+         SET NAME = #{name}, PWD = #{pwd}
+           , SUBJECT = #{subject}, CONTENT = #{content}
+         WHERE NUM = #{num}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="Integer">
+		DELETE 
+		FROM BBS 
+		WHERE NUM = #{num}
+	</delete>   
+</mapper>
+
+

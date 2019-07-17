@@ -83,15 +83,16 @@
 
 
 </body>
-<script type="text/javascript" src="<%=cp %>/editor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="<%=cp %>/resource/se/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 	var oEditors = [];
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditors,
 		elPlaceHolder: "ir1",
-		sSkinURI: "<%=cp%>/editor/SmartEditor2Skin.html",
+		sSkinURI: "<%=cp%>/resource/se/SmartEditor2Skin.html",
 		fCreator: "createSEditor2",
 		htParams : {
+			bUseToolbar : true,
 			bUseModeChanger : false	
 		}
 	});
