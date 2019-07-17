@@ -1,10 +1,5 @@
 $(document).ready(function()
-{
-	//var test =$("#cat_id").val(); 
-	//alert("확인");
-	//alert(test);
-	
-	
+{	
 	$("#firstDatepicker").datepicker(
 	{
 		showOn : "button",
