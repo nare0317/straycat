@@ -225,7 +225,8 @@ public class BoardServiceImpl implements BoardService
 		
 		return result;
 	}
-
+	
+	// 게시물을 작성할 때 선택하는 게시물 타입을 반환하는 메소드
 	@Override
 	public List<Map<String, String>> bbsWriteCat()
 	{
@@ -236,7 +237,24 @@ public class BoardServiceImpl implements BoardService
 			result = dao.selectList();
 		} catch (Exception e)
 		{
-			// TODO: handle exception
+			System.out.println(e.toString());
+		}
+		
+		return result;
+	}
+
+	// 게시물 작성 메소드
+	@Override
+	public int bbsWrite(Map<String, Object> map)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = dao.insert("board.articleInsert", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
 		}
 		
 		return result;

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -257,13 +258,24 @@ public class BoardController
 		return "Board_Write";
 	}
 	
-	@RequestMapping("/boardinsert")
-	public String bbsWrite(HttpServletRequest request, Model model)
+	@RequestMapping(value="/boardinsert", method = RequestMethod.POST)
+	public String bbsWrite(HttpServletRequest request, HttpSession session, Model model)
 	{
-		Map<String,String> map = new HashMap<>();
+		Map<String,Object> map = new HashMap<>();
+		map.put("title", request.getParameter("title"));
+		map.put("type_code", request.getParameter("categorySelect"));
+		map.put("contents", request.getParameter("ir1"));
+		
+		// USER의 CODE 알아내기
+		Map<String, String> idMap = new HashMap<String, String>();
+		idMap.put("id", (String)session.getAttribute("user_id"));
+		Map<String, Object> selectResult = service.selectUserId(idMap);
+		
+		map.put("user_code", (String)selectResult.get("USER_CODE"));
+		
+		service.bbsWrite(map);
 		
 		
-		//return "Board_List";
-		return null;
+		return "redirect:/board";
 	}
 }
