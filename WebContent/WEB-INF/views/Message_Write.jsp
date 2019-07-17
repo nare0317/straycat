@@ -20,11 +20,11 @@
 
 	<div class="container marTop">
 	<div><h1>쪽지쓰기</h1></div><br>
-	<form action="MypageMain.jsp" id="emailForm" method="post">
+	<form action="sendMessage" id="messageForm" method="post">
 		<div class="row">
 			<div class="col-2">받는사람<span class="required">*</span></div>
 			<div class="col-10">
-				<input type="text" class="form-control" id="receive">
+				<input type="text" class="form-control" id="receive" name="receive">
 			</div>
 		</div>
 		<br>
@@ -32,7 +32,7 @@
 		<div class="row">
 			<div class="col-2">제목<span class="required">*</span></div>
 			<div class="col-10">
-				<input type="text" class="form-control" id="tile">
+				<input type="text" class="form-control" id="tile" name="title">
 			</div>
 		</div>
 		<br>
@@ -40,7 +40,7 @@
 		<div class="row">
 			<div class="col-2">쪽지내용<span class="required">*</span></div>
 			<div class="col-10">
-					<textarea class="form-control resize" id="noteContent" rows="10"></textarea>
+					<textarea class="form-control resize" id="noteContent" rows="10" name="noteContent"></textarea>
 			</div>
 		</div>
 		<div class="row text-right">

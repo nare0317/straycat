@@ -4,6 +4,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+	<script	src="<%=cp%>/js/view/mypage_main.js"></script>
 
 <div class="tab-pane fade show active" id="straycat" role="tabpanel" aria-labelledby="straycat-tab">
 <div class='gil'>
@@ -18,11 +19,11 @@
 			</div>
 		</nav>
 		<div class="tab-content" id="nav-tabContent">
-			<!-----------------------------------------------------  내가 관리하는 고양이 탭  ----------------------------------------------------------->
+			<!-----------------------------------------------------  내가 받은 쪽지함  ----------------------------------------------------------->
 			<div class="tab-pane fade show active" id="receive">
 				<br>
 				<div class="container2">
-					<form action="" id="form1">
+					<form action="messagewrite" method="post" id="m">
 						<!-- 삭제 / 답장 버튼 -->
 						<button type="button" class="btn btn-light"><span class="x">X</span> 삭제</button>
 						<button type="button" class="btn btn-dark">답장</button>
@@ -43,6 +44,7 @@
 						</div>
 	
 						<!-- 게시판 게시물 리스트 시작 -->
+						<c:forEach var="reMessageList" items="${reMessageList }">
 						<div class="bbsContents">
 							<div class="content no">
 								<div class="form-check">
@@ -51,186 +53,16 @@
 							</div>
 							<div class="content title titleLeft">
 								<div class="contentTitle">
-									<a class="contentLink" href="<%=cp%>/ReceiveNoteDetail.jsp">누구보다 빠르게 난 남들과는 </a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
+									<a class="contentLink" href="<%=cp%>/ReceiveNoteDetail.jsp">${reMessageList.TITLE }</a>
 								</div>
 							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
+							<div class="content writer">${reMessageList.NICKNAME }</div>
+							<div class="content date">${reMessageList.SEND_DATE }</div>
+							<div class="content viewCount">${reMessageList.READ_DATE }</div>
 						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check2" value="option2" name="allCheck1">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check3" value="option2" name="allCheck1">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check4" value="option3" name="allCheck1">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check5" value="option4" name="allCheck1">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check6" value="option5" name="allCheck1">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check7" value="option6" name="allCheck1">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check8" value="option7" name="allCheck1">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check9" value="option8" name="allCheck1">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check10" value="option9" name="allCheck1">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
+						</c:forEach>
+						
+						
 						<br> <br>
 	
 						<!-- 페이지네이션 시작 -->
@@ -248,8 +80,8 @@
 	
 						<!-- 글쓰기 버튼 -->
 						<div id="rightHeader" class="row align-items-end justify-content-end">
-							<button class="btn btn-secondary pull-right" onclick="javascript:location.href='<%=cp%>/NoteWrite.jsp'">
-								<i class="fa fa-pencil-square-o"></i>쪽지쓰기
+							<button class="btn btn-secondary pull-right" id="messageWrite1">
+								<!-- <i class="fa fa-pencil-square-o"> --></i>쪽지쓰기
 							</button>
 						</div>
 	
@@ -263,7 +95,7 @@
 			<div class="tab-pane fade" id="send" role="tabpanel" aria-labelledby="nav-profile-tab">
 				<br>
 				<div class="container2">
-					<form action="" id="form2">	
+					<form action="messagewrite" method="post" id="form2">	
 						<!-- 삭제 / 답장 버튼 -->
 						<button type="button" class="btn btn-light"><span class="x">X</span> 삭제</button>
 						<button type="button" class="btn btn-dark">답장</button>
@@ -278,12 +110,13 @@
 								</div>
 							</div>
 							<div class="header title">제목</div>
-							<div class="header writer">보낸사람</div>
-							<div class="header date">받은날짜</div>
+							<div class="header writer">받은사람</div>
+							<div class="header date">보낸날짜</div>
 							<div class="header viewCount">상태</div>
 						</div>
 	
 						<!-- 게시판 게시물 리스트 시작 -->
+						<c:forEach var="seMessageList" items="${seMessageList }">
 						<div class="bbsContents">
 							<div class="content no">
 								<div class="form-check">
@@ -292,186 +125,15 @@
 							</div>
 							<div class="content title titleLeft">
 								<div class="contentTitle">
-									<a class="contentLink" href="<%=cp%>/ReceiveNoteDetail.jsp">누구보다 빠르게 난 남들과는 </a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
+									<a class="contentLink" href="<%=cp%>/semessageread?mes_code=${seMessageList.MES_CODE}">${seMessageList.MES_TITLE }</a>
 								</div>
 							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
+							<div class="content writer">${seMessageList.NICKNAME }</div>
+							<div class="content date">${seMessageList.SEND_DATE }</div>
+							<div class="content viewCount">${seMessageList.READ_DATE }</div>
 						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check22" value="option2" name="allCheck2">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check23" value="option2" name="allCheck2">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check24" value="option3" name="allCheck2">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check25" value="option4" name="allCheck2">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check26" value="option5" name="allCheck2">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check27" value="option6" name="allCheck2">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check28" value="option7" name="allCheck2">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check29" value="option8" name="allCheck2">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">
-								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check30" value="option9" name="allCheck2">
-								</div>
-							</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
+						</c:forEach>
+						
 						<br> <br>
 	
 						<!-- 페이지네이션 시작 -->
@@ -489,7 +151,7 @@
 	
 						<!-- 글쓰기 버튼 -->
 						<div id="rightHeader" class="row align-items-end justify-content-end">
-							<button class="btn btn-secondary pull-right" onclick="javascript:location.href='<%=cp%>/NoteWrite.jsp'">
+							<button class="btn btn-secondary pull-right" id="messageWrite2">
 								<i class="fa fa-pencil-square-o"></i>쪽지쓰기
 							</button>
 						</div>
