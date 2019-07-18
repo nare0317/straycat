@@ -163,7 +163,7 @@ public class AdoptController
 		return entity;
 	}
 	 
-	// 입양 상태 변경 
+	// 입양 상태 변경 (게시글 열람페이지 내)
 	@RequestMapping(value = "/adopt_proc", method = RequestMethod.GET) 
 	public String changeStatus(@RequestParam String adt_proc
 							 , @RequestParam String adt_code
@@ -180,9 +180,11 @@ public class AdoptController
 		{
 			e.printStackTrace();
 		}
-		 
+		
+		//return "redirect:/adopt/apply_list?adt_code="+adt_code;		//-- 입양신청후보자 리스트 페이지로 이동
 		return "redirect:/adopt_read?adt_code="+adt_code;
 	} 
+	
 	
 	// 게시글 수정 버튼 클릭시 입양게시글 수정페이지로 이동
 	@RequestMapping(value = "/adopt_update_form", method = RequestMethod.GET)
