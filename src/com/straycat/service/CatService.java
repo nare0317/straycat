@@ -40,4 +40,6 @@ public interface CatService
 	
 	public void unfollow(Map<String, Object> map);
 	
+	// 활동의 갤러리 보여주기
+	public List<Map<String, Object>> actGalList(String id);
 }

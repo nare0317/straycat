@@ -105,7 +105,17 @@ $(document).ready(function()
 		{
 			$(".err1").css("display", "block");
 			return;
-		}		
+		}
+		if ( $("#latitude").val() =="" || $("#latitude").val() == null && $("#longitude").val() == "" || $("#longitude").val() == null )
+		{
+			$(".err1").css("display", "block");
+			return;
+		}
+		if ( $("#catPicture").val() == "" || $("#catPicture").val() == null )
+		{
+			$(".err1").css("display", "block");
+			return;
+		}
 			$("#activityForm").submit();
 	});
 	
