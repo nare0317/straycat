@@ -59,4 +59,7 @@ public interface AdoptDAO
 	// 매칭 후보자 리스트 조회 메소드
 	public List<Map<String, Object>> listApply(String adt_code);
 
+	// 키워드 검색 후 리스트 조회 메소드
+	List<Map<String, Object>> searchAdopt(String searchKey, String searchValue);
+
 }
