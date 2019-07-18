@@ -63,11 +63,6 @@ public class AdoptServiceImpl implements AdoptService
 		
 		try
 		{
-			System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★★");
-			System.out.println(searchKey);
-			System.out.println(searchValue);
-			System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★★");
-			
 			list = dao.searchAdopt(searchKey, searchValue);
 
 		} catch (Exception e)
@@ -276,7 +271,9 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADT_TYPE", (String) param.get("adt_type"));
 			param.put("CAT_ECT1", (String) param.get("cat_ect1"));
 			param.put("CAT_ECT2", (String) param.get("cat_ect2"));
+			
 			param.put("CAT_REP_IMG", (String) param.get("cat_rep_img"));
+			
 			param.put("TEL", (String) param.get("tel"));
 			param.put("EMAIL", (String) param.get("email"));
 			param.put("ADT_REASON", (String) param.get("adt_reason"));

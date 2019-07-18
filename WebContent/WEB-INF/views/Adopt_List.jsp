@@ -23,6 +23,7 @@
 
 	$(document).ready(function()
 	{
+		
 		$("#searchAddress").click(function()
 		{
 			//alert("성공");
@@ -158,12 +159,12 @@
 				
 					<!-- 길냥이 대표이미지 -->
 					<div class="col-md-5 cat-photo cat-photo-wrap">
-						<div class="cp-image" >
+						<div class="cp-image " >
 						<c:if test="${list.CAT_IMAGE != null }">
-							<img src="<%=cp %>${list.CAT_IMAGE }" class="card-img img_resize" alt="">
+							<img src="<%=cp %>${list.CAT_IMAGE }" class="card-img img_resize" alt="" style="width: 300px; height:300px ">						
 						</c:if>
 						<c:if test="${list.CAT_IMAGE == null }">
-							<img src="<%=cp %>/img/defaultCat.png" class="card-img img_resize" alt="">
+							<img src="<%=cp %>/img/defaultCat.png" class="card-img img_resize" alt="" style="width: 300px; height:300px ">
 						</c:if>
 							<!-- <img src="img/straycat.jpg" class="card-img" alt=""> -->
 						</div>
@@ -215,9 +216,12 @@
 							<div class="card-text">
 								<ul class="cat-info-list">
 									<li>${list.CAT_TYPE }(${list.CAT_SEX })</li>
-									<li>${list.CAT_AGE }</li>
+									<li>${list.CAT_AGE_TYPE} (${list.CAT_AGE })</li>
 									<li>${list.CAT_ADDRESS}</li>
 									<li>${list.POST_DATE }</li>
+									<c:if test="${list.ADT_TYPE != '해당사항없음' }">
+									<li style="color: blue;">${list.ADT_TYPE }</li>
+									</c:if>
 									<li><i class="fas fa-eye" > ${list.HIT_COUNT }</i></li>
 									
 									<!-- 추천수, 댓글수 추가해야함..  -->

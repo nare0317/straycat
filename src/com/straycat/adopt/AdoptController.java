@@ -82,27 +82,18 @@ public class AdoptController
 
 		try
 		{
-			/*if (searchValue.equals("")) // -- searchValue에 들어온 값이 없다면
-			{
-				// -- 게시글 리스트 전체 목록을 불러옴
-				list = service.listAdopt();
-			} else
-			{*/
-				
-				
-				// 선택된 키워드 기반으로 게시글 목록을 불러옴
-				list = service.searchAdopt(searchKey, searchValue);
-
-				// 선택된 키워드로 검색된 데이터가 몇 개인지 계산
-				//dataCount = service.dataCount(searchKey, searchValue);
-			/* } */
-
+			// 검색 결과 리스트
+			list = service.searchAdopt(searchKey, searchValue);
+			model.addAttribute("list", list);
+			
+			// 선택된 키워드로 검색된 데이터가 몇 개인지 계산
+			dataCount = service.dataCount(searchKey, searchValue);
+			model.addAttribute("dataCount", dataCount);
+			
 			// 셀렉트박스안의 구 리스트를 불러옴
 			List<Map<String, Object>> gu = service.listGu();
-
-			model.addAttribute("list", list);
 			model.addAttribute("gu", gu);
-			//model.addAttribute("dataCount", dataCount);
+			
 
 		} catch (Exception e)
 		{
@@ -261,6 +252,7 @@ public class AdoptController
 			List<Map<String, Object>> gu = service.listGu();
 			model.addAttribute("gu", gu);
 			
+			
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -274,12 +266,20 @@ public class AdoptController
 	@RequestMapping(value = "/adopt_update", method = RequestMethod.POST)
 	public String adoptUpdate(@RequestParam Map<String, Object> param
 							, @RequestParam String adt_code
-							, HttpServletRequest request)
+							, HttpServletRequest request
+							, HttpSession session
+							, MultipartFile file)
 	{
 		adt_code = request.getParameter("adt_code");
 		
 		try
 		{
+			// 이미지를 저장하고 저장된 이미지 경로를 반환함
+			// 이미지 경로를 자료구조(고양이 등록정보)에 넣음
+			String path = session.getServletContext().getRealPath("/");
+			String imageUrl = imageService.saveImage(file, path);
+			param.put("CAT_REP_IMG", imageUrl);
+
 			service.updateAdopt(param);
 			
 		} catch (Exception e)
