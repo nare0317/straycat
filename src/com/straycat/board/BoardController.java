@@ -314,8 +314,8 @@ public class BoardController
 	  @RequestMapping("/articleupdate") 
 	  public String articleUpdate(HttpServletRequest request) 
 	  { 
-		  Map <String, String> map = new
-		  HashMap<>(); map.put("bbs_code", request.getParameter("bbs_code"));
+		  Map <String, String> map = new HashMap<>(); 
+		  map.put("bbs_code", request.getParameter("bbs_code"));
 		  map.put("title", request.getParameter("title")); 
 		  map.put("categorySelect", request.getParameter("categorySelect")); 
 		  map.put("content", request.getParameter("content"));

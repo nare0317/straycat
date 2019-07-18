@@ -67,4 +67,24 @@ WHERE AR.CAT_CODE=#{cat_code} AND AR.ACT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE,'Y
 </select>
 
 
+<!-- 팔로우 체크 -->
+<select id="followCheck" resultType="java.lang.Integer">
+	SELECT COUNT(*) AS COUNT
+	FROM FOLLOW
+	WHERE CAT_CODE=#{cat_id} AND USER_CODE=#{user_code}
+</select>
+
+<!-- Count가 0일때 insert 실행 -->
+<insert id="follow">
+	INSERT INTO FOLLOW(FOLLOW_CODE, CAT_CODE, USER_CODE, FOLLOW_DATE) VALUES('FO' || FOLLOW_SEQ.NEXTVAL, #{cat_id}, #{user_code},SYSDATE)
+</insert>
+
+<!-- Count가 1일때 delete 실행 -->
+<delete id="unfollow">
+	DELETE
+	FROM FOLLOW
+	WHERE CAT_CODE=#{cat_id} AND USER_CODE=#{user_code}
+</delete>
+
+
 </mapper>

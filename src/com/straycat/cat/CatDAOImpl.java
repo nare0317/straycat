@@ -255,6 +255,23 @@ public class CatDAOImpl implements CatDAO
 		return result;
 	}
 	
+	// delete 메소드
+	@Override
+	public int delete(String id, Object value) 
+	{
+		int result = 0;
+		
+		try 
+		{
+			sqlSession.delete(id, value);
+		} catch (Exception e) 
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		
+		return result;
+	}
 	
 	
 }

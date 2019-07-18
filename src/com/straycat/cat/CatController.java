@@ -88,8 +88,9 @@ public class CatController
 	
 	////////////////////////////////// 고상페 페이지부분 ////////////////////////////////////////////////////////////////////////////////////////
 	@RequestMapping("/catdetail")
-	public String selectList(Model model, @RequestParam String id, @RequestParam(name="user_code", defaultValue="") String user_code)
+	public String selectList(Model model, @RequestParam String id, HttpSession session,Map<String, Object> map)
 	{
+		int result = 0;
 		Map<String, Object> catInfo = service.catInfo(id);
 		List<Map<String, Object>> catLocation = service.catLocation(id);
 		List<Map<String, Object>> catActReg = service.catActReg(id);
@@ -97,14 +98,31 @@ public class CatController
 		Map<String, String> catCode = new HashMap<String, String>();
 		catCode.put("cat_code", id);
 		Map<String, Object> avgLoc = service.avgLoc(catCode);
+		
+		
+		
+		// 사용자 id로 user_code를 알아냄
+		Map<String, String> map2 = new HashMap<String, String>();
+		map2.put("id", (String)session.getAttribute("user_id"));
+		Map<String, Object> selectResult = boardService.selectUserId(map2);
+		String user_code = (String)selectResult.get("USER_CODE");
+		 
+		map.put("cat_id",id);
+		map.put("user_code",user_code);
+		 
+		result = service.followCheck(map);
 
 		model.addAttribute("catInfo", catInfo);
 		model.addAttribute("catActReg", catActReg);
 		model.addAttribute("catLocation", catLocation);
 		model.addAttribute("avgLoc", avgLoc);
+		model.addAttribute("result",result);
 
 		return "Cat_Detail";
 	}
+		
+	
+	
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value = "/catLocation_ajax")
@@ -209,27 +227,10 @@ public class CatController
 	 }
 	 
 	 
-	 
-	 
-	 
-	 
 	 // 고양이 활동 등록하는 부분
 	 @RequestMapping(value="/actregistration", method = RequestMethod.POST)
 	 public String actRegistration(Map<String, Object> param, Model model, HttpServletRequest request, HttpSession session)
-	 {
-		 /*
-		 String act_type = request.getParameter("activityRadio");
-		 String cat_code = request.getParameter("cat_id");
-		 String user_code = (String)session.getAttribute("user_id");
-		 String content = request.getParameter("activityContent");
-		 String latitude = request.getParameter("latitude");
-		 String longitude = request.getParameter("longitude");
-		 String gu = request.getParameter("gu");
-		 String dong = request.getParameter("dong");
-		 String act_date = request.getParameter("firstDatepicker");
-		 String act_location = gu + " " + dong;
-		 */
-		 
+	 {		 
 		 // 사용자 id로 user_code를 알아냄
 		 Map<String, String> map = new HashMap<String, String>();
 		 map.put("id", (String)session.getAttribute("user_id"));
@@ -257,26 +258,70 @@ public class CatController
 	 }
 	 
 	 
+	 // 팔로우 체크하는 구문
+	 @RequestMapping("/followCheck")
+	 public void followCheck(String cat_id,HttpSession session, Map<String, Object> map, HttpServletResponse response, Model model) throws IOException
+	 {
+		 int result = 0;
+		 
+		 // 사용자 id로 user_code를 알아냄
+		 Map<String, String> map2 = new HashMap<String, String>();
+		 map2.put("id", (String)session.getAttribute("user_id"));
+		 Map<String, Object> selectResult = boardService.selectUserId(map2);
+		 String user_code = (String)selectResult.get("USER_CODE");
+		 
+		 map.put("cat_id",cat_id);
+		 map.put("user_code",user_code);
+		 
+		 result = service.followCheck(map);
+		 
+		 response.getWriter().print(result);
+	 }
+	 
+	 // 팔로우 insert
+	 @RequestMapping(value="/follow")
+	 public String follow(String cat_id,HttpSession session, Map<String, Object> map, HttpServletResponse response) throws IOException
+	 {
+		 String result = null;
+		 
+		 // 사용자 id로 user_code를 알아냄
+		 Map<String, String> map2 = new HashMap<String, String>();
+		 map2.put("id", (String)session.getAttribute("user_id"));
+		 Map<String, Object> selectResult = boardService.selectUserId(map2);
+		 String user_code = (String)selectResult.get("USER_CODE");
+		 
+		 map.put("cat_id",cat_id);
+		 map.put("user_code",user_code);
+		 
+		 service.follow(map);
+		 
+		 result = "redirect:/catdetail?id=" + cat_id;
+		 
+		 return result;
+	 }
 	 
 	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
+	 // 언팔로우 delete
+	 @RequestMapping(value="/unfollow")
+	 public String unfollow(String cat_id,HttpSession session, Map<String, Object> map, HttpServletResponse response) throws IOException
+	 {
+		 String result = null;
+		 
+		 // 사용자 id로 user_code를 알아냄
+		 Map<String, String> map2 = new HashMap<String, String>();
+		 map2.put("id", (String)session.getAttribute("user_id"));
+		 Map<String, Object> selectResult = boardService.selectUserId(map2);
+		 String user_code = (String)selectResult.get("USER_CODE");
+		 
+		 map.put("cat_id",cat_id);
+		 map.put("user_code",user_code);
+		 
+		 service.unfollow(map);
+		 
+		 result = "redirect:/catdetail?id=" + cat_id;
+		 
+		 return result;
+	 }
 	 
 }
 

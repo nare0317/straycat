@@ -190,3 +190,11 @@ div {
 {
 	resize: none;
 }
+
+.followInfo
+{
+	font-weight:bold;
+	font-size: 16pt;
+	margin-left: 8px;
+	
+}

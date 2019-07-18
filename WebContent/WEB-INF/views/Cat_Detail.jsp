@@ -30,7 +30,7 @@
 				<br>
 				<div class="row">
 					<div class="col-6 text-right">
-						<img src="<%=cp %>/img/plus-button.png" class="img2">${catInfo.FOLLOW }
+						<img src="<%=cp %>/img/plus-button.png" class="img2"><span class="followInfo">${catInfo.FOLLOW }</span>
 					</div>
 					<div class="col-6 text-left">
 						<img src="<%=cp %>/img/user.png" class="img2"> 집사
@@ -102,12 +102,22 @@
 		<div id="map0" class="map0">
 	</div><br>
 	<div class="row">
-		<div class="col-6">
+		<div class="col-6">	
 			<!-- 팔로우 기능 구현 -->
 			<!-- 로그인 했을때 -->
 			<c:choose>
 			<c:when test="${sessionScope.user_id != null }">
-			<button type="button" class="btn btn-primary" onclick="javascript: follow_func();" id="loginNeed">팔로우</button>
+		
+				<c:choose>
+					<c:when test="${result == 0}">
+						<button type="button" class="btn btn-primary" id="loginNeed">팔로우</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" class="btn btn-secondary" id="loginNeed">언팔로우</button>
+					</c:otherwise>
+				</c:choose>
+			
+			
 			</c:when>
 			<c:otherwise>
 			<button type="button" class="btn btn-primary" onclick="javascript: login_need();" id="followBtn">팔로우</button>
@@ -227,6 +237,7 @@
 			<div class="tab-pane fade show active" id="nav-home">
 				<h4 class="write">활동작성</h4>
 				<!----------------------------------------------------- 로그인 O ----------------------------------------------------->
+					<input type="hidden" value="${sessionScope.user_id}" id="user_id" name="user_id">
 					<c:choose>
 					<c:when test="${sessionScope.user_id != null }">	
 						<div class="jumbotron select">
@@ -416,6 +427,39 @@
 			$("#nav-home").css("display", "none");
 			$("#nav-profile").css("display", "block");
 		})
+		
+		
+		
+		$("#loginNeed").click(function()
+		{
+			var cat_id = $("#cat_id").val();
+			var user_id = $("#user_id").val();
+			$.ajax(
+			{
+				url:"followCheck",
+				type:"POST",
+				data:{'cat_id':cat_id, 'user_id':user_id},
+				success:function(data)
+				{
+					if(data==0)
+					{
+						// insert 구문 실행
+						location.href = "<%=cp%>/follow?cat_id=" + cat_id;
+						alert("팔로우 실행");
+						//console.log("insert");
+					}
+					else
+					{
+						// delete 구문 실행
+						location.href = "<%=cp%>/unfollow?cat_id=" + cat_id;
+						alert("팔로우 취소");
+						//console.log("delete");
+					}
+				}
+			});
+		});  
+				
+		
 	})
 </script>
 
