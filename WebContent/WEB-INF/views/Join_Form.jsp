@@ -196,10 +196,8 @@
 <!-- <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35831b6d578cf29259f031b43458c225&libraries=services"></script>
 <script type="text/javascript">
-	
-	
-	
-    function sample6_execDaumPostcode() {
+
+	function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
 

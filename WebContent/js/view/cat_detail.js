@@ -183,7 +183,7 @@ $(document).ready(function()
 						str += "							<div class='row'>";
 						
 								str += "										<div class='col-4'>";
-								str += "											<img src='img/straycat.jpg' style='max-width: 300px;' class='rounded'>";
+								str += "											<img src='" + data[i].ACT_IMG + "' class='actImg'>";
 								str += "										</div>";
 						str += "					<div class='col-8'>";
 						str += "						<span>" + data[i].CONTENT + "</span>";
@@ -206,7 +206,7 @@ $(document).ready(function()
 		});
 	});
 	
-	
+
 	
 });
 

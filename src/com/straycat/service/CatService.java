@@ -34,6 +34,10 @@ public interface CatService
 	
 	public Map<String, Object> avgLoc(Map<String, String> map);
 	
+	public int followCheck(Map<String, Object> map);
 	
+	public void follow(Map<String, Object> map);
+	
+	public void unfollow(Map<String, Object> map);
 	
 }
