@@ -8,10 +8,19 @@
 	
 /************** (헤더+브레드크럼 영역) **************/
 	
+	.container2 
+	{
+	margin-left: 150px;
+	margin-right: 150px;
+	margin-top: 60px;
+	}
+	
+	
+	
 	.header
 	{
 		padding-left: 50px;
-		margin-left: 30px;
+		/* margin-left: 30px; */
 		padding-right: 50px;
 	}
 	
@@ -20,7 +29,7 @@
 		width: 100%;
 	    margin-right: auto;
 	    padding-left: 50px;
-		margin-left: 30px;
+		/* margin-left: 30px; */
 		padding-right: 50px;
 		width: 100%;
 	}
@@ -54,15 +63,6 @@
 
 
 /********* (본문 영역 .post-view) **************/
-	
-	.post_view
-	{
-		padding-left: 15px;
-		margin-left: auto;
-		margin-right: auto;
-		padding-right: 15px;
-		width: 100%;
-	}
 	
 	.post-head
 	{
@@ -152,7 +152,7 @@
 		padding: 0px;
 		position:absolute;
 		right:10%;
-		width:200px;
+		width:230px;
 		
 	} 
 	
@@ -160,7 +160,7 @@
 	{
 		width:250px;
 		height:auto;
-		background-color: #e6e6e6;
+		background-color: #dfe4ea;
 		border: none;
 		border-radius: 5px;
 		padding: 15px;
@@ -191,6 +191,13 @@
 		font-weight: bold;
 	}
 	
+	#leftDate
+	{
+		display: inline;
+  		color: red;
+  		font-weight: bold;
+	}
+	
 	
 	/* 신청자 페이지 추가 */
 	.apply .apply-date
@@ -208,7 +215,7 @@
 	.post-view-bottom
 	{
 		padding-left: 50px;
-		margin-left: 30px;
+		/* margin-left: 30px; */
 		padding-right: 50px;
 		width: 100%;
 	}

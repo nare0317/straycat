@@ -15,7 +15,8 @@
 <c:import url="Head.jsp"></c:import>
 
 <!-- 페이지 CSS, 자바스크립트 -->
-<link href="<%=cp%>/css/view/apply_detail.css" rel="stylesheet">
+<link href="<%=cp%>/css/view/applicant_detail.css" rel="stylesheet">
+<script type="text/javascript" src="js/bootstrapValidator.min.js"></script>
 
 <style type="text/css">
 </style>
@@ -29,13 +30,13 @@
 	<div>
 		<c:import url="Menu.jsp"></c:import>
 		<br> <br>
-		
+
 		<!-- 입양 후보자 상세 페이지 헤드 -->
 		<div class="container">
 			<h1>
 				입양 <span>매칭프로세스(후보자 검증) | 후보자 상세 페이지 </span>
 			</h1>
-			
+
 			<!-- 해당 후보자 간략 프로필 -->
 			<div class="form">
 				<hr>
@@ -53,22 +54,21 @@
 			<br>
 
 			<!-- 활동내역 / 신청내역 테이블 -->
-			<div class="divTable Table">
-				<div class="divTableHeading">
-					<div class="divTableRow">
-						<div class="divTableHead" id="head">
-							<h2 id="title">활동내역</h2>
-						</div>
-						<div class="divTableHead" id="head">
-							<h2 id="title">신청내역</h2>
-						</div>
+			<div>
+				<nav>
+					<div class="nav nav-tabs" id="nav-tab" role="tablist">
+						<a class="nav-item nav-link active text-center tab"
+							id="activity-tab" data-toggle="tab" href="#activity" role="tab"
+							aria-controls="activity" aria-selected="true">활동내역</a> <a
+							class="nav-item nav-link text-center tab" id="appliment-tab"
+							data-toggle="tab" href="#appliment" role="tab"
+							aria-controls="appliment" aria-selected="false">신청내역</a>
 					</div>
-				</div>
-				
-				<!-- 활동내역 -->
-				<div class="divTableBody">
-					<div class="divTableCell">
-					
+				</nav>
+				<div class="tab-content" id="nav-tabContent">
+
+					<div class="tab-pane fade show active" id="activity">
+						<br>
 						<!-- 해당 후보자 게시글 게시판 -->
 						<div class="col">
 							<br> <span>nare0317 님이 쓴 게시글</span> <br>
@@ -116,7 +116,7 @@
 							</div>
 						</div>
 						<br> <br>
-						
+
 						<!-- 해당 후보자 댓글 게시판 -->
 						<div class="col">
 							<br> <span>nare0317 님이 쓴 댓글</span> <br>
@@ -163,11 +163,11 @@
 								<div class="content date">2019-06-04</div>
 							</div>
 						</div>
+
+
 					</div>
-
-
 					<!-- 입양 신청 선택형 질문 -->
-					<div class="divTableCell">
+					<div class="tab-pane fade show appliment" id="appliment">
 						<br>
 						<div class="col">
 							<div class="form-group row required">
@@ -481,7 +481,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<!-- 입양 신청 주관식 질문 -->
 						<div class="col">
 							<div>
@@ -489,10 +489,11 @@
 							</div>
 							<div class="input-group">
 								<div class="input-group-prepend"></div>
-								<textarea class="form-control" id="textarea"
-									aria-label="With textarea" placeholder="내용을 입력해주세요.">냥이 사연이 너무 안타깝네요.. 
+								<textarea class="form-control" aria-label="With textarea"
+								id="exampleFormControlTextarea2" rows="4" maxlength="300" placeholder="내용을 입력해주세요.">냥이 사연이 너무 안타깝네요.. 
 제가 평소에 고양이를 키우려고 알아보고 있었는데, 돈을 주고 사는 것보다는 입양을 통해서 
-불쌍한 아이들을 도와주고 싶은 마음에 신청하게 되었습니다. </textarea>
+불쌍한 아이들을 도와주고 싶은 마음에 신청하게 되었습니다.</textarea>
+							
 							</div>
 							<br>
 							<div>
@@ -501,8 +502,8 @@
 							</div>
 							<div class="input-group">
 								<div class="input-group-prepend"></div>
-								<textarea class="form-control" id="textarea"
-									aria-label="With textarea" placeholder="내용을 입력해주세요."></textarea>
+								<textarea class="form-control" aria-label="With textarea"
+								id="exampleFormControlTextarea1" rows="4" maxlength="300" placeholder="내용을 입력해주세요."></textarea>
 							</div>
 							<br>
 							<div>
@@ -513,20 +514,19 @@
 							</div>
 							<div class="input-group">
 								<div class="input-group-prepend"></div>
-								<textarea class="form-control" id="textarea"
-									aria-label="With textarea" placeholder="내용을 입력해주세요."></textarea>
+								<textarea class="form-control" aria-label="With textarea"
+								id="exampleFormControlTextarea1" rows="4" maxlength="300" placeholder="내용을 입력해주세요."></textarea>
 							</div>
 						</div>
 
 					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
 
-
-
-	<br />
+	<br /> <br>
 	<div class="col text-center">
 		<button class="btn btn-primary btn-lg" type="submit">후보자선택</button>
 		<a class="btn btn-secondary btn-lg" href="#" role="button"

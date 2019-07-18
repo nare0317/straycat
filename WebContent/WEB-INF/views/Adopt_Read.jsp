@@ -271,7 +271,9 @@
 				<div class="slidemenu col-lg-2 text-center">
 					<div class="apply">
 						<h5 class="">현재 신청자 수:<span> ${post.APP_COUNT } </span>명</h5>
-						<p>남은시간 : <span>13일 00:57:30</span></p>
+						<!-- 마감일자(hidden) -->
+						<input type="hidden" id="endDate" value="${post.END_DATE }">
+						<p>남은시간 : <br><span id="leftDate"></span></p>
 						<input type="button" class="btn btn-primary disabled" value="입양신청">
 						<p style="font-size: 10pt;">로그인 후 입양 신청이<br> 가능합니다.</p>
 					</div>
@@ -279,24 +281,14 @@
 				</c:if>
 				
 				
-				<!-- 우측 사이드바 (입양신청 - 일반사용자)-->
-				<c:if test="${sessionScope.user_id ne null}">
-				<div class="slidemenu col-lg-2 text-center">
-					<div class="apply">
-						<h5 class="">현재 신청자 수:<span> ${post.APP_COUNT } </span>명</h5>
-						<p>남은시간 : <span>13일 00:57:30</span></p>
-						<input type="button" class="btn btn-primary" value="입양신청"
-						onclick="location.href='<%=cp%>/adopt/apply_form?adt_code=${post.ADT_CODE }'">
-					</div>
-				</div>
-				</c:if>
-				
 				<!-- 우측 사이드바 (입양신청 - 게시글작성자)-->
 				<c:if test="${sessionScope.user_id ne null && sessionScope.user_id eq post.USER_ID }">
 					<div class="slidemenu col-lg-2 text-center">
 						<div class="apply">
 							<h5 class="">현재 신청자 수:<span> ${post.APP_COUNT } </span>명</h5>
-							<p>남은시간 : <span>13일 00:57:30</span></p>
+							<!-- 마감일자(hidden) -->
+							<input type="hidden" id="endDate" value="${post.END_DATE }">
+							<p>남은시간 : <br><span id="leftDate"></span></p>
 							<input type="button" class="btn btn-success" value="입양 신청자 확인"
 							onclick="location.href='<%=cp%>/adopt/apply_list?adt_code=${post.ADT_CODE }'">
 						</div>
@@ -310,6 +302,8 @@
 				<div class="slidemenu col-lg-2 text-center">
 					<div class="apply">
 						<h5 class="">현재 신청자 수:<span> ${post.APP_COUNT } </span>명</h5>
+						<!-- 마감일자(hidden) -->
+						<input type="hidden" id="endDate" value="${post.END_DATE }">
 						<p class="deadline">남은시간 : <span>13일 00:57:30</span></p>
 						<button class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" disabled="disabled"
 						title="2019.06.20 18:20:39에 이미 신청하셨습니다">신청하기</button>
@@ -317,6 +311,21 @@
 				</div>
 				</c:if>
 				</c:forEach>
+				
+				<!-- 우측 사이드바 (입양신청 - 일반사용자)-->
+				<c:if test="${sessionScope.user_id ne null && sessionScope.user_id ne post.USER_ID }">
+				<div class="slidemenu col-lg-2 text-center">
+					<div class="apply">
+						<h5 class="">현재 신청자 수:<span> ${post.APP_COUNT } </span>명</h5>
+						<!-- 마감일자(hidden) -->
+						<input type="hidden" id="endDate" value="${post.END_DATE }">
+						<p>남은시간 : <br><span id="leftDate"></span></p>
+						<input type="button" class="btn btn-primary" value="입양신청"
+						onclick="location.href='<%=cp%>/adopt/apply_form?adt_code=${post.ADT_CODE }'">
+					</div>
+				</div>
+				</c:if>
+				
 				
 				
 		</div>
@@ -394,20 +403,14 @@
 		</form>
 		</div>
 		
-		
-		
-		
-		
-		
-		
 	</section>
 	
 	
-</div> <!-- end #content  -->
+	
 		
 		
 		
-	<section class="post-view-bottom continer-fluid">	
+	<section class="post-view-bottom container">	
 
 		<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
 		<div class="beforeafter list-group">
@@ -504,4 +507,3 @@
 	
 </body>
 </html>
-

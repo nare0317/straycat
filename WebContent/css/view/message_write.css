@@ -5,8 +5,15 @@ div
 	font-family: 'Nanum Gothic Coding', monospace;
 	font-family: 'Quicksand', sans-serif;
 }
-#footer 
+span
 {
+    font-size: medium;
+    text-align: center;
+}
+
+div#footer 
+{
+	margin-top: 100%;
 	position: absolute;
 	left: 0;
 	bottom: 0;
@@ -24,15 +31,36 @@ div
 	vertical-align: super;
 	font-size: 18px;
 }
-
 #err
 {
 	color: red;
 	display: none;
 	font-weight: bold;
 }
-
 .resize
 {
 	resize: none;
+}
+#notice
+{
+	color: red;
+}
+button#cancle
+{
+	margin-left: 10px;
+}
+.inputError
+{
+	text-align: center;
+	margin-left: 15%;
+	font-size: meditum;
+	font-weight: bold;
+}
+span#inputError.form-text.text-muted
+{
+	display: none; 
+	color: red !important;
+	text-align: center;
+	margin:0 auto; 
+	
 }

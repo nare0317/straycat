@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.straycat.common.dao.AdoptDAO;
 import com.straycat.service.AdoptService;
@@ -349,6 +350,7 @@ public class AdoptServiceImpl implements AdoptService
 		
 		try
 		{
+			// 입양신청 후보자 리스트 정보 가져오기
 			list = dao.listApply(adt_code);
 
 		} catch (Exception e)
