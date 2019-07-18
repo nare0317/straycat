@@ -26,6 +26,19 @@
 <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
 
+<script type="text/javascript">
+
+$(document).ready(function()
+{
+	// 최종 선택 버튼 눌렀을 때, 입양 게시글 상태 '입양확정'으로 변경됨. 
+	$("#applyFinish").click(function()
+	{
+		$(location).attr("href","<%=cp%>/adopt_proc?adt_proc=ADP5"+"&adt_code=" + $("#adt_code").val());
+		
+	});
+});
+</script>
+
 </head>
 <body>
 
@@ -53,6 +66,9 @@
 				</th>
 				
 				<td>
+					<!-- 입양게시글 코드(hidden) -->
+					<input type="hidden" id="adt_code" value="${post.ADT_CODE }">    
+					    
 					<h5>ID : ${app.ID } <br>이름 : ${app.NAME }</h5> 
 					<a class="send-message"><i class="fas fa-envelope"></i><span>쪽지</span></a>
 					<br> 
@@ -65,14 +81,26 @@
 				<td><span>활동점수</span><br> <span>250점</span></td>
 				
 				<td class="survey-result">
-						<ul class="list-group list-group-horizontal">
-						  <li class="list-group-item  flex-fill" style="border: none"><ion-icon name="checkmark"></ion-icon>고양이 양육경험: ${app.A1 == RT1 ? '있음' : '없음' }</li>
-						  <li class="list-group-item  flex-fill" style="border: none"><ion-icon name="checkmark"></ion-icon>직업구분: ${app.A2 }</li>
-						</ul>
-						<ul class="list-group list-group-horizontal"> 
-						  <li class="list-group-item  flex-fill" style="border: none"><ion-icon name="checkmark"></ion-icon>결혼여부 : ${app.A3 == RT1 ? '기혼' : '미혼' }</li>
-						  <li class="list-group-item  flex-fill" style="border: none"><ion-icon name="checkmark"></ion-icon>가족구성원: ${app.A4 }</li>
-						</ul>
+				
+					<!-- 입양모집자의 매칭 설문 답 (hidden) -->
+					<input type="hidden" id="ar_A1" value="${post.CAT_EXP }">
+					<input type="hidden" id="ar_A2" value="${post.JOB }">
+					<input type="hidden" id="ar_A3" value="${post.MARRIAGE }">
+					<input type="hidden" id="ar_A4" value="${post.FAMILY_NUM }">
+
+				
+					<ul class="list-group list-group-horizontal applicant_answer">
+					  <li class="list-group-item  flex-fill" id="A1" value="${app.A1 }" style="border: none">
+					  <ion-icon name="checkmark"></ion-icon>고양이 양육경험: ${app.A1 == RT1 ? '있음' : '없음' }</li>
+					  <li class="list-group-item  flex-fill" id="A2" value="${app.A2 }" style="border: none">
+					  <ion-icon name="checkmark"></ion-icon>직업구분: ${app.A2 }</li>
+					</ul>
+					<ul class="list-group list-group-horizontal"> 
+					  <li class="list-group-item  flex-fill" id="A3"  value="${app.A3 }" style="border: none">
+					  <ion-icon name="checkmark"></ion-icon>결혼여부 : ${app.A3 == RT1 ? '기혼' : '미혼' }</li>
+					  <li class="list-group-item  flex-fill" id="A4"  value="${app.A4 }" style="border: none">
+					  <ion-icon name="checkmark"></ion-icon>가족구성원: ${app.A4 }</li>
+					</ul>
 				</td>
 				
 				<td>
@@ -172,8 +200,10 @@
 								<br>
 								<br> 길냥이의 행복한 묘생을 위해 신중하게<br> 결정해주셔서 감사합니다!<br>
 								이후 입양 과정은 <span class="selectedUser"></span>님과 1:1로 연락하여 진행하시면 됩니다.<br>
-								입양이 최종 확정되어 안전하게 고양이까지 전달하신 후에 작성하신 입양 게시글 상태는<br>
-								'입양완료'로 꼭 바꿔주시기 바랍니다.<br>
+								입양후보자 최종 선택으로 인하여 해당 게시물의 상태는 현재 '입양확정'으로 자동 변경되었으며,
+								추후 <span class="selectedUser"></span>님에게 무사히 길냥이를 전달하신 후에
+								작성하신 입양 게시글 상태를 '입양종료'로 꼭 바꿔주시기 바랍니다.<br>
+								감사합니다~!!!^^
 								<br>
 							</p>
 						</div>
@@ -181,8 +211,8 @@
 
 					<!-- Modal footer -->
 					<div class="modal-footer">
-						<button type="button" id="contact-btn"class="btn btn-primary" >매칭자와 바로 연락하기</button>
-					
+						<!-- <button type="button" id="contact-btn"class="btn btn-primary" >매칭자와 바로 연락하기</button> -->
+						<button type="button" id="applyFinish" class="btn btn-primary" >확인</button>
 					
 					
 					
