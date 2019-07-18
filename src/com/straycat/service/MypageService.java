@@ -33,4 +33,11 @@ public interface MypageService
 	
 	public List<Map<String, Object>> reMessageList(String id);// 받은 쪽지 리스트
 	public List<Map<String, Object>> seMessageList(String id);// 보낸 쪽지 리스트
+	
+	public Map<String, Object> reMessage(Map<String, Object> map);	// 받은 쪽지 읽기
+	public Map<String, Object> seMessage(Map<String, Object> map);	// 보낸 쪽지 읽기
+	
+	public Map<String, Object> readCheck(Map<String, Object> map);	// 쪽지 읽음 여부 확인
+	public Map<String, Object> sedeleteMessage(Map<String, Object> map);
+	public Map<String, Object> redeleteMessage(Map<String, Object> map);
 }

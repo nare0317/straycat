@@ -212,6 +212,7 @@
 						</div>
 					</div><!-- 길냥이 정보 끝 -->
 					<a href="<%=cp %>/adopt_read?adt_code=${list.ADT_CODE}" class="stretched-link"></a>
+					
 				</div>
 			</div>
 			</c:forEach>

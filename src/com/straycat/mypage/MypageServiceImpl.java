@@ -250,7 +250,85 @@ public class MypageServiceImpl implements MypageService
 		return seMessageList;
 	}
 
+	@Override
+	public Map<String, Object> reMessage(Map<String, Object> map)
+	{
+		Map<String, Object> reMessage = null;
+
+		try
+		{
+			reMessage = dao.selectOne("member.reMessage", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return reMessage;
+	}
+
+	@Override
+	public Map<String, Object> seMessage(Map<String, Object> map)
+	{
+		Map<String, Object> seMessage = null;
+
+		try
+		{
+			seMessage = dao.selectOne("member.seMessage", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return seMessage;
+	}
+
+	@Override
+	public Map<String, Object> readCheck(Map<String, Object> map)
+	{
+		Map<String, Object> readCheck = null;
+		
+		try
+		{
+			readCheck = dao.selectOne("member.readCheck", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return readCheck;
+	}
+
+	@Override
+	public Map<String, Object> sedeleteMessage(Map<String, Object> map)
+	{
+		Map<String, Object> sedeleteMessage = null;
+		
+		try
+		{
+			sedeleteMessage = dao.selectOne("member.sedeleteMessage", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return sedeleteMessage;
+	}
+
 	
+	@Override
+	public Map<String, Object> redeleteMessage(Map<String, Object> map)
+	{
+		Map<String, Object> redeleteMessage = null;
+		
+		try
+		{
+			redeleteMessage = dao.selectOne("member.redeleteMessage", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return redeleteMessage;
+	}
+
 	
 
 	
