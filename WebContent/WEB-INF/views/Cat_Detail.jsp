@@ -415,7 +415,7 @@
 			<!----------------------------------------------------- 갤러리 탭 ----------------------------------------------------------->
 			
 			
-			<c:forEach var="actGalList" items="${actGalList}">
+			<%-- <c:forEach var="actGalList" items="${actGalList}">
 				<div style="display:none; text-align: center;" class="tab-pane fade" id="nav-profile" role="tabpanel">
 					<div style="text-align: right;">
 						<h4 class="write">사진추가 <img class="img2" src="img/plus-button.png"></h4>
@@ -428,6 +428,26 @@
 					</div>
 				</div><br><br>
 			</c:forEach>
+			 --%>
+			
+			
+				<div style="display:none; text-align: center;" class="tab-pane fade" id="nav-profile" role="tabpanel">
+				
+					<div style="text-align: right;">
+						<h4 class="write">사진추가 <img class="img2" src="img/plus-button.png"></h4>
+					</div>
+					<c:forEach var="actGalList" items="${actGalList}">
+					<div>
+						<img src="<%=cp %>${actGalList.IMG_FILE }" style="margin-bottom: 15px; max-width: 600px;" class="rounded">
+					</div>
+					<div>
+						<img src="img/like.png"> 999
+					</div>
+					<br><br>
+					</c:forEach>
+					
+				
+				</div><br><br>
 			
 			
 			
