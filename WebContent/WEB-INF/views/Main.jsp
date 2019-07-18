@@ -74,7 +74,7 @@
 					        <p>성별 : ${adoptList.CAT_SEX }</p>
 					        <p>나이 : ${adoptList.CAT_AGE }</p>
 					        <p>사는곳 : ${adoptList.CAT_ADDRESS }</p><br>
-					        <p><a class="btn btn-secondary" href="<%=cp %>/adopt_read?id=${adoptList.ADT_CODE }" role="button">View details »</a></p>
+					        <p><a class="btn btn-secondary" href="<%=cp %>/adopt_read?adt_code=${adoptList.ADT_CODE }" role="button">View details »</a></p>
 					      </div><!-- /.col-lg-4 -->
 				      </c:forEach>
 				    </div><!-- /.row -->

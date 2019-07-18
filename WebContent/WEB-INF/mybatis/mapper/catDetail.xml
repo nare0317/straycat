@@ -89,4 +89,16 @@ WHERE AR.CAT_CODE=#{cat_code} AND AR.ACT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE,'Y
 </delete>
 
 
+<select id="actGalList">
+    SELECT GAL_IMG_CODE, CAT_CODE, GAL_DATE, IMG_FILE
+    FROM GAL_REG
+    WHERE CAT_CODE = #{cat_id}
+</select>
+
+<insert id="actGalInsert">
+	INSERT INTO GAL_REG(GAL_IMG_CODE, CAT_CODE, GAL_DATE, IMG_FILE) VALUES('GAIM' || GAL_IMG_SEQ.NEXTVAL, #{cat_id, jdbcType=VARCHAR}, SYSDATE, #{CAT_REP_IMG, jdbcType=VARCHAR});
+</insert>
+
+
+
 </mapper>
