@@ -17,6 +17,28 @@
 	<link rel="stylesheet" href="<%=cp %>/css/view/cat_detail.css">
 	<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="<%=cp %>/js/view/cat_detail.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function()
+	{
+		// 업로드 input 엘리먼트의 상태가 바뀌면,
+		$("#uploadPicture").on("change",function(){readURL(this);});
+		
+		function readURL(input) { 
+			if (input.files && input.files[0]) 
+			{ 
+				var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성 
+	            
+				// 파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+				reader.onload = function (e) { 
+				// 이미지 Tag의 SRC속성에 읽어들인 File내용(아래 코드에서 읽어들인 dataURL형식)을 지정 
+				$('#catPicture').attr('src', e.target.result); 
+                }                    
+				reader.readAsDataURL(input.files[0]);
+				//File내용을 읽어 dataURL형식의 문자열로 저장 
+       		}
+        }
+	});
+	</script>
 </head>
 <body>
 
@@ -25,21 +47,13 @@
 <div class="container2" style="min-width: 1600px;">
 	<div class="jumbotron">
 		<div class="row">
-			<div class="col-4 text-center">
-				<img src="<%=cp %>/img/straycat.jpg" class="img1"><br>
+			<div class="col-4 text-center imgMainContain">
+				<img src="<%=cp %>${catInfo.CAT_IMG }" class="actImg"><br>
 				<br>
-				<div class="row">
-					<div class="col-6 text-right">
-						<img src="<%=cp %>/img/plus-button.png" class="img2"><span class="followInfo">${catInfo.FOLLOW }</span>
-					</div>
-					<div class="col-6 text-left">
-						<img src="<%=cp %>/img/user.png" class="img2"> 집사
-					</div>
-				</div>
 			</div>
-		<div class="col-4 text-left">
+		<div class="col-4 text-left mt">
 			<div class="row">
-				<div class="col-4"><h2>${catInfo.CAT_NAME }</h2></div>
+				<div class="col-7"><h2>${catInfo.CAT_NAME }</h2></div>
 					<!------------------------  대표집자 3명에게 보여지는 수정 버튼  -------------------------->
 						<!-- 
 						<div class="col-8">
@@ -79,9 +93,14 @@
 			<input type="email" class="form-control" id="exampleInputEmail1" value="${catInfo.HEALTH }" readonly="readonly">
 		</div>
             <br>
-            <br>
-            <br>
-            <br>
+          <div class="row">
+			<div class="col-6 text-right">
+				<img src="<%=cp %>/img/plus-button.png" class="img2"><span class="followInfo">${catInfo.FOLLOW }</span>
+			</div>
+			<div class="col-6 text-left">
+				<img src="<%=cp %>/img/user.png" class="img2"> 집사
+			</div>
+		</div><br>
 		<div class="row">
 			<div class="col-3">
 				<span>대표집사</span>
@@ -242,7 +261,7 @@
 					<c:when test="${sessionScope.user_id != null }">	
 						<div class="jumbotron select">
 						
-							<form action="actregistration" method="POST" id="activityForm">
+							<form action="actregistration" method="POST" id="activityForm" enctype="multipart/form-data">
 							<input type="hidden" value="${catInfo.CAT_CODE }" id="cat_id" name="cat_id">
 							<div class="row row2">
 								<div class="custom-control custom-radio custom-control-inline">
@@ -298,14 +317,17 @@
 								<div id="col text-center">
 									<input type="text" id="firstDatepicker" class="form-control3" name="firstDatepicker" readonly="readonly">
 								</div>
+								<div class="col">
+									<img id="catPicture" src="img/straycat.jpg" style="width: 50px; margin-right: 20px;"><label class="btn btn-primary"> 사진첨부<input type="file" class="form-control-file" id="uploadPicture" style="display: none;" name="file"></label>
+								</div>
 							</div>
 							<div class="row">
 								<span class="err1">필수 항목이 입력되지 않았습니다.</span>
 							</div>
-							<div class="text-center">
-								<button type="button" class="btn btn-primary" id="activityBtn">글쓰기</button>
-								<button type="button" class="btn btn-primary">취소</button>
-							</div>
+									<div class="text-center">
+										<button type="button" class="btn btn-primary" id="activityBtn">글쓰기</button>
+										<button type="button" class="btn btn-primary">취소</button>
+									</div>
 							</form>
 						</div>
 					</c:when>
@@ -330,9 +352,9 @@
 					<div class="row">
 					<div class="col-2">
 						<div class="row">
-						<c:if test="${empty catActReg}">
+						<%-- <c:if test="${catActRegList.NIKNAME eq (null)}">
 							<div class="row">등록된 활동이 없습니다.</div>
-						</c:if>
+						</c:if> --%>
 							<div>
 								<h5>${catActRegList.NICKNAME }</h5>
 								<span>${catActRegList.ACT_DATE }</span>
@@ -361,8 +383,8 @@
 							<div class="col-2"></div>
 							<div class="col-10">
 								<div class="row">
-									<div class="col-4">
-										<img src="img/straycat.jpg" style="max-width: 300px;" class="rounded">
+									<div class="col-4 imgContain">
+										<img src="<%=cp %>/${catActRegList.ACT_IMG }" class="actImg">
 									</div>
 									<div class="col-8">
 										<span>${catActRegList.CONTENT }</span>

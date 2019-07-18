@@ -166,7 +166,7 @@ public class CatController
 			  , Model model) 
 	  {
 		  // 이미지를 저장하고 저장된 이미지 경로를 반환함
-		  // 이미지 경로를 자료구조(고양이 등록정보)에 넣음
+		  // 이미지 경로를 자료구조(고양이 등록정보)에 넣음: /resource/img.jpg
 		  String path = session.getServletContext().getRealPath("/");
 		  String imageUrl = imageService.saveImage(file, path);
 		  param.put("CAT_REP_IMG", imageUrl);
@@ -229,13 +229,20 @@ public class CatController
 	 
 	 // 고양이 활동 등록하는 부분
 	 @RequestMapping(value="/actregistration", method = RequestMethod.POST)
-	 public String actRegistration(Map<String, Object> param, Model model, HttpServletRequest request, HttpSession session)
+	 public String actRegistration(Map<String, Object> param, Model model, HttpServletRequest request, HttpSession session, MultipartFile file)
 	 {		 
 		 // 사용자 id로 user_code를 알아냄
 		 Map<String, String> map = new HashMap<String, String>();
 		 map.put("id", (String)session.getAttribute("user_id"));
 		 Map<String, Object> selectResult = boardService.selectUserId(map);
 		 String user_code = (String)selectResult.get("USER_CODE");
+		 
+		 // 이미지를 저장하고 저장된 이미지 경로를 반환함
+		 // 이미지 경로를 자료구조(고양이 등록정보)에 넣음: /resource/img.jpg
+		 String path = session.getServletContext().getRealPath("/");
+		 String imageUrl = imageService.saveImage(file, path);
+		 
+		 
 		 
 		 // insert 할 자료들 매핑
 		 param.put("cat_code", request.getParameter("cat_id"));
@@ -246,6 +253,7 @@ public class CatController
 		 param.put("longitude", request.getParameter("longitude"));
 		 param.put("act_location", request.getParameter("gu")+" "+request.getParameter("dong"));
 		 param.put("act_date", request.getParameter("firstDatepicker"));
+		 param.put("CAT_REP_IMG", imageUrl);
 		 
 		 // 활동 추가 메소드 실행
 		 service.addAct(param);
@@ -257,7 +265,7 @@ public class CatController
 		 
 	 }
 	 
-	 
+	  
 	 // 팔로우 체크하는 구문
 	 @RequestMapping("/followCheck")
 	 public void followCheck(String cat_id,HttpSession session, Map<String, Object> map, HttpServletResponse response, Model model) throws IOException
