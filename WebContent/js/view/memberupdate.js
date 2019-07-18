@@ -20,6 +20,7 @@ $(document).ready(function()
 		if (email1 == $("#newEmail").val())
 		{
 			alert("현재 사용중인 이메일입니다.");
+			return;
 		}
 
 		var email = $("#newEmail").val();
