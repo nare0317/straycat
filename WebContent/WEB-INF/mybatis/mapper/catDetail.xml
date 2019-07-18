@@ -89,10 +89,10 @@ WHERE AR.CAT_CODE=#{cat_code} AND AR.ACT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE,'Y
 </delete>
 
 
-<select id="actGalList">
+<select id="actGalList" resultType="map">
     SELECT GAL_IMG_CODE, CAT_CODE, GAL_DATE, IMG_FILE
     FROM GAL_REG
-    WHERE CAT_CODE = #{cat_id}
+    WHERE CAT_CODE = #{cat_code}
 </select>
 
 <insert id="actGalInsert">

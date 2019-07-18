@@ -37,6 +37,8 @@ public interface CatDAO
     // selectOne
     public Map<String, Object> selectOneOne(String id, Object value); 
     
+	public List<Map<String, Object>> selectListList(String id);
+    
      
 	
 }

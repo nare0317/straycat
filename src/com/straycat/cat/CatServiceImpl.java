@@ -240,4 +240,21 @@ public class CatServiceImpl implements CatService
 		}
 	}
 	
+	// 활동 갤러리 리스트 뿌려주는 메소드
+	@Override
+	public List<Map<String, Object>> actGalList(String id)
+	{
+		List<Map<String, Object>> result = null;
+		
+		try
+		{
+			result = dao.selectListList(id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+	}
+	
 }
