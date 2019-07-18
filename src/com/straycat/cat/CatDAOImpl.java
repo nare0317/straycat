@@ -123,6 +123,13 @@ public class CatDAOImpl implements CatDAO
 	}
 	
 	@Override
+	public List<Map<String, Object>> selectListList(String id)
+	{
+		
+		return sqlSession.selectList("catDetail.actGalList",id);	
+	}
+	
+	@Override
 	public List<Map<String, Object>> selectActStartList(String id)
 	{		
 		return sqlSession.selectList("catDetail.actRegStart",id);	

@@ -413,22 +413,44 @@
 			<!-----------------------------------------------------  활동 탭  ----------------------------------------------------------->
 			
 			<!----------------------------------------------------- 갤러리 탭 ----------------------------------------------------------->
-			<div style="display:none; text-align: center;" class="tab-pane fade" id="nav-profile" role="tabpanel">
-				<div style="text-align: right;">
-					<h4 class="write">사진추가 <img class="img2" src="img/plus-button.png"></h4>
-				</div>
-				<div>
-					<img src="img/straycat.jpg" style="margin-bottom: 15px; max-width: 600px;" class="rounded">
-				</div>
-				<div>
-					<img src="img/like.png"> 999
-				</div>
-			</div><br><br>
+			
+			
+			<c:forEach var="actGalList" items="${actGalList}">
+				<div style="display:none; text-align: center;" class="tab-pane fade" id="nav-profile" role="tabpanel">
+					<div style="text-align: right;">
+						<h4 class="write">사진추가 <img class="img2" src="img/plus-button.png"></h4>
+					</div>
+					<div>
+						<img src="<%=cp %>${actGalList.IMG_FILE }" style="margin-bottom: 15px; max-width: 600px;" class="rounded">
+					</div>
+					<div>
+						<img src="img/like.png"> 999
+					</div>
+				</div><br><br>
+			</c:forEach>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 				</div><br><br>
 				<!-- <div class="text-center">
 					<button type="button" class="btn btn-primary btn-lg">더보기</button>
-				</div>					 -->	
+				</div>					 -->
 			</div>
+			
+
 			<!----------------------------------------------------- 갤러리 탭 ----------------------------------------------------------->
 
 <div>
