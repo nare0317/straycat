@@ -48,12 +48,32 @@
 	
 
 	<!-- 로그인 인터셉터 -->
- 	<!-- <mvc:interceptors>
+ 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/board/write"/>
-			<bean class="com.straycat.interceptor.CommonInterceptor"></bean>
+			<mvc:mapping path="/commentupdate"/>
+			<mvc:mapping path="/commentdelete"/>
+			<mvc:mapping path="/commentwrite"/>
+			<mvc:mapping path="/boardinsert"/>
+			<mvc:mapping path="/adopt_form"/>
+			<mvc:mapping path="/adopt_read"/>
+			<mvc:mapping path="/adopt_write"/>
+			<mvc:mapping path="/adopt_proc"/>
+			<mvc:mapping path="/adopt_update_form"/>
+			<mvc:mapping path="/adopt_update"/>
+			<mvc:mapping path="/adopt/apply_form"/>
+			<mvc:mapping path="/adopt/apply"/>
+			<mvc:mapping path="/catregistrationform"/>
+			<mvc:mapping path="/actregistration"/>
+        	<bean class="com.straycat.interceptor.CommonInterceptor"/>
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+		<mvc:interceptor>
+			<mvc:mapping path="/login"/>
+			<mvc:mapping path="/join"/>
+			<mvc:mapping path="/acceptterms"/>
+			<bean class="com.straycat.interceptor.MemberInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<!-- 
 	<mvc:annotation-driven>
@@ -85,5 +105,21 @@
 		<property name="defaultEncoding" value="utf-8" />
 		<property name="maxUploadSize" value="10485760" />
 	</bean>
+	
+	<!-- 메일 설정 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<property name="host" value="smtp.gmail.com" />
+	<property name="port" value="587" />
+	<property name="username" value="dummyjaru@gmail.com" />
+	<property name="password" value="java006$" />
+	<property name="javaMailProperties">
+		<props>
+			<prop key="mail.transport.protocol">smtp</prop>
+			<prop key="mail.smtp.auth">true</prop>
+			<prop key="mail.smtp.starttls.enable">true</prop>
+			<prop key="mail.debug">true</prop>
+		</props>
+	</property>
+</bean>
 	
 </beans>

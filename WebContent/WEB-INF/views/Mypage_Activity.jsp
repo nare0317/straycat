@@ -25,161 +25,30 @@
 						<!-- 게시판 헤더 시작 -->
 						<div class="bbsHeader">
 							<div class="header no">No</div>
-							<div class="header title">게시판</div>
-							<div class="header writer">제목</div>
+							<div class="header title">제목</div>
+							<div class="header writer">작성자</div>
 							<div class="header date">작성일시</div>
-							<div class="header viewCount">활동점수</div>
+							<div class="header viewCount">조회수</div>
 						</div>
 
 						<!-- 게시판 게시물 리스트 시작 -->
+						<c:forEach var="myBoardList" items="${myBoardList }">
 						<div class="bbsContents">
-							<div class="content no">10</div>
+							<div class="content no">${myBoardList.ROWNUM }</div>
 							<div class="content title titleLeft">
 								<div class="contentTitle">
-									<a class="contentLink" href="<%=cp%>/ReceiveNoteDetail.jsp">누구보다 빠르게 난 남들과는 </a>
+									<a class="contentLink" href="Board_Read?bbs_code="${myBoardList.BBS_CODE }>${myBoardList.TITLE } </a>
 								</div>
 								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
+									<i class='far fa-comment'>${myBoardList.COUNT }</i>
 								</div>
 							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
+							<div class="content writer">${myBoardList.NICKNAME }</div><input type="hidden" id="bbs_code" name="bbs_code" value="${myBoardList.BBS_CODE }">
+							<div class="content date">${myBoardList.POST_DATE }</div>
+							<div class="content viewCount">${myBoardList.HIT_COUNT }</div>
 						</div>
-						<div class="bbsContents">
-							<div class="content no">9</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색 다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">8</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">7</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">6</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">5</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">4</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">3</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">2</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">1</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
+						</c:forEach>
+						
 						<br> <br>
 
 						<!-- 페이지네이션 시작 -->
@@ -210,162 +79,66 @@
 						<!-- 게시판 헤더 시작 -->
 						<div class="bbsHeader">
 							<div class="header no">No</div>
-							<div class="header title">게시판</div>
-							<div class="header writer">제목</div>
+							<div class="header title">내용</div>
+							<div class="header writer">작성자</div>
 							<div class="header date">작성일시</div>
-							<div class="header viewCount">활동점수</div>
+							<div class="header viewCount">게시판</div>
 						</div>
 
 						<!-- 게시판 게시물 리스트 시작 -->
+						<c:forEach var="myBoardComment" items="${myBoardComment }" >
 						<div class="bbsContents">
 							<div class="content no">10</div>
 							<div class="content title titleLeft">
 								<div class="contentTitle">
-									<a class="contentLink" href="<%=cp%>/SendNoteDetail.jsp">누구보다 빠르게 난 남들과는 </a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
+									<a class="contentLink" href="<%=cp%>/SendNoteDetail.jsp">${myBoardComment.CONTENT } </a>
 								</div>
 							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
+							<div class="content writer">${myBoardComment.NICKNAME }</div>
+							<div class="content date">${myBoardComment.BBS_CMT_DATE }</div>
+							<div class="content viewCount">자유게시판</div>
 						</div>
+						</c:forEach>
+						<c:forEach var="myActComment" items="${myActComment }" >
 						<div class="bbsContents">
-							<div class="content no">9</div>
+							<div class="content no">10</div>
 							<div class="content title titleLeft">
 								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
+									<a class="contentLink" href="<%=cp%>/SendNoteDetail.jsp">${myActComment.CONTENT } </a>
 								</div>
 							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
+							<div class="content writer">${myActComment.NICKNAME }</div>
+							<div class="content date">${myActComment.ACT_CMT_DATE }</div>
+							<div class="content viewCount">고양이활동</div>
 						</div>
+						</c:forEach>
+						<c:forEach var="myAdoptComment" items="${myAdoptComment }">
 						<div class="bbsContents">
-							<div class="content no">8</div>
+							<div class="content no">10</div>
 							<div class="content title titleLeft">
 								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
+									<a class="contentLink" href="<%=cp%>/SendNoteDetail.jsp">${myAdoptComment.CONTENT } </a>
 								</div>
 							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
+							<div class="content writer">${myAdoptComment.NICKNAME }</div>
+							<div class="content date">${myAdoptComment.ADT_CMT_DATE }</div>
+							<div class="content viewCount">입양모집글</div>
 						</div>
+						</c:forEach>
+						<c:forEach var="myMissComment" items="${myMissComment }">
 						<div class="bbsContents">
-							<div class="content no">7</div>
+							<div class="content no">10</div>
 							<div class="content title titleLeft">
 								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
+									<a class="contentLink" href="<%=cp%>/SendNoteDetail.jsp">${myMissComment.CONTENT } </a>
 								</div>
 							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
+							<div class="content writer">${myMissComment.NICKNAME }</div>
+							<div class="content date">${myMissComment.MIS_CMT_DATE }</div>
+							<div class="content viewCount">실종글</div>
 						</div>
-						<div class="bbsContents">
-							<div class="content no">6</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">5</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">4</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">3</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">2</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
-						<div class="bbsContents">
-							<div class="content no">1</div>
-							<div class="content title titleLeft">
-								<div class="contentTitle">
-									<a class="contentLink" href="#">누구보다 빠르게 난 남들과는 다르게 색
-										다르게 리듬을 타는 비트위의 나그네 아싸 가오리</a>
-								</div>
-								<div class="commentCount">
-									<i class='far fa-comment'>0</i>
-								</div>
-							</div>
-							<div class="content writer">아웃사이더</div>
-							<div class="content date">2019-07-04</div>
-							<div class="content viewCount">10</div>
-						</div>
+						</c:forEach>
+						
 						<br> <br>
 
 						<!-- 페이지네이션 시작 -->

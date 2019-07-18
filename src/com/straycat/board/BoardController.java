@@ -278,4 +278,50 @@ public class BoardController
 		
 		return "redirect:/board";
 	}
+	
+	// 게시글 삭제 메소드
+	@RequestMapping("/articledelete")
+	public String articleDelete(@RequestParam(name="bbs_code") String bbs_code)
+	{
+		Map<String, String> map = new HashMap<>();
+		map.put("bbs_code", bbs_code);
+		
+		service.articleCmtDelete(map);
+		service.articleDelete(map);
+		
+		return "redirect:/board";
+	}
+	
+	// 게시글 업데이트 폼 메소드
+	@RequestMapping("/board/articleupdateform")
+	public String articleUpdateForm(Model model, @RequestParam(name="bbs_code") String bbs_code)
+	{
+		Map<String, Object> articleUpdateValue = new HashMap<String, Object>();
+		articleUpdateValue = service.articleUpdateValue(bbs_code);
+		
+		List<Map<String, String>> bbsWriteCat = new ArrayList<Map<String,String>>();
+		bbsWriteCat = service.bbsWriteCat();
+		
+		model.addAttribute("bbsWriteCat", bbsWriteCat);
+		model.addAttribute("articleUpdateValue", articleUpdateValue);
+		
+		return "Board_UpdateWrite";
+	}
+	
+	
+	  // 게시글 업데이트 메소드
+	  
+	  @RequestMapping("/articleupdate") 
+	  public String articleUpdate(HttpServletRequest request) 
+	  { 
+		  Map <String, String> map = new
+		  HashMap<>(); map.put("bbs_code", request.getParameter("bbs_code"));
+		  map.put("title", request.getParameter("title")); 
+		  map.put("categorySelect", request.getParameter("categorySelect")); 
+		  map.put("content", request.getParameter("content"));
+	  
+		  service.articleUpdate(map);
+	  
+		  return "redirect:/board"; 
+	  }
 }

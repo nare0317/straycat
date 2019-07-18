@@ -31,5 +31,9 @@ public interface CatDAO
     public <T> T selectOne(String id, Object value);
     
     public int insert(String id, Object value);
+    
+    // selectOne
+    public Map<String, Object> selectOneOne(String id, Object value); 
+     
 	
 }

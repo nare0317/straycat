@@ -29,6 +29,18 @@ $(document).ready(function()
 	
 		$("#update").click(function()
 		{
-			$(location).attr("href", "memberupdatepw");
+			$(location).attr("href", "/memberupdatepw");
 		});
+		
+		$("#messageWrite1").click(function()
+		{
+			//$(location).attr("href", "messagewrite");
+			$("#form1").submit();
+		});
+		$("#messageWrite2").click(function()
+		{
+			//$(location).attr("href", "/messagewrite");
+			$("#form2").submit();
+		});
+		
 });

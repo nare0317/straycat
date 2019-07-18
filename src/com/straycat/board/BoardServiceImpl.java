@@ -19,6 +19,7 @@ import oracle.sql.CLOB;
 @Service("board")
 public class BoardServiceImpl implements BoardService 
 {
+	private static final int String = 0;
 	@Autowired
 	private BoardDAO dao;
 	
@@ -192,6 +193,40 @@ public class BoardServiceImpl implements BoardService
 		
 		return result;
 	}
+	
+	
+	@Override
+	public int articleCmtDelete(Map<String, String> map)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = dao.delete("board.articleCmtDelete", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+
+	// 게시물을 삭제하는 메소드
+	@Override
+	public int articleDelete(Map<String, String> map)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = dao.delete("board.articleDelete", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+	
+	
 
 	// 댓글을 업데이트 하는 메소드
 	@Override
@@ -260,5 +295,40 @@ public class BoardServiceImpl implements BoardService
 		return result;
 	}
 	
+	// 게시물 업데이트 리스트 보여주는 메소드
+	@Override
+	public Map<String, Object> articleUpdateValue(String id)
+	{
+		Map<String,Object> result = new HashMap<String, Object>();
+		
+		try
+		{
+			result = dao.selectOne("board.articleUpdateValue", id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;		
+	}
+	
+	
+	// 게시물 업데이트 수행
+	@Override
+	public int articleUpdate(Map<String, String> map)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = dao.update("board.articleUpdate", map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return result;
+		
+		
+	}
 	
 }
