@@ -23,10 +23,20 @@
 
 	$(document).ready(function()
 	{
+		
 		$("#searchAddress").click(function()
 		{
 			//alert("성공");
 			$(location).attr("href", "<%=cp%>/adopt?searchGu=" + $("#gu").val() + "&searchDong=" + $("#dong").val());
+		});
+		
+		// 키워드 검색 
+	    $(".tag-buttons a").each(function()
+		{
+	    	//alert($(this).find('input').val());
+	    	//alert($(this).not('input').text());
+	    	//alert(typeof $(this).not('input').text());
+			$(this).attr("href", "<%=cp%>/adopt_search?searchKey=" + $(this).find('input').val() + "&searchValue=" + $(this).not('input').text());
 		});
 	});
 
@@ -118,12 +128,19 @@
 			<!-- row4 -->
 			<div class="row tag-buttons">	
 				<h6 class="mx-auto">
-					<a href="#" class="btn btn-outline-primary btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">긴급입양</a>
-					<a href="#" class="btn btn-outline-danger btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">분실의심</a>
-					<a href="#" class="btn btn-outline-warning btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">수컷</a>
-					<a href="#" class="btn btn-outline-info btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">암컷</a>
-					<a href="#" class="btn btn-outline-light btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">아기묘</a>
-					<a href="#" class="btn btn-outline-success btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">성묘</a>
+					
+					<a href="#" class="btn btn-outline-primary btn-sm active" role="button" 
+					aria-pressed="false" style="margin-right:20px;">긴급입양<input type="hidden" value="ADT_TYPE"></a>
+					<a href="#" ="ADT_TYPE" class="btn btn-outline-danger btn-sm active" role="button" 
+					aria-pressed="false" style="margin-right:20px;">분실의심<input type="hidden" value="ADT_TYPE"></a>
+					<a href="#" class="btn btn-outline-warning btn-sm active" role="button" 
+					aria-pressed="false" style="margin-right:20px;">수컷<input type="hidden" value="CAT_SEX"></a>
+					<a href="#" class="btn btn-outline-info btn-sm active" role="button" 
+					aria-pressed="false" style="margin-right:20px;">암컷<input type="hidden" value="CAT_SEX"></a>
+					<a href="#" class="btn btn-outline-light btn-sm active" role="button" 
+					aria-pressed="false" style="margin-right:20px;">아기묘<input type="hidden" value="CAT_AGE_TYPE"></a>
+					<a href="#" class="btn btn-outline-success btn-sm active" role="button" 
+					aria-pressed="false" style="margin-right:20px;">성묘<input type="hidden" value="CAT_AGE_TYPE"></a>
 				</h6>
 			</div>	
 
@@ -142,12 +159,12 @@
 				
 					<!-- 길냥이 대표이미지 -->
 					<div class="col-md-5 cat-photo cat-photo-wrap">
-						<div class="cp-image">
+						<div class="cp-image " >
 						<c:if test="${list.CAT_IMAGE != null }">
-							<img src="<%=cp %>${list.CAT_IMAGE }" class="card-img" alt="">
+							<img src="<%=cp %>${list.CAT_IMAGE }" class="card-img img_resize" alt="" style="width: 300px; height:300px ">						
 						</c:if>
 						<c:if test="${list.CAT_IMAGE == null }">
-							<img src="<%=cp %>/img/defaultCat.png" class="card-img" alt="">
+							<img src="<%=cp %>/img/defaultCat.png" class="card-img img_resize" alt="" style="width: 300px; height:300px ">
 						</c:if>
 							<!-- <img src="img/straycat.jpg" class="card-img" alt=""> -->
 						</div>
@@ -199,9 +216,12 @@
 							<div class="card-text">
 								<ul class="cat-info-list">
 									<li>${list.CAT_TYPE }(${list.CAT_SEX })</li>
-									<li>${list.CAT_AGE }</li>
+									<li>${list.CAT_AGE_TYPE} (${list.CAT_AGE })</li>
 									<li>${list.CAT_ADDRESS}</li>
 									<li>${list.POST_DATE }</li>
+									<c:if test="${list.ADT_TYPE != '해당사항없음' }">
+									<li style="color: blue;">${list.ADT_TYPE }</li>
+									</c:if>
 									<li><i class="fas fa-eye" > ${list.HIT_COUNT }</i></li>
 									
 									<!-- 추천수, 댓글수 추가해야함..  -->

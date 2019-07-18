@@ -196,10 +196,11 @@
 			
 				<!-- 고양이 대표사진 -->
 				<div class="iconic-photo col-lg-3">
-					<img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail">
+					<%-- <img src="<%=cp %>/img/cat_profile_picture.jpg" class="img-thumbnail"> --%>
 					
 					<!-- 사진 불러오는 구문 -->
-					<%-- <img src="<%=cp %>/img/${post.CAT_IMAGE}" class="img-thumbnail"> --%>
+					<!-- C:\GIT\SSIT_StrayCatProject\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\straycat\resource -->
+					<img src="<%=cp %>${post.CAT_IMAGE}" class="img_resize" style="width: 300px; height:300px% ">
 				</div>
 				
 				<!-- 글 내용 -->
@@ -468,8 +469,8 @@
 									</h6>
 								<!-- </div> -->
 							</div>
-							<p>정말 많은 사람들이 고생하셨습니다..ㅜ.ㅜ 정부에서는 크게 도와주는게 없으니
-								동물보호단체에서라도 꾸준히 이후에도 관리를 해주셨으면 하는 바람입니다..ㅜ.ㅜ 정말 없어져서 기쁩니다!!</p>
+							<p>어머나 ㅠㅠ 야옹이가 너무 귀여워요ㅠㅜ 제가 입양하고 싶지만 이미 키우고 있는 냥이가 6마리나 되서ㅜㅜ 
+							부디 좋은 분 만나서 입양 갔으면 좋겠네요~!!!</p>
 						</div>
 					</div><!-- end comment -->
 
@@ -488,8 +489,8 @@
 									</h6>
 								<!-- </div> -->
 							</div>
-							<p>야옹이 너무이쁘네요 ㅠㅠ 어쩌다 잃어버리셨을까.. ㅠㅠ 저희동네인데 
-							주위 잘 둘러보고 다녀야겠어요 ㅠㅠ </p>
+							<p>이 길냥이 지나가다가 저도 봤는데 ㅠㅠ 어미가 새끼낳고 며칠을 봐도 돌아오질 않더라구요.. 아마 무슨 사고가 난 듯 해요ㅜㅜ 
+							아기들 너무 이쁘고 귀여워요. 꼭 좋은 분 만나서 입양갔으면 좋겠네요^^ </p>
 						</div>
 					</div><!-- end comment -->
 

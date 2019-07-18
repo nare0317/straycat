@@ -86,6 +86,14 @@
     WHERE AD.GU = #{searchGu} AND AD.DONG = #{searchDong}
 	ORDER BY A.POST_DATE
 </select>
+
+<select id="searchList2" parameterType="map" resultType="map">
+	SELECT *
+	FROM ADT_REG_VIEW
+    WHERE ${searchKey} = #{searchValue, jdbcType=VARCHAR}
+	ORDER BY POST_DATE
+</select>
+
  
 
 <!-- 검색된 게시글 수 조회 쿼리문  -->
@@ -95,7 +103,7 @@
 	LEFT JOIN ADDRESS AD
 	ON A.CAT_ADDRESS = AD.ADDRESS_CODE
 	WHERE AD.GU = #{searchGu} AND AD.DONG = #{searchDong}
-</select> 
+</select>  
  
  
 <!-- 구와 동을 입력받아 주소 코드를 반환하는 쿼리문 -->
@@ -237,7 +245,7 @@
 	  , ADT_TYPE = #{ADT_TYPE,jdbcType=VARCHAR}
 	  , CAT_ECT1 = #{CAT_ECT1,jdbcType=VARCHAR}
 	  , CAT_ECT2 = #{CAT_ECT2,jdbcType=VARCHAR}
-	  , CAT_REP_IMG = 'aaa124.png'
+	  , CAT_REP_IMG = #{CAT_REP_IMG, jdbcType=VARCHAR}
 	  , TEL = #{TEL,jdbcType=VARCHAR}
 	  , EMAIL = #{EMAIL,jdbcType=VARCHAR}
 	  , ADT_REASON = #{ADT_REASON,jdbcType=VARCHAR}

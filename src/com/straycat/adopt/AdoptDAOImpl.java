@@ -65,6 +65,31 @@ public class AdoptDAOImpl implements AdoptDAO
 		
 		return list;
 	}
+	
+	
+	// 키워드 검색 후 게시글 리스트 조회 메소드 
+	@Override
+	public List<Map<String, Object>> searchAdopt(String searchKey, String searchValue)
+	{
+		List<Map<String, Object>> list = null; 
+		
+		try 
+		{
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("searchKey", searchKey);
+			map.put("searchValue", searchValue);
+			
+			list = sqlSession.selectList("adopt.searchList2", map);
+		}
+		catch (Exception e) 
+		{
+			logger.error(e.toString());
+			
+			throw e;
+		}
+		
+		return list;
+	}
 
 
 	// 게시글 등록 메소드

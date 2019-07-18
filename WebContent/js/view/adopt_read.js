@@ -47,42 +47,71 @@ $(document).ready(function() {
 	 //alert(endDate);	//--2019-07-26 15:45:09.0
 	 
 	 CountDownTimer(endDate, "leftDate");
+	 
+	 
+	 
+	 
+	//---------------------- 고양이사진 크기조절  -------------------------------- 
+	 /*$('.img-thumbnail img').each(function() 
+	 {*/
+		//alert("함수호출");
+        var maxWidth = 200; // Max width for the image
+        var maxHeight = 200;    // Max height for the image
+        var ratio = 0;  // Used for aspect ratio
+        var width = $(".img_resize").width();    // Current image width
+        var height = $(".img_resize").height();  // Current image height
+
+        // Check if the current width is larger than the max
+        if(width > maxWidth){
+            ratio = maxWidth / width;   // get ratio for scaling image
+            $(".img_resize").css("width", maxWidth); // Set new width
+            $(".img_resize").css("height", height * ratio);  // Scale height based on ratio
+            height = height * ratio;    // Reset height to match scaled image
+            width = width * ratio;    // Reset width to match scaled image
+        }
+
+        // Check if current height is larger than max
+        if(height > maxHeight){
+            ratio = maxHeight / height; // get ratio for scaling image
+            $(".img_resize").css("height", maxHeight);   // Set new height
+            $(".img_resize").css("width", width * ratio);    // Scale width based on ratio
+            width = width * ratio;    // Reset width to match scaled image
+        }
+   /* });*/
 });
 
-
-
 // 날짜 카운트다운 함수
-function CountDownTimer(dt, id)
-{
-    var end = new Date(dt);
+ function CountDownTimer(dt, id)
+ {
+     var end = new Date(dt);
 
-    var _second = 1000;
-    var _minute = _second * 60;
-    var _hour = _minute * 60;
-    var _day = _hour * 24;
-    var timer;
+     var _second = 1000;
+     var _minute = _second * 60;
+     var _hour = _minute * 60;
+     var _day = _hour * 24;
+     var timer;
 
-    function showRemaining() {
-        var now = new Date();
-        var distance = end - now;
-        if (distance < 0) {
+     function showRemaining() {
+         var now = new Date();
+         var distance = end - now;
+         if (distance < 0) {
 
-            clearInterval(timer);
-            document.getElementById(id).innerHTML = 'EXPIRED!';
+             clearInterval(timer);
+             document.getElementById(id).innerHTML = 'EXPIRED!';
 
-        return;
-    }
-    var days = Math.floor(distance / _day);
-    var hours = Math.floor((distance % _day) / _hour);
-    var minutes = Math.floor((distance % _hour) / _minute);
-    var seconds = Math.floor((distance % _minute) / _second);
-    
-    document.getElementById(id).innerHTML = days + '일 ';
-    document.getElementById(id).innerHTML += hours + '시간 ';
-    document.getElementById(id).innerHTML += minutes + '분 ';
-    document.getElementById(id).innerHTML += seconds + '초';
-    }
+         return;
+     }
+     var days = Math.floor(distance / _day);
+     var hours = Math.floor((distance % _day) / _hour);
+     var minutes = Math.floor((distance % _hour) / _minute);
+     var seconds = Math.floor((distance % _minute) / _second);
+     
+     document.getElementById(id).innerHTML = days + '일 ';
+     document.getElementById(id).innerHTML += hours + '시간 ';
+     document.getElementById(id).innerHTML += minutes + '분 ';
+     document.getElementById(id).innerHTML += seconds + '초';
+     }
 
-    timer = setInterval(showRemaining, 1000);
-}
+     timer = setInterval(showRemaining, 1000);
+ }
 

@@ -92,7 +92,7 @@
             
             <!---------------- 고양이 대표 이미지 첨부 --------------->
             <div class="col-3 text-center">
-               <img id="catPicture" src="img/straycat.jpg" style="width: 200px;"><br> <br>
+               <img id="catPicture" src="img/defaultCat.png" style="width: 200px;"><br> <br>
                <label class="btn btn-primary"> 사진첨부<input type="file" class="form-control-file" 
                id="uploadPicture" style="display: none;" accept=".jpeg, .png, .jpg" name="file"></label>
             </div>
@@ -132,7 +132,7 @@
                <div class="form-group row">
                   <label for="rsq-date" class="col-sm-2 col-form-label">구조일시</label>
                   <div class="col-sm-4">
-                     <input type="text" class="form-control" id="rsq_date" name="rsq_date" 
+                 	 <input type="text" class="form-control datepicker" id="rsq_date" name="rsq_date" 
                      placeholder="날짜를 선택하세요." required>
                   </div>
                </div>
@@ -230,7 +230,7 @@
 								required>
 							</label>
 						</div>
-						<!-- 코숏올화이트 -->
+						<!-- 기타 -->
 						<div
 							class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
 							<label class="image-radio"> <img class="img-responsive"
