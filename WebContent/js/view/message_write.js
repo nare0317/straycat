@@ -18,6 +18,7 @@ $(document).ready(function()
 		}
 	});
 
+	$("#err").css("display", "none");
 	// 보내기 버튼 클릭
 	$("#sendBtn").click(function()
 	{
@@ -26,7 +27,8 @@ $(document).ready(function()
 			|| $("#title").val()=="" || $("#title").val()==null 
 			||  $("#noteContent").val()=="" || $("#noteContent").val()==null) 
 		{
-			$("#inputError").css("display", "inline");
+			$("#err").css("display", "inline");
+			$("#err").css("color", "red");
 			return;
 		};
 		

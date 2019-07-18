@@ -25,7 +25,7 @@
 		<div class="card-header"><h1><span style="color: #007BFF">회원가입</span>을 축하드립니다.</h1></div>
 		<div class="card-body">
 			<p class="card-title">로그인을 하셔서 길고양이를 등록해보세요~</p>
-			<button type="button" class="btn btn-primary">로그인</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='login'">로그인</button>
 		</div>
 	</div>
 </div>

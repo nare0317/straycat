@@ -17,6 +17,28 @@
 	<link rel="stylesheet" href="<%=cp %>/css/view/cat_detail.css">
 	<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="<%=cp %>/js/view/cat_detail.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function()
+	{
+		// 업로드 input 엘리먼트의 상태가 바뀌면,
+		$("#uploadPicture").on("change",function(){readURL(this);});
+		
+		function readURL(input) { 
+			if (input.files && input.files[0]) 
+			{ 
+				var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성 
+	            
+				// 파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+				reader.onload = function (e) { 
+				// 이미지 Tag의 SRC속성에 읽어들인 File내용(아래 코드에서 읽어들인 dataURL형식)을 지정 
+				$('#catPicture').attr('src', e.target.result); 
+                }                    
+				reader.readAsDataURL(input.files[0]);
+				//File내용을 읽어 dataURL형식의 문자열로 저장 
+       		}
+        }
+	});
+	</script>
 </head>
 <body>
 
@@ -25,21 +47,13 @@
 <div class="container2" style="min-width: 1600px;">
 	<div class="jumbotron">
 		<div class="row">
-			<div class="col-4 text-center">
-				<img src="<%=cp %>/img/straycat.jpg" class="img1"><br>
+			<div class="col-4 text-center imgMainContain">
+				<img src="<%=cp %>${catInfo.CAT_IMG }" class="actImg"><br>
 				<br>
-				<div class="row">
-					<div class="col-6 text-right">
-						<img src="<%=cp %>/img/plus-button.png" class="img2">${catInfo.FOLLOW }
-					</div>
-					<div class="col-6 text-left">
-						<img src="<%=cp %>/img/user.png" class="img2"> 집사
-					</div>
-				</div>
 			</div>
-		<div class="col-4 text-left">
+		<div class="col-4 text-left mt">
 			<div class="row">
-				<div class="col-4"><h2>${catInfo.CAT_NAME }</h2></div>
+				<div class="col-7"><h2>${catInfo.CAT_NAME }</h2></div>
 					<!------------------------  대표집자 3명에게 보여지는 수정 버튼  -------------------------->
 						<!-- 
 						<div class="col-8">
@@ -79,9 +93,14 @@
 			<input type="email" class="form-control" id="exampleInputEmail1" value="${catInfo.HEALTH }" readonly="readonly">
 		</div>
             <br>
-            <br>
-            <br>
-            <br>
+          <div class="row">
+			<div class="col-6 text-right">
+				<img src="<%=cp %>/img/plus-button.png" class="img2"><span class="followInfo">${catInfo.FOLLOW }</span>
+			</div>
+			<div class="col-6 text-left">
+				<img src="<%=cp %>/img/user.png" class="img2"> 집사
+			</div>
+		</div><br>
 		<div class="row">
 			<div class="col-3">
 				<span>대표집사</span>
@@ -102,12 +121,22 @@
 		<div id="map0" class="map0">
 	</div><br>
 	<div class="row">
-		<div class="col-6">
+		<div class="col-6">	
 			<!-- 팔로우 기능 구현 -->
 			<!-- 로그인 했을때 -->
 			<c:choose>
 			<c:when test="${sessionScope.user_id != null }">
-			<button type="button" class="btn btn-primary" onclick="javascript: follow_func();" id="loginNeed">팔로우</button>
+		
+				<c:choose>
+					<c:when test="${result == 0}">
+						<button type="button" class="btn btn-primary" id="loginNeed">팔로우</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" class="btn btn-secondary" id="loginNeed">언팔로우</button>
+					</c:otherwise>
+				</c:choose>
+			
+			
 			</c:when>
 			<c:otherwise>
 			<button type="button" class="btn btn-primary" onclick="javascript: login_need();" id="followBtn">팔로우</button>
@@ -227,11 +256,12 @@
 			<div class="tab-pane fade show active" id="nav-home">
 				<h4 class="write">활동작성</h4>
 				<!----------------------------------------------------- 로그인 O ----------------------------------------------------->
+					<input type="hidden" value="${sessionScope.user_id}" id="user_id" name="user_id">
 					<c:choose>
 					<c:when test="${sessionScope.user_id != null }">	
 						<div class="jumbotron select">
 						
-							<form action="actregistration" method="POST" id="activityForm">
+							<form action="actregistration" method="POST" id="activityForm" enctype="multipart/form-data">
 							<input type="hidden" value="${catInfo.CAT_CODE }" id="cat_id" name="cat_id">
 							<div class="row row2">
 								<div class="custom-control custom-radio custom-control-inline">
@@ -287,14 +317,17 @@
 								<div id="col text-center">
 									<input type="text" id="firstDatepicker" class="form-control3" name="firstDatepicker" readonly="readonly">
 								</div>
+								<div class="col">
+									<img id="catPicture" src="img/straycat.jpg" style="width: 50px; margin-right: 20px;"><label class="btn btn-primary"> 사진첨부<input type="file" class="form-control-file" id="uploadPicture" style="display: none;" name="file"></label>
+								</div>
 							</div>
 							<div class="row">
 								<span class="err1">필수 항목이 입력되지 않았습니다.</span>
 							</div>
-							<div class="text-center">
-								<button type="button" class="btn btn-primary" id="activityBtn">글쓰기</button>
-								<button type="button" class="btn btn-primary">취소</button>
-							</div>
+									<div class="text-center">
+										<button type="button" class="btn btn-primary" id="activityBtn">글쓰기</button>
+										<button type="button" class="btn btn-primary">취소</button>
+									</div>
 							</form>
 						</div>
 					</c:when>
@@ -319,9 +352,9 @@
 					<div class="row">
 					<div class="col-2">
 						<div class="row">
-						<c:if test="${empty catActReg}">
+						<%-- <c:if test="${catActRegList.NIKNAME eq (null)}">
 							<div class="row">등록된 활동이 없습니다.</div>
-						</c:if>
+						</c:if> --%>
 							<div>
 								<h5>${catActRegList.NICKNAME }</h5>
 								<span>${catActRegList.ACT_DATE }</span>
@@ -350,8 +383,8 @@
 							<div class="col-2"></div>
 							<div class="col-10">
 								<div class="row">
-									<div class="col-4">
-										<img src="img/straycat.jpg" style="max-width: 300px;" class="rounded">
+									<div class="col-4 imgContain">
+										<img src="<%=cp %>/${catActRegList.ACT_IMG }" class="actImg">
 									</div>
 									<div class="col-8">
 										<span>${catActRegList.CONTENT }</span>
@@ -380,22 +413,64 @@
 			<!-----------------------------------------------------  활동 탭  ----------------------------------------------------------->
 			
 			<!----------------------------------------------------- 갤러리 탭 ----------------------------------------------------------->
-			<div style="display:none; text-align: center;" class="tab-pane fade" id="nav-profile" role="tabpanel">
-				<div style="text-align: right;">
-					<h4 class="write">사진추가 <img class="img2" src="img/plus-button.png"></h4>
-				</div>
-				<div>
-					<img src="img/straycat.jpg" style="margin-bottom: 15px; max-width: 600px;" class="rounded">
-				</div>
-				<div>
-					<img src="img/like.png"> 999
-				</div>
-			</div><br><br>
+			
+			
+			<%-- <c:forEach var="actGalList" items="${actGalList}">
+				<div style="display:none; text-align: center;" class="tab-pane fade" id="nav-profile" role="tabpanel">
+					<div style="text-align: right;">
+						<h4 class="write">사진추가 <img class="img2" src="img/plus-button.png"></h4>
+					</div>
+					<div>
+						<img src="<%=cp %>${actGalList.IMG_FILE }" style="margin-bottom: 15px; max-width: 600px;" class="rounded">
+					</div>
+					<div>
+						<img src="img/like.png"> 999
+					</div>
+				</div><br><br>
+			</c:forEach>
+			 --%>
+			
+			
+				<div style="display:none; text-align: center;" class="tab-pane fade" id="nav-profile" role="tabpanel">
+				
+					<div style="text-align: right;">
+						<h4 class="write">사진추가 <img class="img2" src="img/plus-button.png"></h4>
+					</div>
+					<c:forEach var="actGalList" items="${actGalList}">
+					<div>
+						<img src="<%=cp %>${actGalList.IMG_FILE }" style="margin-bottom: 15px; max-width: 600px;" class="rounded">
+					</div>
+					<div>
+						<img src="img/like.png"> 999
+					</div>
+					<br><br>
+					</c:forEach>
+					
+				
+				</div><br><br>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 				</div><br><br>
 				<!-- <div class="text-center">
 					<button type="button" class="btn btn-primary btn-lg">더보기</button>
-				</div>					 -->	
+				</div>					 -->
 			</div>
+			
+
 			<!----------------------------------------------------- 갤러리 탭 ----------------------------------------------------------->
 
 <div>
@@ -416,6 +491,39 @@
 			$("#nav-home").css("display", "none");
 			$("#nav-profile").css("display", "block");
 		})
+		
+		
+		
+		$("#loginNeed").click(function()
+		{
+			var cat_id = $("#cat_id").val();
+			var user_id = $("#user_id").val();
+			$.ajax(
+			{
+				url:"followCheck",
+				type:"POST",
+				data:{'cat_id':cat_id, 'user_id':user_id},
+				success:function(data)
+				{
+					if(data==0)
+					{
+						// insert 구문 실행
+						location.href = "<%=cp%>/follow?cat_id=" + cat_id;
+						alert("팔로우 실행");
+						//console.log("insert");
+					}
+					else
+					{
+						// delete 구문 실행
+						location.href = "<%=cp%>/unfollow?cat_id=" + cat_id;
+						alert("팔로우 취소");
+						//console.log("delete");
+					}
+				}
+			});
+		});  
+				
+		
 	})
 </script>
 

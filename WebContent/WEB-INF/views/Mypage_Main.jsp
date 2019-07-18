@@ -38,9 +38,9 @@
 		</div>
 		<div class="row left">
 			<div>
-				<h5>
+<!-- 				<h5>
 					활동점수 <span>xxx점</span>
-				</h5>
+				</h5> -->
 			</div>
 		</div>
 		<div class="row left">
@@ -55,7 +55,7 @@
 			<a class="nav-link active" id="straycat-tab" data-toggle="pill"	href="#straycat" role="tab" aria-controls="straycat" aria-selected="true">길냥이관리</a> 
 			<a class="nav-link"	id="memberupdate-tab" data-toggle="pill" href="#memberupdate" role="tab" aria-controls="memberupdate" aria-selected="false">회원정보관리</a>
 			<a class="nav-link" id="activity-tab" data-toggle="pill" href="#activity" role="tab" aria-controls="activity" aria-selected="false">활동내역</a> 
-			<a class="nav-link"	id="adoption-tab" data-toggle="pill" href="#adoption" role="tab" aria-controls="adoption" aria-selected="false">입양</a> 
+			<!-- <a class="nav-link"	id="adoption-tab" data-toggle="pill" href="#adoption" role="tab" aria-controls="adoption" aria-selected="false">입양</a> --> 
 			<a class="nav-link" id="notebox-tab" data-toggle="pill"	href="#notebox" role="tab" aria-controls="notebox" aria-selected="false">쪽지함</a>
 		</div>
 	</div>
@@ -81,9 +81,9 @@
 			<!-------------------------------------------------------- ③ MyPage : 활동 내역 ------------------------------------------------------------------------>
 			
 			<!-------------------------------------------------------- ④ MyPage : 입양 ----------------------------------------------------------------------------->
-			<div class="tab-pane fade" id="adoption" role="tabpanel" aria-labelledby="adoption-tab">
+			<%-- <div class="tab-pane fade" id="adoption" role="tabpanel" aria-labelledby="adoption-tab">
 				<c:import url="Mypage_Adopt.jsp"></c:import>
-			</div>
+			</div> --%>
 			<!-------------------------------------------------------- ④ MyPage : 입양 ----------------------------------------------------------------------------->
 			
 			<!-------------------------------------------------------- ⑤ MyPage : 쪽지함 --------------------------------------------------------------------------->

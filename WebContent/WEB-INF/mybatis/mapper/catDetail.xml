@@ -23,6 +23,7 @@ SELECT
     , AT.ACT_TYPE AS ACT_TYPE
     , AR.CONTENT AS CONTENT
     , AR.ACT_DATE AS ACT_DATE
+    , AR.ACT_IMG AS ACT_IMG
 FROM 
     USER_REG UR 
     RIGHT JOIN ACT_REG AR ON UR.USER_CODE = AR.USER_CODE
@@ -38,6 +39,7 @@ WHERE AR.CAT_CODE=#{cat_code} AND AR.ACT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE,'Y
 	    , AT.ACT_TYPE AS ACT_TYPE
 	    , AR.CONTENT AS CONTENT
 	    , AR.ACT_DATE AS ACT_DATE
+	    , AR.ACT_IMG AS ACT_IMG
 	FROM 
 	    USER_REG UR 
 	    RIGHT JOIN ACT_REG AR ON UR.USER_CODE = AR.USER_CODE
@@ -54,10 +56,10 @@ WHERE AR.CAT_CODE=#{cat_code} AND AR.ACT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE,'Y
 
 
 <insert id="addAct" parameterType="map">
-	INSERT INTO ACT_REG(ACT_CODE, CAT_CODE, USER_CODE, ACT_TYPE, CONTENT, POST_DATE, LATITUDE, LONGITUDE, ACT_LOCATION, ACT_DATE)
+	INSERT INTO ACT_REG(ACT_CODE, CAT_CODE, USER_CODE, ACT_TYPE, CONTENT, POST_DATE, LATITUDE, LONGITUDE, ACT_LOCATION, ACT_DATE, ACT_IMG)
 	VALUES('AR' || ACT_REG_SQE.NEXTVAL, #{cat_code, jdbcType=VARCHAR}, #{user_code, jdbcType=VARCHAR}, #{act_type, jdbcType=VARCHAR}
 	,#{content, jdbcType=VARCHAR}, SYSDATE, #{latitude, jdbcType=VARCHAR} ,#{longitude, jdbcType=VARCHAR}, '서울시' || ' ' || #{act_location, jdbcType=VARCHAR} 
-	,TO_DATE(#{act_date, jdbcType=VARCHAR},'YYYY-MM-DD'))
+	,TO_DATE(#{act_date, jdbcType=VARCHAR},'YYYY-MM-DD'),#{CAT_REP_IMG, jdbcType=VARCHAR})
 </insert>
 
 <select id="avgLoc" resultType="map">
@@ -65,6 +67,38 @@ WHERE AR.CAT_CODE=#{cat_code} AND AR.ACT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE,'Y
 	FROM ACT_REG
 	WHERE CAT_CODE = #{cat_code}
 </select>
+
+
+<!-- 팔로우 체크 -->
+<select id="followCheck" resultType="java.lang.Integer">
+	SELECT COUNT(*) AS COUNT
+	FROM FOLLOW
+	WHERE CAT_CODE=#{cat_id} AND USER_CODE=#{user_code}
+</select>
+
+<!-- Count가 0일때 insert 실행 -->
+<insert id="follow">
+	INSERT INTO FOLLOW(FOLLOW_CODE, CAT_CODE, USER_CODE, FOLLOW_DATE) VALUES('FO' || FOLLOW_SEQ.NEXTVAL, #{cat_id}, #{user_code},SYSDATE)
+</insert>
+
+<!-- Count가 1일때 delete 실행 -->
+<delete id="unfollow">
+	DELETE
+	FROM FOLLOW
+	WHERE CAT_CODE=#{cat_id} AND USER_CODE=#{user_code}
+</delete>
+
+
+<select id="actGalList" resultType="map">
+    SELECT GAL_IMG_CODE, CAT_CODE, GAL_DATE, IMG_FILE
+    FROM GAL_REG
+    WHERE CAT_CODE = #{cat_code}
+</select>
+
+<insert id="actGalInsert">
+	INSERT INTO GAL_REG(GAL_IMG_CODE, CAT_CODE, GAL_DATE, IMG_FILE) VALUES('GAIM' || GAL_IMG_SEQ.NEXTVAL, #{cat_id, jdbcType=VARCHAR}, SYSDATE, #{CAT_REP_IMG, jdbcType=VARCHAR});
+</insert>
+
 
 
 </mapper>

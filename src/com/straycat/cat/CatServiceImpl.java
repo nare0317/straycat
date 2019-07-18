@@ -197,7 +197,64 @@ public class CatServiceImpl implements CatService
 		
 		return avgLoc;
 	}
-
 	
+	@Override
+	public int followCheck(Map<String, Object> map)
+	{
+		int result = 0;
+		
+		try
+		{
+			result = dao.selectOne("catDetail.followCheck",map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		return result;
+	}
+	
+	
+	@Override
+	public void follow(Map<String, Object> map)
+	{
+		
+		try
+		{
+			dao.insert("catDetail.follow",map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+	}
+	
+	@Override
+	public void unfollow(Map<String, Object> map)
+	{
+		
+		try
+		{
+			dao.delete("catDetail.unfollow",map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+	}
+	
+	// 활동 갤러리 리스트 뿌려주는 메소드
+	@Override
+	public List<Map<String, Object>> actGalList(String id)
+	{
+		List<Map<String, Object>> result = null;
+		
+		try
+		{
+			result = dao.selectListList(id);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		return result;
+	}
 	
 }

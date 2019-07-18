@@ -68,13 +68,13 @@
 				    <div class="row">
 				      <c:forEach var="adoptList" items="${list }" begin="1" end="3">
 					      <div class="col-lg-4 text-center">
-					      		<img src="img/straycat.jpg" class="catImg">
+					      		<img src="<%=cp %>${adoptList.CAT_IMAGE}" class="catImg">
 					        <h2>${adoptList.CAT_NAME }</h2>
 					        <p>종 : ${adoptList.CAT_TYPE }</p>
 					        <p>성별 : ${adoptList.CAT_SEX }</p>
 					        <p>나이 : ${adoptList.CAT_AGE }</p>
 					        <p>사는곳 : ${adoptList.CAT_ADDRESS }</p><br>
-					        <p><a class="btn btn-secondary" href="<%=cp %>/adopt_read?id=${adoptList.ADT_CODE }" role="button">View details »</a></p>
+					        <p><a class="btn btn-secondary" href="<%=cp %>/adopt_read?adt_code=${adoptList.ADT_CODE }" role="button">View details »</a></p>
 					      </div><!-- /.col-lg-4 -->
 				      </c:forEach>
 				    </div><!-- /.row -->
@@ -86,42 +86,7 @@
 		</div>
 	</div><br>
 	
-	
-	
-		<div class="container2 text-center">
-		<div class="jumbotron">
-			  <h2 class="display-4">실종된 고양이</h2><br><br>
-			  
-			  <div class="container2 marketing">
-				    <div class="row">
-				    
-				      <div class="col-lg-4 text-center">
-				        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-				        <h2>Heading</h2>
-				        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-				        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-				      </div><!-- /.col-lg-4 -->
-				      <div class="col-lg-4 text-center">
-				        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-				        <h2>Heading</h2>
-				        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-				        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-				      </div><!-- /.col-lg-4 -->
-				      <div class="col-lg-4 text-center">
-				        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-				        <h2>Heading</h2>
-				        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-				        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-				      </div><!-- /.col-lg-4 -->
-				    </div><!-- /.row -->
-			  </div>
-			  
-			  <hr class="my-4">
-			  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-			  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-		</div>
-	</div>
-	
+			
 <br />
 <br />
 <br />

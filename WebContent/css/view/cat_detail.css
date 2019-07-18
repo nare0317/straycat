@@ -53,6 +53,7 @@ div {
 .img1
 {
 	width: 400px;
+	height: 400px;
 }
 .img2
 {
@@ -60,8 +61,8 @@ div {
 }
 .map0
 {
-	width: 350px; 
-	height: 350px;
+	width: 400px; 
+	height: 400px;
 }
 .cat_foot
 {
@@ -189,4 +190,67 @@ div {
 .resize
 {
 	resize: none;
+}
+
+.followInfo
+{
+	font-weight:bold;
+	font-size: 16pt;
+	margin-left: 8px;
+	
+}
+
+.imgSize
+{
+	margin: 10px;
+	padding: 10px;
+}
+
+.imgContain
+{
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    margin: 10px;
+    position: relative;
+}
+
+.actImg
+{
+	position: absolute;
+    margin: auto; 
+    min-height: 100%;
+    min-width: 100%;
+
+    /* For the following settings we set 100%, but it can be higher if needed 
+    See the answer's update */
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+}
+
+
+
+.imgMainContain
+{
+    max-width: 350px;
+    height: 350px;
+    overflow: hidden;
+    margin-left: 70px;
+    margin-right: 50px;
+    margin-top: 40px;
+    position: relative;
+}
+
+
+.mt
+{
+	margin-top: 50px;
+	
+}
+
+.mt70
+{
+	margin-top: 50px;
 }

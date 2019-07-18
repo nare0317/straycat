@@ -32,8 +32,13 @@ public interface CatDAO
     
     public int insert(String id, Object value);
     
+    public int delete(String id, Object value);
+    
     // selectOne
     public Map<String, Object> selectOneOne(String id, Object value); 
+    
+	public List<Map<String, Object>> selectListList(String id);
+    
      
 	
 }
