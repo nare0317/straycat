@@ -24,7 +24,7 @@
 				<div class="row delBtn">
 					<div class="col-10"></div>
 					<div class="col-2 text-right">
-						<button type="button" class="btn btn-primary" >목록에서 삭제</button>
+						<!-- <button type="button" class="btn btn-primary" >목록에서 삭제</button> -->
 					</div>
 				</div>
 				<c:forEach var="manageCat" items="${manageCat }">
@@ -57,6 +57,9 @@
 						</div>
 					</div>
 				</c:forEach>
+				
+				
+				
 
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">
@@ -81,7 +84,7 @@
 				<div class="row delBtn">
 					<div class="col-10"></div>
 					<div class="col-2 text-right">
-						<button type="button" class="btn btn-primary" >목록에서 삭제</button>
+						<!-- <button type="button" class="btn btn-primary" >목록에서 삭제</button> -->
 					</div>
 				</div>
 				<!-- 팔로우한 고양이들 정보 리스트 출력 -->

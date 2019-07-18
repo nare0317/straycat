@@ -24,6 +24,7 @@
 		<div class="row">
 			<div class="col-2">받는사람<span class="required">*</span></div>
 			<div class="col-10">
+				<%-- <input type="text" class="form-control" id="receive" name="receive" value="${id2 }"> --%>
 				<input type="text" class="form-control" id="receive" name="receive" value="${id2 }">
 			</div>
 		</div>
@@ -32,7 +33,7 @@
 		<div class="row">
 			<div class="col-2">제목<span class="required">*</span></div>
 			<div class="col-10">
-				<input type="text" class="form-control" id="tile" name="title">
+				<input type="text" class="form-control" id="title" name="title">
 			</div>
 		</div>
 		<br>
