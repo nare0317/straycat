@@ -7,10 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -183,10 +181,62 @@ public class MypageController
 	}
 	
 	@RequestMapping(value = "semessageread", method = RequestMethod.GET)
-	public String readSendMessages(HttpSession session, @RequestParam(name="mes_code") String mes_code)
+	public String readSendMessages(HttpSession session, @RequestParam(name="mes_code") String mes_code, Map<String, Object> map,Model model)
 	{
+		String id = (String)session.getAttribute("user_id");
 		
-		//return "Message_Read(Sended)?mes_code="+mes_code;
+		map.put("id", id);
+		map.put("mes_code", mes_code);
+		service.seMessage(map);
+		
+		model.addAttribute("seMessage",service.seMessage(map));
+		
 		return "Message_Read(Sended)";
+
+	}
+	
+	@RequestMapping(value = "remessageread", method = RequestMethod.GET)
+	public String readReceiveMessages(HttpSession session, @RequestParam(name="mes_code") String mes_code, Map<String, Object> map,Model model)
+	{
+		String id = (String)session.getAttribute("user_id");
+		
+		map.put("id", id);
+		map.put("mes_code", mes_code);
+		service.reMessage(map);
+		service.readCheck(map);
+		
+		model.addAttribute("reMessage",service.reMessage(map));
+		model.addAttribute("readCheck", service.readCheck(map));
+		
+		return "Message_Read(Received)";
+
+	}
+	
+	@RequestMapping(value="responsemessage",method = RequestMethod.GET)
+	public String responseMessage(HttpSession session, HttpServletRequest requset, @RequestParam(name="id2") String id2, Model model)
+	{
+		String id = (String)session.getAttribute("user_id");
+		model.addAttribute("id2", id2);
+		
+		
+		return "Message_Write";
+	}
+	
+	@RequestMapping(value="sedeletemessage", method = RequestMethod.GET)
+	public String sedeleteMessage(@RequestParam(name="mes_code") String mes_code, Map<String, Object> map)
+	{
+		map.put("mes_code", mes_code);
+		service.sedeleteMessage(map);
+		
+		return "redirect:/mypage";
+	}
+	
+	@RequestMapping(value="redeletemessage", method = RequestMethod.GET)
+	public String redeleteMessage(@RequestParam(name="mes_code") String mes_code, Map<String, Object> map)
+	{
+		map.put("mes_code", mes_code);
+		service.redeleteMessage(map);
+		
+		return "redirect:/mypage";
 	}
 }

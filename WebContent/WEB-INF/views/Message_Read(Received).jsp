@@ -12,6 +12,7 @@
 	
 	<!-- 페이지 CSS, 자바스크립트 -->
 	<link rel="stylesheet" href="<%=cp %>/css/view/message_read(received).css">
+	<script type="text/javascript" src="<%=cp%>/js/view/message_read.js"></script>
 </head>
 <body>
 
@@ -23,7 +24,8 @@
 		<div class="row">
 			<div class="col-2">보낸사람</div>
 			<div class="col-10">
-				<input type="text" class="form-control" value="nare0317">
+				<input type="text" class="form-control" value="${reMessage.NICKNAME }" readonly="readonly">
+				<input type="hidden" id="id2" name="id2" value="${reMessage.ID2 }">
 			</div>
 		</div>
 		<br>
@@ -31,7 +33,7 @@
 		<div class="row">
 			<div class="col-2">제목</div>
 			<div class="col-10">
-				<input type="text" class="form-control" value="어쩌구">
+				<input type="text" class="form-control" value="${reMessage.TITLE }" readonly="readonly">
 			</div>
 		</div>
 		<br>
@@ -39,7 +41,7 @@
 		<div class="row">
 			<div class="col-2">쪽지내용</div>
 			<div class="col-10">
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="10" >어쩌구</textarea>
+					<textarea class="form-control" id="exampleFormControlTextarea1" rows="10" readonly="readonly">${reMessage.MES_CONTENT }</textarea>
 			</div>
 		</div>
 		<br>
@@ -47,7 +49,9 @@
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-10">
-					<button type="button" class='btn btn-secondary'>목록으로</button>
+				<button type="button" class="btn btn-primary" onclick="location.href='responsemessage?id2=${reMessage.ID2 }'">답장</button>
+				<button type="button" class="btn btn-dark" onclick="location.href='redeletemessage?mes_code=${reMessage.MES_CODE}'"><span class="x">X</span> 삭제</button>
+				<button type="button" class='btn btn-secondary' onclick="location.href='mypage'">목록으로</button>
 			</div>
 		</div>
 	</div>

@@ -24,17 +24,14 @@
 				<br>
 				<div class="container2">
 					<form action="messagewrite" method="post" id="m">
-						<!-- 삭제 / 답장 버튼 -->
-						<button type="button" class="btn btn-light"><span class="x">X</span> 삭제</button>
-						<button type="button" class="btn btn-dark">답장</button>
-											
+		
 						<br><br>
 						
 						<!-- 게시판 헤더 시작 -->
 						<div class="bbsHeader">
 							<div class="header no">
 								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="allCheck" value="option1" aria-label="...">
+								  번호
 								</div>
 							</div>
 							<div class="header title">제목</div>
@@ -48,17 +45,23 @@
 						<div class="bbsContents">
 							<div class="content no">
 								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check1" value="option1" name="allCheck1">
+								  ${reMessageList.ROWNUM }
 								</div>
 							</div>
 							<div class="content title titleLeft">
 								<div class="contentTitle">
-									<a class="contentLink" href="<%=cp%>/ReceiveNoteDetail.jsp">${reMessageList.TITLE }</a>
+									<a class="contentLink" href="<%=cp%>/remessageread?mes_code=${reMessageList.MES_CODE}">${reMessageList.TITLE }</a>
 								</div>
 							</div>
 							<div class="content writer">${reMessageList.NICKNAME }</div>
 							<div class="content date">${reMessageList.SEND_DATE }</div>
-							<div class="content viewCount">${reMessageList.READ_DATE }</div>
+							
+								
+							<c:choose>
+								<c:when test="${reMessageList.READ_DATE eq (null)}"><div class="content viewCount"><span>읽지 않음</span></div></c:when>
+								<c:otherwise><div class="content viewCount"><span>읽음</span></div></c:otherwise>
+							</c:choose>
+							
 						</div>
 						</c:forEach>
 						
@@ -96,9 +99,6 @@
 				<br>
 				<div class="container2">
 					<form action="messagewrite" method="post" id="form2">	
-						<!-- 삭제 / 답장 버튼 -->
-						<button type="button" class="btn btn-light"><span class="x">X</span> 삭제</button>
-						<button type="button" class="btn btn-dark">답장</button>
 											
 						<br><br>
 						
@@ -106,7 +106,7 @@
 						<div class="bbsHeader">
 							<div class="header no">
 								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="allCheck2" value="option1">
+								  번호
 								</div>
 							</div>
 							<div class="header title">제목</div>
@@ -120,7 +120,7 @@
 						<div class="bbsContents">
 							<div class="content no">
 								<div class="form-check">
-								  <input class="form-check-input position-static" type="checkbox" id="check21" value="option1" name="allCheck2">
+								  ${seMessageList.ROWNUM }
 								</div>
 							</div>
 							<div class="content title titleLeft">
@@ -130,7 +130,10 @@
 							</div>
 							<div class="content writer">${seMessageList.NICKNAME }</div>
 							<div class="content date">${seMessageList.SEND_DATE }</div>
-							<div class="content viewCount">${seMessageList.READ_DATE }</div>
+							<c:choose>
+								<c:when test="${seMessageList.READ_DATE eq (null)}"><div class="content viewCount"><span>읽지 않음</span></div></c:when>
+								<c:otherwise><div class="content viewCount"><span>읽음</span></div></c:otherwise>
+							</c:choose>
 						</div>
 						</c:forEach>
 						
