@@ -22,7 +22,7 @@
 
 <c:import url="Menu.jsp"></c:import>
 
-<div class="container2">
+<div class="container2" style="min-width: 1600px;">
 	<div class="jumbotron">
 		<div class="row">
 			<div class="col-4 text-center">
@@ -173,7 +173,7 @@
 	</div>
 	
 	<!----------------------------------------------  대표집자 3명에게 보여지는 유사한 고양이 그래프  ------------------------------------------------>
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-2">
 			<h3>유사한 고양이</h3>
 		</div>
@@ -190,7 +190,7 @@
 		</div>
 		<div class="col-5">
 			<button type="button" class="btn btn-primary integratioApplication" data-toggle="modal" data-target="#integrationApplication">통합신청</button>
-			<!-- Modal -->
+			Modal
 			<div class="modal fade" id="integrationApplication" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -212,7 +212,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	
 	<!----------------------------------------------  대표집자 3명에게 보여지는 유사한 고양이 그래프  ------------------------------------------------>
 	
@@ -232,7 +232,7 @@
 						<div class="jumbotron select">
 						
 							<form action="actregistration" method="POST" id="activityForm">
-							<input type="text" value="${catInfo.CAT_CODE }" id="cat_id" name="cat_id">
+							<input type="hidden" value="${catInfo.CAT_CODE }" id="cat_id" name="cat_id">
 							<div class="row row2">
 								<div class="custom-control custom-radio custom-control-inline">
 									<input type="radio" id="activity1" name="activityRadio" class="custom-control-input" value="AT1">
@@ -314,165 +314,132 @@
 						<input type="text" id="secondDatepicker" name="secondDatepicker" class="form-control2 text-center" readonly="readonly">
 				</div><br>
 
-				<div class="scroll" id="cat">
-				
-				
-				<c:forEach var="catActRegList" items="${catActReg}">
-				<div class="row">
-						<div class="col-2">
-							<h5>${catActRegList.NICKNAME }</h5>
-							<span>${catActRegList.ACT_DATE }</span>
-							<div>${catActRegList.ACT_LOCATION }</div>
-						</div>
-						<div class="col-10">
-					 		<div class="row">
-							
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								<c:choose>
-									<c:when test="${catActRegList.ACT_TYPE eq '먹이'}"><img src="img/fish.png"></c:when>
-									<c:when test="${catActRegList.ACT_TYPE eq '물'}"><img src="img/water.png"></c:when>
-									<c:when test="${catActRegList.ACT_TYPE eq '간식'}"><img src="img/cacao.png"></c:when>
-									<c:when test="${catActRegList.ACT_TYPE eq '약'}"><img src="img/help.png"></c:when>
-									<c:when test="${catActRegList.ACT_TYPE eq '만남'}"><img src="img/favorite.png"></c:when>
-									<c:otherwise></c:otherwise>
-								</c:choose>
-								 
-							</div><br> 
-							
-							
-							<h4>${catActRegList.CONTENT }</h4>
-						</div>
-					</div>
-
+				<div id="cat">
+					<c:forEach var="catActRegList" items="${catActReg}">
 					<div class="row">
-						<div class="col-2"></div>
-						<div class="col-10">
-							<div class="row">
-
-								<c:forEach var="j" begin="0" end="1">
-									<c:forEach var="i" begin="0" end="1">
-										<div class="col-6">
-											<img src="img/straycat.jpg" class="rounded mx-auto d-block catImg">
-										</div>
-									</c:forEach>
-									<br>
-									<br>
-								</c:forEach>
+					<div class="col-2">
+						<div class="row">
+						<c:if test="${empty catActReg}">
+							<div class="row">등록된 활동이 없습니다.</div>
+						</c:if>
+							<div>
+								<h5>${catActRegList.NICKNAME }</h5>
+								<span>${catActRegList.ACT_DATE }</span>
+								<div>${catActRegList.ACT_LOCATION }</div>
 							</div>
 						</div>
 					</div>
-
-					<div class="row">
-						<div class="col-2"></div>
-						<div class="col-10">
-							<form class="form-inline">
-								<div class="form-group mx-sm-3 mb-2">
-									<input type="text" class="form-control comment"	id="inputPassword2" placeholder="댓글달기"  style="width: 1350px;">
+					<div class="col-10">
+			 		<div class="row">
+					
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<c:choose>
+							<c:when test="${catActRegList.ACT_TYPE eq '먹이'}"><img src="img/fish.png"></c:when>
+							<c:when test="${catActRegList.ACT_TYPE eq '물'}"><img src="img/water.png"></c:when>
+							<c:when test="${catActRegList.ACT_TYPE eq '간식'}"><img src="img/cacao.png"></c:when>
+							<c:when test="${catActRegList.ACT_TYPE eq '약'}"><img src="img/help.png"></c:when>
+							<c:when test="${catActRegList.ACT_TYPE eq '만남'}"><img src="img/favorite.png"></c:when>
+							<c:otherwise></c:otherwise>
+						</c:choose>
+						 
+					</div>
+					</div>
+					</div>
+					
+						<div class="row">
+							<div class="col-2"></div>
+							<div class="col-10">
+								<div class="row">
+									<div class="col-4">
+										<img src="img/straycat.jpg" style="max-width: 300px;" class="rounded">
+									</div>
+									<div class="col-8">
+										<span>${catActRegList.CONTENT }</span>
+									</div>
 								</div>
-								<button type="submit" class="btn btn-primary mb-2">입력</button>
-							</form>
+							</div>
 						</div>
-					</div><br><br><br>
-				</c:forEach>
+	
+						<!-- <div class="row">
+							<div class="col-2"></div>
+							<div class="col-10">
+								<form class="form-inline">
+									<div style="margin-top: 30px;">
+										<input type="text" id="inputPassword2" placeholder="댓글달기"  style="width: 100%;">
+									</div>
+									<button type="submit" class="btn btn-primary mb-2">입력</button>
+								</form>
+							</div>
+						</div> --><br>
+						<hr><br>
+					</c:forEach>
+					<!-- </div> -->
+					<!-- 스크롤 end -->
 				</div>
-				<!-- 스크롤 end -->
-
 			</div>
 			<!-----------------------------------------------------  활동 탭  ----------------------------------------------------------->
 			
 			<!----------------------------------------------------- 갤러리 탭 ----------------------------------------------------------->
-			<div class="tab-pane fade" id="nav-profile" role="tabpanel"	aria-labelledby="nav-profile-tab">
-				<div class="row">
-					<div class="col-2">
-						<h4 class="write">갤러리</h4>
-					</div>						
-					<div class="col-8"></div>
-					<div class="col-2">
-						<h4 class="write">사진추가<img class="img2" src="img/plus-button.png"></h4>
-					</div>
+			<div style="display:none; text-align: center;" class="tab-pane fade" id="nav-profile" role="tabpanel">
+				<div style="text-align: right;">
+					<h4 class="write">사진추가 <img class="img2" src="img/plus-button.png"></h4>
 				</div>
-				<div class="row">
-					<c:forEach var="j" begin="0" end="2">
-						<c:forEach var="i" begin="0" end="2">
-							<div class="col-4">
-								<img src="img/straycat.jpg" class="rounded mx-auto d-block catImg">
-								<div class="row">
-									<div class="col-9"></div>
-									<div class="col-3">
-										<img src="img/like.png"> 999
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-						<br>
-						<br>
-					</c:forEach>
+				<div>
+					<img src="img/straycat.jpg" style="margin-bottom: 15px; max-width: 600px;" class="rounded">
+				</div>
+				<div>
+					<img src="img/like.png"> 999
+				</div>
+			</div><br><br>
 				</div><br><br>
-				<div class="text-center">
+				<!-- <div class="text-center">
 					<button type="button" class="btn btn-primary btn-lg">더보기</button>
-				</div>						
+				</div>					 -->	
 			</div>
 			<!----------------------------------------------------- 갤러리 탭 ----------------------------------------------------------->
-			</div>
 
-	</div>
-
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
 <div>
 	<c:import url="Footer.jsp"></c:import>
 </div>
 
-
 <script type="text/javascript">
-
-
-
-/* 
-	(document).ready(function()
+	$(document).ready(function()
 	{
-		$.ajax({
-			type:'GET',
-			url : "<c:url value='/qtboard_comment_ajax'/>",
-			dataType : "json",
-			data : {"ID" : ${post.QT_ID }},
-			success : function(data)
-			{
-				var html = "";
-				var cCnt = data.length;
-				
-				if(data.length > 0)
-				{
-					for(i=0; i<data.length; i++)
-					{
-						
-					
-
-
-					}
-				}
-				
-				$("#commentList").html(html);
-				
-			}
-		});
-	});
-
- */
+		$("#nav-home-tab").click(function()
+		{
+			$("#nav-profile").css("display", "none");
+			$("#nav-home").css("display", "block");
+		})
+		
+		$("#nav-profile-tab").click(function()
+		{
+			$("#nav-home").css("display", "none");
+			$("#nav-profile").css("display", "block");
+		})
+	})
 </script>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script>
 <script>
 	/* 첫번째 지도 (마커 출력용 지도) */
-	var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div  
+	
+
+	if("${avgLoc.LATITUDE }" == "" && "${avgLoc.LONGITUDE }"== "" )
+	{
+		var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div  
 	    mapOption0 = { 
-	        center: new kakao.maps.LatLng(37.554396, 126.916707), // 지도의 중심좌표
+	        center: new kakao.maps.LatLng(37.566826,126.9786567), // 지도의 중심좌표
 	        level: 3 // 지도의 확대 레벨
 	    };
+	}
+	else
+	{
+		var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div  
+		    mapOption0 = { 
+		        center: new kakao.maps.LatLng("${avgLoc.LATITUDE }","${avgLoc.LONGITUDE }"), // 지도의 중심좌표
+		        level: 3 // 지도의 확대 레벨
+		    };
+	}
 	
 	var map0 = new kakao.maps.Map(mapContainer0, mapOption0); // 지도를 생성합니다
 	 
@@ -505,16 +472,6 @@
 	        image : markerImage // 마커 이미지 
 	    });
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	/* 두 번째 지도 (마커 생성용 지도) */
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -599,21 +556,7 @@
 				}
 			}
 		}
-	} 
-	
-/*     $(document).ready(function()
-    {
-    	$.ajax(
-    	{
-    		url: 'act_registration'
-    		, type: 'get'
-    		, data: {'':,'':,'':,'':}
-    		, success : function(data)
-    		{
-    			
-    		}
-    	});
-    }); */
+	}
 </script>
 </body>
 </html>

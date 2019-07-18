@@ -5,7 +5,7 @@
 
 <!-- 등록 고양이 정보를 가져오는 쿼리문 -->
 <select id="catInfo" resultType="map">
-SELECT CAT_CODE, CAT_NAME, CAT_SPECIES, CAT_SEX, CAT_ADDRESS, CAT_DATE, CAT_IMG, FOLLOW, ETC, HEALTH
+SELECT CAT_CODE, CAT_NAME, CAT_SPECIES, CAT_SEX, CAT_ADDRESS, TO_CHAR(CAT_DATE,'YYYY-MM-DD') AS CAT_DATE, CAT_IMG, FOLLOW, ETC, HEALTH
 FROM CAT_INFO
 WHERE CAT_CODE = #{cat_code}
 </select>
@@ -15,7 +15,6 @@ SELECT LATITUDE AS LATITUDE, LONGITUDE AS LONGITUDE
 FROM ACT_REG
 WHERE CAT_CODE = #{cat_code}
 </select>
-
 
 <select id="actRegStart" resultType="map">
 SELECT 
@@ -60,7 +59,12 @@ WHERE AR.CAT_CODE=#{cat_code} AND AR.ACT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE,'Y
 	,#{content, jdbcType=VARCHAR}, SYSDATE, #{latitude, jdbcType=VARCHAR} ,#{longitude, jdbcType=VARCHAR}, '서울시' || ' ' || #{act_location, jdbcType=VARCHAR} 
 	,TO_DATE(#{act_date, jdbcType=VARCHAR},'YYYY-MM-DD'))
 </insert>
-    
+
+<select id="avgLoc" resultType="map">
+	SELECT AVG(LATITUDE) AS LATITUDE, AVG(LONGITUDE) AS LONGITUDE
+	FROM ACT_REG
+	WHERE CAT_CODE = #{cat_code}
+</select>
 
 
 </mapper>

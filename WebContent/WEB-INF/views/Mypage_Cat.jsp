@@ -27,7 +27,7 @@
 						<button type="button" class="btn btn-primary" >목록에서 삭제</button>
 					</div>
 				</div>
-				<c:forEach var="i" begin="0" end="2">
+				<c:forEach var="manageCat" items="${manageCat }">
 					<div>
 						<div class="card-deck">
 							<div class="card mb-3 catCard">
@@ -38,19 +38,20 @@
 									<div class="col-md-10">
 										<div class="card-body">
 											<div class="col-9">
-												<h5 class="card-title">Card title</h5>
+												<h5 class="card-title">${manageCat.CAT_NAME }</h5>
 											</div>
-											<p class="card-text">
-												This is a wider card with
-												supporting text below as a natural lead-in to
-												additional content. This content is a little bit
-												longer.
-											</p>
+												<ul>
+													<li>${manageCat.CAT_CODE }</li>
+													<li>${manageCat.SPECIES }</li>
+													<li>${manageCat.ADDRESS }</li>
+													<li>${manageCat.STATUS }</li>
+												</ul>
 											<p class="card-text">
 												<small class="text-muted">Last updated 3 mins ago</small>
 											</p>
 										</div>
 									</div>
+									<a href="<%=cp %>/catdetail?id=${manageCat.CAT_CODE}" class="stretched-link"></a>
 								</div>
 							</div>
 						</div>
@@ -84,8 +85,8 @@
 					</div>
 				</div>
 				<!-- 팔로우한 고양이들 정보 리스트 출력 -->
-				<c:forEach var="followList" items="${followList }">
 					<div>
+					<c:forEach var="followList" items="${followList }">
 						<div class="card-deck">
 							<div class="card mb-3 catCard">
 								<div class="row no-gutters">
@@ -103,16 +104,19 @@
 													<li>${followList.SPECIES }</li>
 													<li>${followList.ADDRESS }</li>
 													<li>${followList.STATUS }</li>
+													
 												</ul>
-											
 										</div>
 									</div>
+									<a href="<%=cp %>/catdetail?id=${followList.CAT_CODE}" class="stretched-link"></a>
 								</div>
 							</div>
+							
 						</div>
+						</c:forEach>
 					</div>
-					<a href="<%=cp %>/catdetail?id=${followList.CAT_CODE}" class="stretched-link"></a>
-				</c:forEach>
+					
+	
 
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">

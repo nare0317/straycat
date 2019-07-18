@@ -15,14 +15,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.straycat.service.AdoptService;
+import com.straycat.service.ImageService;
 
 @Controller
 public class AdoptController
 {
 	@Autowired
 	private AdoptService service;
+	
+	@Autowired
+	private ImageService imageService;
 
 	
 	// 입양게시판 리스트 조회 
@@ -97,11 +102,19 @@ public class AdoptController
 	}
 
 	// 입양 게시글 등록
-	@RequestMapping(value = "/adopt_write", method = RequestMethod.GET)
-	public String adoptWrite(@RequestParam Map<String, Object> param)
+	@RequestMapping(value = "/adopt_write", method = RequestMethod.POST)
+	public String adoptWrite(@RequestParam Map<String, Object> param
+			, HttpSession session
+			, MultipartFile file)
 	{
 		try
 		{
+			// 이미지를 저장하고 저장된 이미지 경로를 반환함
+			// 이미지 경로를 자료구조(고양이 등록정보)에 넣음
+			String path = session.getServletContext().getRealPath("/");
+			String imageUrl = imageService.saveImage(file, path);
+			param.put("CAT_REP_IMG", imageUrl);
+			
 			service.addAdopt(param);
 			
 		} catch (Exception e)

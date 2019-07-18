@@ -29,7 +29,10 @@ $(document).ready(function()
 			$("#inputError").css("display", "inline");
 			return;
 		};
-
+		
+		$("#messageForm").submit();
 	});
+	
+	
 	
 });

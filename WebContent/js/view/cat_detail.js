@@ -1,10 +1,5 @@
 $(document).ready(function()
-{
-	//var test =$("#cat_id").val(); 
-	//alert("확인");
-	//alert(test);
-	
-	
+{	
 	$("#firstDatepicker").datepicker(
 	{
 		showOn : "button",
@@ -137,16 +132,23 @@ $(document).ready(function()
 					
 					var cCnt = data.length;
 					
-					
+					str += "<div id='cat'>";
 					for(var i=0; i<cCnt; i++)
 					{
 						
 						str += "				<div class='row'>";
 						str += "						<div class='col-2'>";
+						str += "						<div class='row'>";
+						if(data == null)
+						{
+							str += "						<div class='row'>등록된 활동이 없습니다.</div>";
+						}
 						str += "							<h5>" + data[i].NICKNAME + "</h5>";
 						str += "							<span>" + data[i].ACT_DATE + "</span>";
 						str += "							<div>" + data[i].ACT_LOCATION + "</div>";
 						str += "						</div>";
+						str += "					</div>";
+						str += "				</div>";
 						str += "						<div class='col-10'>";
 						str += "					 		<div class='row'>";
 						str += "								&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -171,40 +173,28 @@ $(document).ready(function()
 						{
 						str += "<img src='img/fish.png'>";	
 						}
-						str += "							</div><br> ";
-						str += "							<h4>" + data[i].CONTENT + "</h4>";
-						str += "						</div>";
-						str += "					</div>";
+						str += "							</div>";
+						str += "							</div>";
+						str += "							</div>";
+						str += "							</div>";
 						str += "					<div class='row'>";
 						str += "						<div class='col-2'></div>";
 						str += "						<div class='col-10'>";
 						str += "							<div class='row'>";
 						
-						for(var j=0; j<1; j++)
-						{
-							for(var k=0; k<1; k++)
-							{
-								str += "										<div class='col-6'>";
-								str += "											<img src='img/straycat.jpg' class='rounded mx-auto d-block catImg'>";
+								str += "										<div class='col-4'>";
+								str += "											<img src='img/straycat.jpg' style='max-width: 300px;' class='rounded'>";
 								str += "										</div>";
-							}
-							str += "									<br>";
-							str += "									<br>";
-						}
-						str += "							</div>";
+						str += "					<div class='col-8'>";
+						str += "						<span>" + data[i].CONTENT + "</span>";
 						str += "						</div>";
-						str += "					</div>";
-						str += "					<div class='row'>";
-						str += "						<div class='col-2'></div>";
-						str += "						<div class='col-10'>";
-						str += "							<form class='form-inline'>";
-						str += "								<div class='form-group mx-sm-3 mb-2'>";
-						str += "									<input type='text' class='form-control comment'	id='inputPassword2' placeholder='댓글달기' style='width: 1350px;'>";
-						str += "								</div>";
-						str += "								<button type='submit' class='btn btn-primary mb-2'>입력</button>";
-						str += "							</form>";
 						str += "						</div>";
-						str += "					</div><br><br><br>";
+						str += "						</div>";
+						str += "						</div>";
+						str += "						<br>";
+						str += "						<hr><br>";
+						str += "						</div>";
+						str += "						</div>";
 					}
 					
 					
