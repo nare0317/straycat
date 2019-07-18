@@ -43,7 +43,7 @@
 		
 	<!-- ★★★★★헤더 + breadcrumbs★★★★★ -->
 
-	<section class="header container-fluid ">
+	<section class="header container">
 		<div class="header-title">
 			<h2 class="h2">길냥이 관리</h2>
 		</div>
@@ -61,7 +61,7 @@
 	</section>
 	
 	<!-- ★★★★ 섹션 1 ★★★★★ -->
-	<section class="section-1 continer-fluid">
+	<section class="section-1 container">
 		
 		<!-------------------   10  ------------------------->
 		<div class="form-group col-lg-10 search">
@@ -94,7 +94,7 @@
 				</div>
 				
 						
-				<div class="col-lg-3 offset-lg-1 text-right write">
+				<div class="col-lg-2 offset-lg-1 text-right write">
 					<c:choose>
 	               	<c:when test="${sessionScope.user_id != null }">
 						<input type="button" class="btn btn-primary btn-lg" value="길냥이등록" id="cat_write" onclick="javascript: write_func();">

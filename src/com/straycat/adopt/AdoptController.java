@@ -311,6 +311,7 @@ public class AdoptController
 		Map<String, Object> user = null;
 		String adt_code = ""; 
 		List<Map<String, Object>> list = null; 
+		Map<String, Object> post = null;
 		
 		try
 		{
@@ -329,6 +330,11 @@ public class AdoptController
 			//입양신청한 후보자 리스트 값 넘기기
 			list = service.listApply(adt_code);
 			model.addAttribute("list", list);
+			
+			// 입양 모집글 정보 받아서 넘김
+			post = service.readAdopt(adt_code);
+			model.addAttribute("post", post);
+			
 			
 		} catch (Exception e)
 		{

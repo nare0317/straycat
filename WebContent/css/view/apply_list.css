@@ -8,9 +8,16 @@ div
 th
 {
 	padding: 0 4px 0 0;
-	background-color: #F6F6F6;
-	width: 10px;
+	background-color: #f1f2f6;
+	width: 5px;
 }
+
+.custom-control-label
+{
+	size: 8px;
+	align-content: center;
+}
+
 td
 {
 	position: relative;
@@ -31,6 +38,13 @@ td
 	color: black;
 }
 
+#endDate
+{
+	color: blue;
+	font-weight: bold;
+	
+}
+
 span
 {
 	margin-left: 10px;
@@ -45,7 +59,7 @@ p
 li 
 {
 	border: none;
-	border-top: 0 none; 
+	border-top: 0 none;
 }
 
 .table td
@@ -81,16 +95,16 @@ li
 	position:relative;
 	text-align: right; 
 }
-.modal-header
+.finalChoice>.modal-header
 {
 	text-align: center;
 }
-.modal-title
+.finalChoice>.modal-title
 {
 	text-align: center;
 	margin-left: 10%;
 }
-.modal-body
+.finalChoice>.modal-body
 {
 	width: 500px;
 	height: 500px
@@ -178,3 +192,12 @@ li
 {
 	color: red;
 }
+
+h3 > .selectedUser
+{
+	font-size: 25pt; 
+	font-weight: bold;
+	color: blue;
+}
+
+
