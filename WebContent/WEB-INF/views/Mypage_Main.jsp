@@ -38,9 +38,9 @@
 		</div>
 		<div class="row left">
 			<div>
-				<h5>
+<!-- 				<h5>
 					활동점수 <span>xxx점</span>
-				</h5>
+				</h5> -->
 			</div>
 		</div>
 		<div class="row left">
