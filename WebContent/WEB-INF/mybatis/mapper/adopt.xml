@@ -46,47 +46,6 @@
 </select>
 
 <!-- 입양게시판 지역 검색 후 리스트 출력 쿼리문 (list) -->
-<!-- <select id="searchList" parameterType="map" resultType="map">
-	SELECT A.ADT_CODE AS ADT_CODE
-         , A.CAT_NAME AS CAT_NAME
-	     , U.NICKNAME AS USER_NICKNAME
-	     , A.RSQ_DATE AS RSQ_DATE
-	     , CT.SPECIES AS CAT_TYPE
-	     , CS.SEX AS CAT_SEX
-	     , A.CAT_AGE AS CAT_AGE
-	     , AD.SI || ' ' || AD.GU || ' ' || AD.DONG AS CAT_ADDRESS
-	     , CA.CAT_AGE_TYPE AS CAT_AGE_TYPE
-	     , AP.ADT_PROC AS ADT_PROC
-	     , AT.ADT_TYPE AS ADT_TYPE
-	     , A.HIT_COUNT AS HITCOUNT
-	     , A.POST_DATE AS POST_DATE
-	     , A.CAT_REP_IMG AS CAT_IMAGE
-	     , A.CAT_ECT1 AS CAT_ECT1
-	     , A.CAT_ECT2 AS CAT_ECT2
-	     , U.ID AS USER_ID
-	     , U.USER_NAME AS USER_NAME
-	     , U.TEL AS USER_TEL
-	     , U.EMAIL AS USER_EMAIL
-         , A.HIT_COUNT AS HIT_COUNT
-	FROM ADT_REG A 
-	LEFT JOIN USER_REG U
-	ON A.USER_CODE = U.USER_CODE
-	LEFT JOIN CAT_TYPE CT
-	ON A.CAT_SPECIES = CT.SPECIES_CODE
-	LEFT JOIN CAT_SEX CS
-	ON A.CAT_SEX = CS.SEX_CODE
-	LEFT JOIN ADDRESS AD
-	ON A.CAT_ADDRESS = AD.ADDRESS_CODE
-	LEFT JOIN ADT_CAT_AGE CA
-	ON A.CAT_AGE_CODE = CA.CAT_AGE_CODE
-	LEFT JOIN ADT_PROCESS AP
-	ON A.ADT_PROC_CODE = AP.ADT_PROC_CODE
-	LEFT JOIN ADT_TYPE AT
-	ON A.ADT_TYPE = AT.ADT_TYPE_CODE
-    WHERE AD.GU = #{searchGu} AND AD.DONG = #{searchDong}
-	ORDER BY A.POST_DATE
-</select> -->
-
 <select id="searchList" parameterType="map" resultType="map">
 	SELECT A.ADT_CODE AS ADT_CODE
          , A.CAT_NAME AS CAT_NAME
@@ -126,6 +85,13 @@
 	ON A.ADT_TYPE = AT.ADT_TYPE_CODE
     WHERE AD.GU = #{searchGu} AND AD.DONG = #{searchDong}
 	ORDER BY A.POST_DATE
+</select>
+
+<select id="searchList2" parameterType="map" resultType="map">
+	SELECT *
+	FROM ADT_REG_VIEW
+    WHERE ${searchKey} = #{searchValue, jdbcType=VARCHAR}
+	ORDER BY POST_DATE
 </select>
 
  

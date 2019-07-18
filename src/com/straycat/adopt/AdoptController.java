@@ -29,7 +29,7 @@ public class AdoptController
 	@Autowired
 	private ImageService imageService;
 
-	/*
+	
 	// 입양게시판 리스트 조회 
 	@RequestMapping(value = "/adopt", method = RequestMethod.GET)
 	public String selectList(Model model
@@ -70,37 +70,39 @@ public class AdoptController
 		
 		return "Adopt_List";
 	}
-	*/
+	
 	
 	// 입양게시판 리스트 조회
-	@RequestMapping(value = "/adopt", method = RequestMethod.GET)
-	public String selectList(Model model, @RequestParam(name = "searchGu", defaultValue = "") String searchGu,
-			@RequestParam(name = "searchDong", defaultValue = "") String searchDong, HttpServletRequest request)
+	@RequestMapping(value = "/adopt_search", method = RequestMethod.GET)
+	public String searchList(Model model, @RequestParam(name = "searchKey", defaultValue = "") String searchKey,
+			@RequestParam(name = "searchValue", defaultValue = "") String searchValue, HttpServletRequest request)
 	{
 		List<Map<String, Object>> list = null;
 		int dataCount = 0;
 
 		try
 		{
-			if (searchDong.equals("")) // -- searchDong에 들어온 값이 없다면
+			/*if (searchValue.equals("")) // -- searchValue에 들어온 값이 없다면
 			{
 				// -- 게시글 리스트 전체 목록을 불러옴
 				list = service.listAdopt();
 			} else
-			{
-				// 선택된 구와 동을 기반으로 게시글 목록을 불러옴
-				list = service.listAdopt(searchGu, searchDong);
+			{*/
+				
+				
+				// 선택된 키워드 기반으로 게시글 목록을 불러옴
+				list = service.searchAdopt(searchKey, searchValue);
 
-				// 선택된 구와 동으로 검색된 데이터가 몇 개인지 계산
-				dataCount = service.dataCount(searchGu, searchDong);
-			}
+				// 선택된 키워드로 검색된 데이터가 몇 개인지 계산
+				//dataCount = service.dataCount(searchKey, searchValue);
+			/* } */
 
 			// 셀렉트박스안의 구 리스트를 불러옴
 			List<Map<String, Object>> gu = service.listGu();
 
 			model.addAttribute("list", list);
 			model.addAttribute("gu", gu);
-			model.addAttribute("dataCount", dataCount);
+			//model.addAttribute("dataCount", dataCount);
 
 		} catch (Exception e)
 		{

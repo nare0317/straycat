@@ -55,6 +55,30 @@ public class AdoptServiceImpl implements AdoptService
 	}
 	
 	
+	// 키워드 검색 후 리스트 출력하는 메소드 
+	@Override
+	public List<Map<String, Object>> searchAdopt(String searchKey, String searchValue)
+	{
+		List<Map<String,Object>> list = null;
+		
+		try
+		{
+			System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★★");
+			System.out.println(searchKey);
+			System.out.println(searchValue);
+			System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★★");
+			
+			list = dao.searchAdopt(searchKey, searchValue);
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+	
 	// 구 셀렉트박스 리스트 조회 
 	@Override
 	public List<Map<String, Object>> listGu() 

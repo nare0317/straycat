@@ -28,6 +28,15 @@
 			//alert("성공");
 			$(location).attr("href", "<%=cp%>/adopt?searchGu=" + $("#gu").val() + "&searchDong=" + $("#dong").val());
 		});
+		
+		// 키워드 검색 
+	    $(".tag-buttons a").each(function()
+		{
+	    	//alert($(this).find('input').val());
+	    	//alert($(this).not('input').text());
+	    	//alert(typeof $(this).not('input').text());
+			$(this).attr("href", "<%=cp%>/adopt_search?searchKey=" + $(this).find('input').val() + "&searchValue=" + $(this).not('input').text());
+		});
 	});
 
 </script>
@@ -118,12 +127,19 @@
 			<!-- row4 -->
 			<div class="row tag-buttons">	
 				<h6 class="mx-auto">
-					<a href="#" class="btn btn-outline-primary btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">긴급입양</a>
-					<a href="#" class="btn btn-outline-danger btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">분실의심</a>
-					<a href="#" class="btn btn-outline-warning btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">수컷</a>
-					<a href="#" class="btn btn-outline-info btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">암컷</a>
-					<a href="#" class="btn btn-outline-light btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">아기묘</a>
-					<a href="#" class="btn btn-outline-success btn-sm active" role="button" aria-pressed="false" style="margin-right:20px;">성묘</a>
+					
+					<a href="#" class="btn btn-outline-primary btn-sm active" role="button" 
+					aria-pressed="false" style="margin-right:20px;">긴급입양<input type="hidden" value="ADT_TYPE"></a>
+					<a href="#" ="ADT_TYPE" class="btn btn-outline-danger btn-sm active" role="button" 
+					aria-pressed="false" style="margin-right:20px;">분실의심<input type="hidden" value="ADT_TYPE"></a>
+					<a href="#" class="btn btn-outline-warning btn-sm active" role="button" 
+					aria-pressed="false" style="margin-right:20px;">수컷<input type="hidden" value="CAT_SEX"></a>
+					<a href="#" class="btn btn-outline-info btn-sm active" role="button" 
+					aria-pressed="false" style="margin-right:20px;">암컷<input type="hidden" value="CAT_SEX"></a>
+					<a href="#" class="btn btn-outline-light btn-sm active" role="button" 
+					aria-pressed="false" style="margin-right:20px;">아기묘<input type="hidden" value="CAT_AGE_TYPE"></a>
+					<a href="#" class="btn btn-outline-success btn-sm active" role="button" 
+					aria-pressed="false" style="margin-right:20px;">성묘<input type="hidden" value="CAT_AGE_TYPE"></a>
 				</h6>
 			</div>	
 
