@@ -333,5 +333,22 @@ public class CatController
 		 return result;
 	 }
 	 
+	 // 신고 INSERT
+	 
+	 @RequestMapping("/declaration")
+	 public String declaration(HttpServletRequest request)
+	 {
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("declarationSelect",request.getParameter("declarationSelect"));
+		 map.put("declarationContent",request.getParameter("declarationContent"));
+		 
+		 System.out.println("★★★★★★★★★★★★★★"+request.getParameter("declarationSelect"));
+		 System.out.println("★★★★★★★★★★★★★★"+request.getParameter("declarationContent"));
+		 
+		 service.declarationInsert(map);
+		 
+		 return "redirect:/catdetail?id=" + request.getParameter("cat_id");
+	 }
+	 
 }
 

@@ -113,9 +113,9 @@
 			</div>
 			
 			<hr>
-			
+			<c:if test="${dataCount ne 0}">
 				<h5 class="col-lg-8">검색된 고양이<span> ${dataCount } </span>마리</h5>
-		
+			</c:if>
 			
 		</div>
 		
@@ -160,7 +160,7 @@
 			</c:forEach>
 			
 		</div>
-
+<%-- 
 		<!-- 우측 사이드바 (입양신청)-->
 			<c:choose>
 		        <c:when test="${sessionScope.user_id != null }">
@@ -224,7 +224,7 @@
 					
 					</div>					
 				</c:otherwise>
-			</c:choose>
+			</c:choose> --%>
 		
 		
 		

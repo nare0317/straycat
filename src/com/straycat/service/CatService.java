@@ -42,4 +42,6 @@ public interface CatService
 	
 	// 활동의 갤러리 보여주기
 	public List<Map<String, Object>> actGalList(String id);
+	
+	public void declarationInsert(Map<String, Object> map);
 }

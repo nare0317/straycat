@@ -111,12 +111,13 @@ $(document).ready(function()
 			$(".err1").css("display", "block");
 			return;
 		}
-		if ( $("#catPicture").val() == "" || $("#catPicture").val() == null )
+		if ( $("#uploadPicture").val() == "" || $("#uploadPicture").val() == null )
 		{
 			$(".err1").css("display", "block");
 			return;
 		}
-			$("#activityForm").submit();
+		
+		$("#activityForm").submit();
 	});
 	
 	//alert($("#cat_id").val());
