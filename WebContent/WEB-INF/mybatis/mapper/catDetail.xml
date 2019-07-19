@@ -100,5 +100,9 @@ WHERE AR.CAT_CODE=#{cat_code} AND AR.ACT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE,'Y
 </insert>
 
 
+<insert id="declarationInsert">
+insert into report_list(report_code, report_type_code, report_content, user_code, report_date, board_code, post_code) values('REP' || REPORT_LIST_SEQ.nextval, #{declarationSelect}, #{declarationContent},'US1',SYSDATE,'BD1','CAT1')
+</insert>
+
 
 </mapper>

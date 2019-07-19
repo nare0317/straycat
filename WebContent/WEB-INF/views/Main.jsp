@@ -66,7 +66,7 @@
 			  
 			  <div class="container2 marketing">
 				    <div class="row">
-				      <c:forEach var="adoptList" items="${list }" begin="1" end="3">
+				      <c:forEach var="adoptList" items="${list }" begin="0" end="2">
 					      <div class="col-lg-4 text-center">
 					      		<img src="<%=cp %>${adoptList.CAT_IMAGE}" class="catImg">
 					        <h2>${adoptList.CAT_NAME }</h2>

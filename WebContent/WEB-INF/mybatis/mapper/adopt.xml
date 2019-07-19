@@ -42,7 +42,7 @@
 	ON A.ADT_PROC_CODE = AP.ADT_PROC_CODE
 	LEFT JOIN ADT_TYPE AT
 	ON A.ADT_TYPE = AT.ADT_TYPE_CODE
-    ORDER BY A.POST_DATE
+    ORDER BY A.POST_DATE DESC
 </select>
 
 <!-- 입양게시판 지역 검색 후 리스트 출력 쿼리문 (list) -->

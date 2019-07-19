@@ -257,4 +257,18 @@ public class CatServiceImpl implements CatService
 		return result;
 	}
 	
+	
+	@Override
+	public void declarationInsert(Map<String, Object> map)
+	{
+	
+		try
+		{
+			dao.insert("catDetail.declarationInsert",map);
+		} catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+	}
+	
 }

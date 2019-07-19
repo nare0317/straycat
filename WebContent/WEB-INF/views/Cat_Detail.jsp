@@ -146,7 +146,7 @@
 		<div class="col-6">
 			<button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter"><img src="img/notification.png" class="img2"></button>신고하기
 				<!-- Modal -->
-				<form action="catdetail" method="post" id="modalForm">
+				<form action="declaration" method="post" id="modalForm">
 					<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered" role="document">
 							<div class="modal-content">
@@ -159,20 +159,20 @@
 								<div class="modal-body">
 									<div class="container">
 										<p>Post Number</p>
-										<input type="text" value="#19283" class="form-control" readonly="readonly"> 
+										<input type="text" value="${catInfo.CAT_CODE }" class="form-control" readonly="readonly" name="cat_id"> 
 									</div><br>
 									<div class="container">
 										<p>Description</p>
-										<select class="form-control" id="declarationSelect">
+										<select class="form-control" id="declarationSelect" name="declarationSelect">
 											<option selected="selected">신고분류 선택</option>
-											<option>부적절한 정보(욕설, 협박 등)</option>
-											<option>고양이 사망</option>
-											<option>잘못된 정보가 통합됨</option>
+											<option value="RP1">부적절한 정보(욕설, 협박 등)</option>
+											<option value="RP2">고양이 사망</option>
+											<option value="RP3">잘못된 정보가 통합됨</option>
 										</select>
 									</div><br>
 									<div class="container">
 										<p>Input</p>
-										<textarea class="form-control resize" id="declarationContent" rows="3"></textarea>
+										<textarea class="form-control resize" id="declarationContent" rows="3" name="declarationContent"></textarea>
 										<div class="row text-right">
 											<div class="col-8"></div>
 												<div class="col-4">
@@ -509,14 +509,14 @@
 					{
 						// insert 구문 실행
 						location.href = "<%=cp%>/follow?cat_id=" + cat_id;
-						alert("팔로우 실행");
+						//alert("팔로우 실행");
 						//console.log("insert");
 					}
 					else
 					{
 						// delete 구문 실행
 						location.href = "<%=cp%>/unfollow?cat_id=" + cat_id;
-						alert("팔로우 취소");
+						//alert("팔로우 취소");
 						//console.log("delete");
 					}
 				}
