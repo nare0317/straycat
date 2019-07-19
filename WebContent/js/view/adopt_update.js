@@ -40,11 +40,13 @@
 //★★★★ 게시글 등록 시 선택값으로 세팅 ★★★★
 $(document).ready(function()
 {	
-	//alert($("#cat_type_selected").val());
+	
 	
 	// 고양이종류 (코숏/품종) 선택값 세팅
 	$("#cat_type option").each(function()
 	{
+		//console.log($(this).val() +"==" + $("#cat_type_selected").val());
+		
 		if($(this).val()== $("#cat_type_selected").val())
 	    {
 	      $(this).attr("selected","selected");  
@@ -82,6 +84,8 @@ $(document).ready(function()
 	// 1 - 등록 시 선택한 고양이종류값을 가져와 image-radio-checked 클래스를 추가(테두리효과)
 	var cat_species_selected = $("#cat_species_selected").val()
 	$("label[for='"+cat_species_selected+"']").addClass('image-radio-checked');
+	
+	//console.log("cat_species_selected : " + cat_species_selected);
 	
 	
 	// 2 - 다른 고양이 종류를 클릭했을 때, 

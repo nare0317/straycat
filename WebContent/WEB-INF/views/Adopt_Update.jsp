@@ -17,14 +17,45 @@
 <link rel="stylesheet" href="<%=cp%>/css/view/miss_write.css">
 
 <!-- JS 파일 -->
-<script src="<%=cp%>/js/view/miss_write.js"></script>
+<%-- <script src="<%=cp%>/js/view/miss_write.js"></script> --%>
 <script src="<%=cp %>/js/view/adopt_update.js"></script>
 <script src="<%=cp %>/js/view/adopt_write.js"></script>
-
 
 <!-- jQuery DatePicker UI -->
 <link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
 <script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function()
+{	
+	
+	// 업로드 input 엘리먼트의 상태가 바뀌면,
+	$("#uploadPicture").on("change",function(){readURL(this);});
+	
+	function readURL(input) { 
+		if (input.files && input.files[0]) 
+		{ 
+			var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성 
+            
+			// 파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+			reader.onload = function (e) { 
+				// 이미지 Tag의 SRC속성에 읽어들인 File내용(아래 코드에서 읽어들인 dataURL형식)을 지정 
+				$('#catPicture').attr('src', e.target.result); 
+            }                    
+			reader.readAsDataURL(input.files[0]);
+			//File내용을 읽어 dataURL형식의 문자열로 저장 
+      	}// end if
+    }
+	
+	
+	$("#submit-btn").click(function()
+	{
+		$("#updateForm").submit();
+	});
+	
+});
+</script>
+
 
 </head>
 <body>
@@ -62,7 +93,7 @@
    <section class="content container">
       
       <form action="<%=cp %>/adopt_update" method="post" 
-      id="updateForm" class="needs-validation" novalidate>
+      id="updateForm" class="needs-validation" enctype="multipart/form-data" novalidate>
       
       
          <!-- ★★★★ 고양이 정보 입력 ★★★★  -->
@@ -137,14 +168,15 @@
                   <label for="cat-species" class="col-sm-2 col-form-label">종류</label>
                   <div class="col-sm-4">
                    <!-- 고양이종류 선택값 hidden 엘리먼트 -->
-                   <c:choose>
+                   <%-- <c:choose>
                   	 <c:when test="${post.CAT_TYPE eq 'SP1'||'SP2'||'SP3'||'SP4'||'SP5'||'SP6'||'SP7'||'SP8' }">
                   		 <input type="hidden" id="cat_type_selected" name="cat_type_selected" value="1">
                   	 </c:when>
                   	 <c:otherwise>
                   	 	 <input type="hidden" id="cat_type_selected" name="cat_type_selected" value="2">
                   	 </c:otherwise>
-                   </c:choose>
+                   </c:choose> --%>
+                    <input type="hidden" id="cat_type_selected" name="cat_type_selected" value="1">
                   
                      <select class="custom-select" id="cat_type" name="cat_type" required>
                         <option value="" >고양이 종류 선택</option>
@@ -165,7 +197,7 @@
                      <!-- 코숏고등어 -->
 							<div
 								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-								<label class="image-radio"> <img class="img-responsive"
+								<label class="image-radio" for="SP2"> <img class="img-responsive"
 									src="img/코숏고등어_resize.png" /> <input type="radio" id="SP2"
 									name="cat_species" value="SP2" class="custom-control-input"
 									required>
@@ -174,7 +206,7 @@
 							<!-- 코숏치즈 -->
 							<div
 								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-								<label class="image-radio"> <img class="img-responsive"
+								<label class="image-radio" for="SP1"> <img class="img-responsive"
 									src="img/코숏치즈_resize.png" /> <input type="radio" id="SP1"
 									name="cat_species" value="SP1" class="custom-control-input"
 									required>
@@ -183,7 +215,7 @@
 							<!-- 코숏카오스-->
 							<div
 								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-								<label class="image-radio"> <img class="img-responsive"
+								<label class="image-radio" for="SP3"> <img class="img-responsive"
 									src="img/코숏카오스_resize.png" /> <input type="radio" id="SP3"
 									name="cat_species" value="SP3" class="custom-control-input"
 									required>
@@ -194,7 +226,7 @@
 							<!-- 코숏삼색이 -->
 							<div
 								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-								<label class="image-radio"> <img class="img-responsive"
+								<label class="image-radio" for="SP4"> <img class="img-responsive"
 									src="img/코숏삼색이_resize.png" /> <input type="radio" id="SP4"
 									name="cat_species" value="SP4" class="custom-control-input"
 									required>
@@ -203,7 +235,7 @@
 							<!-- 코숏턱시도-->
 							<div
 								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-								<label class="image-radio"> <img class="img-responsive"
+								<label class="image-radio" for="SP5"> <img class="img-responsive"
 									src="img/코숏턱시도_resize.png" /> <input type="radio" id="SP5"
 									name="cat_species" value="SP5" class="custom-control-input"
 									required>
@@ -212,7 +244,7 @@
 							<!-- 코숏올블랙 -->
 							<div
 								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-								<label class="image-radio"> <img class="img-responsive"
+								<label class="image-radio" for="SP6"> <img class="img-responsive"
 									src="img/코숏올블랙_resize.png" /> <input type="radio" id="SP6"
 									name="cat_species" value="SP6" class="custom-control-input"
 									required>
@@ -224,7 +256,7 @@
 						<!-- 코숏젖소-->
 						<div
 							class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-							<label class="image-radio"> <img class="img-responsive"
+							<label class="image-radio" for="SP7"> <img class="img-responsive"
 								src="img/코숏젖소_resize.png" /> <input type="radio" id="SP7"
 								name="cat_species" value="SP7" class="custom-control-input"
 								required>
@@ -233,7 +265,7 @@
 						<!-- 코숏올화이트 -->
 						<div
 							class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-							<label class="image-radio"> <img class="img-responsive"
+							<label class="image-radio" for="SP8"> <img class="img-responsive"
 								src="img/코숏올화이트_resize.JPG" /> <input type="radio" id="SP8"
 								name="cat_species" value="SP8" class="custom-control-input"
 								required>
@@ -242,7 +274,7 @@
 						<!-- 기타 -->
 						<div
 							class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-							<label class="image-radio"> <img class="img-responsive"
+							<label class="image-radio" for="SP17"> <img class="img-responsive"
 								src="img/cat_icon2.png" /> <input type="radio" id="SP17"
 								name="cat_species" value="SP17" class="custom-control-input"
 								required>
