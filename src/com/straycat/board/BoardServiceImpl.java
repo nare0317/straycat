@@ -226,8 +226,6 @@ public class BoardServiceImpl implements BoardService
 		return result;
 	}
 	
-	
-
 	// 댓글을 업데이트 하는 메소드
 	@Override
 	public int commentUpdate(Map<String, String> map)
@@ -304,6 +302,18 @@ public class BoardServiceImpl implements BoardService
 		try
 		{
 			result = dao.selectOne("board.articleUpdateValue", id);
+			
+			Clob clob = (Clob)result.get("CONTENTS");
+			
+			Reader contentReader = clob.getCharacterStream();
+			
+			char[] charArray = new char[(int)clob.length()];
+			
+			contentReader.read(charArray);
+			
+			String contents = new String(charArray);
+			
+			result.put("CONTENTS", contents);
 		} catch (Exception e)
 		{
 			System.out.println(e.toString());

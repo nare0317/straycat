@@ -55,6 +55,8 @@
 			<mvc:mapping path="/commentdelete"/>
 			<mvc:mapping path="/commentwrite"/>
 			<mvc:mapping path="/boardinsert"/>
+			<mvc:mapping path="/board/articleupdateform"/>
+			<mvc:mapping path="/board/articleupdate"/>
 			<mvc:mapping path="/adopt_form"/>
 			<mvc:mapping path="/adopt_read"/>
 			<mvc:mapping path="/adopt_write"/>

@@ -35,17 +35,21 @@
 			<div class="col-2">구분<span class="required">*</span></div>
 			<div class="col-10">
 				<select class="form-control category" id="categorySelect" name="categorySelect">
-					<option selected="selected">구분 선택</option>
+					<option>구분 선택</option>
 					<c:forEach var="category" items="${bbsWriteCat }">
 						<%-- <c:choose>
 							<c:when test="${articleUpdateValue.TYPE_CODE eq ${category.BBS_TYPE_CODE }"></c:when>
 						
 						</c:choose> --%>
+						<c:if test="${category.BBS_TYPE_CODE == articleUpdateValue.TYPE_CODE }">
+						<option value="${category.BBS_TYPE_CODE }" selected>${category.BBS_TYPE }</option>
+						</c:if>
+						<c:if test="${category.BBS_TYPE_CODE != articleUpdateValue.TYPE_CODE }">
 						<option value="${category.BBS_TYPE_CODE }">${category.BBS_TYPE }</option>
+						</c:if>
 						
 						
-						
-				</c:forEach>
+					</c:forEach>
 				</select>
 				
 				${articleUpdateValue.BBS_TYPE}
