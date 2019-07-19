@@ -132,7 +132,7 @@
 		
 		<!-- 목록으로 돌아가기 버튼 -->
 		<button type="button" class="btn btn-dark pull-right" onclick="location.href='<%=cp %>/board'">목록으로</button>
-
+		<br><br><br>
 		<!-- ★★★★★ 댓글 ★★★★★★ -->
 		<div class="comment-area">
 		
