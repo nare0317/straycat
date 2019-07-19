@@ -161,10 +161,10 @@
 					<div class="col-md-5 cat-photo cat-photo-wrap">
 						<div class="cp-image " >
 						<c:if test="${list.CAT_IMAGE != null }">
-							<img src="<%=cp %>${list.CAT_IMAGE }" class="card-img img_resize" alt="" style="width: 300px; height:300px ">						
+							<img src="<%=cp %>${list.CAT_IMAGE }" class="card-img img_resize" alt="" style="width: 200px; height:200px ">						
 						</c:if>
 						<c:if test="${list.CAT_IMAGE == null }">
-							<img src="<%=cp %>/img/defaultCat.png" class="card-img img_resize" alt="" style="width: 300px; height:300px ">
+							<img src="<%=cp %>/img/defaultCat.png" class="card-img img_resize" alt="" style="width: 200px; height:200px ">
 						</c:if>
 							<!-- <img src="img/straycat.jpg" class="card-img" alt=""> -->
 						</div>

@@ -50,7 +50,6 @@ $(document).ready(function()
 		// 상태값변경 (링크이동)
 		var adt_code = $("#adt_code").val();
 		var adt_proc = 'ADP5';
-		alert(adt_code + "/" + adt_proc);
 		
 		//$(location).attr("href","/adopt_proc?adt_proc='"+adt_proc+"'&adt_code='"+adt_code+"'");		
 		//$(location).attr("href","<%=cp%>/adopt_proc?adt_proc=ADP5" + "&adt_code=" + $("#adt_code").val())
@@ -108,6 +107,7 @@ $(document).ready(function()
 */
 	
 });
+
 
 
 
