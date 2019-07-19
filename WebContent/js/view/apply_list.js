@@ -26,7 +26,7 @@ $(document).ready(function()
 	{
 		// 최종 선택한 사용자 ID값 
 		var selectedUser = $("input[name='applicant-select']:checked").val();
-		console.log(selectedUser);	//-- user5
+		//console.log(selectedUser);	//-- user5
 		
 		// 후보자를 선택하지 않고 버튼을 눌렀을 경우
 		if (selectedUser == undefined)
@@ -50,7 +50,7 @@ $(document).ready(function()
 		// 상태값변경 (링크이동)
 		var adt_code = $("#adt_code").val();
 		var adt_proc = 'ADP5';
-		alert(adt_code + "/" + adt_proc);
+		//alert(adt_code + "/" + adt_proc);
 		
 		//$(location).attr("href","/adopt_proc?adt_proc='"+adt_proc+"'&adt_code='"+adt_code+"'");		
 		//$(location).attr("href","<%=cp%>/adopt_proc?adt_proc=ADP5" + "&adt_code=" + $("#adt_code").val())

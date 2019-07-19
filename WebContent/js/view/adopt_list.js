@@ -35,8 +35,8 @@ $(document).ready(function() {
 	
 	
 	//---------------------- 고양이사진 크기조절  -------------------------------- 
-	 /*$('.img-thumbnail img').each(function() 
-	 {*/
+	/* $('.img-thumbnail img').each(function() 
+	 {
 	   //alert("함수호출");
        var maxWidth = 200; // Max width for the image
        var maxHeight = 200;    // Max height for the image
@@ -59,7 +59,7 @@ $(document).ready(function() {
            $(".img_resize").css("height", maxHeight);   // Set new height
            $(".img_resize").css("width", width * ratio);    // Scale width based on ratio
            width = width * ratio;    // Reset width to match scaled image
-       }
+       }*/
   /* });*/
 	
 	
