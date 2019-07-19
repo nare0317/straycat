@@ -55,6 +55,8 @@
 			<mvc:mapping path="/commentdelete"/>
 			<mvc:mapping path="/commentwrite"/>
 			<mvc:mapping path="/boardinsert"/>
+			<mvc:mapping path="/board/articleupdateform"/>
+			<mvc:mapping path="/board/articleupdate"/>
 			<mvc:mapping path="/adopt_form"/>
 			<mvc:mapping path="/adopt_read"/>
 			<mvc:mapping path="/adopt_write"/>
@@ -118,6 +120,9 @@
 			<prop key="mail.smtp.auth">true</prop>
 			<prop key="mail.smtp.starttls.enable">true</prop>
 			<prop key="mail.debug">true</prop>
+			<prop key="mail.smtp.ssl.enable">true</prop>
+			<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+			<!-- <prop key="mail.smtp.tls.trust">true</prop> -->
 		</props>
 	</property>
 </bean>

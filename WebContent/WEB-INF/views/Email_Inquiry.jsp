@@ -29,13 +29,13 @@
 	<div id="mailDiv" class="row">
 		<div class="col-2 inputHeader">답변 받을 메일<span class="required">*</span></div>
 		<div class="col-3">
-			<input id="mailId" type="text" class="form-control">
+			<input id="mailId" type="text" class="form-control" name="mailId">
 		</div>
 		<div class="inputHeader">
 			<span>@</span>
 		</div>
 		<div class="col-3 inputHeader">
-			<input id="mailHost" type="text" class="form-control">
+			<input id="mailHost" type="text" class="form-control" name="mailHost">
 		</div>
 		<div class="col-3">
 			<select id="mailHostSelector" class="custom-select">
@@ -51,14 +51,14 @@
 	<div class="row">
 		<div class="col-2 inputHeader">제목<span class="required">*</span></div>
 		<div class="col-10">
-			<input id="title" type="text" class="form-control">
+			<input id="title" type="text" class="form-control" name="title">
 		</div>
 	</div>
 	<br><br>
 	<div class="row">
 		<div class="col-2 inputHeader">문의내용<span class="required">*</span></div>
 		<div class="col-10">
-				<textarea id="content" class="form-control" rows="10"></textarea>
+				<textarea id="content" class="form-control" rows="10" name="content"></textarea>
 		</div>
 		<div id="textCounter"><span id="counter">0</span> / 20,000</div>
 	</div>
@@ -98,13 +98,4 @@
 
 
 </body>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#uploadPicture").on("change", function() {
-			var fileString = $(this).val().replaceAll("\\\\", "/");
-			console.log(fileString);
-			//$("#fileName").val($(this).val().);
-		})
-	})
-</script>
 </html>

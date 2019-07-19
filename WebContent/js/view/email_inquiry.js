@@ -50,4 +50,11 @@ $(document).ready(function() {
 		
 		$("#emailForm").submit();
 	});
+	
+	$("#uploadPicture").on("change", function()
+	{
+		var fileString = $(this).val().split("\\");
+		var fileName = fileString[fileString.length-1];
+		$("#fileName").val(fileName);
+	})
 });
