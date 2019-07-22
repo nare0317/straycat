@@ -404,6 +404,25 @@ public class AdoptDAOImpl implements AdoptDAO
 		
 		return list;
 	}
+
+	// 게시글 삭제 메소드
+	@Override
+	public int deleteAdopt(String adt_code)
+	{
+		int result = 0; 
+		try
+		{
+			result = sqlSession.delete("adopt.deleteAdopt", adt_code);
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		
+		return result;
+	}
+	
+	
 	
 	
 	

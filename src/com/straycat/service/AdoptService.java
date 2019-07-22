@@ -46,4 +46,7 @@ public interface AdoptService
 	// 키워드 검색 리스트 조회 메소드
 	public List<Map<String, Object>> searchAdopt(String searchKey, String searchValue);
 	
+	// 입양게시글 삭제 
+	public int deleteAdopt(String adt_code);
+	
 }

@@ -62,4 +62,7 @@ public interface AdoptDAO
 	// 키워드 검색 후 리스트 조회 메소드
 	List<Map<String, Object>> searchAdopt(String searchKey, String searchValue);
 
+	// 입양게시글 삭제 메소드
+	public int deleteAdopt(String adt_code);
+
 }

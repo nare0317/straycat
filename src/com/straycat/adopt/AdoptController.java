@@ -410,7 +410,23 @@ public class AdoptController
 	}
 	
 	
-	
+	// 입양모집글 삭제 
+	@RequestMapping(value = "/adopt_delete", method = RequestMethod.GET)
+	public String adoptDelete(@RequestParam String adt_code)	
+	{
+		try
+		{
+			// 게시글 코드를 받아서 service의 deleteAdopt()메소드의 매개변수로 넘김.
+			//adt_code = request.getParameter(adt_code);
+			service.deleteAdopt(adt_code);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return "redirect:/adopt";
+	}
 
 
 }

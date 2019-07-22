@@ -42,7 +42,7 @@
 			$("#proc_change_modal").modal();
 		});
 		
-		$("#confirm").click(function()
+		$("#confirm_update").click(function()
 		{
 			//alert("성공");
 			//alert("adt_proc : " + $("#adt_proc").val());
@@ -50,6 +50,18 @@
 			$(location).attr("href", "<%=cp%>/adopt_proc?adt_proc=" + $("#adt_proc").val() + "&adt_code=" + $("#adt_code").val());
 			
 		});
+		
+		// 삭제 버튼 클릭 시 모달 창 호출 
+		$("#delete-btn").click(function()
+		{
+			$("#delete_modal").modal();
+		});
+		
+		$("#confirm_delete").click(function()
+		{
+			$(location).attr("href", "<%=cp%>/adopt_delete?adt_code=" + $("#adt_code").val());
+		});
+		
 		
 	}); 
 	
@@ -118,10 +130,42 @@
 					<input type="button" class="btn btn-secondary btn-sm" id="modify-btn" value="수정"
 					onclick="location.href='<%=cp%>/adopt_update_form?adt_code=${post.ADT_CODE}'">
 					
-					<c:if test="${post.ADT_PROC } eq '신규등록'">
-					<input type="button" class="btn btn-secondary btn-sm" id="delete-btn" value="삭제"
-					onclick="location.href='<%=cp%>/adopt_delete?adt_code=${post.ADT_CODE }'">
+					<!-- 입양모집글 상태가 '신규등록'일 때만 게시글 삭제 가능 -->
+					<c:if test="${post.ADT_PROC eq '신규등록'}">
+					<input type="button" class="btn btn-secondary btn-sm" id="delete-btn" value="삭제">
+					<!-- onclick="location.href='<%=cp%>/adopt_delete?adt_code=${post.ADT_CODE }'" -->
 					</c:if>
+					
+					<!-- 삭제하시겠습니까? 팝업 -->
+					<div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLabel">게시글 삭제</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body" align="left">
+					       현재 게시글을 삭제하시겠습니까?
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+					        <button type="button" class="btn btn-primary" id="confirm_delete">삭제</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					
+					<!-- 삭제 완료 팝업 -->
+					<div class="modal fade success_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					  <div class="modal-dialog modal-sm">
+					    <div class="modal-content">
+					      게시글이 정상적으로 삭제되었습니다. 
+					    </div>
+					  </div>
+					</div>
+					
 				</div>
 			</c:if>	
 			
@@ -172,7 +216,7 @@
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-						        <button type="button" class="btn btn-primary" id="confirm">변경</button>
+						        <button type="button" class="btn btn-primary" id="confirm_update">변경</button>
 						      </div>
 						    </div>
 						  </div>

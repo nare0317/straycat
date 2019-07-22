@@ -376,8 +376,24 @@ public class AdoptServiceImpl implements AdoptService
 
 		return list;
 	}
-	
-	
-	
+
+	// 입양게시글 삭제 
+	@Override
+	public int deleteAdopt(String adt_code)
+	{
+		int result = 0; 
+		try
+		{
+			// 입양게시글 삭제 
+			result = dao.deleteAdopt(adt_code);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
 	
 }

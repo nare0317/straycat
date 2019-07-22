@@ -304,5 +304,11 @@
 	WHERE AR.ADT_CODE = #{adt_code}
 </select>
 
+<!-- 입양게시글 삭제 쿼리문 -->
+<delete id="deleteAdopt" parameterType="java.lang.String">
+	DELETE 
+	FROM ADT_REG
+	WHERE ADT_CODE = #{adt_code, jdbcType=VARCHAR}
+</delete>
 
 </mapper>
