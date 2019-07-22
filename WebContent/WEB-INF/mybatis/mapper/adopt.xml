@@ -311,4 +311,13 @@
 	WHERE ADT_CODE = #{adt_code, jdbcType=VARCHAR}
 </delete>
 
+<!-- 고양이 종류 조회 쿼리문 -->
+<select id="catList">
+	SELECT SPECIES_CODE AS CAT_CODE
+     	, SPECIES AS SPECIES
+     	, SPECIES_IMG AS CAT_IMAGE
+	FROM CAT_TYPE
+</select>
+
+
 </mapper>

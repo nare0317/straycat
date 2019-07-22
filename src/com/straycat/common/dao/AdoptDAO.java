@@ -65,4 +65,7 @@ public interface AdoptDAO
 	// 입양게시글 삭제 메소드
 	public int deleteAdopt(String adt_code);
 
+	// 고양이 종류 조회 메소드
+	public List<Map<String, Object>> catList();
+
 }

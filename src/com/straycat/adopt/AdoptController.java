@@ -124,6 +124,10 @@ public class AdoptController
 			List<Map<String, Object>> gu = service.listGu();
 			model.addAttribute("gu", gu);
 			
+			// 고양이 종류 이미지 파일 값 넘기기 
+			List<Map<String,Object>> catList = service.listCatType();
+			model.addAttribute("catList", catList);
+			
 		} catch (Exception e)
 		{
 			e.printStackTrace();

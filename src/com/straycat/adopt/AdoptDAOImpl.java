@@ -421,6 +421,24 @@ public class AdoptDAOImpl implements AdoptDAO
 		
 		return result;
 	}
+
+	// 고양이 종류 조회 메소드
+	@Override
+	public List<Map<String, Object>> catList()
+	{
+		List<Map<String, Object>> catList = null; 
+		try
+		{
+			catList = sqlSession.selectList("adopt.catList");
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		
+		return catList;
+	}
+	
 	
 	
 	

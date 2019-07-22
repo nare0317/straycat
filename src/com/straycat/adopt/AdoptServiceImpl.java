@@ -395,5 +395,21 @@ public class AdoptServiceImpl implements AdoptService
 		return result;
 	}
 
+	// 고양이 종류 이미지 파일 조회
+	@Override
+	public List<Map<String, Object>> listCatType()
+	{
+		List<Map<String, Object>> catList = null; 
+		try
+		{
+			catList = dao.catList();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return catList;
+	}
+
+	
 	
 }

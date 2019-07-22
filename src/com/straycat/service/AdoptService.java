@@ -49,4 +49,7 @@ public interface AdoptService
 	// 입양게시글 삭제 
 	public int deleteAdopt(String adt_code);
 	
+	// 고양이 종류 이미지 파일 조회 메소드
+	public List<Map<String, Object>> listCatType();
+	
 }

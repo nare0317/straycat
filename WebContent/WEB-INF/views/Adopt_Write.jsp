@@ -169,9 +169,10 @@
 							<!-- 코숏치즈 -->
 							<div
 								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-								<label class="image-radio"> <img class="img-responsive"
-									src="img/코숏치즈_resize.png" /> <input type="radio" id="SP1"
-									name="cat_species" value="SP1" class="custom-control-input"
+								<label class="image-radio"> 
+								<!-- <img class="img-responsive"	src="img/코숏치즈_resize.png" />  -->
+									<img class="img-responsive"	src="img/${catList.CAT_IMAGE }" />
+									<input type="radio" id="SP1" name="cat_species" value="SP1" class="custom-control-input"
 									required>
 								</label>
 							</div>
@@ -180,8 +181,7 @@
 								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
 								<label class="image-radio"> <img class="img-responsive"
 									src="img/코숏카오스_resize.png" /> <input type="radio" id="SP3"
-									name="cat_species" value="SP3" class="custom-control-input"
-									required>
+									name="cat_species" value="SP3" class="custom-control-input"	required>
 								</label>
 							</div>
 						</div>
