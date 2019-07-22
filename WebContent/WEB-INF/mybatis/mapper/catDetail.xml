@@ -44,7 +44,7 @@ WHERE AR.CAT_CODE=#{cat_code} AND AR.ACT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE,'Y
 	    USER_REG UR 
 	    RIGHT JOIN ACT_REG AR ON UR.USER_CODE = AR.USER_CODE
 	    LEFT JOIN ACT_TYPE AT ON AR.ACT_TYPE = AT.ACT_TYPE_CODE
-	WHERE AR.CAT_CODE=#{cat_code, jdbcType=VARCHAR} AND AR.ACT_DATE BETWEEN TO_DATE(#{act_date, jdbcType=DATE}, 'YYYYMMDD') AND TO_DATE(#{act_date, jdbcType=DATE}, 'YYYYMMDD')+0.999999
+	WHERE AR.CAT_CODE=#{cat_code, jdbcType=VARCHAR} AND AR.ACT_DATE BETWEEN TO_DATE(#{act_date, jdbcType=DATE} || ' 00:00:00', 'YYYYMMDD HH24:MI:SS') AND TO_DATE(#{act_date, jdbcType=DATE} || ' 23:59:59', 'YYYYMMDD HH24:MI:SS')
 </select>
 
 <select id="locationCount" resultType="java.lang.Integer">
@@ -103,6 +103,13 @@ WHERE AR.CAT_CODE=#{cat_code} AND AR.ACT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE,'Y
 <insert id="declarationInsert">
 insert into report_list(report_code, report_type_code, report_content, user_code, report_date, board_code, post_code) values('REP' || REPORT_LIST_SEQ.nextval, #{declarationSelect}, #{declarationContent},'US1',SYSDATE,'BD1','CAT1')
 </insert>
-
+	
+	
+<select id="representationCat" resultType="map">
+	SELECT DISTINCT US.USER_CODE AS USER_CODE
+    FROM ACT_REG AR JOIN USER_REG US
+    ON AR.USER_CODE = US.USER_CODE
+    WHERE CAT_CODE = #{cat_code}
+</select>
 
 </mapper>

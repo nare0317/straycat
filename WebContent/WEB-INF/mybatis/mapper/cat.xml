@@ -23,9 +23,22 @@
 			ON C.CAT_ADDRESS = AD.ADDRESS_CODE 
 				LEFT JOIN CAT_STATUS CST 
 			ON C.CAT_STATUS = CST.STATUS_CODE 
-		WHERE AD.GU = #{gu} AND AD.DONG = #{dong}
+		WHERE AD.GU = #{gu} AND AD.DONG = #{dong}  
+		<![CDATA[
+		AND ROWNUM <= 10
+		]]>  
 		ORDER BY C.CAT_DATE
 	</select>
+
+	<!-- 검색된 게시글 수 조회 쿼리문  -->
+	<select id="countList" parameterType="map" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS dataCount
+		FROM CAT C
+		LEFT JOIN ADDRESS AD
+		ON C.CAT_ADDRESS = AD.ADDRESS_CODE
+		WHERE AD.GU = #{searchGu} AND AD.DONG = #{searchDong}
+	</select> 
+
 
 	<!-- 구와 동을 입력받아 주소 코드를 반환하는 쿼리문 -->
 	<select id="searchAddress" parameterType="map" resultType="java.lang.String">
@@ -63,4 +76,5 @@
 		FROM ADDRESS
 		WHERE GU=#{gu}
 	</select>
+
 </mapper>

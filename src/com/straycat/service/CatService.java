@@ -44,4 +44,6 @@ public interface CatService
 	public List<Map<String, Object>> actGalList(String id);
 	
 	public void declarationInsert(Map<String, Object> map);
+	
+	public List<Map<String, Object>> representationCat(String id);
 }

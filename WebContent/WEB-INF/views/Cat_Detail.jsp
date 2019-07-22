@@ -105,15 +105,12 @@
 			<div class="col-3">
 				<span>대표집사</span>
 			</div>
-			<div class="col-3">
-				<span>김대표집사</span>
-			</div>
-			<div class="col-3">
-				<span>김대표집사</span>
-			</div>
-			<div class="col-3">
-				<span>김대표집사</span>
-			</div>
+			<c:forEach var="representationCat" items="${representationCat }">
+				<div class="col-3">
+					<span>${representationCat.USER_CODE}집사</span>
+				</div>
+			
+			</c:forEach>
 		</div><br>
 	</div>
 	<div class="col-4 cat_foot">
@@ -384,7 +381,7 @@
 							<div class="col-10">
 								<div class="row">
 									<div class="col-4 imgContain">
-										<img src="<%=cp %>/${catActRegList.ACT_IMG }" class="actImg">
+										<img src="<%=cp %>${catActRegList.ACT_IMG }" class="actImg">
 									</div>
 									<div class="col-8">
 										<span>${catActRegList.CONTENT }</span>
@@ -449,21 +446,6 @@
 				
 				</div><br><br>
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 				</div><br><br>
 				<!-- <div class="text-center">
 					<button type="button" class="btn btn-primary btn-lg">더보기</button>
@@ -523,8 +505,102 @@
 			});
 		});  
 				
+		$("#secondDatepicker").on("change", function()
+		{
+			//alert($("#secondDatepicker").val());
+			$.ajax(
+			{
+				url: 'act_date'
+				,type: 'POST'
+				,data: {'id': $("#cat_id").val(),'act_date' :  $("#secondDatepicker").val()}
+				,dataType : "JSON"
+				,success:function(data)
+				{
+					//console.log(data);
+					
+								
+						$("#cat").empty();
+						
+						var str = "";
+						
+						var cCnt = data.length;
+						
+						str += "<div id='cat'>";
+						for(var i=0; i<cCnt; i++)
+						{
+							
+							str += "				<div class='row'>";
+							str += "						<div class='col-2'>";
+							str += "						<div class='row'>";
+							if(data == null)
+							{
+								str += "						<div class='row'>등록된 활동이 없습니다.</div>";
+							}
+							str += "							<h5>" + data[i].NICKNAME + "</h5>";
+							str += "							<span>" + data[i].ACT_DATE + "</span>";
+							str += "							<div>" + data[i].ACT_LOCATION + "</div>";
+							str += "						</div>";
+							str += "					</div>";
+							str += "				</div>";
+							str += "						<div class='col-10'>";
+							str += "					 		<div class='row'>";
+							str += "								&nbsp;&nbsp;&nbsp;&nbsp;";
+							
+							if(data[i].ACT_TYPE == "먹이")
+							{
+							str += "<img src='img/fish.png'>";
+							}
+							else if(data[i].ACT_TYPE == "물")
+							{
+							str += "<img src='img/fish.png'>";
+							}
+							else if(data[i].ACT_TYPE == "간식")
+							{
+							str += "<img src='img/fish.png'>";	
+							}
+							else if(data[i].ACT_TYPE == "약")
+							{
+							str += "<img src='img/fish.png'>";	
+							}
+							else if(data[i].ACT_TYPE == "만남")
+							{
+							str += "<img src='img/fish.png'>";	
+							}
+							str += "							</div>";
+							str += "							</div>";
+							str += "							</div>";
+							str += "							</div>";
+							str += "					<div class='row'>";
+							str += "						<div class='col-2'></div>";
+							str += "						<div class='col-10'>";
+							str += "							<div class='row'>";
+							
+									str += "										<div class='col-4 imgContain'>";
+									str += "											<img src='/FinalPrj/" + data[i].ACT_IMG + "' class='actImg'>";
+									str += "										</div>";
+							str += "					<div class='col-8'>";
+							str += "						<span>" + data[i].CONTENT + "</span>";
+							str += "						</div>";
+							str += "						</div>";
+							str += "						</div>";
+							str += "						</div>";
+							str += "						<br>";
+							str += "						<hr><br>";
+							str += "						</div>";
+							str += "						</div>";
+						}
+						
+						
+						
+						$("#cat").append(str);
+						
+				}
+					
+			});
+		});
+				
 		
-	})
+	});
 </script>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script>
@@ -537,7 +613,7 @@
 		var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div  
 	    mapOption0 = { 
 	        center: new kakao.maps.LatLng(37.566826,126.9786567), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
+	        level: 6 // 지도의 확대 레벨
 	    };
 	}
 	else
@@ -545,7 +621,7 @@
 		var mapContainer0 = document.getElementById('map0'), // 지도를 표시할 div  
 		    mapOption0 = { 
 		        center: new kakao.maps.LatLng("${avgLoc.LATITUDE }","${avgLoc.LONGITUDE }"), // 지도의 중심좌표
-		        level: 3 // 지도의 확대 레벨
+		        level: 6 // 지도의 확대 레벨
 		    };
 	}
 	
@@ -586,7 +662,7 @@
 	mapOption =
 	{
 		center : new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-		level : 1
+		level : 4
 	// 지도의 확대 레벨
 	};
 	// 지도를 생성합니다    

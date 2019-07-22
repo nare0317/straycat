@@ -130,6 +130,13 @@ public class CatDAOImpl implements CatDAO
 	}
 	
 	@Override
+	public List<Map<String, Object>> selectListListList(String id)
+	{
+		
+		return sqlSession.selectList("catDetail.representationCat",id);	
+	}
+	
+	@Override
 	public List<Map<String, Object>> selectActStartList(String id)
 	{		
 		return sqlSession.selectList("catDetail.actRegStart",id);	
@@ -183,7 +190,7 @@ public class CatDAOImpl implements CatDAO
 			map.put("searchGu", searchGu);
 			map.put("searchDong", searchDong);
 			
-			dataCount = sqlSession.selectOne("adopt.countList", map);
+			dataCount = sqlSession.selectOne("cat.countList", map);
 			
 		} catch (Exception e)
 		{
