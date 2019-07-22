@@ -274,11 +274,20 @@ public class AdoptController
 		
 		try
 		{
-			// 이미지를 저장하고 저장된 이미지 경로를 반환함
-			// 이미지 경로를 자료구조(고양이 등록정보)에 넣음
-			String path = session.getServletContext().getRealPath("/");
-			String imageUrl = imageService.saveImage(file, path);
-			param.put("CAT_REP_IMG", imageUrl);
+			// 수정 시 첨부파일 변경했을 때 
+			if (file.getSize()!=0)									//-- file의 사이즈가 0이 아닐때
+			{
+				// 이미지를 저장하고 저장된 이미지 경로를 반환함
+				// 이미지 경로를 자료구조(고양이 등록정보)에 넣음
+				String path = session.getServletContext().getRealPath("/");
+				String imageUrl = imageService.saveImage(file, path);
+				param.put("CAT_REP_IMG", imageUrl);
+			}
+			// 수정 시 첨부파일 변경안했을 때(원래 이미지 파일값으로 들어감)
+			else
+			{
+				param.put("CAT_REP_IMG", (String)param.get("originalFile"));
+			}
 
 			service.updateAdopt(param);
 			

@@ -18,8 +18,11 @@
 
 <!-- JS 파일 -->
 <script src="<%=cp %>/js/view/gudong.js"></script>
-<script src="<%=cp%>/js/view/miss_write.js"></script>
 <script src="<%=cp %>/js/view/adopt_write.js"></script>
+
+<!-- jQuery DatePicker UI -->
+<link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
+<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function()
@@ -136,6 +139,7 @@
                      placeholder="날짜를 선택하세요." required>
                   </div>
                </div>
+               
                
                <!-- 고양이 종류 -->
                <div class="form-group row">

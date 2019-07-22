@@ -118,7 +118,10 @@
 					<input type="button" class="btn btn-secondary btn-sm" id="modify-btn" value="수정"
 					onclick="location.href='<%=cp%>/adopt_update_form?adt_code=${post.ADT_CODE}'">
 					
-					<button class="btn btn-secondary btn-sm" id="delete-btn" disabled="disabled">삭제</button>
+					<c:if test="${post.ADT_PROC } eq '신규등록'">
+					<input type="button" class="btn btn-secondary btn-sm" id="delete-btn" value="삭제"
+					onclick="location.href='<%=cp%>/adopt_delete?adt_code=${post.ADT_CODE }'">
+					</c:if>
 				</div>
 			</c:if>	
 			
@@ -200,7 +203,7 @@
 					
 					<!-- 사진 불러오는 구문 -->
 					<!-- C:\GIT\SSIT_StrayCatProject\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\straycat\resource -->
-					<img src="<%=cp %>${post.CAT_IMAGE}" class="" style="width: 300px; height:300px% ">
+					<img src="<%=cp %>${post.CAT_REP_IMAGE}" class="" style="width: 300px; height:300px% ">
 				</div>
 				
 				<!-- 글 내용 -->

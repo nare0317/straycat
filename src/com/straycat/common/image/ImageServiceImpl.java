@@ -30,7 +30,7 @@ public class ImageServiceImpl implements ImageService
 		try
 		{
 			byte[] data = file.getBytes();
-			path = path + "resource\\";
+			path = path + "resource\\";		//-- resource\ 
 			
 			// 경로가 없다면 경로 생성
 			File dir = new File(path); 
@@ -39,7 +39,7 @@ public class ImageServiceImpl implements ImageService
             }
             
 			FileOutputStream fos = new FileOutputStream(path+"\\"+saveFileName);
-			fos.write(data);
+			fos.write(data);		//-- byte배열로 실제 이미지 파일을 작성하겠다. 
 			fos.close();
 		} catch (Exception e)
 		{
