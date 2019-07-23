@@ -1,6 +1,5 @@
 package com.straycat.adopt;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -157,13 +156,14 @@ public class AdoptDAOImpl implements AdoptDAO
 	
 	// 입양게시물 열람 메소드
 	@Override
-	public Map<String, Object> readAdopt(String adt_code)
+	public Map<String, Object> readAdopt(String articleNumStr)
 	{
 		Map<String, Object> post = null; 
 		
 		try 
 		{
-			post = sqlSession.selectOne("adopt.readAdopt", adt_code);
+			int articleNum = Integer.parseInt(articleNumStr);
+			post = sqlSession.selectOne("adopt.readAdopt", articleNum);
 		}
 		catch (Exception e) 
 		{
@@ -438,10 +438,6 @@ public class AdoptDAOImpl implements AdoptDAO
 		
 		return catList;
 	}
-	
-	
-	
-	
 	
 	
 }

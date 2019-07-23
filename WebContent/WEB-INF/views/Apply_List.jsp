@@ -91,13 +91,13 @@ $(document).ready(function()
 				
 					<ul class="list-group list-group-horizontal applicant_answer">
 					  <li class="list-group-item  flex-fill" id="A1" value="${app.A1 }" style="border: none">
-					  <ion-icon name="checkmark"></ion-icon>고양이 양육경험: ${app.A1 == RT1 ? '있음' : '없음' }</li>
+					  <ion-icon name="checkmark"></ion-icon>고양이 양육경험: ${app.A1}</li>
 					  <li class="list-group-item  flex-fill" id="A2" value="${app.A2 }" style="border: none">
 					  <ion-icon name="checkmark"></ion-icon>직업구분: ${app.A2 }</li>
 					</ul>
 					<ul class="list-group list-group-horizontal"> 
 					  <li class="list-group-item  flex-fill" id="A3"  value="${app.A3 }" style="border: none">
-					  <ion-icon name="checkmark"></ion-icon>결혼여부 : ${app.A3 == RT1 ? '기혼' : '미혼' }</li>
+					  <ion-icon name="checkmark"></ion-icon>결혼여부 : ${app.A3 }</li>
 					  <li class="list-group-item  flex-fill" id="A4"  value="${app.A4 }" style="border: none">
 					  <ion-icon name="checkmark"></ion-icon>가족구성원: ${app.A4 }</li>
 					</ul>

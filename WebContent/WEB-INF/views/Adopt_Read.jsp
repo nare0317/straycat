@@ -175,7 +175,11 @@
 					<div class="input-group">
 						
 						<!-- 게시글코드(hidden) -->
-            			<input type="hidden" id="adt_code" name="adt_code" value="${post.ADT_CODE}">
+            			<%-- <input type="hidden" id="adt_code" name="adt_code" value="${post.ADT_CODE}"> --%>
+            			
+            			<!-- 게시글번호(hidden) -->
+            			<input type="hidden" id="articleNum" name="articleNum" value="${post.NUM }">
+            			
 						<!-- 게시글상태(hidden) ※ 해당 게시글의 게시글상태-->
 						<input type="hidden" id="adt_proc_selected" name="adt_proc_selected" value="${post.ADT_PROC}">
 						

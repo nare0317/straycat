@@ -178,7 +178,7 @@ public class AdoptServiceImpl implements AdoptService
 
 	// 게시글 열람
 	@Override
-	public Map<String, Object> readAdopt(String adt_code)
+	public Map<String, Object> readAdopt(String articleNum, String adt_code)
 	{
 		Map<String, Object> post = null;
 		try
@@ -187,7 +187,7 @@ public class AdoptServiceImpl implements AdoptService
 			dao.addHitCount(adt_code);
 			
 			// 게시글 내용 가져옴.
-			post = dao.readAdopt(adt_code);
+			post = dao.readAdopt(articleNum);
 			
 			// 게시글 내용에 추천수 추가 
 			post.put("LIKE_COUNT", dao.countLike(adt_code));
@@ -202,7 +202,6 @@ public class AdoptServiceImpl implements AdoptService
 		{
 			e.printStackTrace();
 		}
-
 		return post;
 	}
 
