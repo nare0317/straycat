@@ -161,10 +161,10 @@
 					<div class="col-md-5 cat-photo cat-photo-wrap">
 						<div class="cp-image " >
 						<c:if test="${list.CAT_IMAGE != null }">
-							<img src="<%=cp %>${list.CAT_IMAGE }" class="card-img img_resize" alt="" style="width: 300px; height:300px ">						
+							<img src="<%=cp %>${list.CAT_IMAGE }" class="card-img img_resize" alt="" style="width: 200px; height:200px ">						
 						</c:if>
 						<c:if test="${list.CAT_IMAGE == null }">
-							<img src="<%=cp %>/img/defaultCat.png" class="card-img img_resize" alt="" style="width: 300px; height:300px ">
+							<img src="<%=cp %>/img/defaultCat.png" class="card-img img_resize" alt="" style="width: 200px; height:200px ">
 						</c:if>
 							<!-- <img src="img/straycat.jpg" class="card-img" alt=""> -->
 						</div>
@@ -231,7 +231,8 @@
 							</div>
 						</div>
 					</div><!-- 길냥이 정보 끝 -->
-					<a href="<%=cp %>/adopt_read?adt_code=${list.ADT_CODE}" class="stretched-link"></a>
+					<%-- <a href="<%=cp %>/adopt_read?adt_code=${list.ADT_CODE}" class="stretched-link"></a> --%>
+					<a href="<%=cp %>/adopt_read?adt_code=${list.ADT_CODE}&articleNum=${list.NUM}" class="stretched-link"></a>
 					
 				</div>
 			</div>

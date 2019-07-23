@@ -17,7 +17,7 @@ public interface AdoptService
 	public Map<String, Object> searchUserInfo(String user_id);
 	
 	// 입양게시글 열람
-	public Map<String, Object> readAdopt(String adt_code);
+	public Map<String, Object> readAdopt(String articleNum,String adt_code);
 	
 	// 구 리스트 조회 
 	public List<Map<String, Object>> listGu();
@@ -45,5 +45,11 @@ public interface AdoptService
 	
 	// 키워드 검색 리스트 조회 메소드
 	public List<Map<String, Object>> searchAdopt(String searchKey, String searchValue);
+	
+	// 입양게시글 삭제 
+	public int deleteAdopt(String adt_code);
+	
+	// 고양이 종류 이미지 파일 조회 메소드
+	public List<Map<String, Object>> listCatType();
 	
 }

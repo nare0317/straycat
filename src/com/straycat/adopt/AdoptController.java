@@ -124,6 +124,10 @@ public class AdoptController
 			List<Map<String, Object>> gu = service.listGu();
 			model.addAttribute("gu", gu);
 			
+			// 고양이 종류 이미지 파일 값 넘기기 
+			List<Map<String,Object>> catList = service.listCatType();
+			model.addAttribute("catList", catList);
+			
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -157,6 +161,7 @@ public class AdoptController
 	}
 
 	// 입양게시글 열람
+	/*
 	@RequestMapping(value = "/adopt_read", method = RequestMethod.GET)
 	public String adoptRead(@RequestParam String adt_code
 							, HttpServletRequest request
@@ -169,6 +174,43 @@ public class AdoptController
 			adt_code = request.getParameter("adt_code");
 			// 게시글 내용 열람하는 메소드를 호출해 
 			post = service.readAdopt(adt_code);
+			// 그 결과값을 post라는 이름으로 넘기기
+			model.addAttribute("post", post);
+			
+			// 입양신청자 리스트 넘기기
+			List<Map<String, Object>> applicantList = service.listApplicant(adt_code);
+			model.addAttribute("applicantList", applicantList);
+			
+			// 입양신청폼 내용 넘기기(열람페이지 완성 후에 열람하는 메소드를 넘겨야..)
+			
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+
+		return "Adopt_Read";
+	}
+	*/
+	
+	// 게시글열람(이전글다음글)
+	@RequestMapping(value = "/adopt_read", method = RequestMethod.GET)
+	public String adoptRead(@RequestParam(name="adt_code") String adt_code
+							, @RequestParam(name="articleNum") String articleNum
+							, HttpServletRequest request
+							, Model model)
+	{
+		Map<String, Object> post = null;
+		
+		try
+		{	
+			adt_code = request.getParameter("adt_code");
+			articleNum = request.getParameter("articleNum");
+			
+			// 게시글 내용 열람하는 메소드를 호출해 
+			post = service.readAdopt(articleNum, adt_code);
+			
 			// 그 결과값을 post라는 이름으로 넘기기
 			model.addAttribute("post", post);
 			
@@ -231,6 +273,7 @@ public class AdoptController
 	
 	
 	// 게시글 수정 버튼 클릭시 입양게시글 수정페이지로 이동
+	/*
 	@RequestMapping(value = "/adopt_update_form", method = RequestMethod.GET)
 	public String updateForm(Model model
 							, HttpServletRequest request
@@ -260,6 +303,7 @@ public class AdoptController
 
 		return "Adopt_Update";
 	}
+	*/
 	
 	
 	// 입양 게시글 수정
@@ -274,11 +318,20 @@ public class AdoptController
 		
 		try
 		{
-			// 이미지를 저장하고 저장된 이미지 경로를 반환함
-			// 이미지 경로를 자료구조(고양이 등록정보)에 넣음
-			String path = session.getServletContext().getRealPath("/");
-			String imageUrl = imageService.saveImage(file, path);
-			param.put("CAT_REP_IMG", imageUrl);
+			// 수정 시 첨부파일 변경했을 때 
+			if (file.getSize()!=0)									//-- file의 사이즈가 0이 아닐때
+			{
+				// 이미지를 저장하고 저장된 이미지 경로를 반환함
+				// 이미지 경로를 자료구조(고양이 등록정보)에 넣음
+				String path = session.getServletContext().getRealPath("/");
+				String imageUrl = imageService.saveImage(file, path);
+				param.put("CAT_REP_IMG", imageUrl);
+			}
+			// 수정 시 첨부파일 변경안했을 때(원래 이미지 파일값으로 들어감)
+			else
+			{
+				param.put("CAT_REP_IMG", (String)param.get("originalFile"));
+			}
 
 			service.updateAdopt(param);
 			
@@ -387,8 +440,8 @@ public class AdoptController
 			model.addAttribute("list", list);
 			
 			// 입양 모집글 정보 받아서 넘김
-			post = service.readAdopt(adt_code);
-			model.addAttribute("post", post);
+			//post = service.readAdopt(adt_code);
+			//model.addAttribute("post", post);
 			
 			
 		} catch (Exception e)
@@ -401,7 +454,23 @@ public class AdoptController
 	}
 	
 	
-	
+	// 입양모집글 삭제 
+	@RequestMapping(value = "/adopt_delete", method = RequestMethod.GET)
+	public String adoptDelete(@RequestParam String adt_code)	
+	{
+		try
+		{
+			// 게시글 코드를 받아서 service의 deleteAdopt()메소드의 매개변수로 넘김.
+			//adt_code = request.getParameter(adt_code);
+			service.deleteAdopt(adt_code);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return "redirect:/adopt";
+	}
 
 
 }

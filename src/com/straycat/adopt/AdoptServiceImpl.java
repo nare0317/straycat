@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.straycat.common.dao.AdoptDAO;
 import com.straycat.service.AdoptService;
@@ -150,8 +149,6 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADT_MARRIAGE", (String) param.get("adt_marriage"));
 			param.put("ADT_FAMILY_NUM", (String) param.get("adt_family_num"));
 			
-			param.put("CAT_IMG", (String)param.get("cat_img"));
-			
 			result = dao.addAdopt(param);
 
 		} catch (Exception e)
@@ -181,7 +178,7 @@ public class AdoptServiceImpl implements AdoptService
 
 	// 게시글 열람
 	@Override
-	public Map<String, Object> readAdopt(String adt_code)
+	public Map<String, Object> readAdopt(String articleNum, String adt_code)
 	{
 		Map<String, Object> post = null;
 		try
@@ -190,7 +187,7 @@ public class AdoptServiceImpl implements AdoptService
 			dao.addHitCount(adt_code);
 			
 			// 게시글 내용 가져옴.
-			post = dao.readAdopt(adt_code);
+			post = dao.readAdopt(articleNum);
 			
 			// 게시글 내용에 추천수 추가 
 			post.put("LIKE_COUNT", dao.countLike(adt_code));
@@ -205,7 +202,6 @@ public class AdoptServiceImpl implements AdoptService
 		{
 			e.printStackTrace();
 		}
-
 		return post;
 	}
 
@@ -261,7 +257,7 @@ public class AdoptServiceImpl implements AdoptService
 			
 			// 입력된 날짜의 데이터타입을 String 에서 Date로 변경 
 			//Date date = Date.valueOf((String)param.get("rsq_date"));
-			param.put("RSQ_DATE", (String)param.get("rsq_date"));
+			param.put("RSQ_DATE", (String) param.get("rsq_date"));
 			
 			param.put("CAT_NAME", (String) param.get("cat_name"));
 			param.put("CAT_SPECIES", (String) param.get("cat_species"));
@@ -271,10 +267,6 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADT_TYPE", (String) param.get("adt_type"));
 			param.put("CAT_ECT1", (String) param.get("cat_ect1"));
 			param.put("CAT_ECT2", (String) param.get("cat_ect2"));
-			
-			//param.put("CAT_IMG", (String)param.get("cat_img"));
-			//param.put("CAT_REP_IMG", (String) param.get("cat_rep_img"));
-			
 			param.put("TEL", (String) param.get("tel"));
 			param.put("EMAIL", (String) param.get("email"));
 			param.put("ADT_REASON", (String) param.get("adt_reason"));
@@ -287,6 +279,7 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADT_CODE", (String)param.get("adt_code"));
 			
 			result = dao.updateAdopt(param);
+			
 			
 		} catch (Exception e)
 		{
@@ -382,8 +375,40 @@ public class AdoptServiceImpl implements AdoptService
 
 		return list;
 	}
-	
-	
+
+	// 입양게시글 삭제 
+	@Override
+	public int deleteAdopt(String adt_code)
+	{
+		int result = 0; 
+		try
+		{
+			// 입양게시글 삭제 
+			result = dao.deleteAdopt(adt_code);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	// 고양이 종류 이미지 파일 조회
+	@Override
+	public List<Map<String, Object>> listCatType()
+	{
+		List<Map<String, Object>> catList = null; 
+		try
+		{
+			catList = dao.catList();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return catList;
+	}
+
 	
 	
 }

@@ -1,7 +1,7 @@
-// ★★★★ jQuery 달력 ui ★★★★	
- $(document).ready(function()		
+$(document).ready(function()
 {	
-	 $(".datepicker").datepicker(
+	// ★★★★ jQuery 달력 ui ★★★★	
+	$(".datepicker").datepicker(
 	{
 		//showOn : "button",
 		//buttonImage : "./img/small-calendar.png",
@@ -11,36 +11,8 @@
 		changeYear : true
 	});
 
- });	
-
-//--------------------------------------------------------------------------------
-
-// ★★★★ 부트스트랩 form validation check ★★★★	
-(function() 	
-{	
-  'use strict';	
-  window.addEventListener('load', function() {	
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to	
-    var forms = document.getElementsByClassName('needs-validation');	
-    // Loop over them and prevent submission	
-    var validation = Array.prototype.filter.call(forms, function(form) {	
-      form.addEventListener('submit', function(event) {	
-        if (form.checkValidity() === false) {	
-          event.preventDefault();	
-          event.stopPropagation();	
-        }	
-        form.classList.add('was-validated');	
-      }, false);	
-    });	
-  }, false);	
-})();
-
-//--------------------------------------------------------------------------------
-
-//★★★★ 게시글 등록 시 선택값으로 세팅 ★★★★
-$(document).ready(function()
-{	
-	
+	//---------------------------------------------------------------
+	//★★★★ 게시글 등록 시 선택값으로 세팅 ★★★★
 	
 	// 고양이종류 (코숏/품종) 선택값 세팅
 	$("#cat_type option").each(function()
@@ -83,8 +55,10 @@ $(document).ready(function()
 	
 	// 1 - 등록 시 선택한 고양이종류값을 가져와 image-radio-checked 클래스를 추가(테두리효과)
 	var cat_species_selected = $("#cat_species_selected").val()
-	$("label[for='"+cat_species_selected+"']").addClass('image-radio-checked');
+	$("label[for='"+ cat_species_selected +"']").addClass('image-radio-checked');
 	
+	alert(cat_species_selected);
+	alert($("label[for='"+cat_species_selected+"']"));
 	//console.log("cat_species_selected : " + cat_species_selected);
 	
 	
@@ -259,3 +233,25 @@ function gudongChange()
 		});
 	});
 }
+
+//★★★★ 부트스트랩 form validation check ★★★★	
+(function() 	
+{	
+  'use strict';	
+  window.addEventListener('load', function() {	
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to	
+    var forms = document.getElementsByClassName('needs-validation');	
+    // Loop over them and prevent submission	
+    var validation = Array.prototype.filter.call(forms, function(form) {	
+      form.addEventListener('submit', function(event) {	
+        if (form.checkValidity() === false) {	
+          event.preventDefault();	
+          event.stopPropagation();	
+        }	
+        form.classList.add('was-validated');	
+      }, false);	
+    });	
+  }, false);	
+})();
+
+//--------------------------------------------------------------------------------

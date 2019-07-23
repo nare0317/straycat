@@ -21,7 +21,7 @@ public interface AdoptDAO
 	public Map<String, Object> searchUserInfo(String user_id);
 	
 	// 입양 모집글 열람 메소드
-	public Map<String, Object> readAdopt(String adt_code);
+	public Map<String, Object> readAdopt(String articleNumStr);
 	
 	// 셀렉트 박스 내 구 리스트 조회 메소드
 	public List<Map<String, Object>> listGu();
@@ -61,5 +61,11 @@ public interface AdoptDAO
 
 	// 키워드 검색 후 리스트 조회 메소드
 	List<Map<String, Object>> searchAdopt(String searchKey, String searchValue);
+
+	// 입양게시글 삭제 메소드
+	public int deleteAdopt(String adt_code);
+
+	// 고양이 종류 조회 메소드
+	public List<Map<String, Object>> catList();
 
 }

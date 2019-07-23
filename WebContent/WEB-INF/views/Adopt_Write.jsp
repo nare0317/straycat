@@ -18,8 +18,11 @@
 
 <!-- JS 파일 -->
 <script src="<%=cp %>/js/view/gudong.js"></script>
-<script src="<%=cp%>/js/view/miss_write.js"></script>
 <script src="<%=cp %>/js/view/adopt_write.js"></script>
+
+<!-- jQuery DatePicker UI -->
+<link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
+<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function()
@@ -137,6 +140,7 @@
                   </div>
                </div>
                
+               
                <!-- 고양이 종류 -->
                <div class="form-group row">
                   <label for="cat-species" class="col-sm-2 col-form-label">종류</label>
@@ -151,96 +155,19 @@
 
 					<!-- 고양이 상세 종류(+사진) → Ajax 처리필요  -->
 					<div class="form-group row">
-						<!--  <label for="colFormLabel" class="col-sm-2 col-form-label"></label> -->
-						<div class="col-sm-10 offset-sm-2">
-							<!-- 코숏고등어 -->
+					<c:forEach var="cat" items="${catList }">
+						<c:if test="${cat.CAT_CODE eq 'SP1'|| cat.CAT_CODE eq 'SP2'||cat.CAT_CODE eq 'SP3'||cat.CAT_CODE eq 'SP4'||cat.CAT_CODE eq 'SP5'||cat.CAT_CODE eq 'SP6'||cat.CAT_CODE eq 'SP7'||cat.CAT_CODE eq 'SP8'||cat.CAT_CODE eq 'SP17'}">
 							<div
 								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
 								<label class="image-radio"> <img class="img-responsive"
-									src="img/코숏고등어_resize.png" /> <input type="radio" id="SP2"
-									name="cat_species" value="SP2" class="custom-control-input"
+									src="img/${cat.CAT_IMAGE }" /> <input type="radio" id="${cat.CAT_CODE }"
+									name="cat_species" value="${cat.CAT_CODE }" class="custom-control-input"
 									required>
 								</label>
 							</div>
-							<!-- 코숏치즈 -->
-							<div
-								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-								<label class="image-radio"> <img class="img-responsive"
-									src="img/코숏치즈_resize.png" /> <input type="radio" id="SP1"
-									name="cat_species" value="SP1" class="custom-control-input"
-									required>
-								</label>
-							</div>
-							<!-- 코숏카오스-->
-							<div
-								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-								<label class="image-radio"> <img class="img-responsive"
-									src="img/코숏카오스_resize.png" /> <input type="radio" id="SP3"
-									name="cat_species" value="SP3" class="custom-control-input"
-									required>
-								</label>
-							</div>
-						</div>
-						<div class="col-sm-10 offset-sm-2">
-							<!-- 코숏삼색이 -->
-							<div
-								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-								<label class="image-radio"> <img class="img-responsive"
-									src="img/코숏삼색이_resize.png" /> <input type="radio" id="SP4"
-									name="cat_species" value="SP4" class="custom-control-input"
-									required>
-								</label>
-							</div>
-							<!-- 코숏턱시도-->
-							<div
-								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-								<label class="image-radio"> <img class="img-responsive"
-									src="img/코숏턱시도_resize.png" /> <input type="radio" id="SP5"
-									name="cat_species" value="SP5" class="custom-control-input"
-									required>
-								</label>
-							</div>
-							<!-- 코숏올블랙 -->
-							<div
-								class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-								<label class="image-radio"> <img class="img-responsive"
-									src="img/코숏올블랙_resize.png" /> <input type="radio" id="SP6"
-									name="cat_species" value="SP6" class="custom-control-input"
-									required>
-								</label>
-							</div>
-						</div>
+						</c:if>
+					</c:forEach>
 					</div>
-					<div class="col-sm-10 offset-sm-2">
-						<!-- 코숏젖소-->
-						<div
-							class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-							<label class="image-radio"> <img class="img-responsive"
-								src="img/코숏젖소_resize.png" /> <input type="radio" id="SP7"
-								name="cat_species" value="SP7" class="custom-control-input"
-								required>
-							</label>
-						</div>
-						<!-- 코숏올화이트 -->
-						<div
-							class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-							<label class="image-radio"> <img class="img-responsive"
-								src="img/코숏올화이트_resize.JPG" /> <input type="radio" id="SP8"
-								name="cat_species" value="SP8" class="custom-control-input"
-								required>
-							</label>
-						</div>
-						<!-- 기타 -->
-						<div
-							class="col-lg-3 nopad text-center custom-control custom-radio custom-control-inline">
-							<label class="image-radio"> <img class="img-responsive"
-								src="img/cat_icon2.png" /> <input type="radio" id="SP17"
-								name="cat_species" value="SP17" class="custom-control-input"
-								required>
-							</label>
-						</div>
-					</div>
-
 				<br>
 
 			   <!-- 고양이 나이 -->

@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="<%=cp%>/css/view/miss_write.css">
 
 <!-- JS 파일 -->
-<%-- <script src="<%=cp%>/js/view/miss_write.js"></script> --%>
+<script src="<%=cp %>/js/view/gudong.js"></script>
 <script src="<%=cp %>/js/view/adopt_update.js"></script>
 <script src="<%=cp %>/js/view/adopt_write.js"></script>
 
@@ -28,7 +28,6 @@
 <script type="text/javascript">
 $(document).ready(function()
 {	
-	
 	// 업로드 input 엘리먼트의 상태가 바뀌면,
 	$("#uploadPicture").on("change",function(){readURL(this);});
 	
@@ -106,9 +105,19 @@ $(document).ready(function()
             
             <!---------------- 고양이 대표 이미지 첨부 --------------->
             <div class="col-3 text-center">
-               <img id="catPicture" src="img/defaultCat.png" style="width: 200px;"><br> <br>
-               <label class="btn btn-primary"> 사진첨부<input type="file" class="form-control-file" 
+             	<c:if test="${post.CAT_REP_IMAGE != null }">
+					<img id="catPicture" src="<%=cp %>${post.CAT_REP_IMAGE }" style="width: 200px; height:200px ">						
+				</c:if>
+				<c:if test="${post.CAT_REP_IMAGE == null }">
+					<img id="catPicture" src="<%=cp %>/img/defaultCat.png" style="width: 200px; height:200px ">
+				</c:if>
+              
+               <label class="btn btn-primary"> 사진수정<input type="file" class="form-control-file" 
                id="uploadPicture" style="display: none;" accept=".jpeg, .png, .jpg" name="file"></label>
+
+			   <!-- 원래 이미지 파일값(hidden) -->
+			   <input type="hidden" value="${post.CAT_REP_IMAGE }" name="originalFile">
+
             </div>
             
             <!------------------ 고양이정보 등록 폼 ----------------->
@@ -126,7 +135,7 @@ $(document).ready(function()
                     </div>
                 </div>
                 
-               <!-- 실종 지역 -->
+               <!-- 구조 지역 -->
                <div class="form-group row">
                   <label for="location" class="col-sm-2 col-form-label">지역</label>
                   <label id="seoul" class="col-sm-2 col-form-label">서울시</label>
@@ -157,9 +166,6 @@ $(document).ready(function()
                   <div class="col-sm-4">
                      <input type="text" class="form-control datepicker" id="rsq_date" name="rsq_date" 
                      value="${post.RSQ_DATE }" required>
-                     
-                    <%--  <input type="text" id="rsq_date"class="form-control3 datepicker" name="rsq_date"
-                      value="${post.RSQ_DATE }" readonly="readonly"> --%>
                   </div>
                </div>
                

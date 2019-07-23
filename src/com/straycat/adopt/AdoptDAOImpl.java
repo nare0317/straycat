@@ -1,6 +1,5 @@
 package com.straycat.adopt;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -157,13 +156,14 @@ public class AdoptDAOImpl implements AdoptDAO
 	
 	// 입양게시물 열람 메소드
 	@Override
-	public Map<String, Object> readAdopt(String adt_code)
+	public Map<String, Object> readAdopt(String articleNumStr)
 	{
 		Map<String, Object> post = null; 
 		
 		try 
 		{
-			post = sqlSession.selectOne("adopt.readAdopt", adt_code);
+			int articleNum = Integer.parseInt(articleNumStr);
+			post = sqlSession.selectOne("adopt.readAdopt", articleNum);
 		}
 		catch (Exception e) 
 		{
@@ -404,7 +404,40 @@ public class AdoptDAOImpl implements AdoptDAO
 		
 		return list;
 	}
-	
+
+	// 게시글 삭제 메소드
+	@Override
+	public int deleteAdopt(String adt_code)
+	{
+		int result = 0; 
+		try
+		{
+			result = sqlSession.delete("adopt.deleteAdopt", adt_code);
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		
+		return result;
+	}
+
+	// 고양이 종류 조회 메소드
+	@Override
+	public List<Map<String, Object>> catList()
+	{
+		List<Map<String, Object>> catList = null; 
+		try
+		{
+			catList = sqlSession.selectList("adopt.catList");
+		} catch (Exception e)
+		{
+			logger.error(e.toString());
+			throw e;
+		}
+		
+		return catList;
+	}
 	
 	
 }
