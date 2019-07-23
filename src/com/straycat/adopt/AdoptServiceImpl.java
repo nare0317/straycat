@@ -178,7 +178,7 @@ public class AdoptServiceImpl implements AdoptService
 
 	// 게시글 열람
 	@Override
-	public Map<String, Object> readAdopt(String articleNum, String adt_code)
+	public Map<String, Object> readAdopt(int articleNum, String adt_code)
 	{
 		Map<String, Object> post = null;
 		try

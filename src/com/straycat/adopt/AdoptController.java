@@ -1,5 +1,6 @@
 package com.straycat.adopt;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -161,43 +162,9 @@ public class AdoptController
 	}
 
 	// 입양게시글 열람
-	/*
-	@RequestMapping(value = "/adopt_read", method = RequestMethod.GET)
-	public String adoptRead(@RequestParam String adt_code
-							, HttpServletRequest request
-							, Model model)
-	{
-		Map<String, Object> post = null;
-		
-		try
-		{	// 입양모집글 코드 값 받아서
-			adt_code = request.getParameter("adt_code");
-			// 게시글 내용 열람하는 메소드를 호출해 
-			post = service.readAdopt(adt_code);
-			// 그 결과값을 post라는 이름으로 넘기기
-			model.addAttribute("post", post);
-			
-			// 입양신청자 리스트 넘기기
-			List<Map<String, Object>> applicantList = service.listApplicant(adt_code);
-			model.addAttribute("applicantList", applicantList);
-			
-			// 입양신청폼 내용 넘기기(열람페이지 완성 후에 열람하는 메소드를 넘겨야..)
-			
-
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		
-
-		return "Adopt_Read";
-	}
-	*/
-	
-	// 게시글열람(이전글다음글)
 	@RequestMapping(value = "/adopt_read", method = RequestMethod.GET)
 	public String adoptRead(@RequestParam(name="adt_code") String adt_code
-							, @RequestParam(name="articleNum") String articleNum
+							, @RequestParam(name="articleNum") int articleNum
 							, HttpServletRequest request
 							, Model model)
 	{
@@ -206,13 +173,45 @@ public class AdoptController
 		try
 		{	
 			adt_code = request.getParameter("adt_code");
-			articleNum = request.getParameter("articleNum");
+			articleNum = Integer.parseInt(request.getParameter("articleNum"));
 			
-			// 게시글 내용 열람하는 메소드를 호출해 
+			// 게시글 내용 넘기기
 			post = service.readAdopt(articleNum, adt_code);
-			
-			// 그 결과값을 post라는 이름으로 넘기기
 			model.addAttribute("post", post);
+			
+			
+			//---------------------------------------------------------------------
+			// 이전글, 다음글 변수 선언
+			Map<String,Object> prevArticle = new HashMap<String, Object>();
+			Map<String,Object> nextArticle = new HashMap<String, Object>();
+			
+			// 이전 글 가져오기
+			// 이전 글이 있다면(articleNum-1이 1보다 크거나 같으면)
+			if (articleNum-1 >= 1)
+			{
+				prevArticle = service.readAdopt(articleNum-1, adt_code);
+			}
+			else
+			{
+				prevArticle.put("CAT_NAME", "이전 게시글이 없습니다.");
+			}
+
+			// 다음 글 가져오기
+			// 다음 글이 있다면(articleNum+1이 전체 데이터 수보다 작으면)
+			if (articleNum+1 <= 16)
+			{
+				nextArticle = service.readAdopt(articleNum+1, adt_code);
+			}
+			else
+			{
+				nextArticle.put("CAT_NAME", "다음 게시글이 없습니다.");
+			}
+			
+			// 이전글/다음글 내용 넘기기 
+			model.addAttribute("prevArticle", prevArticle);
+			model.addAttribute("nextArticle", nextArticle);
+			
+			//---------------------------------------------------------------------
 			
 			// 입양신청자 리스트 넘기기
 			List<Map<String, Object>> applicantList = service.listApplicant(adt_code);
@@ -225,7 +224,6 @@ public class AdoptController
 		{
 			e.printStackTrace();
 		}
-		
 
 		return "Adopt_Read";
 	}
@@ -273,11 +271,11 @@ public class AdoptController
 	
 	
 	// 게시글 수정 버튼 클릭시 입양게시글 수정페이지로 이동
-	/*
 	@RequestMapping(value = "/adopt_update_form", method = RequestMethod.GET)
 	public String updateForm(Model model
 							, HttpServletRequest request
-							, @RequestParam String adt_code)
+							, @RequestParam String adt_code
+							, @RequestParam(name="articleNum") int articleNum)
 	{
 		Map<String, Object> post = null;
 		try
@@ -286,7 +284,7 @@ public class AdoptController
 			adt_code = request.getParameter("adt_code");
 			
 			// 해당 게시글 정보 얻어내기
-			post = service.readAdopt(adt_code);
+			post = service.readAdopt(articleNum,adt_code);
 			
 			// 게시글 정보 넘기기 
 			model.addAttribute("post", post);
@@ -303,7 +301,6 @@ public class AdoptController
 
 		return "Adopt_Update";
 	}
-	*/
 	
 	
 	// 입양 게시글 수정
@@ -414,6 +411,7 @@ public class AdoptController
 	// 입양 매칭 후보자 리스트 조회
 	@RequestMapping(value = "/adopt/apply_list", method = RequestMethod.GET)
 	public String applyList(HttpServletRequest request
+						  , @RequestParam(name="articleNum") int articleNum
 						  , Model model)
 	{
 		Map<String, Object> user = null;
@@ -440,8 +438,8 @@ public class AdoptController
 			model.addAttribute("list", list);
 			
 			// 입양 모집글 정보 받아서 넘김
-			//post = service.readAdopt(adt_code);
-			//model.addAttribute("post", post);
+			post = service.readAdopt(articleNum,adt_code);
+			model.addAttribute("post", post);
 			
 			
 		} catch (Exception e)
