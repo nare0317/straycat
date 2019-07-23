@@ -94,7 +94,8 @@ public class CatController
 		Map<String, Object> catInfo = service.catInfo(id);
 		List<Map<String, Object>> catLocation = service.catLocation(id);
 		List<Map<String, Object>> catActReg = service.catActReg(id);
-		List<Map<String, Object>> actGalList = service.actGalList(id);		
+		List<Map<String, Object>> actGalList = service.actGalList(id);	
+		List<Map<String, Object>> representationCat = service.representationCat(id);
 		
 		Map<String, String> catCode = new HashMap<String, String>();
 		catCode.put("cat_code", id);
@@ -119,6 +120,7 @@ public class CatController
 		model.addAttribute("avgLoc", avgLoc);
 		model.addAttribute("result",result);
 		model.addAttribute("actGalList",actGalList);
+		model.addAttribute("representationCat", representationCat);
 
 		return "Cat_Detail";
 	}

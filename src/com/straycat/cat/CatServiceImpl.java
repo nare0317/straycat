@@ -96,6 +96,21 @@ public class CatServiceImpl implements CatService
 		
 		return catInfo;
 	}
+	
+	@Override
+	public List<Map<String, Object>> representationCat(String id)
+	{
+		List<Map<String, Object>> representationCat = null;
+		
+		try
+		{
+			representationCat = dao.selectListListList(id);
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return representationCat;
+	}
 
 	@Override
 	public List<Map<String, Object>> catLocation(String id)

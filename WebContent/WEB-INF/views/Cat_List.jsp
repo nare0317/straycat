@@ -31,10 +31,26 @@
 		
 		dongList("${dongString}");
 		
+		
+		<%-- $.ajax({
+			url : "<c:url value=''>",
+			type : "post",
+			data : ,
+			dataType : "json",
+			success : function(data)
+			{
+								
+			}
+			error : function()
+			{
+				
+			}
+		});--%>
+		
 	}); 
 	
 
-</script>
+</script> 
 
 </head>
 <body>

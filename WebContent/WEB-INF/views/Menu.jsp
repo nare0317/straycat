@@ -89,7 +89,7 @@ function callback(position)
 // 메인에 시, 구, 동을 표시함.
 function result(info)
 {	
-	console.log("path name:" + window.location.url);
+	//console.log("path name:" + window.location.url);
 	var url = window.location.pathname
 	
 	if(url=="<%=cp%>/cat" || url=="<%=cp%>/main" || url=="<%=cp%>/adopt" || url=="<%=cp%>/missing" || url=="<%=cp%>/introduce")
