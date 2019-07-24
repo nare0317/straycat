@@ -128,7 +128,7 @@
 			<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
 				<div class="col-md-2 offset-md-4" align="right">
 					<input type="button" class="btn btn-secondary btn-sm" id="modify-btn" value="수정"
-					onclick="location.href='<%=cp%>/adopt_update_form?adt_code=${post.ADT_CODE}'">
+					onclick="location.href='<%=cp%>/adopt_update_form?adt_code=${post.ADT_CODE}&articleNum=${post.NUM }'">
 					
 					<!-- 입양모집글 상태가 '신규등록'일 때만 게시글 삭제 가능 -->
 					<c:if test="${post.ADT_PROC eq '신규등록'}">
@@ -175,7 +175,7 @@
 					<div class="input-group">
 						
 						<!-- 게시글코드(hidden) -->
-            			<%-- <input type="hidden" id="adt_code" name="adt_code" value="${post.ADT_CODE}"> --%>
+            			<input type="hidden" id="adt_code" name="adt_code" value="${post.ADT_CODE}">
             			
             			<!-- 게시글번호(hidden) -->
             			<input type="hidden" id="articleNum" name="articleNum" value="${post.NUM }">
@@ -342,7 +342,7 @@
 							<input type="hidden" id="endDate" value="${post.END_DATE }">
 							<p>남은시간 : <br><span id="leftDate"></span></p>
 							<input type="button" class="btn btn-success" value="입양 신청자 확인"
-							onclick="location.href='<%=cp%>/adopt/apply_list?adt_code=${post.ADT_CODE }'">
+							onclick="location.href='<%=cp%>/adopt/apply_list?adt_code=${post.ADT_CODE }&articleNum=${post.NUM }'">
 						</div>
 					</div>
 				</c:if>
@@ -374,7 +374,7 @@
 						<p>남은시간 : <br><span id="leftDate"></span></p>
 						<input type="button" class="btn btn-primary" value="입양신청"
 						onclick="location.href='<%=cp%>/adopt/apply_form?adt_code=${post.ADT_CODE }'">
-					</div>
+					</div> 	
 				</div>
 				</c:if>
 				
@@ -458,21 +458,28 @@
 	</section>
 	
 	
-	
-		
-		
-		
 	<section class="post-view-bottom container">	
 
 		<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
 		<div class="beforeafter list-group">
-			<a href="" onclick="" class=" prev list-group-item list-group-item-action"> 
-				<i class="fas fa-chevron-up"> 이전 글 </i><span>이전 글이 없습니다.</span>
-			</a>
-			<a href="" onclick=""  class="next list-group-item list-group-item-action">
-				<i class="fas fa-chevron-down"> 다음 글 </i><span>깜찍한 아기냥이 입양하세요~!!!</span>
+			<c:if test="${prevArticle.NUM eq null }">
+			<a href='#' class="prev list-group-item list-group-item-action">
+			</c:if>
+			<c:if test="${prevArticle.NUM != null }">
+			<a href='<%=cp %>/adopt_read?adt_code=${prevArticle.ADT_CODE }&articleNum=${prevArticle.NUM }' class="prev list-group-item list-group-item-action">
+			</c:if>
+				<i class="fas fa-chevron-up"> 이전 글 <span>${prevArticle.CAT_NAME}</span></i>
+			<c:if test="${nextArticle.NUM eq null }">
+			<a href='#' class="next list-group-item list-group-item-action">
+			</c:if>
+			<c:if test="${nextArticle.NUM != null }">
+			<a href='<%=cp %>/adopt_read?adt_code=${prevArticle.ADT_CODE }&articleNum=${nextArticle.NUM }' class="next list-group-item list-group-item-action">
+			</c:if>
+				<i class="fas fa-chevron-down"> 다음 글 <span>${nextArticle.CAT_NAME }</span></i>
 			</a>
 		</div>
+		
+		
 		
 		<!-- 목록으로 돌아가기 버튼 -->
 		<input type="button" class="btn btn-dark pull-right" value="목록으로" onclick="location.href='<%=cp%>/adopt'">

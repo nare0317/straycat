@@ -156,13 +156,13 @@ public class AdoptDAOImpl implements AdoptDAO
 	
 	// 입양게시물 열람 메소드
 	@Override
-	public Map<String, Object> readAdopt(String articleNumStr)
+	public Map<String, Object> readAdopt(int articleNum)
 	{
 		Map<String, Object> post = null; 
 		
 		try 
 		{
-			int articleNum = Integer.parseInt(articleNumStr);
+			//int articleNum = Integer.parseInt(articleNumStr);
 			post = sqlSession.selectOne("adopt.readAdopt", articleNum);
 		}
 		catch (Exception e) 

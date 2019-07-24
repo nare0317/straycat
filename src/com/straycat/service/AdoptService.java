@@ -17,7 +17,7 @@ public interface AdoptService
 	public Map<String, Object> searchUserInfo(String user_id);
 	
 	// 입양게시글 열람
-	public Map<String, Object> readAdopt(String articleNum,String adt_code);
+	public Map<String, Object> readAdopt(int articleNum,String adt_code);
 	
 	// 구 리스트 조회 
 	public List<Map<String, Object>> listGu();

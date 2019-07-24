@@ -21,7 +21,7 @@ public interface AdoptDAO
 	public Map<String, Object> searchUserInfo(String user_id);
 	
 	// 입양 모집글 열람 메소드
-	public Map<String, Object> readAdopt(String articleNumStr);
+	public Map<String, Object> readAdopt(int articleNum);
 	
 	// 셀렉트 박스 내 구 리스트 조회 메소드
 	public List<Map<String, Object>> listGu();
