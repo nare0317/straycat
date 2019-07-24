@@ -175,7 +175,7 @@
 					<div class="input-group">
 						
 						<!-- 게시글코드(hidden) -->
-            			<%-- <input type="hidden" id="adt_code" name="adt_code" value="${post.ADT_CODE}"> --%>
+            			<input type="hidden" id="adt_code" name="adt_code" value="${post.ADT_CODE}">
             			
             			<!-- 게시글번호(hidden) -->
             			<input type="hidden" id="articleNum" name="articleNum" value="${post.NUM }">
