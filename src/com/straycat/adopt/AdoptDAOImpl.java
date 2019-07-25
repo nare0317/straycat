@@ -162,7 +162,6 @@ public class AdoptDAOImpl implements AdoptDAO
 		
 		try 
 		{
-			//int articleNum = Integer.parseInt(articleNumStr);
 			post = sqlSession.selectOne("adopt.readAdopt", articleNum);
 		}
 		catch (Exception e) 

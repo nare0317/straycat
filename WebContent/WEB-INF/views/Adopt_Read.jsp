@@ -47,7 +47,7 @@
 			//alert("성공");
 			//alert("adt_proc : " + $("#adt_proc").val());
 			//alert("adt_code : " +$("#adt_code").val());
-			$(location).attr("href", "<%=cp%>/adopt_proc?adt_proc=" + $("#adt_proc").val() + "&adt_code=" + $("#adt_code").val());
+			$(location).attr("href", "<%=cp%>/adopt_proc?adt_proc=" + $("#adt_proc").val() + "&adt_code=" + $("#adt_code").val() + "&articleNum=" + $("#articleNum").val());
 			
 		});
 		

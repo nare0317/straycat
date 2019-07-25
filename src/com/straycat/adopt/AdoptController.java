@@ -251,12 +251,14 @@ public class AdoptController
 	@RequestMapping(value = "/adopt_proc", method = RequestMethod.GET) 
 	public String changeStatus(@RequestParam String adt_proc
 							 , @RequestParam String adt_code
+							 , @RequestParam(name="articleNum") int articleNum
 							 , HttpServletRequest request) 
 	{
 		try
 		{
 			adt_proc = request.getParameter("adt_proc");
 			adt_code = request.getParameter("adt_code");
+			articleNum = Integer.parseInt(request.getParameter("articleNum"));
 			
 			service.changeStatus(adt_proc, adt_code);
 			
@@ -266,7 +268,7 @@ public class AdoptController
 		}
 		
 		//return "redirect:/adopt/apply_list?adt_code="+adt_code;		//-- 입양신청후보자 리스트 페이지로 이동
-		return "redirect:/adopt_read?adt_code="+adt_code;
+		return "redirect:/adopt_read?adt_code="+adt_code+"&articleNum="+articleNum;
 	} 
 	
 	
