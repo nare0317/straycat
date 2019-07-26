@@ -172,13 +172,9 @@ public class AdoptController
 		
 		try
 		{	
-			adt_code = request.getParameter("adt_code");
-			articleNum = Integer.parseInt(request.getParameter("articleNum"));
-			
 			// 게시글 내용 넘기기
 			post = service.readAdopt(articleNum, adt_code);
 			model.addAttribute("post", post);
-			
 			
 			//---------------------------------------------------------------------
 			// 이전글, 다음글 변수 선언
@@ -249,17 +245,13 @@ public class AdoptController
 	 
 	// 입양 상태 변경 (게시글 열람페이지 내)
 	@RequestMapping(value = "/adopt_proc", method = RequestMethod.GET) 
-	public String changeStatus(@RequestParam String adt_proc
-							 , @RequestParam String adt_code
+	public String changeStatus(@RequestParam(name="adt_proc") String adt_proc
+							 , @RequestParam(name="adt_code") String adt_code
 							 , @RequestParam(name="articleNum") int articleNum
 							 , HttpServletRequest request) 
 	{
 		try
 		{
-			adt_proc = request.getParameter("adt_proc");
-			adt_code = request.getParameter("adt_code");
-			articleNum = Integer.parseInt(request.getParameter("articleNum"));
-			
 			service.changeStatus(adt_proc, adt_code);
 			
 		} catch (Exception e)
@@ -276,15 +268,12 @@ public class AdoptController
 	@RequestMapping(value = "/adopt_update_form", method = RequestMethod.GET)
 	public String updateForm(Model model
 							, HttpServletRequest request
-							, @RequestParam String adt_code
+							, @RequestParam(name="adt_code") String adt_code
 							, @RequestParam(name="articleNum") int articleNum)
 	{
 		Map<String, Object> post = null;
 		try
 		{
-			// 게시글 코드 값 받기 
-			adt_code = request.getParameter("adt_code");
-			
 			// 해당 게시글 정보 얻어내기
 			post = service.readAdopt(articleNum,adt_code);
 			

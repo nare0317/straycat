@@ -33,7 +33,7 @@ $(document).ready(function()
 	// 최종 선택 버튼 눌렀을 때, 입양 게시글 상태 '입양확정'으로 변경됨. 
 	$("#applyFinish").click(function()
 	{
-		$(location).attr("href","<%=cp%>/adopt_proc?adt_proc=ADP5"+"&adt_code=" + $("#adt_code").val());
+		$(location).attr("href","<%=cp%>/adopt_proc?adt_proc=ADP5"+"&adt_code=" + $("#adt_code").val() + "&articleNum=" + $("#articleNum").val());
 		
 	});
 });
@@ -68,7 +68,10 @@ $(document).ready(function()
 				<td>
 					<!-- 입양게시글 코드(hidden) -->
 					<input type="hidden" id="adt_code" value="${post.ADT_CODE }">    
-					    
+					
+					<!-- 입양게시글 번호(hidden) -->
+            			<input type="hidden" id="articleNum" name="articleNum" value="${post.NUM }">
+            			    
 					<h5>ID : ${app.ID } <br>이름 : ${app.NAME }</h5> 
 					<a class="send-message"><i class="fas fa-envelope"></i><span>쪽지</span></a>
 					<br> 

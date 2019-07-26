@@ -307,7 +307,7 @@
                   <label for="colFormLabel" class="col-sm-2 col-form-label">이름</label>
                   <div class="col-sm-3">
                      <input type="text" readonly="readonly" class="form-control" id="name" name="name" 
-                     placeholder="${user.USER_NAME }">
+                     placeholder="${user.USER_NAME }" value="${user.USER_NAME }">
                   </div>
                </div>
                

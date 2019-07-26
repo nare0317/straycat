@@ -140,7 +140,7 @@ public class AdoptServiceImpl implements AdoptService
 			String user_code = (String) userInfo.get("USER_CODE");
 			// param에 USER_CODE값을 넣음.
 			param.put("USER_CODE", user_code);
-			
+			//param.put("USER_NAME", (String)param.get("name"));
 			param.put("TEL", (String) param.get("tel"));
 			param.put("EMAIL", (String) param.get("email"));
 			param.put("ADT_REASON", (String) param.get("adt_reason"));
