@@ -32,7 +32,7 @@ public class AdoptController
 	private ImageService imageService;
 
 	
-	// 입양게시판 리스트 조회 
+	// 입양게시판 리스트 조회 (전체리스트, 지역검색)
 	@RequestMapping(value = "/adopt", method = RequestMethod.GET)
 	public String selectList(Model model
 			, @RequestParam(name="searchGu", defaultValue = "") String searchGu
@@ -74,7 +74,7 @@ public class AdoptController
 	}
 	
 	
-	// 입양게시판 리스트 조회
+	// 입양게시판 리스트 조회(키워드검색)
 	@RequestMapping(value = "/adopt_search", method = RequestMethod.GET)
 	public String searchList(Model model, @RequestParam(name = "searchKey", defaultValue = "") String searchKey,
 			@RequestParam(name = "searchValue", defaultValue = "") String searchValue, HttpServletRequest request)
