@@ -125,6 +125,13 @@ public class AdoptServiceImpl implements AdoptService
 			Date date = Date.valueOf((String) param.get("rsq_date"));
 			param.put("RSQ_DATE", date);
 			
+			// session에 저장된 user_id값을 받아서 dao의 searchUserInfo() 메소드로 사용자 정보를 map 자료구조에 담음.
+			Map<String, Object> userInfo = dao.searchUserInfo((String)param.get("user_id"));
+			// map자료구조 안에서 "USER_CODE" 키 값으로 되어있는 USER_CODE 값을 가져옴.
+			String user_code = (String) userInfo.get("USER_CODE");
+			// param에 USER_CODE값을 넣음.
+			param.put("USER_CODE", user_code);
+			
 			param.put("CAT_NAME", (String) param.get("cat_name"));
 			param.put("CAT_SPECIES", (String) param.get("cat_species"));
 			param.put("CAT_AGE_TYPE", (String) param.get("cat_age_type"));
@@ -133,14 +140,6 @@ public class AdoptServiceImpl implements AdoptService
 			param.put("ADT_TYPE", (String) param.get("adt_type"));
 			param.put("CAT_ECT1", (String) param.get("cat_ect1"));
 			param.put("CAT_ECT2", (String) param.get("cat_ect2"));
-			
-			// session에 저장된 user_id값을 받아서 dao의 searchUserInfo() 메소드로 사용자 정보를 map 자료구조에 담음.
-			Map<String, Object> userInfo = dao.searchUserInfo((String)param.get("user_id"));
-			// map자료구조 안에서 "USER_CODE" 키 값으로 되어있는 USER_CODE 값을 가져옴.
-			String user_code = (String) userInfo.get("USER_CODE");
-			// param에 USER_CODE값을 넣음.
-			param.put("USER_CODE", user_code);
-			//param.put("USER_NAME", (String)param.get("name"));
 			param.put("TEL", (String) param.get("tel"));
 			param.put("EMAIL", (String) param.get("email"));
 			param.put("ADT_REASON", (String) param.get("adt_reason"));

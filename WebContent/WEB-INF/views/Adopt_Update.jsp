@@ -126,6 +126,9 @@ $(document).ready(function()
                <!-- 게시글 코드 (hidden) -->
                <input type="hidden" id="adt_code" name="adt_code" value="${post.ADT_CODE }">
                
+               <!-- 게시글번호(hidden) -->
+               <input type="hidden" id="articleNum" name="articleNum" value="${post.NUM }">
+               
                <!-- 고양이 이름 -->
                <div class="form-group row">
                   <label for="cat-name" class="col-sm-2 col-form-label">이름</label>

@@ -1,5 +1,6 @@
 package com.straycat.adopt;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -297,13 +298,12 @@ public class AdoptController
 	// 입양 게시글 수정
 	@RequestMapping(value = "/adopt_update", method = RequestMethod.POST)
 	public String adoptUpdate(@RequestParam Map<String, Object> param
-							, @RequestParam String adt_code
+							, @RequestParam(name="adt_code") String adt_code
+							, @RequestParam(name="articleNum") int articleNum
 							, HttpServletRequest request
 							, HttpSession session
 							, MultipartFile file)
 	{
-		adt_code = request.getParameter("adt_code");
-		
 		try
 		{
 			// 수정 시 첨부파일 변경했을 때 
@@ -328,7 +328,7 @@ public class AdoptController
 			e.printStackTrace();
 		}
 		
-		return "redirect:/adopt_read?adt_code="+adt_code;
+		return "redirect:/adopt_read?adt_code="+adt_code+"&articleNum="+articleNum;
 	}
 
 	// 입양 신청 버튼 클릭 시 입양 신청폼 페이지로 이동
