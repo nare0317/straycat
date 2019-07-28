@@ -42,7 +42,7 @@
 			$("#proc_change_modal").modal();
 		});
 		
-		$("#confirm_update").click(function()
+		$("#confirm").click(function()
 		{
 			//alert("성공");
 			//alert("adt_proc : " + $("#adt_proc").val());
@@ -50,18 +50,6 @@
 			$(location).attr("href", "<%=cp%>/adopt_proc?adt_proc=" + $("#adt_proc").val() + "&adt_code=" + $("#adt_code").val());
 			
 		});
-		
-		// 삭제 버튼 클릭 시 모달 창 호출 
-		$("#delete-btn").click(function()
-		{
-			$("#delete_modal").modal();
-		});
-		
-		$("#confirm_delete").click(function()
-		{
-			$(location).attr("href", "<%=cp%>/adopt_delete?adt_code=" + $("#adt_code").val());
-		});
-		
 		
 	}); 
 	
@@ -128,44 +116,9 @@
 			<c:if test="${sessionScope.user_id != null && sessionScope.user_id == post.USER_ID }">
 				<div class="col-md-2 offset-md-4" align="right">
 					<input type="button" class="btn btn-secondary btn-sm" id="modify-btn" value="수정"
-					onclick="location.href='<%=cp%>/adopt_update_form?adt_code=${post.ADT_CODE}&articleNum=${post.NUM }'">
+					onclick="location.href='<%=cp%>/adopt_update_form?adt_code=${post.ADT_CODE}'">
 					
-					<!-- 입양모집글 상태가 '신규등록'일 때만 게시글 삭제 가능 -->
-					<c:if test="${post.ADT_PROC eq '신규등록'}">
-					<input type="button" class="btn btn-secondary btn-sm" id="delete-btn" value="삭제">
-					<!-- onclick="location.href='<%=cp%>/adopt_delete?adt_code=${post.ADT_CODE }'" -->
-					</c:if>
-					
-					<!-- 삭제하시겠습니까? 팝업 -->
-					<div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog" role="document">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">게시글 삭제</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
-					      </div>
-					      <div class="modal-body" align="left">
-					       현재 게시글을 삭제하시겠습니까?
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-					        <button type="button" class="btn btn-primary" id="confirm_delete">삭제</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
-					
-					<!-- 삭제 완료 팝업 -->
-					<div class="modal fade success_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-					  <div class="modal-dialog modal-sm">
-					    <div class="modal-content">
-					      게시글이 정상적으로 삭제되었습니다. 
-					    </div>
-					  </div>
-					</div>
-					
+					<button class="btn btn-secondary btn-sm" id="delete-btn" disabled="disabled">삭제</button>
 				</div>
 			</c:if>	
 			
@@ -176,10 +129,6 @@
 						
 						<!-- 게시글코드(hidden) -->
             			<input type="hidden" id="adt_code" name="adt_code" value="${post.ADT_CODE}">
-            			
-            			<!-- 게시글번호(hidden) -->
-            			<input type="hidden" id="articleNum" name="articleNum" value="${post.NUM }">
-            			
 						<!-- 게시글상태(hidden) ※ 해당 게시글의 게시글상태-->
 						<input type="hidden" id="adt_proc_selected" name="adt_proc_selected" value="${post.ADT_PROC}">
 						
@@ -220,7 +169,7 @@
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-						        <button type="button" class="btn btn-primary" id="confirm_update">변경</button>
+						        <button type="button" class="btn btn-primary" id="confirm">변경</button>
 						      </div>
 						    </div>
 						  </div>
@@ -251,7 +200,7 @@
 					
 					<!-- 사진 불러오는 구문 -->
 					<!-- C:\GIT\SSIT_StrayCatProject\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\straycat\resource -->
-					<img src="<%=cp %>${post.CAT_REP_IMAGE}" class="" style="width: 300px; height:300px% ">
+					<img src="<%=cp %>${post.CAT_IMAGE}" class="" style="width: 300px; height:300px% ">
 				</div>
 				
 				<!-- 글 내용 -->
@@ -342,7 +291,7 @@
 							<input type="hidden" id="endDate" value="${post.END_DATE }">
 							<p>남은시간 : <br><span id="leftDate"></span></p>
 							<input type="button" class="btn btn-success" value="입양 신청자 확인"
-							onclick="location.href='<%=cp%>/adopt/apply_list?adt_code=${post.ADT_CODE }&articleNum=${post.NUM }'">
+							onclick="location.href='<%=cp%>/adopt/apply_list?adt_code=${post.ADT_CODE }'">
 						</div>
 					</div>
 				</c:if>
@@ -374,7 +323,7 @@
 						<p>남은시간 : <br><span id="leftDate"></span></p>
 						<input type="button" class="btn btn-primary" value="입양신청"
 						onclick="location.href='<%=cp%>/adopt/apply_form?adt_code=${post.ADT_CODE }'">
-					</div> 	
+					</div>
 				</div>
 				</c:if>
 				
@@ -458,28 +407,21 @@
 	</section>
 	
 	
+	
+		
+		
+		
 	<section class="post-view-bottom container">	
 
 		<!-- ★★★★★ 이전글 / 다음글 ★★★★★★ -->
 		<div class="beforeafter list-group">
-			<c:if test="${prevArticle.NUM eq null }">
-			<a href='#' class="prev list-group-item list-group-item-action">
-			</c:if>
-			<c:if test="${prevArticle.NUM != null }">
-			<a href='<%=cp %>/adopt_read?adt_code=${prevArticle.ADT_CODE }&articleNum=${prevArticle.NUM }' class="prev list-group-item list-group-item-action">
-			</c:if>
-				<i class="fas fa-chevron-up"> 이전 글 <span>${prevArticle.CAT_NAME}</span></i>
-			<c:if test="${nextArticle.NUM eq null }">
-			<a href='#' class="next list-group-item list-group-item-action">
-			</c:if>
-			<c:if test="${nextArticle.NUM != null }">
-			<a href='<%=cp %>/adopt_read?adt_code=${prevArticle.ADT_CODE }&articleNum=${nextArticle.NUM }' class="next list-group-item list-group-item-action">
-			</c:if>
-				<i class="fas fa-chevron-down"> 다음 글 <span>${nextArticle.CAT_NAME }</span></i>
+			<a href="" onclick="" class=" prev list-group-item list-group-item-action"> 
+				<i class="fas fa-chevron-up"> 이전 글 </i><span>이전 글이 없습니다.</span>
+			</a>
+			<a href="" onclick=""  class="next list-group-item list-group-item-action">
+				<i class="fas fa-chevron-down"> 다음 글 </i><span>깜찍한 아기냥이 입양하세요~!!!</span>
 			</a>
 		</div>
-		
-		
 		
 		<!-- 목록으로 돌아가기 버튼 -->
 		<input type="button" class="btn btn-dark pull-right" value="목록으로" onclick="location.href='<%=cp%>/adopt'">
