@@ -111,7 +111,7 @@
 		    , U.ID	AS ID
 		    , U.NICKNAME  AS NICKNAME
 		    , BR.TITLE     AS TITLE
-		    , BR.CONTENTS   AS CONTENT
+		    , BR.CONTENT   AS CONTENT
 		    , BT.BBS_TYPE  AS TYPE
 		    , TO_CHAR(BR.POST_DATE, 'YYYY-MM-DD HH24:MI:SS') AS POST_DATE
 		    , BR.HIT_COUNT AS HITCOUNT
@@ -141,7 +141,7 @@
 </select>
 
 <insert id="articleInsert">
-	INSERT INTO BBS_REG (BBS_CODE, USER_CODE, TITLE, CONTENTS, TYPE_CODE, POST_DATE)
+	INSERT INTO BBS_REG (BBS_CODE, USER_CODE, TITLE, CONTENT, TYPE_CODE, POST_DATE)
 	VALUES ('BR'||BBS_REG_SEQ.NEXTVAL, #{user_code, jdbcType=VARCHAR}, #{title, jdbcType=VARCHAR }, #{contents }, #{type_code, jdbcType=VARCHAR }, SYSDATE)
 </insert>
 
@@ -249,14 +249,14 @@
 
 
 <select id="articleUpdateValue" resultType="map">
-	 SELECT BBS_CODE,TITLE, TYPE_CODE, CONTENTS
+	 SELECT BBS_CODE,TITLE, TYPE_CODE, CONTENT
 	 FROM BBS_REG
 	 WHERE BBS_CODE = #{bbs_code}
 </select>
 
 <update id="articleUpdate">
 	  UPDATE BBS_REG
-     SET TITLE = #{title}, TYPE_CODE = #{categorySelect}, CONTENTS = #{content}
+     SET TITLE = #{title}, TYPE_CODE = #{categorySelect}, CONTENT = #{content}
      WHERE BBS_CODE = #{bbs_code}
 </update>
 
