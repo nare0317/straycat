@@ -88,7 +88,7 @@ public class CatController
 	
 	////////////////////////////////// 고상페 페이지부분 ////////////////////////////////////////////////////////////////////////////////////////
 	@RequestMapping("/catdetail")
-	public String selectList(Model model, @RequestParam String id, HttpSession session,Map<String, Object> map)
+	public String selectList(Model model, @RequestParam(value="id") String id, HttpSession session,Map<String, Object> map)
 	{
 		int result = 0;
 		Map<String, Object> catInfo = service.catInfo(id);
