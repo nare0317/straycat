@@ -57,7 +57,7 @@ WHERE AR.CAT_CODE=#{cat_code} AND AR.ACT_DATE BETWEEN TO_DATE(TO_CHAR(SYSDATE,'Y
 
 <insert id="addAct" parameterType="map">
 	INSERT INTO ACT_REG(ACT_CODE, CAT_CODE, USER_CODE, ACT_TYPE, CONTENT, POST_DATE, LATITUDE, LONGITUDE, ACT_LOCATION, ACT_DATE, ACT_IMG)
-	VALUES('AR' || ACT_REG_SQE.NEXTVAL, #{cat_code, jdbcType=VARCHAR}, #{user_code, jdbcType=VARCHAR}, #{act_type, jdbcType=VARCHAR}
+	VALUES('AR' || ACT_REG_SEQ.NEXTVAL, #{cat_code, jdbcType=VARCHAR}, #{user_code, jdbcType=VARCHAR}, #{act_type, jdbcType=VARCHAR}
 	,#{content, jdbcType=VARCHAR}, SYSDATE, #{latitude, jdbcType=VARCHAR} ,#{longitude, jdbcType=VARCHAR}, '서울시' || ' ' || #{act_location, jdbcType=VARCHAR} 
 	,TO_DATE(#{act_date, jdbcType=VARCHAR},'YYYY-MM-DD'),#{CAT_REP_IMG, jdbcType=VARCHAR})
 </insert>
