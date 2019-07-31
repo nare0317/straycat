@@ -23,11 +23,24 @@
 
 	$(document).ready(function()
 	{
+		// 구와 동 셀렉트 박스 값 세팅 함수 호출
+		dongList();
 		
+		// 지역 검색 
 		$("#searchAddress").click(function()
 		{
 			//alert("성공");
-			$(location).attr("href", "<%=cp%>/adopt?searchGu=" + $("#gu").val() + "&searchDong=" + $("#dong").val());
+			if ($("#dong").val()=="")
+			{
+				$(location).attr("href", "<%=cp%>/adopt?searchGu=" + $("#gu").val());
+			}
+			else
+			{
+				$(location).attr("href", "<%=cp%>/adopt?searchGu=" + $("#gu").val() + "&searchDong=" + $("#dong").val());	
+			}
+			
+			
+			
 		});
 		
 		// 키워드 검색 
@@ -38,7 +51,9 @@
 	    	//alert(typeof $(this).not('input').text());
 			$(this).attr("href", "<%=cp%>/adopt_search?searchKey=" + $(this).find('input').val() + "&searchValue=" + $(this).not('input').text());
 		});
+	    
 	});
+	
 
 </script>
 
@@ -85,16 +100,20 @@
 					<select class="custom-select" id="gu" onchange="dongList();">
 						<option value="">구 선택</option>
 						<c:forEach var="gu" items="${gu }">
-							<option value="${gu.GU }">${gu.GU }</option>
+							<option value="${gu.GU }" ${gu.GU == selectedGu ? 'selected' : ""}>${gu.GU }</option>
 						</c:forEach>
 					</select>
 				</div>
+				
 				<!-- 동 선택 -->
 				<div class="col-lg-3">
-					<select class="custom-select" id="dong" name="dong">
+					<select class="custom-select" id="dong" name="dong" >
 						<option value="">동 선택</option>
+						<!-- 지역 검색 시 페이지 새로고침 되면서 넘어온 동 값(hidden)을 value 값으로 넣어둠 -->
+						<option hidden="hidden" id="selectedDong" value="${selectedDong }">
 					</select>
 				</div>
+				
 				<!-- 조회버튼 -->
 				<div class="col-lg-2">
 					<input type="button" value="조회" class="btn btn-primary" id="searchAddress">

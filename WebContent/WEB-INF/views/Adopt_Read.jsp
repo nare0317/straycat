@@ -251,7 +251,7 @@
 					
 					<!-- 사진 불러오는 구문 -->
 					<!-- C:\GIT\SSIT_StrayCatProject\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\straycat\resource -->
-					<img src="<%=cp %>${post.CAT_REP_IMAGE}" class="" style="width: 300px; height:300px% ">
+					<img src="<%=cp %>${post.CAT_REP_IMAGE}" class="" style="width: 300px; height:300px; ">
 				</div>
 				
 				<!-- 글 내용 -->

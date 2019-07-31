@@ -44,12 +44,12 @@ public class AdoptController
 		
 		try
 		{
-			if (searchDong.equals(""))					//-- searchDong에 들어온 값이 없다면
+			if (searchGu.equals("") && searchDong.equals(""))			//-- 지역검색X
 			{
 				//-- 게시글 리스트 전체 목록을 불러옴
 				list = service.listAdopt();			
 			}
-			else
+			else														//-- 지역검색O
 			{
 				//선택된 구와 동을 기반으로 게시글 목록을 불러옴
 				list = service.listAdopt(searchGu, searchDong);
@@ -64,6 +64,10 @@ public class AdoptController
 			model.addAttribute("list", list);
 			model.addAttribute("gu", gu);
 			model.addAttribute("dataCount", dataCount);
+			
+			// 지역 검색 후 리스트 조회 시, 셀렉트박스 선택값 변경하기 위해 검색된 구와 동 값을 넘김.
+			model.addAttribute("selectedGu", searchGu);
+			model.addAttribute("selectedDong", searchDong);
 			
 		} catch (Exception e)
 		{
@@ -140,7 +144,8 @@ public class AdoptController
 
 	// 입양 게시글 등록
 	@RequestMapping(value = "/adopt_write", method = RequestMethod.POST)
-	public String adoptWrite(@RequestParam Map<String, Object> param
+	public String adoptWrite(@RequestParam(name = "param") Map<String, Object> param
+			
 			, HttpSession session
 			, MultipartFile file)
 	{
@@ -227,14 +232,17 @@ public class AdoptController
 
 	 // 셀렉트박스 구 선택하면 동 리스트 출력
 	 @RequestMapping(value="/adopt_gu", method=RequestMethod.POST)
-	 @ResponseBody
+	 @ResponseBody	//-- 뷰 페이지를 응답하지 않고 return 값을 그대로 반환하겠다
 	 public ResponseEntity<List<Map<String, Object>>> dongList(String selectedGu) throws Exception 
 	 {
 		ResponseEntity<List<Map<String, Object>>> entity =null;
 		try
 		{
 			List<Map<String, Object>> list = service.listDong(selectedGu);
+			
 			entity = new ResponseEntity<List<Map<String, Object>>>(list, HttpStatus.OK);
+			//													  -----   -------------
+			// 												       body     status code
 			
 		}catch(Exception e)
 		{

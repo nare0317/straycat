@@ -76,7 +76,11 @@ public class AdoptDAOImpl implements AdoptDAO
 		{
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("searchKey", searchKey);
-			map.put("searchValue", searchValue);
+			
+			if(searchValue != null)
+			{
+				map.put("searchValue", searchValue);
+			}
 			
 			list = sqlSession.selectList("adopt.searchList2", map);
 		}
