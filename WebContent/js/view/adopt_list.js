@@ -34,8 +34,8 @@ $(document).ready(function() {
 	
 	
 	
-	//---------------------- 고양이사진 크기조절  -------------------------------- 
-	/* $('.img-thumbnail img').each(function() 
+	/*//---------------------- 고양이사진 크기조절  -------------------------------- 
+	 $('.img-thumbnail img').each(function() 
 	 {
 	   //alert("함수호출");
        var maxWidth = 200; // Max width for the image

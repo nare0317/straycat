@@ -88,13 +88,14 @@ public class CatController
 	
 	////////////////////////////////// 고상페 페이지부분 ////////////////////////////////////////////////////////////////////////////////////////
 	@RequestMapping("/catdetail")
-	public String selectList(Model model, @RequestParam String id, HttpSession session,Map<String, Object> map)
+	public String selectList(Model model, @RequestParam(value="id") String id, HttpSession session,Map<String, Object> map)
 	{
 		int result = 0;
 		Map<String, Object> catInfo = service.catInfo(id);
 		List<Map<String, Object>> catLocation = service.catLocation(id);
 		List<Map<String, Object>> catActReg = service.catActReg(id);
-		List<Map<String, Object>> actGalList = service.actGalList(id);		
+		List<Map<String, Object>> actGalList = service.actGalList(id);	
+		List<Map<String, Object>> representationCat = service.representationCat(id);
 		
 		Map<String, String> catCode = new HashMap<String, String>();
 		catCode.put("cat_code", id);
@@ -119,6 +120,7 @@ public class CatController
 		model.addAttribute("avgLoc", avgLoc);
 		model.addAttribute("result",result);
 		model.addAttribute("actGalList",actGalList);
+		model.addAttribute("representationCat", representationCat);
 
 		return "Cat_Detail";
 	}
