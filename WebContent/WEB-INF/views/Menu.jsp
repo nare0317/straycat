@@ -4,7 +4,6 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light rounded site-header sticky-top py-1">
     <a class="navbar-brand" href="<%=cp %>/main"><img src="<%=cp%>/img/cat_main.jpg" style="width: 60px; margin-left: 30px;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="true" aria-label="Toggle navigation">
@@ -54,8 +53,22 @@
       </form>
     </div>
   </nav>
-  
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
+
+<!-- jquery ui css -->
+<%-- <link rel="stylesheet" href="<%=cp%>/css/jquery-ui.css">
+<link rel="stylesheet" href="<%=cp%>/css/jquery-ui.theme.css">
+<link rel="stylesheet" href="<%=cp%>/css/jquery-ui.structure.css"> --%>
+
+<!-- jquery ui js -->
+<script type="text/javascript" src="<%=cp%>/js/jquery-ui.js"></script>
+<%-- <script type="text/javascript" src="<%=cp%>/js/jquery-ui.min.js"></script> --%>
+ 
+<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script> -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=51786e9a9cf928240706670d20e42b70&libraries=services"></script>
 <script type="text/javascript">
 // 카카오 맵 객체 생성
 var geocoder = new kakao.maps.services.Geocoder();

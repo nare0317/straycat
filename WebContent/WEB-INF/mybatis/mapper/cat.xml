@@ -23,7 +23,7 @@
 			ON C.CAT_ADDRESS = AD.ADDRESS_CODE 
 				LEFT JOIN CAT_STATUS CST 
 			ON C.CAT_STATUS = CST.STATUS_CODE 
-		WHERE AD.GU = #{gu} AND AD.DONG = #{dong}  
+		WHERE AD.GU = #{gu,jdbcType=VARCHAR} AND AD.DONG = #{dong,jdbcType=VARCHAR}  
 		<![CDATA[
 		AND ROWNUM <= 10
 		]]>  

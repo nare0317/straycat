@@ -603,7 +603,8 @@
 	});
 </script>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script>
+<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b303496379e7132604036c5f952f3623&libraries=services"></script> -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=51786e9a9cf928240706670d20e42b70&libraries=services"></script>
 <script>
 	/* 첫번째 지도 (마커 출력용 지도) */
 	
