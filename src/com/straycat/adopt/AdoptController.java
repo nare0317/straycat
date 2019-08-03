@@ -342,10 +342,11 @@ public class AdoptController
 	// 입양 신청 버튼 클릭 시 입양 신청폼 페이지로 이동
 	@RequestMapping(value="/adopt/apply_form", method = RequestMethod.GET)
 	public String applyForm(HttpServletRequest request
+							, @RequestParam(name="adt_code") String adt_code
+							, @RequestParam(name="articleNum") int articleNum
 							, Model model)
 	{
 		Map<String, Object> user = null;
-		String adt_code = ""; 
 		
 		try
 		{
@@ -358,8 +359,10 @@ public class AdoptController
 			model.addAttribute("user", user);
 			
 			// 입양모집글 코드 값 받아서 넘기기 
-			adt_code = request.getParameter("adt_code");
 			model.addAttribute("adt_code", adt_code);
+			
+			// 입양모집글 게시글번호(articleNum)넘기기 
+			model.addAttribute("articleNum", articleNum);
 			
 		} catch (Exception e)
 		{
@@ -374,10 +377,10 @@ public class AdoptController
 	@RequestMapping(value = "/adopt/apply", method = RequestMethod.GET)
 	public String applyWrite(HttpServletRequest request
 							, @RequestParam Map<String, Object> apply
+							, @RequestParam(name="adt_code") String adt_code
+							, @RequestParam(name="articleNum") int articleNum
 							, Model model)
 	{
-		String adt_code = ""; 
-		
 		try
 		{
 			// 로그인한 사용자 id값 세션에서 가져오기
@@ -388,14 +391,10 @@ public class AdoptController
 			//model.addAttribute("applicant_id", user_id);
 			
 			// 입양모집글 코드 값 받아서 넘기기
-			adt_code = request.getParameter("adt_code");
 			model.addAttribute("adt_code", adt_code);
+			model.addAttribute("articleNum", articleNum);
 			
-			//System.out.println("★★★★★★★★★★★★★★★★★★★★★★★");
-			//System.out.println(param.values());
-			//System.out.println("★★★★★★★★★★★★★★★★★★★★★★★");
-			
-			// 입양신청폼 넘기기
+			// 입양신청폼 넘기기	
 			service.applyAdopt(apply);
 			model.addAttribute("apply", apply);
 			
@@ -404,17 +403,17 @@ public class AdoptController
 			e.printStackTrace();
 		}
 		
-		return "redirect:/adopt_read";
+		return "redirect:/adopt_read?adt_code="+adt_code+"&articleNum="+articleNum;
 	}
 
 	// 입양 매칭 후보자 리스트 조회
 	@RequestMapping(value = "/adopt/apply_list", method = RequestMethod.GET)
 	public String applyList(HttpServletRequest request
+						  , @RequestParam(name="adt_code") String adt_code
 						  , @RequestParam(name="articleNum") int articleNum
 						  , Model model)
 	{
 		Map<String, Object> user = null;
-		String adt_code = ""; 
 		List<Map<String, Object>> list = null; 
 		Map<String, Object> post = null;
 		
@@ -428,9 +427,9 @@ public class AdoptController
 			user = service.searchUserInfo(user_id);
 			model.addAttribute("user", user);
 			
-			// 입양모집글 코드 값 받아서 넘기기 
-			adt_code = request.getParameter("adt_code");
+			// 입양모집글 번호 & 코드 값 넘기기 
 			model.addAttribute("adt_code", adt_code);
+			model.addAttribute("articleNum", articleNum);
 			
 			//입양신청한 후보자 리스트 값 넘기기
 			list = service.listApply(adt_code);
