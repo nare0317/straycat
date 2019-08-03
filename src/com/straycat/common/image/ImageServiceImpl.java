@@ -22,6 +22,7 @@ public class ImageServiceImpl implements ImageService
 		String extName = originFilename.substring(originFilename.lastIndexOf("."), originFilename.length());
 		
 		// 서버에서 저장 할 파일 이름
+		// (아래 genFileName() 메소드를 통해 새로 만든 "파일명.확장자")
 		String saveFileName = genFileName(extName);
 
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -41,6 +42,7 @@ public class ImageServiceImpl implements ImageService
 			FileOutputStream fos = new FileOutputStream(path+"\\"+saveFileName);
 			fos.write(data);		//-- byte배열로 실제 이미지 파일을 작성하겠다. 
 			fos.close();
+			
 		} catch (Exception e)
 		{
 			System.out.println(e.toString());
@@ -55,7 +57,8 @@ public class ImageServiceImpl implements ImageService
 	}
 	
 	// saveImage() 에서 사용할 메소드
-	// 파일의 확장자를 받아서 새로운 파일명으로 변경함
+	// 현재 시간을 기준으로 파일 이름 생성
+	// (파일의 확장자를 매개변수로 받아서 새로운 파일명으로 변경함)
 	@Override
 	public String genFileName(String extName)
 	{
