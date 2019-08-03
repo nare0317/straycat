@@ -373,7 +373,7 @@
 						<input type="hidden" id="endDate" value="${post.END_DATE }">
 						<p>남은시간 : <br><span id="leftDate"></span></p>
 						<input type="button" class="btn btn-primary" value="입양신청"
-						onclick="location.href='<%=cp%>/adopt/apply_form?adt_code=${post.ADT_CODE }'">
+						onclick="location.href='<%=cp%>/adopt/apply_form?adt_code=${post.ADT_CODE }&articleNum=${post.NUM }'">
 					</div> 	
 				</div>
 				</c:if>

@@ -70,7 +70,7 @@ $(document).ready(function()
 					<input type="hidden" id="adt_code" value="${post.ADT_CODE }">    
 					
 					<!-- 입양게시글 번호(hidden) -->
-            			<input type="hidden" id="articleNum" name="articleNum" value="${post.NUM }">
+            		<input type="hidden" id="articleNum" name="articleNum" value="${articleNum }">
             			    
 					<h5>ID : ${app.ID } <br>이름 : ${app.NAME }</h5> 
 					<a class="send-message"><i class="fas fa-envelope"></i><span>쪽지</span></a>

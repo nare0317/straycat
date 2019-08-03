@@ -81,6 +81,9 @@
 					<!-- 입양모집글 코드(hidden) -->
 					<input type="hidden" name="adt_code" value="${adt_code }">
 					
+					<!-- 게시글번호(hidden) -->
+               		<input type="hidden" id="articleNum" name="articleNum" value="${articleNum }">
+					
 					<!-- 신청자 아이디(hidden) -->
             		<input type="hidden" id="user_id" name="user_id" value="${user.ID }">
             		
