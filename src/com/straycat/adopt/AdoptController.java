@@ -144,7 +144,7 @@ public class AdoptController
 
 	// 입양 게시글 등록
 	@RequestMapping(value = "/adopt_write", method = RequestMethod.POST)
-	public String adoptWrite(@RequestParam(name = "param") Map<String, Object> param
+	public String adoptWrite(@RequestParam Map<String, Object> param
 			
 			, HttpSession session
 			, MultipartFile file)
