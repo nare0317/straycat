@@ -150,7 +150,7 @@
 					
 					<a href="#" class="btn btn-outline-primary btn-sm active" role="button" 
 					aria-pressed="false" style="margin-right:20px;">긴급입양<input type="hidden" value="ADT_TYPE"></a>
-					<a href="#" ="ADT_TYPE" class="btn btn-outline-danger btn-sm active" role="button" 
+					<a href="#" class="btn btn-outline-danger btn-sm active" role="button" 
 					aria-pressed="false" style="margin-right:20px;">분실의심<input type="hidden" value="ADT_TYPE"></a>
 					<a href="#" class="btn btn-outline-warning btn-sm active" role="button" 
 					aria-pressed="false" style="margin-right:20px;">수컷<input type="hidden" value="CAT_SEX"></a>
