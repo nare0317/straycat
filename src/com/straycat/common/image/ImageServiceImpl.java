@@ -30,7 +30,8 @@ public class ImageServiceImpl implements ImageService
 		try
 		{
 			byte[] data = file.getBytes();
-			path = path + "resource\\";		//-- resource\ 
+			//path = path + "resource\\";		//-- resource\   \\가 맥에서 \\로 그대로 나와서 아래처럼 바꿈.. 
+			path = path + "resource/";
 			
 			// 경로가 없다면 경로 생성
 			File dir = new File(path); 
@@ -38,8 +39,9 @@ public class ImageServiceImpl implements ImageService
                 dir.mkdirs();
             }
             
-			FileOutputStream fos = new FileOutputStream(path+"\\"+saveFileName);
-			fos.write(data);		//-- byte배열로 실제 이미지 파일을 작성하겠다. 
+            //FileOutputStream fos = new FileOutputStream(path+"\\"+saveFileName);
+            FileOutputStream fos = new FileOutputStream(path+"/"+saveFileName);
+            fos.write(data);		//-- byte배열로 실제 이미지 파일을 작성하겠다. 
 			fos.close();
 		} catch (Exception e)
 		{
